@@ -751,10 +751,12 @@ visit(TAUGHT, "Eyes open", [
         c("[Move.]", "moved")),
     jan("still", '''"Good." {n}Her voice has dropped.{/n} "Now I quit the circle."
 {n}She stands, steps back, and waits a long breath. Then she comes back in and lies down in the chalk beside you, pressed close, because there is only room for one, and looks at the ceiling with you.{/n}
-"That's the yield. And that's what comes after it, if you're lucky. Nobody teaches that part."''',
+"That's the yield. And that's what comes after it, if you're lucky. Nobody teaches that part."
+{n}The chalk is a hard, cold line against your shoulder and she is a long line of heat down the whole of your side, her bare foot hooked over your ankle, her breath coming quicker than lying still ought to make it. You have held the yield for an hour with her walking round you and every muscle you own has been asking for this. She knows it. She turns her head on the stone and looks at your mouth without any pretence that she is looking at the ceiling.{/n} "You held it. I walked round you twice and my knees went. Do you know how stupid that is?" {n}Her hand finds your shirt and closes in it. She is done being the teacher. She comes up on one elbow over you, and the lamp makes a gold line of her mouth, an inch from yours and not waiting.{/n}''',
         c("Continue", "future")),
     jan("moved", '''{n}You reach up and pull her down into the chalk with you. She comes down laughing against your neck.{/n}
-"You moved. You broke the forms. The old man would have thrown you down the stairs." {n}She doesn't get up.{/n} "Luckily, he isn't here."''',
+"You moved. You broke the forms. The old man would have thrown you down the stairs." {n}She doesn't get up.{/n} "Luckily, he isn't here."
+{n}Her laughter dies against your throat and what comes after it is not a laugh. She is lying half across you in the smeared chalk, her knee between yours, and you can feel exactly how fast her heart is going through two layers of linen. She has wanted this since the first bell, since the first time she stepped over you in her head and chose not to. Her teeth graze the cord of your neck, once, as if she were testing an edge.{/n} "You are a terrible student." {n}Her hand slides under the hem of your shirt and spreads, hot, flat on your stomach. She lifts her face. Her mouth is an inch from yours, open, and she is the one who closes the distance.{/n}''',
         c("Continue", "future")),
     jan("future", '''{n}After a while, lying there, she says:{/n} "After the war I'm going to chalk a circle in a yard somewhere and teach the forms. Not to make anybody unbeaten. To teach them how to lose and get up again without panicking. And the yield, or the old man would haunt me."
 "You could come and lie in it sometimes. Once they've seen the Commander of the crusade lie still in chalk, not one of them will dare to fidget."''',
