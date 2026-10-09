@@ -83,7 +83,9 @@ line(RETURN_MORTAL, '"The Commander went into the Wound and returned. My graft h
      'I remained without magic. I continued the work I could still do, and my child\'s fate remained unresolved."',
      requires=("trickster.now", at.STRUCK))
 
-line(LINE_DEPARTED, "[PROSE PENDING: Areelu - spared and chose company; Commander later burned the hidden notebook; she departed, letters stopped, child claim and purpose remain hers]")
+line(LINE_DEPARTED, "\"The victor spared my life. I stayed at the Commander's side for a time, by my own choice, and then "
+     "the Commander burned the notebook I kept hidden, and I took my case and left. I wrote for a while. Then I stopped. "
+     "My claim on my child's soul stands, and so does my purpose. Neither was the Commander's to burn.\"")
 
 def spared_variants():
     return [dict(Replacement=LINE_DEPARTED, When=DEPARTED, KeepNativeImage=False),

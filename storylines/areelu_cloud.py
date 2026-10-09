@@ -214,6 +214,23 @@ for _sid, (_expect, _body) in AFTER.items():
     text(_sid, "line", _expect, _body)
 
 
+# Campaign receipts (Chapter 5 laboratory-projection experiments) read back in the report pages.
+CAMPAIGN = {
+    "convicts": {
+        "paid": '''{n}The bound pages from the field cellar lay open under the lamp: the seven in irons from the first batch, the Commander's coin for the gaoler and the hedge-priest, a purse for each family tied with its own thread. She had kept the threads. In the margin she had drawn the broad man's hand life size, at the moment its fingers spread, each tendon labelled.{/n}''',
+        "refused": '''{n}The first batch was in the report too, bought without the Commander: seven men from the Worldwound slavers' carts, no priest and no purse, the receipts folded into the front of the book where they could not be missed. The sum, the date, a slaver's thumbprint in grease. She had drawn the thumbprint with care.{/n}''',
+        "batch_funded": '''{n}The second batch had come out of the Commander's coffers again. It is the longest page in the book. She took the graft out on the fifth day, as she had planned, and set beside the date, in her smallest hand: "Obedient on the fifth. It had not yet learned his name."{/n}''',
+        "batch_refused": '''{n}The second batch she had paid for herself, and said so, and entered the sum in a column headed "Declined by the Commander," beside the names of those in the irons. She did not mean it as an accusation. She meant it as a column.{/n}''',
+    },
+    "graft": {
+        "paid": '''{n}The account of the arm began earlier than this house: a veteran with a pinned sleeve on a cot at the edge of the camps, three hundred of the Commander's coin in salt and brine and a surgeon's fee, and four hours of silk. His claws were drawn in the margin, open, scoring the table in four white lines.{/n}''',
+        "refused": '''{n}The first arm had been done without the Commander: a drunk surgeon she owned, a butcher's block, salt shovelled over the carcass. She had paid for it herself, at twice the price, and written the price in the margin, and underlined "twice."{/n}''',
+        "batch_funded": '''{n}The second arm had gone on at the Commander's cost, three hundred more, onto a sergeant who had lost his at the same wall and had stopped asking about the odds. She listed him by name, and by the hour the claws first closed on their own.{/n}''',
+        "batch_refused": '''{n}The second arm she had paid for herself, and entered the sergeant's name under a column headed "Declined by the Commander." The sergeant had begged for it. She noted that too.{/n}''',
+    },
+}
+
+
 def _scenes(payload):
     return {s["Id"]: s for s in payload["Scenes"]}
 
@@ -259,6 +276,4 @@ def integrate(payload):
         node = _node(scenes, sid, "start")
         for outcome in ("paid", "refused", "batch_funded", "batch_refused"):
             node.setdefault("Paragraphs", []).append(p(
-                "[PROSE PENDING: Areelu - summarize earned campaign " + kind + " " + outcome
-                + "; retain independent procurement and cruel scientific purpose]",
-                requires=(EXPERIMENT + kind + "." + outcome,)))
+                CAMPAIGN[kind][outcome], requires=(EXPERIMENT + kind + "." + outcome,)))
