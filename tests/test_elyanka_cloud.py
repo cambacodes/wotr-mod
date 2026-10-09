@@ -70,10 +70,13 @@ class ElyankaCloudTests(unittest.TestCase):
                 self.assertNotIn(phrase, self.shown('epilogue.claim', 'page', self.flags(*base)))
 
     def test_master_dies_on_screen_not_in_a_report(self):
-        text = self.node('beat.master', 'kill2')['Text']
-        self.assertIn("master's hands", text)
-        self.assertNotIn('report', text)
-        self.assertEqual([E + 'master.killed'], self.node('beat.master', 'kill2')['Choices'][0]['Set'])
+        # Behaviour, not wording: the killing is a shown node in a scene the Commander attends in person
+        # (a visit or event), never a letter, sending or memory that reports it afterwards.
+        scene = self.scenes[E + 'beat.master']
+        self.assertIn(scene.get('Kind'), ('visit', 'event'))
+        kill = self.node('beat.master', 'kill2')
+        self.assertTrue(kill['Text'].strip())
+        self.assertEqual([E + 'master.killed'], kill['Choices'][0]['Set'])
 
     def test_no_paperwork_collector(self):
         texts = []

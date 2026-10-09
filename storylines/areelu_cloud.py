@@ -225,7 +225,7 @@ CAMPAIGN = {
     "graft": {
         "paid": '''{n}The account of the arm began earlier than this house: a veteran with a pinned sleeve on a cot at the edge of the camps, three hundred of the Commander's coin in salt and brine and a surgeon's fee, and four hours of silk. His claws were drawn in the margin, open, scoring the table in four white lines.{/n}''',
         "refused": '''{n}The first arm had been done without the Commander: a drunk surgeon she owned, a butcher's block, salt shovelled over the carcass. She had paid for it herself, at twice the price, and written the price in the margin, and underlined "twice."{/n}''',
-        "batch_funded": '''{n}The second arm had gone on at the Commander's cost, three hundred more, onto a sergeant who had lost his at the same wall and had stopped asking about the odds. She listed him by name, and by the hour the claws first closed on their own.{/n}''',
+        "batch_funded": '''{n}The second arm had gone on at the Commander's cost, three hundred more, onto a sergeant who had lost an arm at the same wall and had stopped asking about the odds. She listed him by name, and by the hour the claws first closed on their own.{/n}''',
         "batch_refused": '''{n}The second arm she had paid for herself, and entered the sergeant's name under a column headed "Declined by the Commander." The sergeant had begged for it. She noted that too.{/n}''',
     },
 }
