@@ -155508,11 +155508,27 @@
       "Flags": [
         "devarra.present_now",
         "devarra.trickster.ending_claimed",
+        "devarra.trickster.judgment_refused",
         "devarra.trickster.returned",
         "trickster.ever"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "devarra.trickster.epilogue.claimed"
+    },
+    {
+      "Id": "page/devarra.trickster.epilogue.claimed_unjudged",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "devarra.present_now",
+        "devarra.trickster.ending_claimed",
+        "devarra.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "devarra.trickster.epilogue.claimed_unjudged"
     },
     {
       "Id": "page/devarra.trickster.epilogue.canon_fate",
@@ -156090,7 +156106,6 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "shamira.present_now",
         "shamira.trickster.declined",
         "trickster.ever"
       ],
@@ -157493,6 +157508,21 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "wenduag.trickster.echo.abyss.epilogue.departed"
+    },
+    {
+      "Id": "page/wenduag.trickster.epilogue.exclusive_refused",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.closed",
+        "wenduag.partner.exclusive_refused"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.exclusive_refused"
     },
     {
       "Id": "page/wenduag.lastcall.page",
