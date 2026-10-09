@@ -984,7 +984,7 @@ def pages():
             # LC-HISTORY-01: the retained base cue has no paragraph conditions.
             # Hold its unconditional account claim for Claude; paragraph positions stay fixed.
             node = page["Nodes"][0]
-            node["Text"] = "[PROSE PENDING: Dorgelinda - Last Call opener independent of account settlement and seal quarrel]"
+            node["Text"] = "{n}Dorgelinda Stranglehold kept the Logistics Council's books for five years after the war. She said a quartermaster who closes every line has stopped paying attention, and she read the entries in the Commander's name every day.{/n}"
         if part["key"] == "aranka":   # coordinator ruling 2026-10-02: her coda belongs to the ending (R2-6)
             page.update(MinChapter=6, MaxChapter=6, Chapters=[6])
         out.append((part["rel"], page))

@@ -712,47 +712,5 @@
     "woman": "arsinoe",
     "beat": "ARS-A2-01: Claude revise climax at native Camellia cut; coordinator must update shared heat_cal_g transformation, preserve flags/IDs; brief: tools/route_packs/plans/struct3-c-handoff.md",
     "ruling": "struct3-c"
-  },
-  {
-    "scene": "dorgelinda.lastcall.page",
-    "woman": "dorgelinda",
-    "node": "page",
-    "beat": "Shared Last Call owner must add settled-account and current seal-quarrel variants in place, preserving IDs, paragraph/answer positions and callable retained carts_signed history. Use cost.told_all and existing cold_unmended/quarrel_unmended readers; inspect the called disclosure, base account and hostile supper paragraph. Cover second-ask settlement, unsettled commitment, hostile audit, unrepaired quarrel and repaired quarrel against ordinary and Last Call endings. Do not remove her or reopen a chosen closure.",
-    "ruling": "struct3-d",
-    "finding": "LC-HISTORY-01",
-    "dependency": "storylines/lastcall_partners.py is outside struct3-d allow_paths; shared Last Call structure owner plus Claude prose owner."
-  },
-  {
-    "scene": "dorgelinda.lastcall.page",
-    "node": "page",
-    "woman": "dorgelinda",
-    "beat": "[PROSE PENDING: Dorgelinda - Last Call opener independent of account settlement and seal quarrel]. This unconditional base cue must make no settled/unsettled or private-visit claim. Original authored opener remains in the source template; preserve its wording in a conditional appended slot once the coordinator provides a late append seam after S52.",
-    "ruling": "lc-history-01: structure-only handoff; Claude owns prose",
-    "finding": "LC-HISTORY-01",
-    "dependency": "Coordinator must preserve existing generated paragraph indices 5 and 6 from storylines/harem_rows/s52.py; its late appender is outside lc-history-01 allow_paths."
-  },
-  {
-    "scene": "dorgelinda.lastcall.page",
-    "node": "page",
-    "woman": "dorgelinda",
-    "beat": "Paragraph 7: [PROSE PENDING: Dorgelinda - Last Call settled account]. Acknowledge the completed cost.told_all settlement; do not describe the original account as unresolved. Keep retained carts_signed callability and all existing costs.",
-    "ruling": "lc-history-01-a2: late-append structure; Claude owns prose",
-    "finding": "LC-HISTORY-01"
-  },
-  {
-    "scene": "dorgelinda.lastcall.page",
-    "node": "page",
-    "woman": "dorgelinda",
-    "beat": "Paragraph 8: [PROSE PENDING: Dorgelinda - Last Call current seal quarrel]. Read cold_unmended or quarrel_unmended as a current seal quarrel; do not imply private supper or reconciliation. A historical cold quarrel repaired by quarrel_mended must not activate this paragraph.",
-    "ruling": "lc-history-01-a2: late-append structure; Claude owns prose",
-    "finding": "LC-HISTORY-01"
-  },
-  {
-    "scene": "dorgelinda.lastcall.page",
-    "node": "page",
-    "woman": "dorgelinda",
-    "beat": "Paragraph 9: [PROSE PENDING: Dorgelinda - Last Call called after completed disclosure]. Read lastcall.called together with cost.told_all; acknowledge the call without replaying a disclosure already completed at the paid second ask. Do not invent a second price or settlement.",
-    "ruling": "lc-history-01-a2: late-append structure; Claude owns prose",
-    "finding": "LC-HISTORY-01"
   }
 ]

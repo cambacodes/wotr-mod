@@ -1,33 +1,4 @@
 {
   "version": 1,
-  "pending": [
-    {
-      "scene": "dorgelinda.lastcall.page",
-      "node": "page",
-      "surface": "node",
-      "index": null,
-      "text_sha": "32f75d8768f8f79dc25e66ce675f7661aface3d7e7831ccb3e72d3f6c4a9301b"
-    },
-    {
-      "scene": "dorgelinda.lastcall.page",
-      "node": "page",
-      "surface": "paragraph",
-      "index": 7,
-      "text_sha": "fc8979e96ec7d8b80d4b357e87c714691b994a55c004c4ae4f856b9a108ba602"
-    },
-    {
-      "scene": "dorgelinda.lastcall.page",
-      "node": "page",
-      "surface": "paragraph",
-      "index": 8,
-      "text_sha": "f1854858e56a3d4a513ba49ece507be4f52b88f1e8b2b419480ca023a375c74f"
-    },
-    {
-      "scene": "dorgelinda.lastcall.page",
-      "node": "page",
-      "surface": "paragraph",
-      "index": 9,
-      "text_sha": "67dbdd17cccf4686d0cdc4ae102460acef1499f77b3ee707a50cf12ab8b4d5de"
-    }
-  ]
+  "pending": []
 }

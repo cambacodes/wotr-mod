@@ -12,11 +12,11 @@ def register(payload, scenes, refs):
     if host is None or host.get("Owner") != "Epilogue":
         return
     host["Nodes"][0].setdefault("Paragraphs", []).extend((
-        page_p("[PROSE PENDING: Dorgelinda - Last Call settled account]",
+        page_p("{n}The Commander's account was entered as paid in full. Dorgelinda filed the confession with its receipts and let no clerk reopen the line. She went on checking every requisition the Commander sent, and found nothing in them to hold against the old debt.{/n}",
                requires=(D + "cost.told_all",)),
-        page_p("[PROSE PENDING: Dorgelinda - Last Call current seal quarrel]",
+        page_p("{n}The quarrel over the seal stood unmended. Dorgelinda filled each of the Commander's requisitions and signed it at her desk with a clerk in the room. Nothing else passed between them, and she did not ask for more.{/n}",
                any_groups=[[L + "cold_unmended", L + "quarrel_unmended"]]),
-        page_p("[PROSE PENDING: Dorgelinda - Last Call called after completed disclosure]",
+        page_p("{n}The call reached Drezen after the account was already closed. She had nothing left to ask. She read the dispatch once, entered the date beside the paid line, and went back to the stores.{/n}",
                requires=("dorgelinda.lastcall.called", D + "cost.told_all")),
         # Retain the authored opener held by lc-history-01 as an unsettled
         # paragraph; no new prose, and no displacement of S52's slots.
