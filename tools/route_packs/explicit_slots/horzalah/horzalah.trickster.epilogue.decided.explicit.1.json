@@ -28,12 +28,13 @@
   "authored_continuity": {
     "setting": "Existing authored epilogue page; the collar, the scar staging and the Commander's rooms are mod continuity.",
     "history": "Trickster Horzalah after the ear con and her return (primed, cost.ear, returned), declined in Chapter 5 (horzalah.trickster.declined: refused.reached or refused.brand), never committed, not left free.",
-    "resumption": "TRACKER: epilogue.decided/page has no reserved paragraph yet. Before generation, append a paragraph with this slot id after the existing paragraphs of epilogue.decided/page (after P3; payoff contracts register epilogue paragraphs by index), with no extra gate beyond the page's own, ending on the supplied last line. The page text before it stays as written; its closing line ('the slowest lesson ...') precedes the slot and is not repeated."
+    "resumption": "epilogue.decided/page -> existing text and paragraphs 0..3 -> reserved paragraph 4 (horzalah.trickster.epilogue.decided.explicit.1) -> legacy scene exit. The reserved paragraph has no extra gate beyond the page. Existing text, paragraph positions and terminal answer are preserved."
   },
   "last_line": "N: By morning the collar was buckled again, and she went back to her Guild the way she had come, through no door at all.",
-  "default_text": "{n}She kept the Commander's hand where she had put it, and made the Commander wait for every other thing.{/n}",
+  "default_text": "[PROSE PENDING: horzalah.trickster.epilogue.decided.explicit.1]",
   "example": "N: Horzalah keeps the Commander's hand flat on the scar.\nH: Still. You reached like a buyer once. Learn what it is to be given something.",
   "min_lines": 12,
   "max_lines": 18,
-  "content_scope": "Reserved explicit continuation for the Commander and Horzalah only, for the separate writer. Both Commander variants are required. Keep her command and contempt; no invented anatomy."
+  "content_scope": "Reserved explicit continuation for the Commander and Horzalah only, for the separate writer. Both Commander variants are required. Keep her command and contempt; no invented anatomy.",
+  "paragraph_index": 4
 }

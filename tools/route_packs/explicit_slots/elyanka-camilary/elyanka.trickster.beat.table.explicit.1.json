@@ -1,7 +1,7 @@
 {
   "slot_id": "elyanka.trickster.beat.table.explicit.1",
   "host_scene": "elyanka.trickster.beat.table",
-  "host_node": "door2",
+  "host_node": "elyanka.trickster.beat.table.explicit.1",
   "participants": [
     "Elyanka",
     "Commander"
@@ -27,7 +27,7 @@
   ],
   "last_line": "E: Come inside when they have gone. There is food left, and I am still hungry.",
   "example": "N: She pushes the last plate across the table to you with two fingers.\nE: Eat. My Lady's door has been kept long enough.",
-  "default_text": "{n}When the last guest has gone she pulls you in from the doorstep by your belt, and the candles burn down on what is left of the feast.{/n}",
+  "default_text": "[PROSE PENDING: elyanka.trickster.beat.table.explicit.1]",
   "min_lines": 6,
   "max_lines": 10,
   "content_scope": "Reserved explicit slot for the Commander and Elyanka only. Both Commander variants are required."

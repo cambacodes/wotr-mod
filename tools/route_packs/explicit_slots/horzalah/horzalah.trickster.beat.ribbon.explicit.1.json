@@ -1,7 +1,7 @@
 {
   "slot_id": "horzalah.trickster.beat.ribbon.explicit.1",
   "host_scene": "horzalah.trickster.beat.ribbon",
-  "host_node": "tied",
+  "host_node": "horzalah.trickster.beat.ribbon.explicit.1",
   "participants": [
     "Horzalah",
     "Commander"
@@ -27,10 +27,10 @@
   "authored_continuity": {
     "setting": "Existing authored ribbon lesson; the ribbon, bow and dressing routine are mod continuity. The host does not fix a room.",
     "history": "Committed Trickster Horzalah after the first Guild-room night (scene requires horzalah.trickster.chamber_seen); a return encounter.",
-    "resumption": "horzalah.trickster.beat.ribbon/back or morning -> tie -> tied -> \"Every morning?\" or [Straighten the bow a little.] (sets horzalah.trickster.beat.ribbon_tied) -> reserved node -> scene exit. The host is terminal, so last_line is the slot's own closing beat."
+    "resumption": "horzalah.trickster.beat.ribbon/tied -> appended Continue (same existing receipt effects) -> horzalah.trickster.beat.ribbon.explicit.1 -> scene exit. Legacy answers retain their original terminal targets and positions. last_line is the slot closing beat."
   },
   "last_line": "N: The second bow is no straighter than the first. She threads it through her collar anyway and goes down to her day.",
-  "default_text": "{n}She pulls the lopsided bow loose again and drops the ribbon in your hand.{/n} \"Again. Slower. Watch me while you do it.\"",
+  "default_text": "[PROSE PENDING: horzalah.trickster.beat.ribbon.explicit.1]",
   "example": "N: Horzalah pulls the bow loose with one finger.\nH: Terrible. Again. And this time you watch me, mortal, not the ribbon.",
   "min_lines": 12,
   "max_lines": 18,

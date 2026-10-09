@@ -1,7 +1,7 @@
 {
   "slot_id": "herrax.house.her_rooms.explicit.1",
   "host_scene": "herrax.house.her_rooms",
-  "host_node": "beside",
+  "host_node": "herrax.house.her_rooms.explicit.1",
   "participants": [
     "Herrax",
     "Commander"
@@ -27,10 +27,10 @@
   "authored_continuity": {
     "setting": "Existing authored private-floor room; the room and chest are mod continuity.",
     "history": "Committed Trickster Herrax after her first night (herrax.trickster.madam.reachable); a later daylight return. rooms_seen/rooms_first history is preserved upstream.",
-    "resumption": "herrax.house.her_rooms/expected or chest -> beside -> \"It's only a room.\" -> reserved node -> scene exit. The host is terminal, so last_line is the slot's own closing beat."
+    "resumption": "herrax.house.her_rooms/beside -> appended Continue (same existing receipt effects) -> herrax.house.her_rooms.explicit.1 -> scene exit. Legacy answers retain their original terminal targets and positions. last_line is the slot closing beat."
   },
   "last_line": "N: Afterwards the noise of the Upper City still comes up through the narrow window. Herrax sits on the locked chest again, her knife back on its hook, and lets you look at the walls.",
-  "default_text": "{n}She turns her head. Her mouth finds yours, and she does not get up off the chest to do it.{/n}",
+  "default_text": "[PROSE PENDING: herrax.house.her_rooms.explicit.1]",
   "example": "N: Herrax hooks a finger through your belt without looking round.\nH: Only a room, honey. Nobody pays to come up here. You're the only one who never had to.",
   "min_lines": 12,
   "max_lines": 18,

@@ -641,3 +641,22 @@ visit(M + "beat.putting_down", "A stronger claim", [
 "Fine. I will try again. Tomorrow I will open my hand, if I have to hold it open with the other one, and put the coin in her bowl, and see who owns whom at the end of it." {n}She bares her teeth at you.{/n} "If it goes wrong, thief, I am coming back here and eating something of yours. I have not decided what. Something you like."''',
         c("Continue", flags=(M + "beat.put_down",)))],
     requires=(COMMITTED, HEAP), forbids=(M + "beat.put_down",))
+
+
+# struct-slot-hosts: optional reserved continuation; retain every legacy exit.
+from copy import deepcopy as _slot_deepcopy
+from story_format import n as _slot_node
+
+for _slot_scene_id, _slot_host_id in (
+    ('melazmera.trickster.beat.count', 'ate'),
+):
+    _slot_id = _slot_scene_id + ".explicit.1"
+    _slot_text = "[PROSE PENDING: " + _slot_id + "]"
+    _slot_scene = next(s for s in SCENES if s["Id"] == _slot_scene_id)
+    _slot_host = next(n for n in _slot_scene["Nodes"] if n["Id"] == _slot_host_id)
+    _slot_entry = _slot_deepcopy(_slot_host["Choices"][0])
+    _slot_entry.pop("Id", None)
+    _slot_entry["Text"] = "Continue"
+    _slot_entry["Next"] = _slot_id
+    _slot_host["Choices"].append(_slot_entry)
+    _slot_scene["Nodes"].append(_slot_node(_slot_id, "Narrator", _slot_text, c("Continue")))
