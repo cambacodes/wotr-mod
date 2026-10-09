@@ -631,122 +631,11 @@
     "ruling": "struct2-02: structure only; Claude owns replacement prose"
   },
   {
-    "scene": "aranka.trickster.verse.her_letter",
-    "node": "start",
-    "woman": "Aranka",
-    "beat": "CONVERT her_letter: face-to-face song confrontation at the market stall; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "aranka.trickster.verse.her_letter",
-    "node": "known",
-    "woman": "Aranka",
-    "beat": "CONVERT her_letter: face-to-face song confrontation at the market stall; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "aranka.trickster.verse.her_letter",
-    "node": "unknown",
-    "woman": "Aranka",
-    "beat": "CONVERT her_letter: face-to-face song confrontation at the market stall; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "aranka.trickster.verse.her_letter_late",
-    "node": "start",
-    "woman": "Aranka",
-    "beat": "CONVERT her_letter: face-to-face song confrontation at the market stall; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "aranka.trickster.verse.her_letter_late",
-    "node": "known",
-    "woman": "Aranka",
-    "beat": "CONVERT her_letter: face-to-face song confrontation at the market stall; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "aranka.trickster.verse.her_letter_late",
-    "node": "unknown",
-    "woman": "Aranka",
-    "beat": "CONVERT her_letter: face-to-face song confrontation at the market stall; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "aranka.trickster.verse.her_letter_yard",
-    "node": "start",
-    "woman": "Aranka",
-    "beat": "CONVERT her_letter: face-to-face song confrontation at the quartermaster yard; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "aranka.trickster.verse.her_letter_yard",
-    "node": "known",
-    "woman": "Aranka",
-    "beat": "CONVERT her_letter: face-to-face song confrontation at the quartermaster yard; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "aranka.trickster.verse.her_letter_yard",
-    "node": "unknown",
-    "woman": "Aranka",
-    "beat": "CONVERT her_letter: face-to-face song confrontation at the quartermaster yard; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "aranka.trickster.verse.her_letter_late_yard",
-    "node": "start",
-    "woman": "Aranka",
-    "beat": "CONVERT her_letter: face-to-face song confrontation at the quartermaster yard; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "aranka.trickster.verse.her_letter_late_yard",
-    "node": "known",
-    "woman": "Aranka",
-    "beat": "CONVERT her_letter: face-to-face song confrontation at the quartermaster yard; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "aranka.trickster.verse.her_letter_late_yard",
-    "node": "unknown",
-    "woman": "Aranka",
-    "beat": "CONVERT her_letter: face-to-face song confrontation at the quartermaster yard; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
     "scene": "melazmera.trickster.commit.stone",
     "node": "count",
     "woman": "Melazmera",
     "beat": "PROPOSE MEL-02 sibling: paragraph 0 says rent was named on her island even after first contact in Drezen. Provide venue-neutral rent recollection; inspect window/rent against the same history.",
     "ruling": "struct2-02 class sweep; Claude voice-owner review; no prose replacement authored"
-  },
-  {
-    "scene": "nenio.trickster.debt.collected",
-    "node": "default_after_commander",
-    "woman": "Nenio",
-    "beat": "Collect the entrusted original bound volume from the Commander; preserve default price and anger.",
-    "ruling": "struct2-03 structure-only",
-    "finding": "NEN-A4-02",
-    "why": "Gift-before-default reads existing volume_one completion IDs; default-before-gift retains the replacement draft branch."
-  },
-  {
-    "scene": "nenio.trickster.debt.collected_visitor",
-    "node": "default_after_commander",
-    "woman": "Nenio",
-    "beat": "Collect the entrusted original bound volume from the Commander; preserve default price and anger.",
-    "ruling": "struct2-03 structure-only",
-    "finding": "NEN-A4-02",
-    "why": "Gift-before-default reads existing volume_one completion IDs; default-before-gift retains the replacement draft branch."
-  },
-  {
-    "scene": "nenio.trickster.debt.collected_arcade",
-    "node": "default_after_commander",
-    "woman": "Nenio",
-    "beat": "Collect the entrusted original bound volume from the Commander; preserve default price and anger.",
-    "ruling": "struct2-03 structure-only",
-    "finding": "NEN-A4-02",
-    "why": "Gift-before-default reads existing volume_one completion IDs; default-before-gift retains the replacement draft branch."
   },
   {
     "scene": "soana.route-level",
@@ -830,20 +719,6 @@
     "woman": "targona",
     "beat": "Dossier owner: add ALIGNMENT & REGISTER for Targona and scoped female participants; retain compassion, native martial anger and fighting creed; distinguish native evidence from authored additions and include keyed samples for evil/edge participants.",
     "ruling": "struct2-04 / RUBRIC TAR-A4-02; Writer dossier coordinator"
-  },
-  {
-    "scene": "hepzamirah.trickster.bond.her_room",
-    "woman": "hepzamirah",
-    "node": "room_paddle_mended",
-    "beat": "[PROSE PENDING: HEP-03 paddle trophy after successful repair; vats hot; no unsupported crooked wrist]",
-    "ruling": "struct2-05 HEP-03: preserve trophy; aftermath must match repair result. Claude owns prose."
-  },
-  {
-    "scene": "hepzamirah.trickster.bond.her_room",
-    "woman": "hepzamirah",
-    "node": "room_paddle_unresolved",
-    "beat": "[PROSE PENDING: HEP-03 paddle trophy with attack recorded but repair outcome unknown]",
-    "ruling": "struct2-05 HEP-03: preserve trophy; aftermath must match repair result. Claude owns prose."
   },
   {
     "scene": "hepzamirah.trickster.bond.her_room",
@@ -1037,13 +912,6 @@
     "beat": "Review returned-by-Commander recollection against Kitrane identity and current-presence gate; preserve responsibility for the Iz kill.",
     "ruling": "struct2-08 Claude continuity review",
     "finding": "TER-A4-02"
-  },
-  {
-    "scene": "wenduag.trickster.epilogue.exclusive_refused",
-    "node": "page",
-    "woman": "Wenduag",
-    "beat": "Dedicated exclusive-refusal closure ending; do not claim Brask was released. Preserve her refusal and CLOSED. Await coordinator Brask aftermath disposition.",
-    "ruling": "struct2-09 WEN-A4-02"
   },
   {
     "scene": "wenduag.trickster.court.claim",

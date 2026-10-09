@@ -1143,5 +1143,8 @@ for _debt in SCENES:
     _default["Choices"][0]["Forbids"].append(BOOK_ENTRUSTED)
     _default["Choices"].append(c("Continue", "default_after_commander", requires=(BOOK_ENTRUSTED,)))
     _debt["Nodes"].append(n("default_after_commander", "Nenio",
-        "[PROSE PENDING: NEN-A4-02 collect the entrusted original volume from the Commander's pack; preserve Nenio's anger and the default price]",
+        '''{n}The oilcloth bundle in your pack goes light between one breath and the next. When you open the flap there is string, tied in her small, furious knot, round nothing at all.{/n}
+"My book." {n}She has crossed to you with her hand out, palm up, and she does not lower it when she sees the string.{/n} "I put volume one in your keeping. The only bound copy. Aardvark to Azlant, with a digression on Abadar that nobody asked for. You were to carry it and bring it back with no stains on it and no pages folded down. You carried it to a debt, and the debt was paid out of my shelf."
+"I do not have a second copy. I have a pencil, and a great deal of memory that I cannot trust, and you." {n}Her ears are flat against her hair.{/n} "I would have told you to give her the answer. I would have told you in very long words. You did not ask me, and now it is in a Sphinx's sleeve, and I will begin again at A."
+"You will hold the pencil, because nobody can read my hand. And you will write the entry on Abadar twice.''',
         *deepcopy(_after["Choices"]), portrait="Nenio"))

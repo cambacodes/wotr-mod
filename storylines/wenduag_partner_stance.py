@@ -281,7 +281,9 @@ def integrate(payload):
     refused["Id"] = W + "epilogue.exclusive_refused"
     refused["Requires"] = [REFUSED if flag == W + "court.claim_refused" else flag
                            for flag in refused["Requires"]]
-    refused["Nodes"][0]["Text"] = "[PROSE PENDING: exclusive-refusal ending and Brask consequence]"
+    refused["Nodes"][0]["Text"] = (
+        '{n}Wenduag brought the Commander the best thing she had caught, once, and the Commander wanted all of her for it. She would not send Lann away because a gift had been taken, and she said so, and when the Commander would not take less she pulled her hood up and walked out over the sergeant on the floor. She did not ask again. She had never asked anybody before; she said afterwards that now she knew what it cost.{/n}\n'
+        '{n}What became of Brask once the door shut behind her was never told in the cellars, and the neathers learned not to ask. She fought the rest of the war where the fighting was worst, because she was not stupid, and she kept to the dark between battles, and nobody said the Commander\'s name in her hearing. When the war ended she was gone before the banners came down, with a band of her own, east, toward the edge of the Wound, where there was still something worth hunting.{/n}')
     payload["Scenes"].append(refused)
 
     # Keep the saved original morning reaction for openly chosen / unchosen bonds.

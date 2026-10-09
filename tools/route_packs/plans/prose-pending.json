@@ -177,125 +177,6 @@
       "text_sha": "34b40a9cf9071053231ffbf7796695070ed0a2926f9e9e5c6e04476ea1a3ecc0"
     },
     {
-      "scene": "aranka.trickster.verse.her_letter",
-      "node": "start",
-      "surface": "node",
-      "index": null,
-      "text_sha": "edbb72945bba462755dc2976a873569d3cdd67c8f6ea3e23eb0dfe3f77e068f6"
-    },
-    {
-      "scene": "aranka.trickster.verse.her_letter",
-      "node": "known",
-      "surface": "node",
-      "index": null,
-      "text_sha": "e483c9a26e9c2a5f157c8152e9a347e867f70379ccf1584f34d0fc87535d8840"
-    },
-    {
-      "scene": "aranka.trickster.verse.her_letter",
-      "node": "unknown",
-      "surface": "node",
-      "index": null,
-      "text_sha": "1350a3a480a74bca11e85c7a18680bfa5cb8cb5a7f4515ea863d30e5a4bad8ac"
-    },
-    {
-      "scene": "aranka.trickster.verse.her_letter_late",
-      "node": "start",
-      "surface": "node",
-      "index": null,
-      "text_sha": "edbb72945bba462755dc2976a873569d3cdd67c8f6ea3e23eb0dfe3f77e068f6"
-    },
-    {
-      "scene": "aranka.trickster.verse.her_letter_late",
-      "node": "known",
-      "surface": "node",
-      "index": null,
-      "text_sha": "e483c9a26e9c2a5f157c8152e9a347e867f70379ccf1584f34d0fc87535d8840"
-    },
-    {
-      "scene": "aranka.trickster.verse.her_letter_late",
-      "node": "unknown",
-      "surface": "node",
-      "index": null,
-      "text_sha": "1350a3a480a74bca11e85c7a18680bfa5cb8cb5a7f4515ea863d30e5a4bad8ac"
-    },
-    {
-      "scene": "aranka.trickster.verse.her_letter_yard",
-      "node": "start",
-      "surface": "node",
-      "index": null,
-      "text_sha": "edbb72945bba462755dc2976a873569d3cdd67c8f6ea3e23eb0dfe3f77e068f6"
-    },
-    {
-      "scene": "aranka.trickster.verse.her_letter_yard",
-      "node": "known",
-      "surface": "node",
-      "index": null,
-      "text_sha": "e483c9a26e9c2a5f157c8152e9a347e867f70379ccf1584f34d0fc87535d8840"
-    },
-    {
-      "scene": "aranka.trickster.verse.her_letter_yard",
-      "node": "unknown",
-      "surface": "node",
-      "index": null,
-      "text_sha": "1350a3a480a74bca11e85c7a18680bfa5cb8cb5a7f4515ea863d30e5a4bad8ac"
-    },
-    {
-      "scene": "aranka.trickster.verse.her_letter_late_yard",
-      "node": "start",
-      "surface": "node",
-      "index": null,
-      "text_sha": "edbb72945bba462755dc2976a873569d3cdd67c8f6ea3e23eb0dfe3f77e068f6"
-    },
-    {
-      "scene": "aranka.trickster.verse.her_letter_late_yard",
-      "node": "known",
-      "surface": "node",
-      "index": null,
-      "text_sha": "e483c9a26e9c2a5f157c8152e9a347e867f70379ccf1584f34d0fc87535d8840"
-    },
-    {
-      "scene": "aranka.trickster.verse.her_letter_late_yard",
-      "node": "unknown",
-      "surface": "node",
-      "index": null,
-      "text_sha": "1350a3a480a74bca11e85c7a18680bfa5cb8cb5a7f4515ea863d30e5a4bad8ac"
-    },
-    {
-      "scene": "nenio.trickster.debt.collected",
-      "node": "default_after_commander",
-      "surface": "node",
-      "index": null,
-      "text_sha": "e05674b15feeedb60fef0870879f9ef17c7d3b29c491881f7d8e4995b5bff055"
-    },
-    {
-      "scene": "nenio.trickster.debt.collected_visitor",
-      "node": "default_after_commander",
-      "surface": "node",
-      "index": null,
-      "text_sha": "e05674b15feeedb60fef0870879f9ef17c7d3b29c491881f7d8e4995b5bff055"
-    },
-    {
-      "scene": "nenio.trickster.debt.collected_arcade",
-      "node": "default_after_commander",
-      "surface": "node",
-      "index": null,
-      "text_sha": "e05674b15feeedb60fef0870879f9ef17c7d3b29c491881f7d8e4995b5bff055"
-    },
-    {
-      "scene": "hepzamirah.trickster.bond.her_room",
-      "node": "room_paddle_mended",
-      "surface": "node",
-      "index": null,
-      "text_sha": "32d6f65a1b289d21f326e23fe520f16428c88dfd19c522836cd753f7091bef8c"
-    },
-    {
-      "scene": "hepzamirah.trickster.bond.her_room",
-      "node": "room_paddle_unresolved",
-      "surface": "node",
-      "index": null,
-      "text_sha": "f7c279d57e506ab6ffbccce898d1b02cded93fca80600ae640a1c479deef0a82"
-    },
-    {
       "scene": "mielarah.deck.fourth",
       "node": "owned_posted",
       "surface": "node",
@@ -392,13 +273,6 @@
       "surface": "node",
       "index": null,
       "text_sha": "7eeb6ed7f8cda8ef47bea17580c47bbbf1013973b5440ef00f4eb82308519e59"
-    },
-    {
-      "scene": "wenduag.trickster.epilogue.exclusive_refused",
-      "node": "page",
-      "surface": "node",
-      "index": null,
-      "text_sha": "7ad008e454e5bec39dc24d89feba5bb5805deecc26d0a60c49360d6b852c206d"
     },
     {
       "scene": "galfrey.trickster.kitrane.irabeth",
