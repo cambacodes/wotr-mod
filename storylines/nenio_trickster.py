@@ -25,6 +25,7 @@ The commit is a question she did not mean to ask, answered as a hypothesis and t
 deliberate forgetting. She decides. The Commander's tampering voids the test; a confession earns a replication; a denial ends it.
 The spine (the dictation sessions, the Abyss, page one) is nenio_folios.
 """
+from copy import deepcopy
 from story_format import c, n, p, reaction, scene
 from storylines import household
 
@@ -803,7 +804,7 @@ EP = dict(last=6, Relationship=REL)
 KEPT_PARAS = (
     p("{n}She never had the Commander's name again. She called {mf|him|her} \"follower\" in private and \"the Commander\" in print, and when a Mendevian herald once shouted the name across a banqueting hall she turned round to see who was meant, and then turned back, perfectly content, and went on eating.{/n}", requires=(NAME_GONE,)),
     p("{n}She knew the Commander's name. She withheld it from the published proofs. When asked why, she said that the Encyclopedia did not print what it did not need, and that she did not need it; she had the original.{/n}", forbids=(NAME_GONE, UNREMEMBERED)),
-    p("{n}She never recovered the notes the Commander had traded away for her. She rebuilt the missing entries around the bound working draft, observing everything a second time, in the Commander's hand. The new notes soon filled more trunks than the old ones. She made a point of mentioning this to the Faceless Sphinx, in writing, every year.{/n}", requires=(MANUSCRIPT,)),
+    p("{n}She never recovered the notes the Commander had traded away for her. She rebuilt the missing entries around the bound working draft, observing everything a second time, in the Commander's hand. The new notes soon filled more trunks than the old ones. She made a point of mentioning this to the Faceless Sphinx, in writing, every year.{/n}", requires=(MANUSCRIPT,), forbids=(DEBT_DEFAULTED,)),
     p("{n}Somewhere in the Enigma an answer is still owed. The Sphinx's servant never came to collect it during the war, and has not come since. The answer remained unpaid. The Sphinx had yet to name her question.{/n}", requires=(OWES,), forbids=DEBT_SETTLED),
     p("{n}The Sphinx's question was answered in full. She heard those words once, when the Commander answered the Sphinx's servant in front of her, and never again; they were no longer the Commander's to say. She noticed, and wrote down every other word instead, and said once that it made for a longer study and a better one.{/n}", requires=(DEBT_PAID,)),
     p("{n}The Sphinx's question was answered in her own coin: nothing at all. Nenio, who had watched it, laughed about it afterwards until she had to sit down, and then wrote to the Faceless Sphinx every year afterwards, asking whether she had enjoyed the silence, and never received a reply, which she said proved the point.{/n}", requires=(DEBT_EVADED,)),
@@ -990,6 +991,8 @@ def _bind(payload, kind, table):
 def integrate(payload):
     """Register her derived keys, presences, revival and the native keys only this route reads. Scenes are added by expansion.py."""
     derived = dict(DERIVED)
+    # Both existing terminal book-taking choices complete the same scene.
+    derived[BOOK_ENTRUSTED] = [[sid] for sid in twin_ids(F + "volume_one")]
     derived[MARGIN] = margin_groups()
     for key, groups in derived.items():
         have = payload.setdefault("Derived", {}).get(key)
@@ -1127,3 +1130,18 @@ for _slide in NATIVE_ENDING_SCENES:
             'the nations of Golarion. Eighteen months later she returned with a pile of notes for her follower. '
             'Among them was the completed result of a private experiment begun during the Fifth Crusade. '
             'That sheet did not go to the publisher.{/n}')
+
+
+# struct2-03 / NEN-A4-02: collect the original draft from its actual holder.
+# Keep every legacy node, answer position and target for existing saves.
+BOOK_ENTRUSTED = F + "volume_one.entrusted"
+for _debt in SCENES:
+    if _debt["Id"] not in twin_ids(P + "debt.collected"):
+        continue
+    _default = next(node for node in _debt["Nodes"] if node["Id"] == "default")
+    _after = next(node for node in _debt["Nodes"] if node["Id"] == "default_after")
+    _default["Choices"][0]["Forbids"].append(BOOK_ENTRUSTED)
+    _default["Choices"].append(c("Continue", "default_after_commander", requires=(BOOK_ENTRUSTED,)))
+    _debt["Nodes"].append(n("default_after_commander", "Nenio",
+        "[PROSE PENDING: NEN-A4-02 collect the entrusted original volume from the Commander's pack; preserve Nenio's anger and the default price]",
+        *deepcopy(_after["Choices"]), portrait="Nenio"))

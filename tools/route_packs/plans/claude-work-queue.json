@@ -759,5 +759,96 @@
     "ruling": "struct-slot-hosts",
     "finding": "struct-slot-hosts:melazmera.trickster.beat.count.explicit.1",
     "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/melazmera/melazmera.trickster.beat.count.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
+  },
+  {
+    "scene": "nenio.trickster.debt.collected",
+    "node": "default_after_commander",
+    "woman": "Nenio",
+    "beat": "Collect the entrusted original bound volume from the Commander; preserve default price and anger.",
+    "ruling": "struct2-03 structure-only",
+    "finding": "NEN-A4-02",
+    "why": "Gift-before-default reads existing volume_one completion IDs; default-before-gift retains the replacement draft branch."
+  },
+  {
+    "scene": "nenio.trickster.debt.collected_visitor",
+    "node": "default_after_commander",
+    "woman": "Nenio",
+    "beat": "Collect the entrusted original bound volume from the Commander; preserve default price and anger.",
+    "ruling": "struct2-03 structure-only",
+    "finding": "NEN-A4-02",
+    "why": "Gift-before-default reads existing volume_one completion IDs; default-before-gift retains the replacement draft branch."
+  },
+  {
+    "scene": "nenio.trickster.debt.collected_arcade",
+    "node": "default_after_commander",
+    "woman": "Nenio",
+    "beat": "Collect the entrusted original bound volume from the Commander; preserve default price and anger.",
+    "ruling": "struct2-03 structure-only",
+    "finding": "NEN-A4-02",
+    "why": "Gift-before-default reads existing volume_one completion IDs; default-before-gift retains the replacement draft branch."
+  },
+  {
+    "scene": "soana.route-level",
+    "woman": "Soana",
+    "beat": "Supply per-woman ALIGNMENT & REGISTER coverage and keyed native samples.",
+    "ruling": "struct2-03 escalation; no prose authorization",
+    "finding": "SOANA-A5-02",
+    "dependency": "Coordinator/dossier owner: authoritative dossier is absent from the bundle."
+  },
+  {
+    "scene": "herrax.route-level",
+    "woman": "Herrax",
+    "beat": "Supply five distinct verbatim Herrax lines with actual localization keys and register dossier.",
+    "ruling": "struct2-03 escalation; no prose authorization",
+    "finding": "D1",
+    "dependency": "Claude voice dossier owner and coordinator rebundle."
+  },
+  {
+    "scene": "herrax.route-level",
+    "woman": "Herrax",
+    "beat": "Reconcile seven canonical briefs with digest-bound hosts and continuity approval.",
+    "ruling": "struct2-03 escalation; no prose authorization",
+    "finding": "D2",
+    "dependency": "Gemory slot owner and coordinator: seven current JSON briefs exist, but do not provide digest-bound host and continuity approval evidence."
+  },
+  {
+    "scene": "nenio.folio.edge",
+    "woman": "Nenio",
+    "beat": "Stage the existing survey and shield inspection at the selected playable boundary location, including placement twins.",
+    "ruling": "struct2-03 binding escalation; structure before prose",
+    "finding": "nenio.folio.edge",
+    "dependency": "Coordinator must select and bind the survey area and native entry; current companion hub launches an hour-long excursion."
+  },
+  {
+    "scene": "minachiv.two_answers",
+    "woman": "Minagho and Chivarro",
+    "beat": "Split rest invitation delivery from the agreed in-person meeting without changing saved targets.",
+    "ruling": "struct2-03 binding escalation; structure before prose",
+    "finding": "minachiv.two_answers",
+    "dependency": "Coordinator must bind the shuttered gaming-house interaction hub; Claude owns invitation/meeting seam prose."
+  },
+  {
+    "scene": "minachiv.the_remaining_customers",
+    "woman": "Minagho and Chivarro",
+    "beat": "Host Orven and the customer-list decision at the bound gaming-house encounter.",
+    "ruling": "struct2-03 binding escalation; structure before prose",
+    "finding": "minachiv.the_remaining_customers",
+    "dependency": "Coordinator must bind the gaming-house hub and participant placement; current Drezen area-gated remote copy remains."
+  },
+  {
+    "scene": "minachiv.what_the_offer_bought",
+    "woman": "Minagho and Chivarro",
+    "beat": "Host the existing stakeout, confrontation and agent fate choices at the bound encounter.",
+    "ruling": "struct2-03 binding escalation; structure before prose",
+    "finding": "minachiv.what_the_offer_bought",
+    "dependency": "Coordinator must bind the gaming-house hub and participant placement; current Drezen area-gated remote copy remains."
+  },
+  {
+    "scene": "nenio.trickster.epilogue.commit",
+    "woman": "Nenio",
+    "beat": "Review the retained-bound-draft and default-replacement ending accounts together, plus page_one and late book references after a default.",
+    "ruling": "struct2-03 structure-only; Claude continuity review",
+    "finding": "NEN-A4-02",
+    "why": "Retained draft account now forbids default; copied completion histories select correct book custody in all placement twins. Preserve prices, existing text and all legacy choices."
   }
 ]
