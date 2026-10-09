@@ -464,7 +464,9 @@ physical("irabeth.trickster.back_on_duty", "Back on duty", '"Knight-Captain. A w
 
 THRESHOLD = '''{n}Irabeth pulls you through the side door into her roster room. She sweeps the duty lists off the desk, unbuckles her sword belt, and lays it along the far edge, the hilt within reach. Then she swears, short and furious, at a breastplate buckle.{/n}
 "I've wanted you here all evening. I'm done pretending the reports need another look. Take the rest off me, Commander. Slowly. I want to remember it."
-{n}Gauntlet, then vambrace. Her fingers fumble at the breastplate and she lets you finish. The plate hits the floor. She opens her arming coat; old scars lie pale across hot skin and hard muscle. She catches your mouth, her tusks grazing your lip, then hauls you onto the cleared desk with her, hooks a leg behind yours, and reaches for your belt.{/n}'''
+{n}Gauntlet, then vambrace. Her fingers fumble at the breastplate and she lets you finish. The plate hits the floor. She opens her arming coat; old scars lie pale across hot skin and hard muscle. She catches your mouth, her tusks grazing your lip, then hauls you onto the cleared desk with her, hooks a leg behind yours, and reaches for your belt.{/n}
+{n}She has the belt open in two pulls, soldier-quick, and then slows on purpose, her scarred palm flat against your stomach as if taking its measure. Her breath is harsh and her skin is as hot as a forge-stone. She drags your mouth to the pale ridge of a scar along her collarbone and her hips come up off the wood to meet you.{/n}
+"Damn it, Commander, stop looking at me like a map and start reading." {n}Her heels lock behind you.{/n}'''
 
 MORNING_NOTE = '''{n}At dawn the watch changes under the window. Irabeth is back in armour, all but one gauntlet. The sword belt still lies along the edge of the desk, within reach. She holds out her bare hand to you without a word.{/n}
 "Nevi will know. Nevi always knows. I'll write to her myself before breakfast, before anyone else can."
@@ -486,7 +488,9 @@ REASONS_TEXT = '''"You lay down unarmed under my sword. Nobody at Iz would have 
 
 THRESHOLD_BLOW = '''{n}She takes you into the roster room, sweeps the duty lists off the desk, and lays her sword belt along the far edge. She keeps a hand on the hilt until you look at it.{/n}
 "Take the rest off me, Commander. Slowly. And leave that where it is."
-{n}Gauntlet, then vambrace. The breastplate comes away beneath your hands. She opens her arming coat, exposing hot skin and hard muscle, old scars and the wound you left at Iz. Her fingers stop yours at the edge of the wound. She looks at you until you meet her eyes, then guides your hand to her shoulder. Her kiss is fierce; she catches your lower lip between her teeth before letting you breathe. Then she pulls you down onto the cleared desk with her, hooks a leg behind yours, and reaches for your belt. The sword lies beside her hand.{/n}'''
+{n}Gauntlet, then vambrace. The breastplate comes away beneath your hands. She opens her arming coat, exposing hot skin and hard muscle, old scars and the wound you left at Iz. Her fingers stop yours at the edge of the wound. She looks at you until you meet her eyes, then guides your hand to her shoulder. Her kiss is fierce; she catches your lower lip between her teeth before letting you breathe. Then she pulls you down onto the cleared desk with her, hooks a leg behind yours, and reaches for your belt. The sword lies beside her hand.{/n}
+{n}Her breath is harsh against your cheek. She gets your belt open and her palm flat against your stomach and she does not hurry now; she wants you to feel how deliberate it is. When your mouth finds the scar at her collarbone her hips come up off the wood and a sound leaves her that she would deny under oath.{/n}
+"This does not pardon it," {n}she says, low, against your jaw, her eyes open and on yours.{/n} "Stay here and pay attention." {n}Her heels lock behind you, and the sword stays where she can reach it.{/n}'''
 
 MORNING_HOUSE = '''{n}At dawn the watch changes under the window. Irabeth is back in armour, all but one gauntlet. The sword belt still lies along the edge of the desk, within reach. She holds out her bare hand to you without a word.{/n}
 "I promised Nevi breakfast. I am going home, and I am telling her myself. Do not send a runner to fetch me."

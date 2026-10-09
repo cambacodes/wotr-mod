@@ -442,7 +442,9 @@ beat(H + "beat.ribbon", "The bow", '"Teach me to tie that bow."', [
 {n}At the end she takes a small knife from her collar and cuts both ends on the slant, one stroke each, so they will not fray.{/n}''',
         c("Continue", "tied")),
     hz("tied", '''{n}She looks at the bow you have made. It is lopsided. She does not retie it.{/n}
-"Terrible," {n}she says.{/n} "I am going to wear it anyway. In my hall. On the collar. Every master in the Guild will see that the ribbon is tied badly, and none of them will dare to mention it, and they will all wonder who did it, and I will not tell them." {n}She threads it back through her collar, lopsided bow and all.{/n} "Get better at it. I intend to make you practise."''',
+"Terrible," {n}she says.{/n} "I am going to wear it anyway. In my hall. On the collar. Every master in the Guild will see that the ribbon is tied badly, and none of them will dare to mention it, and they will all wonder who did it, and I will not tell them." {n}She threads it back through her collar, lopsided bow and all.{/n} "Get better at it. I intend to make you practise."
+{n}She does not go down to her day. She stays where she is, the cut ribbon trailing from two claws, one hip against the bed, and looks you over the way she looks at a lock she has decided to open. Last night's marks are still on your shoulder; she finds them with her thumb and presses until you feel each one.{/n}
+"Clumsy. Your hands are clumsy everywhere, I recall, except where I put them." {n}Her breathing has changed. Her eyes have gone dark with the flame in them, and she tilts her head so the unbuckled edge of the collar falls open and shows the pale scar beneath.{/n} "The masters will wait. I have kept better men than they are waiting, and enjoyed it."''',
        c('"Every morning?"', flags=(P_RIBBON,)),
        c("[Straighten the bow a little.]", flags=(P_RIBBON,))),
 ], requires=(CHAMBER,), forbids=(P_RIBBON,), delay=24)
@@ -639,7 +641,9 @@ beat(H + "beat.ramparts", "What you were", '"Walk the walls with me tonight."', 
        c("[Take her hand, and wait.]", "hand")),
     hz("take", '''"You are. With your whole face." {n}She shoves you, then catches your coat before you step back.{/n} "Walk. Before the sentry comes back."''',
        c("[Walk her back along the wall.]", flags=(RAMPARTS,))),
-    nar("hand", '''{n}You hold out your hand and leave it there, between you, and do nothing else. She looks at it. Then she takes it, and puts it flat against her throat, under the collar, and holds it there, and the two of you stand on the wall with the Worldwound burning low in the north until the next watch comes up the stair and goes very quickly down again.{/n}''',
+    nar("hand", '''{n}You hold out your hand and leave it there, between you, and do nothing else. She looks at it. Then she takes it, and puts it flat against her throat, under the collar, and holds it there, and the two of you stand on the wall with the Worldwound burning low in the north until the next watch comes up the stair and goes very quickly down again.{/n}
+{n}Beneath your palm her pulse is going like a rabbit's. She feels you feel it and bares her teeth at you, slow, with no humour in it. Her other hand has found your belt through your coat and is hooked there, and the forge-glow from the camp below finds the sweat at her temple, the fine tremor in the long line of her jaw. Her breath comes hot and uneven against your mouth.{/n}
+"Do not mistake this for softness," {n}she says.{/n} "The sentry fled because he saw my face. You did not. I have been wondering for a week what I would do if you did not." {n}Her thumb presses your knuckles harder into the scar.{/n} "Now I know. Keep your hand where I put it."''',
         c("[Stay until she lets go.]", flags=(RAMPARTS,))),
 ], requires=(COMMITTED,), forbids=(RAMPARTS,), delay=24)
 
@@ -746,7 +750,8 @@ beat(H + "beat.second_night", "Your turn", '"Come up tonight."', [
         c("Continue", "wait2")),
     hz("wait2", '''"Enough," {n}she says through her teeth. She takes two fistfuls of your shirt and pulls you onto the bed beneath her. Her knees settle on either side of you; she bends until her bare throat brushes your mouth.{/n}''',
        c("Continue", "cut")),
-    nar("cut", '''{n}Her mouth closes on yours. She reaches toward the bedside candle, and the room goes dark.{/n}''',
+    nar("cut", '''{n}Her mouth closes on yours, hard enough to bruise. What is left of your clothes goes where hers went, and her hips settle onto yours in one slow, deliberate grind that drags a sound out of her she will deny in the morning. She catches both your wrists in her claws and pins them to the pillow, just short of drawing blood, and looks down at what she has caught: all long muscle and fever-heat, the white band of the old collar bright in the candlelight, her hair hanging round both your faces.{/n}
+"Let your sentries listen," {n}she says against your jaw.{/n} "Let the one on the left hear every minute of it. I want your whole citadel to know whose bed I am in." {n}She reaches toward the bedside candle, and the room goes dark.{/n}''',
         c("Continue", "after")),
     nar("after", '''{n}When the morning bell rings she is sitting on the edge of your map table in nothing but her scar, buckling on her collar, with the Worldwound pressed flat under her thigh.{/n}
 "Your guards are very bad at pretending," {n}she says, without looking round.{/n} "The one on the left has been trying not to listen for three hours. Promote him. He has a gift for suffering." {n}She finishes the buckle, and the air begins to fold.{/n} "My turn next. I will send for you."''',

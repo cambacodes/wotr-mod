@@ -354,6 +354,8 @@ s("i_crossing", "No order given", "Irabeth", 3,
     n("night", "Irabeth", '''{n}Irabeth takes off her gloves and sets them carefully together. Then she laughs at the absurdity of being orderly at such a moment. The laughter loosens something in both of you.{/n}
 "Come here."
 {n}You go to her. She kisses you again, harder, and her hands go to her own buckles: the sword belt onto the chair, the breastplate onto the floor with a noise that makes her wince and then laugh. She hauls her shirt over her head, catches you by the collar and pulls you down onto the bed with her, her weight rolling over yours and her knee sliding between your thighs.{/n}
+{n}Her hand stops at your belt. The ring on her other hand catches the candle, and she turns it once with her thumb, a soldier checking a strap, and her mouth tightens.{/n}
+"I'm choosing this," {n}she says, rough.{/n} "Nobody talked me into it and nobody ordered it. If you ever call it a mistake in front of me I will put you through that wall." {n}Then the tightness breaks into something hungrier. Her mouth comes down on your throat, tusk and teeth and heat, and her hips rock down against yours, hard, once, as if she had been holding that back for years.{/n}
 {n}Later, before she leaves, she sits beside you in the darkness. Her hand finds yours without searching.{/n}
 "It mattered to me. I do not know what I am going to do with that. But it mattered."
 {n}She does not ask for absolution, and you do not offer it.{/n}''', c('[Say good night.]', flags=("i_affair",))),

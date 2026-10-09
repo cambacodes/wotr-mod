@@ -92,6 +92,8 @@ def integrate(payload):
 "Two days. I shall not spend another evening waiting."
 {n}She seats you on the cleared wood. Her hands slide inside your coat, then tug it from your shoulders. She settles across your lap and kisses you until she has to stop for breath.{/n}
 "There. A much better use of your mouth."
+{n}The robe hangs open now, and under it she is bare and warm and quick-breathing, the silk gathered round her hips. She guides your hands up her ribs herself and holds them there, and when your thumbs find her she shuts her eyes and says a word no chancery would ever have minuted. When she opens them the careful envoy is gone.{/n}
+"Do not stop to be clever," {n}she says, unsteady.{/n} "I will know, and I shall be unbearable about it."
 {n}Her hand grips the back of your neck. She presses you back onto the desk and follows, her mouth still on yours.{/n}'''
     text("trickster.never_arrived.second_supper", "accept", approach)
     # Retained rooms/accept is reachable from an older in-flight answer. It must
