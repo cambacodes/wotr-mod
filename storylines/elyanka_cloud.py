@@ -87,12 +87,12 @@ def _ledger_entry(payload, entry_id):
     raise KeyError("elyanka_cloud: missing Ledger entry " + entry_id)
 
 
-# --- S1: the master's death on screen, not as a report between a tallow bill and a complaint ---------------------------
+# --- S1 / ELY-AUD-01: held for Claude; aftermath alone does not establish an on-screen death -------------------------
 
-KILL2 = '''{n}The two men in grey come back on the fourth night, on foot, the way they went. Elyanka has been waiting for them in the dead-house since sundown, and she has made you wait with her. One of them sets a bundle on the trestle and goes back to his place by the wall: a black coat, folded small, tied up with its owner's belt.{/n}
-{n}She unties it herself. Inside, laid side by side as neatly as gloves in a drawer, are the master's hands, very small and very clean, taken off at the wrist. Somewhere south of the Mendevian border a carriage lies in a ditch with its horses cut loose, and nobody inside it will ever fold anything again.{/n}
-"He never did a thing with these but point," {n}she says, and turns one over with the tip of her knife, the way she turned the stag's heart on its stone.{/n} "At me. At you. At the date." {n}Then she laughs, high and cracked, the laugh that goes on too long, until the candles shiver in their cups and the man by the wall does not blink.{/n}
-{n}When it stops she wipes the knife on the dead man's coat, catches your collar with the hand that is still sticky, and pulls you against her. Her fingers shake once before they tighten.{/n} "The date stays where I put it," {n}she says against your mouth.{/n} "Not one day sooner. Not tonight. Feed those to the brazier, Commander. My Lady does not eat clerks."'''
+KILL2 = '[PROSE PENDING: ELY-AUD-01 show the master being killed on screen; retain Elyanka ownership motive and master.killed outcome.]'
+MASTER_KILL = '[PROSE PENDING: ELY-AUD-01 authorized violent counter-move against her order; stage dispatch and the on-screen death without a dialogue-click journey.]'
+MASTER_HERS = '[PROSE PENDING: ELY-AUD-01 delegated violent counter-move on screen; retain her agency and the distinct master.hers outcome.]'
+
 
 # --- V1: the embalmer lie answered in her native register (fa330470: the shriek, the hiss, the prepared death) ---------
 
@@ -176,6 +176,8 @@ COLLATERAL_SCAR = p('''{n}Her thumb stops on the seam above your knee where the 
 def integrate(payload):
     # S1: the master's murder, on screen.
     _rewrite(payload, E + "beat.master", "kill2", "{n}Three days later a carriage is found in a ditch", KILL2)
+    _rewrite(payload, E + "beat.master", "kill", "{n}She does not smile. She nods once,", MASTER_KILL)
+    _rewrite(payload, E + "beat.master", "hers", "{n}She studies you across the trestle,", MASTER_HERS)
     # V1: the embalmer lie.
     _rewrite(payload, E + "beat.writ", "lied2", "{n}She waits until the gate has closed behind them.", LIED2)
     # D08: the hunt. The unchecked "quick" answer now drives the hart; the interception is the checked trailing answer.

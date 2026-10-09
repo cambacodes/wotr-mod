@@ -1341,5 +1341,59 @@
     "woman": "arsinoe",
     "beat": "ARS-A2-01: Claude revise climax at native Camellia cut; coordinator must update shared heat_cal_g transformation, preserve flags/IDs; brief: tools/route_packs/plans/struct3-c-handoff.md",
     "ruling": "struct3-c"
+  },
+  {
+    "scene": "elyanka.trickster.beat.master",
+    "woman": "elyanka",
+    "node": "kill",
+    "beat": "Show her violent counter-move against her own order at native register. Preserve ownership motive, kill/escort/delegate answer positions and outcomes. Coordinate kill and kill2 as an on-screen encounter; do not claim a later journey or fourth-night return through a dialogue click. If dispatch and return stay separate, structural elapsed-time delivery must land before final prose.",
+    "ruling": "struct3-d",
+    "finding": "ELY-AUD-01",
+    "dependency": "Claude prose acceptance required; Codex implements any separately retained elapsed-time dispatch/return delivery."
+  },
+  {
+    "scene": "elyanka.trickster.beat.master",
+    "woman": "elyanka",
+    "node": "kill2",
+    "beat": "Show the killing itself on screen, rather than a report or severed-hand aftermath. Retain master.killed at the terminal answer and its epilogue consequence. Dispatch and a later return require elapsed-time event delivery if retained.",
+    "ruling": "struct3-d",
+    "finding": "ELY-AUD-01",
+    "dependency": "Claude prose acceptance required; Codex implements any separately retained elapsed-time dispatch/return delivery."
+  },
+  {
+    "scene": "elyanka.trickster.beat.master",
+    "woman": "elyanka",
+    "node": "hers",
+    "beat": "Show her delegated violent decision and act on screen while retaining her ownership motive, agency, master.hers outcome and distinct epilogue consequence. Preserve the player delegation answer and all saved node/answer positions.",
+    "ruling": "struct3-d",
+    "finding": "ELY-AUD-01",
+    "dependency": "Claude prose acceptance required; Codex implements any separately retained elapsed-time dispatch/return delivery."
+  },
+  {
+    "scene": "chadali.fortunes.honey",
+    "woman": "chadali",
+    "node": "look",
+    "beat": "Replace the heat extension at the charged approach with the pinned canon-calibrated cut. Retain appetite, impatient speech, existing explicit.1 reservation and cut/aftermath. Review the whole transition; do not put exposed sexual anatomy/contact back before the reservation.",
+    "ruling": "struct3-d",
+    "finding": "CH-A2-01",
+    "dependency": "Claude prose acceptance required; Codex implements any separately retained elapsed-time dispatch/return delivery."
+  },
+  {
+    "scene": "chadali.sessions.what_chance_wishes",
+    "woman": "chadali",
+    "node": "stay",
+    "beat": "Sibling heat extension: calibrate the undressing and bare-body staging to the same canon cut. Retain cushion preparation, appetite, her existing answer, reservation and aftermath.",
+    "ruling": "struct3-d",
+    "finding": "CH-A2-01",
+    "dependency": "Claude prose acceptance required; Codex implements any separately retained elapsed-time dispatch/return delivery."
+  },
+  {
+    "scene": "dorgelinda.lastcall.page",
+    "woman": "dorgelinda",
+    "node": "page",
+    "beat": "Shared Last Call owner must add settled-account and current seal-quarrel variants in place, preserving IDs, paragraph/answer positions and callable retained carts_signed history. Use cost.told_all and existing cold_unmended/quarrel_unmended readers; inspect the called disclosure, base account and hostile supper paragraph. Cover second-ask settlement, unsettled commitment, hostile audit, unrepaired quarrel and repaired quarrel against ordinary and Last Call endings. Do not remove her or reopen a chosen closure.",
+    "ruling": "struct3-d",
+    "finding": "LC-HISTORY-01",
+    "dependency": "storylines/lastcall_partners.py is outside struct3-d allow_paths; shared Last Call structure owner plus Claude prose owner."
   }
 ]
