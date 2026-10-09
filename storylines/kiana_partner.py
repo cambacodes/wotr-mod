@@ -101,7 +101,7 @@ def stance_nodes(flags):
              c('[Hear her choice.]', "partner_not_yet", requires=("kiana.rehearsed",), forbids=("kiana.company", "kiana.trickster.met"))),
         page("partner_not_yet", "Kiana", '''"No. You have seen me with the wine and the ribbon loose. That isn't a life together yet."
 {n}She draws Elan's letter from beneath the script.{/n}
-"He waited through the crusade and the nightmare in that damned ring. I haven't decided I want to leave him. I will not send him away because you want an answer tonight."''',
+"He waited through the crusade, and through the wedding those demons ruined. I haven't decided I want to leave him. I will not send him away because you want an answer tonight."''',
              c('"Then tell him. I will share, on his terms."', "partner_share"),
              c('"Keep our evenings quiet instead."', "partner_secret"),
              c('"I will not share you. We end it."', "partner_stop", flags=(EXCLUSIVE, "kiana.stayed_married"))),
