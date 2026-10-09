@@ -56,6 +56,13 @@
       "surface": "node",
       "index": null,
       "text_sha": "24cd60c8c916edacc0b5d3e407dde15ea8677c2fa3beab244c07e62e4dc3239b"
+    },
+    {
+      "scene": "chadali.trickster.epilogue.lucky_night",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 56,
+      "text_sha": "0e04040cc28fed529853a5fec83cdb3caa5cbd2a6b595abfcb8d27f08ae91c0a"
     }
   ]
 }

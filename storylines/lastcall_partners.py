@@ -1265,7 +1265,7 @@ def derived():
 def derived_forbids():
     return {
         HELD: [BRIDGE], RECOVERED: [BRIDGE], PUBLIC: [BRIDGE],
-        CH_LUCK_DUE: ["chadali.fortunes.loan_returned", "chadali.wagers.luck_lost"],
+        CH_LUCK_DUE: ["chadali.fortunes.loan_returned"],
         SE_LIST_DUE: [SE + "death_returned", SE + "cost.robbed_back", SE + "list_settled", SE_LIST_BACK],
         KO_DUE: [K + "debt_paid", KO_ACCEPTED],
         "chadali.lastcall.account_paid": [CH + "cost.needle_owed"],

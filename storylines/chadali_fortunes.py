@@ -475,7 +475,9 @@ def integrate(payload):
         payload["SeenCues"][key] = list(cues)
     by_id = {s["Id"]: s for s in payload["Scenes"]}
     page = by_id["chadali.trickster.epilogue.lucky_night"]["Nodes"][0]
-    page.setdefault("Paragraphs", []).extend(p(text, requires=(flag,)) for flag, text in EPILOGUE_PARAGRAPHS)
+    page.setdefault("Paragraphs", []).extend(
+        p(text, requires=((flag, "ending.wound_closed") if flag == SAW_THE_FAIR else (flag,)))
+        for flag, text in EPILOGUE_PARAGRAPHS)
 
 
 # Repayment belongs to the transfer, not to visiting the accounts scene.

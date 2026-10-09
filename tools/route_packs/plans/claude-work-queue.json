@@ -488,5 +488,15 @@
     "woman": "Arueshalae",
     "beat": "morning redeemed dreams after native first dream",
     "ruling": "struct-arueshalae: structure only; Claude owns prose. Preserve history gates and answer positions."
+  },
+  {
+    "scene": "chadali.trickster.epilogue.lucky_night",
+    "node": "page",
+    "woman": "chadali",
+    "beat": "Write the unresolved-Wound fair paragraph for the continuing Council, preserving the earned saw_the_fair_plainly history.",
+    "why": "Paragraph 18 now requires Wound closure; the appended paragraph 56 holds the unresolved continuation.",
+    "finding": "CH-A4-01",
+    "ruling": "struct-chadali",
+    "dependency": "Claude owns prose for the registered paragraph 56 placeholder."
   }
 ]
