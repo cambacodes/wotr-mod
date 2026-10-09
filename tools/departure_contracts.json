@@ -808,12 +808,6 @@
           "letter": false
         },
         {
-          "scene": "anevia.trickster.gone.setup",
-          "node": "start",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
           "scene": "konomi.lastcall.page",
           "provenance": "derived: current woman in her paid Last Call coda"
         },

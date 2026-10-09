@@ -147,7 +147,10 @@ def gate_commit(book):
                 continue
             prefix = "partner_%s_%s_" % (page["Id"], index)
             old = copy.deepcopy(answer)
-            answer["Requires"] = list(dict.fromkeys([*answer.get("Requires", []), "irabeth_dead"]))
+            # Preserve the living template for appended share answers, but the
+            # saved widow answer cannot also require historical survival.
+            answer["Requires"] = list(dict.fromkeys([
+                *(flag for flag in answer.get("Requires", []) if flag not in SURVIVAL), "irabeth_dead"]))
             answer["Forbids"] = list(dict.fromkeys([*answer.get("Forbids", []), *SURVIVAL]))
             original_flags = tuple(old["Set"])
             other_flags = tuple(f for f in original_flags if f != "anevia.committed")

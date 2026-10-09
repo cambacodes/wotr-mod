@@ -73,6 +73,19 @@ def arcade(nodes):
 def deck(id, title, entry, nodes, requires, forbids=(), delay=0, **fields):
     """A beat opened from her presence (the tiefling's stall, or the arcade when he is gone): the same scene
     on each hub, each forbidding the other's completion."""
+    if id == D + "fourth":
+        posted = P + "storm.survivor_drezen"
+        local = P + "storm.survivor"
+        seam = next(page for page in nodes if page["Id"] == "seam")
+        for index, target, owned in ((0, "owned_posted", True), (1, "blamed_posted", False)):
+            seam["Choices"][index]["Requires"].append(local)
+            seam["Choices"][index]["Forbids"].append(posted)
+            seam["Choices"].append(c("Continue", target,
+                requires=(posted, STORM_OWNED) if owned else (posted,),
+                forbids=() if owned else (STORM_OWNED,)))
+            nodes.append(mi(target, "[PROSE PENDING: Fourth recollection of the posted "
+                            + ("wrong-order answer" if owned else "wheel-blame answer") + "]",
+                            c("Continue", "third_exp")))
     for hub, suffix, extra in PLACES:
         twin = id + ("" if suffix else ".arcade")
         delivery = arcade(copy.deepcopy(nodes)) if suffix else copy.deepcopy(nodes)

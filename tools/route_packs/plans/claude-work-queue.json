@@ -899,5 +899,45 @@
     "woman": "Vellexia / Tessar",
     "beat": "struct2-06 CONVERT: witness Tessar terms and Vellexia response in her house.",
     "ruling": "Await coordinator Chapter 5 house access and participant placement binding; existing shell copy retained pending approval."
+  },
+  {
+    "scene": "mielarah.deck.fourth",
+    "woman": "Mielarah",
+    "node": "owned_posted",
+    "beat": "Recall the wrong-order answer received through the portal merchant post; no face-to-face survivor exchange.",
+    "ruling": "MIE-A4-02: Claude owns postal recollection; preserve third_exp continuation."
+  },
+  {
+    "scene": "mielarah.deck.fourth",
+    "woman": "Mielarah",
+    "node": "blamed_posted",
+    "beat": "Recall the wheel-blame answer received through the portal merchant post; no face-to-face survivor exchange.",
+    "ruling": "MIE-A4-02: Claude owns postal recollection; preserve third_exp continuation."
+  },
+  {
+    "scene": "mielarah.deck.fourth.arcade",
+    "woman": "Mielarah",
+    "node": "owned_posted",
+    "beat": "Recall the wrong-order answer received through the portal merchant post; no face-to-face survivor exchange.",
+    "ruling": "MIE-A4-02: Claude owns postal recollection; preserve third_exp continuation."
+  },
+  {
+    "scene": "mielarah.deck.fourth.arcade",
+    "woman": "Mielarah",
+    "node": "blamed_posted",
+    "beat": "Recall the wheel-blame answer received through the portal merchant post; no face-to-face survivor exchange.",
+    "ruling": "MIE-A4-02: Claude owns postal recollection; preserve third_exp continuation."
+  },
+  {
+    "scene": "anevia.ending_open",
+    "woman": "Anevia",
+    "beat": "Account for Irabeth returning and then dying or losing her returned actor before Threshold; keep historical return memory without a living-wife claim.",
+    "ruling": "ANE-A5-01: Claude voice; coordinator owns shared epoch/native replacement coverage."
+  },
+  {
+    "scene": "eritrice.council.twice_nightly",
+    "woman": "Eritrice",
+    "beat": "Supply missing ALIGNMENT & REGISTER dossier section and five keyed native samples; inspect other women in the route.",
+    "ruling": "ER-A4-02: coordinator/Claude handoff owner; missing pinned dossier and native pack, outside edit scope."
   }
 ]

@@ -609,7 +609,7 @@ PARAGRAPHS = (
     ret("{n}Somewhere south of Drezen a quartermaster still tells the story of the crate marked{/n} \"salt pork, Commander's "
       "personal\"{n}, and nobody believes him.{/n}", requires=(CRATED,)),
     ret("{n}Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in "
-      "the room, she said it was the other way round.{/n}", requires=(BARGAIN,)),
+      "the room, she said it was the other way round.{/n}", requires=(BARGAIN, "irabeth.present_now")),
     ret("{n}She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it "
       "out.{/n}", requires=(ACCOUNT,), forbids=(EXPOSED,)),
     ret("{n}She never again took anything the Commander said on trust. She said it was restful.{/n}", requires=(EXPOSED,)),
@@ -618,7 +618,7 @@ PARAGRAPHS = (
       "picked up exactly where she had left it. On her terms. It was always going to be on her terms.{/n}",
       requires=(LATE,), forbids=("anevia.committed", "anevia.closed", DECLINED, FRIENDS)),
     ret("{n}Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.{/n}",
-      requires=(LATE, I_RET), forbids=("anevia.committed", "anevia.closed", DECLINED, FRIENDS)),
+      requires=(LATE, I_RET, "irabeth.present_now"), forbids=("anevia.committed", "anevia.closed", DECLINED, FRIENDS)),
     ret("{n}She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three "
       "knocks, and no furniture.{/n}", requires=(TERMS,)),
     ret("{n}She kept the one secret the Commander ever handed her, and never once used it. Probably.{/n}", requires=(KEY,)),
@@ -640,7 +640,7 @@ PARAGRAPHS = (
     ret("{n}She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they "
       "liked it there.{/n}", requires=(FRIENDS,), forbids=("anevia.committed", "anevia.closed", LATE)),
     ret("{n}Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the "
-      "road side of it and talked to her through the whole of every watch.{/n}", requires=(I_RET,)),
+      "road side of it and talked to her through the whole of every watch.{/n}", requires=(I_RET, "irabeth.present_now")),
 )
 PAGE = '''{n}Anevia Tirabade came back as far as the Drezen gate, and for a long while no further.{/n}'''
 TOGETHER = {"trying": "tirabade.group_closed", "committed": "tirabade.group_closed"}
@@ -659,7 +659,7 @@ FATES = ("sacrifice", "ascended", "inhuman")
 epilogue("anevia.trickster.epilogue.nailed_wardrobe", (RETURNED,), ("anevia.lover",))
 epilogue("anevia.trickster.epilogue.nailed_wardrobe_lover", (RETURNED, "anevia.lover", "anevia.committed"),
          ("anevia.future_chosen", "anevia.developed", "anevia.survivor_continues", "irabeth_dead", *FATES),
-         ForbidOverrides={"irabeth_dead": I_RET, "anevia.survivor_continues": I_RET, "sacrifice": "trickster.commander_back"})
+         ForbidOverrides={"irabeth_dead": "irabeth.present_now", "anevia.survivor_continues": I_RET, "sacrifice": "trickster.commander_back"})
 epilogue("anevia.trickster.epilogue.nailed_wardrobe_closed", (RETURNED, "anevia.lover", "anevia.closed"),
          ("anevia.parted", "anevia.committed", *FATES), ForbidOverrides={"sacrifice": "trickster.commander_back"})
 # Sol INT: the registered "wife killed" ending denies the night she chose after her return; this history gets its own
@@ -858,7 +858,7 @@ def integrate(payload):
     tirabade.setdefault("UnavailableOverrides", {}).update({"irabeth_dead": I_RET, "anevia_gone": RETURNED})
     for s in payload["Scenes"]:
         if s["Id"] in IRABETH_DEAD_LIFTED:
-            s.setdefault("ForbidOverrides", {})["irabeth_dead"] = I_RET
+            s.setdefault("ForbidOverrides", {})["irabeth_dead"] = "irabeth.present_now"
         if s["Id"] in ANEVIA_GONE_LIFTED:
             s.setdefault("ForbidOverrides", {})["anevia_gone"] = RETURNED
         if s["Id"] in GRIEF_PAGES:
