@@ -125,7 +125,9 @@ physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
 "The lien stands. This is outside the lease. Close the curtains."
 {n}While you do, she undoes her collar, then the clasps of her robe. The silk falls around her feet. She steps out of it, pauses in the lamplight, and lifts her chin.{/n}
 "Well? I have had enough of watching you admire the stone."
-{n}She takes your hand and pulls you close. Her mouth is warm and deliberate; the second kiss leaves her breathing harder. She pushes the ledger aside. You sit on the cleared edge of the counter, and she settles astride your lap, bare skin beneath your hands. She kisses you again, catches her breath against your mouth, and holds you there.{/n}''',
+{n}She takes your hand and pulls you close. Her mouth is warm and deliberate; the second kiss leaves her breathing harder. She pushes the ledger aside and the pen rolls off the counter, unmourned. You sit on the cleared edge of the counter, and she settles astride your lap, bare skin beneath your hands. Her breasts are hot against your shirt. She works your buttons open one-handed, and when your palms close on them she makes a short, unladylike sound and rocks against you to hear it again.{/n}
+"I keep an exact account of what I want, Commander. Lower."
+{n}You obey, and she is already wet and moving, hips rolling over your thigh, her teeth at your lower lip while the counter complains under both of you. She drags your clothes aside, impatient where she is always exact, lifts herself over you, and slides her hand down between you to bring you where she wants you.{/n}''',
       c("Continue", "morning")),
     n("morning", "Arsinoe", '''{n}The sign still says CLOSED when you wake. Outside, customers are already arguing over whose turn it is. Arsinoe sits at the counter in her shift, hair unbound, a cold cup of tea beside the ledger.{/n}
 "The lease has not changed. Nor has the price of a scroll, whatever they are shouting out there."
@@ -336,9 +338,11 @@ SCENES.append(scene("arsinoe.trickster.late.commit", "Interest on late payments"
                requires=(COURTED,), forbids=(STAYS,)),
              p('"I came because I want you. I have spent all day being patient with customers. Come here."'),
          )),
-    late("night", '''{n}Arsinoe stood close while you opened her collar, gold eyes fixed on yours. At the next clasp she caught your hands and kissed you hard.{/n}
+    late("night", '''{n}Arsinoe stood close while the Commander opened her collar, gold eyes fixed on theirs. At the next clasp she caught their hands and kissed them hard.{/n}
 "I waited for the campaign to end. These fastenings have had quite enough of my patience."
-{n}She undid the rest herself and let the robes fall. Her hair came loose as she pushed you back toward the bed. She climbed over you, put your hands on her bare waist, and held them there until your fingers tightened. Then she bent to your mouth. Her composure broke on a breath.{/n}''',
+{n}She undid the rest herself and let the robes fall. Her hair came loose as she pushed the Commander back toward the bed. She climbed over them, put their hands on her bare waist, and held them there until their fingers tightened. Then she bent to their mouth, and her composure broke on a breath.{/n}
+"Higher. I have wanted your hands there since the roof above Tovin's shop."
+{n}The Commander cupped her breasts and she arched into them, nipples hard against their palms, a low curse in a priestess's mouth. She stripped them with the exactness she gave a ledger and none of the patience, kissed down their chest while their hands knotted in her loosened hair, and came back up with her thighs spread wide over them. She was wet against their skin and shaking with the effort of not hurrying. Her hand slid down between them, and her gold eyes did not leave theirs.{/n}''',
          c("Continue", "morning")),
     late("morning", '''{n}In the morning she sat at the Commander's table in her shift, hair loose, drinking from the better cup. The other stood within reach of the bed.{/n}
 "Go back to sleep. I mean to open late, and I want company."
@@ -559,11 +563,11 @@ _late["Nodes"].extend([
 "Tonight we eat. The rest in a month. I can afford four weeks, and I intend to enjoy looking forward to them."
 {n}Four weeks later she came back after closing, carrying the bottle she had promised. She set it beside the supper dishes and began undoing her collar before either cup was filled.{/n}
 "I kept the date. Now put that down and come to me."
-{n}She caught the Commander's sleeve, kissed them and led them toward the bed.{/n}''', c("Continue", "arsinoe.trickster.late.commit.explicit.2")),
+{n}She caught the Commander's sleeve, kissed them and led them toward the bed. Halfway there she stopped to kiss them again against the wall, her robes already open, her bare breast filling the Commander's palm. She had been composed all day and was composed no longer. She ground against their thigh and bit their lip.{/n}
+"Four weeks. I have been insufferable all day. Take your clothes off."
+{n}The Commander did, and she watched every inch of it with open appetite. She pushed them down onto the bed, straddled them and let the robes slide off her shoulders, hair falling around both their faces. Her hand went between them to take hold, and she stayed there, poised and flushed and smiling, savouring the moment she had waited a month for.{/n}''', c("Continue", "arsinoe.trickster.late.commit.explicit.2")),
     # Explicit slot D: kept four-week appointment, distinct from immediate arrival.
-    late("arsinoe.trickster.late.commit.explicit.2", '''{n}At the bedside Arsinoe paused to undo the remaining clasps herself. She laid the robes over the chair, then caught the Commander by the collar and kissed them, smiling against their mouth.{/n}
-"Four weeks. I have been insufferable all day."
-{n}She drew them down beside her and stayed close, the unopened bottle beyond either of their reach.{/n}
+    late("arsinoe.trickster.late.commit.explicit.2", '''{n}Arsinoe stayed poised over the Commander, flushed and smiling, the unopened bottle beyond either of their reach.{/n}
 "You have kept me waiting long enough."''', c("Continue", "table")),
 ])
 

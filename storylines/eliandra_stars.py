@@ -279,7 +279,7 @@ drezen_pre(E + "visit.star_heart", "The shrine's last night", '"Is the heart sti
         c("Continue", "learn")),
     nar("learn", '''{n}She pulls your shirt free and lays both hands against your ribs. Her fingers pause over a scar; her breath catches against your throat. She takes your hand and presses it to her bare waist.{/n} "Here. I want your hands here." {n}Her teeth close lightly on your shoulder. Her thigh presses between yours; the loosened white robes gather at her hips. She pulls you closer, then backs against the table without letting go.{/n}''',
         c("Continue", "charts")),
-    nar("charts", '{n}She catches a chart beneath her elbow and pushes it clear. The river stones clatter to the floor. The remaining rolls slide after them, still tied; she watches them fall, then draws you between her knees at the edge of the bare table.{/n} "They can be picked up. Come here."',
+    nar("charts", '{n}She catches a chart beneath her elbow and pushes it clear. The river stones clatter to the floor. The remaining rolls slide after them, still tied; she watches them fall, then draws you between her knees at the edge of the bare table.{/n} "They can be picked up. Come here."\n{n}Her hands go to your belt before you have finished obeying, exact and unembarrassed, the way she handles every difficult task. The white robes are bunched at her hips; she hauls them higher, and the lamp finds her thighs, bare and pale against the dark wood. She takes your hand from her waist and puts it between her legs, where she is already slick, and watches your face while you learn it.{/n}\n"Not so careful," {n}she says, a little breathless, and bites at your lower lip.{/n} "I have spent a hundred years being careful. Harder. There."\n{n}She rocks into your fingers with her head tipped back and the lights of the dead shrine going over her throat. When she cannot stand any more of it she pulls your hand away, drags your clothes open, wraps both legs around you and draws you in against her until nothing is left between you but the next breath.{/n}',
         c("Continue", "morning")),
     nar("morning", '{n}You wake beneath her cloak with a star chart stuck to your back. Eliandra is pressed along your side, her hair caught under your shoulder. She frees it with an irritated tug and kisses you before getting up.{/n}\n{n}By the time boots sound in the corridor she is dressed and kneeling among the charts. A scarred man with a bow stops in the doorway. Katair looks from the empty shrine to the cloak and your bare shoulder, then to Eliandra. She keeps hold of the roll she has tied wrong.{/n}',
         c("Continue", "katair")),
@@ -645,7 +645,7 @@ for _scene in SCENES:
         _by["charts"]["Choices"][0]["Next"] = _slot
         # Explicit brief: first chosen night at the bare chart table; no interruption.
         _scene["Nodes"].append(nar(_slot,
-            '{n}Eliandra catches your wrist, pulls you down against her, and kisses you hard enough to silence the question on your lips. The last chart slips from the table.{/n}',
+            '{n}Eliandra holds you there with both legs locked behind you, her breath hard against your mouth. The last chart slips from the table.{/n}',
             c("Continue", "morning")))
     if _scene["Id"] in (E + "drezen.city", E + "drezen.city_mark"):
         _by["ask"]["Text"] = _by["ask"]["Text"].replace("since the road", "until we could sit together")

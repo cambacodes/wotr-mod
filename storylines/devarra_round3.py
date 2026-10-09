@@ -279,7 +279,8 @@ def accepted_ending(event):
         _add(answer, 'Forbids', LATE_YES)
     page['Choices'].append(c('Continue', 'late_accepted', requires=(LATE_YES,)))
     accepted = _nodes(event)['late_accepted']
-    accepted['Text'] = ('{n}The Commander stayed until dawn. The stair bore a fresh scratch when '
+    accepted['Text'] = ('{n}The Commander bound the bitten arm while she watched with one coal-orange eye, and when the knot was tied she raised her wing on the unlit side of the tower, and the heat of her rolled out like a forge door opening. "Stay," she said, and it was not a request. Her tail coiled round the Commander\'s ankle, climbed the calf and drew them across the cold stone to her belly. The Commander undressed with a hand on her warm scales, piece by piece, and she watched each new stretch of skin come bare, her breath hot on the Commander\'s throat. "Mine," she said. "Not finished. Let me see how much I have left to eat." The wing came down over them both, the claws closed on the stone either side, and the scales shifted under the Commander\'s palms as she drew them in beneath her. '
+                        'The Commander stayed until dawn. The stair bore a fresh scratch when '
                         'Devarra returned the following spring; the appointment had been kept.{/n}')
     for paragraph in accepted.get('Paragraphs', []):
         paragraph['Text'] = ('{n}Before the march, Devarra had come for the answer herself. '

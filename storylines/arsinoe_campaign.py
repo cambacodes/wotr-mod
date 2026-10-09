@@ -579,7 +579,9 @@ s("arsinoe_the_window_opens", "An evening she intends to keep",
 "Slowly. I chose these robes with considerable care. You may give taking them off the same attention."
 {n}She watches you undo the fastenings. At the last one she catches your wrist, kisses the inside of it, and lets the cloth fall. She stands in the lamplight with her hair loose, making no move to cover herself.{/n}
 "Leave the lamp. I want to see you looking."
-{n}Her kiss is slow until your hands close on her waist. Then she draws you to the bed by your belt. Her skin is warm beneath your palms; her breath catches against your mouth. She pulls you over her, holds your gaze, and reaches between you.{/n}
+{n}Her kiss is slow until your hands close on her waist. Then she draws you to the bed by your belt, and the slowness goes. She strips you with the same exacting attention she gave her robes and far less patience, mouth at your throat, your collarbone, lower. Her skin is warm beneath your palms, her breasts heavy in them, nipples tight against your thumbs. When you kiss her neck she says your name like a correction.{/n}
+"Not slowly now. I have been watching you all evening."
+{n}She pulls you over her, one leg hooked high around your hip, holds your gaze in the lamplight, and slides her hand down between you to bring you where she wants you.{/n}
 {n}In the morning, the shop is still shuttered an hour after opening. Arsinoe sets a second cup beside her own and kisses you before turning the sign.{/n}
 "An hour late. They will talk. Let them. You may go and be impressive now; I have a customer who will insist that the price of a scroll has offended him personally. I expect to be equally impressive."''',
       c('"Leave with a kiss and the promise of another visit."', flags=("arsinoe.campaign_developed", "arsinoe.last_evening_kept", "arsinoe.night_shared"))),

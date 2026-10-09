@@ -146,13 +146,20 @@ def integrate(payload):
         pages["kiss"]["Text"] = '''{n}Kiana meets your kiss, then pulls you back when you begin to draw away. Her fingers tighten in your collar.{/n}
 "I had a line for this."
 {n}She looks toward the script, laughs breathlessly, and kisses you again.{/n}
-"Damn the line."'''
+"Damn the line."
+{n}Her hands are already working your shirt open. The script slides off the table, unread; she walks you backward by a fistful of collar until the table edge meets your thighs, kissing you with open, theatrical greed, and the villainess has not been in charge of one second of this and does not care. When your mouth finds her throat she makes a small, helpless noise and pushes her hips into yours.{/n}'''
+        pages["kiss"].setdefault("Paragraphs", []).append(p(
+            "{n}The dress comes down off her shoulders in a rush of ribbons and swearing. She is flushed to the collarbones, small-breasted, laughing and shaking in the candlelight, and she puts your hand on her breast and your mouth after it. You carry her the three steps to the bed. She strips you quickly, with no performance left in it, hauls you down across the sheet and climbs astride, bare thighs hot on your hips, one hand sliding between you to find what she is looking for.{/n}",
+            forbids=("trickster.ever",)))
         pages["threshold"]["Text"] = '''{n}She breaks the kiss just far enough to speak.{/n}
 "The princess dismisses the guards. Come here. I am tired of rehearsing."
 {n}She shuts the door with her heel. A horn sounds from Drezen's wall; she listens until it stops, then turns back to you. She unlaces the dress herself, watching your face over her shoulder. When you reach for the last hook, she catches your wrists and kisses you.{/n}
 "That one is mine."
 {n}She lets the dress fall, takes you by the hand and draws you to the bed. For a moment she seems ready to give another royal command. Instead she pulls you close.{/n}
-"No speeches. I want you."'''
+"No speeches. I want you."
+{n}Her hands go under your shirt and over your ribs, quick and warm and not quite steady, and she strips it over your head. Where the dress hangs at her hips she does the same for herself, kneeling up on the sheet, and the candle finds her small, flushed breasts, nipples tight; she is laughing at herself and does not cover them. Her fingers go to your belt.{/n}
+"If this were a play, this is where the audience studies the ceiling." {n}She pushes you flat, drags the rest of your clothes away, and straddles you, hot and wet against your skin, rolling her hips once, slowly, to watch your face.{/n}
+"Not the ceiling, though. You." {n}Her hand slides down between you to guide you where she wants you.{/n}'''
         pages["threshold"]["Choices"][0]["Forbids"].append("trickster.now")
         pages["threshold"]["Choices"].append(c('[Go to her.]', "kiana.date.explicit.1", requires=("trickster.now",)))
         # Explicit brief: first mutually chosen night; preserve unresolved account.
@@ -296,11 +303,15 @@ def integrate(payload):
         pages["kiss"]["Text"] = (
             '''{n}Kiana rises into your kiss. She closes the ink, lets the shawl fall onto the chair and catches your collar with the stained hand.{/n}
 "That will mark. Oh, never mind. Come here."
-{n}She backs you against the desk, moves the script and pulls you close again, impatient with the buttons beneath her fingers.{/n}'''
+{n}She backs you against the desk, moves the script and pulls you close again, impatient with the buttons beneath her fingers.{/n}
+{n}The buttons lose. Her stained fingers leave blue-black prints down your shirt front, and she looks at the evidence and giggles and does not stop. She tears the last of her own buttons open and shoves the dress off her shoulders, and the candle finds her small, flushed breasts; she puts your hand there, then your mouth, and arches with a gasp she tries and fails to turn into a laugh.{/n}
+"Terrible. I am a terrible actress. I cannot do the composed part at all with you." {n}She hikes herself up onto the cleared desk with the dress bunched at her waist, hooks her bare legs around your hips and drags you against her by your belt, kissing you with her whole mouth while her inked hand works the belt open.{/n}'''
             if sid == "kiana.ink_after" else
             '''{n}Kiana meets your kiss, laughing when the chair catches against your heel. She moves it aside and pulls the pins from her hair.{/n}
 "The yard can have its audience. I wanted you."
-{n}She draws you to the edge of the bed, still kissing you, then reaches past your shoulder to lock the door.{/n}''')
+{n}She draws you to the edge of the bed, still kissing you, then reaches past your shoulder to lock the door.{/n}
+{n}The key turns. The dress comes off over her head in a rush of pins and cursing, and then she is bare to the waist in the candlelight and the laugh dies in her throat when you look. She pulls you down onto the bed by your shirt and strips it from you, her mouth on your chest, her hand at your belt, quick and unhesitating.{/n}
+"No yard. No audience. Just the part I always cut from the third act." {n}She works your clothes down, rolls you over and climbs astride, bare thighs hot on either side of your hips, her hair coming down, her hand sliding between you to find what she wants.{/n}''')
         old = pages["kiss"]["Choices"][0]
         slot = sid + ".explicit.1"
         # Explicit brief: a return to desire, with the existing consequence join.
