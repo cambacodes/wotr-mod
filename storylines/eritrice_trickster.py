@@ -346,6 +346,8 @@ def integrate(payload):
         if have is not None and have != groups:
             raise ValueError("Conflicting binding: " + key)
         payload["Derived"][key] = [list(g) for g in groups]
+    from storylines import eritrice_rubric2
+    eritrice_rubric2.integrate(payload)
 
 # ROUND 2 AUTHORED: an earned visit is separate from a delivered letter or a paid arrangement.
 DREZEN = "2570015799edf594daf2f076f2f975d8"

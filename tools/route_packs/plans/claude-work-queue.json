@@ -1206,5 +1206,140 @@
     "woman": "Camellia",
     "beat": "[PROSE PENDING: Camellia - legacy once-only oath remains historical; no identified living victim inferred]",
     "ruling": "struct3-b: keep anonymous legacy oath history without inventing identity or present life"
+  },
+  {
+    "scene": "devarra.tower.before_the_end",
+    "node": "rubric2_purchased_battle",
+    "woman": "devarra",
+    "beat": "purchased battle breached; predatory collection from the generals before Threshold; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
+  },
+  {
+    "scene": "devarra.tower.before_the_end",
+    "node": "rubric2_voluntary_battle",
+    "woman": "devarra",
+    "beat": "voluntary battle fulfilled on her own terms; burned demon column before Threshold; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
+  },
+  {
+    "scene": "devarra.tower.the_dwarf",
+    "node": "rubric2_protection_warning",
+    "woman": "devarra",
+    "beat": "repeated protection claim answers her earlier once-only warning; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
+  },
+  {
+    "scene": "devarra.tower.the_hoard",
+    "node": "rubric2_clutch_debt_honest_her",
+    "woman": "devarra",
+    "beat": "clutch debt claimed by Commander; she chooses unwelcome coin, not obedience; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
+  },
+  {
+    "scene": "devarra.tower.the_hoard",
+    "node": "rubric2_clutch_debt_steal_her",
+    "woman": "devarra",
+    "beat": "clutch debt claimed by Commander; she chooses unwelcome coin, not obedience; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
+  },
+  {
+    "scene": "devarra.tower.the_hoard",
+    "node": "rubric2_clutch_debt_ask_her",
+    "woman": "devarra",
+    "beat": "clutch debt claimed by Commander; she chooses unwelcome coin, not obedience; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
+  },
+  {
+    "scene": "eritrice.trickster.reconciled_debate",
+    "node": "open",
+    "woman": "eritrice",
+    "beat": "Voluntary new private debate after completed reconciliation; open paragraph 0 is the standing extraction grudge, gated by cost.grudge_on_agenda. Brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
+  },
+  {
+    "scene": "eritrice.trickster.reconciled_debate",
+    "node": "exchange",
+    "woman": "eritrice",
+    "beat": "play the first honest objection and her counterargument; preparation only; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
+  },
+  {
+    "scene": "eritrice.trickster.reconciled_debate",
+    "node": "record",
+    "woman": "eritrice",
+    "beat": "enter the new private debate in the minutes; no commitment yet; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
+  },
+  {
+    "scene": "eritrice.trickster.reconciled_debate",
+    "node": "open",
+    "woman": "eritrice",
+    "beat": "accept the private debate; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c",
+    "choice": 0
+  },
+  {
+    "scene": "eritrice.trickster.reconciled_debate",
+    "node": "open",
+    "woman": "eritrice",
+    "beat": "refuse the private debate; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c",
+    "choice": 1
+  },
+  {
+    "scene": "arsinoe.trickster.late.commit",
+    "node": "rubric2_cauldron_night",
+    "woman": "arsinoe",
+    "beat": "first late night earned through cauldron collection; no invented roof memory; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
+  },
+  {
+    "scene": "arsinoe.trickster.late.commit",
+    "node": "rubric2_cauldron_return",
+    "woman": "arsinoe",
+    "beat": "returning late night earned through cauldron collection; no invented roof memory; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
+  },
+  {
+    "scene": "eritrice.minutes.adjourned",
+    "node": "eritrice.minutes.adjourned.explicit.1",
+    "woman": "eritrice",
+    "beat": "ER-A1-HEAT: revise original and .drezen twin to official cut; retain charged appetite and consequential aftermath; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
+  },
+  {
+    "scene": "eritrice.trickster.epilogue.commit",
+    "node": "aye",
+    "woman": "eritrice",
+    "beat": "ER-A1-HEAT: revise explicit.1 paragraph at official cut; inspect twice_nightly and .drezen adjacent siblings; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
+  },
+  {
+    "scene": "arsinoe_the_window_opens",
+    "node": "arsinoe_the_window_opens.explicit.1",
+    "woman": "arsinoe",
+    "beat": "ARS-A2-01: Claude revise climax at native Camellia cut; coordinator must update shared heat_cal_g transformation, preserve flags/IDs; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
+  },
+  {
+    "scene": "arsinoe.trickster.cauldron.collection",
+    "node": "arsinoe.trickster.cauldron.collection.explicit.1",
+    "woman": "arsinoe",
+    "beat": "ARS-A2-01: Claude revise climax at native Camellia cut; coordinator must update shared heat_cal_g transformation, preserve flags/IDs; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
+  },
+  {
+    "scene": "arsinoe.trickster.late.commit",
+    "node": "arsinoe.trickster.late.commit.explicit.1",
+    "woman": "arsinoe",
+    "beat": "ARS-A2-01: Claude revise climax at native Camellia cut; coordinator must update shared heat_cal_g transformation, preserve flags/IDs; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
+  },
+  {
+    "scene": "arsinoe.trickster.late.commit",
+    "node": "arsinoe.trickster.late.commit.explicit.2",
+    "woman": "arsinoe",
+    "beat": "ARS-A2-01: Claude revise climax at native Camellia cut; coordinator must update shared heat_cal_g transformation, preserve flags/IDs; brief: tools/route_packs/plans/struct3-c-handoff.md",
+    "ruling": "struct3-c"
   }
 ]

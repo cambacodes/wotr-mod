@@ -10834,6 +10834,10 @@
           "scene": "eritrice.council.second_morning.drezen",
           "letter": false,
           "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.trickster.reconciled_debate",
+          "letter": false
         }
       ],
       "absence_variants": [

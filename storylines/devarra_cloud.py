@@ -331,3 +331,5 @@ def apply(payload):
 
 def integrate(payload):
     apply(payload)
+    from storylines import devarra_rubric2
+    devarra_rubric2.integrate(payload)
