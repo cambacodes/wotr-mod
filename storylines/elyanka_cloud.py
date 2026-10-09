@@ -89,9 +89,26 @@ def _ledger_entry(payload, entry_id):
 
 # --- S1 / ELY-AUD-01: held for Claude; aftermath alone does not establish an on-screen death -------------------------
 
-KILL2 = '[PROSE PENDING: ELY-AUD-01 show the master being killed on screen; retain Elyanka ownership motive and master.killed outcome.]'
-MASTER_KILL = '[PROSE PENDING: ELY-AUD-01 authorized violent counter-move against her order; stage dispatch and the on-screen death without a dialogue-click journey.]'
-MASTER_HERS = '[PROSE PENDING: ELY-AUD-01 delegated violent counter-move on screen; retain her agency and the distinct master.hers outcome.]'
+# One encounter, no elapsed time: the carriage is still within sight of the gate when she takes it, and the killing is
+# played out where the Commander stands. The master.killed flag is set by the terminal answer of kill2.
+MASTER_KILL = '''{n}She does not smile. She nods once, as she might to a tradesman who had quoted a fair price, and lifts two fingers toward the yard. Two of her six men in grey push off the wall and go out into the dark after the master's carriage, not hurrying. A third pinches out the lamp between thumb and finger.{/n}
+"You understand that he is my master," {n}she says, and catches your sleeve, and takes you through the postern at a pace that is nearly a run.{/n} "And that I am having him killed for you." {n}She considers this, and her mouth twists.{/n} "No. For my Lady. A master who would hurry an offering to her table half-ripe insults her. Come. You gave him the road. You can watch it used."
+{n}The goat path cuts the bend below the south gate. By the time you are down it the carriage is rattling out under the arch above you, two lamps swinging, and the watch lifts the bar for it without a glance. She is breathing hard through her nose, and she is laughing.{/n}'''
+KILL2 = '''{n}The carriage comes round the bend at a trot and meets a hay-cart laid on its side across the road. The driver hauls on the reins. One of the grey men is already on the box beside him; the driver makes a short wet sound and goes off the seat into the thorn. The horses scream. They are cut from the traces and slapped away up the road, and the carriage sits there with its lamps swinging and its door shut.{/n}
+{n}She does not hurry. She walks down the middle of the road in her grey robe and opens the door herself.{/n}
+"Master." {n}He sits very straight, small clean hands folded on his knee, but the face is no longer a peeled egg. It is an old man's face, and each eye has something wet in the corner.{/n} "You came to hurry my Lady's offering. Come down and say so to the road."
+{n}He does not come. She takes him by the black coat and drags him out, and he lands on his knees in the ruts. She goes down with him, one knee in the small of his back, her left hand knotted in what is left of his hair.{/n}
+"The Way is patient, you said. The Way is not a pawnbroker." {n}She cackles into his ear, low, as a woman croons to a child.{/n} "Pallid Princess, who is never full: receive him. He called on you late, and he called on you cheap."
+{n}The knife opens his throat from ear to ear. The blood comes black in the lamplight and runs down the coat and into the rut. His heels drum on the road. She holds his head back until they stop, and a while after that, and when she lets go she draws the flat of the blade slowly across her tongue and shuts her eyes.{/n}
+{n}Her men roll him into a sack and carry him off up the postern path toward the hearse. Others heave the carriage nose-first into the ditch and break the lamps. She turns to you with her mouth dark to the chin and her chest heaving, and takes your collar in her fist. Her fingers shake once before they tighten. She kisses you hard, and she tastes of copper and clove.{/n}
+"The date stays where I put it," {n}she says against your mouth.{/n} "Not for him. Not for the Way. Not tonight."'''
+MASTER_HERS = '''{n}She studies you across the trestle, and something passes over her face that might, in another woman, be gratitude. In her it looks like hunger.{/n}
+"Then I will decide." {n}She rises, and takes the knife she has been holding all evening, and slides it into her sleeve. She does not go to the door of the dead-house. She goes out across the yard after him, and you follow, because nobody has told you not to.{/n}
+"Master!" {n}It is her warmest voice, the one she keeps for sheep.{/n} "Not like this. The night is cold, and the Way's carriage is a long way from home. Let me see you into it."
+{n}He lets her. He even smiles, as a man smiles who has decided that a clerk is being sensible. She climbs in after him and pulls the door to, and through the gap in the curtain, by the swinging lamp, you see her take his small clean hands in both of hers and lift them to her mouth and kiss the knuckles, one by one.{/n}
+{n}The knife comes out of her sleeve. Her free hand clamps over his mouth, and the blade goes in under the ribs and up, slowly, with her whole weight behind it, and she holds him against her breast like a lover while his heels scrape the floor.{/n} "Hush," {n}she whispers,{/n} "hush, master. It is only the table." {n}It takes a long time. She does not look away from his eyes once.{/n}
+{n}When it is done she draws the curtain. Her grey men climb onto the box, and the carriage rolls out under the arch with her still inside it, and the watch lifts the bar without a glance.{/n}
+{n}In the morning she is in the dead-house as usual, eating. Her sleeve is clean. You do not ask where he lies, and she never says, and a certain master of the Way is never seen in Caliphas again.{/n}'''
 
 
 # --- V1: the embalmer lie answered in her native register (fa330470: the shriek, the hiss, the prepared death) ---------
