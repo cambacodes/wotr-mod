@@ -246,9 +246,9 @@ visit(E + "beat.table", "Her Lady's table", [
 {n}Near the end she comes and stands behind you, close enough that you feel the cold of her through your coat.{/n}''',
         c("Continue", "door2")),
     el("door2", '''"You would not sit at my Lady's table, and you would not leave it unguarded either." {n}Her breath is at your ear.{/n} "You are the strangest crusader I have ever owned."
-"A hound on the doorstep of the Pallid Princess's feast. My Lady will laugh when she hears of it. She laughs so rarely." {n}Her fingers close, briefly, on the back of your neck. Then the hand goes down your spine under your coat, nails dragging, and flattens low on your back to pull you hard against her, the cold of her seeping through your shirt and your belt and your skin. Behind you the masked guests laugh and clink their cups, and she lets them, and her other hand slides around your hip and finds you through your breeches without the least apology.{/n}
-"Warm," {n}she says, with open disgust, and squeezes until you have to bite down on a noise.{/n} "Sweating, shaking, ridiculous. And you stand at my Lady's door like a dog with a bone and let me do this in front of her guests. I shall keep you. I shall have every inch of you on that table, with the wine, with the bones, with my Lady watching, and I will cackle the whole while." {n}She puts her teeth to your ear and bites.{/n} "Later. Hound. Hold the door."
-{n}She takes her hand away and licks her fingers, slowly, looking at you.{/n} "Come inside when they have gone. There is food left, and I am still hungry."''',
+"A hound on the doorstep of the Pallid Princess's feast. My Lady will laugh when she hears of it. She laughs so rarely." {n}Her fingers close, briefly, on the back of your neck. Then the hand goes down your spine under your coat, nails dragging, and flattens low on your back to pull you hard against her, the cold of her seeping through your shirt and your belt and your skin. Behind you the masked guests laugh and clink their cups, and she lets them, and she does not trouble to lower her voice.{/n}
+"Warm," {n}she says, with open disgust.{/n} "Sweating, shaking, ridiculous. And you stand at my Lady's door like a dog with a bone and let me do this in front of her guests. I shall keep you. I shall have every inch of you on that table, with the wine, with the bones, with my Lady watching, and I will cackle the whole while." {n}She puts her teeth to your ear and bites.{/n} "Later. Hound. Hold the door."
+{n}She takes her hand away and looks at you a long moment, tongue touching her lip.{/n} "Come inside when they have gone. There is food left, and I am still hungry."''',
        c("[Keep the door until the last of them has gone.]", flags=(TABLE_DOOR,))),
     el("left", '''{n}Her face does not change. The masked faces watch you go to the door, and not one of them says a word.{/n}
 "You were never here," {n}she agrees, to your back.{/n} "None of us were. That is the first rule of my Lady's table, and you have learned it in a single night." {n}A pause.{/n} "The second rule is that the one who leaves early is always the one we talk about. Good night, Commander."''',
@@ -283,9 +283,9 @@ visit(E + "ch6.collateral", "The collateral, inspected", [
 "And if it does not fall, I will have come all this way to watch a debtor live." {n}She stands.{/n} "It would not be the first time you disappointed me."''',
        c("Continue", "rift2", requires=(COMMITTED,)),
        c("[Let her go back to her hearse.]", flags=(AT_RIFT,), forbids=(COMMITTED,))),
-    el("rift2", '''{n}At the tent flap she stops, and comes back, and kisses you, hard, on the mouth, with her cold hand flat over your heart as if she were counting it. She does not stop. The kiss drives you back against the tent pole, her teeth in your lip, and the cold hand leaves your heart and goes down, flat over your ribs, your belly, inside your belt, and closes. Her laugh cracks out of her, high and mad, loud enough that her six outside must hear.{/n}
+    el("rift2", '''{n}At the tent flap she stops, and comes back, and kisses you, hard, on the mouth, with her cold hand flat over your heart as if she were counting it. She does not stop. The kiss drives you back against the tent pole, her teeth in your lip, and the cold hand leaves your heart and goes down, flat over your ribs and your belly, and hooks in your belt. Her laugh cracks out of her, high and mad, loud enough that her six outside must hear.{/n}
 "Mine to lose, mine to bury, and the Wound shall not have a scrap of it before I do." {n}She hauls your shirt up and bites the muscle over your heart, not gently, and leaves it bleeding a little.{/n} "Warm. Ugh. Warm and shaking and begging with your whole body. Do not think I cannot feel it. Lie down."
-{n}She shoves you onto the blankets and is on you before you have landed, grey robe pulled aside, the cold length of her over you, her nails in your shoulders, her mouth at your throat. She spreads her knees across your hips, grinds down against you until the breath goes out of you, and reaches between your bodies to put you where she wants you.{/n}
+{n}She shoves you onto the blankets and is on you before you have landed, grey robe pulled aside, the cold length of her over you, her nails in your shoulders, her mouth at your throat.{/n}
 "For my Lady," {n}she says, against your lips.{/n} "She likes an offering warm when it is pledged."''',
        c("[Let her go back to her hearse.]", flags=(AT_RIFT,))),
     el("drezen", '''{n}For a moment she does not answer, and you would swear she is offended.{/n}
@@ -792,7 +792,14 @@ for _slot_scene_id, _slot_host_id in (
     ('elyanka.trickster.ch6.collateral', 'rift2'),
 ):
     _slot_id = _slot_scene_id + ".explicit.1"
-    _slot_text = "[PROSE PENDING: " + _slot_id + "]"
+    _slot_text = {
+        'elyanka.trickster.beat.table.explicit.1': (
+            '{n}The last of the masks files out past you with their eyes lowered, and she bars the dead-house door behind them without a word. Then the cold of her is against your back, her teeth are at your neck, and the table, the wine and the bones she promised are the last things you think of. In the grey hours before the morning watch the candles gutter, and her cackle carries a long way down the empty lane.{/n} '
+            '"Hound," {n}she says, into your shoulder, when she can speak.{/n} "My Lady will be pleased with how you keep a door."'),
+        'elyanka.trickster.ch6.collateral.explicit.1': (
+            '{n}The tent pole shudders, then the lamp goes over, and neither of you reaches for it. There is her cold hand dragging down your back, her breath saw-edged at your ear, her laughter breaking in the dark loud enough for her six to hear. Beyond the canvas the black glass ticks as it cools, and the Wound waits for tomorrow.{/n} '
+            '"Warm," {n}she mutters, wrecked and scornful and not letting go.{/n} "Hold it for me until the settlement."'),
+    }[_slot_id]
     _slot_scene = next(s for s in SCENES if s["Id"] == _slot_scene_id)
     _slot_host = next(n for n in _slot_scene["Nodes"] if n["Id"] == _slot_host_id)
     _slot_entry = _slot_deepcopy(_slot_host["Choices"][0])

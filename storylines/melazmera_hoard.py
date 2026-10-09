@@ -651,7 +651,9 @@ for _slot_scene_id, _slot_host_id in (
     ('melazmera.trickster.beat.count', 'ate'),
 ):
     _slot_id = _slot_scene_id + ".explicit.1"
-    _slot_text = "[PROSE PENDING: " + _slot_id + "]"
+    _slot_text = (
+        '{n}She does not finish counting. Her fist stays shut on the sapphire between your bodies, her mouth never leaves your pulse, and somewhere between the shirt and the bed the count runs out of numbers. The lamp gutters; the sword on its hooks and the drawer of other people\'s letters watch nothing at all. Later her voice comes muffled against your shoulder, hoarse and very pleased with itself.{/n} '
+        '"Mine," {n}she says.{/n} "Counted, and not one piece missing. I will count again in the morning."')
     _slot_scene = next(s for s in SCENES if s["Id"] == _slot_scene_id)
     _slot_host = next(n for n in _slot_scene["Nodes"] if n["Id"] == _slot_host_id)
     _slot_entry = _slot_deepcopy(_slot_host["Choices"][0])

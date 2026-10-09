@@ -363,7 +363,7 @@ watch(P + "night.watch", "The north turret", "[Climb to the north turret after t
     nar("throat", '''{n}She breathes in sharply at that, and her teeth, at your throat, are for an instant much too sharp. She stops. You feel her decide not to stop.{/n}
 {n}Her shirt goes over her head and away into the dark. In the red of the brazier she is all long pale lines and heat, the silver running down her spine and gathering at the small of her back where your hands have gone, and when you pull her against you her skin is so warm that the snow melts on her shoulders before it can settle.{/n}''',
         c("Continue", "cloak")),
-    nar("cloak", '''{n}The cloak goes down on the stones by the brazier. She lies back on it and draws you down over her by the waist of your breeches, unhurried, the way she might draw a blade she has decided to use; her knees rise on either side of your hips and her heels lock behind you, and her breath comes quick and white against your mouth.{/n}''',
+    nar("cloak", '''{n}The cloak goes down on the stones by the brazier. She lies back on it and draws you down over her by the waist of your breeches, unhurried, the way she might draw a blade she has decided to use, and her breath comes quick and white against your mouth.{/n}''',
         c("Continue", "cut")),
     nar("cut", '''{n}"Careless," she says, like an order, with her hands spread flat on your back to hold you to her against the wind, and pulls you down the last inch.{/n}
 {n}The last thing the north turret sees of its watch is the cloak, the brazier's one red eye, and the pike leaning forgotten against the parapet.{/n}''',
@@ -1107,17 +1107,16 @@ for _s in SCENES:
             'shoulders against the stone; when you pull her closer she laughs against your mouth and kisses you again.{/n}')
         _nodes["cut"]["Text"] = ('{n}"Closer," she says, with her hands spread on your back. '
             'She pulls the edge of the cloak over your shoulders.{/n} '
-            '{n}Her breeches are gone, and yours, kicked away across the stones in the red light of the brazier. '
-            'Under the cloak she is nothing but heat and the cool silver ridge of her spine, bare skin against bare skin, '
-            'her breasts crushed to your chest, her thighs open and trembling round your hips. She has kept a thousand watches '
-            'and has never once wanted to be relieved of one. Her hand slides between you, closes, guides, and she lifts '
-            'her hips to meet you with a low sound in her throat that is half a laugh and half a growl.{/n} '
+            '{n}Under the cloak she is nothing but heat and the cool silver ridge of her spine, skin against skin, '
+            'and the stones, the snow and the sentries go out of the world. She has kept a thousand watches '
+            'and has never once wanted to be relieved of one. Her breath breaks against your ear in a low sound '
+            'that is half a laugh and half a growl.{/n} '
             '"I have held this post a long time," {n}she says against your mouth.{/n} "Do not make me wait at it."')
         _slot = _s["Id"] + ".explicit.1"
         _nodes["cut"]["Choices"][0]["Next"] = _slot
         # Explicit slot: her chosen night beneath the cloak; continue into the grey hour and shirt dressing.
         _s["Nodes"].append(nar(_slot, '{n}Terendelev draws you into a fierce kiss. '
-            'The cloak closes over you both; the pike rests against the parapet.{/n}', c("Continue", "grey")))
+            'The cloak closes over you both, and for a long while there is only her heat, the cool silver along her spine under your palms and the brazier ticking as the snow melts; the pike rests against the parapet, forgotten.{/n}', c("Continue", "grey")))
         _nodes["sentry"]["Text"] = ('"Nothing to report," {n}Terendelev tells the sentry. He coughs, salutes, '
             'and fixes his eyes on the road. One bare shoulder shows above her cloak. She tucks it out of sight '
             'and presses her palm against the new dressing.{/n} "That will hold. I want breakfast before the next one. '

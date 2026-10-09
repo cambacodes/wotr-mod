@@ -470,7 +470,7 @@ yard(P + "body.terms", "Terms, in person", '"You wanted the clown."', [
     nar("threshold", '''{n}She leads you backwards through the yard. The smith turns to his anvil. At her door she plants a hand against your chest; you catch her coat and pull her into the kiss. Her broken horn scrapes your temple. She laughs against your mouth, tasting blood.{/n}
 "Still smell of his prison. Come here."
 {n}She opens the latch herself. Inside, she tears your coat open at the buckles and pushes her own clothes off her shoulders. Your hands follow the rough skin along her ribs; she presses your palm there before drawing you down onto the cot.{/n}
-"Mine tonight." {n}She bends to kiss you again. You meet her halfway.{/n}''',
+"Mine tonight." {n}She bends to kiss you again. You meet her halfway.{/n} "I have wanted something that was not a leash for a long time, worm. Do not mistake that for gentleness. I will leave marks."''',
         c("[Let her have her rule.]")),
     hz("refused", '''"I knelt once, to a father who promised me everything. I will not do it for a jailer with good manners."
 {n}She walks out of the yard without a glance at anyone. By morning her door stands open and her room is empty, except for the jar of wildflowers, unbroken, set in the middle of the floor.{/n}''',
@@ -674,7 +674,7 @@ _body["Nodes"].extend([
 _terms = _r2_scene("body.terms")
 _r2_node(_terms, "threshold")["Choices"][0]["Next"] = P + "body.terms.explicit.1"
 _terms["Nodes"].append(nar(P + "body.terms.explicit.1",
-    '{n}She pulls you down with her, her mouth fierce against yours. The door shudders in its frame; she does not loosen her grip.{/n}',
+    '{n}She pulls you down with her, her mouth fierce against yours, and the door shudders in its frame. Her broken horn scrapes the wall, her nails rake your back, and she laughs against your throat like a blade drawn from a scabbard. By the time the forge has cooled she has marked you in three places and made certain you know which.{/n}',
     c("Continue")))
 
 # Wrong-body and wounded-body receipts must never describe smooth skin as a scar.

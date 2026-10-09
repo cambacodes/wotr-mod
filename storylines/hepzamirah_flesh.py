@@ -909,7 +909,7 @@ yard(SECOND_NIGHT, "Crooked", '"How\'s the scar?"', [
 {n}Her hands are rough and very sure. She finds every buckle you are wearing and does not bother with most of them. The stump of her horn catches in your hair and she does not stop for it. When her mouth finds yours it is hungry, and not gentle, and she bears you down onto the mended cot, which creaks like a ship, and holds you there with one broad hand flat on your chest, and looks down at you in the dark with the eye that can see.{/n}''',
         c("Continue", "down")),
     hz("down", '''"Enough prayers tonight," {n}she says, drawing your face toward hers.{/n} "Come here."
-{n}She tears the borrowed coat open and lets it fall, drags your shirt loose, and lowers herself onto you, bare and fever-hot from shoulder to knee. Her hand catches your thigh and pulls you hard against her as she bends her head to your mouth.{/n}''',
+{n}She tears the borrowed coat open and lets it fall, drags your shirt loose, and pulls you against her, bare and fever-hot from shoulder to knee, and bends her head to your mouth.{/n}''',
         c("[Pull her down to you.]", flags=(P + "second_night",))),
 ], requires=("trickster.ever", COMMITTED, SORTIE), delay=12)
 
@@ -1241,7 +1241,7 @@ _hunt_report("bond.hunt_caught", 24, P + "hunt.caught",
 # Explicit slot: later encounter; stitched/healed/plain setup remains intact.
 _r2_node(SECOND_NIGHT, "down")["Choices"][0]["Next"] = SECOND_NIGHT + ".explicit.1"
 _r2_scene(SECOND_NIGHT)["Nodes"].append(nar(SECOND_NIGHT + ".explicit.1",
-    '{n}She catches your mouth again and draws you close. Behind you, the broken door swings open; she lets it.{/n}',
+    '{n}She catches your mouth again and draws you close. Behind you the broken door swings open, and she lets it. Her nails go down your back, her breath is a growl against your jaw, and the cot complains like a ship in a gale; she has no prayers left for it, and no patience, and no interest in being quiet.{/n}',
     c("Continue")))
 
 # One physical result per military promise, with the original decision clock.

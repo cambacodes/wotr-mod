@@ -1239,7 +1239,7 @@ for _r2_id in ("still", "moved"):
     _r2_taught[_r2_id]["Choices"][0]["Next"] = TAUGHT + ".explicit.1"
 _r2_by[TAUGHT]["Nodes"].append(jan(TAUGHT + ".explicit.1",
     '{n}She rolls toward you and kisses you, her hand pulling at your shirt. '
-    'The lesson is over. She draws the blanket across the chalk; the lamp burns low beside the bunk.{/n} '
+    'The lesson is over. The chalk smears under your shoulders, her breath comes quick against your throat, and for a good while neither of you is counting the ceiling beams. She draws the blanket across the chalk; the lamp burns low beside the bunk.{/n} '
     '"Stay. I\'ve something to tell you."', c("Continue", "future")))
 
 _r2_morning = next(s for s in _r2_jt.SCENES if s["Id"] == _r2_jt.MORNING)
