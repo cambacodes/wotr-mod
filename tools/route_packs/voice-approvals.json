@@ -3510,6 +3510,492 @@
       "source_branch": "claude/cand-8",
       "source_commit": "81cbaa85699a60857782b7050de4c4c3ff92f884",
       "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "areelu.trickster.finale.ascended",
+      "before_sha": "95ca6665d83406def2f92c0f6df802f7fe49068bd09688c035049433e3e58486",
+      "after_sha": "c67dcbe306ca4112ca36e769e9ca822bebcfb057ed116c0cdcedd6f873c7dd7f",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "areelu.trickster.finale.company",
+      "before_sha": "23d3f2060fb0c4e9a774c079f6722364a65abdfa52842387f8352100c9536510",
+      "after_sha": "969cb7b77422427f99fabb194935571302ef2c92b02969596edccd68fcb61824",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "areelu.trickster.finale.lien_bottled",
+      "before_sha": "154b2833f08925253323c84acb9d772832843d46e9ab62ad13393b3550e3b1dd",
+      "after_sha": "e316ce4323eaf68bdc7b14d146b080142d2843ef5213cb9685114d215e76005f",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "areelu.trickster.finale.not_burned",
+      "before_sha": "03632eaedf3c6438e3e89b46d52cba1ed34762a9280407a7f3ad3293f90c64ed",
+      "after_sha": "c3d44634b2528c6679e282055b6dc6fdebbf092716e19b5a2e77e25c0ea091fb",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "areelu.trickster.report.inn",
+      "before_sha": "b96cf586267684eb0d5109ad89d6c8eb59ada735aa39118a731c44e15df2c8b5",
+      "after_sha": "ed578c5aa20370af28b749cb08a72bb92702e420d81763d3b177b3ee64dcfe8a",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "areelu.trickster.report.participation",
+      "before_sha": "634fd9f588426b93f5314ede409364a963fcec19469faccbc026216e798157e2",
+      "after_sha": "ed8fc52edbb1ad2eff2c3c9733cd11c7d60bae4990e4c370a0ec8ee91c6d0305",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "arueshalae.treatment.night",
+      "before_sha": "cb0680f93a68416cd006e0b34e7709f8db50e28961502e50e06244d63b6d956b",
+      "after_sha": "f40334f44ff1f07932bc806e1c0ce93a39f2c3172543111699119ae413d6f787",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "arueshalae.trickster.evil.window",
+      "before_sha": "94f4d18f0cce4d5cccb88da190f86c9e76680c94151814815f5b9deee63c3c0f",
+      "after_sha": "a0892ebcca882260adb2b4be01b3c1768d1f4fdf1eedb48d52a4f3878fc1747d",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "arueshalae.trickster.evil.window_yard",
+      "before_sha": "e5ff00d8844731a69085630afbe9c9442758c6542d59d1356204becb2ebb5f53",
+      "after_sha": "9ce734f5bbde676d67ce765ad477a4e5a5d8f25e4152a2d792aa135ef3ce3b9e",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "arueshalae.trickster.fallen.roof",
+      "before_sha": "dffe439f0591bc53c0aed4da20edccb238603bbec0b8ff2b6ba003760835f5f9",
+      "after_sha": "4064a8fab80caabfe6492388b01cdd1e51e05d04eba6c42b4aad67e715351e29",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "hepzamirah.trickster.body.terms",
+      "before_sha": "b427d6de7709108f5aee7603f32990716a39c15bffa4bafa4abc9c94d6fb476c",
+      "after_sha": "89489bff2609a688c53583418e0f82be10b3b1a7c94ac136a3250d5b39d9d216",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "hepzamirah.trickster.bond.crooked",
+      "before_sha": "84bc2a5bed3f279118e776cf7f05b6acdb7da3f1dd1990368137df65e09a54e9",
+      "after_sha": "4b38d3acf6d7f243371721c9b0b8aa111cf97b3e1ec83a35b918406d3935c7be",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "hepzamirah.trickster.bond.eve",
+      "before_sha": "3d0f9a728f78f4ee67ce8c43b487bbed3b14146ea49b76240ae36bea0a4f1368",
+      "after_sha": "d400b333a456af332be0c05c37ae8a19136aa5c489ae13104935d9d3419c46d8",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "hepzamirah.trickster.bond.her_room",
+      "before_sha": "4743e2cbd8f4b38fd1952b29798b99cafbfcfec5a996f9463093392c27989d46",
+      "after_sha": "56b1c2a25b1c07d8661c0bbed9ea9ea105fad8e89de21245e82168e83e99b612",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "jerribeth.counterfeit_after",
+      "before_sha": "132d5e65f69a9b413fdce4e5fbfa31b5ca483d9b657bec76fd7602f096612e99",
+      "after_sha": "fbcadfa336f14967c2f31abda1bc49c06141e7fd65095f6f11ccb796cd4e6175",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "jerribeth.future",
+      "before_sha": "8469692f3bcf99c7162cdc3e47a27d6f549b93c9a9f64820310c4845fc7f9cb4",
+      "after_sha": "8bbb274e9c0f88b5fcef833d79d6855ec2e0231312155550fa82cd26f144e912",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "jerribeth.room_measure",
+      "before_sha": "d2679faa071d8813fb006e24d6dec6fdbefbef12d456559a994a2ed3e64778ed",
+      "after_sha": "5cea84adca9df88057ab4ddbeeab49ba2793633cd16d44dbcf8b9d2d94720e17",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "before_sha": "5b87d4164a21140ebfd2e894f7829673b19a6982842bacd8841c4f33a73a6040",
+      "after_sha": "ac1f3cc7b8b9996c07922cd5f9704ea19324eefe0d0a3efe55c2b6f115661be8",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "jerribeth.trickster.visit",
+      "before_sha": "c6a3dc8b6168ce843f2f72e2d39d1b187e53c72a4f923280d45603820b655d54",
+      "after_sha": "5c0ac9dc7ceb35aa8be70dfcc9a648443c306f15878be433ec59c5b0d7c92931",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "jerribeth.unsold_evening",
+      "before_sha": "b17436ad7ab9831faf623bca0ebb23a15df37606bc52547b338c94fc67bc3e64",
+      "after_sha": "91afd91a59f08bbe435d423a3cc289a535db13e07891d5e6d69c6334812e0474",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "melazmera.trickster.beat.count",
+      "before_sha": "821978657f9cf4dbf0197eeadf2f0693533f659b6d7425b39f35e17749c80522",
+      "after_sha": "e83d8c599a9bdd647911c97c118b54d2ff46a3f6f000009fa4b7c421ba4fc851",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "melazmera.trickster.visit.heap",
+      "before_sha": "72144c2a9fe0c8fb2b939857386d212b2673bf5826a83429959da3c34775afdb",
+      "after_sha": "c8204487e529c86bd0c0d996a3f590fc7b3923aa9f02d6cc98e02cd75b26cee3",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "minachiv.a_room_she_likes",
+      "before_sha": "9ae211a8ad7845c16f4b8598c0a1b6868b3da51db546e6eb206017d6f29b235c",
+      "after_sha": "4ab200c23b19e1791806a61141ad0273e883deae84c27eedce938bbfed2b506a",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "minachiv.after_the_last_lamp",
+      "before_sha": "ead3b16c18e40d460efaa88ed3e0ed05041abdc8657cfe4ad500cde93f0cc3f0",
+      "after_sha": "8af255588eb17465112e96916652db632f26da8e3e8c95a2423463ce1c1410bf",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "minachiv.before_the_last_road",
+      "before_sha": "3708b74d21bee909caabd545eff4c0bc9917c6ed0e4522ef44dfc6a8cfc41065",
+      "after_sha": "c4443d9d6c03fd6654a5657697e343da73a1c2336e15eecc87375d095b3856cb",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "minachiv.minaghos_unfinished_sentence",
+      "before_sha": "a5f9e5b05eac7213dbd75aae7f8422063c346244c0199dea784591da983fd885",
+      "after_sha": "39e5864df89bbedb958458ffcffd402316063bb03c1d3bf58754907b5e9dcf23",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "minachiv.the_unhired_evening",
+      "before_sha": "3f8e7e33b25134b747c91d127da8070ac4f69057abf92aa9477339ce1576ee1d",
+      "after_sha": "7544e93e6cf7e2749668d02f0b8cf691e25e2e3c1512cb0d517956c06a878252",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.acq.an_answer_of_her_own",
+      "before_sha": "169cf8d2d408072a812fd596dd555c2962d361a823d5543fe25b5ef6e71a0b3c",
+      "after_sha": "de8bc0f775596079115119bb9c45a8e5ad7445fcdab39da5ba83fa194a001ac3",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.acq.epilogue.correspondence",
+      "before_sha": "e7c5de7f8d7c80d25146c891cf4ada12be781668ee35458bbd4b7fbb8dc2548a",
+      "after_sha": "fa6a0a8bd0206694774f4df035f0823339e62e0d09efbb43624a12cf6a322e60",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.acq.the_paid_address",
+      "before_sha": "07c7793a55992424fa7845d1c8253682accda455393f5bbb1afa541a21e2dffd",
+      "after_sha": "6430210f622251caaeb71e5224bdb615a003814631df2a374290cce7eeef5a03",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.another_place",
+      "before_sha": "385a5510a1359492c8b75376b6ba324df34f6fa20ca47d5625679bc4db2bc104",
+      "after_sha": "729b61f173e9ecbb812f68473cb670132658124d2d65db634fb36e750fa01249",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.empty_chair",
+      "before_sha": "fa858d04d12f8b25b2ddde2580b40f3a9dfa4a9414ecab48ec22d7324c889627",
+      "after_sha": "6868d9badf7ba454c1bc7179cea7ced0d0a7ef57a7a0412ce63eba4e474f5619",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.her_own_face",
+      "before_sha": "af00a6869826e7167bf76675686dc52cf4efc320dc22c8527d24dbaf516bc537",
+      "after_sha": "a76a11497b33be24dffefb1b69e193c8acd4b098a9d32cc325d36f491081b1ae",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.new.absent",
+      "before_sha": "e17ff2906b0d0eaf3042ab6e32623d37db139bbbf3d8dffb7a064c78e415fda8",
+      "after_sha": "e4e46d0ba6fe9e38b9cf4ce25b727869a3d12cd2ab9b939afca90cf76f14659b",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.new.original",
+      "before_sha": "e17ff2906b0d0eaf3042ab6e32623d37db139bbbf3d8dffb7a064c78e415fda8",
+      "after_sha": "e4e46d0ba6fe9e38b9cf4ce25b727869a3d12cd2ab9b939afca90cf76f14659b",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.new.renewed",
+      "before_sha": "e17ff2906b0d0eaf3042ab6e32623d37db139bbbf3d8dffb7a064c78e415fda8",
+      "after_sha": "e4e46d0ba6fe9e38b9cf4ce25b727869a3d12cd2ab9b939afca90cf76f14659b",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.prior.absent",
+      "before_sha": "459ce63e5ef3d967e81c7c4c264d41469b9c544ca577ced44a49f5a48cff34e6",
+      "after_sha": "cf03ea6dd333df86290cc97728c010f595a3aeb4e9b3b0d877cf1112e3828463",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.prior.original",
+      "before_sha": "459ce63e5ef3d967e81c7c4c264d41469b9c544ca577ced44a49f5a48cff34e6",
+      "after_sha": "cf03ea6dd333df86290cc97728c010f595a3aeb4e9b3b0d877cf1112e3828463",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.prior.renewed",
+      "before_sha": "459ce63e5ef3d967e81c7c4c264d41469b9c544ca577ced44a49f5a48cff34e6",
+      "after_sha": "cf03ea6dd333df86290cc97728c010f595a3aeb4e9b3b0d877cf1112e3828463",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.refused.absent",
+      "before_sha": "e17ff2906b0d0eaf3042ab6e32623d37db139bbbf3d8dffb7a064c78e415fda8",
+      "after_sha": "e4e46d0ba6fe9e38b9cf4ce25b727869a3d12cd2ab9b939afca90cf76f14659b",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.refused.original",
+      "before_sha": "e17ff2906b0d0eaf3042ab6e32623d37db139bbbf3d8dffb7a064c78e415fda8",
+      "after_sha": "e4e46d0ba6fe9e38b9cf4ce25b727869a3d12cd2ab9b939afca90cf76f14659b",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.refused.renewed",
+      "before_sha": "e17ff2906b0d0eaf3042ab6e32623d37db139bbbf3d8dffb7a064c78e415fda8",
+      "after_sha": "e4e46d0ba6fe9e38b9cf4ce25b727869a3d12cd2ab9b939afca90cf76f14659b",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.last_buyer",
+      "before_sha": "59fe8874abc0da9e3b1f0710af3806588a29e6beab8f8a1f75972ba2665fc8c0",
+      "after_sha": "77536633e7b2410dba1681337664c331a379e9a6f1490d6bdd6e8aa6bbafab53",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.second_door",
+      "before_sha": "1c32586bfc05ce0ca285864caee7446b0ddbb32fb08b1f1fc67d138b7756969b",
+      "after_sha": "4dd87db28a02a14b59787c9d9500bc76caa5cc5dceaa8b604d6d0502d42e5221",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.second_door.acquired.new",
+      "before_sha": "5e38c9a76590e2af0852c5f521543fdb646508c3325fbcbc74959ec7d0b06621",
+      "after_sha": "61f28453e91da6da2984d2e1ebd4b1260964bd15bccdc6ec5161702b532ab221",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.second_door.acquired.prior",
+      "before_sha": "f49e96246cda1a89e30bbd8abef67bb677cb71b23b08f5c2cdb49ed98aa7f34c",
+      "after_sha": "fab361eb9ea3a54ba69098459acc30c02152acd785b521c1caa5b95b6835aba4",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.second_door.acquired.refused",
+      "before_sha": "5e38c9a76590e2af0852c5f521543fdb646508c3325fbcbc74959ec7d0b06621",
+      "after_sha": "61f28453e91da6da2984d2e1ebd4b1260964bd15bccdc6ec5161702b532ab221",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.unborrowed_evening",
+      "before_sha": "8574948c36c674adffda77216939bb47f5d48a3024595a66e868852a35ad7c92",
+      "after_sha": "d2e0286a809b12e5bcca6ddc654439251658b8ab58f0da682ae0ff4dc5193af7",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.unlit_quay",
+      "before_sha": "ca2b796d06c2c555a4e3997eee4451e01a2f6f7c8212c54406d18c543f73945c",
+      "after_sha": "fff3cd670356259aee07e62f9bebfb3c61cc3ac0acceeee51f2ad5d34a95fa15",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.unlit_quay.acquired.new",
+      "before_sha": "19bae9b3a6319846d389912e15d17214bedeb380e431f8e186909dfa919d8394",
+      "after_sha": "ed5828e6c6a9d931086279c8865015be41d550b7beb23e962957d39c6dfd5ee0",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.unlit_quay.acquired.prior",
+      "before_sha": "b02f3b5fe2ea5ffcd6426ff31c475998e6c1f4382ae71e2b535b257fb3957adf",
+      "after_sha": "75ad4be6d5c2d24b2cd7c9a1a0bc7d9de8a74a6a38f6281263d498b4a5b9b4d5",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.unlit_quay.acquired.refused",
+      "before_sha": "a248a1f446c12411029d800f71b46c20d2ad02672a152e70de529e4548f61b27",
+      "after_sha": "93e99c1d17ff5abf9c8e834823666696000dc53663ad1a75d17149524edcfcf4",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "before_sha": "0bcaabf90728162c9e92cf6fb0206545cee17d591104eb0af824549c1d44abd7",
+      "after_sha": "a2d3f66ee0ec61bda2bb486765ef6e6b5d623a47d6631c9534e67724244de483",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "nocticula.trickster.epilogue.commit",
+      "before_sha": "d3375686c73eaf9343264e563ec9ef71c05009879c73864bb7aa79126fbd2036",
+      "after_sha": "0e6ff835aa2382049fbf9feb6f8f600457b95bb6d0f74a7d8d8690d923983715",
+      "owner": "claude",
+      "source_branch": "claude/cand-9",
+      "source_commit": "47bb91e85f975e2ec6e6028c1eea480e8cc27a49",
+      "reason": "Claude-lane prose, coordinator-reviewed"
     }
   ]
 }
