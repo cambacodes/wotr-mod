@@ -36,7 +36,8 @@ class InteractionAttendanceTests(unittest.TestCase):
                                  scene["RequiresAny"])
                 self.assertIn("iomedae.reachable_by_letter", scene["Requires"])
                 self.assertNotIn("iomedae.present_now", scene["Requires"])
-            self.assertTrue(scene["Reaction"])
+            # A reaction, or (struct2-04) an ordinary scene on the owner's presence hub.
+            self.assertTrue(scene["Reaction"] or scene.get("InteractionHub"), scene["Id"])
             self.assertEqual(scene["Owner"].lower(), scene["Relationship"])
             self.assertIn("trickster", scene["Requires"])
             self.assertEqual([5], scene["Chapters"])

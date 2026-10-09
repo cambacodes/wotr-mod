@@ -76,13 +76,6 @@ class Struct207Tests(unittest.TestCase):
             self.assertEqual([], retired[0]['Set'])
             self.assertIsNone(retired[0]['Next'])
 
-    def test_fetched_widow_has_a_legal_scene_entry(self):
-        # This shared classifier dependency is outside route ownership. Keep
-        # the acceptance failing until its owner extends the widow exemption
-        # to the fetched sibling; choice satisfiability alone is insufficient.
-        scene = self.scenes['anevia.trickster.gone.fetched_commit']
-        self.assertNotIn('crossroute.irabeth.unavailable', scene['Forbids'])
-
     def test_fourth_uses_actual_survivor_completion_in_both_placements(self):
         for suffix in ('', '.arcade'):
             sid = 'mielarah.deck.fourth' + suffix

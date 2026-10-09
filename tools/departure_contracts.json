@@ -1322,7 +1322,7 @@
         },
         {
           "scene": "kiana.a_place_afterward",
-          "letter": true
+          "letter": false
         },
         {
           "scene": "kiana.ending_open",
@@ -3648,7 +3648,7 @@
         },
         {
           "scene": "aranka.trickster.verse.her_letter",
-          "letter": true
+          "letter": false
         },
         {
           "scene": "aranka.trickster.verse.duet",
@@ -3724,7 +3724,7 @@
         },
         {
           "scene": "aranka.trickster.verse.her_letter_late",
-          "letter": true
+          "letter": false
         },
         {
           "scene": "aranka.trickster.verse.duet_late",

@@ -67,6 +67,10 @@ class ArankaRound2Tests(unittest.TestCase):
             "aranka.trickster.failure.second_verse_late", "aranka.trickster.failure.mocking_verse_any")]
         self.assertEqual(len(deliveries), 6)
         for scene in deliveries:
+            if not scene.get("Remote"):
+                # struct2-02: her letter became a face-to-face confrontation; her body is gated, not narrated.
+                self.assertTrue(scene.get("InteractionHub"), scene["Id"])
+                continue
             for node in scene["Nodes"]:
                 if any(route.ANSWERED in c["Set"] for c in node["Choices"]):
                     self.assertTrue("Aranka rode back" in node["Text"]

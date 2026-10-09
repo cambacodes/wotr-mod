@@ -20,32 +20,19 @@ class GameplayHostsTests(unittest.TestCase):
         self.assertTrue(body.get('InteractionHub') or body.get('AnswerLists'), sid)
         return body
 
-    def test_cave_both_histories_and_retry_keep_physical_doors(self):
+    def test_cave_returned_history_is_a_physical_hub_door(self):
         for step in ('settle', 'retry'):
             sid = 'household.pair.soana_camellia.' + step
-            returned = self.physical(sid)
-            native = self.physical(sid + '.native')
-            self.assertEqual(returned['InteractionHub'], 'soana.presence')
+            body = self.physical(sid)
+            self.assertNotIn(sid + '.native', self.by)
+            self.assertEqual(body['InteractionHub'], 'soana.presence')
             presence = self.story['Presences']['soana.presence']
-            self.assertTrue(set(presence['Requires']) <= set(returned['Requires']))
-            self.assertTrue(set(presence['Forbids']) <= set(returned['Forbids']))
-            self.assertEqual(native['AnswerLists'], ['2b1776f3e398685479ff6b16290b4cc2'])
-            self.assertIn('soana.trickster.returned', returned['Requires'])
-            self.assertIn('soana.trickster.returned', native['Forbids'])
-            for body in (returned, native):
-                self.assertEqual(body['Areas'], ['0a5654e7dc18f074d9356009d55eb51b'])
-                self.assertEqual(body['AdditionalContactUnits'], ['397b090721c41044ea3220445300e1b8'])
-                self.assertIn('camellia.present_now', body['Requires'])
-                self.assertIn('soana.closed', body['Forbids'])
-                self.assertIn(sid + '.seen', body['Forbids'])
-            self.assertEqual([n['Id'] for n in returned['Nodes']], [n['Id'] for n in native['Nodes']])
-            if step == 'settle':
-                check = next(n for n in returned['Nodes'] if n['Id'] == 'answer.check')['Choices'][0]['Check']
-                self.assertEqual((check['Skill'], check['DC'], check['Success'], check['Failure']),
-                                 ('SkillLoreReligion', 20, 'withdrawn', 'botched'))
-            else:
-                self.assertEqual(returned['DelayHours'], 48)
-                self.assertIn('household.pair.soana_camellia.settle.failed', returned['Requires'])
+            self.assertTrue(set(presence['Requires']) <= set(body['Requires']))
+            self.assertTrue(set(presence['Forbids']) <= set(body['Forbids']))
+            self.assertEqual(body['Areas'], ['0a5654e7dc18f074d9356009d55eb51b'])
+            self.assertIn('camellia.present_now', body['Requires'])
+            self.assertIn('soana.closed', body['Forbids'])
+            self.assertIn(sid + '.seen', body['Forbids'])
 
     def test_survivors_use_infirmary_and_both_current_bodies(self):
         body = self.physical('targona.trickster.react.ix_a.yaniel')

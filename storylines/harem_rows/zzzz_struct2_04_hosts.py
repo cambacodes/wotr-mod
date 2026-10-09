@@ -4,7 +4,6 @@ Run after row text/contract appenders. The native and returned cave doors share
 one outcome witness, so taking either door retires the other. Unbound Drezen
 venues remain coordinator work rather than adding another woman's body.
 """
-import copy
 
 
 def _physical(body):
@@ -19,25 +18,17 @@ def register(payload, scenes, refs):
     from storylines import arueshalae_trickster as arue, minagho_chivarro_trickster as minagho
 
     by = {body["Id"]: body for body in scenes}
-    # Both cave histories: original IDs stay on the returned hub, native copies
-    # are appended. The native copy keeps the published nodes/answers verbatim.
+    # The returned cave history is the Soana hub door. A native-list copy was
+    # dropped (A101): a pair scene on a native audience return cannot wire its
+    # inline answers (participant contact-loss exit); re-queued as design work.
     for step in ("settle", "retry"):
         body = by["household.pair.soana_camellia." + step]
-        native = copy.deepcopy(body)
-        native["Id"] += ".native"
-        _physical(native)
-        native.pop("ContactUnit", None)  # native audience return: answer list only (Story.Validate)
-        native.pop("AdditionalContactUnits", None)
-        native["AnswerLists"] = [soana.HER_LIST]
-        native["NativeReturnCue"] = soana.HER_RETURN
-        native["Forbids"].append(soana.RETURNED)
         _physical(body)
         body["InteractionHub"] = "soana.presence"
         presence = payload["Presences"]["soana.presence"]
         body["Requires"] = list(dict.fromkeys([
             *body["Requires"], *presence["Requires"], "soana.presence.route_open"]))
         body["Forbids"] = list(dict.fromkeys([*body["Forbids"], *presence["Forbids"]]))
-        scenes.append(native)
 
     # A hub interaction is an ordinary scene, not an E6 native-list reaction.
     body = by["targona.trickster.react.ix_a.yaniel"]

@@ -26,7 +26,7 @@ class HorzalahRound4Tests(unittest.TestCase):
             defeat = self.node('unmet.knife', check['Failure'])
             terminal = defeat['Choices'][0]
             self.assertIsNone(terminal['Next'])
-            self.assertEqual(set(terminal['Set']), {route.GUARD, route.CLOSED})
+            self.assertEqual(set(terminal['Set']), {route.GUARD, route.CLOSED, route.STARTED})  # she came: the meeting counts
             flags = {'trickster.ever', 'trickster', 'iz.done', 'coronation.seen',
                      route.REFUSED, *terminal['Set']}
             for suffix in ('unmet.knife', 'late.at_night', 'guild.kept'):

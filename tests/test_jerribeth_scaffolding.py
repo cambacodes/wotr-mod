@@ -125,8 +125,12 @@ class ScaffoldingTests(unittest.TestCase):
             self.assertEqual([n["Id"] for n in current["Nodes"][:len(old["Nodes"])]],
                              [n["Id"] for n in old["Nodes"]], sid)
             for was, now in zip(old["Nodes"], current["Nodes"]):
-                self.assertEqual(was["Text"], now["Text"], (sid, was["Id"]))
-                self.assertEqual(was.get("Paragraphs"), now.get("Paragraphs"))
+                # Saved prose survives verbatim; a later gate may move a tail into an appended guarded paragraph.
+                kept = list(was.get("Paragraphs") or [])
+                self.assertEqual(kept, (now.get("Paragraphs") or [])[:len(kept)])
+                moved = [q["Text"] for q in (now.get("Paragraphs") or [])[len(kept):]]
+                joined = "\n".join([now["Text"], *moved]) if moved and was["Text"] != now["Text"] else now["Text"]
+                self.assertEqual(was["Text"], joined, (sid, was["Id"]))
                 self.assertGreaterEqual(len(now["Choices"]), len(was["Choices"]))
                 for old_choice, new_choice in zip(was["Choices"], now["Choices"]):
                     self.assertEqual(old_choice["Text"], new_choice["Text"])
