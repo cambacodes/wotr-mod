@@ -347,3 +347,34 @@ rule([G + "what_she_asks"], "touch",
      '''"The door," {n}she says against your mouth.{/n} "Or this bench''',
      '''{n}Her hand has gone to the front of your shirt, firm and unhesitating, and her other cups the back of your head as she kisses her way along your jaw. You feel her smile when your breath stutters.{/n}
 "The door," {n}she says against your mouth.{/n} "Or this bench''')
+
+# ======================================================================================
+# HEPZAMIRAH
+# ======================================================================================
+H = "hepzamirah.trickster."
+
+rule([H + "body.terms"], "threshold",
+     '''"Mine tonight." {n}She bends to kiss you again. You meet her halfway.{/n}''',
+     '''"Mine tonight." {n}She bends to kiss you again. You meet her halfway. Her teeth close on your lip and stay. A hand fists in your hair and drags your head back; the other drives down your stomach and under your belt and closes, with no gentleness at all. The horn stump rakes your cheek as she brings her mouth to your ear.{/n}
+"Hold still, whelp. I am deciding how much of you I want."''')
+
+rule([H + "bond.crooked"], "down",
+     '''as she bends her head to your mouth.{/n}''',
+     '''as she bends her head to your mouth.{/n}
+{n}She takes your wrists and drags them to her hips, over the scars, and holds them there hard enough to bruise.{/n}
+"There. Both hands. You do not let go until I say. Understood, whelp?"''')
+
+rule([H + "bond.eve"], "face_say",
+     '''{n}The good eye opens.{/n} "And you will come for me. Say it."''',
+     '''{n}The good eye opens. Her hand fists in your shirt and drags you down until the heat of her is against you through the cloth, her hips driving into yours once, hard, a demand, and the pick slides off her lap and rings on the stones. She does not look at it.{/n} "And you will come for me. Say it."''')
+
+rule([H + "bond.gift"], "kiss",
+     '''and loosens it, and steps back.{/n}''',
+     '''and loosens it, and steps back.{/n}
+{n}The thong lies against your throat, warm from her hands. She breathes through her teeth, and the scarred side of her face and the stump of the horn are both flushed dark, and she does not take her one good eye off your mouth.{/n}''')
+
+rule([H + "bond.her_room"], "sit_say",
+     '''"Do not argue. You have seen what I do to people who take my things."''',
+     '''"Do not argue. You have seen what I do to people who take my things."
+{n}Her hand is still round yours. She drags it up inside her coat, over her ribs and the old scars, and holds it flat against her pounding heart, then lower. Her mouth is at your ear, her voice a low hot rasp.{/n}
+"You are mine, so I will have the use of you tonight. All of it. Do not talk to me about gentleness."''')
