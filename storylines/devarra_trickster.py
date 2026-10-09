@@ -383,7 +383,7 @@ SCENES.append(scene(P + "flight.leash", "The lizard is on an errand", "Devarra",
       c('"Wait."', abort=True)),
     n("amended", "Golem", '''"Amendment received. Lizard: on an errand for master. Lizard: not in breach." {n}The fists stay exactly where they are. Nothing in the amendment says to lower them, and nothing in the golem will do a thing it was not told.{/n} "Protocol: pending. Master: command?"''',
       c("Continue")),
-], requires=("trickster.ever", FLOWN, "devarra.golems_calling"), forbids=(STRUCK, "eggs.destroyed"), last=3, Relationship="devarra",
+], requires=("trickster.ever", FLOWN, "devarra.golems_calling"), forbids=(STRUCK, "eggs.destroyed", "devarra.golems_deactivated"), last=3, Relationship="devarra",
     Chapters=[3], AnswerLists=["04d72f75c1e841747a55b780fccf37fe", "d1f609c764422a24994568d850c99958", "ab4a075bbc5d24048bf892697e75f2e3"],
     ReturnToList=True, ReturnText="{n}The fists hang over the eggs, waiting for a word.{/n}"))
 

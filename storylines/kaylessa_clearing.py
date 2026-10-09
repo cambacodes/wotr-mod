@@ -116,7 +116,7 @@ away(NIGHT, "Where I was meant to die", [
         c("[...]", "explicit.1")),
     # Explicit slot brief: private consummation; her initiative, actual custody, no cure.
     nar("explicit.1", '''{n}Behind the trees Drezen's watch calls out; she keeps you close.{/n}''', c("[...]")),
-], requires=(), delay=12)
+], requires=(), delay=24)
 
 
 # --- The morning after (a rest later): grey light at the clearing. -----------------------------------------------------
