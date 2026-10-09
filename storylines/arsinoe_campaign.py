@@ -329,7 +329,7 @@ s("arsinoe_what_she_asks", "A question after closing",
 {n}Her thumb moves once over your knuckles.{/n}
 "And you are the Commander. Half of Drezen would like an evening of you. I have audited too many houses with a second ledger in the drawer, so: are there others?"''',
       c('"There are others. You would be one of them, and your evenings would be yours."', "shared_terms"),
-      c('"Only you. Whatever I owe elsewhere, I will settle honestly."', "sole_terms")),
+      c('"Only you. Whatever I owe elsewhere, I will settle honestly."', "sole_terms", forbids=("arsinoe.other_romance_committed",))),
     n("shared_terms", "Arsinoe", '''"Then do not promise me an evening you have already promised elsewhere. I will not ask you to throw anyone out of your life to prove you want me in it. But I will not be the woman who gets the last hour, after the others have dined. When you come to me, you come to me."
 {n}She gives your hand a small, hard squeeze.{/n}
 "And no second ledger. If you lie to one of them, you have lied to me as well, and I bill for that."
@@ -610,6 +610,9 @@ def ending(id, title, text, requires, forbids=(), owner="Epilogue"):
         requires=requires, forbids=forbids, last=6, Relationship="arsinoe", **extra))
 
 
+# Both sole exits retain arsinoe.sole_intention as the chosen promise. The route
+# currently has no exclusivity-dependent scene, paragraph or ending to collect it;
+# shared and sole courtships use the same later visits and endings.
 ORDINARY = ("arsinoe.closed", "swarm", "true_lich", "sacrifice", "ascended")
 ending("arsinoe_ending_kept", "A city with an open window", '''{n}Arsinoe remained in Drezen by choice. The work was plentiful, and she continued to disagree with those who assumed a priest of Abadar would be satisfied merely because a sum balanced. Some transactions were foolish at any price. Some improvements were worth making before anyone knew how to profit from them.{/n}
 {n}The Commander knew the room behind her working space, the little carved face, and the window Arsinoe preferred to leave open. There were invitations made with days to spare and visits that began with a knock when both happened to be free. The war and its aftermath stole a good many evenings. Arsinoe kept the invitations in a small book by the bed, including the ones the war had interrupted. She made fresh arrangements when there was time.{/n}

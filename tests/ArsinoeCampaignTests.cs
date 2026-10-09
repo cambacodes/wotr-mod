@@ -37,12 +37,14 @@ internal static class ArsinoeCampaignTests
         foreach (string pace in new[] { "arsinoe.courting", "arsinoe.slow", "arsinoe.friendship" })
         foreach (int chapter in new[] { 3, 5 })
         foreach (bool trickster in new[] { false, true })
+        foreach (bool otherCommitted in new[] { false, true })
         {
             // This is a released predecessor fixture, not a claim to replay all eleven earlier visits.
             var predecessor = story.Scenes.Single(s => s.Id == "arsinoe_the_unprofitable_hour");
             var seed = new Snapshot { Chapter = chapter, Area = predecessor.Areas.Single(), Hour = 1000 };
             seed.Flags.UnionWith(predecessor.Requires);
-            seed.Flags.UnionWith(new[] { pace, "arsinoe.interest_games", "lann.committed", "arueshalae.committed" });
+            seed.Flags.UnionWith(new[] { pace, "arsinoe.interest_games" });
+            if (otherCommitted) seed.Flags.UnionWith(new[] { "lann.committed", "arueshalae.committed" });
             if (trickster) seed.Flags.Add("trickster");
             seed.AvailableContacts.Add(predecessor.ContactUnit!);
             Rules.Complete(story, seed);
@@ -87,6 +89,15 @@ internal static class ArsinoeCampaignTests
                         interrupted.AvailableContacts.Add(scene.ContactUnit!);
                         check(Rules.Available(story, scene, interrupted), "An interrupted page cannot be replayed.");
                         if (page == "possibility" || page == "after_possibility") check(trickster, "A non-Trickster uses the future-stone intervention.");
+                        if (scene.Id == "arsinoe_what_she_asks" && page == "lasting")
+                        {
+                            var menu = scene.Nodes.Single(n => n.Id == "lasting").Choices;
+                            check(menu.Length == 2 && menu[1].Next == "sole_terms",
+                                "Sole promise changes its saved position or target.");
+                            check(Rules.ChoiceAvailable(menu[0], partial)
+                                  && Rules.ChoiceAvailable(menu[1], partial) == !otherCommitted,
+                                "Sole promise ignores another commitment or blocks the shared route.");
+                        }
                         if (scene.Id == "arsinoe_what_she_asks" && (page == "lasting" || page == "open"))
                             check(pace != "arsinoe.friendship", "Friendship is silently reopened as romance.");
                         if (scene.Id == "arsinoe_the_window_opens" && page == "night")
@@ -101,7 +112,9 @@ internal static class ArsinoeCampaignTests
                     });
                     foreach (var result in results)
                     {
-                        check(Persistent(ready).IsSubsetOf(Persistent(result)) && result.Has("lann.committed") && result.Has("arueshalae.committed"),
+                        check(Persistent(ready).IsSubsetOf(Persistent(result))
+                              && result.Has("lann.committed") == otherCommitted
+                              && result.Has("arueshalae.committed") == otherCommitted,
                             "Arsinoe erases history or another romance.");
                         if (!result.Has(scene.Id))
                         {
