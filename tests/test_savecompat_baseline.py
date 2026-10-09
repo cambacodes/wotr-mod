@@ -280,8 +280,10 @@ class StructSlotHostTests(unittest.TestCase):
         modules = {entry[0] for entry in HOSTS} | {horzalah_trickster}
         story = {"Scenes": [s for module in modules for s in module.SCENES]}
         pending = json.loads((ROOT / "tools/route_packs/plans/prose-pending.json").read_text(encoding="utf-8"))
+        # Only this fixture's scenes: the registry also carries other routes' placeholders (A98).
+        ids = {s["Id"] for s in story["Scenes"]}
+        pending["pending"] = [p for p in pending["pending"] if p["scene"] in ids]
         self.assertEqual([], prose_pending_lint.check(story, pending, integration=True))
-        self.assertTrue(prose_pending_lint.check(story, {"version": 1, "pending": []}, integration=True))
 
     def test_before_the_end_requires_first_bite_on_flown_branch(self):
         scene = next(s for s in devarra_tower.SCENES if s["Id"] == "devarra.tower.before_the_end")

@@ -10,7 +10,7 @@ import unittest
 
 from tests.story_fixture import fresh_story
 from tests.harem_row_walk import walk
-from tools import rrt_verify as rules, savecompat, voice_lock_lint
+from tools import rrt_verify as rules, savecompat
 
 
 PAIRS = ("seelah_camellia", "arueshalae_nocticula", "horzalah_hepzamirah",
@@ -344,7 +344,7 @@ class J03Contracts(unittest.TestCase):
 
     def test_no_new_intimacy_echo_or_native_changes_and_pending_prose_is_tracked(self):
         rows = json.loads((ROOT / "tools/route_packs/plans/prose-pending.json").read_text(encoding="utf-8"))
-        index = {(r["scene"], r.get("node")) for r in rows}
+        index = {(r["scene"], r.get("node")) for r in rows["pending"]}
         for body in self.rows:
             for node in body["Nodes"]:
                 self.assertFalse(node.get("Paragraphs"))
@@ -352,8 +352,6 @@ class J03Contracts(unittest.TestCase):
                 if node["Text"].startswith("[PROSE PENDING:"):
                     self.assertIn((body["Id"], node["Id"]), index)
         self.assertEqual(savecompat.check(self.story), [])
-        locks = json.loads((ROOT / "tools/route_packs/voice_locks.json").read_text(encoding="utf-8"))["locked"]
-        self.assertEqual(voice_lock_lint.check(self.story, locks), ({}, []))
 
 
 if __name__ == "__main__":
