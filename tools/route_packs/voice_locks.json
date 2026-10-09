@@ -253,7 +253,7 @@
     "areelu.trickster.report.hunters": {
       "owner": "claude",
       "since": "b2c3ef01",
-      "text_sha": "5f89dc58aa12be8a6435ae8352219d11a5202a82e046d2851f0b08a2d5ae82de"
+      "text_sha": "3ec1ff185699f09c4ab9e127da934a30c4aced6cee0fe48f2c8b31877d13a7d2"
     },
     "areelu.trickster.report.graft": {
       "owner": "claude",
@@ -278,17 +278,17 @@
     "areelu.trickster.report.cult": {
       "owner": "claude",
       "since": "b2c3ef01",
-      "text_sha": "cc1ea4e50ffefb4c415b1e02fb83606789feda0555ee8bcbad355cbb88c1db41"
+      "text_sha": "038b142c99fb4ea132bb96feff0b01bb2f37126f7eae16d3d8aedb0dc102ddb3"
     },
     "areelu.trickster.report.convicts": {
       "owner": "claude",
       "since": "b2c3ef01",
-      "text_sha": "78229be0125d5f286b6f278b2b53b98d10294bbb0778072c7774ae67bd3f8628"
+      "text_sha": "9e6b47c18d142e29e73d796a428ac9a6865c34a12dedf673fc60c1d52f09075b"
     },
     "areelu.trickster.report.commission": {
       "owner": "claude",
       "since": "b2c3ef01",
-      "text_sha": "0f55d811fe75422d364e6f7459177754bb6bc79324277fe807b72a6eb8657d91"
+      "text_sha": "3aa0210f20b774ad443f54a33ec18bf34b44fbd4a087a030b1854d47340c3276"
     },
     "areelu.trickster.report.dagger": {
       "owner": "claude",
@@ -308,7 +308,7 @@
     "areelu.trickster.report.rival": {
       "owner": "claude",
       "since": "b2c3ef01",
-      "text_sha": "90f85b58ad1acccd695988717f655a886feb1f4640f6144106a975b7d18c23ec"
+      "text_sha": "4b8306449fec918f1e46c956ad879da6f926fe76bee34f63e56e20edacc7017f"
     },
     "areelu.trickster.finale.lien_bottled": {
       "owner": "claude",
@@ -1728,7 +1728,7 @@
     "camellia.trickster.epilogue.kept": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "b847df65ddd80d73da37a2e072a57abc9ae5ef6623af082c4b9e48fc527ae1c2"
+      "text_sha": "99bc6404fc966eac917a5f0bd73af64f46371bc63c82c5d0e7101759b8207c3c"
     },
     "camellia.trickster.epilogue.kept_on_record": {
       "owner": "claude",
@@ -1738,7 +1738,7 @@
     "camellia.trickster.epilogue.commit": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "022329e153eafb9eb21d328f8c95c24e9b630bed030d06a1b6a826748aee4515"
+      "text_sha": "abc51c8b8b12e2e336ffe15591c20a55b5abdb86e0cc208ae0ddfa767b930954"
     },
     "camellia.trickster.epilogue.commit_on_record": {
       "owner": "claude",
