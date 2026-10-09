@@ -1,40 +1,4 @@
 {
   "version": 1,
-  "pending": [
-    {
-      "scene": "herrax.house.a_night_out",
-      "node": "herrax.house.a_night_out.explicit.1",
-      "surface": "node",
-      "index": null,
-      "text_sha": "9428fd9970d08b99edf3d0f6bc2a615714a081b4447c5e452b0bdcaca57f87be"
-    },
-    {
-      "scene": "herrax.house.her_rooms",
-      "node": "herrax.house.her_rooms.explicit.1",
-      "surface": "node",
-      "index": null,
-      "text_sha": "860015c1ee006d7894e34f0e7d3db18ebf30fe30630c9e0592c259a8c3394251"
-    },
-    {
-      "scene": "herrax.house.last_night",
-      "node": "herrax.house.last_night.explicit.1",
-      "surface": "node",
-      "index": null,
-      "text_sha": "2d2f80cbdf8dc98cd8417d3a9a8b2d6efd840ffb6bdaf980b68910d732c6e889"
-    },
-    {
-      "scene": "horzalah.trickster.beat.ramparts",
-      "node": "horzalah.trickster.beat.ramparts.explicit.1",
-      "surface": "node",
-      "index": null,
-      "text_sha": "013c902fb01c1b1f61be9338340faf304f4ccf2af3866ebd7d8d9d80619d0346"
-    },
-    {
-      "scene": "horzalah.trickster.beat.ribbon",
-      "node": "horzalah.trickster.beat.ribbon.explicit.1",
-      "surface": "node",
-      "index": null,
-      "text_sha": "e77c0b433bdb4a6726c6eded4b7209617a9099a876bac94204b7a91238b8382f"
-    }
-  ]
+  "pending": []
 }

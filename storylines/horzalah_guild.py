@@ -1109,12 +1109,17 @@ for _scene in SCENES:
 from copy import deepcopy as _slot_deepcopy
 from story_format import n as _slot_node
 
+_SLOT_CUTS = {
+    'horzalah.trickster.beat.ramparts.explicit.1': '''{n}The next watch has long since gone down the stair when she turns and pulls you in by the belt she has been holding all this time. Her mouth is hard and hot and tastes of smoke, the collar comes open under your hand, and the cold of the stone stops mattering. She is a demon and makes no effort to be gentle about it: a bite at your shoulder, a rasp of claws down your back, and at the end a sound out of her throat that carries over the camp like some night bird's cry. Below, the forge-glow burns on, and the Worldwound with it.{/n}''',
+    'horzalah.trickster.beat.ribbon.explicit.1': '''{n}She winds the cut ribbon once around your wrist and draws you down onto the bed she never left, and the masters can wait. The collar falls open; her mouth finds last night's marks on your shoulder before her thumb does, and her eyes, dark with the flame, never leave yours. She is slow this time, which is worse, and when her breath finally breaks it breaks against your throat in a low, unguarded laugh. The day goes on without her in the hall.{/n}''',
+}
+
 for _slot_scene_id, _slot_host_id in (
     ('horzalah.trickster.beat.ramparts', 'hand'),
     ('horzalah.trickster.beat.ribbon', 'tied'),
 ):
     _slot_id = _slot_scene_id + ".explicit.1"
-    _slot_text = "[PROSE PENDING: " + _slot_id + "]"
+    _slot_text = _SLOT_CUTS[_slot_id]
     _slot_scene = next(s for s in SCENES if s["Id"] == _slot_scene_id)
     _slot_host = next(n for n in _slot_scene["Nodes"] if n["Id"] == _slot_host_id)
     _slot_entry = _slot_deepcopy(_slot_host["Choices"][0])

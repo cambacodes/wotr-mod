@@ -1260,7 +1260,7 @@ _COMMIT_CUTS = {
     'nurah.trickster.epilogue.commit.explicit.2': '''{n}A proof slid beneath the Commander's elbow and tore. Nurah caught the reaching hand, pressed it flat to her hip, and pulled the Commander down among the loose pages with a feral grin. The closed book stayed where it lay.{/n}''',
 }
 _MARGIN_HEAT = '''
-{n}That fourth night she did not wait for the epigraph. She straddled you with the book still in her fist and kissed you until the argument went out of her sentences. She was already in your shirt and nothing else; she shrugged it off her shoulders, tossed it over the lamp, and bit your shoulder hard enough to make a point. Then she braced her palms on your chest and ground her bare hips down against you, grinning like a woman who had been banned in several countries and found it flattering.{/n}'''
+{n}That fourth night she did not wait for the epigraph. She threw the book aside and kissed you until the argument went out of her sentences, and your shirt, which she had been wearing for a week, went over the lamp. She bit your shoulder hard enough to make a point, grinning like a woman who had been banned in several countries and found it flattering, and after that neither of you said anything fit to publish.{/n}'''
 
 for _scene in SCENES:
     _sid = _scene['Id']

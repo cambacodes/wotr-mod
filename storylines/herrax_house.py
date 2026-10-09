@@ -1245,13 +1245,19 @@ _court_answer_receipts()
 from copy import deepcopy as _slot_deepcopy
 from story_format import n as _slot_node
 
+_SLOT_CUTS = {
+    'herrax.house.a_night_out.explicit.1': '''{n}The door of her rooms shuts on the roar of the crowd, and her ragged wing folds round the two of you like a torn curtain drawn across the world. Pit-smoke and clipped silver, the scar hot against your mouth, her claws in your collar and then in your shirt, and the clothes that come off come off without ceremony. She takes more than she gives, exactly as she promised, and when the breath goes out of you she laughs against your neck, low and well paid. Far below, the Delights goes on booming without her.{/n}''',
+    'herrax.house.her_rooms.explicit.1': '''{n}Her hand slides from your forearm to the back of your neck, and the chair, the jug and the bare boards stop being a room at all. The window light lies across her scarred mouth and the wings she has not troubled to hide, and she is rough and unhurried by turns, her claws leaving their marks on your shoulders like a signature on a deed. At the peak of it she says your name once, with nothing after it, which is the only thing in the house she has ever given away for nothing. Afterwards the carts and bells of the Upper City go on beneath the window, and neither of you remarks on it.{/n}''',
+    'herrax.house.last_night.explicit.1': '''{n}She leads you up the stair with your hand still in hers and does not let it go until the door shuts. Then it is her mouth, her wings closing about your shoulders, her claws finding the buttons of your coat and the bare skin beneath it, and the long, slow taking of a succubus who meant every word. You feel the pull of it low in your chest, as if something were being drawn out of you and handed back warmer; when she reaches the peak she bites down on your shoulder to keep from crying out, and fails. A thousand years she has kept that house, and for a while it keeps no time at all.{/n}''',
+}
+
 for _slot_scene_id, _slot_host_id in (
     ('herrax.house.a_night_out', 'home'),
     ('herrax.house.her_rooms', 'beside'),
     ('herrax.house.last_night', 'agreed'),
 ):
     _slot_id = _slot_scene_id + ".explicit.1"
-    _slot_text = "[PROSE PENDING: " + _slot_id + "]"
+    _slot_text = _SLOT_CUTS[_slot_id]
     _slot_scene = next(s for s in SCENES if s["Id"] == _slot_scene_id)
     _slot_host = next(n for n in _slot_scene["Nodes"] if n["Id"] == _slot_host_id)
     _slot_entry = _slot_deepcopy(_slot_host["Choices"][0])
