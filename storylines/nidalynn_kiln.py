@@ -49,6 +49,7 @@ GOAT_ASKED = P + "goat.asked"
 GOAT_WOLVES = P + "goat.wolves"
 WAKE_SAID = P + "wake.name_said"
 CHAPLAIN = P + "chaplain_prayed"
+CHAPLAIN_SENT_AWAY = P + "chaplain_sent_away"
 
 
 # --- 1. The hearth (she comes to the Commander's quarters): the egg, the reveal, the kiln ---------------------------------
@@ -667,12 +668,12 @@ visit(P + "kiln.the_chaplain", "The chaplain's report", [
 {n}Nothing happens. No light. No voice. The young dragon comes to the edge of the kiln's mouth and puts her nose out into the cold and sniffs the chaplain's knee, and sneezes, and goes back in.{/n}''',
         c("Continue", "after_prayer")),
     n("after_prayer", "Chaplain", '''{n}He gets up. His knees crack. He looks, of all things, satisfied.{/n} "No answer. I did not expect one, and I find I am glad of it. I will not burn what I have not been told to burn." {n}He picks up the barley, at last, and eats it standing, quickly, like a man used to eating on a march.{/n} "Thank you, goodwife. That was good barley. I shall write that to the see as well; they will not know what to make of it."''',
-        c("Continue", "end"), portrait=""),
+        c("Continue", "end", flags=(CHAPLAIN,)), portrait=""),
     n("leave", "Chaplain", '''{n}He considers you, and then the kiln, and then he nods, once.{/n} "Enough fire for one life. Yes. I held the torch; I know how much." {n}He picks up the barley at last, and eats it standing, quickly, like a man used to eating on a march.{/n} "Thank you, goodwife. That was good barley. I will come back in the spring, if I may, and ask again."''',
-        c("Continue", "end"), portrait=""),
+        c("Continue", "end", flags=(CHAPLAIN_SENT_AWAY,)), portrait=""),
     nd("end", '''{n}When he has gone up the stair she comes and stands beside you on the step.{/n} "He's a good man. Stiff as a new saddle, and he'd burn half this city if his goddess told him to, and he'd weep while he did it." {n}She watches the stair.{/n} "Silvers and Iomedae's people get on well enough. We both think the truth matters. We only disagree about what to do with a sword afterwards."''',
-        c("[Watch the stair with her.]", flags=(CHAPLAIN,))),
-], requires=(CONFESSED, HATCHED), forbids=(CHAPLAIN, LIE_KEPT, FORM), delay=72, optional=True)
+        c("[Watch the stair with her.]")),
+], requires=(CONFESSED, HATCHED), forbids=(CHAPLAIN, CHAPLAIN_SENT_AWAY, LIE_KEPT, FORM), delay=72, optional=True)
 
 
 # --- 17. A day in charge (optional, after the claim is given up): the Commander minds the child ------------------------
