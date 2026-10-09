@@ -246,10 +246,17 @@ def lastcall_record():
 
 def nights(by):
     living = (
-        ('soana.after_the_last_visitor', '{n}Soana pulls you onto the spread blanket, her bare shoulders warm beneath your hands. She catches your mouth before you can speak; the tools scrape stone as she pushes them farther away.{/n}'),
-        ('soana.before_the_far_road', '{n}Her shawl falls over the tools. Soana draws you against her bare skin and pulls the blanket beneath you, keeping her mouth on yours as the cave darkens.{/n}'),
+        ('soana.after_the_last_visitor', '''
+{n}Her mouth leaves yours and travels your jaw and throat in small hard bites that she soothes with her tongue. One rough hand drags down your stomach and stops low, deliberately, so that you feel how long she means to make you wait. Her laugh is cracked and pleased.{/n}
+"All day they wanted my herbs, my charms, my mercy. Not one of them wanted this. Look at me, hunter. Keep looking."''',
+         '{n}Soana rolls her hips against yours, slow, testing the blanket and you both. Her hand slips between your bodies, rough fingers deliberate, and she settles her weight exactly where she wants it, watching your face the whole time.{/n}'),
+        ('soana.before_the_far_road', '''
+{n}She breaks the kiss only to put her mouth to the scars across your chest, each one bitten as if it owed her something. Your hands are on her bare back, on the soft old weight of her, and she shivers and curses the shiver.{/n}
+"The road can have you tomorrow. Tonight you are in my blanket, and I mean to use every hour of it."
+{n}Her thighs tighten at your hips. She reaches down between you, breathing hard, and does not hide how badly she wants it.{/n}''',
+         '{n}Soana lifts herself over you, one rough palm flat on your chest to hold you still. The shawl lies forgotten over the tools. She lowers her hips with a long, unhurried breath, her eyes fixed on yours, and the blanket gathers beneath her knees.{/n}'),
     )
-    for sid, cut in living:
+    for sid, ext, cut in living:
         event = by[sid]
         night = page(event, 'night')
         # Keep the old node and outgoing answer; split its composite morning.
@@ -259,20 +266,31 @@ def nights(by):
             pos = night['Text'].find('{n}Morning')
         assert pos >= 0, sid
         morning = night['Text'][pos:]
-        night['Text'] = night['Text'][:pos].rstrip()
+        night['Text'] = night['Text'][:pos].rstrip() + ext
         event['Nodes'].append(n('round2_morning', 'Soana', morning,
             *deepcopy(night['Choices']), portrait='Soana'))
         slot(event, 'night', 1, cut, 'round2_morning')
     cuts = {
         'terms': (
-            '{n}Soana puts the cord safely beside the furs, then pulls your loosened shirt from your shoulders. Her kiss is fierce; her free hand drags you down beside her.{/n}',
-            '{n}She sets the sharp fragments beyond the furs. Then Soana catches your belt, draws you against her bare shoulders, and kisses you until you both sink onto the pelts.{/n}'),
+            '{n}Soana presses you down into the furs and straddles you, one rough hand flat on your chest. She takes her time settling her weight, eyes locked on yours, and her breath catches when her hips finally meet yours.{/n}',
+            '{n}She sets the sharp fragments beyond the furs. Then Soana pins your wrists beside your head, kisses you until you stop pretending to be calm, and pushes her hips down against yours, slow and deliberate.{/n}'),
         'second_ask': (
-            '{n}She lays your marked wrist clear of the cord and pulls you closer with her other hand. Her clothes fall beside the furs; she meets your kiss with a hungry, cracked laugh.{/n}',
-            '{n}The fragments lie out of reach. Soana keeps the sore wrist clear as she draws you onto the furs, her bare shoulder pressed to your mouth.{/n}'),
+            '{n}She keeps your marked wrist clear of the cord and lowers herself over you with her free hand braced on the pelts. Her hips settle against yours with a hungry, cracked laugh. "Twice I asked. Now keep up."{/n}',
+            '{n}The fragments lie out of reach. Soana keeps the sore wrist clear of the fur, hooks a leg over your hip and rolls you under her, bare shoulder pressed to your mouth, her hips moving against yours in a slow, testing rhythm.{/n}'),
         'rebind': (
-            '{n}Soana puts the cord down herself and pulls you into the place she has cleared beside her. Her mouth finds yours; her grip on your collar does not slacken.{/n}',
-            '{n}She sets the shards beside her tools and catches your shirt in both hands. Soana draws you down into the furs, meeting you with a kiss that leaves you breathless.{/n}'),
+            '{n}Soana puts the cord down herself, pushes you onto your back in the place she has cleared and climbs over you. Her grip on your collar does not slacken; her other hand slides between your bodies and she drops her weight with a long, shuddering breath.{/n}',
+            '{n}She sets the shards beside her tools and wraps both fists in your hair. Soana draws you down into the furs, hooks her heel behind your thigh, and grinds her hips up against yours with a kiss that leaves you breathless.{/n}'),
+    }
+    ext = {
+        'terms': '''
+{n}The belt gives. She shoves your shirt up and off, scowls at the scars she finds, and puts her teeth to the worst of them. You drag her clothes down her arms; she kicks the rest aside, bare and weathered and unashamed, and hauls your hips against hers.{/n}
+"Look all you like. I have been cold in this cave too long, hunter, and I will not be gentle about it."''',
+        'second_ask': '''
+{n}She strips you with the temper she brings to a stubborn knot, then stops, hands flat on your ribs, and looks at you for a long moment. It is not tenderness. It is a woman counting what she has decided to take. Your fingers find the clasp of her clothes; she lets the wool slide off her shoulders and breasts, her breath coming short.{/n}
+"Twice I asked. You will pay that back in this fur, hunter, and I will count every bit of it."''',
+        'rebind': '''
+{n}The buckle gives at last. She pushes your shirt up and off and kisses the scars as if checking them for rot, then yanks her own clothes down and flings them over her tools. Bare, broad-hipped and unashamed, she presses the whole length of herself against you and sighs through her teeth.{/n}
+"Back where you belong. Do not make me regret asking."''',
     }
     for kind, pair in cuts.items():
         event = by['soana.trickster.returned.' + kind]
@@ -282,6 +300,7 @@ def nights(by):
             text(event, host, '''{n}Soana finishes the binding before she touches your belt. She loosens the tie over the mark and sets the ''' + token + ''' beside the tools.{/n}
 "That is the knot's business finished. This is mine. ''' + renewal + '''"
 {n}She draws your mouth to hers. Her rough fingers work the buckle, impatient with the iron.{/n}''')
+            page(event, host)['Text'] += ext[kind]
             slot(event, host, number, pair[number - 1], 'morning')
         if kind == 'rebind':
             text(event, 'morning', '''{n}Your shirt lies under the spade handle. Soana sits beside the furs, bare shoulder against yours, inspecting the wrist she has bound anew. She moves your fingers away from the token.{/n}
@@ -296,13 +315,15 @@ def nights(by):
 "Your end is sore. It is supposed to be. Leave it alone."
 {n}She kisses your unmarked knuckles, then shoves the shirt into your hand. Smoked fish waits beside the cold hearth.{/n} "Eat before you go. I have a forest to plant, and you have demons to kill."''')
     for kind, cut in (
-        ('bowl', '{n}Soana sets the die beyond your reach, then draws your hands back to her warm bare skin. She kisses you hard and pulls you after her into the furs.{/n}'),
-        ('second_ask', '{n}She sets both dice aside. Soana catches your mouth with hers and draws you onto the furs, laughing roughly when your shirt snags beneath her hand.{/n}'),
+        ('bowl', '{n}Soana sets the die beyond your reach and straddles you on the furs, her hands guiding yours to her hips. She leans down until her braid falls across your face, rocks once against you, and lowers herself with a wicked, unhurried grin.{/n}'),
+        ('second_ask', '{n}She sets both dice aside and sinks over you with a rough laugh, one palm braced on your shoulder. Her hips grind slowly against yours; she reaches between you, impatient with the last scrap of cloth, and does not look away.{/n}'),
     ):
         event = by['soana.trickster.missed.' + kind]
         text(event, 'threshold', '''{n}She puts the offering out of reach before she unfastens her clothes. Outside the cave, the bear's footfalls recede toward the road.{/n}
 "Leave the bowl. I have not asked a bone to choose my lover."
-{n}Her hand closes on your belt. She pulls you against her and kisses you, hard enough to stop the next word.{/n}''')
+{n}Her hand closes on your belt. She pulls you against her and kisses you, hard enough to stop the next word.{/n}
+{n}Her clothes come off in two impatient pulls, and she tears at yours with the same temper. Cold air from the cave mouth touches your back; her skin is a furnace against your chest. She backs you onto the furs, teeth at your collarbone, one thigh sliding between yours until you hear yourself groan.{/n}
+"Quiet, hunter. The bear can mind the road. Tonight I mind you."''')
         if kind == 'second_ask':
             text(event, 'night', '''{n}Soana weighs the second die, then puts it beside its brother. She clears the place beside her with her foot.{/n}
 "I made you wait for an answer. Then you made me ask again. Enough waiting, hunter. Come here."''')
@@ -325,9 +346,15 @@ def postwar(event, kind):
                 if 'new cord' in paragraph['Text'] or 'life to hers' in paragraph['Text']:
                     paragraph['Text'] = '''{n}Soana held the cord clear of the furs.{/n} "Say it before we lie down. Mine first. Or keep your life and leave my knot alone."'''
     cut = {
-        'commit': '{n}Soana laid the new cord beside the furs and caught the Commander\'s belt. She pulled them down against her bare shoulders, kissed them hard, and pushed the discarded shirt across the cold stone.{/n}',
-        'luck_late': '{n}Back in Wintersun, Soana put the die beside her bowl and pulled the Commander against her. Her shawl slipped from her shoulders; she caught their mouth with hers and drew them down into the furs.{/n}',
-        'living_late': '{n}Soana pushed her tools beyond the blanket and pulled the Commander down beside her. Her bare shoulder pressed against their mouth; she gripped their collar and drew them closer.{/n}',
+        'commit': '''{n}Soana laid the new cord beside the furs and caught the Commander's belt. She pulled them down against her bare shoulders, kissed them hard, and pushed the discarded shirt across the cold stone. Every scar she found got her mouth, and every clasp she could not open got a curse. Her clothes came away in her own impatient hands, and the Commander's hands went where the long wait had been heading.{/n}
+"I have wanted this since spring," {n}she said against their throat.{/n} "Do not be careful with me. I am old, not made of clay."
+{n}She rolled them beneath her, hips already moving against theirs, her rough palm sliding down between their bodies.{/n}''',
+        'luck_late': '''{n}Back in Wintersun, Soana put the die beside her bowl and pulled the Commander against her. Her shawl slipped from her shoulders; she caught their mouth with hers and drew them down into the furs.{/n}
+"You came back. Luck, or stubbornness, I do not care which. Take that off."
+{n}She had the Commander's shirt over their head before the sentence ended and her own clothes in a heap beyond the bowl. Her mouth was on their chest, her thigh between theirs, the weight of her bare body pinning them to the fur. When the Commander's hands closed on her hips she growled with satisfaction and pushed down against them.{/n}''',
+        'living_late': '''{n}Soana pushed her tools beyond the blanket and pulled the Commander down beside her. Her bare shoulder pressed against their mouth; she gripped their collar and drew them closer.{/n}
+"The war is over and I am still here. So are you. Stop talking."
+{n}She stripped the Commander with rough, practised speed, laughed at the buckle that fought her, and shed her own clothes without ceremony. Her mouth moved over their throat and chest, her braid trailing across skin, until she straddled them on the blanket, one hand pressed to their sternum, the other already sliding between their bodies.{/n}''',
     }[kind]
     target = event['Id'] + '.explicit.1'
     # Append to every accepted stance continuation; no inherited exit effects
@@ -355,7 +382,9 @@ def postwar(event, kind):
                     answer['Next'] = 'round2_vow'
         event['Nodes'].append(n('round2_vow', 'Soana', '''{n}Soana put the new cord round the marked wrist and tied its other end to her own. The pull settled between the two lives. She held the knot until it stopped trembling, then loosened the temporary tie over the skin.{/n}
 "There. Yours first. As you said."
-{n}She laid the cord beside the furs and drew the Commander closer by the belt.{/n}''',
+{n}She laid the cord beside the furs and drew the Commander closer by the belt, then found the buckle and tore it open.{/n}
+"Yours first. Now mine."
+{n}She stripped them both with rough efficiency, pushed the Commander down into the furs, and covered them with her bare weight, her mouth hot at their throat, her hips already pressing down.{/n}''',
             c('[Stay when she draws you down.]', target), portrait='Soana'))
     for response in event['Nodes']:
         for block in response.get('Paragraphs', []):

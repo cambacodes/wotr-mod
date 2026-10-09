@@ -1493,3 +1493,35 @@ for _nid, _number, _cut in (
     _branch['Choices'][0]['Next'] = _slot
     # Brief: deepening on this branch, never a second first night or quiet sex.
     _margin['Nodes'].append(n(_slot, 'Narrator', _cut, c('Continue', 'morning'), portrait='Nurah'))
+
+
+# Heat pass: each build-up reaches the start of the act; the cuts lead into the reserved segments.
+_HEAT = {
+    ('nurah.the_letter_she_wrote', 'near.build_up'): '''
+{n}Her mouth goes down your throat and chest in quick, hungry bites, and her laugh is short and low where it brushes your stomach. She tugs at the last of your clothes until they are gone, kneels over you in the dark, bare and unhurried, and drags your hand to her breast and then lower.{/n}
+"I want you here, and I want you loud." {n}Her breath is ragged. She settles her thighs on either side of your hips and moves against you, slick and impatient, until you hear yourself say her name.{/n}''',
+    ('nurah.a_margin_for_you', 'teasing'): '''
+{n}Her mouth is on your throat, then lower, as she works your shirt open one button at a time and hisses in satisfaction at what she finds. Your hands find the warm weight of her breasts; she arches into them, shameless, and drags her hips along your lap until the chair groans and neither of you can pretend to be amused.{/n}
+"Revisions," {n}she pants,{/n} "are best done by hand."''',
+    ('nurah.a_margin_for_you', 'kiss'): '''
+{n}Her bodice is open and her breasts brush your chest with each unsteady breath. She kisses you again, deeper, then pulls back with a wicked look and tugs your belt loose.{/n}
+"There. Now you are as exposed as my footnotes."
+{n}She slides down your body, kissing as she goes, and back up again, flushed and dishevelled, pushing the last of her clothes from her hips and settling her bare thighs on either side of yours.{/n}''',
+    ('nurah.a_margin_for_you', 'stay'): '''
+{n}The bed takes your weight; she takes the rest. Her mouth drags down your chest and her fingers close hard on your hip. She rolls you beneath her, bare skin against yours, and smiles with her teeth when your breath breaks.{/n}
+"I am staying," {n}she says a third time, as if the word were a thrilling new vice,{/n} "and I intend to be thorough."
+{n}She kisses a path to your ear, thighs bracketing yours, her hips already moving against you in a slow, deliberate roll.{/n}''',
+}
+_CUT = {
+    'nurah.the_letter_she_wrote.explicit.1': '{n}Nurah braces a hand beside your head, kisses you hard, and lowers herself over you with a shuddering breath. "Mine," she murmurs, "for the length of one letter." The cold lamp and the old letter stay out of reach on the table.{/n}',
+    'nurah.a_margin_for_you.explicit.1': '{n}Nurah rises on her knees in the chair, drags the last of the cloth between you out of the way, and settles over you, her thumb still on your jaw. "Eyes on me," she breathes. "I am not done editing."{/n}',
+    'nurah.a_margin_for_you.explicit.2': '{n}Nurah pins your hands against the pillow, kisses you open-mouthed, and settles over you, hips rolling. "Footsteps," she whispers, "and they still miss the interesting part."{/n}',
+    'nurah.a_margin_for_you.explicit.3': '{n}Nurah catches your mouth, draws your hand along her bare side and down between her thighs, and lifts her hips to meet yours. "Chapter and verse," she murmurs, breathless.{/n}',
+}
+for _scene in SCENES:
+    for _node in _scene['Nodes']:
+        _key = (_scene['Id'], _node['Id'])
+        if _key in _HEAT:
+            _node['Text'] = _node['Text'].rstrip() + _HEAT[_key]
+        elif _node['Id'] in _CUT:
+            _node['Text'] = _CUT[_node['Id']]

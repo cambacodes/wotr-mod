@@ -1217,3 +1217,65 @@ def _runaway_recollections(target):
 for _scene in SCENES:
     if _scene['Id'] in ('nurah.trickster.ran_off.terms', 'nurah.trickster.ran_off.terms_night'):
         _runaway_recollections(_scene)
+
+
+# Heat pass: carry each intimate build-up to the start of the act; the cut stays the lead-in
+# to the reserved explicit segment (same node and exit IDs).
+_PRISON_HEAT = '''
+{n}In the dark her mouth is everywhere: your jaw, your throat, the old scar under your ribs, which she bites as if she means to correct it. The prison shift rides up under your palms until it is a rumpled rope of cloth at her waist. She takes your hand and puts it between her thighs, wet and unembarrassed, and her breath snags against your ear.{/n}
+"Not gently. I have had a season of gentle, and it was all gruel."
+{n}She works your coat and everything beneath it off the bunk with her heels, rolls you onto the straw and straddles your hips, ink-black fingers spread across your chest, rocking against you until the frame knocks the wall in a steady, ridiculous rhythm.{/n}'''
+_HOME_HEAT = '''
+{n}She lets you carry her to the bed that way, heels locked at the small of your back, teeth working at your shoulder. At the edge of the mattress she drags your shirt up and off, spreads her palms across your chest with the greed of someone finally allowed to touch, and gasps when you set her down and your mouth finds her breast. Her fingers knot in your hair and hold you there.{/n}
+"Yes. That. Write that one down." {n}She hauls at your belt with ink-black fingers, curses the buckle, and does not quit until nothing is left between your skins.{/n}'''
+_RUN_HEAT = '''
+{n}Her bare skin is cold from the night air and then not cold at all. She pushes you flat, kneels over you and drags your shirt up with both hands, impatient and amused at once, and presses her open mouth to your stomach and lower, a trail of small stinging bites she plainly means to chronicle. Footsteps pass in the passage; she freezes with her teeth in your hip, grins, and bites down harder.{/n}
+"Quiet, Commander. A fugitive has to be discreet."
+{n}She climbs your body again, takes your wrist and guides your hand between her thighs, slick and shaking with how long she has wanted it.{/n}'''
+_HEAT = {
+    'nurah.trickster.prison.terms': _PRISON_HEAT,
+    'nurah.trickster.prison.terms_late': _PRISON_HEAT,
+    'nurah.trickster.terms': _HOME_HEAT,
+    'nurah.trickster.terms_night': _HOME_HEAT,
+    'nurah.trickster.ran_off.terms': _RUN_HEAT,
+    'nurah.trickster.ran_off.terms_night': _RUN_HEAT,
+}
+_CUTS = {
+    'nurah.trickster.prison.terms': '{n}Nurah catches your wrists, pins them to the straw beside your head, and lowers herself over you with a long, shaking breath that breaks into laughter halfway down. "Chapter two," she gasps. "Hold still, Commander. I am getting to the good part."{/n}',
+    'nurah.trickster.prison.terms_late': '{n}Nurah hooks her ankle behind your knee, drags you tighter beneath her, and bends until her mouth is at your ear and her hips are grinding slow circles against yours. "Late," she breathes, "and worth it. Now stop being clever and let me write you into this mattress."{/n}',
+    'nurah.trickster.terms': '{n}Nurah pulls you down over her, thighs opening, one heel dragging you in by the back of the knee. She takes your face in both inky hands and keeps your eyes on hers as she tilts her hips up to meet you. "Tonight I touch everything," she reminds you, breathless.{/n}',
+    'nurah.trickster.terms_night': '{n}She drops back across the mattress and hauls you down with her, thighs wrapped round yours, her breath hot in your ear. "Do not stop at the draft," she says. "I want the finished copy." Her hips lift to meet yours.{/n}',
+    'nurah.trickster.ran_off.terms': '{n}Nurah straddles your hips, thighs gripping hard, and pins your wrist to the pillow with ink-black fingers. She holds your eyes as she lowers herself over you, lips parted around a breath she means to make you earn.{/n}',
+    'nurah.trickster.ran_off.terms_night': '{n}Nurah rolls astride you, laughing under her breath, and drags your hand to her hip to hold it there. "I left the road for this," she whispers, and sinks her weight down against you, her bare thighs shaking.{/n}',
+}
+_COMMIT_HEAT = {
+    'read.build_up': '''
+{n}Her mouth went down the Commander's throat and chest, hungry and unhurried, ink and rainwater on her lips. She unbuckled the Commander's belt without looking, pulled her own dress up over her head and let it fall across the closed book, and sat back to be looked at, flushed and bare and entirely unrepentant.{/n}
+"Chapter eleven is wrong about you in a dozen places. I intend to take notes."
+{n}She caught the Commander's hands and set them on her hips, rocking forward in the chair until the old wood complained and her breath ran out of jokes.{/n}''',
+    'went.build_up': '''
+{n}The proofs crackled under her back. She laughed, wicked and breathless, and tore the Commander's shirt open down the front with both hands. Her dress had gone somewhere on the floor with the ribbon-marked book; her bare thighs locked at the Commander's waist and her mouth fastened on the Commander's collarbone hard enough to leave a mark she would describe in the next book.{/n}
+"Reviews," {n}she panted against the Commander's ear,{/n} "are written with the whole body."
+{n}A loose galley stuck to her shoulder. She ignored it. She pulled the Commander's hips hard against hers and arched, hungry and impatient, daring the Commander to be gentle.{/n}''',
+}
+_COMMIT_CUTS = {
+    'nurah.trickster.epilogue.commit.explicit.1': '''{n}The Commander glanced toward the open door. Nurah caught the Commander's chin, turned it back, and kissed the hesitation out of the Commander's mouth. "Let them listen," she said. "Let them take notes." She rose on her knees in the chair, dragged the Commander's hand between her thighs, and lowered her weight with a gasp. The book stayed closed on the floor.{/n}''',
+    'nurah.trickster.epilogue.commit.explicit.2': '''{n}A proof slid beneath the Commander's elbow and tore. Nurah caught the reaching hand, pressed it to the damp heat between her thighs, and held it there with a feral grin, her hips lifting off the table to meet the Commander's. The closed book stayed where it lay.{/n}''',
+}
+_MARGIN_HEAT = '''
+{n}That fourth night she did not wait for the epigraph. She straddled you with the book still in her fist and kissed you until the argument went out of her sentences. She was already in your shirt and nothing else; she shrugged it off her shoulders, tossed it over the lamp, and bit your shoulder hard enough to make a point. Then she braced her palms on your chest and ground her bare hips down against you, grinning like a woman who had been banned in several countries and found it flattering.{/n}'''
+
+for _scene in SCENES:
+    _sid = _scene['Id']
+    for _node in _scene['Nodes']:
+        if _sid in _HEAT and _node['Id'].startswith('threshold'):
+            _node['Text'] = _node['Text'].rstrip() + _HEAT[_sid]
+        elif _sid in _HEAT and _node['Id'] == _sid + '.explicit.1':
+            _node['Text'] = _CUTS[_sid]
+        elif _sid == 'nurah.trickster.epilogue.commit':
+            if _node['Id'] in _COMMIT_HEAT:
+                _node['Text'] = _node['Text'].rstrip() + _COMMIT_HEAT[_node['Id']]
+            elif _node['Id'] in _COMMIT_CUTS:
+                _node['Text'] = _COMMIT_CUTS[_node['Id']]
+        elif _sid == 'nurah.trickster.epilogue.the_margin' and _node['Id'] == 'start':
+            _node['Text'] = _node['Text'].rstrip() + _MARGIN_HEAT
