@@ -226,6 +226,12 @@ internal static class HorzalahTricksterTests
         var unmetYes = Take(unmet, ng, "exit", 0, Primed, Ear, P + "came_herself");
         check(Avail(kept, Later(story, unmetYes, 48)), "Trk_Horzalah_NoGreybor: the story told on the floor of the room does not reach the Guild kept.");
 
+        // H01/H03: carry the real guard closures forward; neither start state earns Started.
+        check(!ng.Has(Started), "H03: fresh unmet fixture already has Started.");
+        var failedCombat = Take(unmet, ng, "outmatched", 0, Closed, P + "guard_called");
+        check(failedCombat.Has(Started) && Avail(S(P + "epilogue.closed"), Later(story, failedCombat, 72, 6)),
+            "H01/H03: fresh failed combat does not earn the doubled-watch Chapter 6 page.");
+
         // Trk_Horzalah_FirstSight: met at the ambush, the mercy dialog decides; the night never duplicates it.
         var sight = World(story, 5, "trickster", "trickster.ever", "iz.done", "coronation.after", "greybor.q2_done", "greybor.dead", "horzalah.met_q3_a");
         check(!Avail(unmet, sight) && Avail(mercy, sight) && !Avail(unmet, World(story, 5, "trickster", "trickster.ever", "iz.done", "coronation.after", "horzalah.met_q3_b")),
@@ -251,6 +257,10 @@ internal static class HorzalahTricksterTests
         var dismissed = World(story, 5, "trickster", "trickster.ever", "horzalah.met_q3_b", "horzalah.dismissed_b");
         check(dismissed.Has("horzalah.dismissed.latched") && Avail(late, Later(story, dismissed, 24)),
             "Trk_Horzalah_RefusedLate: the native dismissal does not reach the night.");
+        check(!dismissed.Has(Started), "H03: native dismissal fixture already has Started.");
+        var dismissedGuard = Take(late, Later(story, dismissed, 24), "guard", 0, Closed, P + "guard_called");
+        check(dismissedGuard.Has(Started) && Avail(S(P + "epilogue.closed"), Later(story, dismissedGuard, 72, 6)),
+            "H01/H03: native dismissal then guard does not earn the doubled-watch Chapter 6 page.");
         var declined = Take(collar, Later(story, Take(gift, Later(story, Take(kept, Later(story, lateYes, 48), "wants", 0, Wants), 48), "decline_end", 0, Tested), 24), "buyer", 0, Declined);
         check(!declined.Has(Committed) && !Avail(move, Later(story, declined, 12)) && Avail(move, Later(story, declined, 24)),
             "Trk_Horzalah_RefusedLate: her soft no does not hold a day before she moves.");

@@ -200,7 +200,13 @@ class RoundTwoTests(unittest.TestCase):
                     answers = [a for a in self.node(sid, incoming)['Choices'] if self.visible(a, flags)]
                     self.assertEqual(1, len(answers))
                     self.assertEqual(earned, answers[0]['Next'] == retained)
-                    self.assertEqual(not earned, self.node(sid, answers[0]['Next'])['Text'].startswith('[PROSE PENDING:'))
+                    shown = self.node(sid, answers[0]['Next'])['Text']
+                    self.assertFalse(shown.startswith('[PROSE PENDING:'))
+                    if incoming == 'sister':
+                        self.assertEqual(confessed, 'she told you once' in shown)
+                    elif not earned:
+                        self.assertEqual(confessed, 'sergeant' in shown)
+                        self.assertEqual(touched, 'seven minutes' in shown)
 
     def test_epilogue_recollections_require_prescription_answer(self):
         t, p = polish.T, polish.P

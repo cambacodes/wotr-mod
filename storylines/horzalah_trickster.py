@@ -382,7 +382,7 @@ SCENES.append(scene(H + "unmet.knife", "Hired help is so disappointing", "Horzal
     hz("outmatched", '''{n}Her knife catches your sword arm. She kicks the lamp aside and drives you against the bedpost, blade at your throat. The guards batter the door; its hinge tears free.{/n}
 "A whole watch to save one mortal!" {n}She drags the edge across your skin, drawing blood, then pulls away from the splintering door.{/n} "Sleep with them in your bed next time."
 {n}The air folds around her. The guards burst in with drawn steel and find you bleeding beside the overturned lamp.{/n}''',
-       c("[Double the watch.]", flags=(GUARD, CLOSED)))],
+       c("[Double the watch.]", flags=(GUARD, CLOSED, STARTED)))],
     requires=("trickster", "iz.done", "coronation.seen"),
     forbids=(PRIMED, REFUSED, CLOSED, MET_A, MET_B, Q2_DONE), ForbidOverrides={Q2_DONE: LAPSED},
     last=6, Relationship=REL, Remote=True, Kind="visit", TricksterDevice=True, TricksterState="unmet"))
@@ -433,7 +433,7 @@ SCENES.append(scene(H + "late.at_night", "A night without sleep", "Horzalah", 5,
        c("[Pull out the knife. Spend 100 Favors keeping the lords' men at the front.]", flags=(PRIMED, EAR, LATE, STARTED), crusade=("Favors", -100))),
     hz("guard", '''{n}You shout. She does not flinch at it. She only looks at you as though you had shown her something she had expected all along, and found it disappointing anyway.{/n}
 "Then keep your guards, mortal. Keep your head. See how long either lasts." {n}The air folds round her, and your door bursts open on an empty room.{/n}''',
-       c("Continue", flags=(GUARD, CLOSED)))],
+       c("Continue", flags=(GUARD, CLOSED, STARTED)))],
     requires=("trickster",), RequiresAnyGroups=[[DISMISSED, REFUSED]], forbids=(PRIMED, CLOSED),
     delay=24, last=6, Relationship=REL, Remote=True, Kind="visit", TricksterDevice=True, TricksterState="late"))
 tag(H + "late.at_night", "T")
