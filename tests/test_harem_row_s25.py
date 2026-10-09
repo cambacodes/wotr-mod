@@ -117,15 +117,15 @@ class S25Tests(unittest.TestCase):
             blocked.flags.add(s25.P + terminal)
             self.assertFalse(rrt_verify.sim_available(self.model, body, blocked))
 
-    def test_optional_sequence_remains_blocked_even_with_every_deed(self):
+    def test_optional_sequence_has_consistent_gates_and_table_placement(self):
         for step in ("company", "desire", "choice", "morning"):
             body = self.rows[step]
             state = self.state(step, s25.flags("settle.kept", "retry.kept", *s25.LOVER))
-            self.assertFalse(rrt_verify.sim_available(self.model, body, state))
-            self.assertIn(s25.P + "ready", body["Forbids"])
-            self.assertTrue(body["ManualOnly"])
+            self.assertTrue(rrt_verify.sim_available(self.model, body, state))
+            self.assertFalse(set(body["Requires"]) & set(body["Forbids"]))
+            self.assertFalse(body["ManualOnly"])
             self.assertEqual(body["Kind"], "event")
-            self.assertFalse(body.get("InteractionHub"))
+            self.assertEqual(body["InteractionHub"], "household.table")
             for woman in s25.PAIR:
                 self.assertIn(woman + ".present_now", body["Requires"])
         self.assertEqual(self.rows["company"]["RequiresAnyGroups"], [list(s25.flags("settle.kept", "retry.kept"))])
@@ -170,11 +170,7 @@ class S25Tests(unittest.TestCase):
         self.assertFalse(any("enmity" in f or "reconciled" in f or "committed" in f or "closed" in f for f in writes))
 
     def candidate(self, step):
-        # Remove ONLY the retirement veto in a test copy. This exposes the
-        # independent contract gates; it never enables the shipped row.
-        body = copy.deepcopy(self.rows[step])
-        body["Forbids"].remove(s25.P + "ready")
-        return body
+        return copy.deepcopy(self.rows[step])
 
     def test_reserved_continuations_recheck_bodies_and_losses_independently(self):
         for step in ("company", "desire", "choice", "morning"):
