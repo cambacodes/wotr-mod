@@ -439,9 +439,9 @@ s("the_evening_she_kept", "After the answer arrived", '"You asked me to come to 
     n("night", "Narrator", """{n}Konomi meets the kiss with a quick intake of breath. Her hand tightens at your neck. The next kiss is less careful, and she laughs when the edge of the table catches you both by surprise.{/n}
 "We have discussed this room's furniture quite enough."
 {n}She takes your hand and leads you past it. At the inner door she turns back and starts on your collar herself, briskly, as if she has been wanting to all evening. "I have been sitting across from you all evening pretending to care about mushrooms. Get this off."{/n}
-{n}Her sash comes loose under your hands. She lets the silk fall, then catches your wrists and draws your hands back to her warm skin. She pushes you onto the bed by the shoulders and comes down over you, her hair falling around your faces.{/n}
+{n}Her sash comes loose under your hands. She lets the silk fall, then catches your wrists and draws your hands back to her warm skin. She pushes you onto the bed by the shoulders and follows, her hair falling around your faces.{/n}
 "There," {n}she says against your mouth.{/n} "Now you have my attention."
-{n}She kisses you again and pulls you close. Her skin is hot wherever it meets yours, and she moves against you in a long, testing slide, as if checking a theory she proved to herself some time ago. Her breath snags on the second pass.{/n}
+{n}She kisses you again and pulls you close. Her skin is hot wherever it meets yours, and her breath snags against your ear, as if she were checking a theory she proved to herself some time ago and means to check it twice.{/n}
 "Eleven courses of mushrooms," {n}she murmurs against your ear, wretched with laughter and wanting.{/n} "I shall have it struck from the record."
 {n}Afterward, she lies beside you with one hand resting loosely against your chest. When you move, her fingers close for a moment, then relax.{/n}
 "I had a better answer about the waiting yard," {n}she murmurs.{/n}

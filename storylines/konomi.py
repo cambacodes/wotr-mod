@@ -163,7 +163,7 @@ s("evening", "No business before morning", 3, '"You said you would keep this eve
 "I have wanted you across this table since the margin of that report. Do not make me wait while you hunt for the clasp. It is at the back."
 {n}You find it. The silk slides from her shoulders onto the cushions. She catches your mouth before you can look down, her fingers working swiftly through your fastenings. When your hands reach her bare waist, her breath breaks against your lips.{/n}
 "Here. I have waited long enough."
-{n}She draws you down onto the cushions and pulls you close, her hair spilling over your cheek. The silk is gone, and so is whatever remained of her patience. She lies back with her knees drawn up either side of you, flushed to the collarbone, and drags your hand down her body to show you where she has wanted it all through supper. Her breath breaks on it. She makes no effort to be quiet about that either.{/n}
+{n}She draws you down onto the cushions and pulls you close, her hair spilling over your cheek. The silk is gone, and so is whatever remained of her patience. She lies back flushed to the collarbone and holds your hands to her bare skin, showing you without a word how long she has wanted this, all through supper. Her breath breaks. She makes no effort to be quiet about that either.{/n}
 "Do not make me ask twice, Commander. I never ask twice."
 {n}In the morning she borrows your comb, criticizes it, and uses it anyway. Before you leave, she catches you at the door for another kiss.{/n}
 "No business until after breakfast," {n}she says.{/n} "I am making that a rule."''', c('[Agree to the rule.]', flags=("konomi.lovers", "konomi.private_night"))),

@@ -90,9 +90,9 @@ def integrate(payload):
     # encounter; there is no account in the Commander's hand or counting exercise.
     approach = '''{n}She keeps her grip on your coat and walks you backward to the desk. Her rings come off into the inkwell lid, one at a time. You loosen her robe.{/n}
 "Two days. I shall not spend another evening waiting."
-{n}She seats you on the cleared wood. Her hands slide inside your coat, then tug it from your shoulders. She settles across your lap and kisses you until she has to stop for breath.{/n}
+{n}She seats you on the cleared wood. Her hands slide inside your coat and tug it from your shoulders, and she kisses you until she has to stop for breath.{/n}
 "There. A much better use of your mouth."
-{n}The robe hangs open now, and under it she is bare and warm and quick-breathing, the silk gathered round her hips. She guides your hands up her ribs herself and holds them there, and when your thumbs find her she shuts her eyes and says a word no chancery would ever have minuted. When she opens them the careful envoy is gone.{/n}
+{n}The robe hangs open now, and under it she is bare and warm and quick-breathing. She guides your hands to her ribs herself and holds them there, and when you do not stop she shuts her eyes and says a word no chancery would ever have minuted. When she opens them the careful envoy is gone.{/n}
 "Do not stop to be clever," {n}she says, unsteady.{/n} "I will know, and I shall be unbearable about it."
 {n}Her hand grips the back of your neck. She presses you back onto the desk and follows, her mouth still on yours.{/n}'''
     text("trickster.never_arrived.second_supper", "accept", approach)
@@ -102,14 +102,14 @@ def integrate(payload):
 
     # Each slot starts where its approach actually ends, and stops at act onset.
     defaults = {
-        "evening": "{n}On the cushions she keeps you close, her hand firm at the back of your neck. She breaks the kiss to catch her breath, then reaches between you.{/n}",
-        "trickster.never_arrived.rooms": "{n}Above you on the desk, she releases your mouth and looks down into your face. Her hand slips to your hip; she draws closer.{/n}",
-        "trickster.never_arrived.second_supper": "{n}Above you on the desk, she releases your mouth and looks down into your face. Her hand slips to your hip; she draws closer.{/n}",
-        "trickster.dismissed.private": "{n}She keeps your wrists against the desk. Her hair brushes your cheek as she bends to kiss you again, then pauses close enough that you feel her unsteady breath.{/n}",
-        "trickster.dismissed.a_season": "{n}Still astride your lap, she works the belt free and lets it fall beside the chair. She braces a hand on your shoulder and draws closer.{/n}",
-        "chosen_evening": "{n}She stays over you on the bed, her loose hair against your chest. When you draw her closer, she answers with a breathless kiss and an impatient hand at your hip.{/n}",
-        "the_evening_she_kept": "{n}She stays over you, watching your face as your hands move along her bare sides. Her fingers tighten on your shoulder; she bends to kiss you and draws closer.{/n}",
-        "private_last_visit": "{n}Astride your hips, she leans down to kiss you again. Her hand closes over yours on her waist. For once she has no remark ready; she draws closer instead.{/n}",
+        "evening": "{n}On the cushions she keeps you close, her hand firm at the back of your neck, and kisses you until the supper and the careful distance she keeps are both forgotten. When she finally breaks away to breathe she is flushed and laughing, and for once she has no remark ready at all.{/n}",
+        "trickster.never_arrived.rooms": "{n}She releases your mouth only to look at you, flushed and unguarded, then kisses you again as the desk creaks and the supper account slides unnoticed to the floor. Beyond the door a step on the stair hesitates and, wisely, goes away.{/n}",
+        "trickster.never_arrived.second_supper": "{n}She releases your mouth only to look at you, flushed and unguarded, then kisses you again as the desk creaks and the supper account slides unnoticed to the floor. Beyond the door a step on the stair hesitates and, wisely, goes away.{/n}",
+        "trickster.dismissed.private": "{n}She keeps your wrists against the desk and bends to kiss you again, slowly, so that you feel every unsteady breath. Dispatches and seals go on sliding off the desk, and for a long while the Crown's envoy has no assessment to offer at all.{/n}",
+        "trickster.dismissed.a_season": "{n}She works the belt free and lets it fall beside the chair. She braces a hand on your shoulder and kisses you with her whole mouth, and the chair, the lamp and the winter levy go very far away; the rings catch the light once against your skin, and her laugh breaks off short.{/n}",
+        "chosen_evening": "{n}Her loose hair falls against your chest. When you draw her closer she answers with a breathless kiss, and the post, the council and the whole ledger of her departure stop mattering for a good while; her low laugh breaks into your mouth, and she is not composed again until the candle is nearly out.{/n}",
+        "the_evening_she_kept": "{n}Her fingers tighten on your shoulder as your hands move along her bare sides. She bends to kiss you, then forgets to stop, and the waiting yard, the dispatches and the clever speech she prepared go quiet one after another, until all you can hear is her breath and, once, a helpless laugh against your neck.{/n}",
+        "private_last_visit": "{n}She kisses you again, slowly, and her hand closes over yours at her waist. For once she has no remark ready; the lamp she insisted on keeps its gold on her shoulder and her throat and the hair stuck to her cheek while the war stays outside, and the two of you stop counting how long you have.{/n}",
     }
     for sid, value in defaults.items():
         slot = next(n for n in page(sid)["Nodes"] if ".explicit." in n["Id"])
