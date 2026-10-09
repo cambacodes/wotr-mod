@@ -12,13 +12,59 @@ player's choice scoring (same traversal, same Requires/Forbids/EnterSet/crusade/
 scheduled native world. Only the export (development/Story.json) is read; no game install is needed.
 Each policy runs in its own process (memory), with PYTHONHASHSEED=0 (determinism).
 """
-import argparse, collections, glob, inspect, json, os, re, subprocess, sys
+import argparse, collections, glob, hashlib, inspect, json, os, re, subprocess, sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 KIT = ROOT / "tools" / "ideal-run-kit"
 NEVER = "__player_never_takes_this__"
+TRACE_SCHEMA = "rrt-playthrough-trace/2"
+
+
+def executed_scene(V, model, scene, state, rel_flags, plan, ordinal=0, player=None, answer_list=None):
+    """Observe the real simulator; intern detached states within this scene event.
+
+    Steps contain accepted selections only. A displayed but rejected node is the
+    end_node, never a decision. Targets without node_entry are not displayed.
+    State indices address this event's states array; observations are occurrences,
+    including writes of flags already held. No registry declarations are applied.
+    """
+    states, state_indices, observations = [], {}, []
+    def reference(snapshot):
+        key = json.dumps(snapshot, sort_keys=True, ensure_ascii=False)
+        if key not in state_indices:
+            state_indices[key] = len(states); states.append(snapshot)
+        return state_indices[key]
+    def observe(record):
+        before, after = record.pop("before"), record.pop("after")
+        observations.append(dict(record, event=ordinal, before_state=reference(before), after_state=reference(after)))
+    before = V.sim_observation_state(state)
+    completed = (player or V.sim_play)(model, scene, state, rel_flags, plan, observer=observe, answer_list=answer_list)
+    final = V.sim_observation_state(state)
+    if not observations or observations[-1]["kind"] != "terminal" or states[observations[-1]["after_state"]] != final:
+        raise ValueError("execution observer final state disagrees with simulator: " + scene["Id"])
+    steps, display, entry = [], None, None
+    for record in observations:
+        if record["kind"] == "node_entry": entry = record
+        elif record["kind"] == "display": display = dict(record, entry_state=entry["before_state"])
+        elif record["kind"] == "selection":
+            steps.append(dict(node=record["address"]["node"], index=record["address"]["choice"], text=record["text"],
+                              paragraphs=display["paragraphs"], set=record["writes"], check=record["check"],
+                              crusade=record["crusade"], alignment=record["alignment"], native_next=record["native_next"],
+                              answer_name=record["identity"]["name"], answer_guid=record["identity"]["guid"],
+                              identity=record["identity"], observation=record["sequence"],
+                              before_entry_state=display["entry_state"], visible_state=display["after_state"],
+                              after_choice_state=record["after_state"]))
+            display = None
+    end_node = (dict(node=display["address"]["node"], paragraphs=display["paragraphs"],
+                     before_entry_state=display["entry_state"], visible_state=display["after_state"])
+                if display else None)
+    return dict(execution_schema=V.SIM_OBSERVATION_SCHEMA, event=ordinal, states=states, observations=observations,
+                before_state=reference(before), after_state=reference(final), completed=completed,
+                steps=steps, end_node=end_node,
+                set=sorted(set(final["flags"]) - set(before["flags"])),
+                unset=sorted(set(before["flags"]) - set(final["flags"])))
 
 
 def reexec_if_needed():
@@ -236,15 +282,19 @@ def run_policy(name, policies, out_dir):
         on, offf = sorted(now - snap["flags"]), sorted(snap["flags"] - now)
         snap["flags"] = now
         if not on and not offf: return
-        if EVENTS and EVENTS[-1]["type"] == "world" and EVENTS[-1]["ch"] == st.chapter and EVENTS[-1]["hour"] == st.hour:
-            e = EVENTS[-1]
-            e["on"] = sorted((set(e["on"]) | set(on)) - set(offf)); e["off"] = sorted((set(e["off"]) | set(offf)) - set(on))
-        else:
-            EVENTS.append(dict(type="world", why=why, ch=st.chapter, day=st.hour // 24 + 1, hour=st.hour, on=on, off=offf))
+        selected = story.get("SelectedAnswers", {})
+        changes = [dict(flag=flag, held=flag in now,
+                        origin="derived_recomputation" if why == "derived_recomputation" else
+                               "assumed_native_choice" if flag in selected else
+                               "assumed_native_reader" if flag in model.native else "policy_assumption",
+                        answer_guid=selected.get(flag)) for flag in on + offf]
+        EVENTS.append(dict(type="world", event=len(EVENTS), why=why, ch=st.chapter, day=st.hour // 24 + 1,
+                           hour=st.hour, on=on, off=offf, changes=changes, state=V.sim_observation_state(st)))
 
     chstart = {}
     _complete = V.sim_complete
     def complete(model_, st):
+        world_event(st, "policy_schedule")
         chstart.setdefault(st.chapter, st.hour)
         if mythic_flag != "trickster" and st.chapter >= 1:
             st.flags.discard("trickster"); st.flags.add(mythic_flag); st.times.setdefault(mythic_flag, 0)
@@ -252,8 +302,9 @@ def run_policy(name, policies, out_dir):
             if st.chapter > c or (st.chapter == c and st.hour - chstart[c] >= d * 24): st.flags.add(k); st.times.setdefault(k, st.hour)
             else: st.flags.discard(k)
         st.flags.difference_update(never)
+        world_event(st, "policy_schedule")
         r = _complete(model_, st)
-        world_event(st, "native/derived")
+        world_event(st, "derived_recomputation")
         return r
     V.sim_complete = complete
     _init = V.SimState.__init__
@@ -262,44 +313,17 @@ def run_policy(name, policies, out_dir):
 
     _play = V.sim_play
     def play(model_, s, st, rel_flags, p=None):
-        world_event(st, "native/derived")
+        world_event(st, "policy_schedule")
         current["scene"] = s
         p = p or V.sim_plan(model_, s, st, rel_flags)
-        before = set(st.flags)
-        # visible paragraphs, replayed along the path with the runtime's node-entry state
-        state = set(before)
-        if not V.is_epilogue(s) and s["NativeReturnCue"] is None:
-            sf = model_.rels.get(s["Relationship"], {}).get("StartedFlag")
-            if sf: state.add(sf)
-        steps = []
-        for c in p[1]:
-            node = next(n for n in s["Nodes"] if any(x is c for x in n["Choices"]))
-            state |= set(node.get("EnterSet", []))
-            vis = [i for i, para in enumerate(node.get("Paragraphs", [])) if all(f in state for f in para.get("Requires", []))
-                   and not any(f in state for f in para.get("Forbids", [])) and all(any(f in state for f in g) for g in para.get("AnyGroups", []))]
-            steps.append(dict(node=node["Id"], index=next(i for i, x in enumerate(node["Choices"]) if x is c), text=c["Text"],
-                              paragraphs=vis, set=list(c["Set"]),
-                              check=c.get("Check") and {k: c["Check"][k] for k in ("Skill", "DC") if k in c["Check"]},
-                              crusade=c.get("Crusade"), alignment=c.get("Alignment"), native_next=c.get("NativeNext")))
-            state |= set(c["Set"])
-        end_node = None
-        if p[1]:
-            last = p[1][-1]
-            nxt = last["Check"]["Success"] if last.get("Check") else (None if last["Abort"] else last["Next"])
-            if nxt and nxt in model_.nodes[s["Id"]]:
-                n = model_.nodes[s["Id"]][nxt]
-                state |= set(n.get("EnterSet", []))
-                end_node = dict(node=nxt, paragraphs=[i for i, para in enumerate(n.get("Paragraphs", [])) if all(f in state for f in para.get("Requires", []))
-                                and not any(f in state for f in para.get("Forbids", [])) and all(any(f in state for f in g) for g in para.get("AnyGroups", []))])
-        ok = _play(model_, s, st, rel_flags, p)
-        for k in after.get(s["Id"], []): st.flags.add(k); st.times.setdefault(k, st.hour)
-        now = set(st.flags)
+        executed = executed_scene(V, model_, s, st, rel_flags, p, len(EVENTS), _play)
         EVENTS.append(dict(type="scene", id=s["Id"], rel=s["Relationship"], owner=s["Owner"], title=s.get("Title"),
                            ch=st.chapter, day=st.hour // 24 + 1, hour=st.hour, remote=V.is_remote(s),
-                           table=V.is_table_scene(s), epilogue=V.is_epilogue(s), completed=ok,
-                           steps=steps, end_node=end_node, set=sorted(now - before), unset=sorted(before - now)))
-        snap["flags"] = now
-        return ok
+                           table=V.is_table_scene(s), epilogue=V.is_epilogue(s), **executed))
+        snap["flags"] = set(st.flags)
+        for k in after.get(s["Id"], []): st.flags.add(k); st.times.setdefault(k, st.hour)
+        world_event(st, "policy_after_scene")
+        return executed["completed"]
     V.sim_play = play
 
     for c, d in (policies.get("chapter_days") or {}).items(): V.SIM_CHAPTER_DAYS[int(c)] = float(d)
@@ -326,7 +350,22 @@ def run_policy(name, policies, out_dir):
         skipped_scenes=sorted(skip))
     summary["unavailable"] = {k: v for k, v in summary["unavailable"].items() if v}
     out_dir.mkdir(parents=True, exist_ok=True)
-    trace = dict(schema="rrt-playthrough-trace/1", summary=summary, chapters=res["chapters"], relationships=res["relationships"],
+    def file_digest(path):
+        return hashlib.sha256(path.read_bytes()).hexdigest() if path.exists() else None
+    trace = dict(schema=TRACE_SCHEMA,
+                 inputs=dict(candidate_sha=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, encoding="utf-8").strip(),
+                             export_digest=file_digest(ROOT / "development/Story.json"),
+                             registry_digest=file_digest(ROOT / "tools/narrative_consistency_contracts.json"),
+                             policy_digest=hashlib.sha256(json.dumps(policies, sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest(),
+                             kit_digests={str(path.relative_to(ROOT)): file_digest(path) for path in
+                                          sorted({KIT / "avoid.txt", *KIT.glob("natives/*.txt"), *KIT.glob("w6/*.extra.txt")})} if kit else {},
+                             simulator_version=V.SIM_OBSERVATION_SCHEMA, simulator_digest=file_digest(ROOT / "tools/rrt_verify.py"),
+                             walker_digest=file_digest(Path(__file__))),
+                 assumptions=dict(evidence_level="simulated", checks="success", area_and_contacts="assumed",
+                                  inventory_effects="unmodelled", native_schedule="policy, not played native history",
+                                  target_entry="only observed node entries; PostPayment display is unmodelled",
+                                  mythic_enforced=bool(policy.get("enforce_mythic")), initial_crusade_resources="budget projection"),
+                 summary=summary, chapters=res["chapters"], relationships=res["relationships"],
                  events=EVENTS, final_flags=sorted(st.flags))
     with open(out_dir / "trace.json", "w", encoding="utf-8", newline="\n") as f:
         json.dump(trace, f, ensure_ascii=False, indent=0, sort_keys=False)

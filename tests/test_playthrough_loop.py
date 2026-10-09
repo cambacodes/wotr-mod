@@ -3,6 +3,7 @@
 All provider invocations use a disposable fake codex executable; no provider calls.
 """
 import copy
+import inspect
 import json
 import os
 import shutil
@@ -20,6 +21,8 @@ sys.path.insert(0, str(TOOLS))
 import admission
 import dossier
 import review
+import walker
+import dossier_evidence
 
 
 def write_json(path, value):
@@ -501,6 +504,269 @@ class DossierEvidenceTests(unittest.TestCase):
         table = dossier.state_table(ctx, {'woman.closed'})
         self.assertIn('| closed |', table)
         self.assertNotIn('absent', table)
+
+
+class ExecutedTraceTests(unittest.TestCase):
+    """Job con4: causal counterexamples at the executed trace/dossier seam.
+
+    These assert observed histories, not registry/ledger semantic verdicts (jobs
+    1/5). Each contrast changes what was played or displayed on the same path.
+    """
+    @classmethod
+    def setUpClass(cls):
+        global verify
+        from tools import rrt_verify as verify
+
+    def fixture(self, choices=None, **scene_fields):
+        nodes = [dict(Id='start', Text='Before the choice.', EnterSet=['entry'],
+                      Paragraphs=[dict(Text='Earlier rescue.', Requires=['rescued'])],
+                      Choices=choices or [dict(Text='Pay', Next='finish', Set=['rescued'],
+                                              Crusade=dict(Resource='Finances', Amount=-5))]),
+                 dict(Id='finish', Text='She acknowledges it.', EnterSet=['callback.entered'],
+                      Choices=[dict(Text='Continue', Set=['acknowledged'])])]
+        story = dict(Relationships={'woman':dict(StartedFlag='woman.started', CommittedFlag='woman.committed',
+                                                ClosedFlag='woman.closed')},
+                     Scenes=[dict(Id='woman.test', Owner='Woman', Relationship='woman', Nodes=nodes, **scene_fields)])
+        model = verify.Model(story); scene = model.scenes[0]
+        state = verify.SimState(1, 24); state.crusade_resources = {'Finances':10}
+        return model, scene, state
+
+    def execute(self, model, scene, state, indices=(0,0), player=None, ordinal=0):
+        path = [node['Choices'][i] for node, i in zip(scene['Nodes'], indices)]
+        if player is None:
+            plain = copy.deepcopy(state)
+            plain_result = verify.sim_play(model, scene, plain, {}, ((), path))
+        event = walker.executed_scene(verify, model, scene, state, {}, ((), path), ordinal, player)
+        if player is None:
+            self.assertEqual(plain_result, event['completed'])
+            self.assertEqual(verify.sim_observation_state(plain), verify.sim_observation_state(state))
+        event.update(id=scene['Id'], ch=state.chapter, hour=state.hour)
+        return event
+
+    def assert_prefix(self, event, nodes, choices, reason):
+        self.assertEqual(nodes, [o['address']['node'] for o in event['observations'] if o['kind'] == 'display'])
+        self.assertEqual(choices, [(s['node'],s['index']) for s in event['steps']])
+        self.assertEqual(reason, event['observations'][-1]['reason'])
+
+    def mutant(self, old, new):
+        source = inspect.getsource(verify.sim_play)
+        self.assertEqual(1, source.count(old), 'mutation must hit its intended site')
+        namespace = dict(verify.__dict__)
+        exec(compile(source.replace(old,new), '<con4-sim-mutant>', 'exec'), namespace)
+        return namespace['sim_play']
+
+    def test_failed_payment_and_contact_expose_only_executed_prefix(self):
+        for failure in ('funds', 'contact'):
+            with self.subTest(failure=failure):
+                model, scene, state = self.fixture(ContactUnit='host')
+                if failure == 'funds': state.crusade_resources['Finances'] = 4
+                else: state.available_contacts = set()
+                event = self.execute(model, scene, state)
+                self.assert_prefix(event, ['start'], [], 'payment_or_contact_failed')
+                self.assertFalse(event['completed']); self.assertNotIn('rescued', state.flags)
+                self.assertNotIn('callback.entered', state.flags)
+                self.assertEqual(4 if failure == 'funds' else 10, state.crusade_resources['Finances'])
+                self.assertEqual('start', event['end_node']['node'])
+                rows = dossier_evidence.node_states(SimpleNamespace(model=model), event, set())
+                self.assertEqual([], rows[0]['paragraphs']); self.assertIsNone(rows[0]['choice_index'])
+                self.assertEqual('simulator_observed', rows[0]['evidence_level'])
+                state = verify.SimState(1,24); state.crusade_resources = {'Finances':10}; state.available_contacts = {'host'}
+                sibling = self.execute(model, scene, state)
+                self.assert_prefix(sibling, ['start','finish'], [('start',0),('finish',0)], 'completed')
+                self.assertEqual(5, state.crusade_resources['Finances'])
+                self.assertIn('acknowledged', state.flags)
+
+    def test_transaction_rollback_is_not_a_decision_or_publication(self):
+        model, scene, state = self.fixture()
+        scene['Nodes'][0]['Choices'][0]['PostPayment'] = 'finish'
+        # A real publication loses contact; sim_paid_choice rolls back all writes/debit.
+        scene['Nodes'][0]['Choices'][0]['Set'].append('woman.closed')
+        event = self.execute(model, scene, state)
+        self.assert_prefix(event, ['start'], [], 'payment_or_contact_failed')
+        self.assertEqual(10, state.crusade_resources['Finances'])
+        self.assertNotIn('woman.closed', state.flags); self.assertNotIn('rescued', state.flags)
+        payment = next(o for o in event['observations'] if o['kind'] == 'payment')
+        self.assertEqual(event['states'][payment['before_state']], event['states'][payment['after_state']])
+        scene['Nodes'][0]['Choices'][0]['Set'].remove('woman.closed')
+        sibling = self.execute(model, scene, state)
+        self.assertTrue(sibling['completed']); self.assertIn('rescued', state.flags)
+
+    def test_accepted_abort_records_cost_and_effects_without_planned_suffix(self):
+        model, scene, state = self.fixture()
+        scene['Nodes'][0]['Choices'][0].update(Abort=True)
+        event = self.execute(model, scene, state)
+        self.assert_prefix(event, ['start'], [('start',0)], 'accepted_abort')
+        self.assertEqual(5, state.crusade_resources['Finances'])
+        self.assertIn('rescued', event['set']); self.assertNotIn(scene['Id'], state.flags)
+        self.assertIsNone(event['end_node'])
+        model, scene, state = self.fixture()
+        self.assertTrue(self.execute(model, scene, state)['completed'])
+
+    def test_unavailable_answer_and_unentered_target_are_not_execution(self):
+        model, scene, state = self.fixture()
+        scene['Nodes'][0]['Choices'][0]['Crusade'] = None
+        scene['Nodes'][0]['Choices'][0]['Requires'] = ['missing']
+        event = self.execute(model, scene, state)
+        self.assert_prefix(event, ['start'], [], 'choice_unavailable')
+        state.flags.add('missing')
+        sibling = self.execute(model, scene, state, (0,))
+        self.assert_prefix(sibling, ['start'], [('start',0)], 'path_exhausted')
+        self.assertIsNone(sibling['end_node']); self.assertNotIn('callback.entered', state.flags)
+
+    def test_unproduced_event_refusal_and_later_producer_preserve_display_phase(self):
+        choices = [dict(Id='refuse', Text='Refuse rescue', Next='finish', Set=['refused']),
+                   dict(Id='rescue', Text='Perform rescue', Next='finish', Set=['rescued'])]
+        for index, expected in ((0,False),(1,True)):
+            model, scene, state = self.fixture(choices=copy.deepcopy(choices))
+            scene['Nodes'][1]['Paragraphs'] = [dict(Text='You remember the rescue.', Requires=['rescued'])]
+            scene['Nodes'][1]['Choices'][0]['Set'] = ['rescued']  # too late for this paragraph
+            event = self.execute(model, scene, state, (index,0))
+            rows = dossier_evidence.node_states(SimpleNamespace(model=model), event, set())
+            self.assertNotIn('rescued', rows[0]['visible'])
+            self.assertEqual([], rows[0]['paragraphs'])
+            self.assertEqual(expected, 'rescued' in rows[1]['visible'])
+            self.assertEqual([0] if expected else [], rows[1]['paragraphs'])
+            self.assertTrue(event['steps'][0]['answer_name'].endswith('.' + ('rescue' if expected else 'refuse')))
+            self.assertIn('rescued', rows[1]['after_choice'])
+
+    def test_dead_speaker_latest_loss_and_earlier_letter_have_distinct_states(self):
+        # Trace preserves history and individual actors; it does not infer life from commitment.
+        for lost in (False,True):
+            model, scene, state = self.fixture(choices=[dict(Text='Continue', Next='finish')])
+            state.flags.update({'woman.returned','woman.committed','pair.other.alive'})
+            state.times['woman.returned'] = 1
+            if lost: state.flags.add('woman.later_loss'); state.times['woman.later_loss'] = 23
+            scene['Nodes'][0]['Paragraphs'] = [dict(Text='Earlier authored letter.', Requires=['woman.returned'])]
+            event = self.execute(model, scene, state)
+            rows = dossier_evidence.node_states(SimpleNamespace(model=model), event, set())
+            self.assertEqual(lost, 'woman.later_loss' in rows[0]['visible'])
+            self.assertIn('pair.other.alive', rows[0]['visible']); self.assertEqual([0], rows[0]['paragraphs'])
+            snap = event['states'][event['steps'][0]['visible_state']]
+            self.assertEqual(1, snap['times']['woman.returned'])
+            if lost: self.assertEqual(23, snap['times']['woman.later_loss'])
+
+    def test_promised_stance_missing_and_opposite_acknowledgment_are_not_fabricated(self):
+        for opened, opposite in ((False,False),(True,False),(True,True)):
+            model, scene, state = self.fixture(choices=[dict(Id='share', Text='Share', Next='finish', Set=['stance.share'])])
+            scene['Nodes'][1]['Paragraphs'] = [dict(Text='Sharing acknowledged.', Requires=['stance.share']),
+                                               dict(Text='Exclusive acknowledged.', Requires=['stance.exclusive'])]
+            if opposite: scene['Nodes'][0]['Choices'][0]['Set'] = ['stance.exclusive']
+            event = self.execute(model, scene, state, (0,0) if opened else (0,))
+            self.assertTrue(event['steps'][0]['answer_name'].endswith('.share'))
+            if not opened:
+                self.assertIsNone(event['end_node']); self.assertEqual(['start'], [s['node'] for s in event['steps']])
+            else: self.assertEqual([1] if opposite else [0], event['steps'][1]['paragraphs'])
+
+    def test_unwitnessed_reaction_world_receipt_and_report_do_not_create_witness(self):
+        for knowledge, expected in (([],[]),(['B.witness'],[0]),(['B.report'],[1])):
+            model, scene, state = self.fixture(choices=[dict(Text='Continue', Next='finish')])
+            state.flags.update(['event.happened', 'B.present', *knowledge])
+            scene['Nodes'][0]['Paragraphs'] = [dict(Text='I saw it.', Requires=['B.witness']),
+                                               dict(Text='I heard about it.', Requires=['B.report'])]
+            event = self.execute(model, scene, state)
+            self.assertEqual(expected, event['steps'][0]['paragraphs'])
+            self.assertEqual('B.witness' in knowledge, 'B.witness' in event['states'][event['after_state']]['flags'])
+
+    def test_repeated_selection_and_refreshed_time_are_occurrences_not_deltas(self):
+        model, scene, state = self.fixture(choices=[dict(Id='promise', Text='Promise', Set=['promise'], RefreshTimes=['promise'])])
+        state.flags.add('promise'); state.times['promise'] = 1
+        event = self.execute(model, scene, state, (0,))
+        self.assertNotIn('promise', event['set'])
+        self.assertEqual(['promise'], event['steps'][0]['set'])
+        selection = next(o for o in event['observations'] if o['kind'] == 'selection')
+        self.assertEqual(1, event['states'][selection['before_state']]['times']['promise'])
+        self.assertEqual(24, event['states'][selection['after_state']]['times']['promise'])
+        state.hour = 48
+        second = self.execute(model, scene, state, (0,), ordinal=1)
+        self.assertEqual(event['steps'][0]['answer_guid'], second['steps'][0]['answer_guid'])
+        self.assertEqual(48, second['states'][second['after_state']]['times']['promise'])
+        self.assertEqual(24, event['states'][event['after_state']]['times']['promise'])
+
+    def test_observer_is_optional_and_final_state_disagreement_fails(self):
+        model, scene, state = self.fixture()
+        plain, observed = copy.deepcopy(state), copy.deepcopy(state)
+        path = [n['Choices'][0] for n in scene['Nodes']]
+        plain_result = verify.sim_play(model,scene,plain,{},((),path))
+        result = self.execute(model,scene,observed)
+        self.assertEqual(plain_result, result['completed'])
+        self.assertEqual(verify.sim_observation_state(plain), verify.sim_observation_state(observed))
+        def divergent(*args, **kwargs):
+            ok = verify.sim_play(*args, **kwargs); args[2].flags.add('unobserved.write'); return ok
+        with self.assertRaisesRegex(ValueError, 'final state disagrees'):
+            self.execute(model,scene,copy.deepcopy(state), player=divergent)
+        result['after_state'] = result['before_state']
+        with self.assertRaisesRegex(ValueError, 'final state mismatch'):
+            dossier_evidence.node_states(SimpleNamespace(model=model),result,set())
+
+    def test_runtime_answer_identity_forms_and_ambiguous_native_hosts(self):
+        model, scene, state = self.fixture(choices=[dict(Text='Ordinary'),dict(Id='saved',Text='Named')])
+        node = scene['Nodes'][0]
+        for index, expected, guid in ((0,'answer.woman.test.start.0','3ce0b116b4e42d3eb627735e74ecbc44'),
+                                      (1,'answer.woman.test.start.saved','8844532f8d6fdb423316042bf3bf5703')):
+            identity = verify.sim_answer_identity(scene,node,index)
+            self.assertEqual(expected, identity['name'])
+            self.assertEqual(guid, identity['guid'])
+        scene['Owner'] = 'WomanEpilogue'; node['Choices'] = [verify.norm_scene(dict(Nodes=[dict(Choices=[dict(Text='Continue')])]))['Nodes'][0]['Choices'][0]]
+        self.assertEqual('answer.woman.test.start.continue', verify.sim_answer_identity(scene,node,0)['name'])
+        self.assertEqual('6be29c1f7fd3a1042c76fbc13be78176', verify.sim_answer_identity(scene,node,0)['guid'])
+        node['Choices'].append(dict(node['Choices'][0], Id='other', Text='Another exit'))
+        node['Choices'][0]['Id'] = 'continue'
+        self.assertEqual('answer.woman.test.start.continue', verify.sim_answer_identity(scene,node,0)['name'])
+        scene.update(ReturnToList=True,AnswerLists=['native-list-A','native-list-B'])
+        unknown = verify.sim_answer_identity(scene,node,0)
+        self.assertIsNone(unknown['guid']); self.assertEqual(2,len(unknown['candidates']))
+        self.assertEqual('answer.woman.test.native-list-B.start.0', verify.sim_answer_identity(scene,node,0,'native-list-B')['name'])
+        self.assertEqual('40b6eea157b28e2497a87403d8eccecb', verify.sim_answer_identity(scene,node,0,'native-list-B')['guid'])
+        native_event = walker.executed_scene(verify,model,scene,state,{},((),[node['Choices'][0]]),answer_list='native-list-B')
+        self.assertEqual('40b6eea157b28e2497a87403d8eccecb',native_event['steps'][0]['answer_guid'])
+        scene['AnswerLists'] = ['native-list-A']
+        self.assertEqual('answer.woman.test.native-list-A.start.0', verify.sim_answer_identity(scene,node,0)['name'])
+
+    def test_execution_mutations_are_killed_by_the_prefix_and_history_assertions(self):
+        mutations = [
+            ('if not accepted: return finish(False, "payment_or_contact_failed")', 'if not accepted: publish()', 'funds'),
+            ('if c["Abort"]: return finish(False, "accepted_abort")', 'if False: return finish(False, "accepted_abort")', 'abort'),
+            ('emit("selection", before, node=node["Id"]', 'emit("selection", snapshot(), node=node["Id"]', 'future-set'),
+            ('writes=list(c["Set"])', 'writes=[]', 'repeat'),
+        ]
+        for old,new,case in mutations:
+            with self.subTest(case=case):
+                model,scene,state = self.fixture()
+                if case == 'funds': state.crusade_resources['Finances'] = 4
+                if case == 'abort': scene['Nodes'][0]['Choices'][0]['Abort'] = True
+                mutant = self.mutant(old,new)
+                event = self.execute(model,scene,state,player=mutant)
+                with self.assertRaises(AssertionError):
+                    if case == 'funds': self.assert_prefix(event,['start'],[],'payment_or_contact_failed')
+                    elif case == 'abort': self.assert_prefix(event,['start'],[('start',0)],'accepted_abort')
+                    elif case == 'future-set':
+                        selection = next(o for o in event['observations'] if o['kind']=='selection')
+                        self.assertNotIn('rescued',event['states'][selection['before_state']]['flags'])
+                    else: self.assertEqual(['rescued'],event['steps'][0]['set'])
+
+    def test_four_causal_history_regressions_kill_evidence_mutations(self):
+        probes = [
+            (verify, 'sim_play', 'if all(f in st.flags for f in p.get("Requires", []))',
+             'if all(f in st.flags | set(c["Set"]) for f in p.get("Requires", []))',
+             self.test_unproduced_event_refusal_and_later_producer_preserve_display_phase),
+            (verify, 'sim_observation_state', 'flags=sorted(st.flags)',
+             'flags=sorted(f for f in st.flags if f != "woman.later_loss")',
+             self.test_dead_speaker_latest_loss_and_earlier_letter_have_distinct_states),
+            (walker, 'executed_scene', 'if display else None)',
+             'if display else dict(node="finish", paragraphs=[0], before_entry_state=0, visible_state=0))',
+             self.test_promised_stance_missing_and_opposite_acknowledgment_are_not_fabricated),
+            (verify, 'sim_play', 'if all(f in st.flags for f in p.get("Requires", []))',
+             'if all(f in st.flags or f == "B.witness" and "B.present" in st.flags for f in p.get("Requires", []))',
+             self.test_unwitnessed_reaction_world_receipt_and_report_do_not_create_witness),
+        ]
+        for module, name, old, new, regression in probes:
+            with self.subTest(regression=regression.__name__):
+                source = inspect.getsource(getattr(module, name))
+                self.assertEqual(1,source.count(old))
+                namespace = dict(module.__dict__)
+                exec(compile(source.replace(old,new), '<con4-evidence-mutant>', 'exec'),namespace)
+                with mock.patch.object(module,name,namespace[name]), self.assertRaises(AssertionError):
+                    regression()
 
 
 if __name__ == '__main__':

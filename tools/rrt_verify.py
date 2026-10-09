@@ -2404,40 +2404,125 @@ def sim_wanted(plan):
     return bool(path) and (score[0] == 0 or (score[1] == 0 and score[2] == 0))
 
 
-def sim_play(model, s, st, rel_flags, plan=None):
+SIM_OBSERVATION_SCHEMA = "rrt-sim-observation/1"
+
+
+def sim_observation_state(st):
+    """Detached simulator evidence; observers never receive the mutable game state."""
+    return dict(flags=sorted(st.flags), times=dict(st.times), chapter=st.chapter, hour=st.hour,
+                rest_spent=dict(st.rest_spent),
+                crusade_resources=None if st.crusade_resources is None else dict(st.crusade_resources),
+                available_contacts=None if st.available_contacts is None else sorted(st.available_contacts), area=st.area)
+
+
+def sim_answer_identity(scene, node, index, answer_list=None):
+    """Main.BuildScene/BuildReturnToList names, without assigning any story IDs.
+
+    A multi-host native branch needs its actual list to identify a saved answer.
+    The campaign simulator does not observe that host, so keep it unresolved.
+    """
+    names = savecompat.choice_identities(scene, node)[index]["GuidFor"]
+    if scene.get("ContinueBefore"):
+        return dict(name=None, guid=None, reason="continue-before has no authored answer")
+    if scene.get("ReturnToList"):
+        lists = scene.get("AnswerLists", [])
+        if answer_list is None and len(lists) == 1: answer_list = lists[0]
+        if answer_list not in lists:
+            return dict(name=None, guid=None, reason="native answer-list host unobserved",
+                        candidates=[dict(name=name, guid=rrt_guid(name)) for name in names])
+        name = names[lists.index(answer_list)]  # Native branches deliberately ignore Choice.Id.
+    else:
+        name = names
+        # Main uses null-coalescing, even for an invalid empty ID; don't rename it.
+        if node["Choices"][index].get("Id") is not None:
+            name = "answer.%s.%s.%s" % (scene["Id"], node["Id"], node["Choices"][index]["Id"])
+    return dict(name=name, guid=rrt_guid(name), reason=None)
+
+
+def sim_play(model, s, st, rel_flags, plan=None, observer=None, answer_list=None):
     """Plays one scene along its best path. Returns True when the scene completed."""
+    sequence = 0
+    def emit(kind, before, node=None, index=None, **details):
+        nonlocal sequence
+        if observer is None: return
+        observer(dict(schema=SIM_OBSERVATION_SCHEMA, sequence=sequence, kind=kind,
+                      chapter=st.chapter, hour=st.hour,
+                      address=dict(scene=s["Id"], node=node, choice=index),
+                      before=before, after=sim_observation_state(st), **details))
+        sequence += 1
+    def snapshot():
+        return sim_observation_state(st) if observer is not None else None
+    def finish(completed, reason):
+        emit("terminal", snapshot(), completed=completed, reason=reason)
+        return completed
+
+    before = snapshot()
     if not is_epilogue(s) and s["NativeReturnCue"] is None:
         sf = model.rels.get(s["Relationship"], {}).get("StartedFlag")
         if sf and sf not in st.flags: st.flags.add(sf); st.times[sf] = st.hour
+    emit("scene_entry", before, origin="authored_simulator")
     _, path = plan or sim_plan(model, s, st, rel_flags)
     # eng7-l09: replay node entry separately from selectable answer effects.
     entry_by_choice = {id(c): n.get("EnterSet", []) for n in s["Nodes"] for c in n["Choices"]}
+    addresses = {id(c): (n, i) for n in s["Nodes"] for i, c in enumerate(n["Choices"])} if observer is not None else {}
     for c in path:
+        before = snapshot()
         for f in entry_by_choice[id(c)]:
             if f not in st.flags: st.flags.add(f); st.times[f] = st.hour
         # end eng7-l09
+        node, index = addresses[id(c)] if observer is not None else (None, None)
+        if observer is not None:
+            emit("node_entry", before, node=node["Id"], writes=list(node.get("EnterSet", [])), origin="authored_entry")
+            paragraphs = [i for i, p in enumerate(node.get("Paragraphs", []))
+                          if all(f in st.flags for f in p.get("Requires", []))
+                          and not any(f in st.flags for f in p.get("Forbids", []))
+                          and all(any(f in st.flags for f in g) for g in p.get("AnyGroups", []))]
+            emit("display", snapshot(), node=node["Id"], paragraphs=paragraphs,
+                 surfaces=[dict(slot="Text")] + [dict(slot="Paragraphs", index=i) for i in paragraphs],
+                 offered_indices=[i for i, answer in enumerate(node["Choices"]) if sim_choice_available(answer, st)],
+                 offered_basis="simulator flag and resource gates; runtime access unproved",
+                 origin="simulated_display")
         def publish():
             sim_record_flags(c["Set"], c.get("RefreshTimes", []), st)
             if c.get("Check") is None and c["Next"] is None and not c["Abort"]:
                 allowance = s.get("RestAllowance")
                 if allowance: st.rest_spent[allowance] = st.rest_spent.get(allowance, 0) + 1
                 sim_record_flags([s["Id"]], [], st)
-        if (c.get("Crusade") or {}).get("Amount", 0) < 0:
-            if not sim_paid_choice(model, s, c, st, publish): return False
+        before = snapshot()
+        paid = (c.get("Crusade") or {}).get("Amount", 0) < 0
+        if paid:
+            accepted = sim_paid_choice(model, s, c, st, publish)
+            emit("payment", before, node=node["Id"] if node else None, index=index,
+                 accepted=accepted, cost=c["Crusade"], origin="simulated_payment")
+            if not accepted: return finish(False, "payment_or_contact_failed")
         else:
-            if not sim_choice_available(c, st): return False
+            if not sim_choice_available(c, st):
+                emit("selection_rejected", before, node=node["Id"] if node else None, index=index)
+                return finish(False, "choice_unavailable")
             if c.get("Crusade") and st.crusade_resources is not None:
                 resource = c["Crusade"]["Resource"]
                 st.crusade_resources[resource] = st.crusade_resources.get(resource, 0) + c["Crusade"]["Amount"]
             publish()
-        if c["Abort"]: return False
+        if observer is not None:
+            target = None if c["Abort"] else c["Check"]["Success"] if c.get("Check") else c["Next"]
+            emit("selection", before, node=node["Id"], index=index, accepted=True,
+                 identity=sim_answer_identity(s, node, index, answer_list), text=c["Text"],
+                 writes=list(c["Set"]), refresh_times=list(c.get("RefreshTimes", [])), target=target,
+                 runtime_target=c.get("PostPayment") or target, abort=c["Abort"],
+                 check=c.get("Check"), crusade=c.get("Crusade"), alignment=c.get("Alignment"),
+                 native_next=c.get("NativeNext"), origin="authored_selection",
+                 unmodelled_effects={k: c[k] for k in ("RemoveItem", "StartEtude", "Revive", "Mythic") if c.get(k)})
+            if c.get("Check"):
+                emit("check", snapshot(), node=node["Id"], index=index, result="success",
+                     target=target, origin="assumed_check_success")
+        if c["Abort"]: return finish(False, "accepted_abort")
     if path and path[-1].get("Check") is None and path[-1]["Next"] is None:
         if s.get("RestAllowance") and s["Id"] not in st.flags:
             key = s["RestAllowance"]
             st.rest_spent[key] = st.rest_spent.get(key, 0) + 1
         sim_record_flags([s["Id"]], [], st)
-        return True
-    return False
+        return finish(True, "completed")
+    return finish(False, "path_exhausted")
 
 
 def simulate_rest_budget(model, chapter_days=None, cadence=None, bag_size=3, cap=2, rests_per_chapter=None, caps=None, label="default",
