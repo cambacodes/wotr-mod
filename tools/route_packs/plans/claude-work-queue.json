@@ -389,51 +389,6 @@
     "dependency": "structure: add a no-answer host node (Codex structure, no dialogue)"
   },
   {
-    "scene": "devarra.tower.before_the_end",
-    "woman": "devarra",
-    "node": "climb",
-    "beat": "Restore the Devarra cloud reader for this node (text in git history of storylines/devarra_cloud.py, villain-route-devarra pass) once a gated host node exists: inline scenes cannot carry gated paragraphs.",
-    "ruling": "coordinator-2026-10-08",
-    "why": "inline-scene-paragraphs (NativeAudienceTests crash)",
-    "dependency": "structure: gated host node in the inline tower scene (Codex structure, no dialogue)"
-  },
-  {
-    "scene": "devarra.tower.the_dwarf",
-    "woman": "devarra",
-    "node": "protect",
-    "beat": "Restore the Devarra cloud reader for this node (text in git history of storylines/devarra_cloud.py, villain-route-devarra pass) once a gated host node exists: inline scenes cannot carry gated paragraphs.",
-    "ruling": "coordinator-2026-10-08",
-    "why": "inline-scene-paragraphs (NativeAudienceTests crash)",
-    "dependency": "structure: gated host node in the inline tower scene (Codex structure, no dialogue)"
-  },
-  {
-    "scene": "devarra.tower.the_hoard",
-    "woman": "devarra",
-    "node": "honest_her",
-    "beat": "Restore the Devarra cloud reader for this node (text in git history of storylines/devarra_cloud.py, villain-route-devarra pass) once a gated host node exists: inline scenes cannot carry gated paragraphs.",
-    "ruling": "coordinator-2026-10-08",
-    "why": "inline-scene-paragraphs (NativeAudienceTests crash)",
-    "dependency": "structure: gated host node in the inline tower scene (Codex structure, no dialogue)"
-  },
-  {
-    "scene": "devarra.tower.the_hoard",
-    "woman": "devarra",
-    "node": "steal_her",
-    "beat": "Restore the Devarra cloud reader for this node (text in git history of storylines/devarra_cloud.py, villain-route-devarra pass) once a gated host node exists: inline scenes cannot carry gated paragraphs.",
-    "ruling": "coordinator-2026-10-08",
-    "why": "inline-scene-paragraphs (NativeAudienceTests crash)",
-    "dependency": "structure: gated host node in the inline tower scene (Codex structure, no dialogue)"
-  },
-  {
-    "scene": "devarra.tower.the_hoard",
-    "woman": "devarra",
-    "node": "ask_her",
-    "beat": "Restore the Devarra cloud reader for this node (text in git history of storylines/devarra_cloud.py, villain-route-devarra pass) once a gated host node exists: inline scenes cannot carry gated paragraphs.",
-    "ruling": "coordinator-2026-10-08",
-    "why": "inline-scene-paragraphs (NativeAudienceTests crash)",
-    "dependency": "structure: gated host node in the inline tower scene (Codex structure, no dialogue)"
-  },
-  {
     "scene": "elyanka.trickster.ch6.collateral",
     "woman": "elyanka",
     "beat": "Remote contact for the collateral inspection and creditor exchange",
@@ -885,48 +840,6 @@
     "ruling": "struct3-a:ARA-A2-01"
   },
   {
-    "scene": "camellia.trickster.epilogue.kept",
-    "node": "page",
-    "woman": "Camellia",
-    "beat": "[PROSE PENDING: Camellia - historical once-only oath concerning nurah; her later loss stands; no living postwar neighbor]",
-    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
-  },
-  {
-    "scene": "camellia.trickster.epilogue.kept",
-    "node": "page",
-    "woman": "Camellia",
-    "beat": "[PROSE PENDING: Camellia - historical once-only oath concerning soana; her later loss stands; no living postwar neighbor]",
-    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
-  },
-  {
-    "scene": "camellia.trickster.epilogue.kept",
-    "node": "page",
-    "woman": "Camellia",
-    "beat": "[PROSE PENDING: Camellia - historical once-only oath concerning kaylessa; her later loss stands; no living postwar neighbor]",
-    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
-  },
-  {
-    "scene": "camellia.trickster.epilogue.commit",
-    "node": "page",
-    "woman": "Camellia",
-    "beat": "[PROSE PENDING: Camellia - historical once-only oath concerning nurah; her later loss stands; no living postwar neighbor]",
-    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
-  },
-  {
-    "scene": "camellia.trickster.epilogue.commit",
-    "node": "page",
-    "woman": "Camellia",
-    "beat": "[PROSE PENDING: Camellia - historical once-only oath concerning soana; her later loss stands; no living postwar neighbor]",
-    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
-  },
-  {
-    "scene": "camellia.trickster.epilogue.commit",
-    "node": "page",
-    "woman": "Camellia",
-    "beat": "[PROSE PENDING: Camellia - historical once-only oath concerning kaylessa; her later loss stands; no living postwar neighbor]",
-    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
-  },
-  {
     "scene": "areelu.trickster.report.convicts",
     "node": "start",
     "woman": "Areelu",
@@ -1194,113 +1107,6 @@
     "ruling": "struct3-b: Claude voice owner; current seventh/eighth-year report chronology needs reconciliation with campaign event"
   },
   {
-    "scene": "camellia.trickster.epilogue.kept",
-    "node": "page",
-    "woman": "Camellia",
-    "beat": "[PROSE PENDING: Camellia - legacy once-only oath remains historical; no identified living victim inferred]",
-    "ruling": "struct3-b: keep anonymous legacy oath history without inventing identity or present life"
-  },
-  {
-    "scene": "camellia.trickster.epilogue.commit",
-    "node": "page",
-    "woman": "Camellia",
-    "beat": "[PROSE PENDING: Camellia - legacy once-only oath remains historical; no identified living victim inferred]",
-    "ruling": "struct3-b: keep anonymous legacy oath history without inventing identity or present life"
-  },
-  {
-    "scene": "devarra.tower.before_the_end",
-    "node": "rubric2_purchased_battle",
-    "woman": "devarra",
-    "beat": "purchased battle breached; predatory collection from the generals before Threshold; brief: tools/route_packs/plans/struct3-c-handoff.md",
-    "ruling": "struct3-c"
-  },
-  {
-    "scene": "devarra.tower.before_the_end",
-    "node": "rubric2_voluntary_battle",
-    "woman": "devarra",
-    "beat": "voluntary battle fulfilled on her own terms; burned demon column before Threshold; brief: tools/route_packs/plans/struct3-c-handoff.md",
-    "ruling": "struct3-c"
-  },
-  {
-    "scene": "devarra.tower.the_dwarf",
-    "node": "rubric2_protection_warning",
-    "woman": "devarra",
-    "beat": "repeated protection claim answers her earlier once-only warning; brief: tools/route_packs/plans/struct3-c-handoff.md",
-    "ruling": "struct3-c"
-  },
-  {
-    "scene": "devarra.tower.the_hoard",
-    "node": "rubric2_clutch_debt_honest_her",
-    "woman": "devarra",
-    "beat": "clutch debt claimed by Commander; she chooses unwelcome coin, not obedience; brief: tools/route_packs/plans/struct3-c-handoff.md",
-    "ruling": "struct3-c"
-  },
-  {
-    "scene": "devarra.tower.the_hoard",
-    "node": "rubric2_clutch_debt_steal_her",
-    "woman": "devarra",
-    "beat": "clutch debt claimed by Commander; she chooses unwelcome coin, not obedience; brief: tools/route_packs/plans/struct3-c-handoff.md",
-    "ruling": "struct3-c"
-  },
-  {
-    "scene": "devarra.tower.the_hoard",
-    "node": "rubric2_clutch_debt_ask_her",
-    "woman": "devarra",
-    "beat": "clutch debt claimed by Commander; she chooses unwelcome coin, not obedience; brief: tools/route_packs/plans/struct3-c-handoff.md",
-    "ruling": "struct3-c"
-  },
-  {
-    "scene": "eritrice.trickster.reconciled_debate",
-    "node": "open",
-    "woman": "eritrice",
-    "beat": "Voluntary new private debate after completed reconciliation; open paragraph 0 is the standing extraction grudge, gated by cost.grudge_on_agenda. Brief: tools/route_packs/plans/struct3-c-handoff.md",
-    "ruling": "struct3-c"
-  },
-  {
-    "scene": "eritrice.trickster.reconciled_debate",
-    "node": "exchange",
-    "woman": "eritrice",
-    "beat": "play the first honest objection and her counterargument; preparation only; brief: tools/route_packs/plans/struct3-c-handoff.md",
-    "ruling": "struct3-c"
-  },
-  {
-    "scene": "eritrice.trickster.reconciled_debate",
-    "node": "record",
-    "woman": "eritrice",
-    "beat": "enter the new private debate in the minutes; no commitment yet; brief: tools/route_packs/plans/struct3-c-handoff.md",
-    "ruling": "struct3-c"
-  },
-  {
-    "scene": "eritrice.trickster.reconciled_debate",
-    "node": "open",
-    "woman": "eritrice",
-    "beat": "accept the private debate; brief: tools/route_packs/plans/struct3-c-handoff.md",
-    "ruling": "struct3-c",
-    "choice": 0
-  },
-  {
-    "scene": "eritrice.trickster.reconciled_debate",
-    "node": "open",
-    "woman": "eritrice",
-    "beat": "refuse the private debate; brief: tools/route_packs/plans/struct3-c-handoff.md",
-    "ruling": "struct3-c",
-    "choice": 1
-  },
-  {
-    "scene": "arsinoe.trickster.late.commit",
-    "node": "rubric2_cauldron_night",
-    "woman": "arsinoe",
-    "beat": "first late night earned through cauldron collection; no invented roof memory; brief: tools/route_packs/plans/struct3-c-handoff.md",
-    "ruling": "struct3-c"
-  },
-  {
-    "scene": "arsinoe.trickster.late.commit",
-    "node": "rubric2_cauldron_return",
-    "woman": "arsinoe",
-    "beat": "returning late night earned through cauldron collection; no invented roof memory; brief: tools/route_packs/plans/struct3-c-handoff.md",
-    "ruling": "struct3-c"
-  },
-  {
     "scene": "eritrice.minutes.adjourned",
     "node": "eritrice.minutes.adjourned.explicit.1",
     "woman": "eritrice",
@@ -1367,24 +1173,6 @@
     "beat": "Show her delegated violent decision and act on screen while retaining her ownership motive, agency, master.hers outcome and distinct epilogue consequence. Preserve the player delegation answer and all saved node/answer positions.",
     "ruling": "struct3-d",
     "finding": "ELY-AUD-01",
-    "dependency": "Claude prose acceptance required; Codex implements any separately retained elapsed-time dispatch/return delivery."
-  },
-  {
-    "scene": "chadali.fortunes.honey",
-    "woman": "chadali",
-    "node": "look",
-    "beat": "Replace the heat extension at the charged approach with the pinned canon-calibrated cut. Retain appetite, impatient speech, existing explicit.1 reservation and cut/aftermath. Review the whole transition; do not put exposed sexual anatomy/contact back before the reservation.",
-    "ruling": "struct3-d",
-    "finding": "CH-A2-01",
-    "dependency": "Claude prose acceptance required; Codex implements any separately retained elapsed-time dispatch/return delivery."
-  },
-  {
-    "scene": "chadali.sessions.what_chance_wishes",
-    "woman": "chadali",
-    "node": "stay",
-    "beat": "Sibling heat extension: calibrate the undressing and bare-body staging to the same canon cut. Retain cushion preparation, appetite, her existing answer, reservation and aftermath.",
-    "ruling": "struct3-d",
-    "finding": "CH-A2-01",
     "dependency": "Claude prose acceptance required; Codex implements any separately retained elapsed-time dispatch/return delivery."
   },
   {

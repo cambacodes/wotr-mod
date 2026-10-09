@@ -342,6 +342,17 @@ def _node(scenes, sid, nid):
     return hits[0]
 
 
+# struct3-b readers: the once-only oath was kept, and the woman it spared is gone again by other hands or her own choice.
+# Nothing is revived; the loss lands on Camellia, who had agreed not to touch her a second time.
+OATH_LOST = {
+    "nurah": '''{n}She had killed the little writer once, and had agreed to kill her no more, and she kept to it. Then the writer was gone from Drezen a second time, and Camellia had not so much as lifted a finger. She learned it from a clerk over the soup. She finished the soup. That night she took the lilies she had bought for no one and shredded them over the Commander's floor, petal by petal, in the lamplight, with her small neat hands. "She was mine," she said, very pleasantly, to the pile. "Once. That was the whole bargain, and somebody has broken it for me." Three nights later a copyist who had mocked the dead woman's spelling in a tavern was found in a gutter, and the knife had been a long time about its work. She did not tell the Commander. She did not have to.{/n}''',
+    "soana": '''{n}Soana Wintersun had been bled once on Camellia's own blade and sent back to her forest, and Camellia had agreed to leave her there. She kept to it. She was not at the forest's edge when the Wintersun woman was lost the second time, and she could not forgive that. She rode out alone to the line of the trees, stopped where she always stopped, and sat her horse a long time looking at the empty path between them. Nobody scolded the crows. Nobody told her to go home. When she came back she smelled of woodsmoke, and her sleeve was wet to the elbow, and the hunter who had wandered into the wrong clearing that evening did not come home at all. "Disappointed in me, I suppose," she said at supper, turning the knife under the candle. "It is rather rude of her to do it where I cannot hear."{/n}''',
+    "kaylessa": '''{n}The elf under the tailor's awning had watched Camellia's hands for years without once being touched by them again, and Camellia had enjoyed that more than she cared to say. Then the awning was empty, and the wrapped shape was gone from it, and nobody in the market could say when or how. She stood under it for an hour with her veil down. She asked the tailor, politely, and then the tailor's apprentice, less politely, and the apprentice's two fingers were left on the cutting table, and he told her the only thing he knew, which was nothing. "I was promised her once," she told the Commander afterwards, and the knife ticked against the plate. "I did not think I would have to be so careful with her afterwards. Someone else has been careless with my property. I do hope you will let me find out who."{/n}''',
+}
+OATH_LEGACY = '''{n}Camellia never named the one she had been allowed to kill only once, and nobody asked her to. After a few glasses she would say that the promise had held, to the letter, to the end, and that she was proud of keeping it. Then she would smile at the Commander over the rim, and ask whether anyone, anywhere, had ever been so well behaved.{/n}'''
+
+
+
 def integrate(payload):
     scenes = _scenes(payload)
     for (sid, nid), body in PLACEHOLDER.items():
@@ -385,10 +396,9 @@ def integrate(payload):
         for woman in ("nurah", "soana", "kaylessa"):
             page["Paragraphs"].append(when(
                 (P + "oath_loophole", P + "oath_victim." + woman),
-                "[PROSE PENDING: Camellia - historical once-only oath concerning "
-                + woman + "; her later loss stands; no living postwar neighbor]",
+                OATH_LOST[woman],
                 forbids=(woman + ".present_now",)))
         page["Paragraphs"].append(when(
             P + "oath_loophole",
-            "[PROSE PENDING: Camellia - legacy once-only oath remains historical; no identified living victim inferred]",
+            OATH_LEGACY,
             forbids=(P + "oath_victim.recorded",)))
