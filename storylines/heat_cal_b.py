@@ -294,11 +294,12 @@ def integrate(payload):
                     text = text.replace(old, new)
                     hits[i] += 1
             holder[key] = text
+    partial = __import__("os").environ.get("RRT_PARTIAL_BUILD") == "1"  # harem-less test build (A109)
     for i, n in enumerate(hits):
-        if not n:
+        if not n and not partial:
             raise ValueError("heat cal b: fragment drifted (%r)" % SUBS[i][0][:60])
     for i, n in enumerate(span_hits):
-        if not n:
+        if not n and not partial:
             raise ValueError("heat cal b: span drifted (%r)" % SPANS[i][0][:60])
     for sid in SCENES:
         for holder, key in _fields(scenes[sid]):
