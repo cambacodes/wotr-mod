@@ -1,77 +1,449 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "rrt-checkpoint-review/1",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["schema", "dossier", "policy", "chapter", "part", "reviewer", "findings", "characters", "verdict"],
-  "properties": {
-    "schema": {"const": "rrt-checkpoint-review/1"},
-    "dossier": {"type": "string"},
-    "policy": {"type": "string"},
-    "chapter": {"type": "string"},
-    "part": {"type": "integer", "minimum": 1},
-    "reviewer": {"enum": ["luna", "terra"]},
-    "findings": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["id", "chapter", "scene", "node", "flag", "kind", "claim", "evidence", "certainty", "severity", "recommended_form", "recommendation"],
-        "properties": {
-          "id": {"type": "string"},
-          "chapter": {"type": "string"},
-          "scene": {"type": "string"},
-          "node": {"type": ["string", "null"]},
-          "flag": {"type": ["string", "null"]},
-          "kind": {"enum": ["fact", "chronology", "character_knowledge", "continuity", "game_feel", "character_truth", "fun", "gameplay_integration"]},
-          "claim": {"type": "string", "minLength": 1},
-          "evidence": {"type": "string", "minLength": 1},
-          "certainty": {"enum": ["certain", "uncertain"]},
-          "severity": {"enum": ["hard", "major", "minor"]},
-          "recommended_form": {"enum": ["sidequest", "companion_interaction", "area_encounter", "camp_event", "journal_quest", "crusade_event", "check", "combat", "item", "keep_as_is", "cut", null]},
-          "recommendation": {"type": "string"}
-        },
-        "if": {"properties": {"kind": {"enum": ["fun", "gameplay_integration"]}}},
-        "then": {"properties": {"recommended_form": {"type": "string"}}}
-      }
+  "$id": "rrt-checkpoint-review/2",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/luna"
     },
-    "characters": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["character_id", "present_in", "state", "voice", "truth", "notes"],
-        "properties": {
-          "character_id": {"type": "string"},
-          "present_in": {"type": "array", "items": {"type": "string"}},
-          "state": {"enum": ["present", "committed", "departed", "dead", "absent"]},
-          "voice": {"enum": ["on", "drifting", "off"]},
-          "truth": {"enum": ["on", "sanitized", "flanderized", "off"]},
-          "notes": {"type": "string"}
+    {
+      "$ref": "#/$defs/terra"
+    }
+  ],
+  "$defs": {
+    "luna": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "dossier",
+        "policy",
+        "chapter",
+        "part",
+        "reviewer",
+        "findings",
+        "characters",
+        "verdict",
+        "scope",
+        "chapter_disposition",
+        "chapter_metrics"
+      ],
+      "properties": {
+        "schema": {
+          "const": "rrt-checkpoint-review/2"
+        },
+        "dossier": {
+          "type": "string"
+        },
+        "policy": {
+          "type": "string"
+        },
+        "chapter": {
+          "type": "string"
+        },
+        "part": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "reviewer": {
+          "const": "luna"
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/finding"
+          }
+        },
+        "characters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "character_id",
+              "present_in",
+              "state",
+              "voice",
+              "truth",
+              "notes"
+            ],
+            "properties": {
+              "character_id": {
+                "type": "string"
+              },
+              "present_in": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "state": {
+                "enum": [
+                  "present",
+                  "committed",
+                  "departed",
+                  "dead",
+                  "absent"
+                ]
+              },
+              "voice": {
+                "enum": [
+                  "on",
+                  "drifting",
+                  "off"
+                ]
+              },
+              "truth": {
+                "enum": [
+                  "on",
+                  "sanitized",
+                  "flanderized",
+                  "off"
+                ]
+              },
+              "notes": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "verdict": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "chapter_status",
+            "hard",
+            "major",
+            "minor",
+            "fun",
+            "feels_like_part_of_the_game",
+            "summary"
+          ],
+          "properties": {
+            "chapter_status": {
+              "enum": [
+                "pass",
+                "pass_with_minor",
+                "needs_fixes",
+                "blocking"
+              ]
+            },
+            "hard": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "major": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minor": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "fun": {
+              "$ref": "#/$defs/score"
+            },
+            "feels_like_part_of_the_game": {
+              "$ref": "#/$defs/score"
+            },
+            "summary": {
+              "type": "string"
+            }
+          }
+        },
+        "scope": {
+          "enum": [
+            "part",
+            "chapter"
+          ]
+        },
+        "chapter_disposition": {
+          "enum": [
+            "reviewed",
+            "no_mod_content"
+          ]
+        },
+        "chapter_metrics": {
+          "$ref": "#/$defs/metrics"
         }
       }
     },
-    "verdict": {
+    "terra": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["chapter_status", "hard", "major", "minor", "fun", "feels_like_part_of_the_game", "summary"],
+      "required": [
+        "schema",
+        "reviewer",
+        "dossier",
+        "policy",
+        "chapter",
+        "part",
+        "dispositions"
+      ],
       "properties": {
-        "chapter_status": {"enum": ["pass", "pass_with_minor", "needs_fixes", "blocking"]},
-        "hard": {"type": "integer", "minimum": 0},
-        "major": {"type": "integer", "minimum": 0},
-        "minor": {"type": "integer", "minimum": 0},
-        "fun": {"$ref": "#/$defs/score"},
-        "feels_like_part_of_the_game": {"$ref": "#/$defs/score"},
-        "summary": {"type": "string"}
+        "dossier": {
+          "type": "string"
+        },
+        "policy": {
+          "type": "string"
+        },
+        "chapter": {
+          "type": "string"
+        },
+        "part": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "schema": {
+          "const": "rrt-checkpoint-adjudication/2"
+        },
+        "reviewer": {
+          "const": "terra"
+        },
+        "dispositions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "disposition",
+              "reason",
+              "finding"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "disposition": {
+                "enum": [
+                  "confirmed",
+                  "revised",
+                  "dropped",
+                  "artifact",
+                  "pending_verification",
+                  "needs_live",
+                  "design_required"
+                ]
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              },
+              "finding": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/finding"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        }
       }
-    }
-  },
-  "$defs": {
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "chapter",
+        "scene",
+        "node",
+        "flag",
+        "kind",
+        "claim",
+        "evidence",
+        "certainty",
+        "severity",
+        "recommended_form",
+        "recommendation",
+        "disposition"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "chapter": {
+          "type": "string"
+        },
+        "scene": {
+          "type": "string"
+        },
+        "node": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "flag": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "enum": [
+            "fact",
+            "chronology",
+            "character_knowledge",
+            "continuity",
+            "game_feel",
+            "character_truth",
+            "fun",
+            "gameplay_integration"
+          ]
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "certainty": {
+          "enum": [
+            "certain",
+            "uncertain"
+          ]
+        },
+        "severity": {
+          "enum": [
+            "hard",
+            "major",
+            "minor"
+          ]
+        },
+        "recommended_form": {
+          "enum": [
+            "sidequest",
+            "companion_interaction",
+            "area_encounter",
+            "camp_event",
+            "journal_quest",
+            "crusade_event",
+            "check",
+            "combat",
+            "item",
+            "keep_as_is",
+            "cut",
+            null
+          ]
+        },
+        "recommendation": {
+          "type": "string"
+        },
+        "disposition": {
+          "enum": [
+            "confirmed",
+            "pending_verification"
+          ]
+        }
+      },
+      "if": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "fun",
+              "gameplay_integration"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "recommended_form": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "score": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["score", "justification"],
-      "properties": {"score": {"type": "integer", "minimum": 1, "maximum": 10}, "justification": {"type": "string", "minLength": 1}}
+      "required": [
+        "score",
+        "justification"
+      ],
+      "properties": {
+        "score": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "justification": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "score",
+        "justification",
+        "evidence",
+        "evidence_level"
+      ],
+      "properties": {
+        "score": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 10
+        },
+        "justification": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evidence_level": {
+          "enum": [
+            "text",
+            "static_export",
+            "simulated",
+            "managed_runtime",
+            "live_campaign",
+            "unmeasured"
+          ]
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "flow_pacing",
+        "appetite_character_truth",
+        "gameplay_seam"
+      ],
+      "properties": {
+        "flow_pacing": {
+          "$ref": "#/$defs/metric",
+          "description": "0: Progress cannot deliver a coherent sequence.; 2: Repeated stalls, collapsed journeys, or conflicting order dominate.; 5: Playable but concentrated, repetitive, or long without a meaningful decision/payoff.; 7: Clear sequence and payoffs; one material compression, gap, or repeated structure remains.; 9: Chapter pressure, discovery, build-up, choices, and payoffs work together with no major defect.; 10: Comparable to a supplied strong native chapter sequence, with no material improvement the judge can substantiate."
+        },
+        "appetite_character_truth": {
+          "$ref": "#/$defs/metric",
+          "description": "0: Actions invert the character’s central motives.; 2: Generic behavior or sanitization dominates.; 5: Some recognizable voice, but wants rarely drive choices or counter-moves.; 7: Her wants and methods shape most beats; one important passive/generic beat remains.; 9: Distinct wants, temper, faith/trade, and agency remain consistent, including villainy where appropriate.; 10: Comparable to supplied strong native characterization, throughout the covered branches."
+        },
+        "gameplay_seam": {
+          "$ref": "#/$defs/metric",
+          "description": "0: The promised playable beat has no reachable delivery.; 2: Delivery contradicts venue/state; promises have no implemented outcome.; 5: Hooks exist; important costs or consequences remain detached narration.; 7: Most content enters through plausible play and records consequences; one substantial seam is weak.; 9: Native timing, entry, checks/costs, fail/decline branches, and later consumers agree at the declared evidence level.; 10: Comparable to supplied native delivery; every load-bearing seam is supported."
+        }
+      }
     }
   }
 }

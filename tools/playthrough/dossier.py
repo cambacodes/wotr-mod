@@ -12,6 +12,8 @@ native lines). Deterministic; reads the knowledge repo, never writes it.
 """
 import argparse, collections, json, math, os, re, subprocess, sys
 from pathlib import Path
+from admission import atomic_json, digest, load
+from dossier_evidence import evidence, node_states, timeline as chapter_timeline
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -45,11 +47,11 @@ class Ctx:
         import rrt_verify as V
         import run_guide_check as G
         self.V, self.G = V, G
-        self.story = json.load(open(ROOT / "development/Story.json", encoding="utf-8"))
+        self.story = load(ROOT / "development/Story.json")
         self.model = V.Model(self.story)
         self.knowledge = Path(knowledge)
         idp = self.knowledge / "identities.json"
-        self.ids = json.load(open(idp, encoding="utf-8"))["characters"] if idp.exists() else []
+        self.ids = load(idp)["characters"] if idp.exists() else []
         self.roster = [c for c in self.ids if c.get("roster")]
         self.by_rel = collections.defaultdict(list)
         self.by_alias = {}
@@ -80,7 +82,7 @@ class Ctx:
     def native_lines(self, cid):
         if cid not in self.lines_cache:
             p = self.knowledge / "characters" / cid / "native-lines.json"
-            self.lines_cache[cid] = json.load(open(p, encoding="utf-8")).get("lines", []) if p.exists() else []
+            self.lines_cache[cid] = load(p).get("lines", []) if p.exists() else []
         return self.lines_cache[cid]
 
 
@@ -133,9 +135,12 @@ def render_scene(ctx, ev, state, natives_before, natives_after, chosen_only=Fals
     L.append("### %s (%s)" % (ev["title"] or ev["id"], ev["id"]))
     L.append("- Owner: %s; relationship: `%s`; chapter %s, day %s%s" % (
         ev["owner"], ev["rel"], ev["ch"], ev["day"], "" if ev["completed"] else "; NOT COMPLETED (aborted or stalled)"))
+    L.append("- Origin: authored mod scene, not a native transcript. Native state identifiers do not prove played native history.")
+    L.append("- Trace reference: `trace.json#/events/%s`; scene state: `states.json#/events/%s` (before/after)." % (ev.get("_ordinal", "unknown"), ev.get("_ordinal", "unknown")))
+    L.append("- Entry / host / return / presence evidence: `" + json.dumps(evidence(ctx, s), ensure_ascii=False, sort_keys=True) + "`")
     L.append("- Reached: " + reach(ctx, s))
     L.append("- Gameplay touched: " + gameplay(ctx, s, ev))
-    L.append("- Placement: after native %s; before native %s" % (natives_before or "(chapter start)", natives_after or "(nothing later this chapter)"))
+    L.append("- Placement: after scheduled native/derived world event %s; before world event %s" % (natives_before or "(chapter start)", natives_after or "(nothing later this chapter)"))
     if s.get("Entry"): L.append("- Entry answer: " + clean(s["Entry"]).replace("\n", " "))
     L.append("")
     held = set(state)
@@ -152,8 +157,11 @@ def render_scene(ctx, ev, state, natives_before, natives_after, chosen_only=Fals
             out.append("> [p%d] %s" % (i, clean(n["Paragraphs"][i]["Text"]).strip().replace("\n", "\n> ")))
         nwords += len((n.get("Text") or "").split()) + sum(len(n["Paragraphs"][i]["Text"].split()) for i in vis)
         return out
-    for st in ev["steps"]:
+    snapshots = node_states(ctx, ev, state)
+    for step_index, st in enumerate(ev["steps"]):
         n = m.nodes[s["Id"]][st["node"]]
+        L.append("- Node-state reference: `states.json#/events/%s/nodes/%s` (export replay; before entry, visible, after choice; off flags are absent from held flags)." % (ev.get("_ordinal", "unknown"), step_index))
+        L.append("- Choice/paragraph gates: `" + json.dumps({k: snapshots[step_index][k] for k in ("choice_gates", "paragraph_gates")}, ensure_ascii=False, sort_keys=True) + "`")
         held |= set(n.get("EnterSet", []))
         L += node_text(st["node"], st["paragraphs"])
         c = n["Choices"][st["index"]]
@@ -165,10 +173,11 @@ def render_scene(ctx, ev, state, natives_before, natives_after, chosen_only=Fals
             if i == st["index"]: continue
             ok = all(f in held for f in o["Requires"]) and not any(f in held for f in o["Forbids"])
             if ok: others.append("[%d] %s" % (i, clean(o["Text"])[:90].replace("\n", " ")))
-        if others: L.append("  - other answers shown: " + " | ".join(others))
+        if others: L.append("  - other answers satisfying flag gates (Mythic/item/resource availability unproved): " + " | ".join(others))
         held |= set(c["Set"])
         L.append("")
     if ev.get("end_node"):
+        L.append("- Node-state reference: `states.json#/events/%s/nodes/%s` (terminal entry replay)." % (ev.get("_ordinal", "unknown"), len(ev["steps"])))
         L += node_text(ev["end_node"]["node"], ev["end_node"]["paragraphs"]); L.append("")
     vis_set = [f for f in ev["set"] if not f.startswith("rrt.payment.")]
     L.append("- Flags set: " + (", ".join("`%s`" % f for f in vis_set) if vis_set else "none"))
@@ -188,8 +197,7 @@ def state_table(ctx, flags):
         returned = [f for f in r.get("UnavailableFlags", []) if f in flags and ov.get(f) in flags]
         harem = (rk + ".harem.eligible") in flags
         if not (started or gone or closed or returned): continue
-        dead = [f for f in gone if re.search(r"dead|killed|dissolved|incinerated|sacrifice", f)]
-        status = ("dead" if dead else "departed/absent") if gone else "closed" if closed else "committed" if committed else "started"
+        status = "unavailable (physical role/history requires verification)" if gone else "closed" if closed else "committed" if committed else "started"
         if returned and not gone: status += " (returned)"
         detail = []
         if committed and status != "committed": detail.append("committed earlier")
@@ -232,30 +240,40 @@ def appendix(ctx, women, texts):
 
 def build(ctx, policy, runs, max_kb, contract_rel):
     rdir = Path(runs) / policy
-    trace = json.load(open(rdir / "trace.json", encoding="utf-8"))
+    trace = load(rdir / "trace.json")
     for old in rdir.glob("chapter-*.md"): old.unlink()
     events = trace["events"]
-    native_keys = set(ctx.model.native)
     # replay flag state; collect per-chapter streams
     flags, chapters = set(), collections.OrderedDict()
-    for e in events:
+    state_refs = {}
+    provenance = {}
+    for ordinal, original in enumerate(events):
+        e = dict(original, _ordinal=ordinal)
         key = "epilogue" if e["type"] == "scene" and e.get("epilogue") else str(e["ch"])
         ch = chapters.setdefault(key, dict(items=[], start=None))
         if ch["start"] is None: ch["start"] = set(flags)
         if e["type"] == "world":
             flags |= set(e["on"]); flags -= set(e["off"])
-            nat = [f for f in e["on"] if f in native_keys]
-            if nat: ch["items"].append(("native", e, nat))
+            ch["items"].append(("native", e, e["on"]))
+            for f in e["on"] + e["off"]:
+                provenance[f] = dict(event=ordinal, hour=e["hour"], origin="scheduled native/derived (earning unknown)", held=f in flags)
         else:
             ch["items"].append(("scene", e, set(flags)))
+            before = set(flags)
             flags |= set(e["set"]); flags -= set(e.get("unset", []))
+            for f in e["set"] + e.get("unset", []):
+                provenance[f] = dict(event=ordinal, hour=e["hour"], origin="scene aggregate delta (authored/native/derived attribution unknown)", held=f in flags)
+            state_refs[str(ordinal)] = dict(scene=e["id"], before=sorted(before), after=sorted(flags),
+                nodes=node_states(ctx, e, before), provenance=dict(provenance))
         ch["end"] = set(flags)
     budget = max_kb * 1024
     written = []
+    declared = []
+    atomic_json(rdir / "states.json", dict(schema="rrt-dossier-states/1", trace_digest=digest(rdir / "trace.json"), events=state_refs))
     for key, ch in chapters.items():
         items = ch["items"]
         nat_idx = [i for i, it in enumerate(items) if it[0] == "native"]
-        def fmt_n(it): return "day %s: %s" % (it[1]["day"], ", ".join("`%s` (%s)" % (f, ctx.model.native[f]) for f in it[2][:4]) + (" +%d" % (len(it[2]) - 4) if len(it[2]) > 4 else ""))
+        def fmt_n(it): return "day %s: %s" % (it[1]["day"], ", ".join("`%s` (%s)" % (f, ctx.model.native.get(f, "derived/world state")) for f in it[2][:4]) + (" +%d" % (len(it[2]) - 4) if len(it[2]) > 4 else ""))
         blocks = []   # (text, women, scene_text_by_woman, state_before)
         timeline = [(items[i][1]["hour"], "- " + fmt_n(items[i])) for i in nat_idx]
         for i, it in enumerate(items):
@@ -265,6 +283,10 @@ def build(ctx, policy, runs, max_kb, contract_rel):
             text = render_scene(ctx, ev, st, fmt_n(items[prev[0]]) if prev else "", fmt_n(items[nxt[0]]) if nxt else "")
             s = ctx.model.by_id[ev["id"]]
             blocks.append((text, ctx.women_of_scene(s, ev), st, ev))
+        timeline_name = "chapter-%s-timeline.md" % key
+        (rdir / timeline_name).write_text(chapter_timeline(ctx, key, items, trace), encoding="utf-8", newline="\n")
+        declaration = dict(chapter=key, timeline=policy + "/" + timeline_name, parts=[])
+        declared.append(declaration)
         if not blocks: continue
         def render_part(part, pi, total):
             women = list(dict.fromkeys(w for b in part for w in b[1]))
@@ -277,19 +299,20 @@ def build(ctx, policy, runs, max_kb, contract_rel):
             tl = [ln for h, ln in timeline if lo - 72 <= h <= hi + 72]
             H = ["# Checkpoint dossier: %s, chapter %s%s" % (policy, key, (" part %d/%d" % (pi, total)) if total > 1 else ""), "",
                  "Policy: %s" % (trace["summary"].get("description") or policy), "",
+                 "Whole-chapter timeline: [%s](%s). State references: [states.json](states.json)." % (timeline_name, timeline_name), "",
                  "Scenes %d (of %d this chapter), days %s-%s. Review under [the reviewer contract](%s); every claim must cite an address `scene/node` or `scene/node/pN` or a flag." % (
                      len(part), len(blocks), first["day"], last["day"], contract_rel), "",
                  "Simulated, not played: native quests are represented only by the native state keys the export reads. "
                  "Checks always succeed; Crusade resources are assumed sufficient.", "",
                  "## State at the start of this part", "", state_table(ctx, part[0][2]),
-                 "## Native progress around this part (keys the export reads, in order, within 3 days)", ""]
+                 "## Scheduled native/derived world events around this part (in order, within 3 simulated days)", ""]
             H += (tl[:30] + (["- ... %d more" % (len(tl) - 30)] if len(tl) > 30 else [])) or ["- none"]
             H += ["", "## Scenes played (in order)", ""]
             H += ["%d. `%s` %s (%s), day %s%s" % (k, b[3]["id"], b[3]["title"] or "", b[3]["owner"], b[3]["day"], " [letter]" if b[3]["remote"] else "")
                   for k, b in enumerate(part, 1)]
             H += ["", "## Scene text along the path taken", ""]
             body = "\n".join(H) + "\n" + "".join(b[0] for b in part)
-            end_flags = set(part[-1][2]) | set(part[-1][3]["set"])
+            end_flags = (set(part[-1][2]) | set(part[-1][3]["set"])) - set(part[-1][3].get("unset", []))
             body += "## State at the end of this part\n\n" + state_table(ctx, end_flags) + "\n" + appendix(ctx, women, texts)
             return body
         # pack by estimate, then halve any part whose rendered size exceeds the budget
@@ -313,6 +336,10 @@ def build(ctx, policy, runs, max_kb, contract_rel):
             body = render_part(part, pi, len(parts))
             (rdir / name).write_text(body, encoding="utf-8", newline="\n")
             written.append((name, len(body.encode("utf-8")), len(part)))
+            declaration["parts"].append(policy + "/" + name)
+    atomic_json(rdir / "dossier-manifest.json", dict(schema="rrt-dossier-manifest/1", policy=policy,
+        trace=policy + "/trace.json", trace_digest=digest(rdir / "trace.json"),
+        states=policy + "/states.json", chapters=declared))
     s = trace["summary"]
     idx = ["# Playthrough run: %s" % policy, "", s.get("description") or "", "",
            "- Scenes visited: %d (completed %d); chapters reached: %s" % (s["scenes_visited"], s["scenes_completed"], s["chapters_reached"]),
@@ -322,7 +349,7 @@ def build(ctx, policy, runs, max_kb, contract_rel):
            "", "| dossier | KB | scenes |", "|---|---|---|"]
     idx += ["| [%s](%s) | %.1f | %d |" % (n, n, b / 1024.0, k) for n, b, k in written]
     (rdir / "index.md").write_text("\n".join(idx) + "\n", encoding="utf-8", newline="\n")
-    print("%-24s %d dossiers, largest %.1f KB, total %.1f KB" % (policy, len(written), max(b for _, b, _ in written) / 1024.0, sum(b for _, b, _ in written) / 1024.0))
+    print("%-24s %d dossiers, largest %.1f KB, total %.1f KB" % (policy, len(written), max((b for _, b, _ in written), default=0) / 1024.0, sum(b for _, b, _ in written) / 1024.0))
 
 
 def main():
