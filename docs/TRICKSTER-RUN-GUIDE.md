@@ -8601,10 +8601,10 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 708. **Areelu: ** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.experiment.convicts","chapter":5,"day":106,"completed":true,"choices":[["start",0],["paid",0],["witness",0]]} -->
    Scene `areelu.trickster.experiment.convicts`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
-   Open: Continue
+   Open: "What are you working on behind that glass?"
    Need all: `trickster`, `areelu.present_now`; Blocked by: `areelu.trickster.experiment.convicts.witnessed`, `areelu.closed`, `trickster.failed`.
    Native answer-list host: `74989c07fc5fd8a42b18b333dc40acc1`.
-   - `areelu.trickster.experiment.convicts/start/0` — [PROSE PENDING: choice - pay for convicts preparation]; crusade Finances -500; records `areelu.trickster.experiment.convicts.paid`
+   - `areelu.trickster.experiment.convicts/start/0` — "Take the five hundred. Have your gaoler and your priest."; crusade Finances -500; records `areelu.trickster.experiment.convicts.paid`
    - `areelu.trickster.experiment.convicts/paid/0` — Continue
    - `areelu.trickster.experiment.convicts/witness/0` — Continue; records `areelu.trickster.experiment.convicts.witnessed`
 
@@ -9027,10 +9027,10 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 745. **Areelu: ** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.experiment.graft","chapter":5,"day":107,"completed":true,"choices":[["start",0],["paid",0],["witness",0]]} -->
    Scene `areelu.trickster.experiment.graft`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
-   Open: Continue
+   Open: "What else is on your tray?"
    Need all: `trickster`, `areelu.present_now`; Blocked by: `areelu.trickster.experiment.graft.witnessed`, `areelu.closed`, `trickster.failed`.
    Native answer-list host: `74989c07fc5fd8a42b18b333dc40acc1`.
-   - `areelu.trickster.experiment.graft/start/0` — [PROSE PENDING: choice - pay for graft preparation]; crusade Finances -300; records `areelu.trickster.experiment.graft.paid`
+   - `areelu.trickster.experiment.graft/start/0` — "Three hundred. Give him his hand."; crusade Finances -300; records `areelu.trickster.experiment.graft.paid`
    - `areelu.trickster.experiment.graft/paid/0` — Continue
    - `areelu.trickster.experiment.graft/witness/0` — Continue; records `areelu.trickster.experiment.graft.witnessed`
 
@@ -9496,11 +9496,11 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `vellexia.an_hour_that_counts/unspent/0` — [Stay for the conversation after the account.]
    - `vellexia.an_hour_that_counts/published_end/0` — [Let the work end with Ilveris broken and alive.]; records `vellexia.verdict_kept`, `vellexia.account_published`
 
-789. **Areelu: ** — rest delivery / Satchel: visit (owner contact / rest). <!-- rrt-step {"scene":"areelu.trickster.experiment.convicts.outcome","chapter":5,"day":108,"completed":true,"choices":[["start",0],["account",0],["funded",0]]} -->
+789. **Areelu: ** — rest delivery / Satchel: letter (owner contact / rest). <!-- rrt-step {"scene":"areelu.trickster.experiment.convicts.outcome","chapter":5,"day":108,"completed":true,"choices":[["start",0],["account",0],["funded",0]]} -->
    Scene `areelu.trickster.experiment.convicts.outcome`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Need all: `areelu.trickster.experiment.convicts.witnessed`, `trickster.ever`, `areelu.reachable_by_letter`; Blocked by: `areelu.closed`.
    - `areelu.trickster.experiment.convicts.outcome/start/0` — Continue; records `areelu.trickster.experiment.convicts.outcome_read`
-   - `areelu.trickster.experiment.convicts.outcome/account/0` — [PROSE PENDING: choice - fund next convicts batch]; crusade Finances -500; records `areelu.trickster.experiment.convicts.batch_funded`
+   - `areelu.trickster.experiment.convicts.outcome/account/0` — "Another five hundred. Make it work."; crusade Finances -500; records `areelu.trickster.experiment.convicts.batch_funded`
    - `areelu.trickster.experiment.convicts.outcome/funded/0` — Continue
 
 790. **Horzalah: Everything I own, I took** — rest delivery / Satchel: visit (owner contact / rest). <!-- rrt-step {"scene":"horzalah.trickster.visit.chamber","chapter":5,"day":108,"completed":true,"choices":[["start",0],["room",2],["her",0],["ask",0],["threshold",0],["threshold2",0],["cut",0],["horzalah.trickster.visit.chamber.explicit.1",0],["morning",0],["morning2",0]]} -->
@@ -9769,11 +9769,11 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `vellexia.the_question_after_business/near/0` — [Tell her how you would welcome her, and keep the private conversation between you.]
    - `vellexia.the_question_after_business/desire/0` — [Tell her you want another evening as her lover.]; records `vellexia.departure_kept`, `vellexia.renewed_lovers`, `vellexia.committed`
 
-816. **Areelu: ** — rest delivery / Satchel: visit (owner contact / rest). <!-- rrt-step {"scene":"areelu.trickster.experiment.graft.outcome","chapter":5,"day":109,"completed":true,"choices":[["start",0],["account",0],["funded",0]]} -->
+816. **Areelu: ** — rest delivery / Satchel: letter (owner contact / rest). <!-- rrt-step {"scene":"areelu.trickster.experiment.graft.outcome","chapter":5,"day":109,"completed":true,"choices":[["start",0],["account",0],["funded",0]]} -->
    Scene `areelu.trickster.experiment.graft.outcome`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Need all: `areelu.trickster.experiment.graft.witnessed`, `trickster.ever`, `areelu.reachable_by_letter`; Blocked by: `areelu.closed`.
    - `areelu.trickster.experiment.graft.outcome/start/0` — Continue; records `areelu.trickster.experiment.graft.outcome_read`
-   - `areelu.trickster.experiment.graft.outcome/account/0` — [PROSE PENDING: choice - fund next graft batch]; crusade Finances -300; records `areelu.trickster.experiment.graft.batch_funded`
+   - `areelu.trickster.experiment.graft.outcome/account/0` — "Another three hundred. Make it work."; crusade Finances -300; records `areelu.trickster.experiment.graft.batch_funded`
    - `areelu.trickster.experiment.graft.outcome/funded/0` — Continue
 
 817. **Melazmera: The new seal** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.seal","chapter":5,"day":109,"completed":true,"choices":[["start",0],["stone",0],["visit",0],["orders",0]]} -->
