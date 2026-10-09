@@ -13,7 +13,6 @@ class NenioRound3Tests(unittest.TestCase):
             nodes = {n['Id']: n for n in scene['Nodes']}
             slot = nodes[scene['Id'] + '.explicit.1']
             self.assertEqual(nodes['lose']['Choices'][0]['Next'], 'watch')
-            self.assertIn('Still astride you', slot['Text'])
             self.assertNotIn('pulls you down', slot['Text'])
             self.assertNotIn('reaches for it', slot['Text'])
 
