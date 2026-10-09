@@ -698,6 +698,12 @@ def integrate(payload):
                         "the verse where they lose, or bills her as their court poet, may meet Aranka busking by the "
                         "spice trader's stall in the Drezen market, in Chapter 3 or Chapter 5.")
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
+    ready = "aranka.trickster.letter_presence_ready"
+    payload.setdefault("Derived", {})[ready] = [["aranka.trickster.in_drezen"], [PRIMED]]
+    for key in (HUB, YARD):
+        presence = payload["Presences"][key]
+        presence["Requires"] = [ready if flag == "aranka.trickster.in_drezen" else flag
+                                for flag in presence["Requires"]]
     payload.setdefault("Derived", {})[NO_KING] = [[KING_GONE]]
     payload.setdefault("SeenCues", {})[THALL_SAFE] = ["7d3c179096d67b24a962c3e77a82c416"]
     payload.setdefault("Etudes", {}).update({
@@ -779,3 +785,22 @@ letter("aranka.thall.reply", "The low part", [
 {n}She tries its first phrase, stops, and leaves the low part as written.{/n}''',
       c('[Listen to the hymn.]', flags=(THALL_ANSWERED,))),
 ], requires=("trickster.ever", THALL_REQUESTED, THALL_SAFE, "aranka.present_now"), forbids=(CLOSED, THALL_ANSWERED, THALL_DEAD, KENABRES_ATTACKED), delay=24)
+
+
+# struct2-02: retire the rest copy using the original IDs; offer the same
+# exchange on her established physical hubs, including the market fallback.
+for _letter_id in ("aranka.trickster.verse.her_letter", "aranka.trickster.verse.her_letter_late"):
+    _letter = next(s for s in SCENES if s["Id"] == _letter_id)
+    _letter.pop("Kind", None)
+    _letter.update(Remote=False, InteractionHub=HUB, ContactUnit=UNIT,
+                   Entry=_letter["Title"])
+    _letter["Forbids"].append(FYE_GONE)
+    for _page in _letter["Nodes"]:
+        _page["Text"] = "[PROSE PENDING: struct2-02 Aranka letter confrontation %s]" % _page["Id"]
+    _yard_letter = copy.deepcopy(_letter)
+    _yard_letter.update(Id=_letter_id + "_yard", InteractionHub=YARD, ContactUnit=YARD_UNIT)
+    _yard_letter["Forbids"].remove(FYE_GONE)
+    _yard_letter["Requires"].append(FYE_GONE)
+    _yard_letter["Forbids"].append(_letter_id)
+    _letter["Forbids"].append(_yard_letter["Id"])
+    SCENES.append(_yard_letter)

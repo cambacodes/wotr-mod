@@ -948,3 +948,33 @@ _LIVE_PRODUCERS = {
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
+
+
+def integrate_meeting_history(payload):
+    """Retain old paragraphs, but retire unselected venue/future-visit claims.
+
+    Called after the cloud voice pass so it cannot overwrite history selection.
+    Replacement prose belongs to Claude; voyage predicates remain unchanged.
+    """
+    scenes = {s["Id"]: s for s in payload["Scenes"]}
+    for suffix in ("ch4.hunt", "ch4.hunt_found", "ch5.hunt_window"):
+        event = scenes[M + suffix]
+        page = next(n for n in event["Nodes"] if n["Id"] == "owed")
+        old = page["Paragraphs"][:3]
+        for index, paragraph in enumerate(old):
+            replacement = dict(paragraph)
+            replacement["Text"] = "[PROSE PENDING: MEL-02 %s owed voyage %d]" % (suffix, index)
+            replacement["Requires"] = list(paragraph["Requires"])
+            replacement["Forbids"] = list(paragraph["Forbids"])
+            # All meeting scenes require trickster.ever; keep the old surface
+            # address and prose while making the inaccurate copy unreachable.
+            paragraph["Forbids"] = [*paragraph["Forbids"], "trickster.ever"]
+            page["Paragraphs"].append(replacement)
+    page = next(n for n in scenes[M + "commit.stone"]["Nodes"] if n["Id"] == "count")
+    paragraph = page["Paragraphs"][1]
+    replacement = dict(paragraph)
+    replacement["Text"] = "[PROSE PENDING: MEL-02 commit sailor debt actual meeting venue]"
+    replacement["Requires"] = list(paragraph["Requires"])
+    replacement["Forbids"] = list(paragraph["Forbids"])
+    paragraph["Forbids"] = [*paragraph["Forbids"], "trickster.ever"]
+    page["Paragraphs"].append(replacement)

@@ -246,3 +246,11 @@ def integrate(payload):
     # Prose for every page and answer added above (edge job 10).
     from storylines import jerribeth_voice
     jerribeth_voice.fill(payload)
+
+    # D1: only the confession payment licenses this retained voice recording.
+    page = node(events["ending_apart"], "start")
+    opening, confession = page["Text"].split("\n", 1)
+    page["Text"] = opening
+    from story_format import p
+    page.setdefault("Paragraphs", []).append(p(
+        confession, requires=(flag("yard_confessed"),)))

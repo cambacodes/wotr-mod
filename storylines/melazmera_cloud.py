@@ -302,3 +302,6 @@ def integrate(payload):
                 para["Text"] for para in node.get("Paragraphs", [])]
             if any(PENDING in t for t in texts):
                 raise ValueError("melazmera cloud: prose still pending at %s/%s" % (sid, node["Id"]))
+    # Structural history selection must follow all late prose transformations.
+    from storylines.melazmera_trickster import integrate_meeting_history
+    integrate_meeting_history(payload)

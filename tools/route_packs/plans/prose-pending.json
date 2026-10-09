@@ -105,6 +105,160 @@
       "surface": "node",
       "index": null,
       "text_sha": "d2ec3e377a60635f3b14b8d3a4a2209dc63ae47b374526640c0481d212a47009"
+    },
+    {
+      "scene": "melazmera.trickster.ch4.hunt",
+      "node": "owed",
+      "surface": "paragraph",
+      "index": 3,
+      "text_sha": "99ce5f98759462de1cb897f7708cdf1aa096a54003b6160028977e9028664875"
+    },
+    {
+      "scene": "melazmera.trickster.ch4.hunt",
+      "node": "owed",
+      "surface": "paragraph",
+      "index": 4,
+      "text_sha": "569d33d32275059cbf8a840dea10c265385068e0c2cf1affe924900eac9c59ab"
+    },
+    {
+      "scene": "melazmera.trickster.ch4.hunt",
+      "node": "owed",
+      "surface": "paragraph",
+      "index": 5,
+      "text_sha": "295e22408a400937793da842e676a121f5e05f96ae60a75793907454f078a9b4"
+    },
+    {
+      "scene": "melazmera.trickster.ch4.hunt_found",
+      "node": "owed",
+      "surface": "paragraph",
+      "index": 3,
+      "text_sha": "8acf8ae8e0a64d04f753d8b55aa033c6b225c8e24b2957df5feaa0292aedfbee"
+    },
+    {
+      "scene": "melazmera.trickster.ch4.hunt_found",
+      "node": "owed",
+      "surface": "paragraph",
+      "index": 4,
+      "text_sha": "c08fcd0be8138b7625677d4721a8a0d8bcf9a0dd3c5045104bff9c093e301b45"
+    },
+    {
+      "scene": "melazmera.trickster.ch4.hunt_found",
+      "node": "owed",
+      "surface": "paragraph",
+      "index": 5,
+      "text_sha": "63b8f50e30e692929b8d1c158e2082f8ccfb40d0de2ce116799626e8930778d6"
+    },
+    {
+      "scene": "melazmera.trickster.ch5.hunt_window",
+      "node": "owed",
+      "surface": "paragraph",
+      "index": 3,
+      "text_sha": "b8521c6dbce40a704e469be49dc4a64c3b929c9225d3f339208f67e8ed9e41dc"
+    },
+    {
+      "scene": "melazmera.trickster.ch5.hunt_window",
+      "node": "owed",
+      "surface": "paragraph",
+      "index": 4,
+      "text_sha": "1ea0cefcc6609c04059de1c3d69a90c9a115ab0482d954665a83e79e54acd7f2"
+    },
+    {
+      "scene": "melazmera.trickster.ch5.hunt_window",
+      "node": "owed",
+      "surface": "paragraph",
+      "index": 5,
+      "text_sha": "7b2e660c6818f956aa57c270fede2b96b605a5a3b3179f2191bcbd90da06d81f"
+    },
+    {
+      "scene": "melazmera.trickster.commit.stone",
+      "node": "count",
+      "surface": "paragraph",
+      "index": 4,
+      "text_sha": "34b40a9cf9071053231ffbf7796695070ed0a2926f9e9e5c6e04476ea1a3ecc0"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "edbb72945bba462755dc2976a873569d3cdd67c8f6ea3e23eb0dfe3f77e068f6"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter",
+      "node": "known",
+      "surface": "node",
+      "index": null,
+      "text_sha": "e483c9a26e9c2a5f157c8152e9a347e867f70379ccf1584f34d0fc87535d8840"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter",
+      "node": "unknown",
+      "surface": "node",
+      "index": null,
+      "text_sha": "1350a3a480a74bca11e85c7a18680bfa5cb8cb5a7f4515ea863d30e5a4bad8ac"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "edbb72945bba462755dc2976a873569d3cdd67c8f6ea3e23eb0dfe3f77e068f6"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late",
+      "node": "known",
+      "surface": "node",
+      "index": null,
+      "text_sha": "e483c9a26e9c2a5f157c8152e9a347e867f70379ccf1584f34d0fc87535d8840"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late",
+      "node": "unknown",
+      "surface": "node",
+      "index": null,
+      "text_sha": "1350a3a480a74bca11e85c7a18680bfa5cb8cb5a7f4515ea863d30e5a4bad8ac"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_yard",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "edbb72945bba462755dc2976a873569d3cdd67c8f6ea3e23eb0dfe3f77e068f6"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_yard",
+      "node": "known",
+      "surface": "node",
+      "index": null,
+      "text_sha": "e483c9a26e9c2a5f157c8152e9a347e867f70379ccf1584f34d0fc87535d8840"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_yard",
+      "node": "unknown",
+      "surface": "node",
+      "index": null,
+      "text_sha": "1350a3a480a74bca11e85c7a18680bfa5cb8cb5a7f4515ea863d30e5a4bad8ac"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late_yard",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "edbb72945bba462755dc2976a873569d3cdd67c8f6ea3e23eb0dfe3f77e068f6"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late_yard",
+      "node": "known",
+      "surface": "node",
+      "index": null,
+      "text_sha": "e483c9a26e9c2a5f157c8152e9a347e867f70379ccf1584f34d0fc87535d8840"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late_yard",
+      "node": "unknown",
+      "surface": "node",
+      "index": null,
+      "text_sha": "1350a3a480a74bca11e85c7a18680bfa5cb8cb5a7f4515ea863d30e5a4bad8ac"
     }
   ]
 }
