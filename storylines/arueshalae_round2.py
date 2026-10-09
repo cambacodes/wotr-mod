@@ -367,26 +367,38 @@ def integrate(payload):
             incoming['Choices'].extend(appended)
 
     first_dream = 'native.history.arueshalae.first_dream'
+    first_dream_text = {
+        'count': '"You dreamed." {n}She says it the way another woman would say you snored.{/n} "I have had exactly one of my own, so I know the look now. The eyes moving under the lids. The hand closing on the cloak. I used to think that was a thing only the meat could do, and I lay here beside it all night, hungry, and envied you." {n}Her wing settles over your shoulders.{/n}\n"The last mortal I watched dream, I went in after it, the only way I know: through her mouth, while she died of it. I was inside her head at the end, looking round, the way you\'d look round a house you\'d broken into." {n}She does not lower her eyes.{/n} "I wanted to, last night. All night. Even with a dream of my own to keep, I lay here and wanted yours, and I didn\'t."',
+        'recovering': '"A supply wagon, I think. You\'re very dull asleep." {n}A flicker of teeth.{/n} "And me, if I\'d gone in. Inside your own head, where you couldn\'t wake up and tell me no." {n}She leans over and kisses your brow through a fold of the cloak, quickly, hard.{/n}\n"I\'ve had one dream, and I know what it cost me to get it. I\'m greedy for the second. But I won\'t steal one to have it. This morning I\'d rather have what I want awake, where it can see me coming."',
+        'doctor': '"Because I\'d have liked it." {n}She doesn\'t soften it.{/n} "And because I know now what a dream is worth to the one who has it. I had mine only the once, and if something like me had crawled into it and tasted it, I would have torn her throat out. The last one died of my going in, and I would rather not be the woman who does that twice."\n{n}She looks down at you for a long moment.{/n} "I lay beside you all night, wanting, and didn\'t take, and I\'m going to call that the nearest I\'ve come to being something else. Stay till the sun\'s up. I\'ll fly you down when you can stand."',
+        'recovering_e': '"I don\'t know, and I\'m not going in to find out." {n}She looks at you, and then out at the grey light.{/n} "The last time I went into a mortal\'s dream, she was dying in my arms and I was eating the end of it." {n}She leans over and kisses your mouth, slowly, for no reason at all, and does not count.{/n} "I\'ve had one of my own now, and I mean to have more. I don\'t need yours."',
+    }
     for nid, beat in (('count', 'watching'), ('recovering', 'dreams'),
                       ('doctor', 'restraint'), ('recovering_e', 'redeemed dreams')):
         split_history(T + 'morning', nid, [
-            ('.first_dream_seen', '[PROSE PENDING: morning ' + beat + ' after native first dream]',
+            ('.first_dream_seen', first_dream_text[nid],
              [first_dream], []),
             ('.retained', node(T + 'morning', nid)['Text'], [], [first_dream]),
         ])
 
     # The confession behind the stables establishes the sergeant's edges;
     # the successful paid touch, not entry into that session, earns seven minutes.
+    UNHEARD_OFFER = '{n}The succubus claps, delighted. She crosses the street and takes Arueshalae\'s arm as if they had parted last week, and the merchant follows on his leash like a dog that has forgotten it was ever anything else.{/n}\n{n}"There she is. I knew she was still in there." She puts her mouth to Arueshalae\'s ear and does not trouble to lower her voice. "There\'s a room upstairs, and two of these in it who\'ve paid to be emptied. Paid, sister. They\'ll thank you while you do it. Come and eat. You\'re so thin I can see your goddess through you."{/n}\n{n}Arueshalae does not take her arm away. Her nostrils flare, and her eyes go to the merchant\'s throat and stay there. You have watched her go still like that beside a crowded table, and it was never about the bread.{/n}'
+    AFTER_CLAWS = {
+        'no_callbacks': '{n}Arueshalae looks at her own hand. There is blood under every nail, and she does not wipe it.{/n} "That was good." {n}She says it to the hand, not to you.{/n} "Better than prayer. Better than anything I\'ve let myself have since I left. She\'ll tell every girl in that house that I\'m back, and whose I am, and they\'ll come out to look at you, and some of them will want to try."\n{n}Now she looks at you.{/n} "Let them. I\'ll do it again, and I\'ll enjoy it again. Know that about me before you stand beside me next time."',
+        'confession_only': '{n}Arueshalae looks at her own hand. There is blood under every nail, and she does not wipe it.{/n} "I told you the sergeant at Fye\'s was the best I\'d felt since the goddess. I stopped that one. One breath of him, and I walked out into the rain." {n}She says it to the hand, not to you.{/n} "I didn\'t stop this. I didn\'t want to, and it was better. She\'ll tell every girl in that house that I\'m back, and whose I am, and they\'ll come out to look at you, and some of them will want to try."\n{n}Now she looks at you.{/n} "Let them. I\'ll do it again, and I\'ll enjoy it again. Know that about me, the next time you say stay out of the taverns."',
+        'touch_only': '{n}Arueshalae looks at her own hand. There is blood under every nail, and she does not wipe it.{/n} "That was the best I\'ve felt since the goddess. Better than seven minutes of your skin under a ward, and I counted every one of those." {n}She says it to the hand, not to you.{/n} "She\'ll tell every girl in that house that I\'m back, and whose I am, and they\'ll come out to look at you, and some of them will want to try."\n{n}Now she looks at you.{/n} "Let them. I\'ll do it again, and I\'ll enjoy it again. Know that about me before you hold out your hand next time."',
+    }
     relapse, cured = T + 'relapse', T + 'cure_works'
     sid = T + 'old_acquaintance'
     split_history(sid, 'offer', [
-        ('.unheard', '[PROSE PENDING: old acquaintance offer without stables sergeant confession]', [], [relapse]),
+        ('.unheard', UNHEARD_OFFER, [], [relapse]),
         ('.retained', node(sid, 'offer')['Text'], [relapse], []),
     ])
     split_history(sid, 'after_claws', [
-        ('.no_callbacks', '[PROSE PENDING: after claws without stables sergeant or seven minutes]', [], [relapse, cured]),
-        ('.confession_only', '[PROSE PENDING: after claws with stables sergeant but without seven minutes]', [relapse], [cured]),
-        ('.touch_only', '[PROSE PENDING: after claws with seven minutes but without stables sergeant]', [cured], [relapse]),
+        ('.no_callbacks', AFTER_CLAWS['no_callbacks'], [], [relapse, cured]),
+        ('.confession_only', AFTER_CLAWS['confession_only'], [relapse], [cured]),
+        ('.touch_only', AFTER_CLAWS['touch_only'], [cured], [relapse]),
         ('.retained', node(sid, 'after_claws')['Text'], [relapse, cured], []),
     ])
 

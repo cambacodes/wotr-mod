@@ -434,72 +434,6 @@
     "dependency": "structure: gated host node in the inline tower scene (Codex structure, no dialogue)"
   },
   {
-    "scene": "arueshalae.treatment.old_acquaintance",
-    "node": "offer.unheard",
-    "woman": "Arueshalae",
-    "beat": "old acquaintance offer without stables sergeant confession",
-    "ruling": "struct-arueshalae: structure only; Claude owns prose. Preserve history gates and answer positions."
-  },
-  {
-    "scene": "arueshalae.treatment.old_acquaintance",
-    "node": "after_claws.no_callbacks",
-    "woman": "Arueshalae",
-    "beat": "after claws without stables sergeant or seven minutes",
-    "ruling": "struct-arueshalae: structure only; Claude owns prose. Preserve history gates and answer positions."
-  },
-  {
-    "scene": "arueshalae.treatment.old_acquaintance",
-    "node": "after_claws.confession_only",
-    "woman": "Arueshalae",
-    "beat": "after claws with stables sergeant but without seven minutes",
-    "ruling": "struct-arueshalae: structure only; Claude owns prose. Preserve history gates and answer positions."
-  },
-  {
-    "scene": "arueshalae.treatment.old_acquaintance",
-    "node": "after_claws.touch_only",
-    "woman": "Arueshalae",
-    "beat": "after claws with seven minutes but without stables sergeant",
-    "ruling": "struct-arueshalae: structure only; Claude owns prose. Preserve history gates and answer positions."
-  },
-  {
-    "scene": "arueshalae.treatment.morning",
-    "node": "count.first_dream_seen",
-    "woman": "Arueshalae",
-    "beat": "morning watching after native first dream",
-    "ruling": "struct-arueshalae: structure only; Claude owns prose. Preserve history gates and answer positions."
-  },
-  {
-    "scene": "arueshalae.treatment.morning",
-    "node": "recovering.first_dream_seen",
-    "woman": "Arueshalae",
-    "beat": "morning dreams after native first dream",
-    "ruling": "struct-arueshalae: structure only; Claude owns prose. Preserve history gates and answer positions."
-  },
-  {
-    "scene": "arueshalae.treatment.morning",
-    "node": "doctor.first_dream_seen",
-    "woman": "Arueshalae",
-    "beat": "morning restraint after native first dream",
-    "ruling": "struct-arueshalae: structure only; Claude owns prose. Preserve history gates and answer positions."
-  },
-  {
-    "scene": "arueshalae.treatment.morning",
-    "node": "recovering_e.first_dream_seen",
-    "woman": "Arueshalae",
-    "beat": "morning redeemed dreams after native first dream",
-    "ruling": "struct-arueshalae: structure only; Claude owns prose. Preserve history gates and answer positions."
-  },
-  {
-    "scene": "chadali.trickster.epilogue.lucky_night",
-    "node": "page",
-    "woman": "chadali",
-    "beat": "Write the unresolved-Wound fair paragraph for the continuing Council, preserving the earned saw_the_fair_plainly history.",
-    "why": "Paragraph 18 now requires Wound closure; the appended paragraph 56 holds the unresolved continuation.",
-    "finding": "CH-A4-01",
-    "ruling": "struct-chadali",
-    "dependency": "Claude owns prose for the registered paragraph 56 placeholder."
-  },
-  {
     "scene": "vellexia.unfinished_likeness",
     "node": "start",
     "choice": 2,
@@ -678,15 +612,6 @@
     "finding": "VEL-A4-003",
     "ruling": "struct-vellexia",
     "beat": "Restore embedded Commander exchange 1 from lovers as this player answer and the linked lovers_commander_reply_1 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
-  },
-  {
-    "scene": "horzalah.trickster.epilogue.decided",
-    "node": "page",
-    "woman": "horzalah",
-    "beat": "horzalah.trickster.epilogue.decided.explicit.1",
-    "ruling": "struct-slot-hosts",
-    "finding": "struct-slot-hosts:horzalah-decided",
-    "why": "Claude owns the registered paragraph 4 placeholder; fill from tools/route_packs/explicit_slots/horzalah/horzalah.trickster.epilogue.decided.explicit.1.json. Preserve preceding paragraphs and the legacy terminal answer."
   },
   {
     "scene": "herrax.house.a_night_out",

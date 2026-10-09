@@ -357,7 +357,7 @@ def integrate(payload):
     # Append after the existing paragraph inventory to preserve saved positions.
     from storylines.chadali_fortunes import SAW_THE_FAIR
     page["Paragraphs"].append(p(
-        "[PROSE PENDING: Chadali fair while the Wound remains unresolved and the Council continues convening]",
+        "{n}Her fair was never built on ground the Wound had let go, because the Wound did not let go, and the Council sat on arguing over it. She built it anyway, small and loud, in the lee of the walls where the ground was held and the lamps could be seen from the front: acrobats on spliced rope, lollipops, and a three-headed puppy that ate nobody. Soldiers on leave came with their helmets under their arms and went back to the line with sticky fingers. There was a devil's stall. It sold lollipops. Chadali watched it herself, every day, with a very big one, and the Commander never once saw her look at the glow on the horizon.{/n}",
         requires=(SAW_THE_FAIR, "council.epilogue_convened"),
         forbids=("ending.wound_closed",),
     ))

@@ -2,69 +2,6 @@
   "version": 1,
   "pending": [
     {
-      "scene": "arueshalae.treatment.old_acquaintance",
-      "node": "offer.unheard",
-      "surface": "node",
-      "index": null,
-      "text_sha": "a7262f0b300f447cd2e505e850bf9fce8b9b1b087fe01bc2faf96b4fcfc398fb"
-    },
-    {
-      "scene": "arueshalae.treatment.old_acquaintance",
-      "node": "after_claws.no_callbacks",
-      "surface": "node",
-      "index": null,
-      "text_sha": "c1e20dd5c74ef767c207ed186c5adb4974b74efe1b4b68545c982988c4cdc1e0"
-    },
-    {
-      "scene": "arueshalae.treatment.old_acquaintance",
-      "node": "after_claws.confession_only",
-      "surface": "node",
-      "index": null,
-      "text_sha": "457f3cf56af4fc6d79d544049a723c5995dd4defaa515bc598eeeda4ffcfeea0"
-    },
-    {
-      "scene": "arueshalae.treatment.old_acquaintance",
-      "node": "after_claws.touch_only",
-      "surface": "node",
-      "index": null,
-      "text_sha": "c27dfcd00b45ad66f29d2c222af7666e546699dc8fc2ed97645552fbe69b9dc6"
-    },
-    {
-      "scene": "arueshalae.treatment.morning",
-      "node": "count.first_dream_seen",
-      "surface": "node",
-      "index": null,
-      "text_sha": "7501a5745933283b85e4a83508a27910a3d97eb152ac045ee04b556e4c6e5019"
-    },
-    {
-      "scene": "arueshalae.treatment.morning",
-      "node": "recovering.first_dream_seen",
-      "surface": "node",
-      "index": null,
-      "text_sha": "93a9c320bc52ad6605de9deea18df3373cb53c68c9d12cd0b497930fc3c98989"
-    },
-    {
-      "scene": "arueshalae.treatment.morning",
-      "node": "doctor.first_dream_seen",
-      "surface": "node",
-      "index": null,
-      "text_sha": "0dd207a154965eea13b1a2ac52e829dda710f1121fc3017ef1ff9282af0f6925"
-    },
-    {
-      "scene": "arueshalae.treatment.morning",
-      "node": "recovering_e.first_dream_seen",
-      "surface": "node",
-      "index": null,
-      "text_sha": "24cd60c8c916edacc0b5d3e407dde15ea8677c2fa3beab244c07e62e4dc3239b"
-    },
-    {
-      "scene": "chadali.trickster.epilogue.lucky_night",
-      "node": "page",
-      "surface": "paragraph",
-      "index": 56,
-      "text_sha": "0e04040cc28fed529853a5fec83cdb3caa5cbd2a6b595abfcb8d27f08ae91c0a"
-    },
-    {
       "scene": "vellexia.unfinished_likeness",
       "node": "start",
       "surface": "choice",
@@ -343,13 +280,6 @@
       "surface": "node",
       "index": null,
       "text_sha": "3b8e18b815df1c4805ecb72db7c364178db4559878d3da9541abb82f433af430"
-    },
-    {
-      "scene": "horzalah.trickster.epilogue.decided",
-      "node": "page",
-      "surface": "paragraph",
-      "index": 4,
-      "text_sha": "aa7f316e6cbd8a24af698edab0664ad1da707c8e01c23eb6a19951dc412bbc27"
     },
     {
       "scene": "herrax.house.a_night_out",
