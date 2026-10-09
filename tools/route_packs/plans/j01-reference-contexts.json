@@ -2068,6 +2068,56 @@
       ],
       "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
       "job": "r5-S2"
+    },
+    {
+      "scene": "shamira.trickster.epilogue.kept",
+      "node": "page",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "5534d987c7f74cb9c6a1707ce4b10a95ce3d22b1e6bdde6d723385ec3d702a74",
+      "reason": "SHAMIRA-A4-02: historical death location, played refusal/exclusivity, or hypothetical laughter; no current Nocticula appearance or new response."
+    },
+    {
+      "scene": "shamira.trickster.epilogue.kept",
+      "node": "page",
+      "slot": "paragraph[10]",
+      "woman": "nocticula",
+      "text_sha256": "bef734f22b59d2c497174665136c14135fcc5c1b91eaf2fe5d179348bdec14a6",
+      "reason": "SHAMIRA-A4-02: historical death location, played refusal/exclusivity, or hypothetical laughter; no current Nocticula appearance or new response.",
+      "remove_reference_guards": {
+        "Requires": [
+          "crossroute.nocticula.available"
+        ]
+      }
+    },
+    {
+      "scene": "shamira.trickster.epilogue.kept",
+      "node": "page",
+      "slot": "paragraph[28]",
+      "woman": "nocticula",
+      "text_sha256": "cbe1482ac1ec804a063843d43263dafa9c5b31c20aa77d184a90c737ce3fdd3c",
+      "reason": "SHAMIRA-A4-02: historical death location, played refusal/exclusivity, or hypothetical laughter; no current Nocticula appearance or new response.",
+      "remove_reference_guards": {
+        "Requires": [
+          "crossroute.nocticula.available"
+        ]
+      }
+    },
+    {
+      "scene": "shamira.trickster.harem",
+      "node": "steward",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "c2212276639aa24daf7ef1d68f71c33cf42a15ef7ebac372f34d3f3689e1fc41",
+      "reason": "SHAMIRA-A4-02: historical death location, played refusal/exclusivity, or hypothetical laughter; no current Nocticula appearance or new response."
+    },
+    {
+      "scene": "shamira.trickster.harem_awning",
+      "node": "steward",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "c2212276639aa24daf7ef1d68f71c33cf42a15ef7ebac372f34d3f3689e1fc41",
+      "reason": "SHAMIRA-A4-02: historical death location, played refusal/exclusivity, or hypothetical laughter; no current Nocticula appearance or new response."
     }
   ],
   "class_sweep": {

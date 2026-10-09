@@ -13693,10 +13693,6 @@
           "letter": false
         },
         {
-          "scene": "shamira.trickster.epilogue.drowned",
-          "letter": false
-        },
-        {
           "scene": "shamira.trickster.epilogue.never",
           "letter": false
         },
@@ -13849,6 +13845,10 @@
         {
           "scene": "shamira.trickster.killed.drowning",
           "reason": "existing recovery/explicit loss or rewritten-history context; retained original gates"
+        },
+        {
+          "scene": "shamira.trickster.epilogue.drowned",
+          "reason": "SHAMIRA-A4-01: deliberate drowning closes the mind return; this page reports the loss, stages no living Shamira, and retains the Commander-life guard."
         }
       ],
       "presences": [
