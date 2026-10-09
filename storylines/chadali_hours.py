@@ -353,3 +353,11 @@ def integrate(payload):
         p('{n}The night the Wound closed, Chadali repeated the hope she had spoken when the Commander could not: they would win, though she did not yet know how. "That one was mine," she said. "You stayed to hear it."{/n}', requires=("chadali.wagers.chadali_hoped_aloud", "ending.wound_closed")),
         p('{n}After the fighting at Threshold ended, Chadali repeated her own words from the dark hall. The Commander had stayed when she said them. She remembered that too.{/n}', requires=("chadali.wagers.chadali_hoped_aloud",), forbids=("ending.wound_closed",)),
     ])
+
+    # Append after the existing paragraph inventory to preserve saved positions.
+    from storylines.chadali_fortunes import SAW_THE_FAIR
+    page["Paragraphs"].append(p(
+        "[PROSE PENDING: Chadali fair while the Wound remains unresolved and the Council continues convening]",
+        requires=(SAW_THE_FAIR, "council.epilogue_convened"),
+        forbids=("ending.wound_closed",),
+    ))

@@ -1,4 +1,12 @@
 {
   "version": 1,
-  "pending": []
+  "pending": [
+    {
+      "scene": "chadali.trickster.epilogue.lucky_night",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 56,
+      "text_sha": "0e04040cc28fed529853a5fec83cdb3caa5cbd2a6b595abfcb8d27f08ae91c0a"
+    }
+  ]
 }
