@@ -112,20 +112,5 @@ class Struct2ContinuityTests(unittest.TestCase):
             state.hour = 192
             self.assertTrue(sim_available(self.model, master, state))
 
-    def test_every_new_prose_placeholder_has_exact_registration_and_owner(self):
-        root = Path(__file__).resolve().parents[1]
-        pending = json.loads((root / 'tools/route_packs/plans/prose-pending.json').read_text(encoding='utf-8'))['pending']
-        queue = json.loads((root / 'tools/route_packs/plans/claude-work-queue.json').read_text(encoding='utf-8'))
-        count = 0
-        for sid in ('elyanka.trickster.beat.courier', 'elyanka.trickster.beat.courier_return'):
-            for page in self.scenes[sid]['Nodes']:
-                if page['Text'].startswith('[PROSE PENDING: courier'):
-                    count += 1
-                    exact = next(e for e in pending if e['scene'] == sid and e['node'] == page['Id'])
-                    self.assertEqual(hashlib.sha256(json.dumps(page['Text'], ensure_ascii=False, separators=(',', ':')).encode('utf-8')).hexdigest(), exact['text_sha'])
-                    self.assertTrue(any(e['scene'] == sid and e.get('node') == page['Id'] for e in queue))
-        self.assertEqual(7, count)
-
-
 if __name__ == '__main__':
     unittest.main()

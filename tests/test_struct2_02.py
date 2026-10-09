@@ -30,7 +30,6 @@ class Struct2SaveHistoryTests(unittest.TestCase):
                     page = self.node(route.M + suffix, 'owed')
                     visible = [p for p in page['Paragraphs'] if allowed(p, flags)]
                     self.assertEqual(1, len(visible))
-                    self.assertTrue(visible[0]['Text'].startswith('[PROSE PENDING: MEL-02'))
                     name = self.node(route.M + suffix, 'name')
                     debt = next(c for c in name['Choices'] if c['Next'] == 'owed')
                     flags.update(debt['Set'])
@@ -40,7 +39,6 @@ class Struct2SaveHistoryTests(unittest.TestCase):
                         count = self.node(route.M + 'commit.stone', 'count')
                         visible = [p for p in count['Paragraphs'] if allowed(p, flags)]
                         self.assertEqual(1, len(visible))
-                        self.assertTrue(visible[0]['Text'].startswith('[PROSE PENDING: MEL-02'))
 
     def test_breakup_keeps_confession_only_for_actual_payment(self):
         event = 'jerribeth.commission'

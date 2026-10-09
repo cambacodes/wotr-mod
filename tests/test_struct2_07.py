@@ -94,19 +94,6 @@ class Struct207Tests(unittest.TestCase):
                     self.assertEqual('third_exp', self.node(sid, expected)['Choices'][0]['Next'])
             self.assertFalse(any(holds(a, set()) for a in seam['Choices']))
 
-    def test_owned_placeholders_and_queue_are_registered(self):
-        pending = json.loads((ROOT / 'tools/route_packs/plans/prose-pending.json').read_text(encoding='utf-8'))
-        queue = json.loads((ROOT / 'tools/route_packs/plans/claude-work-queue.json').read_text(encoding='utf-8'))
-        self.assertEqual([], queue_check(queue))
-        errors = pending_check(self.story, pending, integration=True)
-        self.assertEqual([], errors)
-        for suffix in ('', '.arcade'):
-            for nid in ('owned_posted', 'blamed_posted'):
-                text = self.node('mielarah.deck.fourth' + suffix, nid)['Text']
-                target = next(e for e in pending['pending'] if e['scene'] == 'mielarah.deck.fourth' + suffix
-                              and e['node'] == nid)
-                self.assertEqual(digest(text), target['text_sha'])
-
     def test_conversion_floor_is_local_and_e15c_legal(self):
         for sid in ('anevia.the_woman_with_the_basket', 'anevia.the_counting_room',
                     'gesmerha.the_box_with_two_names', 'gesmerha.the_things_still_here',

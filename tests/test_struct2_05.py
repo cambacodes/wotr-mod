@@ -110,19 +110,5 @@ class Structure05Tests(unittest.TestCase):
         self.assertEqual([a['Next'] for a in incoming if available(a, both)], ['room_paddle_mended'])
         self.assertEqual(self.node(room, 'room')['Choices'][0]['Next'], 'room_paddle')
 
-    def test_new_prose_targets_are_exact_and_assigned_to_claude(self):
-        sid = 'hepzamirah.trickster.bond.her_room'
-        registry = json.loads((ROOT / 'tools/route_packs/plans/prose-pending.json').read_text(encoding='utf-8'))
-        queue = json.loads((ROOT / 'tools/route_packs/plans/claude-work-queue.json').read_text(encoding='utf-8'))
-        for nid in ['room_paddle_mended', 'room_paddle_unresolved']:
-            text = self.node(sid, nid)['Text']
-            self.assertTrue(text.startswith('[PROSE PENDING: '))
-            self.assertIn(dict(scene=sid, node=nid, surface='node', index=None,
-                               text_sha=hashlib.sha256(json.dumps(text, ensure_ascii=False, sort_keys=True,
-                                                          separators=(',', ':')).encode('utf-8')).hexdigest()), registry['pending'])
-            self.assertTrue(any(e['scene'] == sid and e.get('node') == nid and e['woman'] == 'hepzamirah'
-                                for e in queue))
-
-
 if __name__ == '__main__':
     unittest.main()

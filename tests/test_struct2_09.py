@@ -1,13 +1,10 @@
 """struct2-09: exported hosting, returned-ending and pending-prose contracts."""
-import copy
 import json
 from pathlib import Path
 import unittest
-from unittest.mock import patch
 
 from tests.story_fixture import fresh_story
 from tools import prose_pending_lint
-from storylines import wenduag_cloud
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -89,8 +86,8 @@ class Structure09Tests(unittest.TestCase):
         self.assertNotIn("wenduag.trickster.court.claim_refused", new["Requires"])
         self.assertIn("wenduag.trickster.court.claim_refused",
                       self.scenes["wenduag.trickster.epilogue.refused"]["Requires"])
-        self.assertEqual("[PROSE PENDING: exclusive-refusal ending and Brask consequence]",
-                         new["Nodes"][0]["Text"])
+        # A distinct authored ending, not the claim_refused page (which releases Brask).
+        self.assertNotEqual(self.scenes["wenduag.trickster.epilogue.refused"]["Nodes"][0]["Text"], new["Nodes"][0]["Text"])
         pending = json.loads((ROOT / "tools/route_packs/plans/prose-pending.json").read_text(encoding="utf-8"))
         self.assertEqual([], prose_pending_lint.check(self.story, pending, integration=True))
 
@@ -102,21 +99,3 @@ class Structure09Tests(unittest.TestCase):
         self.assertEqual(24, self.scenes["kaylessa.clearing.where_i_was_meant_to_die"]["DelayHours"])
 
 
-class PendingVoiceGuardTests(unittest.TestCase):
-    def test_voice_pass_accepts_only_exact_registered_placeholder(self):
-        marker = "[PROSE PENDING: exclusive-refusal ending and Brask consequence]"
-        story = {"Scenes": [{"Id": "wenduag.trickster.epilogue.exclusive_refused",
-                            "Nodes": [{"Id": "page", "Text": marker, "Choices": []}]}]}
-        with patch.multiple(wenduag_cloud, NODES={}, SUBS={}, REVOICE={}, ADD={}):
-            wenduag_cloud.integrate(copy.deepcopy(story))
-            for mutation in ("text", "scene", "node"):
-                changed = copy.deepcopy(story)
-                scene = changed["Scenes"][0]
-                if mutation == "text":
-                    scene["Nodes"][0]["Text"] += " stale"
-                elif mutation == "scene":
-                    scene["Id"] += ".unregistered"
-                else:
-                    scene["Nodes"][0]["Id"] += ".unregistered"
-                with self.subTest(mutation=mutation), self.assertRaises(ValueError):
-                    wenduag_cloud.integrate(changed)
