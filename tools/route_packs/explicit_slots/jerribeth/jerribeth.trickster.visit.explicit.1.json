@@ -24,7 +24,7 @@
   "example": "N: Her claws close on your wrists and press them into the blanket.\nJ: Hold still. No. Stiller than that. I want to see how long you last.\nN: Her laughter buzzes behind your left eye, very pleased.",
   "min_lines": 12,
   "max_lines": 20,
-  "default_text": "{n}Her wings shut out the lamp. The buzzing is in your skin, then in your breath, then in every part of you that has ever held still for her, and her voice is against your ear until the next watch passes without another knock.{/n}",
+  "default_text": "{n}Her wings shut out the lamp. Her voice is against your ear now, and the next watch passes without another knock.{/n}",
   "placement": {
     "scene": "jerribeth.trickster.visit",
     "after_node": "threshold",

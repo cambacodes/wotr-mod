@@ -24,7 +24,7 @@
   "example": "N: Her claws close on your wrists and press them into the blanket.\nJ: Hold still. No. Stiller than that. I want to see how long you last.\nN: Her laughter buzzes behind your left eye, very pleased.",
   "min_lines": 10,
   "max_lines": 18,
-  "default_text": "{n}She lets you draw her closer, and the sound in your skull climbs and breaks like a held note. Outside the imagining, the frame lies dark beside your untouched pillow.{/n}",
+  "default_text": "{n}She lets you draw her closer. Outside the imagining, the frame lies dark beside your untouched pillow.{/n}",
   "placement": {
     "scene": "jerribeth.future",
     "after_node": "tenant_free",

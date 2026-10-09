@@ -17,7 +17,7 @@
     "Minagho makes the claim herself; preserve the source's paid seal history and prohibition against bargaining for her again. She remains evil; affection is no apology for Kenabres.",
     "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
   ],
-  "default_text": "{n}Her mouth comes down on yours again, and she does not let you answer. After that there is her breath hot in your ear, her claws raking your ribs, and a sound she makes that she will pretend, in the morning, was a laugh.{/n}",
+  "default_text": "{n}Her mouth comes down on yours again, and she does not let you answer.{/n}",
   "last_line": "N: At dawn, the palm opens again.",
   "speakers": {
     "M": "Minagho"

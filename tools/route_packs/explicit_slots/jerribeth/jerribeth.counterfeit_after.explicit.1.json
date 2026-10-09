@@ -20,7 +20,7 @@
     "The Commander answers the invitation instead of being assigned a line by narration.",
     "The border never opens; the existing quiet path remains valid and nonsexual."
   ],
-  "default_text": "{n}She lets the city repeat itself behind her. Her claw stays at the fastening of your collar, and for once she has found something she wants more than an audience for her work.{/n}",
+  "default_text": "{n}She lets the city repeat itself behind her. For once, she has found something she wants more than an audience for her work.{/n}",
   "placement": {
     "scene": "jerribeth.counterfeit_after",
     "after_node": "desire",

@@ -19,7 +19,7 @@
     "The source's existing scar remains visible. It still bleeds; it proves no immunity, buys no forgiveness and substitutes for no killed-lover debt.",
     "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
   ],
-  "default_text": "{n}The watch goes by under the window. Chivarro bends over you and takes up the kiss exactly where she left it, and for a long while neither of you is any good at being quiet.{/n}\n\"Leave the lamp. I know where you flinch.\"",
+  "default_text": "{n}The watch goes by under the window. Chivarro bends over you and takes up the kiss exactly where she left it.{/n}\n\"Leave the lamp. I know where you flinch.\"",
   "last_line": "N: Dawn.",
   "speakers": {
     "C": "Chivarro"

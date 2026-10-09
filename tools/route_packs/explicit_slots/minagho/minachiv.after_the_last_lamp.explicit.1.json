@@ -24,7 +24,7 @@
   ],
   "min_lines": 12,
   "max_lines": 20,
-  "default_text": "{n}Chivarro bends to your mouth and does not hurry; the lamp, the ledger and the coins on the pillow all stop mattering at once.{/n}\n\"Not for money. I chose this one.\"\n{n}Near dawn a cart rattles across the market square overhead. Chivarro lifts her head from your chest as if considering having it arrested, then drops it again and hooks her arm over you.{/n}\n\"If you're leaving, lie well. I want another hour before I believe it.\"",
+  "default_text": "{n}Chivarro settles her weight on you and does not hurry.{/n}\n\"Not for money. I chose this one.\"",
   "canon_refs": [
     "C1",
     "C2",

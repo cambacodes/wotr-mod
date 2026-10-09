@@ -24,7 +24,7 @@
   "example": "N: Her claws close on your wrists and press them into the blanket.\nJ: Hold still. No. Stiller than that. I want to see how long you last.\nN: Her laughter buzzes behind your left eye, very pleased.",
   "min_lines": 10,
   "max_lines": 18,
-  "default_text": "{n}The candles behind her go out. Her voice stays close in the dark, telling you exactly what to do with your hands, and neither of you lights them again. The glass warms under your palms and fogs with your breath, and she does not stop counting the sounds you make until she has every one of them right.{/n}",
+  "default_text": "{n}The candles behind her go out. Her voice stays close in the dark, telling you exactly what to do with your hands, and neither of you lights them again.{/n}",
   "placement": {
     "scene": "jerribeth.unsold_evening",
     "after_node": "kiss",
