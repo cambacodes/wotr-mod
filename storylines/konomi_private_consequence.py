@@ -238,9 +238,9 @@ s("private_last_visit", "The visit before you leave", [
       c('[Keep holding her. Spend the evening close, and part before your next duty.]', "quiet")),
     n("night", "Narrator", '''{n}She kisses you hard, as if the war might come through the door before she has finished. Her hand closes in your collar and does not let go until she needs both hands for your belt.{/n}
 "The lamp stays lit," {n}she says against your mouth.{/n} "I intend to remember this properly."
-{n}Her robe slides from her shoulders onto the floor beside the travelling case. She pushes you back across the bed, climbs over you, and settles her knees either side of your hips, her hair falling loose around your face as she pulls your hands to her hips and bends to kiss you.{/n}
+{n}Her robe slides from her shoulders onto the floor beside the travelling case. She pushes you back across the bed and follows, her hair falling loose around your face as she pulls your hands to her hips and bends to kiss you.{/n}
 {n}The lamp throws her shadow huge up the wall. She is bare and lit and does not hide in it, and she watches your eyes travel over her as if reading a document she drafted herself.{/n}
-"Look," {n}she says.{/n} "I mean to be remembered in detail." {n}Her mouth drags down your jaw to your throat, teeth and then tongue, and her hips roll once against yours, slow and deliberate, unhurried by the war she has declared to be on the other side of the door.{/n}
+"Look," {n}she says.{/n} "I mean to be remembered in detail." {n}Her mouth travels along your jaw to your throat, teeth and then tongue, unhurried, as if the war she has declared to be on the other side of the door had been told to wait its turn.{/n}
 {n}Much later, when the lamp is out, she asks whether you are awake. You are. In a precise, level voice she tells you which of the war's likely outcomes she has been costing out since supper. You do not promise her any of them. You find her hand beneath the cover and hold it until the figures run out.{/n}
 {n}In the morning she walks you to the door. The book remains on the windowsill.{/n}
 "Go carefully," {n}she says.{/n} "I want another inconvenient afternoon."

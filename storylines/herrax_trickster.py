@@ -345,7 +345,7 @@ def _intimacy(scene_id):
     """The yes, shared by both closings: desire, the threshold on Chivarro's old dais, the cut, the morning after."""
     return [
         hx("desire", '''{n}She doesn't smile at the word. She takes it the way she takes coin across the bar: weighs it, tests it, and puts it away somewhere nobody else will find it.{/n}
-"Then come here." {n}She sits on the edge of the dais with her knees apart under the black silk and draws you in by the belt, her claws hooked through it, until you are standing between them. She tips her face up to the lamp, so that the scar runs bright from her cheekbone down through her mouth.{/n}
+"Then come here." {n}She sits on the edge of the dais and draws you in by the belt, her claws hooked through it, until you are standing close enough to feel her breath. She tips her face up to the lamp, so that the scar runs bright from her cheekbone down through her mouth.{/n}
 "Touch it. Everyone else pays not to."''',
            c("[Trace the scar with your thumb, down through her lip.]", "thumb"),
            c("[Kiss the seam in her lip.]", "kiss")),
@@ -361,8 +361,8 @@ def _intimacy(scene_id):
 "You feel it?" {n}Her mouth is at your throat, and something is going out of you with each breath into her: warmth, a little strength, a thread of your life drawn off as lightly as a pickpocket's fingers.{/n} "We take a little more than we give, honey. It's our nature. I'll stop before you do."''',
            c('"You\'d better."', "cut"),
            c('"Take what you like."', "cut")),
-        nar("cut", '''{n}She laughs against your skin, low, and her claws come out of your belt and into the small of your back. She pulls you down onto Chivarro's old cushions, into the smell of another woman's perfume, rolls you under her, and sets her knees on either side of your hips. The lamps burn on over the empty hall.{/n}
-{n}She is bare and hot and unashamed, every scar lit gold, the ragged wings pulled close around the two of you. She drags your hands to her hips, claws first and then palms, and rolls against you once, slow, only to watch your face change, as a madam samples a vintage before she decides what it will cost.{/n}
+        nar("cut", '''{n}She laughs against your skin, low, and her claws come out of your belt and into the small of your back. She pulls you down onto Chivarro's old cushions, into the smell of another woman's perfume, and rolls you under her. The lamps burn on over the empty hall.{/n}
+{n}She is bare and hot and unashamed, every scar lit gold, the ragged wings pulled close around the two of you. She drags your hands to her hips, claws first and then palms, and holds them there only to watch your face change, as a madam samples a vintage before she decides what it will cost.{/n}
 "Don't you look away, honey. Nobody gets this and a view of the ceiling." {n}Her hand finds the last of your buckles and breaks it.{/n}''',
            c("Continue", scene_id + ".explicit.1")),
         nar("morning", '''{n}You wake on the dais with the lamps burnt out and the grey light of the Isles coming down through the high windows. Somebody has put a fur over you. Herrax is sitting up beside you with her hair unpinned, eating a fig and reading the night's takings.{/n}
@@ -375,7 +375,7 @@ def _intimacy(scene_id):
            c('"I\'ll be back."'),
            c('"Not yet. The crusade can wait an hour."')),
         # Explicit brief: private first night; her unpaid guest, lit hall, no witnesses.
-        nar(scene_id + ".explicit.1", ("{n}She draws you against her, the returned knife laid beyond the cushions, and kisses you until the hall falls quiet.{/n}" if scene_id.endswith("reachable_restored") else "{n}Herrax draws you down against the cushions and catches your mouth with hers. Her hand closes around yours; the lamps burn on over the empty hall.{/n}"),
+        nar(scene_id + ".explicit.1", ("{n}She draws you against her, the returned knife laid beyond the cushions, and kisses you until the hall falls quiet. She takes a little warmth from you, a little strength, and does not pretend it is anything but appetite; her ragged wings close round the two of you, and her laugh, when it comes, is hoarse and pleased.{/n}" if scene_id.endswith("reachable_restored") else "{n}Herrax draws you down against the cushions and takes your mouth, and the hall, the lamps and Rokhorn's dried blood go away. She takes a little more than she gives, as promised, and the warmth leaves you in long pulls that leave you dizzy and glad of it; her wings close round you both, and when she laughs at last it is ragged against your ear.{/n}"),
             c("Continue", "morning")),
     ]
 
@@ -727,7 +727,7 @@ SCENES.append(scene(H + "epilogue.after_hours", "", "HerraxEpilogue", 6, "", [
             p("{n}Her knife was back at her hip, and Rokhorn's face bore the cut she had been denied. This time the Commander stayed until closing. She had decided long before; she wanted to say it to a face.{/n}", requires=(RESTORED,)),
             p("{n}At closing, in the empty hall, with the lamps burning, she offered the one thing her role forbade: to be reachable, by one person. The Commander said yes.{/n}", requires=(MADAM,)),
             p('{n}At closing, in Herrax\'s rooms, she barred the door against the guests still calling from below. "They\'re not paying for tonight, lover. Neither are you." She offered the Commander a place beside her, without a price. The Commander said yes.{/n}', forbids=(MADAM,)),
-            p('{n}She caught the Commander by the belt and drew her guest between her knees. "Everyone else pays to be this close, lover." She set the Commander\'s thumb on the seam in her lip and opened her mouth beneath it. Armour fell at her feet. Her gown had one clasp; she broke it and let the silk slide off, showing every scar. The Commander kissed the torn corner of her mouth. Her ragged wings closed round them, and her claws pressed into the Commander\'s back. With each breath she took a little warmth, a little strength. "Still hungry?" she asked, against the Commander\'s throat. Then she pulled her guest down and climbed astride. The lamps burned on.{/n}'),
+            p('{n}She caught the Commander by the belt and drew her guest between her knees. "Everyone else pays to be this close, lover." She set the Commander\'s thumb on the seam in her lip and opened her mouth beneath it. Armour fell at her feet. Her gown had one clasp; she broke it and let the silk slide off, showing every scar. The Commander kissed the torn corner of her mouth. Her ragged wings closed round them, and her claws pressed into the Commander\'s back. With each breath she took a little warmth, a little strength. "Still hungry?" she asked, against the Commander\'s throat. Then she pulled her guest down onto the bed. The lamps burned on.{/n}'),
             p("{n}In the morning Rokhorn brought breakfast and stood holding the tray until Herrax took it from him. He kept his mouth shut. She ate beside the Commander and counted the night's takings, then called one of her girls to collect the dishes. The girl looked from the empty plates to the armour left on the floor. Herrax smiled and let her look. By noon the house knew who slept without paying.{/n}"),
         ))],
     requires=("trickster.ever", LATE_COMMITTED), forbids=(COMMITTED, CLOSED, "sacrifice"),
@@ -827,7 +827,7 @@ def _stage_late_return():
             c('"Then I am staying."', "desire"), c('"No. Keep the night."', "declined", flags=(CLOSED,)), portrait="Herrax"),
         nar("desire", paragraphs[8]["Text"], c("Continue", slot_id)),
         # Explicit brief: previously unconsummated late alternative, portable room/hall.
-        nar(slot_id, "{n}Herrax draws her returning guest down and catches their mouth against the torn corner of her own. The door stays barred until morning.{/n}", c("Continue", "morning")),
+        nar(slot_id, "{n}Herrax draws her returning guest down and takes their mouth against the torn corner of her own, and the house below, calling for its madam, gets no answer. She takes a little warmth, a little strength, and is ragged and pleased about it; the door stays barred until morning.{/n}", c("Continue", "morning")),
         nar("morning", '{n}Outside the room, the house begins another morning. Rokhorn brings breakfast and holds the tray until Herrax takes it.{/n} "Your unpaid guest, mistress." {n}She laughs and makes him wait while she feeds you a piece of fruit. An attendant looks at the armour on the floor. Herrax lets her look.{/n} "Tell the others. This one eats with me. The rest still pay."', c("Continue")),
         n("declined", "Herrax", '"Downstairs, then. They will find you a room at the usual rate." {n}She turns the key in her fingers and calls for an attendant.{/n}', c("Continue"), portrait="Herrax"),
     ], requires=("trickster.ever", LATE_COMMITTED, "herrax.payoff.partner", "herrax.present_now"),

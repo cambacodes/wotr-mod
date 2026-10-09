@@ -743,14 +743,14 @@ beat(H + "beat.second_night", "Your turn", '"Come up tonight."', [
        c("[Draw her down onto the bed.]", "draw"),
        c('"Your turn to wait."', "wait")),
     nar("draw", '''{n}You take her by the hips and turn her, and she lets herself be turned, which she has never done, and you walk her back to the bed with her mouth still on yours. Her leathers come apart under your hands a lace at a time. She is lean and hot and hard as a drawn bow, and when the backs of her knees meet the edge of the bed she sits, and pulls you down after her by the front of your open shirt.{/n}
-{n}Her hand drags once, slow and hard, down your ribs, the grip of someone who could break you and has chosen to hold. Her heels lock behind your thighs and draw you in against her.{/n}''',
+{n}Her hand drags once, slow and hard, down your ribs, the grip of someone who could break you and has chosen to hold. Her mouth takes yours again, hard, and her breath comes short against your ear.{/n}''',
         c("Continue", "cut")),
     nar("wait", '''{n}She stops. Her fingers stop, halfway down your laces. She looks at you with an expression you have never seen on her: surprise, and then, slowly, something that is very nearly delight.{/n}
 {n}"Oh," she says softly. "Oh, you learn." And she stands perfectly still, with her hands at her sides and her pale throat bare in the candlelight, and lets you undo her: every lace of the leathers, every buckle, the long line of her back under your palms, the scar under your mouth. She does not move. Her breath does. By the time the last of it is on the floor she is shaking with the effort of standing still.{/n}''',
         c("Continue", "wait2")),
-    hz("wait2", '''"Enough," {n}she says through her teeth. She takes two fistfuls of your shirt and pulls you onto the bed beneath her. Her knees settle on either side of you; she bends until her bare throat brushes your mouth.{/n}''',
+    hz("wait2", '''"Enough," {n}she says through her teeth. She takes two fistfuls of your shirt and pulls you onto the bed beneath her. She bends until her bare throat brushes your mouth.{/n}''',
        c("Continue", "cut")),
-    nar("cut", '''{n}Her mouth closes on yours, hard enough to bruise. What is left of your clothes goes where hers went, and her hips settle onto yours in one slow, deliberate grind that drags a sound out of her she will deny in the morning. She catches both your wrists in her hands and pins them to the pillow, just short of drawing blood, and looks down at what she has caught: all long muscle and fever-heat, the white band of the old collar bright in the candlelight, her hair hanging round both your faces.{/n}
+    nar("cut", '''{n}Her mouth closes on yours, hard enough to bruise. What is left of your clothes goes where hers went, and a sound is dragged out of her against your neck that she will deny in the morning. She catches both your wrists in her hands and pins them to the pillow, just short of drawing blood, and looks down at what she has caught: all long muscle and fever-heat, the white band of the old collar bright in the candlelight, her hair hanging round both your faces.{/n}
 "Let your sentries listen," {n}she says against your jaw.{/n} "Let the one on the left hear every minute of it. I want your whole citadel to know whose bed I am in." {n}She reaches toward the bedside candle, and the room goes dark.{/n}''',
         c("Continue", "after")),
     nar("after", '''{n}When the morning bell rings she is sitting on the edge of your map table in nothing but her scar, buckling on her collar, with the Worldwound pressed flat under her thigh.{/n}
@@ -1079,7 +1079,7 @@ I want another visit when your war lets you breathe, and I do not mean a report 
     slot=H+"beat.second_night.explicit.1"
     ns["cut"]["Choices"][0]["Next"]=slot
     scenes[H+"beat.second_night"]["Nodes"].append(nar(slot,
-        "{n}In the dark she draws you back to her. The watch changes beyond the door; neither of you answers its call. The morning bell rings beyond the shutter.{/n}",c("Continue","after"))) # Brief: return/deepening in Drezen, morning watch hears aftermath.
+        "{n}In the dark she draws you back to her, and then there is only her breath, her nails and the heat of her skin, with the Worldwound's red glow at the shutter. Beyond the door the watch changes and a sentry's boots stop, shift, and keep very carefully still; neither of you answers. By the time the morning bell rings, the guard on the left has heard everything he was invited to hear.{/n}",c("Continue","after"))) # Brief: return/deepening in Drezen, morning watch hears aftermath.
 
 _round2_guild()
 

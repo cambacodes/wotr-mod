@@ -265,9 +265,9 @@ physical("konomi.trickster.dismissed.private", "Off the record", '"Business conc
 {n}She rises. Her ears tip back and her tail uncurls behind her as she loosens the first tie of her robe.{/n}
 "Take it off. Slowly. I want to watch your hands."
 {n}You ease the silk from one shoulder, then the other. She stands before you with nothing on but her rings. For a moment she lets you look; then her hand closes at your collar and she kisses you hard, nails grazing the back of your neck.{/n}
-{n}She walks you backward to the desk. Dispatches slide to the floor. She pushes you back, comes over you, and holds your wrists above your head.{/n}
+{n}She walks you backward to the desk. Dispatches slide to the floor. She pushes you back against the wood, follows, and pins your wrists above your head with one ringed hand.{/n}
 "Keep looking at me."
-{n}She is rings and skin over you, knees either side of your hips, and she lowers herself against you with a deliberate, maddening slowness, watching your face for every flicker of it. Her breath snags.{/n}
+{n}She is rings and skin over you in the lamplight, and she takes her time about it, deliberate and maddening, watching your face for every flicker. Her breath snags.{/n}
 "Good," {n}she says, hoarse now, the polish worn clean away.{/n} "I wanted to see that."
 {n}Her breath catches as she draws close.{/n}''',
       c("Continue", "morning")),
@@ -316,9 +316,9 @@ physical("konomi.trickster.dismissed.a_season", "A season, abridged", '"You aske
       c('[Balk] "Not in front of the council."', "no")),
     k("yes", '''{n}She reads your face the way she reads a treaty, from the last line backwards, and finds what she wanted in it.{/n}
 "Then we are agreed." {n}Her ears tip back, pleased, and this time she lets them.{/n} "Come here, Commander. I have been told no by nobody tonight, and I intend to keep it that way."
-{n}She lets the outer robe pool on the ledger and pulls you into the chair she has just left. The silk underneath goes over her head; the rings stay on. She strips your shirt off with none of the patience she spends on treaties, settles bare across your lap, and draws your hands to her waist. Her tail sweeps the floor as she leans in to kiss you, then catches your lower lip between her teeth.{/n}
+{n}She lets the outer robe pool on the ledger and pulls you into the chair she has just left. The silk underneath goes over her head; the rings stay on. She strips your shirt off with none of the patience she spends on treaties, draws your hands to her bare waist. Her tail sweeps the floor as she leans in to kiss you, then catches your lower lip between her teeth.{/n}
 "You may argue with me in the morning."
-{n}Her rings are cool on your skin and nothing else about her is. She rocks against you once in the lamplight, unhurried and wholly deliberate, and watches the effect with the satisfaction of a woman whose assessment has been confirmed. Her mouth finds your ear.{/n}
+{n}Her rings are cool on your skin and nothing else about her is. She watches the effect in the lamplight with the satisfaction of a woman whose assessment has been confirmed, and her mouth finds your ear.{/n}
 "I have signed treaties with far less enthusiasm. Do not tell the Chancellor."
 {n}She reaches for your belt and kisses you again before you can answer.{/n}''',
       c("Continue", "council", forbids=(SETTLED,)),       # retired by gating (index kept): the morning comes first
