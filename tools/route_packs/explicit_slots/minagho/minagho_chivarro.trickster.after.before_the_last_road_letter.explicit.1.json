@@ -17,7 +17,7 @@
     "Minagho and Chivarro actively choose each other as well as the Commander; neither is a prize offered by the other. Their playful rivalry remains specific to their long bond.",
     "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
   ],
-  "default_text": "{n}Chivarro pulls you close as the letter catches in the grate. Minagho kisses her over your shoulder; both women draw you down with them, the discarded belt beyond reach.{/n}\n\"Next time, honey, you come to our door.\"",
+  "default_text": "{n}The letter catches in the grate and curls. Neither of them looks at it.{/n}\n\"Next time, honey, you come to our door.\"",
   "last_line": "N: A cart rattles beneath the chandler's window. Chivarro drags the cover over all three of you; Minagho pulls it back to bind your hand.",
   "speakers": {
     "M": "Minagho",

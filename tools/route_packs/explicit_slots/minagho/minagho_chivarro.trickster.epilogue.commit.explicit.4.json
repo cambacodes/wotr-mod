@@ -19,7 +19,7 @@
     "This is the accepted late invitation or the mapped secret branch, not a new fate return. Annual visits follow only the preserved accepting history; exposed branches retain their closure.",
     "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
   ],
-  "default_text": "{n}Minagho catches your mouth again and draws you against her. Your hand closes on her bare waist; she keeps it there and presses closer.{/n}",
+  "default_text": "{n}Her mouth comes down on yours again, and she does not let you answer.{/n}",
   "last_line": "N: The invitation has been answered.",
   "speakers": {
     "M": "Minagho"

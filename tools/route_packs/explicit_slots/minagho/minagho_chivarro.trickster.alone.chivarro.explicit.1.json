@@ -17,7 +17,7 @@
     "Her own invitation and appetite are distinct from purchased service. Keep the actual receipt/rent history; do not invent a charge. Minagho's current place is not silently dissolved.",
     "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
   ],
-  "default_text": "{n}Chivarro lets the gown slip from her shoulders. She catches your mouth before you can speak, pulls you down onto her bed and closes her fingers in your open collar.{/n}\n\"Leave the belt on the floor.\"",
+  "default_text": "{n}Chivarro catches your mouth before you can speak and closes her fingers in your open collar.{/n}\n\"Leave the belt on the floor.\"",
   "last_line": "N: At dawn, a folded receipt waits beside the pillow.",
   "speakers": {
     "C": "Chivarro"

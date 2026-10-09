@@ -18,7 +18,7 @@
     "The source's existing scar remains visible. It still bleeds; it proves no immunity, buys no forgiveness and substitutes for no killed-lover debt.",
     "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
   ],
-  "default_text": "{n}Chivarro kisses your uninjured fingers and places them at the laces of her gown. Minagho presses close behind her, then pulls both of you toward the bed.{/n}\n\"Put the lamp down. You will want that hand free.\"",
+  "default_text": "{n}In the dark Chivarro finds your burned hand and kisses the palm, and Minagho laughs low against her shoulder.{/n}\n\"Put the lamp down. You will want that hand free.\"",
   "last_line": "N: At dawn the palm opens along its new scar, and two hands reach for it at once. Minagho gets there first and binds it. Chivarro writes the night on your bill, itemised, and adds a line at the foot in her sharp hand: \"Scar: paid in advance.\"",
   "speakers": {
     "M": "Minagho",
