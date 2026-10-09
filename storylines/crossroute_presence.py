@@ -584,6 +584,18 @@ def integrate(payload):
             seat = (payload.get("SeatWomen") or {}).get(woman, {})
             if route == block.route or seat.get("Relationship") == block.route or block.route.startswith(woman + "."):
                 continue
+            # struct3-a / herrax:H01: Chivarro's old cushions and perfume
+            # are retained property, not her physical participation. Scope
+            # this classification to the two audited private closing beats.
+            if (woman == "chivarro" and block.slot == "text"
+                    and block.scene["Id"] in {
+                        "herrax.trickster.madam.reachable",
+                        "herrax.trickster.madam.reachable_restored"}
+                    and block.node["Id"] == "cut"
+                    and not pattern.fullmatch(block.node.get("Speaker", ""))
+                    and hashlib.sha256(block.text.encode("utf-8")).hexdigest()
+                    == "e72ebd3198b5342f6a3fca1b087a63532e312a4476f4ae0c4d66dd0b544a2db6"):
+                continue
             native = native_contexts.get(block.scene["Id"], {})
             if any(pattern.fullmatch(name) for name in native.get("Speakers", [])) or pattern.search(native.get("Mentions", "")):
                 continue  # inherited native participation, validated against the original cue graph

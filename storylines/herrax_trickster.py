@@ -368,7 +368,7 @@ def _intimacy(scene_id):
         nar("morning", '''{n}You wake on the dais with the lamps burnt out and the grey light of the Isles coming down through the high windows. Somebody has put a fur over you. Herrax is sitting up beside you with her hair unpinned, eating a fig and reading the night's takings.{/n}
 {n}Rokhorn brings the breakfast. He carries the tray up the dais steps himself, as she ordered, in front of the girls clearing the hall. The new wound on his face is sewn shut with black thread in a row of neat, ugly stitches, and it pulls when he moves his mouth. "Anything else, hot stuff?" His eyes meet yours over the tray. Herrax takes a fig. "You can start by looking pleased."{/n}
 {n}He sets the tray down by your knee. He looks at neither of you.{/n}''',
-           c("Continue", "morning2")),
+           c("Continue", "morning2", flags=(MORNING,))),
         hx("morning2", '''"Thank you, Rokhorn." {n}She says it pleasantly. He goes back down the steps. Every girl in the hall watched him do it, and every one of them will tell it before noon.{/n}
 "The whole house knows where you slept, lover. I made sure." {n}She tears the fig in half and gives you the larger piece.{/n} "It's good for business. And it's good for them to learn there's one person in the Delights who comes up my stairs without paying."
 "You aren't paying for tonight. Your people are still paying for breakfast. Tell the next little bastard who asks for your rate." {n}She brushes a crumb from your mouth with her thumb.{/n} "Go back to your crusade when you like. Nobody will stop you at my door again."''',
@@ -394,7 +394,7 @@ def _variants(prefix):
 
 
 OFFER_CHOICES = (
-    c('"Yes. By me."', "desire", flags=(COMMITTED, MORNING)),
+    c('"Yes. By me."', "desire", flags=(COMMITTED,)),
     c('"No. Stay out of reach."', "no", flags=(CLOSED,)),
 )
 
