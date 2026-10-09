@@ -218,7 +218,7 @@ def integrate(payload):
         t = {x["Id"]: x for x in throne["Nodes"]}
         t["ask"]["Choices"].append(c('"Rebuild your couriers. I will support your reach, while Nocticula keeps her throne."', "support", flags=(P + "throne_told", SUPPORT)))
         throne["Nodes"].append(n("support", "Shamira", '"The couriers who scattered when I died. You would help me find them, without helping me kill my lady." {n}She studies you over the cup.{/n} "Very well. Keep your limit. I shall reclaim the doors they used and make them answer to me again. No borrowed crown, no orders sent in your name." {n}Her smile sharpens.{/n} "My lady will have a useful steward. And an inconvenient one."', c("Continue", "socoth"), portrait="Shamira"))
-        t["end"]["Text"] = '"The siege has given you nothing but maps to think about." {n}She finishes your wine and sets the cup down.{/n} "Sleep tonight. I shall come for what we agreed." {n}She turns into the alley.{/n}'
+        t["end"]["Text"] = '"The siege has given you nothing but maps to think about." {n}She finishes your wine and sets the cup down.{/n} "Sleep tonight. I shall come to your dreams, whatever you answered me." {n}She turns into the alley.{/n}'
 
         alone = by[P + "after.night_alone" + suffix]
         a = {x["Id"]: x for x in alone["Nodes"]}

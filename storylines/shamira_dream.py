@@ -450,7 +450,7 @@ hub(P + "after.throne", "The chair she wants", '"You have that look. The one fro
     sh("socoth_here", '''"He sent me a present, you know. In my Harem. A silk scarf in exactly my colour, and a card: 'For the leftovers.' Nothing else." {n}Her lip curls.{/n} "I am going to strangle him with it one day. Not soon. He'd enjoy it too much, now."''',
         c("Continue", "end")),
     sh("end", '''{n}She finishes your wine and stands, and stops by the King's back door with her hand on the frame, as she always does now.{/n}
-"You dreamed of the war tables again last night. I sat in the corner and was bored." {n}It is not a complaint.{/n} "I'll be there tonight. Dream of something with wine in it." {n}She opens the door.{/n} "Goodnight, Commander. Sleep. I'll be along."''',
+"You dreamed of the war tables again last night. I sat in the corner and was bored." {n}It is not a complaint.{/n} "I'll be there tonight, whatever you told me about chairs. Dream of something with wine in it." {n}She opens the door.{/n} "Goodnight, Commander. Sleep. I'll be along."''',
         c("[Let her go.]")),
 ], requires=(COMMITTED,), forbids=(THRONE,) + LIVE, delay=72)
 

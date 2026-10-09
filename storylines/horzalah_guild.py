@@ -743,7 +743,7 @@ beat(H + "beat.second_night", "Your turn", '"Come up tonight."', [
        c("[Draw her down onto the bed.]", "draw"),
        c('"Your turn to wait."', "wait")),
     nar("draw", '''{n}You take her by the hips and turn her, and she lets herself be turned, which she has never done, and you walk her back to the bed with her mouth still on yours. Her leathers come apart under your hands a lace at a time. She is lean and hot and hard as a drawn bow, and when the backs of her knees meet the edge of the bed she sits, and pulls you down after her by the front of your open shirt.{/n}
-{n}Her claws rake once, lightly, down your ribs. Her heels lock behind your thighs and draw you in against her.{/n}''',
+{n}Her hand drags once, slow and hard, down your ribs, the grip of someone who could break you and has chosen to hold. Her heels lock behind your thighs and draw you in against her.{/n}''',
         c("Continue", "cut")),
     nar("wait", '''{n}She stops. Her claws stop, halfway down your laces. She looks at you with an expression you have never seen on her: surprise, and then, slowly, something that is very nearly delight.{/n}
 {n}"Oh," she says softly. "Oh, you learn." And she stands perfectly still, with her hands at her sides and her pale throat bare in the candlelight, and lets you undo her: every lace of the leathers, every buckle, the long line of her back under your palms, the scar under your mouth. She does not move. Her breath does. By the time the last of it is on the floor she is shaking with the effort of standing still.{/n}''',

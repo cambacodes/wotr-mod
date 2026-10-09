@@ -557,7 +557,7 @@ presence(H + "test.the_gift", "A gift in the Abyss's idiom", '"Who is your frien
            c('[Accept him] "A good tailor is hard to find. I\'ll take him."', "accept", alignment=("Evil", 1))),
         hz("decline", '''{n}The chain stays in her hand. She looks at it, and then at you, and her face does something complicated.{/n}
 "Nobody refuses my gifts. They are usually too afraid of what is in the box." {n}She winds the chain slowly back around her fingers until the dresser is standing at her shoulder again.{/n}
-"You do not collect people." {n}She tries the words as if she were testing the edge on a blade.{/n} "Good. A collector of people I would have had to collect back, sooner or later. I have had enough owners, mortal. I do not want another one in my bed."''',
+"You do not collect people." {n}She tries the words as if she were testing the edge on a blade.{/n} "Good. A collector of people I would have had to collect back, sooner or later. Whoever holds my chain has never lived long, mortal. I take what I want, and I mean to keep taking it. I want you in my bed by your own will, not owned, and not owning."''',
            c("Continue", "decline_end")),
         hz("decline_end", '''"He stays with me, then. He will make my collars." {n}She touches the high black leather at her throat.{/n} "He made this one. He is the only man in Alushinyrra who has ever put something round my neck that I asked for." {n}To the dresser, without looking at him:{/n} "Come."''',
            c("[Watch them go.]", flags=(TESTED,))),
