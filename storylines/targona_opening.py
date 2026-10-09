@@ -5,7 +5,7 @@ from story_format import c, n, scene
 # extension. The existing buckles node and exit retain identity and mechanics.
 EXPLICIT_PARAGRAPHS = {
     "targona.the_open_threshold.explicit.1":
-        "{n}She holds you there, her brow against yours, her breath ragged. The last buckle lies beside the door.{/n}",
+        "{n}She pulls you close on the bed and kisses you until the haste gives way to warmth. The last buckle lies beside the door.{/n}",
 }
 
 SCENES = []

@@ -739,7 +739,7 @@ def page(id, title, text, requires, forbids=(), paragraphs=(), **extra):
 # Explicit interval production address; unconditional text paragraph.
 EXPLICIT_PARAGRAPHS = {
     "targona.trickster.epilogue.commit.explicit.1":
-        "{n}Targona held the Commander there, forehead to forehead, smiling against the next kiss. The last bandages swayed above the blanket.{/n}",
+        "{n}Targona drew the Commander down beside her, smiling against the next kiss. The last bandages swayed above the blanket.{/n}",
 }
 
 page(P + "epilogue.commit", "When the ward was quiet",
