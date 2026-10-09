@@ -16,5 +16,5 @@
   "max_lines": 20,
   "default_text": "{n}She sets the road map beyond the candle, takes your hand beneath her cloak, and pulls you close. By the time the cloak reaches the floor, she has kissed the greeting out of your mouth.{/n}",
   "placement": "epilogue.together/page: appended established-lovers return paragraph under existing heart_seen; no new commitment condition",
-  "narration": "third-past"
+  "narration": "second-present"
 }

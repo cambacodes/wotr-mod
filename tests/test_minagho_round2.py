@@ -60,8 +60,8 @@ class MinaghoRound2Tests(unittest.TestCase):
 
     def test_all_46_briefs_have_reachable_slots_and_no_new_effect(self):
         paths = sorted((ROOT / "tools/route_packs/explicit_slots/minagho").glob("*.json"))
-        chivarro = [json.loads(path.read_text(encoding="utf-8")) for path in
-                    (ROOT / "tools/route_packs/explicit_slots/chivarro").glob("*.json")]
+        # minagho/ is the single source for every Minagho/Chivarro slot brief.
+        self.assertFalse(list((ROOT / "tools/route_packs/explicit_slots/chivarro").glob("*.json")))
         self.assertEqual(len(paths), 46)
         for path in paths:
             brief = json.loads(path.read_text(encoding="utf-8"))
@@ -69,12 +69,7 @@ class MinaghoRound2Tests(unittest.TestCase):
             nodes = {n["Id"]: n for n in page["Nodes"]}
             slot = nodes[brief["slot_id"]]
             self.assertTrue(any(a["Next"] == slot["Id"] for n in page["Nodes"] for a in n["Choices"]))
-            shared = next((other for other in chivarro
-                           if other["slot_id"].rsplit(".explicit.", 1)[0] == brief["source"]["scene"]
-                           and brief["source"]["node"] in other["source_nodes"]
-                           and not all("minagho" in key for key in other["source_nodes"])
-                           and ".alone.minagho" not in brief["source"]["scene"]), None)
-            self.assertIn((shared or brief)["default_text"], slot["Text"])
+            self.assertIn(brief["default_text"], slot["Text"])
             self.assertTrue(all(not a["Set"] and not a.get("Crusade") for a in slot["Choices"]))
 
     def test_years_rent_refusal_refunds_and_letter_nights_pay_once(self):

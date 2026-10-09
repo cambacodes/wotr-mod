@@ -1,75 +1,150 @@
 # Explicit-slot rebuild report
 
 Base: `remote/claude/trickster-expansion` @ `ef49eeaa`, branch `claude/slot-rebuild`.
-Export: `development/Story.json` at that head. Only briefs changed, plus the
-`REBUILDING` allowlist in `tools/slot_brief_lint.py`. No export, scene, node or
-choice ID changed.
+Export: `development/Story.json` at that head. The checked-in export is not rebuilt here;
+the coordinator rebuilds on the remote.
+
+The work ran in two passes. Pass 1 was briefs only. Pass 2 applied the coordinator
+rulings and touched briefs, the lint, `storylines/chivarro_setpieces.py`,
+`storylines/minachiv_voice.py`, the minachiv slot index and directly affected tests.
 
 ## Lint counts
 
 | Run | Briefs | Hard | Known rebuild | Warnings |
 |---|---|---|---|---|
-| Before, `--strict` | 352 | 213 | 0 | 189 |
-| Before, `--known-rebuilds` | 352 | 0 | 213 | 189 |
-| After, `--strict` | 352 | 105 | 0 | 189 |
-| After, `--strict --known-rebuilds` | 352 | 0 | 105 | 189 |
+| Start, `--strict` | 352 | 213 | 0 | 189 |
+| Start, `--known-rebuilds` | 352 | 0 | 213 | 189 |
+| Pass 1 (briefs only), `--strict` | 352 | 105 | 0 | 189 |
+| **Pass 2 (rulings), `--strict`** | **315** | **5** | 0 | **177** |
+| **Pass 2, `--strict --known-rebuilds`** | 315 | **0** | **5** | 177 |
 
-The 189 warnings are unchanged. They are 64 terminal boundaries (`last_line` needs
-editorial review) and 125 background male-mention notes. No scope, variant or
-pronoun failure was hard, before or after.
+Pass 2 removes the 37 `chivarro/` mirror briefs, so the brief count drops from 352 to 315.
+The 177 warnings break down as follows:
 
-### Classification of the 213 hard findings at the start
+- 125 background male mentions
+- 50 terminal boundaries (`last_line` needs editorial review)
+- 2 new `narration_tense` notes. These are third-person *present* hosts, and Gemory only writes third-person past:
+  - `eritrice.trickster.epilogue.commit.explicit.1`
+  - `minagho_chivarro.trickster.epilogue.commit.explicit.1`
 
-| Class | Before | Fixed | After | Notes |
-|---|---|---|---|---|
-| `facts` given as a list (schema) | 63 | 63 | 0 | Joined into one text field. Gemory concatenates `facts`. |
-| Stale boundary (`last_line` is not the next node's first beat) | 71 | 44 | 27 | Fixed for 21 camellia and 23 minagho briefs. 8 areelu briefs are pinned by a test; 19 are stale `chivarro/` mirrors. |
-| Stale boundary exposed once the host was addressed | 0 | - | 1 | `camellia_vellexia`: pinned by a test. |
-| Divergent duplicate slot ID | 56 | 0 | 56 | 28 `minagho_chivarro.*` slots each exist in both `minagho/` and `chivarro/`. |
-| Epilogue narration (`third-past`) | 18 | 2 | 16 | Fixed where the host is third person. The rest have second-person hosts. |
-| Host missing or moved | 4 | 1 address fixed | 3 (+1 `retired`) | `camellia_vellexia` is now addressed, but its reserved host is gated off by design. |
-| Missing required field | 1 | 0 | 1 | `nocticula_shamira` has no `example`. The brief is already in `harem/blocked/`. |
-| Participant / pronoun | 0 | - | 0 | Only warnings (background male mentions). |
-| Stale export digests | 0 | - | 0 | No brief records a digest. Receipts bind at generation time (`--host-export`). |
+The 5 remaining hard findings are the 4 reserved harem slots listed below.
 
-### Fixes applied
+### Classification of the 213 starting hard findings and their resolution
 
-- **facts to text** (63 briefs: `camellia/` 21, `minagho/minagho_chivarro.*` 34, `areelu-vorlesh/` 8).
-- **Boundary set to the next node's first beat** (44 briefs). The beat is computed with the
-  lint's own `first_beat`, and every host has exactly one next beat. The old closing line
-  is kept in the new field `prior_stop_line`, which Gemory and the lint ignore, so the
-  author's intended last spoken line survives for editorial use.
-- **`narration: third-past`** on `minagho/minagho_chivarro.trickster.epilogue.commit.explicit.1`
-  and `.2`. Both hosts are third person. Caveat: the `.1` boundary (`went`) is in the present tense.
-- **Host address** for `harem/household.pair.camellia_vellexia.choice.explicit.1`:
-  `host_scene: household.pair.camellia_vellexia.choice` and `host_node: explicit.1`.
-  This is the short runtime ID in the export.
-- **Allowlist shrink.** `REBUILDING` went from 10 to 7 routes: nocticula, jerribeth,
-  minagho, chivarro, arueshalae, areelu and camellia. Removed: minachiv, hepzamirah and
-  melazmera, which have no remaining debt. Each remaining route still has at least one
-  hard finding. Harem pairs are attributed to camellia, jerribeth, arueshalae and nocticula.
+| Class | Start | Resolution |
+|---|---|---|
+| `facts` given as a list (schema) | 63 | Joined into text (pass 1). |
+| Stale boundary (`last_line` is not the next node's first beat) | 71 | 44 rebound in pass 1. 8 areelu rebound in pass 2, with the test updated (ruling 3). 19 were `chivarro/` mirrors, now deleted. |
+| Divergent duplicate slot ID | 56 | `minagho/` is the single source; `chivarro/` deleted (ruling 1). |
+| Epilogue narration | 18 | The lint now follows the host's person (ruling 2). Briefs were set to match their hosts. |
+| Host missing or moved | 4 | `camellia_vellexia` is now addressed but gated off by design. 3 have no host scene. All 4 remain (ruling 4). |
+| Missing required field | 1 | `nocticula_shamira` has no `example` (ruling 4). |
+| Participant / pronoun | 0 | Warnings only. |
+| Stale export digests | 0 | No brief records a digest. Receipts bind at generation time. |
 
-Fields read by the builders were not touched: `default_text`, `slot_id`, `source`,
-`source_nodes`, `insertion` and `speakers`. These are read by
-`storylines/camellia_round2.py`, `minagho_round2.py`, `chivarro_setpieces.py` and
-`minachiv_voice.py`, so the export does not change.
+## Changes
+
+### Pass 1 (briefs only)
+
+- **facts to text:** 63 briefs.
+- **Boundaries:** 44 boundaries set to the next node's first beat. The old closing line is kept as `prior_stop_line`, which Gemory and the lint ignore.
+- **Host address:** `camellia_vellexia` now names `host_scene: household.pair.camellia_vellexia.choice` and `host_node: explicit.1`.
+
+### Ruling 1: `minagho/` is the single source
+
+- **Deleted** all 37 `chivarro/` briefs:
+  - the 28 divergent `minagho_chivarro.*` mirrors
+  - the 9 identical `minachiv.*` copies
+- **`storylines/chivarro_setpieces.py`** now reads `explicit_slots/minagho/`.
+  - The source node list is now `brief.get("source_nodes") or [brief["source"]["node"]]`. `minagho/` briefs carry `source`, and the minachiv ones also carry `source_nodes`.
+  - It skips briefs whose `source.scene` is a different page.
+  - The cross-folder text replacement is gone, because the brief that installed the slot is now the same brief.
+  - The `speakers`, `slot_id` and `default_text` reads are unchanged.
+  - Run against the current export's 98 Minagho/Chivarro pages, `_slots` changes nothing: it is idempotent.
+- **`storylines/minachiv_voice.py`:** the two `SLOT_TEXT` entries that read `chivarro/` now read `minagho/`. Their content is byte-identical.
+- **Export text stays the same.** In the current export, 18 slot nodes carry text that the old builder copied in from a `chivarro/` brief, matched by source node. I set each of those `minagho/` briefs' `default_text` to that live text, so the single-source rebuild should reproduce the current export unchanged (not verified by a build).
+  - 10 slots got text from their own same-ID mirror:
+    - `after.before_the_last_road.1`, `before_the_last_road_letter.1`, `when_it_scars.1`
+    - `alone.chivarro.1`, `chivarro_letter.1`/`.2`, `chivarro_when_it_scars.1`/`.2`
+    - `epilogue.commit.1`/`.2`
+  - 8 slots are the ones that previously matched neither copy. They were filled by a sibling mirror whose source node matched:
+    - `after.before_the_last_road.3` came from `.2`
+    - `before_the_last_road_letter.3` came from `.2`
+    - `when_it_scars.3` came from `.2`
+    - `alone.chivarro.2` came from `alone.chivarro.1`
+    - `alone.chivarro.3` and `.4` came from `alone.chivarro.2`
+    - `epilogue.commit.3` came from `.4`
+    - `epilogue.commit.5` came from `.3`
+  - Every other field of the `minagho/` briefs is kept: scene, voice, facts, speakers and source.
+  - The other 16 Minagho/Chivarro slots already carried their `minagho/` text.
+- **Index:** `plans/minachiv-slot-index.json` now lists only the `minagho/` file for each of the 9 minachiv entries.
+- **Test:** `tests/test_minagho_round2.py` asserts the `chivarro/` folder is empty and that each brief's own `default_text` is in its slot.
+
+### Ruling 2: narration follows the host prose
+
+- **`tools/slot_brief_lint.py`.** The epilogue-ownership rule is removed. `host_narration()` reads the host's narration (`{n}` text or Narrator text, without quoted dialogue) and decides person and tense:
+  - Person comes from "you" against "the Commander". When neither appears, two or more of "them/their" count as third person.
+  - The evidence is checked in order: the slot's own node or paragraph (for inline slots, the text before the anchor), then the beats it flows into, then the build-up nodes.
+  - Second person requires `second-present` (or no field). Third person requires `third-past`. A third-person present host adds a `narration_tense` warning.
+  - A host with no person marker, or `commander: absent`, sets no requirement.
+- **The 16 ruled briefs:**
+  - Areelu finale/report (8): `second-present`, matching their hosts.
+  - Minagho/Chivarro `epilogue.commit.explicit.1`/`.2`: `third-past` (third-person hosts). `.1` carries the tense warning.
+  - Minagho/Chivarro `.3`/`.4`/`.5`: `second-present`.
+- **Seven more briefs** had `third-past` on second-person hosts, which the new rule exposed. They are now `second-present`:
+  - `delamere.trickster.epilogue.late.explicit.1`
+  - `eliandra.trickster.epilogue.{late,together,unasked}.explicit.1`
+  - `herrax.trickster.epilogue.after_hours.explicit.1`
+  - `iomedae.trickster.epilogue.platform.explicit.1`
+  - `shamira.trickster.epilogue.late.explicit.1`
+- **`tests/test_iomedae_round3.py`** pinned `third-past` for both Iomedae briefs. It now expects `after` to be `third-past` and `platform` to be `second-present`.
+- **`tests/test_slot_brief_lint.py`.** The new test `test_narration_follows_host_prose_not_epilogue_ownership` checks:
+  - A second-person present epilogue host accepts `second-present` and rejects `third-past`.
+  - A third-person host requires `third-past`.
+  - A neutral host and an absent Commander set no requirement.
+
+  The CLI known-rebuild test now uses the `nocticula` route.
+
+### Ruling 3: stop line is the next node's first line
+
+- **Areelu (8 briefs):** `last_line` rebound to the next beat. `tests/test_areelu_round2.py` now asserts `last_line == first_beat(next node)`. It keeps the old protection through `prior_stop_line == "N: " + default_text`, and the existing `default_text == slot Text` check stays.
+- **`camellia_vellexia`:** `last_line` rebound to the first beat of `after`. `tests/test_harem_row_s25.py` asserts the new stop line, `prior_stop_line == "V: That display was hideous anyway."` and the host address.
+
+### Known-rebuild allowlist
+
+`REBUILDING` is now `nocticula, jerribeth, arueshalae, camellia`: just the owners of the 4 reserved harem pairs. Areelu, minagho and chivarro are clean and were removed.
+
+## Needs host scene (structure owner)
+
+These stay blocked (ruling 4). Each brief already says it is blocked in its own `status`.
+
+| Slot | Brief | Lint | What is missing |
+|---|---|---|---|
+| `household.pair.camellia_vellexia.choice.explicit.1` | `harem/household.pair.camellia_vellexia.choice.explicit.1.json` | retired | The host scene exists, but its gate both requires and forbids `household.pair.camellia_vellexia.ready`, so it can never be reached. The structure owner must open the reserved window (152-hour bodily venue). |
+| `household.pair.jerribeth_vellexia.choice.explicit.1` | `harem/household.pair.jerribeth_vellexia.choice.explicit.1.json` | host | There is no `household.pair.jerribeth_vellexia.choice` scene and no successor. Per the `build_contract`, the owner must confirm the overlapping body/venue window. |
+| `household.pair.shamira_arueshalae.choice.explicit.1` | `harem/household.pair.shamira_arueshalae.choice.explicit.1.json` | host | There is no `household.pair.shamira_arueshalae.choice` scene and no successor. It is blocked until the corrupted-only F-to-R ceiling and arc allocation are integrated. |
+| `household.pair.nocticula_shamira.return.explicit.1` | `harem/blocked/nocticula_shamira/household.pair.nocticula_shamira.return.explicit.1.json` | host; required | There is no `return` scene (only `precedence` and `precedence.live`), and the brief has no `example`. |
+
+## After the remote rebuild
+
+- Re-run `python tools/slot_brief_lint.py --strict` against the rebuilt export. The narration rule reads the host prose. Ruling 1 should leave the slot text unchanged, but confirm that.
+- `tests/test_minagho_round2` already passes on the current export with the synced `default_text`. It should also pass after the rebuild.
 
 ## Ready vs blocked per woman
 
-Unique slot IDs. The 9 `minachiv.*` briefs that are identical copies in `minagho/` and
-`chivarro/` are counted once, under chivarro. "Dropped" means an evidenced drop in
-`plans/slot-brief-index.json`.
+Unique slots. "Dropped" means an evidenced drop in `plans/slot-brief-index.json`. Ready means
+no hard lint finding against the current export. It is not editorial approval: every
+candidate still needs voice and continuity review.
 
 | Woman / unit | Ready | Blocked | Dropped |
 |---|---|---|---|
 | anevia | 20 | 0 | 0 |
 | aranka | 11 | 0 | 0 |
-| areelu (`areelu/` + `areelu-vorlesh/`) | 1 | 8 | 0 |
+| areelu | 9 | 0 | 0 |
 | arsinoe | 5 | 0 | 0 |
 | arueshalae | 5 | 0 | 0 |
 | camellia | 23 | 0 | 0 |
 | chadali | 3 | 0 | 0 |
-| chivarro (`chivarro/`, incl. 9 shared `minachiv.*`) | 9 | 28 (stale mirror copies) | 0 |
 | delamere | 5 | 0 | 0 |
 | devarra | 5 | 0 | 0 |
 | dorgelinda | 1 | 0 | 0 |
@@ -78,6 +153,14 @@ Unique slot IDs. The 9 `minachiv.*` briefs that are identical copies in `minagho
 | eritrice | 3 | 0 | 0 |
 | galfrey | 4 | 0 | 0 |
 | gesmerha | 6 | 0 | 1 |
+| harem: camellia_arueshalae | 1 | 0 | 0 |
+| harem: camellia_vellexia | 0 | 1 | 0 |
+| harem: jerribeth_vellexia | 0 | 1 | 0 |
+| harem: nocticula_shamira | 0 | 1 | 0 |
+| harem: seelah_arueshalae | 1 | 0 | 0 |
+| harem: seelah_wenduag | 1 | 0 | 0 |
+| harem: shamira_arueshalae | 0 | 1 | 0 |
+| harem: wenduag_arueshalae | 1 | 0 | 0 |
 | hepzamirah | 5 | 0 | 0 |
 | herrax | 7 | 0 | 0 |
 | horzalah | 7 | 0 | 0 |
@@ -90,8 +173,8 @@ Unique slot IDs. The 9 `minachiv.*` briefs that are identical copies in `minagho
 | konomi | 8 | 0 | 0 |
 | melazmera | 2 | 0 | 0 |
 | mielarah | 4 | 0 | 0 |
-| minachiv (`minachiv/`) | 2 | 0 | 0 |
-| minagho (`minagho/`, excl. the 9 shared `minachiv.*`) | 9 | 28 (canonical copies, duplicate-blocked) | 0 |
+| minachiv | 2 | 0 | 0 |
+| minagho | 46 | 0 | 0 |
 | nenio | 4 | 0 | 1 |
 | nidalynn | 1 | 0 | 0 |
 | nocticula | 15 | 0 | 0 |
@@ -104,125 +187,7 @@ Unique slot IDs. The 9 `minachiv.*` briefs that are identical copies in `minagho
 | vellexia | 3 | 0 | 0 |
 | wenduag | 6 | 0 | 0 |
 | yaniel | 1 | 0 | 0 |
-| harem pairs (camellia_arueshalae, seelah_arueshalae warded, seelah_wenduag, wenduag_arueshalae / camellia_vellexia, jerribeth_vellexia, shamira_arueshalae, nocticula_shamira) | 4 | 4 | 0 |
-| **Total (unique slots)** | **271** | **40 slots / 68 brief files** | **4** |
-
-The 28 blocked `minagho_chivarro.*` slots are the same slots in both folders, so they
-count once in the total. Ready means no hard lint finding against the current export.
-It is not editorial approval: every candidate still needs voice and continuity review.
-Ready slots marked `terminal: review last_line` have no next-node boundary.
-
-## Coordinator decisions needed
-
-1. **`minagho_chivarro.*` duplicates (28 slots, 56 findings).** The canonical copy is
-   `minagho/`. Each of its briefs names the exact predecessor node now in the export
-   (`threshold`, `threshold_clean`, `stance_N_night_*`, `came`, `night`, `pair` or `waiting`).
-   It also names the right woman for that night. Several `chivarro/` copies describe a
-   swapped or stale host. For example, `after.*.explicit.2` is now Minagho's secret night,
-   but the `chivarro/` brief describes Chivarro's. The same problem affects
-   `after.*.explicit.3`, `alone.chivarro.explicit.2` and `epilogue.commit.explicit.3`-`.5`.
-   The `chivarro/` copies cannot simply be deleted, because they are build inputs:
-   `storylines/chivarro_setpieces.py` reads their `source_nodes`, `default_text` and `speakers`.
-   The current slot text matches the `chivarro/` `default_text` in 8 of the 28 slots, the
-   `minagho/` one in 11, and neither in 9. Resolving this needs a builder change and a
-   rebuild, which is out of scope for a briefs-only job. Choose one of two options:
-   - Make `minagho/` the single source. Repoint `chivarro_setpieces.py` and remove the mirrors.
-   - Add a lint-recognised "build mirror" marker.
-2. **Epilogue narration vs second-person hosts (16 findings).** These are
-   `areelu.trickster.finale.*` / `report.*` (8, owner `Epilogue`) and
-   `minagho_chivarro.trickster.epilogue.commit.explicit.3`-`.5`. Their host and boundary
-   prose is second-person present ("She draws you onto the bed"). The lint requires
-   `third-past`, which would make Gemory write third person into a second-person boundary.
-   Options:
-   - Re-tense the host prose.
-   - Let the lint accept second-present when the host is second person.
-
-   The existing precedent is inconsistent: `iomedae.trickster.epilogue.platform` passes with
-   `third-past` on a second-person host.
-3. **Test-pinned boundaries.** `tests/test_areelu_round2.py:42` requires areelu
-   `last_line == "N: " + default_text`, which is the old "slot default" convention.
-   `tests/test_harem_row_s25.py:233` pins the `camellia_vellexia` `last_line`. Both conflict
-   with the lint's next-beat boundary. The tests need updating before these briefs can be fixed.
-4. **Reserved harem slots.** `camellia_vellexia` has a host, but its gate requires and forbids
-   `household.pair.camellia_vellexia.ready`. `jerribeth_vellexia`, `shamira_arueshalae` and
-   `nocticula_shamira` have no host scene and no successor. All four say they are blocked in
-   their own `status`. They stay as debt until their structure owners build the hosts.
-5. **Tense caveat.** `minagho/...epilogue.commit.explicit.1` is now `third-past`, but its
-   boundary `went` is third-person present ("At dawn Chivarro retrieves the sword belt").
-   It is still duplicate-blocked, so decide this together with item 2.
-
-## Blocked slots
-
-| Slot | Brief | Hard codes | Reason |
-|---|---|---|---|
-| `areelu.trickster.finale.ascended.explicit.1` | `areelu-vorlesh/areelu.trickster.finale.ascended.explicit.1.json` | last_line; narration | Epilogue-owned host written in second-person present; lint requires `narration: third-past` (decision). `last_line` is pinned to the slot's own default text by `tests/test_areelu_round2.py:42`, not to the next beat the lint requires (decision/test change). |
-| `areelu.trickster.finale.company.explicit.1` | `areelu-vorlesh/areelu.trickster.finale.company.explicit.1.json` | last_line; narration | Epilogue-owned host written in second-person present; lint requires `narration: third-past` (decision). `last_line` is pinned to the slot's own default text by `tests/test_areelu_round2.py:42`, not to the next beat the lint requires (decision/test change). |
-| `areelu.trickster.finale.company.explicit.2` | `areelu-vorlesh/areelu.trickster.finale.company.explicit.2.json` | last_line; narration | Epilogue-owned host written in second-person present; lint requires `narration: third-past` (decision). `last_line` is pinned to the slot's own default text by `tests/test_areelu_round2.py:42`, not to the next beat the lint requires (decision/test change). |
-| `areelu.trickster.finale.lien_bottled.explicit.1` | `areelu-vorlesh/areelu.trickster.finale.lien_bottled.explicit.1.json` | last_line; narration | Epilogue-owned host written in second-person present; lint requires `narration: third-past` (decision). `last_line` is pinned to the slot's own default text by `tests/test_areelu_round2.py:42`, not to the next beat the lint requires (decision/test change). |
-| `areelu.trickster.finale.not_burned.explicit.1` | `areelu-vorlesh/areelu.trickster.finale.not_burned.explicit.1.json` | last_line; narration | Epilogue-owned host written in second-person present; lint requires `narration: third-past` (decision). `last_line` is pinned to the slot's own default text by `tests/test_areelu_round2.py:42`, not to the next beat the lint requires (decision/test change). |
-| `areelu.trickster.report.inn.explicit.1` | `areelu-vorlesh/areelu.trickster.report.inn.explicit.1.json` | last_line; narration | Epilogue-owned host written in second-person present; lint requires `narration: third-past` (decision). `last_line` is pinned to the slot's own default text by `tests/test_areelu_round2.py:42`, not to the next beat the lint requires (decision/test change). |
-| `areelu.trickster.report.participation.explicit.1` | `areelu-vorlesh/areelu.trickster.report.participation.explicit.1.json` | last_line; narration | Epilogue-owned host written in second-person present; lint requires `narration: third-past` (decision). `last_line` is pinned to the slot's own default text by `tests/test_areelu_round2.py:42`, not to the next beat the lint requires (decision/test change). |
-| `areelu.trickster.report.participation.explicit.2` | `areelu-vorlesh/areelu.trickster.report.participation.explicit.2.json` | last_line; narration | Epilogue-owned host written in second-person present; lint requires `narration: third-past` (decision). `last_line` is pinned to the slot's own default text by `tests/test_areelu_round2.py:42`, not to the next beat the lint requires (decision/test change). |
-| `minagho_chivarro.trickster.after.before_the_last_road.explicit.1` | `chivarro/minagho_chivarro.trickster.after.before_the_last_road.explicit.1.json` | duplicate | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.after.before_the_last_road.explicit.2` | `chivarro/minagho_chivarro.trickster.after.before_the_last_road.explicit.2.json` | duplicate | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.after.before_the_last_road.explicit.3` | `chivarro/minagho_chivarro.trickster.after.before_the_last_road.explicit.3.json` | duplicate | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.1` | `chivarro/minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.1.json` | duplicate; last_line | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.2` | `chivarro/minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.2.json` | duplicate; last_line | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.3` | `chivarro/minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.3.json` | duplicate; last_line | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.after.when_it_scars.explicit.1` | `chivarro/minagho_chivarro.trickster.after.when_it_scars.explicit.1.json` | duplicate; last_line | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.after.when_it_scars.explicit.2` | `chivarro/minagho_chivarro.trickster.after.when_it_scars.explicit.2.json` | duplicate; last_line | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.after.when_it_scars.explicit.3` | `chivarro/minagho_chivarro.trickster.after.when_it_scars.explicit.3.json` | duplicate; last_line | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.alone.chivarro.explicit.1` | `chivarro/minagho_chivarro.trickster.alone.chivarro.explicit.1.json` | duplicate | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.alone.chivarro.explicit.2` | `chivarro/minagho_chivarro.trickster.alone.chivarro.explicit.2.json` | duplicate | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.alone.chivarro_letter.explicit.1` | `chivarro/minagho_chivarro.trickster.alone.chivarro_letter.explicit.1.json` | duplicate; last_line | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.alone.chivarro_letter.explicit.2` | `chivarro/minagho_chivarro.trickster.alone.chivarro_letter.explicit.2.json` | duplicate; last_line | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.alone.chivarro_when_it_scars.explicit.1` | `chivarro/minagho_chivarro.trickster.alone.chivarro_when_it_scars.explicit.1.json` | duplicate; last_line | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.alone.chivarro_when_it_scars.explicit.2` | `chivarro/minagho_chivarro.trickster.alone.chivarro_when_it_scars.explicit.2.json` | duplicate; last_line | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.alone.minagho.explicit.1` | `chivarro/minagho_chivarro.trickster.alone.minagho.explicit.1.json` | duplicate | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.alone.minagho.explicit.2` | `chivarro/minagho_chivarro.trickster.alone.minagho.explicit.2.json` | duplicate | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.alone.minagho_letter.explicit.1` | `chivarro/minagho_chivarro.trickster.alone.minagho_letter.explicit.1.json` | duplicate; last_line | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.alone.minagho_letter.explicit.2` | `chivarro/minagho_chivarro.trickster.alone.minagho_letter.explicit.2.json` | duplicate; last_line | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.alone.minagho_spared.explicit.1` | `chivarro/minagho_chivarro.trickster.alone.minagho_spared.explicit.1.json` | duplicate | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.alone.minagho_spared.explicit.2` | `chivarro/minagho_chivarro.trickster.alone.minagho_spared.explicit.2.json` | duplicate | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.alone.minagho_when_it_scars.explicit.1` | `chivarro/minagho_chivarro.trickster.alone.minagho_when_it_scars.explicit.1.json` | duplicate; last_line | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.alone.minagho_when_it_scars.explicit.2` | `chivarro/minagho_chivarro.trickster.alone.minagho_when_it_scars.explicit.2.json` | duplicate; last_line | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.epilogue.commit.explicit.1` | `chivarro/minagho_chivarro.trickster.epilogue.commit.explicit.1.json` | duplicate; last_line; narration | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line; narration). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.epilogue.commit.explicit.2` | `chivarro/minagho_chivarro.trickster.epilogue.commit.explicit.2.json` | duplicate; last_line; narration | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line; narration). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.epilogue.commit.explicit.3` | `chivarro/minagho_chivarro.trickster.epilogue.commit.explicit.3.json` | duplicate; last_line; narration | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line; narration). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.epilogue.commit.explicit.4` | `chivarro/minagho_chivarro.trickster.epilogue.commit.explicit.4.json` | duplicate; last_line; narration | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line; narration). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `minagho_chivarro.trickster.epilogue.commit.explicit.5` | `chivarro/minagho_chivarro.trickster.epilogue.commit.explicit.5.json` | duplicate; last_line; narration | Divergent duplicate of the `minagho/` copy; stale mapping (codes: duplicate; last_line; narration). Kept because `storylines/chivarro_setpieces.py` builds from it. |
-| `household.pair.camellia_vellexia.choice.explicit.1` | `harem/household.pair.camellia_vellexia.choice.explicit.1.json` | last_line; retired | Host now addressed (`host_scene`/`host_node: explicit.1`), but the host scene requires and forbids `household.pair.camellia_vellexia.ready` (reserved, unreachable by design; brief `status: blocked`). `last_line` is pinned by `tests/test_harem_row_s25.py:233`. |
-| `household.pair.jerribeth_vellexia.choice.explicit.1` | `harem/household.pair.jerribeth_vellexia.choice.explicit.1.json` | host | No `household.pair.jerribeth_vellexia.choice` scene in the export, and no successor. The brief's own `status`/`build_contract` say it is a blocked reservation. |
-| `household.pair.nocticula_shamira.return.explicit.1` | `harem/blocked/nocticula_shamira/household.pair.nocticula_shamira.return.explicit.1.json` | host; required | No host scene (only `precedence`/`precedence.live`) and no `example`. The brief is already under `harem/blocked/`. |
-| `household.pair.shamira_arueshalae.choice.explicit.1` | `harem/household.pair.shamira_arueshalae.choice.explicit.1.json` | host | No `household.pair.shamira_arueshalae.choice` scene in the export, and no successor. The brief is a self-declared reserved/blocked slot. |
-| `minagho_chivarro.trickster.after.before_the_last_road.explicit.1` | `minagho/minagho_chivarro.trickster.after.before_the_last_road.explicit.1.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.after.before_the_last_road.explicit.2` | `minagho/minagho_chivarro.trickster.after.before_the_last_road.explicit.2.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.after.before_the_last_road.explicit.3` | `minagho/minagho_chivarro.trickster.after.before_the_last_road.explicit.3.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.1` | `minagho/minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.1.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.2` | `minagho/minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.2.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.3` | `minagho/minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.3.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.after.when_it_scars.explicit.1` | `minagho/minagho_chivarro.trickster.after.when_it_scars.explicit.1.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.after.when_it_scars.explicit.2` | `minagho/minagho_chivarro.trickster.after.when_it_scars.explicit.2.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.after.when_it_scars.explicit.3` | `minagho/minagho_chivarro.trickster.after.when_it_scars.explicit.3.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.alone.chivarro.explicit.1` | `minagho/minagho_chivarro.trickster.alone.chivarro.explicit.1.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.alone.chivarro.explicit.2` | `minagho/minagho_chivarro.trickster.alone.chivarro.explicit.2.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.alone.chivarro_letter.explicit.1` | `minagho/minagho_chivarro.trickster.alone.chivarro_letter.explicit.1.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.alone.chivarro_letter.explicit.2` | `minagho/minagho_chivarro.trickster.alone.chivarro_letter.explicit.2.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.alone.chivarro_when_it_scars.explicit.1` | `minagho/minagho_chivarro.trickster.alone.chivarro_when_it_scars.explicit.1.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.alone.chivarro_when_it_scars.explicit.2` | `minagho/minagho_chivarro.trickster.alone.chivarro_when_it_scars.explicit.2.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.alone.minagho.explicit.1` | `minagho/minagho_chivarro.trickster.alone.minagho.explicit.1.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.alone.minagho.explicit.2` | `minagho/minagho_chivarro.trickster.alone.minagho.explicit.2.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.alone.minagho_letter.explicit.1` | `minagho/minagho_chivarro.trickster.alone.minagho_letter.explicit.1.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.alone.minagho_letter.explicit.2` | `minagho/minagho_chivarro.trickster.alone.minagho_letter.explicit.2.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.alone.minagho_spared.explicit.1` | `minagho/minagho_chivarro.trickster.alone.minagho_spared.explicit.1.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.alone.minagho_spared.explicit.2` | `minagho/minagho_chivarro.trickster.alone.minagho_spared.explicit.2.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.alone.minagho_when_it_scars.explicit.1` | `minagho/minagho_chivarro.trickster.alone.minagho_when_it_scars.explicit.1.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.alone.minagho_when_it_scars.explicit.2` | `minagho/minagho_chivarro.trickster.alone.minagho_when_it_scars.explicit.2.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.epilogue.commit.explicit.1` | `minagho/minagho_chivarro.trickster.epilogue.commit.explicit.1.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.epilogue.commit.explicit.2` | `minagho/minagho_chivarro.trickster.epilogue.commit.explicit.2.json` | duplicate | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. |
-| `minagho_chivarro.trickster.epilogue.commit.explicit.3` | `minagho/minagho_chivarro.trickster.epilogue.commit.explicit.3.json` | duplicate; narration | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. Also: Epilogue host is second-person, so `third-past` would contradict the host and boundary (decision). |
-| `minagho_chivarro.trickster.epilogue.commit.explicit.4` | `minagho/minagho_chivarro.trickster.epilogue.commit.explicit.4.json` | duplicate; narration | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. Also: Epilogue host is second-person, so `third-past` would contradict the host and boundary (decision). |
-| `minagho_chivarro.trickster.epilogue.commit.explicit.5` | `minagho/minagho_chivarro.trickster.epilogue.commit.explicit.5.json` | duplicate; narration | Canonical copy (host mapping matches the current export); still blocked only by the divergent `chivarro/` duplicate. Also: Epilogue host is second-person, so `third-past` would contradict the host and boundary (decision). |
+| **Total** | **307** | **4** | **4** |
 
 ## Ready slots: exact hosts
 
@@ -279,6 +244,14 @@ Inline briefs (`after_text`) put the act inside the host node, after the anchor.
 
 | Slot | Host scene | Slot / host node | Build-up node(s) to extend to the act start | Exits / notes |
 |---|---|---|---|---|
+| `areelu.trickster.finale.ascended.explicit.1` | `areelu.trickster.finale.ascended` | slot node `areelu.trickster.finale.ascended.explicit.1` | `asc_night` | `asc_morning` |
+| `areelu.trickster.finale.company.explicit.1` | `areelu.trickster.finale.company` | slot node `areelu.trickster.finale.company.explicit.1` | `welcome_mortal` | `morning_mortal` |
+| `areelu.trickster.finale.company.explicit.2` | `areelu.trickster.finale.company` | slot node `areelu.trickster.finale.company.explicit.2` | `welcome_witch` | `morning_witch` |
+| `areelu.trickster.finale.lien_bottled.explicit.1` | `areelu.trickster.finale.lien_bottled` | slot node `areelu.trickster.finale.lien_bottled.explicit.1` | `across` | `morning` |
+| `areelu.trickster.finale.not_burned.explicit.1` | `areelu.trickster.finale.not_burned` | slot node `areelu.trickster.finale.not_burned.explicit.1` | `nb_across` | `nb_morning` |
+| `areelu.trickster.report.inn.explicit.1` | `areelu.trickster.report.inn` | slot node `areelu.trickster.report.inn.explicit.1` | `welcome` | `morning` |
+| `areelu.trickster.report.participation.explicit.1` | `areelu.trickster.report.participation` | slot node `areelu.trickster.report.participation.explicit.1` | `in_mortal_2`, `notebook` | `morning` |
+| `areelu.trickster.report.participation.explicit.2` | `areelu.trickster.report.participation` | slot node `areelu.trickster.report.participation.explicit.2` | `in_witch_2`, `notebook` | `morning` |
 | `areelu.trickster.report.rooms.explicit.1` | `areelu.trickster.report.rooms` | host node `pen` | `pen` itself (after `hands`) | `end` ; third-past |
 
 ### arsinoe
@@ -337,25 +310,11 @@ Inline briefs (`after_text`) put the act inside the host node, after the anchor.
 | `chadali.sessions.what_chance_wishes.explicit.1` | `chadali.sessions.what_chance_wishes` | slot node `chadali.sessions.what_chance_wishes.explicit.1` | `stay` | `END` ; terminal: review last_line |
 | `chadali.trickster.epilogue.commit.explicit.1` | `chadali.trickster.epilogue.commit` | slot node `chadali.trickster.epilogue.commit.explicit.1` | `page` | `stay` ; third-past |
 
-### chivarro
-
-| Slot | Host scene | Slot / host node | Build-up node(s) to extend to the act start | Exits / notes |
-|---|---|---|---|---|
-| `minachiv.a_room_she_likes.explicit.1` (identical copy also in minagho/) | `minachiv.a_room_she_likes` | slot node `minachiv.a_room_she_likes.explicit.1` | `later` | `END` ; terminal: review last_line |
-| `minachiv.after_the_last_lamp.explicit.1` (identical copy also in minagho/) | `minachiv.after_the_last_lamp` | slot node `minachiv.after_the_last_lamp.explicit.1` | `night` | `END` ; terminal: review last_line |
-| `minachiv.before_the_last_road.explicit.1` (identical copy also in minagho/) | `minachiv.before_the_last_road` | slot node `minachiv.before_the_last_road.explicit.1` | `stance_0_night_minagho` | `stance_discovery_0_minagho` |
-| `minachiv.before_the_last_road.explicit.2` (identical copy also in minagho/) | `minachiv.before_the_last_road` | slot node `minachiv.before_the_last_road.explicit.2` | `stance_0_night_chivarro` | `stance_discovery_0_chivarro` |
-| `minachiv.before_the_last_road.explicit.3` (identical copy also in minagho/) | `minachiv.before_the_last_road` | slot node `minachiv.before_the_last_road.explicit.3` | `stance_1_night_minagho` | `stance_discovery_1_minagho` |
-| `minachiv.before_the_last_road.explicit.4` (identical copy also in minagho/) | `minachiv.before_the_last_road` | slot node `minachiv.before_the_last_road.explicit.4` | `stance_2_night_minagho` | `stance_discovery_2_minagho` |
-| `minachiv.the_unhired_evening.explicit.1` (identical copy also in minagho/) | `minachiv.the_unhired_evening` | slot node `minachiv.the_unhired_evening.explicit.1` | `minagho_kiss` | `END` ; terminal: review last_line |
-| `minachiv.the_unhired_evening.explicit.2` (identical copy also in minagho/) | `minachiv.the_unhired_evening` | slot node `minachiv.the_unhired_evening.explicit.2` | `chivarro_kiss` | `END` ; terminal: review last_line |
-| `minachiv.the_unhired_evening.explicit.3` (identical copy also in minagho/) | `minachiv.the_unhired_evening` | slot node `minachiv.the_unhired_evening.explicit.3` | `together_kiss` | `END` ; terminal: review last_line |
-
 ### delamere
 
 | Slot | Host scene | Slot / host node | Build-up node(s) to extend to the act start | Exits / notes |
 |---|---|---|---|---|
-| `delamere.trickster.epilogue.late.explicit.1` | `delamere.trickster.epilogue.late` | `page` paragraph `delamere.trickster.epilogue.late.explicit.1` (#0) | (scene start) | `next paragraph` ; third-past; male mention (background) |
+| `delamere.trickster.epilogue.late.explicit.1` | `delamere.trickster.epilogue.late` | `page` paragraph `delamere.trickster.epilogue.late.explicit.1` (#0) | (scene start) | `next paragraph` ; male mention (background) |
 | `delamere.trickster.woken.day_owed.explicit.1` | `delamere.trickster.woken.day_owed` | host node `again` | `again` itself (after `caught_again`, `caught_again_short`) | `cold` |
 | `delamere.trickster.woods.second_hunt.explicit.1` | `delamere.trickster.woods.second_hunt` | slot node `delamere.trickster.woods.second_hunt.explicit.1` | `cut` | `morning` ; male mention (background) |
 | `delamere.trickster.woods.second_hunt_late.explicit.1` | `delamere.trickster.woods.second_hunt_late` | slot node `delamere.trickster.woods.second_hunt_late.explicit.1` | `cut` | `morning` ; male mention (background) |
@@ -381,9 +340,9 @@ Inline briefs (`after_text`) put the act inside the host node, after the anchor.
 
 | Slot | Host scene | Slot / host node | Build-up node(s) to extend to the act start | Exits / notes |
 |---|---|---|---|---|
-| `eliandra.trickster.epilogue.late.explicit.1` | `eliandra.trickster.epilogue.late` | `late_accepted` paragraph `eliandra.trickster.epilogue.late.explicit.1` (#0) | `page` | `next paragraph` ; third-past |
-| `eliandra.trickster.epilogue.together.explicit.1` | `eliandra.trickster.epilogue.together` | `page` paragraph `eliandra.trickster.epilogue.together.explicit.1` (#2) | `page` paragraphs 0..1 | `next paragraph` ; third-past |
-| `eliandra.trickster.epilogue.unasked.explicit.1` | `eliandra.trickster.epilogue.unasked` | `late_accepted` paragraph `eliandra.trickster.epilogue.unasked.explicit.1` (#1) | `late_accepted` paragraphs 0..0 | `next paragraph` ; third-past; male mention (background) |
+| `eliandra.trickster.epilogue.late.explicit.1` | `eliandra.trickster.epilogue.late` | `late_accepted` paragraph `eliandra.trickster.epilogue.late.explicit.1` (#0) | `page` | `next paragraph` |
+| `eliandra.trickster.epilogue.together.explicit.1` | `eliandra.trickster.epilogue.together` | `page` paragraph `eliandra.trickster.epilogue.together.explicit.1` (#2) | `page` paragraphs 0..1 | `next paragraph` |
+| `eliandra.trickster.epilogue.unasked.explicit.1` | `eliandra.trickster.epilogue.unasked` | `late_accepted` paragraph `eliandra.trickster.epilogue.unasked.explicit.1` (#1) | `late_accepted` paragraphs 0..0 | `next paragraph` ; male mention (background) |
 | `eliandra.trickster.visit.star_heart.explicit.1` | `eliandra.trickster.visit.star_heart` | slot node `eliandra.trickster.visit.star_heart.explicit.1` | `charts` | `morning` |
 | `eliandra.trickster.visit.star_heart_mark.explicit.1` | `eliandra.trickster.visit.star_heart_mark` | slot node `eliandra.trickster.visit.star_heart_mark.explicit.1` | `charts` | `morning` |
 
@@ -466,7 +425,7 @@ Inline briefs (`after_text`) put the act inside the host node, after the anchor.
 | `herrax.house.her_rooms.explicit.1` | `herrax.house.her_rooms` | host node `beside` | `beside` itself (after `expected`, `chest`) | `END` ; terminal: review last_line |
 | `herrax.house.last_night.explicit.1` | `herrax.house.last_night` | host node `agreed` | `agreed` itself (after `say`, `dead`) | `END` ; terminal: review last_line |
 | `herrax.house.the_stairs.explicit.1` | `herrax.house.the_stairs` | slot node `herrax.house.the_stairs.explicit.1` | `close`, `find` | `return_morning` |
-| `herrax.trickster.epilogue.after_hours.explicit.1` | `herrax.trickster.epilogue.after_hours.invitation` | slot node `herrax.trickster.epilogue.after_hours.explicit.1` | `desire` | `morning` ; third-past; male mention (background) |
+| `herrax.trickster.epilogue.after_hours.explicit.1` | `herrax.trickster.epilogue.after_hours.invitation` | slot node `herrax.trickster.epilogue.after_hours.explicit.1` | `desire` | `morning` ; male mention (background) |
 | `herrax.trickster.madam.reachable.explicit.1` | `herrax.trickster.madam.reachable` | slot node `herrax.trickster.madam.reachable.explicit.1` | `cut` | `morning` ; male mention (background) |
 | `herrax.trickster.madam.reachable_restored.explicit.1` | `herrax.trickster.madam.reachable_restored` | slot node `herrax.trickster.madam.reachable_restored.explicit.1` | `cut` | `morning` |
 
@@ -487,7 +446,7 @@ Inline briefs (`after_text`) put the act inside the host node, after the anchor.
 | Slot | Host scene | Slot / host node | Build-up node(s) to extend to the act start | Exits / notes |
 |---|---|---|---|---|
 | `iomedae.trickster.epilogue.after.explicit.1` | `iomedae.trickster.epilogue.after` | slot node `iomedae.trickster.epilogue.after.explicit.1` | `page` | `vigil_morning` ; third-past |
-| `iomedae.trickster.epilogue.platform.explicit.1` | `iomedae.trickster.epilogue.platform` | slot node `iomedae.trickster.epilogue.platform.explicit.1` | `down` | `morning_dead`, `morning_kept`, `morning_open` ; third-past |
+| `iomedae.trickster.epilogue.platform.explicit.1` | `iomedae.trickster.epilogue.platform` | slot node `iomedae.trickster.epilogue.platform.explicit.1` | `down` | `morning_dead`, `morning_kept`, `morning_open` |
 
 ### irabeth
 
@@ -580,15 +539,52 @@ Inline briefs (`after_text`) put the act inside the host node, after the anchor.
 
 | Slot | Host scene | Slot / host node | Build-up node(s) to extend to the act start | Exits / notes |
 |---|---|---|---|---|
+| `minachiv.a_room_she_likes.explicit.1` | `minachiv.a_room_she_likes` | slot node `minachiv.a_room_she_likes.explicit.1` | `later` | `END` ; terminal: review last_line |
+| `minachiv.after_the_last_lamp.explicit.1` | `minachiv.after_the_last_lamp` | slot node `minachiv.after_the_last_lamp.explicit.1` | `night` | `END` ; terminal: review last_line |
+| `minachiv.before_the_last_road.explicit.1` | `minachiv.before_the_last_road` | slot node `minachiv.before_the_last_road.explicit.1` | `stance_0_night_minagho` | `stance_discovery_0_minagho` |
+| `minachiv.before_the_last_road.explicit.2` | `minachiv.before_the_last_road` | slot node `minachiv.before_the_last_road.explicit.2` | `stance_0_night_chivarro` | `stance_discovery_0_chivarro` |
+| `minachiv.before_the_last_road.explicit.3` | `minachiv.before_the_last_road` | slot node `minachiv.before_the_last_road.explicit.3` | `stance_1_night_minagho` | `stance_discovery_1_minagho` |
+| `minachiv.before_the_last_road.explicit.4` | `minachiv.before_the_last_road` | slot node `minachiv.before_the_last_road.explicit.4` | `stance_2_night_minagho` | `stance_discovery_2_minagho` |
 | `minachiv.before_the_last_road.explicit.5` | `minachiv.before_the_last_road` | slot node `minachiv.before_the_last_road.explicit.5` | `stance_2_night_chivarro` | `stance_discovery_2_chivarro` |
 | `minachiv.before_the_last_road.explicit.6` | `minachiv.before_the_last_road` | slot node `minachiv.before_the_last_road.explicit.6` | `stance_3_night_chivarro` | `stance_discovery_3_chivarro` |
 | `minachiv.before_the_last_road.explicit.7` | `minachiv.before_the_last_road` | slot node `minachiv.before_the_last_road.explicit.7` | `stance_7_night_chivarro` | `stance_discovery_7_chivarro` |
+| `minachiv.the_unhired_evening.explicit.1` | `minachiv.the_unhired_evening` | slot node `minachiv.the_unhired_evening.explicit.1` | `minagho_kiss` | `END` ; terminal: review last_line |
+| `minachiv.the_unhired_evening.explicit.2` | `minachiv.the_unhired_evening` | slot node `minachiv.the_unhired_evening.explicit.2` | `chivarro_kiss` | `END` ; terminal: review last_line |
+| `minachiv.the_unhired_evening.explicit.3` | `minachiv.the_unhired_evening` | slot node `minachiv.the_unhired_evening.explicit.3` | `together_kiss` | `END` ; terminal: review last_line |
+| `minagho_chivarro.trickster.after.before_the_last_road.explicit.1` | `minagho_chivarro.trickster.after.before_the_last_road` | slot node `minagho_chivarro.trickster.after.before_the_last_road.explicit.1` | `threshold` | `END` ; terminal: review last_line |
+| `minagho_chivarro.trickster.after.before_the_last_road.explicit.2` | `minagho_chivarro.trickster.after.before_the_last_road` | slot node `minagho_chivarro.trickster.after.before_the_last_road.explicit.2` | `stance_0_night_minagho` | `END` ; terminal: review last_line |
+| `minagho_chivarro.trickster.after.before_the_last_road.explicit.3` | `minagho_chivarro.trickster.after.before_the_last_road` | slot node `minagho_chivarro.trickster.after.before_the_last_road.explicit.3` | `stance_0_night_chivarro` | `END` ; terminal: review last_line |
+| `minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.1` | `minagho_chivarro.trickster.after.before_the_last_road_letter` | slot node `minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.1` | `came` | `morning` |
+| `minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.2` | `minagho_chivarro.trickster.after.before_the_last_road_letter` | slot node `minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.2` | `stance_0_night_minagho` | `stance_morning_route` |
+| `minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.3` | `minagho_chivarro.trickster.after.before_the_last_road_letter` | slot node `minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.3` | `stance_0_night_chivarro` | `stance_morning_route` |
+| `minagho_chivarro.trickster.after.when_it_scars.explicit.1` | `minagho_chivarro.trickster.after.when_it_scars` | slot node `minagho_chivarro.trickster.after.when_it_scars.explicit.1` | `night` | `morning` |
+| `minagho_chivarro.trickster.after.when_it_scars.explicit.2` | `minagho_chivarro.trickster.after.when_it_scars` | slot node `minagho_chivarro.trickster.after.when_it_scars.explicit.2` | `stance_0_night_minagho` | `stance_morning_route` |
+| `minagho_chivarro.trickster.after.when_it_scars.explicit.3` | `minagho_chivarro.trickster.after.when_it_scars` | slot node `minagho_chivarro.trickster.after.when_it_scars.explicit.3` | `stance_0_night_chivarro` | `stance_morning_route` |
+| `minagho_chivarro.trickster.alone.chivarro.explicit.1` | `minagho_chivarro.trickster.alone.chivarro` | slot node `minagho_chivarro.trickster.alone.chivarro.explicit.1` | `threshold` | `END` ; terminal: review last_line |
+| `minagho_chivarro.trickster.alone.chivarro.explicit.2` | `minagho_chivarro.trickster.alone.chivarro` | slot node `minagho_chivarro.trickster.alone.chivarro.explicit.2` | `threshold_clean` | `END` ; terminal: review last_line |
 | `minagho_chivarro.trickster.alone.chivarro.explicit.3` | `minagho_chivarro.trickster.alone.chivarro` | slot node `minagho_chivarro.trickster.alone.chivarro.explicit.3` | `stance_0_night_chivarro` | `END` ; terminal: review last_line |
 | `minagho_chivarro.trickster.alone.chivarro.explicit.4` | `minagho_chivarro.trickster.alone.chivarro` | slot node `minagho_chivarro.trickster.alone.chivarro.explicit.4` | `stance_1_night_chivarro` | `END` ; terminal: review last_line |
+| `minagho_chivarro.trickster.alone.chivarro_letter.explicit.1` | `minagho_chivarro.trickster.alone.chivarro_letter` | slot node `minagho_chivarro.trickster.alone.chivarro_letter.explicit.1` | `came` | `morning` |
+| `minagho_chivarro.trickster.alone.chivarro_letter.explicit.2` | `minagho_chivarro.trickster.alone.chivarro_letter` | slot node `minagho_chivarro.trickster.alone.chivarro_letter.explicit.2` | `stance_0_night_chivarro` | `stance_morning_route` |
+| `minagho_chivarro.trickster.alone.chivarro_when_it_scars.explicit.1` | `minagho_chivarro.trickster.alone.chivarro_when_it_scars` | slot node `minagho_chivarro.trickster.alone.chivarro_when_it_scars.explicit.1` | `night` | `morning` |
+| `minagho_chivarro.trickster.alone.chivarro_when_it_scars.explicit.2` | `minagho_chivarro.trickster.alone.chivarro_when_it_scars` | slot node `minagho_chivarro.trickster.alone.chivarro_when_it_scars.explicit.2` | `stance_0_night_chivarro` | `stance_morning_route` |
+| `minagho_chivarro.trickster.alone.minagho.explicit.1` | `minagho_chivarro.trickster.alone.minagho` | slot node `minagho_chivarro.trickster.alone.minagho.explicit.1` | `threshold` | `END` ; terminal: review last_line |
+| `minagho_chivarro.trickster.alone.minagho.explicit.2` | `minagho_chivarro.trickster.alone.minagho` | slot node `minagho_chivarro.trickster.alone.minagho.explicit.2` | `stance_0_night_minagho` | `END` ; terminal: review last_line |
+| `minagho_chivarro.trickster.alone.minagho_letter.explicit.1` | `minagho_chivarro.trickster.alone.minagho_letter` | slot node `minagho_chivarro.trickster.alone.minagho_letter.explicit.1` | `came` | `morning` |
+| `minagho_chivarro.trickster.alone.minagho_letter.explicit.2` | `minagho_chivarro.trickster.alone.minagho_letter` | slot node `minagho_chivarro.trickster.alone.minagho_letter.explicit.2` | `stance_0_night_minagho` | `stance_morning_route` |
 | `minagho_chivarro.trickster.alone.minagho_letter.explicit.3` | `minagho_chivarro.trickster.alone.minagho_letter` | slot node `minagho_chivarro.trickster.alone.minagho_letter.explicit.3` | `stance_1_night_minagho` | `stance_morning_route` |
 | `minagho_chivarro.trickster.alone.minagho_letter.explicit.4` | `minagho_chivarro.trickster.alone.minagho_letter` | slot node `minagho_chivarro.trickster.alone.minagho_letter.explicit.4` | `stance_2_night_minagho` | `stance_morning_route` |
 | `minagho_chivarro.trickster.alone.minagho_letter.explicit.5` | `minagho_chivarro.trickster.alone.minagho_letter` | slot node `minagho_chivarro.trickster.alone.minagho_letter.explicit.5` | `stance_3_night_minagho` | `stance_morning_route` |
+| `minagho_chivarro.trickster.alone.minagho_spared.explicit.1` | `minagho_chivarro.trickster.alone.minagho_spared` | slot node `minagho_chivarro.trickster.alone.minagho_spared.explicit.1` | `threshold` | `END` ; terminal: review last_line |
+| `minagho_chivarro.trickster.alone.minagho_spared.explicit.2` | `minagho_chivarro.trickster.alone.minagho_spared` | slot node `minagho_chivarro.trickster.alone.minagho_spared.explicit.2` | `stance_0_night_minagho` | `END` ; terminal: review last_line |
+| `minagho_chivarro.trickster.alone.minagho_when_it_scars.explicit.1` | `minagho_chivarro.trickster.alone.minagho_when_it_scars` | slot node `minagho_chivarro.trickster.alone.minagho_when_it_scars.explicit.1` | `night` | `morning` |
+| `minagho_chivarro.trickster.alone.minagho_when_it_scars.explicit.2` | `minagho_chivarro.trickster.alone.minagho_when_it_scars` | slot node `minagho_chivarro.trickster.alone.minagho_when_it_scars.explicit.2` | `stance_0_night_minagho` | `stance_morning_route` |
 | `minagho_chivarro.trickster.alone.minagho_when_it_scars.explicit.3` | `minagho_chivarro.trickster.alone.minagho_when_it_scars` | slot node `minagho_chivarro.trickster.alone.minagho_when_it_scars.explicit.3` | `stance_1_night_minagho` | `stance_morning_route` |
+| `minagho_chivarro.trickster.epilogue.commit.explicit.1` | `minagho_chivarro.trickster.epilogue.commit` | slot node `minagho_chivarro.trickster.epilogue.commit.explicit.1` | `pair` | `went` ; third-past |
+| `minagho_chivarro.trickster.epilogue.commit.explicit.2` | `minagho_chivarro.trickster.epilogue.commit` | slot node `minagho_chivarro.trickster.epilogue.commit.explicit.2` | `waiting` | `END`, `went_alone` ; third-past |
+| `minagho_chivarro.trickster.epilogue.commit.explicit.3` | `minagho_chivarro.trickster.epilogue.commit` | slot node `minagho_chivarro.trickster.epilogue.commit.explicit.3` | `waiting` | `END`, `late_waiting_secret` |
+| `minagho_chivarro.trickster.epilogue.commit.explicit.4` | `minagho_chivarro.trickster.epilogue.commit` | slot node `minagho_chivarro.trickster.epilogue.commit.explicit.4` | `pair` | `late_secret_minagho` |
+| `minagho_chivarro.trickster.epilogue.commit.explicit.5` | `minagho_chivarro.trickster.epilogue.commit` | slot node `minagho_chivarro.trickster.epilogue.commit.explicit.5` | `pair` | `late_secret_chivarro` |
 
 ### nenio
 
@@ -661,7 +657,7 @@ Inline briefs (`after_text`) put the act inside the host node, after the anchor.
 |---|---|---|---|---|
 | `shamira.trickster.after.night_alone.explicit.1` | `shamira.trickster.after.night_alone` | host node `read` | `read` itself (after `morning`) | `END` ; terminal: review last_line |
 | `shamira.trickster.after.night_alone.offered.explicit.1` | `shamira.trickster.after.night_alone` | host node `offered` | `offered` itself (after `private`) | `END` ; terminal: review last_line |
-| `shamira.trickster.epilogue.late.explicit.1` | `shamira.trickster.epilogue.late` | host node `explicit.1` | `explicit.1` itself (after `late_initiation`) | `partner_late_won` ; third-past |
+| `shamira.trickster.epilogue.late.explicit.1` | `shamira.trickster.epilogue.late` | host node `explicit.1` | `explicit.1` itself (after `late_initiation`) | `partner_late_won` |
 | `shamira.trickster.harem.explicit.1` | `shamira.trickster.harem` | host node `explicit.1` | `explicit.1` itself (after `cut`) | `morning` |
 | `shamira.trickster.harem_awning.explicit.1` | `shamira.trickster.harem_awning` | host node `explicit.1` | `explicit.1` itself (after `cut`) | `morning` |
 

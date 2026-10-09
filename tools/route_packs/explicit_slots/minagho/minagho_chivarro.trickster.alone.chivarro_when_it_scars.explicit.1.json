@@ -18,7 +18,7 @@
     "The source's existing scar remains visible. It still bleeds; it proves no immunity, buys no forgiveness and substitutes for no killed-lover debt.",
     "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
   ],
-  "default_text": "{n}Chivarro catches your hands against her bare waist and kisses you back onto the mattress. She draws you close, her loosened hair brushing your face.{/n}",
+  "default_text": "{n}Chivarro sweeps the coins to the floor and pulls you down by the collar. Her gown slides from her shoulders as she leans over you, keeping your hands where she wants them.{/n}\n\"Do not reach for the money. I am here.\"",
   "last_line": "N: In the morning there is a receipt on the pillow, in her hand: \"One year, one night, and the interest, which is not negotiable.\" The coins are still on the floor. She has left them there, she says, so you can watch her pick them up.",
   "speakers": {
     "C": "Chivarro"

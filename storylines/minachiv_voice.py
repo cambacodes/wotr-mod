@@ -674,7 +674,7 @@ The house below quiets as the night goes on. When you get up to go, she catches 
 "Come up again. I like having someone up here who isn't trying to buy anything. It's so rare I don't know what to charge."''',
      (0, '[Leave her to the noise of her house.]'))
 
-SLOT_TEXT[(S, P + S + ".explicit.1")] = ("chivarro", '''{n}Later, the red lamp has burned down to a smear of light. The house has gone quiet below; somebody downstairs is sweeping. Chivarro lies across you with one leg hooked over yours, listening to the broom.{/n}
+SLOT_TEXT[(S, P + S + ".explicit.1")] = ("minagho", '''{n}Later, the red lamp has burned down to a smear of light. The house has gone quiet below; somebody downstairs is sweeping. Chivarro lies across you with one leg hooked over yours, listening to the broom.{/n}
 "That's the last of them. Sivane made eleven tonight. I made more." {n}She turns her head.{/n} "You were free, honey. Don't let it go to your head. I'll find a way to charge you for it later."''')
 
 # ---------------------------------------------------------------------------
@@ -1065,7 +1065,7 @@ text(S, "empty", '''"Empty? My house?" {n}She thinks about it seriously, which i
 {n}You build her imaginary empty house between you until it has a terrible staircase and a room nobody's allowed in and a door that Minagho would kick down out of spite before discovering she liked what was behind it. Chivarro sees you down the ladder still laughing.{/n}''',
      (0, '[Leave the empty house to her.]'))
 
-SLOT_TEXT[(S, P + S + ".explicit.1")] = ("chivarro", '''{n}Near dawn a cart rattles across the market square overhead. Chivarro lifts her head from your chest as if considering having it arrested, then drops it again and hooks her arm over you.{/n}
+SLOT_TEXT[(S, P + S + ".explicit.1")] = ("minagho", '''{n}Near dawn a cart rattles across the market square overhead. Chivarro lifts her head from your chest as if considering having it arrested, then drops it again and hooks her arm over you.{/n}
 "If you're leaving, lie well. I want another hour before I believe it."''')
 
 # ---------------------------------------------------------------------------

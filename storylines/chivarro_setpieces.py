@@ -12,7 +12,9 @@ from pathlib import Path
 from story_format import c, n, p
 
 P = "minagho_chivarro.trickster."
-BRIEFS = Path(__file__).resolve().parents[1] / "tools/route_packs/explicit_slots/chivarro"
+# Single source of truth for every Minagho/Chivarro slot brief (coordinator
+# ruling, slot rebuild): the minagho/ copies. The former chivarro/ mirrors are gone.
+BRIEFS = Path(__file__).resolve().parents[1] / "tools/route_packs/explicit_slots/minagho"
 
 
 def _nodes(page):
@@ -342,7 +344,10 @@ def _slots(page):
         return
     for path in sorted(BRIEFS.glob(page["Id"] + ".explicit.*.json")):
         brief = json.loads(path.read_text(encoding="utf-8"))
-        sources = brief["source_nodes"]
+        if brief.get("source", {}).get("scene", page["Id"]) != page["Id"]:
+            continue
+        # minagho/ briefs name one source node; older briefs listed several.
+        sources = brief.get("source_nodes") or [brief["source"]["node"]]
         if all("minagho" in key for key in sources):
             continue
         nodes = _nodes(page)
@@ -350,19 +355,11 @@ def _slots(page):
         if not present:
             raise ValueError("Unmatched Chivarro slot: " + brief["slot_id"])
         if brief["slot_id"] in nodes:
-            # Minagho's round already installed this shared encounter. Keep
-            # its saved insert IDs and distinct discovery exits. Clean-hand
+            # Minagho's round already installed this shared encounter from the
+            # same brief, so its default text is already in place. Keep its
+            # saved insert IDs and distinct discovery exits. Clean-hand
             # siblings that were not in that manifest still visit an insert.
             for source in present:
-                prior_briefs = BRIEFS.parent / "minagho"
-                for prior_path in prior_briefs.glob("*.json"):
-                    prior = json.loads(prior_path.read_text(encoding="utf-8"))
-                    if (prior["source"]["scene"] == page["Id"]
-                            and prior["source"]["node"] == source["Id"]):
-                        installed = nodes.get(prior["slot_id"])
-                        if installed:
-                            installed["Text"] = installed["Text"].replace(
-                                prior["default_text"], brief["default_text"])
                 if any(".explicit." in (a["Next"] or "") for a in source["Choices"]):
                     continue
                 if page["Owner"].endswith("Epilogue"):

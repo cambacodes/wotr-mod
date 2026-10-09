@@ -68,8 +68,11 @@ class IomedaeRound3Tests(unittest.TestCase):
 
     def test_epilogue_briefs_use_third_past_and_preserve_exits(self):
         folder = Path(__file__).resolve().parents[1] / 'tools/route_packs/explicit_slots/iomedae'
+        # Narration follows the host prose: the platform host is second-person present.
+        expected = {'iomedae.trickster.epilogue.after.explicit.1': 'third-past',
+                    'iomedae.trickster.epilogue.platform.explicit.1': 'second-present'}
         for path in folder.glob('*.json'):
-            self.assertEqual('third-past', json.loads(path.read_text(encoding='utf-8'))['narration'])
+            self.assertEqual(expected[path.stem], json.loads(path.read_text(encoding='utf-8'))['narration'])
         page = SCENES[io.E + 'epilogue.after']['Nodes'][0]
         legacy = page['Choices'][0]
         self.assertEqual('continue', legacy['Id'])

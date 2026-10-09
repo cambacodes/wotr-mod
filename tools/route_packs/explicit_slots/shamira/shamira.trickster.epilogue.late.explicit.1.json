@@ -13,7 +13,7 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "narration": "third-past",
+  "narration": "second-present",
   "host_scene": "shamira.trickster.epilogue.late",
   "host_node": "explicit.1"
 }

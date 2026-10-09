@@ -20,8 +20,8 @@ REQUIRED = ("voice", "scene", "last_line", "speakers", "example", "facts")
 # Routes that still carry slot-brief rebuild debt (see
 # tools/route_packs/explicit_slots/REBUILD-REPORT.md). Remove a route once its
 # briefs and the harem pairs attributed to it lint clean.
-REBUILDING = frozenset(("nocticula", "jerribeth", "minagho", "chivarro",
-                       "arueshalae", "areelu", "camellia"))
+# Only reserved harem pairs remain (they need host scenes from structure owners).
+REBUILDING = frozenset(("nocticula", "jerribeth", "arueshalae", "camellia"))
 ALIASES = {"areelu-vorlesh": "areelu", "elyanka-camilary": "elyanka",
            "dorgelinda-stranglehold": "dorgelinda"}
 MALE_NAMES = re.compile(r"\b(Elan|Daeran|Sosiel|Lann|Woljif|Regill|Greybor|"
@@ -55,6 +55,42 @@ def first_beat(node, speakers):
     if node.get("Speaker") == "Narrator" and text:
         return "N: " + text.splitlines()[0]
     return None
+
+
+YOU = re.compile(r"\b(?:you|your|yours|yourself)\b", re.I)
+THEY = re.compile(r"\bthe Commander(?:'s)?\b")
+THEM = re.compile(r"\b(?:them|their|themselves)\b", re.I)
+PAST = re.compile(r"\b(?:was|were|had|did|said|went|came|took|kept|drew|left|made|found|"
+                  r"stood|lay|sat|knew|felt|held|gave|got|began|\w{3,}ed)\b", re.I)
+PRESENT = re.compile(r"\b(?:is|are|has|does|says|goes|comes|takes|keeps|draws|leaves|makes|finds|"
+                     r"stands|lies|sits|knows|feels|holds|gives|gets|begins)\b", re.I)
+
+
+def narration_text(node):
+    """Narrator prose of a node and its paragraphs (quoted dialogue excluded)."""
+    texts = [node.get("Text", "")] + [p.get("Text", "") for p in node.get("Paragraphs", [])]
+    out = []
+    for text in texts:
+        tagged = re.findall(r"\{n\}(.*?)\{/n\}", text, re.S)
+        if tagged:
+            out += tagged
+        elif node.get("Speaker") == "Narrator":
+            out.append(re.sub(r'"[^"]*"', " ", text))
+    return " ".join(out)
+
+
+def host_narration(nodes):
+    """(person, tense) of the host prose: 'second'/'third'/None, 'past'/'present'/None."""
+    text = " ".join(narration_text(n) for n in nodes)
+    second, third = len(YOU.findall(text)), len(THEY.findall(text))
+    if not second and not third:
+        # Unnamed third-person Commander ("kissed them", "their shoulders").
+        them = len(THEM.findall(text))
+        third = them if them >= 2 else 0
+    person = "second" if second > third else "third" if third > second else None
+    past, present = len(PAST.findall(text)), len(PRESENT.findall(text))
+    tense = "past" if past > 2 * present else "present" if present > past else None
+    return person, tense
 
 
 def gate_possible(value, chapter=None):
@@ -253,10 +289,29 @@ def lint(paths, story, known_rebuilds=False, slot_index=None):
                 add(path, "last_line", "last_lines must cover exactly the current next-beat addresses")
             if boundaries and brief.get("last_line") not in boundaries.values():
                 add(path, "last_line", "last_line must match one of the declared branch boundaries")
-            if (scene.get("Owner", "").endswith("Epilogue") or ".epilogue." in scene["Id"]) and brief.get("narration") != "third-past":
-                add(path, "narration", "Epilogue requires narration=third-past")
-        if ".epilogue." in slot and brief.get("narration") != "third-past" and not matches:
-            add(path, "narration", "Epilogue requires narration=third-past")
+            # Narration follows the host prose, not scene ownership.
+            # The slot's own host prose decides the person; when it has no
+            # person marker, the beats it flows into, then the build-up, decide.
+            own = node if paragraph_index is None else dict(node["Paragraphs"][paragraph_index], Speaker=node.get("Speaker"))
+            if brief.get("after_text"):
+                own = dict(node, Text=text.split(brief["after_text"], 1)[0]) if isinstance(brief["after_text"], str) else node
+            following = [by_id[t] for t in sorted(targets) if t in by_id]
+            build_up = [n for n in scene["Nodes"] if any(node["Id"] in (c.get("Next"),
+                        (c.get("Check") or {}).get("Success"), (c.get("Check") or {}).get("Failure"))
+                        for c in n.get("Choices", []))]
+            person, tense = None, None
+            for context in ([own], following, build_up):
+                person, tense = host_narration(context)
+                if person:
+                    break
+            mode = brief.get("narration", "second-present")
+            # Person is the Commander's: an absent Commander sets no requirement.
+            wanted = None if brief.get("commander") == "absent" else {
+                "second": "second-present", "third": "third-past"}.get(person)
+            if wanted and mode != wanted:
+                add(path, "narration", "Host prose is %s-person %s; brief needs narration=%s" % (person, tense or "tense-unclear", wanted))
+            elif wanted == "third-past" and tense == "present":
+                add(path, "narration_tense", "Host is third-person present; Gemory writes third-past", warning=True)
         content = " ".join(str(brief.get(k, "")) for k in ("voice", "scene", "facts", "example", "participants", "required_beats"))
         males = sorted(set(MALE_NAMES.findall(content) + MALE_ROLE.findall(content)))
         male_speakers = [n for n in speakers.values() if MALE_NAMES.search(n) or MALE_ROLE.search(n)]

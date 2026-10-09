@@ -19,7 +19,7 @@
     "The source's existing scar remains visible. It still bleeds; it proves no immunity, buys no forgiveness and substitutes for no killed-lover debt.",
     "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
   ],
-  "default_text": "{n}Chivarro catches your hands against her bare waist and kisses you back onto the mattress. She draws you close, her loosened hair brushing your face.{/n}",
+  "default_text": "{n}Chivarro pauses at the sound from the stair, then smiles when the watch passes. She draws you back to her and lets the loosened gown fall beside the bed.{/n}\n\"The money can stay there until dawn.\"",
   "last_line": "N: Dawn.",
   "speakers": {
     "C": "Chivarro"

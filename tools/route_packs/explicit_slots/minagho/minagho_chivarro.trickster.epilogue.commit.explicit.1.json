@@ -18,7 +18,7 @@
     "This is the accepted late invitation or the mapped secret branch, not a new fate return. Annual visits follow only the preserved accepting history; exposed branches retain their closure.",
     "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
   ],
-  "default_text": "{n}Minagho catches your hand against Chivarro's bare waist. Chivarro kisses her, then draws you close between them; Minagho pulls you both down onto the mattress.{/n}",
+  "default_text": "{n}Minagho reaches back to bar the door, then catches Chivarro by the waist. Chivarro kisses her and draws the Commander between them, bare skin pressed close on the mattress.{/n}\n\"Three places, honey. Keep yours warm.\"",
   "last_line": "N: At dawn Chivarro retrieves the sword belt from the doorway. Minagho is still in bed, holding the Commander's wrist.",
   "speakers": {
     "M": "Minagho",

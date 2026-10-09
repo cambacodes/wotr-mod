@@ -32,5 +32,6 @@
   ],
   "min_lines": 12,
   "max_lines": 18,
-  "prior_stop_line": "N: Dawn finds the discarded clothes beside the locked door."
+  "prior_stop_line": "N: Dawn finds the discarded clothes beside the locked door.",
+  "narration": "second-present"
 }

@@ -19,7 +19,7 @@
     "This is the accepted late invitation or the mapped secret branch, not a new fate return. Annual visits follow only the preserved accepting history; exposed branches retain their closure.",
     "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
   ],
-  "default_text": "{n}Chivarro catches your hands against her bare waist and kisses you back onto the mattress. She draws you close, her loosened hair brushing your face.{/n}",
+  "default_text": "{n}Chivarro keeps the Commander close against her, one hand spread at their back. She stifles another laugh against their mouth and pulls them between her knees.{/n}\n\"Quiet. You have already made me laugh too loudly.\"",
   "last_line": "N: Chivarro puts your purse on the shelf and writes a line in her private account. She folds its copy and slips it inside your belt. When you lean to read the book she closes it against your fingers.",
   "speakers": {
     "C": "Chivarro"
@@ -32,5 +32,6 @@
   ],
   "min_lines": 12,
   "max_lines": 18,
-  "prior_stop_line": "N: Dawn finds the discarded clothes beside the locked door."
+  "prior_stop_line": "N: Dawn finds the discarded clothes beside the locked door.",
+  "narration": "second-present"
 }

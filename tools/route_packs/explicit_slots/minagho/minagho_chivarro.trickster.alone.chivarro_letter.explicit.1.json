@@ -17,7 +17,7 @@
     "Her own invitation and appetite are distinct from purchased service. Keep the actual receipt/rent history; do not invent a charge. Minagho's current place is not silently dissolved.",
     "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
   ],
-  "default_text": "{n}Chivarro catches your hands against her bare waist and kisses you back onto the mattress. She draws you close, her loosened hair brushing your face.{/n}",
+  "default_text": "{n}Chivarro sets the signed lease beyond the candle, lets her gown fall and draws you after her onto the bed. She kisses you hard enough to stop the next question.{/n}\n\"The lease can wait until morning.\"",
   "last_line": "N: The watch passes beneath the window. Chivarro has your shirt under her head and no intention of giving it back.",
   "speakers": {
     "C": "Chivarro"

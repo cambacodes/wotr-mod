@@ -165,14 +165,26 @@ class SlotBriefLintTests(unittest.TestCase):
         story["Scenes"].append(duplicate)
         self.assertNotIn("host", self.codes(story=story))
 
-    def test_epilogue_paragraph_and_tense(self):
-        story = copy.deepcopy(self.story)
-        scene = story["Scenes"][0]
-        scene["Owner"] = "IrabethEpilogue"
-        scene["Nodes"] = [{"Id": "page", "Text": "{n}After the war.{/n}", "Paragraphs":
-                           [{"Id": "night.explicit.1", "Text": "{n}She returned.{/n}"}], "Choices": []}]
-        self.assertIn("narration", self.codes(story=story))
-        self.assertEqual(set(), self.codes(dict(self.brief, narration="third-past"), story))
+    def test_narration_follows_host_prose_not_epilogue_ownership(self):
+        def epilogue(text):
+            story = copy.deepcopy(self.story)
+            scene = story["Scenes"][0]
+            scene["Owner"] = "IrabethEpilogue"
+            scene["Nodes"] = [{"Id": "page", "Text": "{n}After the war.{/n}", "Paragraphs":
+                               [{"Id": "night.explicit.1", "Text": text}], "Choices": []}]
+            return story
+        second = epilogue("{n}She draws you down and kisses your mouth.{/n}")
+        self.assertEqual(set(), self.codes(story=second))
+        self.assertEqual(set(), self.codes(dict(self.brief, narration="second-present"), second))
+        self.assertIn("narration", self.codes(dict(self.brief, narration="third-past"), second))
+        third = epilogue("{n}She drew the Commander down and kissed the Commander's mouth.{/n}")
+        self.assertIn("narration", self.codes(story=third))
+        self.assertEqual(set(), self.codes(dict(self.brief, narration="third-past"), third))
+        # Host prose without a person marker sets no requirement; neither does
+        # an absent Commander.
+        neutral = epilogue("{n}She returned.{/n}")
+        self.assertEqual(set(), self.codes(story=neutral))
+        self.assertEqual(set(), self.codes(dict(self.brief, commander="absent", scene="Irabeth alone."), third))
 
     def test_paragraph_boundary_respects_existing_history(self):
         story = copy.deepcopy(self.story)
@@ -188,12 +200,12 @@ class SlotBriefLintTests(unittest.TestCase):
         self.assertIn("last_line", self.codes(dict(self.brief, narration="third-past"), story))
 
     def test_cli_counts_strict_and_explicit_known_rebuilds(self):
-        self.write(dict(self.brief, last_line="Wrong"), route="areelu-vorlesh")
+        self.write(dict(self.brief, last_line="Wrong"), route="nocticula")
         story = self.root / "story.json"
         story.write_text(json.dumps(self.story), encoding="utf-8")
         args = ["--briefs", str(self.root), "--story", str(story)]
         # Story is outside the briefs directory.
-        briefs = self.root / "areelu-vorlesh"
+        briefs = self.root / "nocticula"
         args[1] = str(briefs)
         with redirect_stdout(io.StringIO()) as output:
             self.assertEqual(0, lint.main(args))

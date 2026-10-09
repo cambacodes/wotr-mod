@@ -18,7 +18,7 @@
     "This is a knowingly chosen affair. Include a short possessive acknowledgment of the absent lover and the risk of discovery. No absolution: flow into the existing key/clothes/receipt confrontation, or retain unknown whereabouts where the source does.",
     "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
   ],
-  "default_text": "{n}Chivarro catches your hands against her bare waist and kisses you back onto the mattress. She draws you close, her loosened hair brushing your face.{/n}",
+  "default_text": "{n}Chivarro pauses at the sound from the stair, then smiles when the watch passes. She draws you back to her and lets the loosened gown fall beside the bed.{/n}\n\"Quiet, honey. The watch has passed.\"",
   "last_line": "N: Dawn finds the discarded clothes beside the locked door.",
   "speakers": {
     "C": "Chivarro"
