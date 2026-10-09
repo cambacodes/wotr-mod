@@ -32389,6 +32389,26 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
+        "areelu.committed",
+        "areelu.trickster.report.departed",
+        "areelu.trickster.survives",
+        "areelu.trickster.wager_on_screen",
+        "areelu.trickster.wager_struck",
+        "trickster.cheated_death",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "825786e8c5db4511ae30950bb286f0e9"
+      ],
+      "ExpectedCandidate": "areelu.trickster.afterlogue.departed"
+    },
+    {
+      "Id": "825786e8c5db4511ae30950bb286f0e9/v2/g0",
+      "Target": "825786e8c5db4511ae30950bb286f0e9",
+      "Dialog": "57e18f5158904030a84a772fb361ceb4",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
@@ -32401,7 +32421,7 @@
       "ExpectedCandidate": "areelu.trickster.afterlogue.spared_wager"
     },
     {
-      "Id": "825786e8c5db4511ae30950bb286f0e9/v2/g0",
+      "Id": "825786e8c5db4511ae30950bb286f0e9/v3/g0",
       "Target": "825786e8c5db4511ae30950bb286f0e9",
       "Dialog": "57e18f5158904030a84a772fb361ceb4",
       "Page": "",
@@ -32419,7 +32439,7 @@
       "ExpectedCandidate": "areelu.trickster.afterlogue.return_witch"
     },
     {
-      "Id": "825786e8c5db4511ae30950bb286f0e9/v2/g1",
+      "Id": "825786e8c5db4511ae30950bb286f0e9/v3/g1",
       "Target": "825786e8c5db4511ae30950bb286f0e9",
       "Dialog": "57e18f5158904030a84a772fb361ceb4",
       "Page": "",
@@ -32436,7 +32456,7 @@
       "ExpectedCandidate": "areelu.trickster.afterlogue.return_witch"
     },
     {
-      "Id": "825786e8c5db4511ae30950bb286f0e9/v2/g2",
+      "Id": "825786e8c5db4511ae30950bb286f0e9/v3/g2",
       "Target": "825786e8c5db4511ae30950bb286f0e9",
       "Dialog": "57e18f5158904030a84a772fb361ceb4",
       "Page": "",
@@ -32453,7 +32473,7 @@
       "ExpectedCandidate": "areelu.trickster.afterlogue.return_witch"
     },
     {
-      "Id": "825786e8c5db4511ae30950bb286f0e9/v3/g0",
+      "Id": "825786e8c5db4511ae30950bb286f0e9/v4/g0",
       "Target": "825786e8c5db4511ae30950bb286f0e9",
       "Dialog": "57e18f5158904030a84a772fb361ceb4",
       "Page": "",
@@ -32472,7 +32492,7 @@
       "ExpectedCandidate": "areelu.trickster.afterlogue.return_mortal"
     },
     {
-      "Id": "825786e8c5db4511ae30950bb286f0e9/v3/g1",
+      "Id": "825786e8c5db4511ae30950bb286f0e9/v4/g1",
       "Target": "825786e8c5db4511ae30950bb286f0e9",
       "Dialog": "57e18f5158904030a84a772fb361ceb4",
       "Page": "",
@@ -32490,7 +32510,7 @@
       "ExpectedCandidate": "areelu.trickster.afterlogue.return_mortal"
     },
     {
-      "Id": "825786e8c5db4511ae30950bb286f0e9/v3/g2",
+      "Id": "825786e8c5db4511ae30950bb286f0e9/v4/g2",
       "Target": "825786e8c5db4511ae30950bb286f0e9",
       "Dialog": "57e18f5158904030a84a772fb361ceb4",
       "Page": "",

@@ -5421,6 +5421,7 @@
           "!areelu.incinerated",
           "!areelu.sacrifice_wound",
           "!areelu.sacrifice_before",
+          "!areelu.trickster.report.departed",
           "trickster.cheated_death",
           "!areelu.sacrifice_trickster",
           "!areelu.dead_fight",
@@ -5430,6 +5431,29 @@
       ],
       "KeepNativeImage": false,
       "Variants": [
+        {
+          "Replacement": "areelu.trickster.afterlogue.departed",
+          "When": [
+            [
+              "trickster.now",
+              "areelu.trickster.wager_struck",
+              "areelu.trickster.wager_on_screen",
+              "areelu.trickster.survives",
+              "!areelu.trickster.stake_only",
+              "!areelu.closed",
+              "!areelu.trickster.commander_burned",
+              "!areelu.incinerated",
+              "!areelu.sacrifice_wound",
+              "!areelu.sacrifice_before",
+              "areelu.trickster.report.departed",
+              "trickster.cheated_death",
+              "!areelu.sacrifice_trickster",
+              "!areelu.dead_fight",
+              "areelu.committed"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
         {
           "Replacement": "areelu.trickster.afterlogue.spared_wager",
           "When": [
