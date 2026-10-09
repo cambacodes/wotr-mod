@@ -10,8 +10,8 @@
       "route": "galfrey",
       "finding": "galfrey:D08",
       "audit_finding": "| galfrey:D08 | `galfrey.trickster.return.kitrane` | HOW | A | SCORE | CODEX; IN: galfrey | The heard-to-e_legend answer Requires iomedae.present_now. With eulogy.legend held and Iomedae unavailable, the true, sign and none alternatives are also ineligible. Iomedae does not participate in this recollection. |",
-      "status": "blocked",
-      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "status": "active",
+      "why_blocked": "Resolved by struct2-11: the four historical legend contract surfaces are removed; production witnesses restored.",
       "owner_files_needed": [
         "tools/departure_contracts.json"
       ],
@@ -85,8 +85,8 @@
       "route": "galfrey",
       "finding": "galfrey:D09",
       "audit_finding": "| galfrey:D09 | `galfrey.trickster.return.kitrane_scarred` | HOW | A | SCORE | CODEX; IN: galfrey | The same iomedae.present_now requirement strands the legend history in the scarred return. |",
-      "status": "blocked",
-      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "status": "active",
+      "why_blocked": "Resolved by struct2-11: the four historical legend contract surfaces are removed; production witnesses restored.",
       "owner_files_needed": [
         "tools/departure_contracts.json"
       ],
@@ -160,8 +160,8 @@
       "route": "galfrey",
       "finding": "galfrey:D10",
       "audit_finding": "| galfrey:D10 | `galfrey.trickster.return.kitrane_stall` | HOW | A | SCORE | CODEX; IN: galfrey | The fallback repeats the legend transition's iomedae.present_now requirement, with no eligible alternative when that requirement fails. |",
-      "status": "blocked",
-      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "status": "active",
+      "why_blocked": "Resolved by struct2-11: the four historical legend contract surfaces are removed; production witnesses restored.",
       "owner_files_needed": [
         "tools/departure_contracts.json"
       ],
@@ -235,8 +235,8 @@
       "route": "galfrey",
       "finding": "galfrey:D11",
       "audit_finding": "| galfrey:D11 | `galfrey.trickster.return.kitrane_scarred_stall` | HOW | A | SCORE | CODEX; IN: galfrey | The scarred fallback repeats the legend transition's unrelated presence requirement and dead end. |",
-      "status": "blocked",
-      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "status": "active",
+      "why_blocked": "Resolved by struct2-11: the four historical legend contract surfaces are removed; production witnesses restored.",
       "owner_files_needed": [
         "tools/departure_contracts.json"
       ],
@@ -310,8 +310,8 @@
       "route": "galfrey",
       "finding": "galfrey:D12",
       "audit_finding": "| galfrey:D12 | `galfrey.trickster.kitrane.elixir` | INT | A | SCORE | CODEX; IN: galfrey | This question about Galfrey's aging Requires iomedae.present_now. Her answer involves no appearance or intervention by Iomedae; the guard disconnects an ordinary personal question from its emotional context. |",
-      "status": "blocked",
-      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "status": "active",
+      "why_blocked": "Resolved by struct2-11 sibling sweep: elixir grow/choice[1] is a historical recollection; exported regression lives in tests.test_struct2_11.Structure11Tests.test_elixir_recollections_do_not_require_iomedaes_body.",
       "owner_files_needed": [
         "tools/departure_contracts.json"
       ],
@@ -350,8 +350,8 @@
       "route": "galfrey",
       "finding": "galfrey:D13",
       "audit_finding": "| galfrey:D13 | `galfrey.trickster.kitrane.elixir_stall` | INT | A | SCORE | CODEX; IN: galfrey | The fallback repeats the unrelated iomedae.present_now requirement on the aging question. |",
-      "status": "blocked",
-      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "status": "active",
+      "why_blocked": "Resolved by struct2-11 sibling sweep: elixir grow/choice[1] is a historical recollection; exported regression lives in tests.test_struct2_11.Structure11Tests.test_elixir_recollections_do_not_require_iomedaes_body.",
       "owner_files_needed": [
         "tools/departure_contracts.json"
       ],

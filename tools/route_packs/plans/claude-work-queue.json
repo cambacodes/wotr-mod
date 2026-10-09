@@ -759,5 +759,46 @@
     "ruling": "struct-slot-hosts",
     "finding": "struct-slot-hosts:melazmera.trickster.beat.count.explicit.1",
     "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/melazmera/melazmera.trickster.beat.count.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
+  },
+  {
+    "scene": "galfrey.trickster.kitrane.irabeth",
+    "node": "struct2_irabeth_absent",
+    "woman": "galfrey",
+    "beat": "Remember Irabeth's actual Iz service while acknowledging current loss or departure; do not stage her body or erase history.",
+    "finding": "RUBRIC D04",
+    "ruling": "struct2-11"
+  },
+  {
+    "scene": "galfrey.trickster.kitrane.irabeth_stall",
+    "node": "struct2_irabeth_absent",
+    "woman": "galfrey",
+    "beat": "Remember Irabeth's actual Iz service while acknowledging current loss or departure; do not stage her body or erase history.",
+    "finding": "RUBRIC D04",
+    "ruling": "struct2-11"
+  },
+  {
+    "scene": "iomedae.trickster.threshold.banner",
+    "node": "decide",
+    "woman": "iomedae",
+    "beat": "Clarify that the undecided answer concerns answering the Commander in the fire, preserving the already accepted courtship.",
+    "finding": "trickster_all_romance-c6-p1-001",
+    "ruling": "struct2-11"
+  },
+  {
+    "scene": "iomedae.trickster.epilogue.after",
+    "node": "struct2_lifetime_summary",
+    "woman": "iomedae",
+    "beat": "Introduce the existing lifetime consequences without staging the optional vigil reunion; eligible ordinary, flask and bridge survivors must all retain their actual history.",
+    "finding": "IOM-A3-02",
+    "ruling": "struct2-11"
+  },
+  {
+    "scene": "iomedae.trickster.epilogue.after",
+    "node": "page",
+    "choice": 2,
+    "woman": "iomedae",
+    "beat": "Label the non-intimate read-on choice clearly, distinguishing it from the retained saved terminal Continue and optional vigil reunion.",
+    "finding": "IOM-A3-02",
+    "ruling": "struct2-11"
   }
 ]

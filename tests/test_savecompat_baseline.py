@@ -277,8 +277,10 @@ class StructSlotHostTests(unittest.TestCase):
         self.assertEqual(5, len(page["Paragraphs"]))
         self.assertEqual("horzalah.trickster.epilogue.decided.explicit.1", page["Paragraphs"][4]["Id"])
         self.assertIsNone(page["Choices"][0]["Next"])
-        modules = {entry[0] for entry in HOSTS} | {horzalah_trickster}
-        story = {"Scenes": [s for module in modules for s in module.SCENES]}
+        # The global registry requires the complete delivered export; a local
+        # host fixture cannot contain targets belonging to other route owners.
+        from tests.story_fixture import fresh_story
+        story = fresh_story()
         pending = json.loads((ROOT / "tools/route_packs/plans/prose-pending.json").read_text(encoding="utf-8"))
         self.assertEqual([], prose_pending_lint.check(story, pending, integration=True))
         self.assertTrue(prose_pending_lint.check(story, {"version": 1, "pending": []}, integration=True))
@@ -297,3 +299,8 @@ class StructSlotHostTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# The writing profile selects this module: include the delivered structural
+# counterexamples alongside frozen identities and placeholder completeness.
+from tests.test_struct2_11 import Structure11Tests

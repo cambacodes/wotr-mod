@@ -883,6 +883,18 @@ class GuardPassTests(unittest.TestCase):
 
 
 class S2ProductionWitnessTests(unittest.TestCase):
+    def test_s2_galfrey_four_return_greetings_and_legend_transitions(self):
+        for suffix in ("", "_scarred", "_stall", "_scarred_stall"):
+            sid = "galfrey.trickster.return.kitrane" + suffix
+            for index, choice in enumerate(self.node(sid, "name")["Choices"][:3]):
+                with self.subTest(scene=sid, node="name", index=index):
+                    self.assert_independent(choice, "iomedae")
+            with self.subTest(scene=sid, node="heard", history="legend"):
+                legend = self.node(sid, "heard")["Choices"][1]
+                self.assertEqual(legend["Next"], "e_legend")
+                self.assertIn("galfrey.trickster.eulogy.legend", legend["Requires"])
+                self.assert_independent(legend, "iomedae")
+
     """Read the final export; blocked owner witnesses live in redesign/*/pending-witnesses.json."""
 
     @classmethod

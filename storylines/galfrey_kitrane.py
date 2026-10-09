@@ -1447,3 +1447,34 @@ del _host, _sid, _nodes
 
 from storylines.galfrey_trickster import _round4_direct_histories
 _round4_direct_histories(SCENES)
+
+
+# struct2-11 D04: an earned return does not survive subsequent actor loss.
+# Reuse the existing Eagle Watch/Iz recollections for Seelah's absence.
+def _struct2_current_participants():
+    for host in SCENES:
+        sid = host["Id"].removesuffix("_stall")
+        nodes = {node["Id"]: node for node in host["Nodes"]}
+        if sid == P + "kitrane.seelah":
+            start = nodes["start"]
+            for choice in start["Choices"]:
+                if choice.get("Next") in ("seelah", "seelah_drezen"):
+                    choice["Requires"].append("seelah.present_now")
+            start["Choices"].extend([
+                c("Continue", "stranger", requires=(SEELAH_BED,),
+                  forbids=("seelah.present_now",)),
+                c("Continue", "stranger_absent",
+                  forbids=("seelah.present_now", SEELAH_BED)),
+            ])
+        elif sid == P + "kitrane.irabeth":
+            for choice in nodes["start"]["Choices"]:
+                if choice.get("Next") in ("alive", "drezen", "drezen_knows", "died_back"):
+                    choice["Requires"].append("irabeth.present_now")
+            nodes["start"]["Choices"].append(c("Continue", "struct2_irabeth_absent",
+                forbids=("irabeth.present_now",)))
+            host["Nodes"].append(ki("struct2_irabeth_absent",
+                "[PROSE PENDING: Remember Irabeth's actual Iz service while acknowledging her current loss or departure.]",
+                c("Continue", "end")))
+
+
+_struct2_current_participants()

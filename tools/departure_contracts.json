@@ -19558,42 +19558,6 @@
           "letter": false
         },
         {
-          "scene": "galfrey.trickster.kitrane.elixir",
-          "node": "grow",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "galfrey.trickster.kitrane.elixir_stall",
-          "node": "grow",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "galfrey.trickster.return.kitrane",
-          "node": "heard",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "galfrey.trickster.return.kitrane_scarred",
-          "node": "heard",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "galfrey.trickster.return.kitrane_scarred_stall",
-          "node": "heard",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "galfrey.trickster.return.kitrane_stall",
-          "node": "heard",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
           "scene": "irabeth.trickster.dead.late_order",
           "node": "l_list",
           "choice": 0,
