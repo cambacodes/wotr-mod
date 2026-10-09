@@ -4,14 +4,14 @@
   "source_job": "r5-S2",
   "follow_up": "r5-S2-fix",
   "activation_stage": 4,
-  "policy": "Pending witnesses are not active tests or expected failures. Stage 4 must add each witness together with its owner fix.",
+  "policy": "struct2-04 current-base recheck: D02-D10 witnesses are active in tests.test_crossroute_presence.S2ProductionWitnessTests. Final transformed export has no Eritrice guards on these surfaces. Historical fixtures below retain the earlier counterexamples; they are not current blockers.",
   "findings": [
     {
       "route": "chadali",
       "finding": "chadali:D02",
       "audit_finding": "| chadali:D02 | `chadali.wagers.the_recipe` | INT | A | SCORE | CODEX; IN: chadali | start/2 requires eritrice.present_now. Eritrice's availability determines whether the Commander can guess Chadali's ingredient, although Eritrice neither participates nor supplies the answer. Her remembered nutmeg guess does not require her current presence. |",
-      "status": "blocked",
-      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "status": "already-fixed",
+      "why_blocked": "Historical blocker resolved on pinned base 401c6de34c63422b1d0c612f9f26bd4ad8a88d47: women.eritrice.surfaces has no Chadali entries; bundled choice and entry witnesses are already active.",
       "owner_files_needed": [
         "tools/departure_contracts.json"
       ],
@@ -50,8 +50,8 @@
       "route": "chadali",
       "finding": "chadali:D03",
       "audit_finding": "| chadali:D03 | `chadali.wagers.born_lucky` | INT | A | SCORE | CODEX; IN: chadali | start/1 requires eritrice.present_now solely because Chadali subsequently recalls Eritrice calculating the odds. A historical calculation becomes an unrelated present-day availability gate. |",
-      "status": "blocked",
-      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "status": "already-fixed",
+      "why_blocked": "Historical blocker resolved on pinned base 401c6de34c63422b1d0c612f9f26bd4ad8a88d47: women.eritrice.surfaces has no Chadali entries; bundled choice and entry witnesses are already active.",
       "owner_files_needed": [
         "tools/departure_contracts.json"
       ],
@@ -90,8 +90,8 @@
       "route": "chadali",
       "finding": "chadali:D04",
       "audit_finding": "| chadali:D04 | `chadali.wagers.a_lucky_charm` | INT | A | SCORE | CODEX; IN: chadali | start/0 and start/2 both require eritrice.present_now. The Commander cannot object to Chadali's nickname or ask whose charm they are when Eritrice is unavailable. Neither exchange involves her participation. |",
-      "status": "blocked",
-      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "status": "already-fixed",
+      "why_blocked": "Historical blocker resolved on pinned base 401c6de34c63422b1d0c612f9f26bd4ad8a88d47: women.eritrice.surfaces has no Chadali entries; bundled choice and entry witnesses are already active.",
       "owner_files_needed": [
         "tools/departure_contracts.json"
       ],
@@ -153,8 +153,8 @@
       "route": "chadali",
       "finding": "chadali:D05",
       "audit_finding": "| chadali:D05 | `chadali.wagers.knucklebones` | INT | A | SCORE | CODEX; IN: chadali | start/0, start/1, honest/0 and open_cheat/0 require eritrice.present_now. Chadali's private game thus loses its honest and openly cheating branches because an absent spectator is recalled in the common closing node. |",
-      "status": "blocked",
-      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "status": "already-fixed",
+      "why_blocked": "Historical blocker resolved on pinned base 401c6de34c63422b1d0c612f9f26bd4ad8a88d47: women.eritrice.surfaces has no Chadali entries; bundled choice and entry witnesses are already active.",
       "owner_files_needed": [
         "tools/departure_contracts.json"
       ],
@@ -266,8 +266,8 @@
       "route": "chadali",
       "finding": "chadali:D06",
       "audit_finding": "| chadali:D06 | `chadali.fortunes.a_great_big_fair` | INT | A | SCORE | CODEX; IN: chadali | souls/0 requires eritrice.present_now, although the answer and its continuation concern Chadali's own fair and contain no participation by Eritrice. |",
-      "status": "blocked",
-      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "status": "already-fixed",
+      "why_blocked": "Historical blocker resolved on pinned base 401c6de34c63422b1d0c612f9f26bd4ad8a88d47: women.eritrice.surfaces has no Chadali entries; bundled choice and entry witnesses are already active.",
       "owner_files_needed": [
         "tools/departure_contracts.json"
       ],
@@ -308,8 +308,8 @@
       "route": "chadali",
       "finding": "chadali:D07",
       "audit_finding": "| chadali:D07 | `chadali.fortunes.burnt_edges` | INT | A | SCORE | CODEX; IN: chadali | The entire morning scene requires eritrice.present_now, with duplicate requirements on open/0, open/1, secret/0, start/0, eat/0, eat/1, more/0 and bed/0. Eritrice does not appear in this intimate aftermath. Her availability arbitrarily controls Chadali's breakfast and the subsequent courtship chain. |",
-      "status": "blocked",
-      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "status": "already-fixed",
+      "why_blocked": "Historical blocker resolved on pinned base 401c6de34c63422b1d0c612f9f26bd4ad8a88d47: women.eritrice.surfaces has no Chadali entries; bundled choice and entry witnesses are already active.",
       "owner_files_needed": [
         "tools/departure_contracts.json"
       ],
@@ -747,8 +747,8 @@
       "route": "chadali",
       "finding": "chadali:D08",
       "audit_finding": "| chadali:D08 | `chadali.sessions.what_you_said` | INT | A | SCORE | CODEX; IN: chadali | question/1 requires eritrice.present_now. The Commander's honest response to an insult reported by Alichino or Cobblehoof depends on a third woman's availability. |",
-      "status": "blocked",
-      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "status": "already-fixed",
+      "why_blocked": "Historical blocker resolved on pinned base 401c6de34c63422b1d0c612f9f26bd4ad8a88d47: women.eritrice.surfaces has no Chadali entries; bundled choice and entry witnesses are already active.",
       "owner_files_needed": [
         "tools/departure_contracts.json"
       ],
@@ -789,8 +789,8 @@
       "route": "chadali",
       "finding": "chadali:D09",
       "audit_finding": "| chadali:D09 | `chadali.hours.our_new_friend` | INT | A | SCORE | CODEX; IN: chadali | The scene and start/0, start/1, fast/0, why/0, why/1 and votes/0 require eritrice.present_now, although Chadali is remembering the first Council meeting. Current presence is incorrectly substituted for historical participation. |",
-      "status": "blocked",
-      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "status": "already-fixed",
+      "why_blocked": "Historical blocker resolved on pinned base 401c6de34c63422b1d0c612f9f26bd4ad8a88d47: women.eritrice.surfaces has no Chadali entries; bundled choice and entry witnesses are already active.",
       "owner_files_needed": [
         "tools/departure_contracts.json"
       ],
@@ -1106,8 +1106,8 @@
       "route": "chadali",
       "finding": "chadali:D10",
       "audit_finding": "| chadali:D10 | `chadali.hours.the_seat_beside_her` | INT | A | SCORE | CODEX; IN: chadali | start/1 requires eritrice.present_now, but the continuation discusses what the other Council members might think when they return. Eritrice's availability has no causal role in asking this question. |",
-      "status": "blocked",
-      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "status": "already-fixed",
+      "why_blocked": "Historical blocker resolved on pinned base 401c6de34c63422b1d0c612f9f26bd4ad8a88d47: women.eritrice.surfaces has no Chadali entries; bundled choice and entry witnesses are already active.",
       "owner_files_needed": [
         "tools/departure_contracts.json"
       ],

@@ -504,5 +504,24 @@
     "ruling": "struct-slot-hosts",
     "finding": "struct-slot-hosts:melazmera.trickster.beat.count.explicit.1",
     "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/melazmera/melazmera.trickster.beat.count.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
+  },
+  {
+    "scene": "areelu.trickster.afterlogue.spared",
+    "woman": "areelu",
+    "node": "line",
+    "beat": "Make the retrospective replacement true for both the staying and leaving report branches; preserve native continuation and Pharasma verdict. Do not assert lifelong cohabitation. Final areelu_cloud.AFTER currently replaces the safer for-a-time source premise.",
+    "ruling": "struct2-04 / RUBRIC A4-03"
+  },
+  {
+    "scene": "chadali.wagers.the_recipe",
+    "woman": "chadali",
+    "beat": "Dossier owner: add required ALIGNMENT & REGISTER covering creed, pleasure, need, punitive luck and limits, participating women and keyed native samples for evil/edge women; distinguish authored histories/devices.",
+    "ruling": "struct2-04 / RUBRIC CH-A4-06; Claude/coordinator owns handoffs/trickster/chadali.md"
+  },
+  {
+    "scene": "targona.trickster.react.ix_a.yaniel",
+    "woman": "targona",
+    "beat": "Dossier owner: add ALIGNMENT & REGISTER for Targona and scoped female participants; retain compassion, native martial anger and fighting creed; distinguish native evidence from authored additions and include keyed samples for evil/edge participants.",
+    "ruling": "struct2-04 / RUBRIC TAR-A4-02; Writer dossier coordinator"
   }
 ]

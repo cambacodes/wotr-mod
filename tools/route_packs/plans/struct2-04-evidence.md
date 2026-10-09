@@ -1,0 +1,48 @@
+# struct2-04 evidence
+
+Pinned base: `401c6de34c63422b1d0c612f9f26bd4ad8a88d47`.
+Input manifest: `8e375bb01e908d0cb4f73eb29a32cfa2f79245c5b7d0aa2b0e3abb0405b21dbb`.
+Inputs read from their manifest bundle_path entries; inspected sources matched their pinned bytes. No integration merge, staging, commit or push performed.
+
+## Dispositions and sibling sweep
+
+- CH-A4-02: already-fixed. On the current base, women.eritrice.surfaces contains no Chadali scenes. Every D02-D10 bundled fixture is independent of Eritrice's current availability. Earned spice/aid gates and the actual eritrice_coin participant guard remain. Raw sources and final transforms were both inspected.
+- CH-A4-05: already-fixed behavior/activation. The exact choice witnesses and both entry witnesses are already active in S2ProductionWitnessTests. Corrected the historical pending record and added final-export witnesses for both Eritrice states. No shared contract edit is needed. This is structural predicate coverage, not a live playthrough.
+- CH-A4-06: escalated to Claude/Writer dossier coordinator. Queued the required ALIGNMENT & REGISTER addition. The requested Writer handoff is outside allow_paths and was not bundled as an authoritative dossier input.
+- hostile-c3-p4-002 and trickster_all_romance-c3-p19-001: already-fixed. Both current source and base export have the stake-neutral answer, the flat-coin continuation, and distinct stake_luck/stake_coin producers. Inspected council.second_cookie collection sibling; no forced Both answer is restored.
+- CONVERT household.pair.soana_camellia.settle: fixed structure. The existing ID uses Soana's earned returned-body cave hub; appended .native copies use her native cave dialogue and continuation. The retry sibling receives the same two doors. They share the existing terminal witnesses, preserve the Religion check, refusal, outcome flags and 48-hour retry, and require Camellia's actual contact. Complete existing node dictionaries are preserved.
+- CONVERT household.pair.arueshalae_minagho.settle.good: fixed structure through redeemed Arueshalae's native companion dialogue in Drezen, with Minagho's actual contact. The retry.good sibling keeps its 48-hour delay. The Perception check, deed/refusal outcomes and current body/enmity exclusions remain. Inspected fallen settlement/retry siblings; they retain their separate Table hosting. No dedicated lower-wall map anchor was invented.
+- CONVERT targona.trickster.react.ix_a.yaniel: fixed structure. Existing Targona infirmary hub plus actual Yaniel contact, unchanged text/choice and current return predicates. E6 reaction metadata is retired because ordinary presence scenes cannot be reactions. Explicit Yaniel death/departure vetoes preserve the exclusions the old reaction integrator supplied. Inspected infirmary/council interaction siblings; no new body or native history created.
+- CONVERT irabeth.the_seized_wagon: fixed journal structure. Existing yard opening and 48-hour sealed-account follow-up remain. Journal opens on the agreed docket return and settles only on account_resolved, after the existing sealed/open outcomes and witness work. Title and description reuse existing authored text. No new dialogue, branch price or quest outcome added. Inspected both account branches and later investigation/update scenes.
+- CONVERT household.pair.delamere_hepzamirah.open: escalated, coordinator/Delamere presence owner. No Delamere Drezen presence exists in the assembled payload. Open/hearing/repair are manual remote visits, not physical quest entries. Recommend approving a current returned-body Drezen door, then retaining a distinct Satchel notice and tracking the existing equipment/captain work as a journal objective. New notices/bridges belong to Claude.
+- CONVERT household.pair.delamere_minagho.open: escalated, coordinator/Delamere presence owner. Same missing Delamere Drezen body/entry, plus an approved interception/custody world-entry decision. Inspected open/interception/repair, current Minagho spared/returned hubs, and refusal/resolution witnesses. Recommend a physical Delamere discovery door and Minagho relay follow-up using existing custody outcomes; do not infer a dispatch seizure from reading a notice.
+- CONVERT household.pair.melazmera_hepzamirah.open: escalated, coordinator/Melazmera presence owner. Melazmera has no placed Drezen presence. Hepzamirah's existing forge hub does not place Melazmera's authored folded-woman form at a stockyard. Inspected open/diversion/replacement, costs/checks, and the source validator requiring manual visits. Recommend an approved actor/form and stockyard anchor before switching all three siblings together.
+- CONVERT household.pair.galfrey_nocticula.open: escalated, coordinator/Galfrey presence owner. Returned Galfrey's existing hubs are market/stall placements, not a departure office; the live queen and Kitrane histories require separate physical bindings. Inspected open/undertaking/last_litter and their Kitrane variants, market fallbacks, and Nocticula courier channel. Recommend approving a departure-office entry for both histories rather than placing Nocticula bodily or treating a market click as that office.
+- A4-03: escalated to Claude voice owner. areelu_cloud.AFTER still replaces the source's for-a-time premise with a lifelong companionship claim. Registered the exact line/node request; no persistent departure state or native verdict change invented. Inspected mortal, neutral, return and report departure siblings.
+
+## Own checks (not runner receipts)
+
+- Regeneration: `python expansion.py`, disposable RRT_STORY_OUTPUT under system temp. Initial build exit 0, 4083 scenes. A focused export comparison caught missing direct Yaniel vetoes after the reaction conversion; corrected them and regenerated again.
+- Selected tests: `python -m unittest tests.test_savecompat_baseline tests.test_utf8_io`, using the generated system-temp export. Exit 0, 18 tests on the pre-veto-correction export. Final-export result recorded below.
+- Focused structural inspection: final-export result recorded below. It compares complete original node dictionaries, clocks and guard retention; checks physical entry legality, native cave alternatives, complete hub prerequisites, journal conditions, all bundled Chadali fixtures in both Eritrice predicate states, and the committed/base inventories through id_guard.compare.
+- Queue schema and UTF-8 AST parsing: inline inspection exit 0; claude_work_queue_lint CLI exit 0, zero hard failures.
+- Attempts to run tests.test_struct2_04_hosts and the existing Chadali unittest witness exited 137 without diagnostics. These modules are not selected by the pinned writing profile; no passing suite claim or baseline attribution is made. One py_compile attempt also exited 137. Failed checks remain failed.
+- Exact committed-save-ID stage is unrun here (exit null): its CLI requires the runner-owned development/Story.json destination and captured baseline. API comparisons are own finding evidence only, not a substitute runner receipt.
+- git diff --check: exit 0. Existing edited JSON LF/CRLF byte style preserved; all new text uses explicit UTF-8. Disposable exports and inspection scripts are in system temp.
+
+The wrapper owns final scope/encoding/gate receipts, source/export sealing and commits. gates remains empty. No baseline receipt was supplied; inherited failure attribution is unknown.
+
+## Remaining acceptance
+
+Coordinator must resolve the four household venue bindings; Claude must complete Areelu voice and both dossier additions. Add tests.test_struct2_04_hosts and the existing Chadali witnesses to a coordinator-selected behavioral profile if suite receipts are required. No live placement or independent INT/HOW/COX >=91 score is certified here. The supplied manifest has no pinned audits and an operational scene_map; the requested rubric JSON and verified-findings inputs were not supplied as bundle audit entries. Overall completion remains blocked.
+
+## Final own-check results
+
+- Latest `python expansion.py`: exit 0, 4083 scenes, system-temp export; final physical/journal implementation included.
+- `RRT_TEST_STORY=/tmp/struct2-04-final.json python -m unittest tests.test_savecompat_baseline tests.test_utf8_io`: exit 0, 18 tests, 6.113 seconds.
+- `python /tmp/struct2-04-inspect.py`: exit 0. Five converted physical entries, two appended native cave alternatives; complete existing node/text/choice dictionaries and original clocks/gates retained. Both presence prerequisites/vetoes are fully represented. Correct docket journal opens/settles on the existing work. All 27 bundled Chadali fixtures retain independence in both Eritrice predicate states; the actual eritrice_coin exclusion composite and council-loss veto remain. id_guard.compare passes against the committed export at the pinned SHA and the independently regenerated current-base export.
+- Earlier focused inspections exited 1: one found the lost Yaniel direct vetoes (implementation corrected); another expected a positive Eritrice presence guard instead of the actual preserved unavailable composite (witness corrected). The successful final inspection supersedes those probes; their failures are not attributed to an inherited baseline.
+- Scope/UTF-8 inspection: exit 0, all five edited/new paths permitted, both existing JSON files retain LF-only byte style. Final git diff check: exit 0.
+- Exact runner committed-ID argv remains unrun (exit null); its API comparison above is finding evidence only. No runner profile/environment digest receipt is asserted.
+
+Final disposable export SHA-256: `c565b974918067bfc1e2ad41de03fb77c8ff054c6852c9f3e1d28e632c1e5513`. Runner must seal its own fresh source/export pair.
