@@ -766,6 +766,9 @@ def _make_expansion(*, independent_tirabade=True):
     # villain-route-arueshalae (cloud): Arueshalae's fallen-road text layer and appended readers, after every appender.
     from storylines import arueshalae_cloud
     arueshalae_cloud.integrate(payload)
+    # villain-route-nocticula (cloud): Nocticula's text-only layer and appended readers, after every appender.
+    from storylines import nocticula_cloud
+    nocticula_cloud.integrate(payload)
     return payload
 
 

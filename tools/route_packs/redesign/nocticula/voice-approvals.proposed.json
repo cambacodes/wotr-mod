@@ -765,6 +765,1177 @@
       "source_branch": "cloud/noct-reconcile",
       "source_commit": "(this branch head)",
       "reason": "Cloud noct-reconcile: N1/N2/N3 merged into one Nocticula, last_buyer re-voiced, endings reconciled, check labels match rolled skills (see drafts/claude-jobs/noct-reconcile.locked.md)"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.retry.corrupted",
+      "before_sha": "f9d1df6c1004651af347ea8a53fc597a6038f4aed25f870bc62bd3d941e012b4",
+      "after_sha": "6bfcfb686427dd465b02315185cf17b5c755653f344f71a177ef4a52ffc8460f",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md); not locked today: proposed new Claude lock"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.retry.redeemed",
+      "before_sha": "409a72bac7d5dc30d6745c1747166ba0b2a2511f3b1ee40604f47c5ad1557dc3",
+      "after_sha": "187f95421dc92c8eed1ae47611e12ef0e4f48faf8bffb68cc85dae84a497a1c4",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md); not locked today: proposed new Claude lock"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.settle.corrupted",
+      "before_sha": "9731b96b537532937066b515b567e95d886a4ad9f685dc747b91d6927a77d457",
+      "after_sha": "95f4c742d55abf16e2a3a94e998d5dfa282dab9175a56116d5fffd87164c0015",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md); not locked today: proposed new Claude lock"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.settle.redeemed",
+      "before_sha": "631dd9f41f275ea4ef3f29fdef55aba52d6e0ff3fa10335ed41f80940c15ce35",
+      "after_sha": "011bc9dcd98f9fc4dd79e23b9dbbf8de0d17c4c74e6686c04de0609794e3485a",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md); not locked today: proposed new Claude lock"
+    },
+    {
+      "scene": "household.pair.galfrey_nocticula.last_litter",
+      "before_sha": "406a06cb9e19b41fb5f96f868b72e39b5aa1192275aa039e9c0323b408a7ba14",
+      "after_sha": "5d8a291a591f65724a9376bde946a41fbfb731927150e63e27c98c63ca7d7809",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md); not locked today: proposed new Claude lock"
+    },
+    {
+      "scene": "household.pair.galfrey_nocticula.last_litter.kitrane",
+      "before_sha": "379a3e0c33ee420b897da5f233841e354cc7664d14d73960a0fdd86e36c1642a",
+      "after_sha": "551dd187d1e67f7675de14d728a7b326ed94c3e00a88f28b4a5b996f0df5ad9c",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md); not locked today: proposed new Claude lock"
+    },
+    {
+      "scene": "household.pair.galfrey_nocticula.open",
+      "before_sha": "32beced44c041a248905d8cdc767e7f1ed2ce63735637a761511d97ad54cb17c",
+      "after_sha": "5cdc78a54c91fbf667f9f18c1e59da3153ed615253d8377e6bca534320664844",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md); not locked today: proposed new Claude lock"
+    },
+    {
+      "scene": "household.pair.galfrey_nocticula.open.kitrane",
+      "before_sha": "6e53c5a35d10c18a1fd08d2e472f635df7ac4a2f78c08d54550f7da06e2b6232",
+      "after_sha": "4a828b475659a451173e31262477f22e0922d21ec0161abcb02d5b0ca004c671",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md); not locked today: proposed new Claude lock"
+    },
+    {
+      "scene": "household.pair.galfrey_nocticula.undertaking",
+      "before_sha": "d001407c3f26becf82648acb7839272fb9bfaa611fe7cac1028e083beddc64e7",
+      "after_sha": "ff2d01c79358a79880f9823063af89a901e3ffb8474cec7562d6c70fde1100b3",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md); not locked today: proposed new Claude lock"
+    },
+    {
+      "scene": "household.pair.galfrey_nocticula.undertaking.kitrane",
+      "before_sha": "5ef40c2260fdfb9c35c90531040fc2c4b7963f305ebd9a42e68d760aea1119b3",
+      "after_sha": "9a44b2c8460f7a036b9bedf9e77376c947ddd32a4f2a3288cbdfb9c163b4362e",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md); not locked today: proposed new Claude lock"
+    },
+    {
+      "scene": "household.pair.nocticula_shamira.precedence.live",
+      "before_sha": "7efda859d4a10b14bd0ce54ab7e63fe01d4d1baf4fb9c9c6f6395c0641ede116",
+      "after_sha": "fd7e9234c2705c3998ada530484ae602e804afaf336a1e2890c6dd9ea5d80929",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md); not locked today: proposed new Claude lock"
+    },
+    {
+      "scene": "noct.acq.an_answer_of_her_own",
+      "before_sha": "080b0b6940773810171be68dfa3c92d9c288154ff8065b91e8c5ea26bd327932",
+      "after_sha": "1ec2389c11ad7446b60cf2c7b800f42a5a5e7f467714962351765bad20cacdd7",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.acq.borrowed_signature",
+      "before_sha": "ba1a64b4254c98f7fee864203ee7c3d41a3360b7a3a99a86f3299a65ae566fd6",
+      "after_sha": "04d35c63f9163c110ae80547727fb2b290bf82797361bcc22a948018841e1e98",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.acq.epilogue.correspondence",
+      "before_sha": "111a40938b008dc57577e8ab4b17ccae8e336ad976693df85b8e127ab3de7a44",
+      "after_sha": "10022e9bbba89e4ba6bca5f3480f6facda8b92d4efeae7e6c461c3ed915c0db2",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.acq.the_missing_line",
+      "before_sha": "b4852d38d3b7d1ced75ef69476b12cd50b0af2ade1402c4f32676236bba38191",
+      "after_sha": "0561be8ab1e00327f25f0e63bcdbd471e1e9bffc3e8cf7099ee2dcf89cc5eea3",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.acq.the_paid_address",
+      "before_sha": "21b73e0c63945366c88cdede55fd2c3edd8cfaa93176977697b760bcca630421",
+      "after_sha": "4ced1af64c0365a054a31f2f471ace1c1384a7e279de86ae723b09f9ef340d82",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.acq.the_retained_copy",
+      "before_sha": "9efc619e9509109e005e1a1b430a39f3702c21ec50e3e4c405f1ad9303e99768",
+      "after_sha": "85e2d25eb63ea7ab3e8dd655528a37f54c6a44908cf8ed4b6bd845a590107a56",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.after_the_lamps",
+      "before_sha": "de8db01033a6646ac20a13c766986c55019ab8370c61d63d7e74746026c8b78b",
+      "after_sha": "05047d1fb5af9b138126443319f3a995e05c2456383bb79fdc833562e2cd5d66",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.after_the_lamps.acquired.new",
+      "before_sha": "7669bb7f6256ebf7261e2317f22e13b782e08f805833bce6177fbb77c8853282",
+      "after_sha": "2c1c19110ab4fcfa195c1baf41c050814c99f973c0330fe9a9e08120e43568ae",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.after_the_lamps.acquired.prior",
+      "before_sha": "b341373c001040da895c4c08a96fb10dac01bae96c07e6c366f6df57a2f0f5cf",
+      "after_sha": "4da11f52f68821b7507c9ebc440d411c48746cfc8e369193de6dd1040c1c4c34",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.after_the_lamps.acquired.refused",
+      "before_sha": "7669bb7f6256ebf7261e2317f22e13b782e08f805833bce6177fbb77c8853282",
+      "after_sha": "2c1c19110ab4fcfa195c1baf41c050814c99f973c0330fe9a9e08120e43568ae",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.another_place",
+      "before_sha": "399c15f6d8191515badd18a02f5682e424c72c5c6c043d8f46ab956dc64c7255",
+      "after_sha": "f3d21870f91b8b87288b2ad8d566f27cd765664db3e15b976237b45858c32af5",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.another_place.acquired.new",
+      "before_sha": "84eb0c04fb5e5f630cc5e8ea69302ae556892011f1866fd338cd048dfcb519dc",
+      "after_sha": "679b89d3ab6983d3d1c4b7755e1b7c6c6693ebe2b19702fa5edbcc020cb04fa8",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.another_place.acquired.prior",
+      "before_sha": "4774b134490f98bdcb7799882befbacffdb992af698183dc21661906d49ae321",
+      "after_sha": "0bee8031dc1386406e04f614057acae38f8179ad0f3894c28ee2fa7b93f9ff22",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.another_place.acquired.refused",
+      "before_sha": "84eb0c04fb5e5f630cc5e8ea69302ae556892011f1866fd338cd048dfcb519dc",
+      "after_sha": "679b89d3ab6983d3d1c4b7755e1b7c6c6693ebe2b19702fa5edbcc020cb04fa8",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.bell_without_master",
+      "before_sha": "8b36bebda643f8deaeeb7f9714ea23d4f60f462972279e254e8fd2cc02305038",
+      "after_sha": "997b8c8ef4e8fee962c43890c2293588e54ef228e98f4b1755c9e6717c5819ee",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.bell_without_master.acquired.new",
+      "before_sha": "95e961fce3c612f8c9be8b9b7de30bc5c983c4741da76adc3f9e9e6f92eedb6d",
+      "after_sha": "208cb9b1213b046d0a21dec6f5b781b92cd76a0ac4940c3f980b2e3fd067c4b3",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.bell_without_master.acquired.prior",
+      "before_sha": "bdfd31b079aa59ae9cdcec9e987452debb5e147e0c3e4357cc3bd15a1a069fc6",
+      "after_sha": "1ee4c2db4a18b51559b7c7cdb3bc6d50ab265313109aa97b7de124f13559311d",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.bell_without_master.acquired.refused",
+      "before_sha": "95e961fce3c612f8c9be8b9b7de30bc5c983c4741da76adc3f9e9e6f92eedb6d",
+      "after_sha": "208cb9b1213b046d0a21dec6f5b781b92cd76a0ac4940c3f980b2e3fd067c4b3",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.demonstration.acquired.new",
+      "before_sha": "86e586b8c8d555e549e9da38e86bcaf2e6e865ec6104e43f76f22adcd993889a",
+      "after_sha": "a4bcd34a5ab32cef527a3a8b8af6ced79fdfcc6810fd6092db5abb4dfde6cd88",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.demonstration.acquired.prior",
+      "before_sha": "8077c084f5d6c8890a52c9d04184ca66c7741fcc7cef216eab9841573276d477",
+      "after_sha": "ae4108aa3b21ca37cbf5ab75bed353a9ccc5fcf2e32b1dd25c6de8843ffed06a",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.demonstration.acquired.refused",
+      "before_sha": "86e586b8c8d555e549e9da38e86bcaf2e6e865ec6104e43f76f22adcd993889a",
+      "after_sha": "a4bcd34a5ab32cef527a3a8b8af6ced79fdfcc6810fd6092db5abb4dfde6cd88",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_aeon",
+      "before_sha": "2f186a23d48c3402f30ff75edacda2c91d58638f791f05ea0a70b5e979c7d479",
+      "after_sha": "26b7aee280addfcf65370ba619a910de55825fa91e051100e541e5c3d6f48b6e",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_aeon.acquired.new",
+      "before_sha": "874d8131b68117980c5446783ba9041f394672906a1142543ae4092e393a9f7d",
+      "after_sha": "e7df2b438477265c60a3b14ec3b587519565b5d70d5f65535d5769b18861a4b7",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_aeon.acquired.prior",
+      "before_sha": "874d8131b68117980c5446783ba9041f394672906a1142543ae4092e393a9f7d",
+      "after_sha": "e7df2b438477265c60a3b14ec3b587519565b5d70d5f65535d5769b18861a4b7",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_aeon.acquired.refused",
+      "before_sha": "874d8131b68117980c5446783ba9041f394672906a1142543ae4092e393a9f7d",
+      "after_sha": "e7df2b438477265c60a3b14ec3b587519565b5d70d5f65535d5769b18861a4b7",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "before_sha": "24f9488aa0f7fa6d9f5252145e286797bd07b9dc74ffb05b5c1af56f5e25ae10",
+      "after_sha": "b825a8741c545c49d96a07c88d7d2cb52b1854754aae629d87a9b2181763c8d7",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_alliance.acquired.new",
+      "before_sha": "78d94d63e87732958007a46402857d11cf52ee1c75739e4c65e43a5b46147a15",
+      "after_sha": "a22db32e8bd44684dfb5902f49aa27d258e203eeeb0fbbb245bf6d0a0388e9e3",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_alliance.acquired.prior",
+      "before_sha": "a6e75c44db0977b1d62515831ade5c824fa0bfa2d4bd43a5b4857cb4bc589dff",
+      "after_sha": "569dd020f092f810f1dea0404d35e96a4a853a4ed1c133fce8ceddb596c44eda",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_alliance.acquired.refused",
+      "before_sha": "78d94d63e87732958007a46402857d11cf52ee1c75739e4c65e43a5b46147a15",
+      "after_sha": "a22db32e8bd44684dfb5902f49aa27d258e203eeeb0fbbb245bf6d0a0388e9e3",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "before_sha": "ad2f5d9610d4474a72a6ee2c72630f542f7fcd26d43c2182d93e47390177f327",
+      "after_sha": "08ee24d3a48e7e39b4d27ad52db75074f5334a564a3839dfb4729cb658f04d0e",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_ascent.acquired.new",
+      "before_sha": "50b16387e8565fb8dc98e34cb8d77ba534fd136b40d13815f07eedfc22da5f18",
+      "after_sha": "6db75bffc5706641f3670ea453cb7e952a56ab794f8ca8cb020363ef557e5855",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_ascent.acquired.prior",
+      "before_sha": "50b16387e8565fb8dc98e34cb8d77ba534fd136b40d13815f07eedfc22da5f18",
+      "after_sha": "6db75bffc5706641f3670ea453cb7e952a56ab794f8ca8cb020363ef557e5855",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_ascent.acquired.refused",
+      "before_sha": "50b16387e8565fb8dc98e34cb8d77ba534fd136b40d13815f07eedfc22da5f18",
+      "after_sha": "6db75bffc5706641f3670ea453cb7e952a56ab794f8ca8cb020363ef557e5855",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_changed",
+      "before_sha": "befae075e5c4b631965fb270c1a391edff0da3b60046d518bb2bb13253bf48f1",
+      "after_sha": "dd12454bd330ec358a7e8c7375bea680e44fae86d37b8fe8ceb7016ad3e30f8d",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_changed.acquired.new",
+      "before_sha": "e77ac32fe6b17f48d4cf59fb80d5f2241fc79d0e3fbd828c39d08cf502520036",
+      "after_sha": "294d058d1edcfd5c7ad5ec85ef28cd159085cf5c15fa727ba180ed84ecb9d3be",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_changed.acquired.prior",
+      "before_sha": "e77ac32fe6b17f48d4cf59fb80d5f2241fc79d0e3fbd828c39d08cf502520036",
+      "after_sha": "294d058d1edcfd5c7ad5ec85ef28cd159085cf5c15fa727ba180ed84ecb9d3be",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_changed.acquired.refused",
+      "before_sha": "e77ac32fe6b17f48d4cf59fb80d5f2241fc79d0e3fbd828c39d08cf502520036",
+      "after_sha": "294d058d1edcfd5c7ad5ec85ef28cd159085cf5c15fa727ba180ed84ecb9d3be",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_company",
+      "before_sha": "a9822d791ecf2bd8c78659e26fbe104fd2f4ef50452d56d683dc8619a5ea7814",
+      "after_sha": "51632e0d3f2f2fa15dbd97157c5299528ae5633677825c2f8dadf6ec78247e2b",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_company.acquired.new",
+      "before_sha": "2d59c4166e4c3c84207e20a450e52b35c17181c8509b819bba7409eed95beea2",
+      "after_sha": "c48151aeecd40957dfe391d77b106b574f0524915a3ca540cdc554ad20a34021",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_company.acquired.prior",
+      "before_sha": "2d59c4166e4c3c84207e20a450e52b35c17181c8509b819bba7409eed95beea2",
+      "after_sha": "c48151aeecd40957dfe391d77b106b574f0524915a3ca540cdc554ad20a34021",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_company.acquired.refused",
+      "before_sha": "2d59c4166e4c3c84207e20a450e52b35c17181c8509b819bba7409eed95beea2",
+      "after_sha": "c48151aeecd40957dfe391d77b106b574f0524915a3ca540cdc554ad20a34021",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_death",
+      "before_sha": "a9b3ddf5f877491a45ae6829da57241373aa86936e437d92671374222390f9b0",
+      "after_sha": "5b568f91b835d1fcb874eda5526d9fc18440db90bad0181c5f481cdf93256da3",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_death.acquired.new",
+      "before_sha": "95b8c21b9f03738893f67b1f4dc788f0aa89e0e57e347b163f54e690da40e3ad",
+      "after_sha": "72e0b90cac5587e9adc37164765eef933b51fab9fbba21ce3f94acb64ef052dc",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_death.acquired.prior",
+      "before_sha": "95b8c21b9f03738893f67b1f4dc788f0aa89e0e57e347b163f54e690da40e3ad",
+      "after_sha": "72e0b90cac5587e9adc37164765eef933b51fab9fbba21ce3f94acb64ef052dc",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_death.acquired.refused",
+      "before_sha": "95b8c21b9f03738893f67b1f4dc788f0aa89e0e57e347b163f54e690da40e3ad",
+      "after_sha": "72e0b90cac5587e9adc37164765eef933b51fab9fbba21ce3f94acb64ef052dc",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "before_sha": "21b566491af99f4eb51d55a75cff32ad1cadabd8d814f9319144ed7c222884fc",
+      "after_sha": "9c509e89ffc57ce7d00b607f0ff4a366cd009717c952ec78f760993e3328bd99",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_limit.acquired.new",
+      "before_sha": "04afa71875b760af109132d523cd45d430c7263b1bc934494b7534e372a890c8",
+      "after_sha": "ff5e186b738e708076704bd4f71c722004c9c93c3fc45f5babaef83903f3913c",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_limit.acquired.prior",
+      "before_sha": "1c2ac275a3cbc5908325d8771591c5f320ba3101522ff81489a30b49e917d2d3",
+      "after_sha": "783113ee1c700ed190c6afde8998cc773c733591abe998ba2a5fb94ac93dc8c7",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_limit.acquired.refused",
+      "before_sha": "04afa71875b760af109132d523cd45d430c7263b1bc934494b7534e372a890c8",
+      "after_sha": "ff5e186b738e708076704bd4f71c722004c9c93c3fc45f5babaef83903f3913c",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_sacrifice",
+      "before_sha": "399a0e323e76d6308a946a4789376de1e3ea99536f8ddcd6afd43fde2be01c88",
+      "after_sha": "b304b84a1aee923c665f7df15e462cb042e0aa467ebca6e8e4b355870d035dfe",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_sacrifice.acquired.new",
+      "before_sha": "5fa0c838d36d7a0d0fc35a9408bf63124fe1b417e9bfa7928648c61b78a6b60e",
+      "after_sha": "8b32f6132dd6ad87bd51240891a46e5a95c52ef4c8a5310f17a2c55e7ae5b372",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_sacrifice.acquired.prior",
+      "before_sha": "5fa0c838d36d7a0d0fc35a9408bf63124fe1b417e9bfa7928648c61b78a6b60e",
+      "after_sha": "8b32f6132dd6ad87bd51240891a46e5a95c52ef4c8a5310f17a2c55e7ae5b372",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.ending_sacrifice.acquired.refused",
+      "before_sha": "5fa0c838d36d7a0d0fc35a9408bf63124fe1b417e9bfa7928648c61b78a6b60e",
+      "after_sha": "8b32f6132dd6ad87bd51240891a46e5a95c52ef4c8a5310f17a2c55e7ae5b372",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.her_own_face",
+      "before_sha": "95c2d143c5df665e426f3c69d5dd0e7b0eefff2db6bf1405773d8e44b74f367d",
+      "after_sha": "3cdf7e98fd64174a0cae66aac3de2ff1d707107e1bd1a79d8c6dc38075e74043",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.new.absent",
+      "before_sha": "627790905c3a589396c25ea69df919a7891833c17c94b82bb8dd3e0ef58633bb",
+      "after_sha": "e17ff2906b0d0eaf3042ab6e32623d37db139bbbf3d8dffb7a064c78e415fda8",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.new.original",
+      "before_sha": "627790905c3a589396c25ea69df919a7891833c17c94b82bb8dd3e0ef58633bb",
+      "after_sha": "e17ff2906b0d0eaf3042ab6e32623d37db139bbbf3d8dffb7a064c78e415fda8",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.new.renewed",
+      "before_sha": "627790905c3a589396c25ea69df919a7891833c17c94b82bb8dd3e0ef58633bb",
+      "after_sha": "e17ff2906b0d0eaf3042ab6e32623d37db139bbbf3d8dffb7a064c78e415fda8",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.prior.absent",
+      "before_sha": "c7da7758efa5be9873be45fb6bf3a929efffd9241087e1b15831db7aac4cac2e",
+      "after_sha": "459ce63e5ef3d967e81c7c4c264d41469b9c544ca577ced44a49f5a48cff34e6",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.prior.original",
+      "before_sha": "c7da7758efa5be9873be45fb6bf3a929efffd9241087e1b15831db7aac4cac2e",
+      "after_sha": "459ce63e5ef3d967e81c7c4c264d41469b9c544ca577ced44a49f5a48cff34e6",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.prior.renewed",
+      "before_sha": "c7da7758efa5be9873be45fb6bf3a929efffd9241087e1b15831db7aac4cac2e",
+      "after_sha": "459ce63e5ef3d967e81c7c4c264d41469b9c544ca577ced44a49f5a48cff34e6",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.refused.absent",
+      "before_sha": "627790905c3a589396c25ea69df919a7891833c17c94b82bb8dd3e0ef58633bb",
+      "after_sha": "e17ff2906b0d0eaf3042ab6e32623d37db139bbbf3d8dffb7a064c78e415fda8",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.refused.original",
+      "before_sha": "627790905c3a589396c25ea69df919a7891833c17c94b82bb8dd3e0ef58633bb",
+      "after_sha": "e17ff2906b0d0eaf3042ab6e32623d37db139bbbf3d8dffb7a064c78e415fda8",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.her_own_face.acquired.refused.renewed",
+      "before_sha": "627790905c3a589396c25ea69df919a7891833c17c94b82bb8dd3e0ef58633bb",
+      "after_sha": "e17ff2906b0d0eaf3042ab6e32623d37db139bbbf3d8dffb7a064c78e415fda8",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.last_buyer.acquired.new",
+      "before_sha": "8eeefbcf2e5a0f52ccf349a5873bea77aeacd8176595b14a491564b195217848",
+      "after_sha": "68a3402b9a273d1d28a671cd09dad83e59c6280e952344b21f16af4201e28401",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.last_buyer.acquired.prior",
+      "before_sha": "bbafb625b37daa74e482b35e508889dee5a5288329bdbe7fb8f5741d3ceeba80",
+      "after_sha": "866e1d49fbba004476c3b2d7ddcb24446a2555d0592c0937bff7d0cc16154a5a",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.last_buyer.acquired.refused",
+      "before_sha": "8eeefbcf2e5a0f52ccf349a5873bea77aeacd8176595b14a491564b195217848",
+      "after_sha": "68a3402b9a273d1d28a671cd09dad83e59c6280e952344b21f16af4201e28401",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.no_applause",
+      "before_sha": "a6d75b72fdbfee03ad81ccd04a9ca57152062d64b9a259377acebf4f06c023cd",
+      "after_sha": "b23e059619688c93e41467425bd388f5d73d8c51a199950b7c3866b08af76863",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.no_applause.acquired.new",
+      "before_sha": "fb91e36ada4b110ccf8ad5f28318fd8e496139eb0bd4144ff17a848eddcaefef",
+      "after_sha": "2cd6e7669c4f6111ca6018d36d79bd5d95aeb5b27120beda227baab3a95acae7",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.no_applause.acquired.prior",
+      "before_sha": "ab60717ab5546fb5b3906b8c5fb8f5cf505e3a5d685e38268d227d7ccce5c627",
+      "after_sha": "16e4107f308c9989b62492e0a155ed0b8be7172e52b8388b5cccf7f58bb8b3ce",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.no_applause.acquired.refused",
+      "before_sha": "fb91e36ada4b110ccf8ad5f28318fd8e496139eb0bd4144ff17a848eddcaefef",
+      "after_sha": "2cd6e7669c4f6111ca6018d36d79bd5d95aeb5b27120beda227baab3a95acae7",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.return_count",
+      "before_sha": "e718b56f4d78521b6caf17236cd88053b9fbed9049a495b512592654823b1d7b",
+      "after_sha": "a9df2d8d88cc26579859e49ab4cbc6b43dcbcf96dbd3fc0c9e726330267cd471",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.return_count.acquired.new",
+      "before_sha": "c6a1d36faacf934c472420f88c23aed931d39cd77fac7de3cbc2f33fd789b60b",
+      "after_sha": "6f03124b2a75b7e90c82bcaa2d6e18c5ebbb749ab7f86a3f127f03df6d934e83",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.return_count.acquired.prior",
+      "before_sha": "f93ceaff7ee61dbec60302b09256f18348e526c43ca68fa7ffa84b2f89c4b2a6",
+      "after_sha": "ba4a9e38ed1d9d609546e0795cfe648bc63200a0610722bf0217a4d8dfd42416",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.return_count.acquired.refused",
+      "before_sha": "c6a1d36faacf934c472420f88c23aed931d39cd77fac7de3cbc2f33fd789b60b",
+      "after_sha": "6f03124b2a75b7e90c82bcaa2d6e18c5ebbb749ab7f86a3f127f03df6d934e83",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.second_door",
+      "before_sha": "96fc3f9ec94b1e5c8aefab1b5d0522d02b152b924e0f6da0228bfa16e8c10546",
+      "after_sha": "3e108532fdbf477094ff5557235816e8e77e18cb608a429c270b2dbd28e95fe3",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.second_door.acquired.new",
+      "before_sha": "0e0a2cce5ea0ef117e35310582374e755b1dbaef815525641ba492980749c5bf",
+      "after_sha": "5e38c9a76590e2af0852c5f521543fdb646508c3325fbcbc74959ec7d0b06621",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.second_door.acquired.prior",
+      "before_sha": "9475551adece210d4cdb4157145c29a168dd3a32218bad75146ed5735e99f284",
+      "after_sha": "f49e96246cda1a89e30bbd8abef67bb677cb71b23b08f5c2cdb49ed98aa7f34c",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.second_door.acquired.refused",
+      "before_sha": "0e0a2cce5ea0ef117e35310582374e755b1dbaef815525641ba492980749c5bf",
+      "after_sha": "5e38c9a76590e2af0852c5f521543fdb646508c3325fbcbc74959ec7d0b06621",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.sixth_passenger",
+      "before_sha": "6fdabc1f1627a603375af5bdfffe53649fc870038900c0d75e2e0650f928da5b",
+      "after_sha": "627fe9b72aa81a755566b0e3776b4e1a28c541c637cedc16bdce75016198dea0",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.unborrowed_evening",
+      "before_sha": "02be1bde7819ecee513110c7ca9ce5b98570c7c69e84ae6d502cfa48c700cc4a",
+      "after_sha": "e5eda9585584bcea1be016271050fae5e750e978569b7d9ab74db407f19d813f",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.unborrowed_evening.acquired.new",
+      "before_sha": "13497094aec38e063db98cc292a71ea76b2b1aca43e5493d25756e973ca4b798",
+      "after_sha": "c6bc9c106dafe3a51ea3c53e4a8a91c7b1586b09072f981d9dd7710fbe83415e",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.unborrowed_evening.acquired.prior",
+      "before_sha": "3f75fea7ec339aa763465887d6011da78acd8210a06f9d7b6180dd9c6ac6056d",
+      "after_sha": "d8f841282bd8d8c5c13fc63683be2b9af88f2b2fa1333088a625fa871cc9219f",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.unborrowed_evening.acquired.refused",
+      "before_sha": "13497094aec38e063db98cc292a71ea76b2b1aca43e5493d25756e973ca4b798",
+      "after_sha": "c6bc9c106dafe3a51ea3c53e4a8a91c7b1586b09072f981d9dd7710fbe83415e",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.uninvited_guest",
+      "before_sha": "516ccbfd2239f6a6092f2b182a5370f6b44d640bc6f8d199a91ddf7d99783cb9",
+      "after_sha": "137906ed15a4efae7ce5d0b6e1dc5c979d9e318293064aeca07ae6065fd83204",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.uninvited_guest.acquired.new",
+      "before_sha": "3639448e3f41c0f086e5189d51e23e57382481f721d4036018ba8689c5754f6e",
+      "after_sha": "638fe5243c3ffdeae56fc307d5fa65677d1d06ae3ec9bf6f75b92520866ff18b",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.uninvited_guest.acquired.prior",
+      "before_sha": "fd074f0a1daad7a1c86b433739f541bb2fdab58f520977921a88ba854f952e2b",
+      "after_sha": "59faa2440787f1b49fecde6255e5774d124f3c7c42a027c2ddc6b7d924f4f9ea",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.uninvited_guest.acquired.refused",
+      "before_sha": "3639448e3f41c0f086e5189d51e23e57382481f721d4036018ba8689c5754f6e",
+      "after_sha": "638fe5243c3ffdeae56fc307d5fa65677d1d06ae3ec9bf6f75b92520866ff18b",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.unlit_quay",
+      "before_sha": "74b1ced0e012ec4b8f79ea23d6caa52e51eb64319682634bd30816a903693955",
+      "after_sha": "34551e7072be09ee32cf145e8faf7d6ef1bcc4f329521b8dbd7ce27f5caf5ae8",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.unlit_quay.acquired.new",
+      "before_sha": "cd7c06b600cc478ba8f0cc5ba9d989f6fc14113733d69772255c0e8c6b5810d3",
+      "after_sha": "19bae9b3a6319846d389912e15d17214bedeb380e431f8e186909dfa919d8394",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.unlit_quay.acquired.prior",
+      "before_sha": "3dab4be2c748e57073b2ae2bc38430c978aeb9990bf3cc818d9e68917120523f",
+      "after_sha": "b02f3b5fe2ea5ffcd6426ff31c475998e6c1f4382ae71e2b535b257fb3957adf",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.unlit_quay.acquired.refused",
+      "before_sha": "f23aa3e2b8e7f54eb67757848ba77bbcaaaf5bc95ae25823a1f123f44f341a8e",
+      "after_sha": "a248a1f446c12411029d800f71b46c20d2ad02672a152e70de529e4548f61b27",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.voices_in_glass",
+      "before_sha": "71df41cd550a76866beca693962c8b4ed2e4f7cec8393b58da70325c1e4040e4",
+      "after_sha": "eda9ce2820de9aaea4770890ca98d357dbd2612c0bd94392c7bd0b5f7600f92c",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.voices_in_glass.acquired.new",
+      "before_sha": "b3297d50f9c8fa9f356964c0128fd3046c652e9515a95d1972a6dc3b8eadd3e5",
+      "after_sha": "d847fde8141dc1bc56c5ca8d8efa118233ce638656931c4769895e22a51c2aa7",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.voices_in_glass.acquired.prior",
+      "before_sha": "18bba7d09cae69d8412b2010126d937d95b73a50a6892f6552ea5fb6b9608164",
+      "after_sha": "683515fb23b5b38ea9a74d94adbc43b55ea20e210170130bbb8854fde53681f2",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.voices_in_glass.acquired.refused",
+      "before_sha": "b3297d50f9c8fa9f356964c0128fd3046c652e9515a95d1972a6dc3b8eadd3e5",
+      "after_sha": "d847fde8141dc1bc56c5ca8d8efa118233ce638656931c4769895e22a51c2aa7",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.what_she_keeps",
+      "before_sha": "eb06cb2f2134ae558de21e3a5136c2761f3b33c46064a72d39ec74ea8ca4fea5",
+      "after_sha": "611ee86798a28423779eb37e26cc4b02783c1650984deb28cb0fcdf5471a460d",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.what_she_keeps.acquired.new",
+      "before_sha": "5704851cd8ee6384d7f40669866b33a1e01b1c9bf3bf3c47cc1ed08e55f9aba1",
+      "after_sha": "62768d0d167d45aed3e4bb876495af43dfe70f6bbf479c65d9d8a6f10dc30dcf",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.what_she_keeps.acquired.prior",
+      "before_sha": "d5e8cc6ad829e03b9200868194d4ee1082c90f15f6035b7fd916513b6c62fcc9",
+      "after_sha": "d89c8ec5016634dab1a60b830186e2e90def76694a5b7a635b6eb5a58cd62d2f",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "noct.what_she_keeps.acquired.refused",
+      "before_sha": "5704851cd8ee6384d7f40669866b33a1e01b1c9bf3bf3c47cc1ed08e55f9aba1",
+      "after_sha": "62768d0d167d45aed3e4bb876495af43dfe70f6bbf479c65d9d8a6f10dc30dcf",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.acquisition.lastcall.page",
+      "before_sha": "4c37c08884f04d90172542df17b593e2edd341177679e26e69af01479fe64f73",
+      "after_sha": "b91c31481c804398cbfc5457d707210193d4187b7ceeb3ea1f3af096ca0d8c7a",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.lastcall.call",
+      "before_sha": "efce41fb9e2661f2ff4842a672bc6875721fc9151e3051a362d17b03698c786f",
+      "after_sha": "b83a6b7f376d03347e901b52d223fb24e9ee83367f738b1689f952ba1696fb2e",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.lastcall.page",
+      "before_sha": "50a4ba5598220ff128826d8597c8c2c500ab6be72965ecc2cce1beab6964b430",
+      "after_sha": "bfd913115c20f5efb47c07b0db45cfb9ecfe40d44b149ed968f99a7829efe523",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "before_sha": "2c141f0f779180b328a72afbb44f31e4c4ae5b46e0d2f85c3e0692b7cee4ca2d",
+      "after_sha": "ddf514a484e6f872136f6b52e17f56ceab2ae4e71e5a72e6cd81471576ba74b9",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.epilogue",
+      "before_sha": "2c247a290311fa7bdefb674df14cec9eda4e5f9ab454ddb1c8671d5d85346278",
+      "after_sha": "25c5593fdcf2b11cbfd9d6b78655098a1fb14a67d872305c23eec0939991e2ae",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.epilogue.debt",
+      "before_sha": "df64cbba25aabadebd4e26dc060c9dff32204c318351aa975c7fcc7a7f7d8678",
+      "after_sha": "d8f57adfaf3cf915bcd347cc34cbe454147b18ba71eac52edb4096bd61480fd5",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.epilogue.favour",
+      "before_sha": "779aac94872aeff7e0ea07681f26e32a93daeab9cdf3e62d07a8ac634b4fd6bf",
+      "after_sha": "bf4ad31fe5ef3f00a5d5060b00b2208ecca2276151eaee31a6c0aab40ec43ef1",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.epilogue.fooled",
+      "before_sha": "028e1675775fd7a06855d33b99656425ba7d100c412a999f0573f9fcf9c2116e",
+      "after_sha": "152142ab061909f0ab243a44be4857aecbe1800e0142c358a1df16257b0160e8",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.epilogue.mirror",
+      "before_sha": "5ab9200110b4e3ee74fe4844e3678cf842b7959741d3f7d289ef47e451a2d1fd",
+      "after_sha": "f26678dd57401a250039df98d15badf887a9f481883d2be9eb9e26366dd705e9",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.epilogue.mirror_kept",
+      "before_sha": "ff2c635243b9fcd5b04e275d31f13922033eedc5c8567789073e9623198698c6",
+      "after_sha": "0dbce3deecf701f87955a4578e16ff3f9eb12a56cf1b12dae8d58399edb2991e",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.epilogue.punchline",
+      "before_sha": "8c056ab0dc8081cbb1238fd5bed8715af94c7ef72b90a6c8abe9507ee6eb53ef",
+      "after_sha": "6bf79567062645b515c4e94084f260b9e2fd5cdee0167798b2c8f603cf996ca2",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.epilogue.stalemate",
+      "before_sha": "b543b8de0a7f464210b1917262977a7d9e30f08ee1c95713f46f70a9d902c625",
+      "after_sha": "77b76ee189bc8abf01dc4fbf746955271558ecf078f1053ac856544981442c4f",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.epilogue.unanswered",
+      "before_sha": "f89007a1999f686a3a6d599025c7421c14f78b170e2929533602fb2ef203d245",
+      "after_sha": "7d3fd8a703322e3b6695bf062feca03a62e68a47b6fcc0d45c302a20f22cc169",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.epilogue.unjoked",
+      "before_sha": "750898f505a806743dd8079356a7c2a4947dccb99a5f35624a8d21cfd4ed0b03",
+      "after_sha": "6be9d47eba1cf730d01d148a58069af755617c32847ea02d9b06d30f552658c6",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.epilogue.unpriced",
+      "before_sha": "50a680a30ad4b2eaca0678e1fe1cb16e242aecc33e5adea381ce38e4bbfb0a55",
+      "after_sha": "c33339aae58ba8987dabcb6cf5d6938210831f65d197d78bcf3dd2915fc61098",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.morning",
+      "before_sha": "f3a078858bccde825c4a79c8ac158ec0c5b945b2c6fdb00e788d6062e0624640",
+      "after_sha": "bc26438092787ffa17292d02f48515e79e9db094240a012cbc04bcf8f66f2131",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.trickster.epilogue.commit",
+      "before_sha": "c643a70d244274920bf62243efd4ece0f4df8a0b5bdd1dc7701007ff75deb19b",
+      "after_sha": "97d4ffce681338f7a008cde8a78fd97146f7eb613a24dcf61696e00eb25747b9",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.trickster.epilogue.declined",
+      "before_sha": "0fdd0d9d2b1533f5175669bc6251de1126f3d747e417d79a4d39551f39546119",
+      "after_sha": "8edc527794e0f1003281669ee5885a2d1b79bcaba9cffbb29eabb51da265eef3",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "nocticula.trickster.partner_terms.threshold",
+      "before_sha": "6d5a5f8cb1c6bea15a53cf3893471e19f190b04fa3f002f580f99139d47970f9",
+      "after_sha": "98775440e88f8795e3ba65252d5b7c65a3f5a0c209d79205cf48b83b237abbef",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md)"
+    },
+    {
+      "scene": "trickster.lastcall.account.nocticula",
+      "before_sha": "360fea3fe7b9252d2175ed769a8c86d89f90066d3457901f8eac30487e67aa7c",
+      "after_sha": "ec6222a0919423b4ecec576b83ee5f8257a44ba1a70152fc18e0ab6c5089bdf5",
+      "owner": "claude",
+      "source_branch": "claude/cl-nocticula",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-nocticula design-first pass: partner-stance block re-voiced, Threshold discovery re-staged, Last Call without paper, W5 pair readers, canon-fix1 renames, pair-row placeholders resolved (see tools/route_packs/redesign/nocticula/cloud-review.md); not locked today: proposed new Claude lock"
     }
-  ]
+  ],
+  "note": "Entries from cloud/noct-reconcile come first; villain-route-nocticula entries follow (before_sha = text_sha in the committed main export, which already carries noct-reconcile; a scene listed twice takes the later entry)."
 }
