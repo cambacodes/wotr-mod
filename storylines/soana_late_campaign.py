@@ -76,11 +76,16 @@ memory_nodes = [
 ]
 for page in memory_nodes:
     page["Portrait"] = "Soana"
-SCENES.append(scene("soana.past_the_firelight", "Past the firelight", "Soana", 4, "", memory_nodes,
+SCENES.append(scene("soana.past_the_firelight", "Past the firelight", "Commander", 4, "Past the firelight", memory_nodes,
     # Not soana.after_quest: SoanaAfterQuest plays only in WintersunOutdoor (area link), and this page is read in the Abyss.
     requires=("soana.progression_kept",),
     forbids=(*LOSS, "soana.closed", "inhuman", VOICE_SILENT, VOICE_TESTED, VOICE_FOLLOWED), delay=24, last=4, optional=True,
-    Relationship="soana", Chapters=[4], Remote=True, Kind="memory"))
+    # struct2-03: launch the second-watch excursion from the existing Nexus
+    # Storyteller camp hub; Soana is a recalled voice, not a staged body.
+    Relationship="soana", Chapters=[4], Remote=False,
+    ContactUnit="da4c28dd01413694f82b08b728a8c6e5",
+    AnswerLists=["88cfebc7c46549aba284036a26e9eade"],
+    Areas=["7847c3e3537104f4694167af0b9fcd0e"]))
 
 
 s("when_the_road_returns", "When the road returns", '"I wondered what you would say when I came back."', [

@@ -12,6 +12,7 @@ def s(id, title, entry, nodes, requires, delay=24):
     SCENES.append(scene(
         "soana." + id, title, "Soana", 3, entry, nodes,
         Relationship="soana", Chapters=[3], last=3,
+        Areas=["0a5654e7dc18f074d9356009d55eb51b"],
         AnswerLists=[ANSWERS], ContactUnit=ACTOR,
         RequiresAny=["soana.old_defender", "soana.bear_dead"],
         requires=("soana.after_quest", "soana.opening_kept", *requires),

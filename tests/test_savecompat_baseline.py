@@ -277,8 +277,11 @@ class StructSlotHostTests(unittest.TestCase):
         self.assertEqual(5, len(page["Paragraphs"]))
         self.assertEqual("horzalah.trickster.epilogue.decided.explicit.1", page["Paragraphs"][4]["Id"])
         self.assertIsNone(page["Choices"][0]["Next"])
-        modules = {entry[0] for entry in HOSTS} | {horzalah_trickster}
-        story = {"Scenes": [s for module in modules for s in module.SCENES]}
+        # The registry is global: a partial host fixture incorrectly reports
+        # every other route's registered target as missing. Validate the full
+        # export so newly registered route scaffolds retain exact coverage.
+        from tests.story_fixture import fresh_story
+        story = fresh_story()
         pending = json.loads((ROOT / "tools/route_packs/plans/prose-pending.json").read_text(encoding="utf-8"))
         # Only this fixture's scenes: the registry also carries other routes' placeholders (A98).
         ids = {s["Id"] for s in story["Scenes"]}

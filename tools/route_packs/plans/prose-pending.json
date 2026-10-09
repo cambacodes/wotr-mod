@@ -259,6 +259,27 @@
       "surface": "node",
       "index": null,
       "text_sha": "1350a3a480a74bca11e85c7a18680bfa5cb8cb5a7f4515ea863d30e5a4bad8ac"
+    },
+    {
+      "scene": "nenio.trickster.debt.collected",
+      "node": "default_after_commander",
+      "surface": "node",
+      "index": null,
+      "text_sha": "e05674b15feeedb60fef0870879f9ef17c7d3b29c491881f7d8e4995b5bff055"
+    },
+    {
+      "scene": "nenio.trickster.debt.collected_visitor",
+      "node": "default_after_commander",
+      "surface": "node",
+      "index": null,
+      "text_sha": "e05674b15feeedb60fef0870879f9ef17c7d3b29c491881f7d8e4995b5bff055"
+    },
+    {
+      "scene": "nenio.trickster.debt.collected_arcade",
+      "node": "default_after_commander",
+      "surface": "node",
+      "index": null,
+      "text_sha": "e05674b15feeedb60fef0870879f9ef17c7d3b29c491881f7d8e4995b5bff055"
     }
   ]
 }

@@ -15,6 +15,7 @@ def s(id, title, entry, nodes, previous, delay=24):
         page["Portrait"] = "Soana"
     SCENES.append(scene("soana." + id, title, "Soana", 3, entry, nodes,
         Relationship="soana", Chapters=[3], last=3, ContactUnit=ACTOR,
+        Areas=["0a5654e7dc18f074d9356009d55eb51b"],
         AnswerLists=[ANSWERS], RequiresAny=["soana.old_defender", "soana.bear_dead"],
         requires=("soana.after_quest", "soana.continuation_kept", previous),
         forbids=("soana.dead", "soana.killed_by_camellia", "soana.forest_dead", "soana.closed", "inhuman"),
