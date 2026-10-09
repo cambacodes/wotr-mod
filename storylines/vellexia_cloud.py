@@ -124,8 +124,8 @@ SUBS = [
     ((V + "the_question_after_business",),
      '''After a while she tells you that Tessar demanded her last payment before letting Ilveris hear the corrected account, and held the door shut on his man until the silver was counted; the clerk, it seems, has learned something in her house worth keeping.{/n}
 "I considered correcting the omission," {n}Vellexia says.{/n} "Then I decided I preferred having one person leave my house surprised."''',
-     '''After a while she tells you that Tessar now sells tomorrows herself, at twice his price, and that the first thing she did with her new trade was predict, to the day, when Ilveris would try to win his purchasers back. She was right. She sold the prediction to Vellexia.{/n}
-"I bought it," {n}Vellexia says.{/n} "Then I did not warn him. I preferred having one person leave my house surprised."''', 1),
+     '''After a while she tells you that Tessar now sells tomorrows herself, at twice his price, and that the first thing she did with her new trade was predict, to the day, which of Ilveris's old purchasers would come to her first. She was right. She sold the prediction to Vellexia.{/n}
+"I bought it," {n}Vellexia says.{/n} "Then I told no one. I preferred having a few people leave my house surprised."''', 1),
     ((V + "the_voice_after_the_abyss",),
      "Vellexia has put the final account into the same narrow case that once held Ilveris's silk. She opens it where you can see the papers arranged inside.",
      "Vellexia has Ilveris's book in her lap, the silk cover scuffed where a good many boots have stood on it. She opens it where you can see the forged pages, each one marked in Tessar's red.", 1),
@@ -468,7 +468,7 @@ PARAGRAPHS = [
         requires=(T + "courting",))),
     # ending_dead never read the native VellexiasSlavesFreed etude.
     ((V + "ending_dead",), "start", p(
-        '''{n}Her guests had walked out of her house before she fell, at the Commander's asking: the only order she ever took from a guest. Some of them came afterwards to look at the place where she died. None of them sat down.{/n}''',
+        '''{n}Her death emptied the house of the guests she had kept; they walked out of it free. Some of them came afterwards to look at the place where she died. None of them sat down.{/n}''',
         requires=(V + "slaves_freed",))),
 ]
 

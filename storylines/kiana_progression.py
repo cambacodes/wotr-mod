@@ -67,8 +67,7 @@ s("a_place_afterward", "The promise after the evenings", [
 "Yes. That is what I wanted."
 {n}She reaches for your hand before she reaches for the pen.{/n}
 "I enjoyed every stolen evening. This is an excellent excuse to steal more."
-"Neither do I."
-"Then we shall keep them. And make more. I reserve the right to remind you that I was very patient about your handwriting."
+"We shall keep them. And make more. I reserve the right to remind you that I was very patient about your handwriting."
 {n}She writes your name beneath Afterward, smiling at the space she has left around it.{/n}''', c('[Promise to return after the war.]', "end", flags=("kiana.committed",))),
     n("open", "Kiana", '''{n}Kiana draws the page back toward herself. For a while she looks at the empty heading.{/n}
 "I would have liked the larger answer. I won't pretend otherwise."

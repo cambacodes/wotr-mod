@@ -103,9 +103,7 @@ BRIDGES = {
 {n}Her fingers close around yours.{/n}''',
         '''"I told her I didn't know. I hated giving her even that much."
 {n}She watches your joined hands.{/n}
-"No messenger tonight. I wanted you, and here you are. Come closer."
-"You have it."
-"Then let me enjoy you before another impossible letter ruins my temper."
+"No messenger tonight. I wanted you, and here you are. Come closer, and let me enjoy you before another impossible letter ruins my temper."
 {n}She draws your hand closer.{/n}'''),
 }
 

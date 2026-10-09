@@ -169,7 +169,7 @@ I am still in his life. He still hates part of this. If you expect me to turn hi
                 "partner_answer": '''"Wait for my answer, then. No speech for me to repeat."
 {n}The next letter arrives in Kiana's hand.{/n}''',
                 "partner_not_yet": '''"No. You have seen me with the wine and the ribbon loose. That isn't a life together yet.
-"I read Elan's letter again before writing this. He waited through the crusade and the nightmare in that damned ring. I haven't decided I want to leave him. I will not send him away because you want an answer tonight."''',
+"I read Elan's letter again before writing this. He waited through the crusade, and through the wedding those demons ruined. I haven't decided I want to leave him. I will not send him away because you want an answer tonight."''',
             }
             for nid, text in letter_text.items():
                 ns[nid]["Text"] = text
