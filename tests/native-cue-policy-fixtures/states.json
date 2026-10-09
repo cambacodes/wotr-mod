@@ -157519,7 +157519,8 @@
         "trickster.ever",
         "trickster.now",
         "wenduag.closed",
-        "wenduag.partner.exclusive_refused"
+        "wenduag.partner.exclusive_refused",
+        "wenduag.present_now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "wenduag.trickster.epilogue.exclusive_refused"
