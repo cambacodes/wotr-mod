@@ -11836,6 +11836,14 @@
           "letter": false
         },
         {
+          "scene": "arueshalae.trickster.fallen.sergeant",
+          "letter": false
+        },
+        {
+          "scene": "arueshalae.trickster.fallen.the_other_one",
+          "letter": false
+        },
+        {
           "scene": "arueshalae.trickster.fallen.lock",
           "letter": false
         },
