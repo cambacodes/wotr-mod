@@ -15,7 +15,7 @@
   "min_lines": 10,
   "max_lines": 16,
   "slot_id": "irabeth.trickster.second_ask.explicit.1",
-  "default_text": "{n}Irabeth draws you close on the cleared desk. Her sword stays within reach until dawn.{/n}",
+  "default_text": "{n}Irabeth draws you close on the cleared desk. Her scarred hands are rough and sure on your skin, her tusks graze your throat, and the roll, the duty lists and the whole of Drezen go quiet around her breathing. Her sword stays within reach until dawn.{/n}",
   "continuity": "Exact last_line once at the end. Tagged N narration and I dialogue; Commander speaks through player choices, never embedded invented speech. No extra speakers or offscreen arrivals. Do not set flags, invent vows, add costs, alter spouse state or infer commitment. Existing branch and next node retain ownership.",
   "last_lines": {
     "morning": "N: Irabeth is back in armour, all but one gauntlet. The sword belt still lies along the edge of the desk, within reach. She holds out her bare hand to you without a word.",

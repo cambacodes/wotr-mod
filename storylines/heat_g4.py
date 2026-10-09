@@ -272,19 +272,19 @@ W = "wenduag.trickster."
 rule([W + "court.cairn", W + "court.cairn.native_visit"], "decide",
      '''Her tail comes round your thigh, and tightens, and holds.{/n}''',
      '''Her tail comes round your thigh, and tightens, and holds.{/n}
-"No talking," {n}she says, and her teeth close on your shoulder. Her hand goes down between you and finds you ready, and her breath hisses out against your neck, pleased and rough.{/n}
+"No talking," {n}she says, and her teeth close on your shoulder, deep enough to mark, and her breath hisses out against your neck, pleased and rough.{/n}
 "Good. I hate waiting."''')
 
 rule([W + "court.cairn", W + "court.cairn.native_visit"], "roll",
      '''and you are not sure any longer who is winning, and neither, from the sound of her, is she.{/n}''',
      '''and you are not sure any longer who is winning, and neither, from the sound of her, is she.{/n}
-{n}Then she stops fighting. She hooks a leg behind yours and takes you down onto the cold stone with her on top, bare and furious with wanting, her hair across your face and her hands pinning yours.{/n}
+{n}Then she stops fighting. She hooks a foot behind yours and takes you down onto the cold stone, bare and furious with wanting, her hair across your face and her hands pinning yours.{/n}
 "That's three," {n}she says against your mouth.{/n} "I win. The prize is you."''')
 
 rule([W + "court.cairn", W + "court.cairn.native_visit"], "knife_down",
      '''She catches your lower lip between her teeth as you draw her closer.{/n}''',
      '''She catches your lower lip between her teeth as you draw her closer.{/n}
-"Good," {n}she breathes.{/n} "I wanted the knife away. Not because I'm afraid of it." {n}Her hand slides down your stomach and closes, firm and warm, and she smiles at what it finds.{/n} "I wanted both your hands free."''')
+"Good," {n}she breathes.{/n} "I wanted the knife away. Not because I'm afraid of it." {n}Her hand slides over your ribs and flattens against your heart, firm and warm, and she smiles at how it pounds.{/n} "I wanted both your hands free."''')
 
 rule([W + "court.gongs", W + "court.gongs.native_visit"], "saw",
      '''"Come down. I want that mouth of yours busy before another bell starts."''',

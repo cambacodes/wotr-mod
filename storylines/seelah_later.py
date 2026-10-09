@@ -73,7 +73,7 @@ s("door", "The latch on the inside", 3, '"Could we have an evening somewhere wit
 "If I knock that lamp over, we're blaming the bedpost," {n}she says.{/n}
 {n}She is not clumsy. She unbuckles her sword belt and hangs it on the bedpost as if it has earned a rest, then pulls her shirt over her head in one impatient motion and stands there in the lamplight, freckled to the waist, grinning at your face.{/n}
 "I've been thinking about that look all day," {n}she says.{/n} "Now you. Hurry up. I'm a paladin, not a saint."
-{n}She helps, which is to say she has your shirt open before you finish the first lace, and kisses your throat, then your mouth, impatient with the cloth between you. The bed is too narrow for two and she does not care. She pushes you down onto it, climbs over you, knees either side of your hips, and takes your face in both hands to kiss you, slow now, as she settles her weight down onto you.{/n}
+{n}She helps, which is to say she has your shirt open before you finish the first lace, and kisses your throat, then your mouth, impatient with the cloth between you. The bed is too narrow for two and she does not care. She pushes you down onto it and follows, and takes your face in both hands to kiss you, slow now, her loose hair falling around the two of you.{/n}
 {n}The lamp survives. Neither of you remembers to put it out until much later.{/n}
 {n}When the room is quiet, Seelah finds your hand beneath the blanket and holds it as she falls asleep, still smiling, one foot hooked over yours as if you might try to leave.{/n}''', c('[Stay through the night.]', flags=("seelah.lovers", "seelah.private_night", "seelah.kissed"))),
     n("quiet", "Seelah", '''"Then we'll have a quiet evening. I can manage one of those."

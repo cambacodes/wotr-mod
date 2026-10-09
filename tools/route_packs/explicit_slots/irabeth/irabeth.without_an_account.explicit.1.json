@@ -15,6 +15,6 @@
   "min_lines": 10,
   "max_lines": 16,
   "slot_id": "irabeth.without_an_account.explicit.1",
-  "default_text": "{n}She pulls you close on the blanket. Outside, the bell for the night watch rings.{/n}",
+  "default_text": "{n}She pulls you close on the blanket. Her skin is hot under your hands, scars and all, and her breath comes ragged against your mouth; for a long while there is no roll, no Hadran and no watch, only the dark and the sound of her laughing low into your shoulder. Outside, the bell for the night watch rings.{/n}",
   "continuity": "Exact last_line once at the end. Tagged N narration and I dialogue; Commander speaks through player choices, never embedded invented speech. No extra speakers or offscreen arrivals. Do not set flags, invent vows, add costs, alter spouse state or infer commitment. Existing branch and next node retain ownership."
 }

@@ -294,7 +294,7 @@ def secret_nodes(stem, original):
         n(stem + "_night", "Irabeth", '''{n}She shuts the door and catches your mouth with hers. Her tusk grazes your lip; she presses closer instead of apologizing. Your hands find the warm skin beneath her collar. She unbuckles her sword belt and lays it on the table, then pulls you toward the bed by your coat.{/n}
 "I ought to go home."
 {n}She stays. Her fingers work at your belt, and then they stop, and she presses her forehead to your collarbone for the space of one breath, the ring cold against your hip.{/n}
-"Iomedae forgive me, I'm not sorry yet." {n}She hauls her shirt over her head, green-skinned and scarred and flushed to the throat, and shoves you down onto the bed, all weight and heat, her mouth hard on yours. Whatever she means to tell Anevia can wait for the watch bell. Her thighs lock either side of your hips and her hands pin your shoulders to the blanket.{/n}
+"Iomedae forgive me, I'm not sorry yet." {n}She hauls her shirt over her head, green-skinned and scarred and flushed to the throat, and shoves you down onto the bed, all weight and heat, her mouth hard on yours. Whatever she means to tell Anevia can wait for the watch bell. Her hands pin your shoulders to the blanket, and her breath is hot and unsteady against your face.{/n}
 "Don't be gentle. I've been careful with everyone for years. Not tonight."''',
           c('Continue', stem + "_morning"), portrait="Irabeth"),
         n(stem + "_morning", "Irabeth", '''{n}Before the dawn muster she fastens her belt with shaking fingers.{/n}

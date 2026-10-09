@@ -827,14 +827,17 @@ def _round2_slots(payload):
                     answer["Next"] = slot
         # EXPLICIT SLOT: chosen first night on her cairn; knife down, lamp out.
         cairn["Nodes"].append(wd(slot,
-            '{n}She drags you close by the hips. You kiss her back; her breath catches and she bears you down against the stones. '
-            'Your hands find her bare hips. She draws you between her knees and pulls you into another kiss. '
+            '{n}She drags you close by the waist and her mouth finds yours, greedy and impatient, as if the dark were a clock she meant to beat. '
+            'Her breath sets your skin ablaze; the stones are cold under your shoulders and her heat is everything above them, '
+            'and she bites your lip, laughing low in her throat, as the catacomb closes over the two of you. '
             'Above the stair, the watch bell sounds.{/n}',
             c("Continue", "cut", forbids=(W + "echo.abyss.returned",)),
             *([c("Continue", "cut_echo", requires=(W + "echo.abyss.returned",))]
               if any(node["Id"] == "cut_echo" for node in cairn["Nodes"]) else [])))
         _polish_node(cairn, "cut")["Text"] = ('{n}Afterward she lies against you on the cold stone, your coat over both of you. '
-            'When you shift, her fingers tighten on your wrist.{/n} "Not yet. The maps can wait."')
+            'When you shift, her fingers tighten on your wrist.{/n} "Not yet. The maps can wait." '
+            '{n}She stretches with a hunter\'s animal shamelessness and slides a contented look at you from under half-closed lids.{/n} '
+            '"That was good. Better than I guessed, and I guessed high."')
         if any(node["Id"] == "cut_echo" for node in cairn["Nodes"]):
             _polish_node(cairn, "cut_echo")["Text"] = ('{n}Afterward her hand finds yours in the dark and holds it against the stones.{/n} '
             '"Caught." {n}She laughs into your neck and stays there.{/n}')
@@ -854,6 +857,7 @@ def _round2_slots(payload):
         completion = (W + "court.gongs",) if twin else ()
         gongs["Nodes"].append(wd(slot,
             '{n}She leads you off the wall, past the sentry carrying fresh arrows, and down the back stair. '
-            'At its foot she pushes you against the stone and kisses you. Your hands find her waist; she catches them and pulls you onward.{/n} '
-            '"You know the way now. Hurry." {n}When the watch changes, she is still beside you.{/n}',
+            'At its foot she pushes you against the stone and kisses you, teeth and breath and no patience at all. Your hands find her waist; she catches them and pulls you onward.{/n} '
+            '"You know the way now. Hurry." {n}When the watch changes, she is still beside you, stretching in the grey light like a cat that has had its fill.{/n} '
+            '"That was good. Don\'t make a song of it."',
             c("Continue", flags=completion)))

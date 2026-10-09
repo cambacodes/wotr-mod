@@ -343,7 +343,7 @@ s("late_afterglow", "The verse she remembers", '"You were going to ask me for an
 {n}When she draws back she is breathless and laughing at herself.{/n}
 "There. Every clever thing, gone."
 {n}She strips the way a soldier does, fast and without ceremony: boots kicked under the chair, shirt over her head in one pull, and then a curse because she has got her elbow tangled in the sleeve. You free her. She does not let you do anything else for yourself. Your belt, your shirt, your boots: she takes them off you one by one like a thief turning out a mark's pockets, and drops each on the floor with a satisfied little "mine."{/n}
-{n}Then she shoves you down onto the bed, swings a leg over your hips, freckled and bare and grinning, and pins your wrists to the pillow with both hands.{/n}
+{n}Then she shoves you down onto the bed and follows, freckled and bare and grinning, and pins your wrists to the pillow with both hands.{/n}
 "Hold still," {n}she says against your mouth.{/n} "I've been waiting a whole race for this."
 {n}In the morning she wakes before you. A hammer starts up below. She pulls you closer instead of rising, her thumb stroking your shoulder.{/n}
 "Morning. Try getting me out of this bed. Go on. I dare you."''',

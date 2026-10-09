@@ -16,6 +16,6 @@
   "max_lines": 16,
   "slot_id": "anevia.trickster.gone.commit.explicit.3",
   "source_node": "partner_answer_1_absent_night",
-  "default_text": "{n}Anevia pulls you down beside her. Her wedding ring catches the lantern light as she reaches for you.{/n}",
+  "default_text": "{n}Anevia pulls you down beside her. Her wedding ring catches the lantern light as she reaches for you; she keeps her eyes open, her breath comes hard, and the lantern burns on.{/n}",
   "continuation": "Original terminal choices/effects retained, including secret and absence_kept; no new morning mechanic."
 }

@@ -407,7 +407,7 @@ tavern("seelah.trickster.after.stay_or_go", "Two notices", '"Seelah. What now?"'
 
 THRESHOLD = '''{n}She does not answer with words. She drags you up the tavern stairs by the belt, and on the landing you find the belt is in her hand and no longer round your waist.{/n}
 "Ha. Got your belt. Old habits." {n}Her breath is hot on your mouth.{/n} "Now hold still. I'm taking the rest, and this time I'm not giving it back."
-{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the bed under the eaves. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and grins down at you, flushed and triumphant, the way she grins on a wall after a charge that worked.{/n}'''
+{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at your laces, and tumbles you down onto the bed under the eaves, palms flat on your chest, hair falling round both your faces. She grins down at you, flushed and triumphant, the way she grins on a wall after a charge that worked.{/n}'''
 
 MORNING_NEAR = '''{n}Morning. She is sitting cross-legged on the bed in your shirt, lacing her boots, and she looks up with a grin.{/n}
 "All there. I only wanted to know how much you're worth." {n}She stretches until her shoulders crack.{/n} "The Drezen road company can wait an hour. Iomedae forgive me, I'd do it again. Twice before breakfast, probably."'''
@@ -539,7 +539,7 @@ tavern("seelah.trickster.after.courtship", "Finders keepers", '"Seelah. Walk wit
 
 VISIT_THRESHOLD = """{n}She does not answer with words. She takes you by the belt and walks you backwards across your own quarters, past the map table and the cold supper, and somewhere on the way the belt comes away in her hand.{/n}
 "Ha. Got your belt. Old habits." {n}Her breath is hot on your mouth.{/n} "Now hold still. I'm taking the rest, and this time I'm not giving it back."
-{n}She kisses you laughing, then not laughing. She heels the bedchamber door shut, wriggles out of her gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you reach the bed. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the Commander's own blankets. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and grins down at you, flushed and triumphant, the way she grins on a wall after a charge that worked.{/n}"""
+{n}She kisses you laughing, then not laughing. She heels the bedchamber door shut, wriggles out of her gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you reach the bed. She backs you into it, bare to the waist, fingers already at your laces, and tumbles you down onto the Commander's own blankets, palms flat on your chest, hair falling round both your faces. She grins down at you, flushed and triumphant, the way she grins on a wall after a charge that worked.{/n}"""
 
 
 def visit_twin(src_id, new_id, title, swaps):
@@ -678,7 +678,7 @@ SCENES.append(scene("seelah.trickster.epilogue.commit", "Now we're even", "Epilo
     n("end", "Narrator", '''{n}On a visit after the war, Seelah left a purse on the Commander's pillow, tied badly, with a note inside: "Ask me properly. - S."{/n}
 {n}She was waiting at Fye's. The Commander asked. She caught their belt and pulled them close.{/n}
 "There. Took you long enough. Upstairs. I want you, and I've wasted enough of my leave staring across this table."
-{n}In the room above, she kicked off her boots and pulled her shirt over her head. Her mouth found the Commander's throat while her callused hands opened their shirt. A buckle caught between them; she swore, laughing, and freed it. Then she drew the Commander down onto the bed with her, bare skin pressed against theirs, one strong leg hooked over their hip.{/n}
+{n}In the room above, she kicked off her boots and pulled her shirt over her head. Her mouth found the Commander's throat while her callused hands opened their shirt. A buckle caught between them; she swore, laughing, and freed it. Then she drew the Commander down onto the bed with her, bare skin warm against theirs, her breath coming short at their ear.{/n}
 "Better. Now kiss me before somebody finds us a job."
 {n}By morning she was late for muster. She scrambled into her clothes, found a missing boot under the Commander's coat, and came back from the door for another kiss.{/n}''', portrait="Seelah")],
     requires=("trickster.ever", LATE_COMMITTED, ROMANCE),

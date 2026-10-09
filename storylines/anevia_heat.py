@@ -5,7 +5,16 @@ Each explicit slot of Anevia (and her two joint nights with Irabeth) ended its b
 dropped g, practical hands, crude when she is rattled, culpable when she lies to Beth) to the start of the act and
 stop there. The slot nodes and their exits are untouched; the act itself is the later fill.
 """
-from storylines.heat_text import extend, swap
+from storylines.heat_text import extend, swap, _node
+
+
+def retail(payload, targets, old_tail, new_tail):
+    """Replace the exact tail of each target node's text (the node must end with `old_tail`)."""
+    for scene_id, node_id in targets:
+        node = _node(payload, scene_id, node_id)
+        if node["Text"].count(old_tail) != 1 or not node["Text"].rstrip().endswith(old_tail):
+            raise ValueError("heat layer: %s/%s does not end with %r" % (scene_id, node_id, old_tail[:70]))
+        node["Text"] = node["Text"].rstrip()[:-len(old_tail)] + new_tail.strip()
 
 G = "anevia.trickster.gone."
 KEY = "anevia.a_key_that_is_hers"
@@ -21,11 +30,12 @@ def integrate(payload):
 "Eyes on me. No lyin'. Tell me you want it too."''')
 
     # a_key_that_is_hers: her leased room, honest share, Beth knows what a key means.
-    extend(payload, [(KEY, "round2.buildup.night")],
+    retail(payload, [(KEY, "round2.buildup.night")],
            "climbs astride you with one knee braced against the frame, and pulls your hands to her hips.{/n}", '''
-{n}She is warm from the stove and goosebumped where the draught finds her, and she does not bother with modesty. She rolls her hips once against yours, slowly, watches what it does to your face and does it again with a lazy, wicked grin.{/n}
-"Been thinkin' about this since the lease. Before the lease, if I'm honest, which I'm not, usually." {n}She pulls your hand up over her breast, drags your thumb across her nipple and holds it there, and her breath stutters.{/n} "Beth knows where I am tonight. Beth knows what a key means. So I don't have to be sorry, and I ain't. Shut up and make it worth the rent."
-{n}She drags the rest of your clothes down with her free hand and kicks them off the end of the bed. The old frame lets out a shriek you both freeze at, then both laugh at.{/n} "Landlady heard that," {n}she whispers, delighted.{/n} "Good. Let her." {n}She slides forward until she is flush against you, wet and hot and impatient, and plants her hands either side of your head, close enough that you feel every breath.{/n}
+follows with one knee braced against the frame, and pulls your hands to her hips.{/n}
+{n}She is warm from the stove and goosebumped where the draught finds her, and she does not bother with modesty. She leans over you until her hair falls round both your faces and kisses you slowly, watching what it does to your expression, and does it again with a lazy, wicked grin.{/n}
+"Been thinkin' about this since the lease. Before the lease, if I'm honest, which I'm not, usually." {n}She draws your hand up over her heart and holds it there, and her breath stutters.{/n} "Beth knows where I am tonight. Beth knows what a key means. So I don't have to be sorry, and I ain't. Shut up and make it worth the rent."
+{n}She drags the rest of your clothes away with her free hand and kicks them off the end of the bed. The old frame lets out a shriek you both freeze at, then both laugh at.{/n} "Landlady heard that," {n}she whispers, delighted.{/n} "Good. Let her."
 "I ain't goin' to be gentle about it. Don't ask me to."''')
 
     # Secret nights (Beth does not know): the same bolted-door beat in every history.
@@ -37,15 +47,15 @@ def integrate(payload):
     extend(payload, secret, "Her mouth finds your neck as she draws your hands to her bare waist.{/n}", '''
 {n}The dress is a heap on the chair, and under it she wears nothing but her boots. She would rather kick them off later than waste the time, and tells you so between kisses. Her teeth catch your earlobe while she gets on with your belt, quick and practical, swearing when it fights her.{/n}
 "Beth thinks I'm at the north post." {n}She says it flat against your ear, because she will not dress it up.{/n} "I am. After. Don't talk to me about after."
-{n}She hauls the last of your clothes away, one boot thumps across the floor, then the other, and she climbs astride you on the mattress, bare and flushed from throat to belly. She grinds down against your thigh, long and deliberate, leaving a wet stripe behind and a sound she tries to bite back, then buries both hands in your hair and pulls your mouth to her breast.{/n}
-"Quiet," {n}she breathes, laughing at herself, her hips already working above you.{/n} "I can't promise it for me."''')
+{n}She hauls the last of your clothes away, one boot thumps across the floor, then the other, and she pulls you down onto the mattress with her, bare and flushed from throat to waist. Her wedding ring is cold where her hand spreads on your chest, and she does not take it off. She puts your hand over her heart so you can feel it going.{/n}
+"Quiet," {n}she breathes, laughing at herself.{/n} "I can't promise it for me. And if the watch comes knockin', I'm a dispatch."''')
 
     # Beth away: the ring stays on. First door: the letter she owes.
     extend(payload, [(KEY, "round2.buildup.partner_absent_night")],
            "her wedding ring cold against your bare chest.{/n}", '''
 {n}She does not take the ring off. She lays that hand flat over your heart, ring and all, and looks you dead in the eye while the other drags her dress up and over her head.{/n}
 "Leave it where it is." {n}Her voice is low and not quite steady.{/n} "I want to feel it. I want it to hurt a bit. It ought to."
-{n}She is bare and weathered by the sun on the walls, hungry in a way she has stopped apologizing to herself for. She shoves your coat the rest of the way off, strips you with brisk, shaking hands and pushes you flat on the bed. The scout reports slide off the desk behind you and she does not look. She climbs over you, knees either side of your ribs, and the hand with the ring in it slides down your stomach, slowly, and stops just short while she watches your face and makes you wait.{/n}
+{n}She is bare and weathered by the sun on the walls, hungry in a way she has stopped apologizing to herself for. She shoves your coat the rest of the way off, strips you with brisk, shaking hands and pushes you back onto the bed. The scout reports slide off the desk behind you and she does not look. The hand with the ring in it travels slowly over your ribs while she watches your face and makes you wait.{/n}
 "There," {n}she says, rough.{/n} "That's honest, at least."''')
     absent = []
     for suffix in ("commit", "fetched_commit"):
@@ -54,30 +64,31 @@ def integrate(payload):
         absent.append((G + suffix, "round2.buildup.partner_price_0_absent_night"))
     extend(payload, absent, "She presses you against the bed, the ring on her hand bright in the lantern light.{/n}", '''
 {n}Her dress is already open down the back. She shrugs out of it where she stands, and the lantern finds the long line of her: ribs, the flat hard belly of a woman who runs messages along the walls, the pale places the sun never reaches. She does not hurry and she does not hide. She works your shirt off over your head and your belt out of its loops, and when she has you bare she backs you the last step with a palm in the centre of your chest and tips you onto the mattress.{/n}
-"Keep the lantern." {n}She climbs after you, straddling your thighs, and the ring on her hand is bright where it spreads over your hip.{/n} "I want to see me doin' it. I want to know I did it with my eyes open."
-{n}Her other hand goes between her own legs. She shows you, with a challenging look, how ready she already is, then lifts her fingers to your mouth and lets you taste. Then she rises on her knees over you, one hand braced on the headboard, the ring bright against the wood, and hangs there, trembling, waiting for you to be the one who breaks.{/n}''')
+"Keep the lantern." {n}She follows you down, and the ring on her hand is bright where it spreads over your hip.{/n} "I want to see me doin' it. I want to know I did it with my eyes open."
+{n}She takes your face in both hands and looks at you a long moment, flushed and not quite steady, daring you to be the first to say what this is. Then she kisses you, hard, and the lantern burns on.{/n}''')
 
     # the_evening_without_a_case: her chosen evening, no work in it.
-    extend(payload, [("anevia.the_evening_without_a_case", "round2.buildup.night")],
-           "her hand spreads flat between your shoulders and holds you there, exactly where she wants you.{/n}", '''
+    retail(payload, [("anevia.the_evening_without_a_case", "round2.buildup.night")],
+           "Her knee draws up along your hip; her hand spreads flat between your shoulders and holds you there, exactly where she wants you.{/n}", '''
+Her hand spreads flat between your shoulders and holds you there, exactly where she wants you.{/n}
 {n}Her mouth goes to your throat, unhurried now, the whole evening hers. The quick economy of her scout's hands is gone; she touches you as if she had all night and has decided to spend it, drags her nails down your back, bites softly at your shoulder, laughs when you shiver.{/n}
 "Nobody's askin' me for a thing," {n}she murmurs.{/n} "No report. No runner. Just this." {n}She rolls you onto your back under that flat hand and sheds the last of her own clothes, kicking them off the bed without looking where they land. One glance, slow and warning, at the crooked goat still turned to the wall.{/n} "Don't you dare joke. I'll know."
-{n}Then she is bare over you, her thighs closing either side of your hips, her hair a curtain round your faces, the wet heat of her sliding against you with every slow roll of her body. Her eyes are steady and a little wild, and they dare you to be the first to look away.{/n}
+{n}Then she is bare against you, her hair a curtain round your faces, her eyes steady and a little wild, and they dare you to be the first to look away.{/n}
 "There. Properly. Take your time, and I'll take mine."''')
 
     # Gatehouse: the real door, the cloak, the ring she takes off (it is on the cloak at dawn).
     extend(payload, [(G + suffix, "round2.buildup.threshold") for suffix in ("commit", "fetched_commit", "muster")],
            "half a laugh and half something she has not let herself say since the Coronation.{/n}", '''
-{n}The cloak is rough wool and smells of woodsmoke and road. She stretches out on it and hauls you down on top of her, and the shirt you had left goes to rags under her hands, ripped, not unbuttoned. Her dress hikes to her hips and then it is over her head. She works her ring off her finger and drops it on the cloak by her head, deliberately, where she will be able to see it. The lantern on its hook throws her whole bare length gold against the stone: scarred knees, hard stomach, the rise and fall of her breasts.{/n}
-"I'm not doin' this halfway." {n}Her heels lock behind your thighs and haul you in; her mouth is at your ear.{/n} "All the way up the road I've been rationin' this. I'm done rationin'. Get between my legs before I do it myself."
-{n}She spreads under you, hot and open against your hip, one hand dragging yours down to where she is slick and aching, the other fisted in your hair.{/n}''')
+{n}The cloak is rough wool and smells of woodsmoke and road. She stretches out on it and hauls you down beside her, and the shirt you had left goes to rags under her hands, ripped, not unbuttoned. Her dress is over her head. She works her ring off her finger and drops it on the cloak by her head, deliberately, where she will be able to see it. The lantern on its hook throws her bare skin gold against the stone: scarred knees, hard stomach, the quick rise and fall of her breath.{/n}
+"I'm not doin' this halfway." {n}Her hand fists in your hair; her mouth is at your ear.{/n} "All the way up the road I've been rationin' this. I'm done rationin'. Come here before I do somethin' stupid, like talk."
+{n}She pulls you down into a kiss with nothing careful left in it.{/n}''')
 
     # The knock: "Probably", the filthiest word she knows.
     extend(payload, [(G + suffix, "round2.buildup.night") for suffix in ("second_ask", "fetched_second_ask")],
            "and pushes you back onto the bed and follows you down.{/n}", '''
 {n}She finishes what she started with your shirt and throws it at the door. Her own clothes follow in four quick jerks, and she stands over you at the foot of the bed for a moment, bare and breathing hard, looking you over with a grim appraisal, like a scout counting a camp she means to take.{/n}
-"All that thinkin'," {n}she says, and plants a knee on the mattress, then the other, and crawls up your body, her mouth dragging heat over your stomach, your ribs, your throat,{/n} "and it comes down to this. You, a bed, and me wet through before I'd crossed the yard."
-{n}Her thighs bracket your hips. She takes your wrist and pins it above your head, sinks her weight onto you and grinds against you once, hard, and watches the sound it drags out of you. Her free hand goes down between her own legs, and she holds there, hovering, breathless.{/n}
+"All that thinkin'," {n}she says, and crawls up the bed after you, her mouth dragging heat along your ribs and your throat,{/n} "and it comes down to this. You, a bed, and me half out of my head before I'd crossed the yard."
+{n}She takes your wrist and pins it above your head and kisses you once, hard, watching your face while she does it.{/n}
 "You asked twice. This is my answer."''')
 
     # Joint nights with Irabeth (the shared host node keeps its anchor and morning beat).
