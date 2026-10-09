@@ -555,6 +555,171 @@ PLAYER_ANSWER_EXCHANGES = [('unfinished_likeness', 'start', ['"Have you looked?"
   ['"I want to come back. I want to hear you complain about the singer."'])]
 
 
+PLAYER_ANSWER_TEXT = {'VEL-A4-003 unfinished_likeness/start exchange 1': ('"Have you looked?"',
+                                                     '"Of course. I saw an extremely handsome '
+                                                     'woman looking as though somebody had '
+                                                     'promised her a revelation. So far, the '
+                                                     'picture is admirably accurate. I am not yet '
+                                                     'bored. He had better hurry."\n'
+                                                     '{n}She studies you over the bracelet.{/n}\n'
+                                                     '"Would you like to be useful, sweetheart, or '
+                                                     'would that ruin your entrance?"'),
+ 'VEL-A4-003 unfinished_likeness/terms exchange 1': ('"And you paid him?"',
+                                                     '"Half. He wanted all of it. I told him the '
+                                                     'other half would be paid in whatever '
+                                                     'condition he was in when the picture stopped '
+                                                     'surprising me." {n}She glances, fondly, at '
+                                                     'the lamp in the corner. Its stand has a '
+                                                     'wrist.{/n} "He also insisted the workings '
+                                                     'were his secret. I agreed to leave them '
+                                                     'alone until he returned. I keep my word when '
+                                                     'it amuses me."'),
+ 'VEL-A4-003 unfinished_likeness/terms exchange 2': ('"You want me to break that agreement for '
+                                                     'you."',
+                                                     '{n}She laughs, delighted by how quickly you '
+                                                     'have reached the possibility.{/n}\n'
+                                                     '"I want to discover whether you would. But '
+                                                     'no. Today I want you to look. You have had '
+                                                     'fewer centuries to practise being '
+                                                     'disappointed. Perhaps you will notice what I '
+                                                     'am overlooking."'),
+ 'VEL-A4-003 unfinished_likeness/terms exchange 3': ('"What happens to him if I don\'t?"',
+                                                     '"Then I shall find out for myself, and I am '
+                                                     'so much less patient than you. That lamp was '
+                                                     'a sculptor. He promised me marble that '
+                                                     'breathed. I made certain something in the '
+                                                     'room did."\n'
+                                                     '{n}She turns the frame toward you.{/n}'),
+ 'VEL-A4-003 second_painter/start exchange 1': ('"What did you say?"',
+                                                '"That I was considering a vulgar mind\'s opinion. '
+                                                'Yours, specifically. He became much more '
+                                                'accommodating."\n'
+                                                '{n}The picture lies face down. A small brass key '
+                                                'rests across its back.{/n}\n'
+                                                '"He surrendered the key. I found that much wiser '
+                                                'than his explanation. He will return for the '
+                                                'balance or the picture. He is waiting in the '
+                                                'entrance hall beside the coat-stand, and he has '
+                                                'begun to notice that the coat-stand has a face. '
+                                                'Astonishingly, he still has all his fingers. I '
+                                                'was so looking forward to deciding which ones."'),
+ 'VEL-A4-003 second_painter/start exchange 2': ('"You sound disappointed."',
+                                                '"I am waiting to discover whether his picture is '
+                                                'more ingenious than his excuses."'),
+ 'VEL-A4-003 second_painter/ask exchange 1': ('"I decline to damage something merely to avoid '
+                                              'asking a question. He knows how he assembled it. '
+                                              'Let him show us."',
+                                              '"He may lie."'),
+ 'VEL-A4-003 second_painter/ask exchange 2': ('"Then we can compare what he says with what he '
+                                              'does."',
+                                              '{n}She watches your hand leave the wire alone.{/n}\n'
+                                              '"A disappointingly durable answer. Very well. He '
+                                              'will demonstrate the joining when he returns. I '
+                                              'shall ask him where the old panel came from, who '
+                                              'painted it, and whether they are still alive."'),
+ 'VEL-A4-003 second_painter/ask exchange 3': ('"Why?"',
+                                              '"Because he expects an argument about beauty. I '
+                                              'would like to watch him sweat over a provenance."\n'
+                                              '{n}She gives you the back of the frame to hold '
+                                              'while she checks that nothing has shifted.{/n}\n'
+                                              '"You have deprived me of an accident. Try to '
+                                              'provide a worthwhile conversation in '
+                                              'compensation."'),
+ 'VEL-A4-003 two_observers/question exchange 1': ('"I know you are dangerous."',
+                                                  '"Everyone knows that. Most people make a career '
+                                                  'of pretending they discovered it in private."'),
+ 'VEL-A4-003 two_observers/question exchange 2': ('"You asked why I return."',
+                                                  '"I am allowing you an elaborate approach to the '
+                                                  'answer. It seems important to your dignity."\n'
+                                                  '{n}She smiles, but does not reach across the '
+                                                  'table.{/n}\n'
+                                                  '"Tell me something you want, without first '
+                                                  'explaining why a good person might be permitted '
+                                                  'to want it. I will attempt to resist correcting '
+                                                  'your taste."'),
+ 'VEL-A4-003 unadvertised_hour/intent exchange 1': ('"You have been watching me notice it."',
+                                                    '"Yes. I prefer to know whether my company is '
+                                                    'attentive."\n'
+                                                    '{n}Her knee touches yours. She leaves it '
+                                                    'there, then waits.{/n}\n'
+                                                    '"You keep looking at my mouth. Shall I '
+                                                    'flatter myself, or have you discovered '
+                                                    'something more amusing to say? I could invent '
+                                                    'a splendid declaration for you from very '
+                                                    'little evidence."'),
+ 'VEL-A4-003 unadvertised_hour/intent exchange 2': ('"Since when has that stopped you?"',
+                                                    '"Since I became curious what you would say '
+                                                    'before I put the words in your mouth. Do not '
+                                                    'make me regret the experiment."'),
+ 'VEL-A4-003 a_question_kept/result exchange 1': ('"Even if you helped find the answer?"',
+                                                  '"Especially then. I prefer my wagers to produce '
+                                                  'something worth having. I have had your company '
+                                                  'and an unusually competent disagreement."\n'
+                                                  '{n}She leans back, apparently at ease.{/n}\n'
+                                                  '"Ask. I should like to discover which question '
+                                                  'you think worth making me lose. Careful: I '
+                                                  'remember every question anyone has ever been '
+                                                  'foolish enough to ask me."'),
+ 'VEL-A4-003 a_question_kept/result exchange 2': ('"What would you most enjoy taking from me?"',
+                                                  '{n}Her ease changes. Her eyes stay on you, and '
+                                                  'something behind them has started to '
+                                                  'count.{/n}\n'
+                                                  '"That is a much better question than whether I '
+                                                  'have ever loved someone. I had prepared a '
+                                                  'beautiful lie for that one."'),
+ 'VEL-A4-003 the_price_of_tomorrow/offer exchange 1': ('"Does she make the predictions?"',
+                                                       '"I do not know. I should enjoy asking him '
+                                                       'in front of her."\n'
+                                                       '{n}You read the three questions. What '
+                                                       'would you refuse? What would you pay to '
+                                                       'avoid? What would you be ashamed to want '
+                                                       'twice?{/n}'),
+ 'VEL-A4-003 the_price_of_tomorrow/offer exchange 2': ('"He could use those answers to arrange the '
+                                                       'result."',
+                                                       '"Certainly. I object to his calling the '
+                                                       'arrangement a discovery."\n'
+                                                       '{n}She rests her chin on one hand, '
+                                                       'watching you read the last question '
+                                                       'again.{/n}\n'
+                                                       '"That one interests you. Have you found an '
+                                                       'answer?"'),
+ 'VEL-A4-003 the_cover_before_the_battle/start exchange 1': ('"You still can. I wanted to tell you '
+                                                             'that I am preparing to leave again. '
+                                                             'The next part may be difficult to '
+                                                             'come back from."',
+                                                             '"Yes. People seldom arrange a war '
+                                                             'around the convenience of my '
+                                                             'correspondence."\n'
+                                                             '{n}The remark costs her more effort '
+                                                             'than usual. She rests her fingers on '
+                                                             'the rim without touching the '
+                                                             'cover.{/n}\n'
+                                                             '"How much time do you have now?"'),
+ 'VEL-A4-003 the_cover_before_the_battle/start exchange 2': ('"Enough for you to waste on me."',
+                                                             '"A useful answer. I dislike being '
+                                                             'given a farewell so complete that '
+                                                             'nothing I say can change its '
+                                                             'shape."\n'
+                                                             '{n}She moves the empty vase out of '
+                                                             "the glass's view.{/n}\n"
+                                                             '"Tell me what you came to ask. Then '
+                                                             'I shall tell you whether it is the '
+                                                             'thing I wanted to hear."'),
+ 'VEL-A4-003 the_cover_before_the_battle/lovers exchange 1': ('"I want to come back. I want to '
+                                                              'hear you complain about the '
+                                                              'singer."',
+                                                              '"There. Appalling flattery. Almost '
+                                                              'nothing in it for anyone but me."\n'
+                                                              '{n}Her laughter is brief and '
+                                                              'warm.{/n}\n'
+                                                              '"I want another kiss," {n}she '
+                                                              'says.{/n} "The fact that I cannot '
+                                                              'have it now has not made the wish '
+                                                              'more dignified. Tell me how you '
+                                                              'would leave if you were standing '
+                                                              'here."')}
+
+
 def _player_answer_exchanges(by_id):
     from copy import deepcopy
 
@@ -581,13 +746,13 @@ def _player_answer_exchanges(by_id):
                 raise ValueError(f"VEL-A4-003: duplicate reply {sid}:{reply_id}")
             beat = f"VEL-A4-003 {suffix}/{node_id} exchange {index}"
             current["Choices"].append({
-                "Text": f"[PROSE PENDING: {beat} Commander answer]",
+                "Text": PLAYER_ANSWER_TEXT[beat][0],
                 "Next": reply_id, "Set": [], "Requires": [],
                 "Forbids": [], "Abort": False,
             })
             reply = {
                 "Id": reply_id, "Speaker": node["Speaker"],
-                "Text": f"[PROSE PENDING: {beat} Vellexia reply and continuation]",
+                "Text": PLAYER_ANSWER_TEXT[beat][1],
                 "Choices": deepcopy(original_choices) if index == len(lines) else [],
             }
             if "Portrait" in node:
