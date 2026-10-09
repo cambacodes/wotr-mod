@@ -645,7 +645,7 @@ for _scene in SCENES:
         _by["charts"]["Choices"][0]["Next"] = _slot
         # Explicit brief: first chosen night at the bare chart table; no interruption.
         _scene["Nodes"].append(nar(_slot,
-            '{n}Eliandra catches your wrist, pulls you down against her, and kisses you hard enough to silence the question on your lips. The last chart slips from the table.{/n}',
+            '{n}Eliandra holds you there with both legs locked behind you, her breath hard against your mouth. The last chart slips from the table.{/n}',
             c("Continue", "morning")))
     if _scene["Id"] in (E + "drezen.city", E + "drezen.city_mark"):
         _by["ask"]["Text"] = _by["ask"]["Text"].replace("since the road", "until we could sit together")

@@ -14,6 +14,6 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "default_text": "{n}Eliandra catches your wrist, pulls you down against her, and kisses you hard enough to silence the question on your lips. The last chart slips from the table.{/n}",
+  "default_text": "{n}Eliandra holds you there with both legs locked behind you, her breath hard against your mouth. The last chart slips from the table.{/n}",
   "placement": "charts -> appended explicit.1 -> existing morning"
 }
