@@ -498,5 +498,185 @@
     "finding": "CH-A4-01",
     "ruling": "struct-chadali",
     "dependency": "Claude owns prose for the registered paragraph 56 placeholder."
+  },
+  {
+    "scene": "vellexia.unfinished_likeness",
+    "node": "start",
+    "choice": 2,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 1 from start as this player answer and the linked start_commander_reply_1 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.unfinished_likeness",
+    "node": "terms",
+    "choice": 1,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 1 from terms as this player answer and the linked terms_commander_reply_1 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.unfinished_likeness",
+    "node": "terms_commander_reply_1",
+    "choice": 0,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 2 from terms as this player answer and the linked terms_commander_reply_2 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.unfinished_likeness",
+    "node": "terms_commander_reply_2",
+    "choice": 0,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 3 from terms as this player answer and the linked terms_commander_reply_3 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.second_painter",
+    "node": "start",
+    "choice": 2,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 1 from start as this player answer and the linked start_commander_reply_1 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.second_painter",
+    "node": "start_commander_reply_1",
+    "choice": 0,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 2 from start as this player answer and the linked start_commander_reply_2 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.second_painter",
+    "node": "ask",
+    "choice": 1,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 1 from ask as this player answer and the linked ask_commander_reply_1 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.second_painter",
+    "node": "ask_commander_reply_1",
+    "choice": 0,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 2 from ask as this player answer and the linked ask_commander_reply_2 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.second_painter",
+    "node": "ask_commander_reply_2",
+    "choice": 0,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 3 from ask as this player answer and the linked ask_commander_reply_3 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.two_observers",
+    "node": "question",
+    "choice": 2,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 1 from question as this player answer and the linked question_commander_reply_1 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.two_observers",
+    "node": "question_commander_reply_1",
+    "choice": 0,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 2 from question as this player answer and the linked question_commander_reply_2 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.unadvertised_hour",
+    "node": "intent",
+    "choice": 3,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 1 from intent as this player answer and the linked intent_commander_reply_1 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.unadvertised_hour",
+    "node": "intent_commander_reply_1",
+    "choice": 0,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 2 from intent as this player answer and the linked intent_commander_reply_2 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.a_question_kept",
+    "node": "result",
+    "choice": 1,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 1 from result as this player answer and the linked result_commander_reply_1 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.a_question_kept",
+    "node": "result_commander_reply_1",
+    "choice": 0,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 2 from result as this player answer and the linked result_commander_reply_2 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.the_price_of_tomorrow",
+    "node": "offer",
+    "choice": 2,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 1 from offer as this player answer and the linked offer_commander_reply_1 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.the_price_of_tomorrow",
+    "node": "offer_commander_reply_1",
+    "choice": 0,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 2 from offer as this player answer and the linked offer_commander_reply_2 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.the_cover_before_the_battle",
+    "node": "start",
+    "choice": 4,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 1 from start as this player answer and the linked start_commander_reply_1 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.the_cover_before_the_battle",
+    "node": "start_commander_reply_1",
+    "choice": 0,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 2 from start as this player answer and the linked start_commander_reply_2 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "vellexia.the_cover_before_the_battle",
+    "node": "lovers",
+    "choice": 3,
+    "woman": "vellexia",
+    "finding": "VEL-A4-003",
+    "ruling": "struct-vellexia",
+    "beat": "Restore embedded Commander exchange 1 from lovers as this player answer and the linked lovers_commander_reply_1 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
   }
 ]

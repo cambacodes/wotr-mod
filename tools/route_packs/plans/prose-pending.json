@@ -63,6 +63,286 @@
       "surface": "paragraph",
       "index": 56,
       "text_sha": "0e04040cc28fed529853a5fec83cdb3caa5cbd2a6b595abfcb8d27f08ae91c0a"
+    },
+    {
+      "scene": "vellexia.unfinished_likeness",
+      "node": "start",
+      "surface": "choice",
+      "index": 2,
+      "text_sha": "417b1f44bdb6abe2de35ec87c00855021c8e63ca0d4bfd77f6d97208cdd650ac"
+    },
+    {
+      "scene": "vellexia.unfinished_likeness",
+      "node": "start_commander_reply_1",
+      "surface": "node",
+      "index": null,
+      "text_sha": "209aa5f917e738ed4dbad2919b3643b2117ea46bf71610b665ce7de5d63d65f3"
+    },
+    {
+      "scene": "vellexia.unfinished_likeness",
+      "node": "terms",
+      "surface": "choice",
+      "index": 1,
+      "text_sha": "5b9465330dbd2eaeecc5808261c37fd32eaae1cd4c5a35393f5c880fb404fb72"
+    },
+    {
+      "scene": "vellexia.unfinished_likeness",
+      "node": "terms_commander_reply_1",
+      "surface": "node",
+      "index": null,
+      "text_sha": "7e840bdd1467e3b7fde45b5a65241bc1aabd1b1afa6aed12e555b1909bf58f05"
+    },
+    {
+      "scene": "vellexia.unfinished_likeness",
+      "node": "terms_commander_reply_1",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "bb03ffeeffdf9d5445d8ade12eecd4afb6669f8c27180c414ef2c0bc4e497b5f"
+    },
+    {
+      "scene": "vellexia.unfinished_likeness",
+      "node": "terms_commander_reply_2",
+      "surface": "node",
+      "index": null,
+      "text_sha": "3e6e5018c4ae963aea599c2db95f8b77e18dd28a7db5766108ff88cc8918f89b"
+    },
+    {
+      "scene": "vellexia.unfinished_likeness",
+      "node": "terms_commander_reply_2",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "5ccbe24737e704709bd4d3697b91ebcac1b1bf27faedf1bec330e26579d9f259"
+    },
+    {
+      "scene": "vellexia.unfinished_likeness",
+      "node": "terms_commander_reply_3",
+      "surface": "node",
+      "index": null,
+      "text_sha": "d358efa162f3b3b40bec4d7ba132f9e7836bc1184257c3f404d429cb0317e030"
+    },
+    {
+      "scene": "vellexia.second_painter",
+      "node": "start",
+      "surface": "choice",
+      "index": 2,
+      "text_sha": "387160770dbd8ddb8ba95fac0487452a142cce780790afc4807d1e327b534107"
+    },
+    {
+      "scene": "vellexia.second_painter",
+      "node": "start_commander_reply_1",
+      "surface": "node",
+      "index": null,
+      "text_sha": "5a3cde01c6ca123fcf904cae53e7095ccf569eb2dacb6b3223f95fae0e469659"
+    },
+    {
+      "scene": "vellexia.second_painter",
+      "node": "start_commander_reply_1",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "cfc7f3d0128f06efaf13229945a0250aa11da0e31eafe4762dcc5b6642586914"
+    },
+    {
+      "scene": "vellexia.second_painter",
+      "node": "start_commander_reply_2",
+      "surface": "node",
+      "index": null,
+      "text_sha": "eefde49432ad8d92c35923927921ac70ca5b41e30a09d32ca7409e309639924e"
+    },
+    {
+      "scene": "vellexia.second_painter",
+      "node": "ask",
+      "surface": "choice",
+      "index": 1,
+      "text_sha": "f8ed0f896ecf390925d4355bf456e05e68c71911500b4bbc95d07c40f07197d9"
+    },
+    {
+      "scene": "vellexia.second_painter",
+      "node": "ask_commander_reply_1",
+      "surface": "node",
+      "index": null,
+      "text_sha": "c1d113ee91836d697969742dba1d8f24d1e92a548fbb3a8d58826a56c2d46b63"
+    },
+    {
+      "scene": "vellexia.second_painter",
+      "node": "ask_commander_reply_1",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "739436c341364262e49d07afffd892e30069610acc0f7d8d2bf7c2c6dd91ed40"
+    },
+    {
+      "scene": "vellexia.second_painter",
+      "node": "ask_commander_reply_2",
+      "surface": "node",
+      "index": null,
+      "text_sha": "e006c5037ca8b54161ee292b19bd1a255e4586049e40d85df845204e7149a494"
+    },
+    {
+      "scene": "vellexia.second_painter",
+      "node": "ask_commander_reply_2",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "cd05158631a4720a188eaef6c6389b466862dd543d3bdd9ef0f63cb1919d83af"
+    },
+    {
+      "scene": "vellexia.second_painter",
+      "node": "ask_commander_reply_3",
+      "surface": "node",
+      "index": null,
+      "text_sha": "304d0230122441f84d2f102b669a1e72146f85d09befa62093845221afae062c"
+    },
+    {
+      "scene": "vellexia.two_observers",
+      "node": "question",
+      "surface": "choice",
+      "index": 2,
+      "text_sha": "96af7e8a784e655d0f306f00093088e9e7db188dcc5cace66e47bcacefbca04e"
+    },
+    {
+      "scene": "vellexia.two_observers",
+      "node": "question_commander_reply_1",
+      "surface": "node",
+      "index": null,
+      "text_sha": "4cba9d0a0491a90eb75ae780176f3f2700bee7e440f7e3d9f629b07ccb019e91"
+    },
+    {
+      "scene": "vellexia.two_observers",
+      "node": "question_commander_reply_1",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "687cfca8999ff3597e6ca2607bbe5f78be36b476ba5c2c77d9d8e6e992ce0f23"
+    },
+    {
+      "scene": "vellexia.two_observers",
+      "node": "question_commander_reply_2",
+      "surface": "node",
+      "index": null,
+      "text_sha": "95f571459609def2849229e4a3d61ddae3d73d047ad2fbd9282ada1cfdd8b72c"
+    },
+    {
+      "scene": "vellexia.unadvertised_hour",
+      "node": "intent",
+      "surface": "choice",
+      "index": 3,
+      "text_sha": "c3fafbaec68c9fa4f1ef56c51aabaf589781707d5a643aa2be956ac68625a5ca"
+    },
+    {
+      "scene": "vellexia.unadvertised_hour",
+      "node": "intent_commander_reply_1",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f2a6eda46acb67341374d1249dc61fb5309b899717af54c40e1d1aeca29dd345"
+    },
+    {
+      "scene": "vellexia.unadvertised_hour",
+      "node": "intent_commander_reply_1",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "600f80b72f0c663706dfb737a42b033a0936e02790d9b59612b014d77ce5ba19"
+    },
+    {
+      "scene": "vellexia.unadvertised_hour",
+      "node": "intent_commander_reply_2",
+      "surface": "node",
+      "index": null,
+      "text_sha": "e99ee8c151e878167e19b6fc48409c0103346a7c045d4ec8058c7c86d4fc4806"
+    },
+    {
+      "scene": "vellexia.a_question_kept",
+      "node": "result",
+      "surface": "choice",
+      "index": 1,
+      "text_sha": "b312386680c87b2c9b09315f7494e5e35b3ddea5565ec62dced2b3b25b8ef3fd"
+    },
+    {
+      "scene": "vellexia.a_question_kept",
+      "node": "result_commander_reply_1",
+      "surface": "node",
+      "index": null,
+      "text_sha": "28912c3db16d7ced61c8f464b9a6d3fe8cc4bbed2dc145ad71dfe3f1d1b5fd23"
+    },
+    {
+      "scene": "vellexia.a_question_kept",
+      "node": "result_commander_reply_1",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "eca4c8a250d1b2d80b7e43ce73bab9822ce8dd790bd0f2872d09f93ab81b255b"
+    },
+    {
+      "scene": "vellexia.a_question_kept",
+      "node": "result_commander_reply_2",
+      "surface": "node",
+      "index": null,
+      "text_sha": "3476408da848177e21faa700a373d7a7bd35dcd4cb24373b085ed3446bf14a29"
+    },
+    {
+      "scene": "vellexia.the_price_of_tomorrow",
+      "node": "offer",
+      "surface": "choice",
+      "index": 2,
+      "text_sha": "e1d1f69c453b03d496a5d40a14b85c76c53f8839ede00d25d384d3b6289221d6"
+    },
+    {
+      "scene": "vellexia.the_price_of_tomorrow",
+      "node": "offer_commander_reply_1",
+      "surface": "node",
+      "index": null,
+      "text_sha": "917a30c81dc8779bfeb124149e0cc1efeaf642a08f4b3913f4cc49ec6fba2660"
+    },
+    {
+      "scene": "vellexia.the_price_of_tomorrow",
+      "node": "offer_commander_reply_1",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "52167e114c683775f582e24c5ca16604505b5ba7456c089680b387021b464b73"
+    },
+    {
+      "scene": "vellexia.the_price_of_tomorrow",
+      "node": "offer_commander_reply_2",
+      "surface": "node",
+      "index": null,
+      "text_sha": "b245549096bf4f3197ae76e26c2fc163bdca3febbb567c87aba728b8c5e87882"
+    },
+    {
+      "scene": "vellexia.the_cover_before_the_battle",
+      "node": "start",
+      "surface": "choice",
+      "index": 4,
+      "text_sha": "1823f11bc4a8d128b4de3c5f0fd1905afa48a17851837bbf59b74cacbefa7671"
+    },
+    {
+      "scene": "vellexia.the_cover_before_the_battle",
+      "node": "start_commander_reply_1",
+      "surface": "node",
+      "index": null,
+      "text_sha": "d35bb79b7dd3696c3fa0ea3de6626f07263582d699c8ff4e0eb56e1f70f0cbbf"
+    },
+    {
+      "scene": "vellexia.the_cover_before_the_battle",
+      "node": "start_commander_reply_1",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "d323b5bca02f7d8132658ffc9655c71e09751916c30e81dd73b4109231c996c8"
+    },
+    {
+      "scene": "vellexia.the_cover_before_the_battle",
+      "node": "start_commander_reply_2",
+      "surface": "node",
+      "index": null,
+      "text_sha": "303ff47c65ba78d3aa1bafc46c6a01dc39e289ba69a057f05a6f9baa11c23b86"
+    },
+    {
+      "scene": "vellexia.the_cover_before_the_battle",
+      "node": "lovers",
+      "surface": "choice",
+      "index": 3,
+      "text_sha": "693477d5a3d080d38a0438d1bd16341b7cf9f3150ddd4818742570f0644cee52"
+    },
+    {
+      "scene": "vellexia.the_cover_before_the_battle",
+      "node": "lovers_commander_reply_1",
+      "surface": "node",
+      "index": null,
+      "text_sha": "3b8e18b815df1c4805ecb72db7c364178db4559878d3da9541abb82f433af430"
     }
   ]
 }
