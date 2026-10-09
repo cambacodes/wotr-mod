@@ -524,3 +524,6 @@ def apply(payload):
 
 def integrate(payload):
     apply(payload)
+    # Heat pass (Directive 12): text-only, after this layer's own replacements.
+    from storylines import nocticula_heat
+    nocticula_heat.apply(payload)
