@@ -47,7 +47,11 @@ def delivery_errors(scene):
     if remote:
         physical_only = [k for k in ("EntryMythic", "EntryAlignment", "ContinueBefore", "ReturnToList") if scene.get(k)]
         return [k + " needs a physical scene" for k in physical_only]
-    return [k + " needs a remote scene" for k in ("Kind", "ManualOnly", "TableHosted") if scene.get(k)]
+    errors = [k + " needs a remote scene" for k in ("Kind", "ManualOnly", "TableHosted") if scene.get(k)]
+    attached = (scene.get("InteractionHub") or scene.get("AnswerLists") or scene.get("ContinueBefore")
+                or str(scene.get("Owner", "")).endswith("Epilogue")
+                or (scene.get("Relationship") or "tirabade") == "tirabade" and scene.get("Owner") in ("Anevia", "Irabeth", "Together"))
+    return errors + ([] if attached else ["physical scene needs an InteractionHub or AnswerLists"])
 
 
 def compile_story(profile, inputs=None, *, independent_tirabade=True):

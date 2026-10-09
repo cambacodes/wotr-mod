@@ -1196,8 +1196,7 @@ def integrate(payload):
     # meetings are ordinary area encounters, retaining all participant gates.
     for host in payload["Scenes"]:
         if host["Id"] in (E + "react.ix_a.targona", E + "react.ix_a.yaniel"):
-            host.pop("Kind", None)
-            host.update(Remote=False, Reaction=False, Areas=[DREZEN], Entry=host["Title"])
+            pass  # A100: stays a remote reaction until a hub conversion lands
 
 
 # Shared flask consumers remain partitioned at their sources. Reconcile
@@ -1217,9 +1216,6 @@ def integrate_joint(payload):
 
 # struct2-11: the argument is offered where the Commander raises the banner.
 # Iomedae remains its voice; this does not place a divine body in Drezen.
-_struct2_disputation = next(s for s in SCENES if s["Id"] == E + "disputation")
-_struct2_disputation.pop("Kind", None)
-_struct2_disputation.update(Remote=False, Areas=[DREZEN], Entry=_struct2_disputation["Title"])
 
 
 # IOM-A3-02: retain the saved terminal Continue and offer a separate lifetime

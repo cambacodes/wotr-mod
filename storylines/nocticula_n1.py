@@ -276,8 +276,7 @@ def bypass_retained_copy(payload):
     s = by["noct.acq.the_paid_address"]
     # struct2-11: investigate at the player's Drezen address; Nocticula's
     # existing mark correspondence remains a channel, not a visiting body.
-    s.pop("Kind", None)
-    s.update(Remote=False, Areas=["2570015799edf594daf2f076f2f975d8"])
+    # A100: stays remote until a hub conversion lands (physical needs InteractionHub/AnswerLists).
     start = next(node for node in s["Nodes"] if node["Id"] == "start")
     payload["Relationships"]["nocticula.acquisition"].setdefault("JournalEntries", []).append(dict(
         Id="struct2.paid_address", Title=s["Title"],

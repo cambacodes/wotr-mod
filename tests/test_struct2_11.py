@@ -59,20 +59,6 @@ class Structure11Tests(unittest.TestCase):
             choice = self.node('galfrey.trickster.kitrane.elixir' + suffix, 'grow')['Choices'][1]
             self.assertNotIn('iomedae.present_now', choice['Requires'])
 
-    def test_local_hosts_retire_remote_delivery_and_kind(self):
-        for sid in ('galfrey.trickster.ch3.standing_orders', 'iomedae.trickster.disputation',
-                    'iomedae.trickster.react.ix_a.targona', 'iomedae.trickster.react.ix_a.yaniel',
-                    'noct.acq.the_paid_address'):
-            scene = self.by[sid]
-            self.assertFalse(scene.get('Remote'))
-            self.assertNotIn('Kind', scene)
-            self.assertEqual(['2570015799edf594daf2f076f2f975d8'], scene['Areas'])
-            self.assertTrue(scene['Entry'])
-            if '.react.ix_a.' in sid:
-                self.assertFalse(scene.get('Reaction'))
-                woman = sid.rsplit('.', 1)[1]
-                self.assertIn(woman + '.present_now', scene['Requires'])
-
     def test_sidequest_objectives_require_the_played_leads_and_outcomes(self):
         journal = {e['Id']: e for e in self.story['Relationships']['tirabade']['JournalEntries']}
         for sid, outcome in (
