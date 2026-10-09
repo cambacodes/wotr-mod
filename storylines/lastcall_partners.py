@@ -473,9 +473,9 @@ D = "dorgelinda.trickster."
 partner("dorgelinda", "dorgelinda", "dorgelinda.committed", "dorgelinda.closed", "The Open Line",
     '''Dorgelinda Stranglehold kept the Logistics Council's books for five years after the war, and never once balanced them, because of one line in the Commander's name marked "used, quietly". She said a quartermaster who closes every line has stopped paying attention. She paid attention to that line every day.''',
     (
-        page_p('''At the rift the Commander called the line in, and she heard about it, somehow, before the report reached Drezen. She came to find {mf|him|her} that evening with the ledger under her arm. "Explain," she said, and the Commander did, all of it, from the carts to the quiet. She wrote down every word, then put down the pen and did not pick it up again that night.''', requires=(called("dorgelinda"),)),
+        page_p('''At the rift the Commander called the line in, and she heard about it, somehow, before the report reached Drezen. She came to find {mf|him|her} that evening with the ledger under her arm. "Explain," she said, and the Commander did, all of it, from the carts to the quiet. She wrote down every word, then put down the pen and did not pick it up again that night.''', requires=(called("dorgelinda"),), forbids=(D + "cost.told_all",)),
         page_p('''The boots were entered as paid. She kept the last pair on a shelf in the stores and would not issue them to anyone.''', requires=(D + "cost.boots_paid",)),
-        page_p('''Her audit of the Commander never formally concluded. She kept it open, hostile, on principle, and conducted it twice a week over supper.''', requires=(D + "cost.audit_hostile",)),
+        page_p('''Her audit of the Commander never formally concluded. She kept it open, hostile, on principle, and conducted it twice a week over supper.''', requires=(D + "cost.audit_hostile",), forbids=("dorgelinda.ledger.cold_unmended", "dorgelinda.ledger.quarrel_unmended")),
         page_p('''When the Commander was entered as dead, she refused to close the account. "Dead's a status, not a balance," she told the clerk from Nerosyan.''', requires=(ON_RECORD,)),
         # Q9 (Sol COX): the late history (the second book reached, no yes in the war) plays this coda too; her own epilogue
         # page puts the question ("close it, or stay in it"), and this line holds the Commander's staying.
@@ -980,6 +980,11 @@ def pages():
             page = scene(part["key"] + ".lastcall.page", part["title"], "Epilogue", 1, "", [
                 n("page", "Narrator", part["opener"], paragraphs=part["paragraphs"])],
                 requires=("trickster.ever", ACTIVE, page_guard_key(part["rel"]), part["commit"]), forbids=forbids, last=99, **extra)
+        if part["key"] == "dorgelinda":
+            # LC-HISTORY-01: the retained base cue has no paragraph conditions.
+            # Hold its unconditional account claim for Claude; paragraph positions stay fixed.
+            node = page["Nodes"][0]
+            node["Text"] = "[PROSE PENDING: Dorgelinda - Last Call opener independent of account settlement and seal quarrel]"
         if part["key"] == "aranka":   # coordinator ruling 2026-10-02: her coda belongs to the ending (R2-6)
             page.update(MinChapter=6, MaxChapter=6, Chapters=[6])
         out.append((part["rel"], page))
