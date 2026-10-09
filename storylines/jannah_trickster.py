@@ -1080,7 +1080,11 @@ _r2_challenge["Nodes"].extend([
 _r2_night = _r2_by[NIGHT]
 _r2_cut = next(n for n in _r2_night["Nodes"] if n["Id"] == "cut")
 _r2_cut["Text"] = ('{n}She hooks your heel with hers and takes you down onto the cold sand. '
-                   'Her mouth finds yours before you can catch your breath.{/n}')
+                   'Her mouth finds yours before you can catch your breath. '
+                   'She comes down with you, all of her bare against all of you, the sand grinding cold under your shoulders and her skin burning above it, the red light of the Wound running along her ribs as she rises and sinks against you with no pretence of measure left. '
+                   'Her thighs close either side of your hips. She is slick and shaking and not ashamed of it.{/n} '
+                   '"Look at me," {n}she says.{/n} "No. Do not look at the light. Me." '
+                   '{n}Her hand closes on you, deliberate, and guides you to where she wants you.{/n}')
 _r2_cut["Choices"][0]["Next"] = NIGHT + ".explicit.1"
 # Brief: mutually chosen first yard night; crossed blades stay aside.
 _r2_night["Nodes"].append(nar(NIGHT + ".explicit.1",
