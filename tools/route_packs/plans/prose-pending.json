@@ -35,27 +35,6 @@
       "surface": "node",
       "index": null,
       "text_sha": "e77c0b433bdb4a6726c6eded4b7209617a9099a876bac94204b7a91238b8382f"
-    },
-    {
-      "scene": "elyanka.trickster.beat.table",
-      "node": "elyanka.trickster.beat.table.explicit.1",
-      "surface": "node",
-      "index": null,
-      "text_sha": "1e023006be0f066edba026a8c3d8ffdb7c99a2369fc1f6b57b113b3dd024ac4b"
-    },
-    {
-      "scene": "elyanka.trickster.ch6.collateral",
-      "node": "elyanka.trickster.ch6.collateral.explicit.1",
-      "surface": "node",
-      "index": null,
-      "text_sha": "e683044277e370da8be854b4830532309860551c23e130d4ebc9eaf0a058457c"
-    },
-    {
-      "scene": "melazmera.trickster.beat.count",
-      "node": "melazmera.trickster.beat.count.explicit.1",
-      "surface": "node",
-      "index": null,
-      "text_sha": "d1ae6b5f1d7ec8e54b0fbe710fc7187bbf5e98defedf9d9155fe3844df34553e"
     }
   ]
 }

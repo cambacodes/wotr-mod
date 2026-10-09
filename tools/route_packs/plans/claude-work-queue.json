@@ -479,33 +479,6 @@
     "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/horzalah/horzalah.trickster.beat.ribbon.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
   },
   {
-    "scene": "elyanka.trickster.beat.table",
-    "node": "elyanka.trickster.beat.table.explicit.1",
-    "woman": "elyanka",
-    "beat": "elyanka.trickster.beat.table.explicit.1",
-    "ruling": "struct-slot-hosts",
-    "finding": "struct-slot-hosts:elyanka.trickster.beat.table.explicit.1",
-    "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/elyanka-camilary/elyanka.trickster.beat.table.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
-  },
-  {
-    "scene": "elyanka.trickster.ch6.collateral",
-    "node": "elyanka.trickster.ch6.collateral.explicit.1",
-    "woman": "elyanka",
-    "beat": "elyanka.trickster.ch6.collateral.explicit.1",
-    "ruling": "struct-slot-hosts",
-    "finding": "struct-slot-hosts:elyanka.trickster.ch6.collateral.explicit.1",
-    "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/elyanka-camilary/elyanka.trickster.ch6.collateral.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
-  },
-  {
-    "scene": "melazmera.trickster.beat.count",
-    "node": "melazmera.trickster.beat.count.explicit.1",
-    "woman": "melazmera",
-    "beat": "melazmera.trickster.beat.count.explicit.1",
-    "ruling": "struct-slot-hosts",
-    "finding": "struct-slot-hosts:melazmera.trickster.beat.count.explicit.1",
-    "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/melazmera/melazmera.trickster.beat.count.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
-  },
-  {
     "scene": "elyanka.trickster.ch6.collateral",
     "woman": "elyanka",
     "beat": "Remote contact for the collateral inspection and creditor exchange",
