@@ -950,6 +950,30 @@ for _q5_producer in SCENES:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
 
 
+# Replacement "owed" paragraphs, one per (scene suffix, voyage). Each is told at the place the meeting happens (the camp on
+# Colyphyr, a fire in the open Abyss, the hearth at Drezen) and settles the debt in that room; she promises no later visit.
+OWED_TEXT = {
+    ("ch4.hunt", 0): """"I ate your sailors, so now I owe you." {n}She giggles.{/n} "That is backwards, thief. Things I eat do not send bills. They are inside me, and they are quiet, and they were salty."
+{n}She bends close enough to smell your throat. The sentry on the near rock makes a small noise, like a kettle taken off the boil too late.{/n} "You left a ring in my cave and now you sit at your own fire and want to be paid for men I have already finished. Then collect. I am close enough. Name what you want, here, while I am still curious, because when I stop being curious I am only hungry." {n}She waits, and does not blink.{/n}""",
+    ("ch4.hunt", 1): """"Even." {n}Her hand goes to her side, where for a heartbeat the gown is torn purple plate.{/n} "Your captain put a hook in me and turned me over in the air in front of my whole island, and you want to call that even with one ring. Nothing is even with me, thief. Things are mine, or they are eaten."
+{n}She bends close enough to smell your throat.{/n} "A fresh start. Good. Here is how I start: I sit at your fire, and I eat your pork, and I decide which of you I would swallow first, you or the man with the harpoon. Be quiet a moment. I am deciding." {n}She looks at you, then past you, towards the ships and the men that are not here, for a long time.{/n}""",
+    ("ch4.hunt", 2): """"A first gift." {n}She looks delighted and insulted at once.{/n} "You made me go home hungry and you call it a present. A meal that gets away is not a gift, thief. It is a debt, and it is a whole ship's worth of supper."
+{n}She bends close enough to smell your throat.{/n} "So I am going to sit at your fire and be hungry at you until I have had my share of looking. That is the interest. Pour me something. No, not that. The thing you are pretending is not in your pockets." {n}She holds out her palm.{/n}""",
+    ("ch4.hunt_found", 0): """"I ate your sailors, so now I owe you." {n}She giggles.{/n} "That is backwards, thief. Things I eat do not send bills. They are inside me, and they are quiet, and they were salty."
+{n}She bends close enough to smell your throat. Somewhere out in the red dark a demon starts to scream and is cut off, abruptly, by its own good sense.{/n} "You left a ring in my cave and then you let a whole sea of the Abyss lie between us and thought it would do for a wall. Collect, if you want to collect. I am here, and I am close, and nothing in this place is going to tell me no. Name your price." {n}She waits, and does not blink.{/n}""",
+    ("ch4.hunt_found", 1): """"Even." {n}Her hand goes to her side, where for a heartbeat the gown is torn purple plate.{/n} "Your captain put a hook in me and turned me over in the air in front of my whole island, and you want to call that even with one ring. Nothing is even with me, thief. Things are mine, or they are eaten."
+{n}She bends close enough to smell your throat.{/n} "A fresh start. Good. Here is how I start: I sit at this fire you did not build properly, and I decide which of you I would swallow first, you or the man with the harpoon. Be quiet. I am deciding." {n}She looks past you, out into the dark where the sky has gone the colour of a wound, for a long time.{/n}""",
+    ("ch4.hunt_found", 2): """"A first gift." {n}She looks delighted and insulted at once.{/n} "You made me go home hungry and you call it a present. A meal that gets away is not a gift, thief. It is a debt, and it is a whole ship's worth of supper."
+{n}She bends close enough to smell your throat.{/n} "So I am going to sit here at the edge of the world and be hungry at you until I have had my share of looking. That is the interest. Empty your pockets on the ground. I will not take anything. I want to see what you carry when you think it might be eaten." {n}She holds out her palm.{/n}""",
+    ("ch5.hunt_window", 0): """"I ate your sailors, so now I owe you." {n}She giggles.{/n} "That is backwards, thief. Things I eat do not send bills. They are inside me, and they are quiet, and they were salty."
+{n}She bends close enough to smell your throat. Out on the wall a sentry's boots stop, and start again, faster.{/n} "You left a ring in my cave and then you ran home to a room with a shutter and a latch and a whole castle of men, and sat in it, and wanted to be paid for men I have already finished. I am in the room. Collect. Name what you want while I am curious, because when I stop being curious I am only hungry." {n}She waits, and does not blink.{/n}""",
+    ("ch5.hunt_window", 1): """"Even." {n}Her hand goes to her side, where for a heartbeat the gown is torn purple plate.{/n} "Your captain put a hook in me and turned me over in the air in front of my whole island, and you want to call that even with one ring. Nothing is even with me, thief. Things are mine, or they are eaten."
+{n}She bends close enough to smell your throat.{/n} "A fresh start. Good. Here is how I start: I sit on your hearth, and I eat your supper, and I decide which of you I would swallow first, you or the man with the harpoon. Be quiet a moment. I am deciding." {n}She looks at you, then at the window, then at the dark it opens on, for a long time.{/n}""",
+    ("ch5.hunt_window", 2): """"A first gift." {n}She looks delighted and insulted at once.{/n} "You made me go home hungry and you call it a present. A meal that gets away is not a gift, thief. It is a debt, and it is a whole ship's worth of supper."
+{n}She bends close enough to smell your throat.{/n} "So I am going to sit in your little stone room and be hungry at you until I have had my share of looking. That is the interest. Open your desk. I will not take anything. I want to see what you keep when you think it might be eaten." {n}She holds out her palm.{/n}""",
+}
+COUNT_TEXT = """"You told me I owed you for the sailors." {n}She giggles.{/n} "You said it to my face, with your own ring on my finger. Now you are in my hoard with them. Collect from in here.\""""
+
 def integrate_meeting_history(payload):
     """Retain old paragraphs, but retire unselected venue/future-visit claims.
 
@@ -963,7 +987,7 @@ def integrate_meeting_history(payload):
         old = page["Paragraphs"][:3]
         for index, paragraph in enumerate(old):
             replacement = dict(paragraph)
-            replacement["Text"] = "[PROSE PENDING: MEL-02 %s owed voyage %d]" % (suffix, index)
+            replacement["Text"] = OWED_TEXT[(suffix, index)]
             replacement["Requires"] = list(paragraph["Requires"])
             replacement["Forbids"] = list(paragraph["Forbids"])
             # All meeting scenes require trickster.ever; keep the old surface
@@ -973,7 +997,7 @@ def integrate_meeting_history(payload):
     page = next(n for n in scenes[M + "commit.stone"]["Nodes"] if n["Id"] == "count")
     paragraph = page["Paragraphs"][1]
     replacement = dict(paragraph)
-    replacement["Text"] = "[PROSE PENDING: MEL-02 commit sailor debt actual meeting venue]"
+    replacement["Text"] = COUNT_TEXT
     replacement["Requires"] = list(paragraph["Requires"])
     replacement["Forbids"] = list(paragraph["Forbids"])
     paragraph["Forbids"] = [*paragraph["Forbids"], "trickster.ever"]
