@@ -1103,3 +1103,23 @@ for _scene in SCENES:
             "I have not decided whether I do.", "I prefer to hear you choose for yourself. My masters can admire their own work.").replace(
             "I have not decided whether that is a kindness or an insult. I think I will let it be both.",
             "You have seen it. Now look higher. I did not uncover my throat to lose your eyes.")
+
+
+# struct-slot-hosts: optional reserved continuation; retain every legacy exit.
+from copy import deepcopy as _slot_deepcopy
+from story_format import n as _slot_node
+
+for _slot_scene_id, _slot_host_id in (
+    ('horzalah.trickster.beat.ramparts', 'hand'),
+    ('horzalah.trickster.beat.ribbon', 'tied'),
+):
+    _slot_id = _slot_scene_id + ".explicit.1"
+    _slot_text = "[PROSE PENDING: " + _slot_id + "]"
+    _slot_scene = next(s for s in SCENES if s["Id"] == _slot_scene_id)
+    _slot_host = next(n for n in _slot_scene["Nodes"] if n["Id"] == _slot_host_id)
+    _slot_entry = _slot_deepcopy(_slot_host["Choices"][0])
+    _slot_entry.pop("Id", None)
+    _slot_entry["Text"] = "Continue"
+    _slot_entry["Next"] = _slot_id
+    _slot_host["Choices"].append(_slot_entry)
+    _slot_scene["Nodes"].append(_slot_node(_slot_id, "Narrator", _slot_text, c("Continue")))

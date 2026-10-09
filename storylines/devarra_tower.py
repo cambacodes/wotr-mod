@@ -867,7 +867,7 @@ hub(T + "before_the_end", "What you still owe", '"I\'m going somewhere I might n
     dv("climb", '''"You are going to the end of the world." {n}She does not ask; she has heard the city.{/n} "To the place where the Wound goes all the way down. And you have come to tell me before you go." {n}Her eye does not leave you.{/n} "Good. You can be taught."''',
        c('"If I don\'t come back, the tower is yours. It always was."', "if"),
        c('"I\'ll come back. I owe you the end."', "owe", forbids=(FLOWN,)),
-       c('"I\'ll come back. I owe you the end."', "owe_free", requires=(FLOWN,))),
+       c('"I\'ll come back. I owe you the end."', "owe_free", requires=(FLOWN, BITTEN_ONCE,))),
     dv("if", '''{n}The wing comes around you before you finish, not hard, just close, closing you in against her.{/n} "If you do not come back," {n}she says, very quietly,{/n} "I will go down there and find what is left of you and bring it back up this mountain and eat it, so that nothing else can. That is what I do with what is mine." {n}The wing tightens.{/n} "So do not make me. I would not enjoy it. That is the first time I have ever said so about a meal."''',
        c("Continue", "end_her")),
     dv("owe", '''"You owe me the end." {n}The laugh, soft, like a forge drawing breath.{/n} "Yes. You have been paying it in pieces since I got up, and you are not finished, and a thing that is still paying cannot die. I decided that the night you first owed me. I meant it as a threat." {n}She lowers her head until her brow rests against yours, hot as a forge stone.{/n} "It is still a threat. Come back and pay."''',

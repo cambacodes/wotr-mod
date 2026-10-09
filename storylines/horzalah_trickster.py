@@ -1219,3 +1219,10 @@ _round2_situations()
 for _suffix in ("together", "commit", "unanswered", "decided", "left_free", "ally", "scarred"):
     _page_scene=next(s for s in SCENES if s["Id"]==H+"epilogue."+_suffix)
     _page_scene["Requires"]=list(dict.fromkeys([*_page_scene["Requires"],PRIMED,EAR,RETURNED]))
+
+
+# struct-slot-hosts: append after the final page paragraph; legacy exit stays intact.
+_decided_page = next(s for s in SCENES if s["Id"] == H + "epilogue.decided")["Nodes"][0]
+_decided_slot = p("[PROSE PENDING: horzalah.trickster.epilogue.decided.explicit.1]")
+_decided_slot["Id"] = H + "epilogue.decided.explicit.1"
+_decided_page.setdefault("Paragraphs", []).append(_decided_slot)

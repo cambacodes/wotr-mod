@@ -350,8 +350,8 @@ Inline briefs (`after_text`) put the act inside the host node, after the anchor.
 
 | Slot | Host scene | Slot / host node | Build-up node(s) to extend to the act start | Exits / notes |
 |---|---|---|---|---|
-| `elyanka.trickster.beat.table.explicit.1` | `elyanka.trickster.beat.table` | host node `door2` | `door2` itself (after `door`) | `END` ; terminal: review last_line |
-| `elyanka.trickster.ch6.collateral.explicit.1` | `elyanka.trickster.ch6.collateral` | host node `rift2` | `rift2` itself (after `rift`) | `END` ; terminal: review last_line |
+| `elyanka.trickster.beat.table.explicit.1` | `elyanka.trickster.beat.table` | slot node `elyanka.trickster.beat.table.explicit.1` | `door2` (appended Continue; legacy exit retained) | `END` ; terminal: review last_line |
+| `elyanka.trickster.ch6.collateral.explicit.1` | `elyanka.trickster.ch6.collateral` | slot node `elyanka.trickster.ch6.collateral.explicit.1` | `rift2` (appended Continue; legacy exit retained) | `END` ; terminal: review last_line |
 | `elyanka.trickster.epilogue.claim.explicit.1` | `elyanka.trickster.epilogue.claim` | `page` (inline, after anchor) | `page` up to the anchor | `END` ; third-past |
 | `elyanka.trickster.visit.hearse.explicit.1` | `elyanka.trickster.visit.hearse` | slot node `elyanka.trickster.visit.hearse.explicit.1` | `threshold` | `morning` |
 
@@ -421,9 +421,9 @@ Inline briefs (`after_text`) put the act inside the host node, after the anchor.
 
 | Slot | Host scene | Slot / host node | Build-up node(s) to extend to the act start | Exits / notes |
 |---|---|---|---|---|
-| `herrax.house.a_night_out.explicit.1` | `herrax.house.a_night_out` | host node `home` | `home` itself (after `small`, `big`) | `END` ; terminal: review last_line |
-| `herrax.house.her_rooms.explicit.1` | `herrax.house.her_rooms` | host node `beside` | `beside` itself (after `expected`, `chest`) | `END` ; terminal: review last_line |
-| `herrax.house.last_night.explicit.1` | `herrax.house.last_night` | host node `agreed` | `agreed` itself (after `say`, `dead`) | `END` ; terminal: review last_line |
+| `herrax.house.a_night_out.explicit.1` | `herrax.house.a_night_out` | slot node `herrax.house.a_night_out.explicit.1` | `home` (appended Continue; legacy exit retained) | `END` ; terminal: review last_line |
+| `herrax.house.her_rooms.explicit.1` | `herrax.house.her_rooms` | slot node `herrax.house.her_rooms.explicit.1` | `beside` (appended Continue; legacy exit retained) | `END` ; terminal: review last_line |
+| `herrax.house.last_night.explicit.1` | `herrax.house.last_night` | slot node `herrax.house.last_night.explicit.1` | `agreed` (appended Continue; legacy exit retained) | `END` ; terminal: review last_line |
 | `herrax.house.the_stairs.explicit.1` | `herrax.house.the_stairs` | slot node `herrax.house.the_stairs.explicit.1` | `close`, `find` | `return_morning` |
 | `herrax.trickster.epilogue.after_hours.explicit.1` | `herrax.trickster.epilogue.after_hours.invitation` | slot node `herrax.trickster.epilogue.after_hours.explicit.1` | `desire` | `morning` ; male mention (background) |
 | `herrax.trickster.madam.reachable.explicit.1` | `herrax.trickster.madam.reachable` | slot node `herrax.trickster.madam.reachable.explicit.1` | `cut` | `morning` ; male mention (background) |
@@ -433,11 +433,11 @@ Inline briefs (`after_text`) put the act inside the host node, after the anchor.
 
 | Slot | Host scene | Slot / host node | Build-up node(s) to extend to the act start | Exits / notes |
 |---|---|---|---|---|
-| `horzalah.trickster.beat.ramparts.explicit.1` | `horzalah.trickster.beat.ramparts` | host node `hand` | `hand` itself (after `end`) | `END` ; terminal: review last_line |
-| `horzalah.trickster.beat.ribbon.explicit.1` | `horzalah.trickster.beat.ribbon` | host node `tied` | `tied` itself (after `tie`) | `END` ; terminal: review last_line |
+| `horzalah.trickster.beat.ramparts.explicit.1` | `horzalah.trickster.beat.ramparts` | slot node `horzalah.trickster.beat.ramparts.explicit.1` | `hand` (appended Continue; legacy exit retained) | `END` ; terminal: review last_line |
+| `horzalah.trickster.beat.ribbon.explicit.1` | `horzalah.trickster.beat.ribbon` | slot node `horzalah.trickster.beat.ribbon.explicit.1` | `tied` (appended Continue; legacy exit retained) | `END` ; terminal: review last_line |
 | `horzalah.trickster.beat.second_night.explicit.1` | `horzalah.trickster.beat.second_night` | slot node `horzalah.trickster.beat.second_night.explicit.1` | `cut` | `after` ; male mention (background) |
 | `horzalah.trickster.epilogue.commit.explicit.1` | `horzalah.trickster.epilogue.commit` | `page` paragraph `horzalah.trickster.epilogue.commit.explicit.1` (#8) | `page` paragraphs 0..7 | `next paragraph` ; third-past; male mention (background) |
-| `horzalah.trickster.epilogue.decided.explicit.1` | `horzalah.trickster.epilogue.decided` | host node `page` | `page` itself | `END` ; terminal: review last_line; third-past |
+| `horzalah.trickster.epilogue.decided.explicit.1` | `horzalah.trickster.epilogue.decided` | `page` paragraph `horzalah.trickster.epilogue.decided.explicit.1` (#4) | `page` text and paragraphs 0..3 | `END` ; terminal: review last_line; third-past |
 | `horzalah.trickster.epilogue.together.explicit.1` | `horzalah.trickster.epilogue.together` | `page` paragraph `horzalah.trickster.epilogue.together.explicit.1` (#14) | `page` paragraphs 0..13 | `next paragraph` ; third-past; male mention (background) |
 | `horzalah.trickster.visit.chamber.explicit.1` | `horzalah.trickster.visit.chamber` | slot node `horzalah.trickster.visit.chamber.explicit.1` | `cut`, `cut_tonight` | `morning` ; male mention (background) |
 
@@ -516,7 +516,7 @@ Inline briefs (`after_text`) put the act inside the host node, after the anchor.
 
 | Slot | Host scene | Slot / host node | Build-up node(s) to extend to the act start | Exits / notes |
 |---|---|---|---|---|
-| `melazmera.trickster.beat.count.explicit.1` | `melazmera.trickster.beat.count` | host node `ate` | `ate` itself (after `count`) | `END` ; terminal: review last_line |
+| `melazmera.trickster.beat.count.explicit.1` | `melazmera.trickster.beat.count` | slot node `melazmera.trickster.beat.count.explicit.1` | `ate` (appended Continue; legacy exit retained) | `END` ; terminal: review last_line |
 | `melazmera.trickster.visit.heap.explicit.1` | `melazmera.trickster.visit.heap` | slot node `melazmera.trickster.visit.heap.explicit.1` | `cut` | `morning` |
 
 ### mielarah

@@ -1,7 +1,7 @@
 {
   "slot_id": "horzalah.trickster.beat.ramparts.explicit.1",
   "host_scene": "horzalah.trickster.beat.ramparts",
-  "host_node": "hand",
+  "host_node": "horzalah.trickster.beat.ramparts.explicit.1",
   "participants": [
     "Horzalah",
     "Commander"
@@ -27,10 +27,10 @@
   "authored_continuity": {
     "setting": "Existing authored rampart walk; the contract, collar and scar staging are mod continuity.",
     "history": "Committed Trickster Horzalah. GATE NOTE: the host scene requires horzalah.committed but not horzalah.trickster.chamber_seen, so the reserved node must require horzalah.trickster.chamber_seen (the first Guild-room night, horzalah.trickster.visit.chamber) and otherwise route straight to scene exit; this slot is a return, never a first night.",
-    "resumption": "horzalah.trickster.beat.ramparts/end -> [Take her hand, and wait.] -> hand -> [Stay until she lets go.] (sets horzalah.trickster.beat.ramparts_walked) -> reserved node -> scene exit. The take branch never reaches this slot. The host is terminal, so last_line is the slot's own closing beat."
+    "resumption": "horzalah.trickster.beat.ramparts/hand -> appended Continue (same existing receipt effects) -> horzalah.trickster.beat.ramparts.explicit.1 -> scene exit. Legacy answers retain their original terminal targets and positions. last_line is the slot closing beat."
   },
   "last_line": "N: Before the relief comes up the stair, she fastens her collar again and lets go of your hand.",
-  "default_text": "{n}She keeps your hand where she put it and turns you into the lee of the tower, out of the forge light.{/n}",
+  "default_text": "[PROSE PENDING: horzalah.trickster.beat.ramparts.explicit.1]",
   "example": "N: Horzalah presses your palm harder against the scar.\nH: The watch ran, mortal. You did not. Stay where I put you.",
   "min_lines": 12,
   "max_lines": 18,

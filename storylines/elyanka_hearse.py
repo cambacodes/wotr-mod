@@ -781,3 +781,23 @@ tag(E + "react.regill_lie", "T")
 for _s in SCENES:
     if _s.get("Id") == E + "beat.inquiry":
         _s.setdefault("ForbidOverrides", {}).update({"seelah_dead": "seelah.trickster.returned", "seelah_gone": "seelah.trickster.returned"})
+
+
+# struct-slot-hosts: optional reserved continuation; retain every legacy exit.
+from copy import deepcopy as _slot_deepcopy
+from story_format import n as _slot_node
+
+for _slot_scene_id, _slot_host_id in (
+    ('elyanka.trickster.beat.table', 'door2'),
+    ('elyanka.trickster.ch6.collateral', 'rift2'),
+):
+    _slot_id = _slot_scene_id + ".explicit.1"
+    _slot_text = "[PROSE PENDING: " + _slot_id + "]"
+    _slot_scene = next(s for s in SCENES if s["Id"] == _slot_scene_id)
+    _slot_host = next(n for n in _slot_scene["Nodes"] if n["Id"] == _slot_host_id)
+    _slot_entry = _slot_deepcopy(_slot_host["Choices"][0])
+    _slot_entry.pop("Id", None)
+    _slot_entry["Text"] = "Continue"
+    _slot_entry["Next"] = _slot_id
+    _slot_host["Choices"].append(_slot_entry)
+    _slot_scene["Nodes"].append(_slot_node(_slot_id, "Narrator", _slot_text, c("Continue")))

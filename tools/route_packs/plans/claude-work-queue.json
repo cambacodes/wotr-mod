@@ -678,5 +678,86 @@
     "finding": "VEL-A4-003",
     "ruling": "struct-vellexia",
     "beat": "Restore embedded Commander exchange 1 from lovers as this player answer and the linked lovers_commander_reply_1 reply. Use the pinned authored source and vellexia_cloud transformations for the removed continuation; preserve the original question, response, staging and final choice setup. Do not reinsert Commander speech in narration. Retain all original answer positions and targets."
+  },
+  {
+    "scene": "horzalah.trickster.epilogue.decided",
+    "node": "page",
+    "woman": "horzalah",
+    "beat": "horzalah.trickster.epilogue.decided.explicit.1",
+    "ruling": "struct-slot-hosts",
+    "finding": "struct-slot-hosts:horzalah-decided",
+    "why": "Claude owns the registered paragraph 4 placeholder; fill from tools/route_packs/explicit_slots/horzalah/horzalah.trickster.epilogue.decided.explicit.1.json. Preserve preceding paragraphs and the legacy terminal answer."
+  },
+  {
+    "scene": "herrax.house.a_night_out",
+    "node": "herrax.house.a_night_out.explicit.1",
+    "woman": "herrax",
+    "beat": "herrax.house.a_night_out.explicit.1",
+    "ruling": "struct-slot-hosts",
+    "finding": "struct-slot-hosts:herrax.house.a_night_out.explicit.1",
+    "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/herrax/herrax.house.a_night_out.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
+  },
+  {
+    "scene": "herrax.house.her_rooms",
+    "node": "herrax.house.her_rooms.explicit.1",
+    "woman": "herrax",
+    "beat": "herrax.house.her_rooms.explicit.1",
+    "ruling": "struct-slot-hosts",
+    "finding": "struct-slot-hosts:herrax.house.her_rooms.explicit.1",
+    "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/herrax/herrax.house.her_rooms.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
+  },
+  {
+    "scene": "herrax.house.last_night",
+    "node": "herrax.house.last_night.explicit.1",
+    "woman": "herrax",
+    "beat": "herrax.house.last_night.explicit.1",
+    "ruling": "struct-slot-hosts",
+    "finding": "struct-slot-hosts:herrax.house.last_night.explicit.1",
+    "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/herrax/herrax.house.last_night.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
+  },
+  {
+    "scene": "horzalah.trickster.beat.ramparts",
+    "node": "horzalah.trickster.beat.ramparts.explicit.1",
+    "woman": "horzalah",
+    "beat": "horzalah.trickster.beat.ramparts.explicit.1",
+    "ruling": "struct-slot-hosts",
+    "finding": "struct-slot-hosts:horzalah.trickster.beat.ramparts.explicit.1",
+    "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/horzalah/horzalah.trickster.beat.ramparts.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
+  },
+  {
+    "scene": "horzalah.trickster.beat.ribbon",
+    "node": "horzalah.trickster.beat.ribbon.explicit.1",
+    "woman": "horzalah",
+    "beat": "horzalah.trickster.beat.ribbon.explicit.1",
+    "ruling": "struct-slot-hosts",
+    "finding": "struct-slot-hosts:horzalah.trickster.beat.ribbon.explicit.1",
+    "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/horzalah/horzalah.trickster.beat.ribbon.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
+  },
+  {
+    "scene": "elyanka.trickster.beat.table",
+    "node": "elyanka.trickster.beat.table.explicit.1",
+    "woman": "elyanka",
+    "beat": "elyanka.trickster.beat.table.explicit.1",
+    "ruling": "struct-slot-hosts",
+    "finding": "struct-slot-hosts:elyanka.trickster.beat.table.explicit.1",
+    "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/elyanka-camilary/elyanka.trickster.beat.table.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
+  },
+  {
+    "scene": "elyanka.trickster.ch6.collateral",
+    "node": "elyanka.trickster.ch6.collateral.explicit.1",
+    "woman": "elyanka",
+    "beat": "elyanka.trickster.ch6.collateral.explicit.1",
+    "ruling": "struct-slot-hosts",
+    "finding": "struct-slot-hosts:elyanka.trickster.ch6.collateral.explicit.1",
+    "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/elyanka-camilary/elyanka.trickster.ch6.collateral.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
+  },
+  {
+    "scene": "melazmera.trickster.beat.count",
+    "node": "melazmera.trickster.beat.count.explicit.1",
+    "woman": "melazmera",
+    "beat": "melazmera.trickster.beat.count.explicit.1",
+    "ruling": "struct-slot-hosts",
+    "finding": "struct-slot-hosts:melazmera.trickster.beat.count.explicit.1",
+    "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/melazmera/melazmera.trickster.beat.count.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
   }
 ]

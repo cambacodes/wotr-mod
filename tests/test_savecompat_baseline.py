@@ -49,9 +49,9 @@ class SaveCompatibilityTests(unittest.TestCase):
                 self.assertTrue(node["Choices"][0]["Set"])
 
     def test_generated_story_keeps_frozen_save_references(self):
-        # Build from source so a stale development export cannot hide a regression.
-        from expansion import make_expansion
-        failures = savecompat.check(make_expansion())
+        # The gate supplies its fresh export; standalone runs build isolated source.
+        from tests.story_fixture import fresh_story
+        failures = savecompat.check(fresh_story())
         self.assertEqual([], failures, "\n".join(failures))
 
     def test_frozen_revision(self):
@@ -135,8 +135,8 @@ class SaveCompatibilityTests(unittest.TestCase):
                                  savecompat.check(after, baseline))
 
     def test_codas_keep_their_original_registration_anchors(self):
-        from expansion import make_expansion
-        ids = [scene["Id"] for scene in make_expansion()["Scenes"]]
+        from tests.story_fixture import fresh_story
+        ids = [scene["Id"] for scene in fresh_story()["Scenes"]]
         for anchor, coda, following in (
             ("nenio.trickster.epilogue.scholar", "nenio.lastcall.page", "nenio.trickster.react.sosiel_point_five"),
             ("terendelev.trickster.epilogue.rest", "terendelev.lastcall.page", "terendelev.trickster.react.galfrey.letter_awning"),
@@ -227,6 +227,72 @@ class NidalynnChaplainTests(unittest.TestCase):
             self.assertFalse(chaplain_available(paragraph, set()))
             self.assertTrue(chaplain_available(paragraph, {CHAPLAIN_PRAYED}))
             self.assertTrue(chaplain_available(paragraph, {CHAPLAIN_SENT_AWAY}))
+
+
+
+
+from pathlib import Path
+from types import SimpleNamespace
+
+from storylines import (devarra_tower, elyanka_hearse, herrax_house,
+                       horzalah_guild, horzalah_trickster, melazmera_hoard)
+from tools import prose_pending_lint, slot_brief_lint
+from tools.rrt_verify import sim_choice_available
+
+ROOT = Path(__file__).resolve().parents[1]
+HOSTS = (
+    (herrax_house, "herrax.house.a_night_out", "home", "herrax", 1),
+    (herrax_house, "herrax.house.her_rooms", "beside", "herrax", 1),
+    (herrax_house, "herrax.house.last_night", "agreed", "herrax", 1),
+    (horzalah_guild, "horzalah.trickster.beat.ramparts", "hand", "horzalah", 1),
+    (horzalah_guild, "horzalah.trickster.beat.ribbon", "tied", "horzalah", 2),
+    (elyanka_hearse, "elyanka.trickster.beat.table", "door2", "elyanka-camilary", 1),
+    (elyanka_hearse, "elyanka.trickster.ch6.collateral", "rift2", "elyanka-camilary", 1),
+    (melazmera_hoard, "melazmera.trickster.beat.count", "ate", "melazmera", 1),
+)
+
+
+class StructSlotHostTests(unittest.TestCase):
+    def test_reachable_continuations_preserve_legacy_terminal_positions(self):
+        for module, sid, nid, woman, old_count in HOSTS:
+            with self.subTest(scene=sid):
+                scene = next(s for s in module.SCENES if s["Id"] == sid)
+                host = next(n for n in scene["Nodes"] if n["Id"] == nid)
+                slot = sid + ".explicit.1"
+                self.assertEqual(old_count + 1, len(host["Choices"]))
+                self.assertTrue(all(c["Next"] is None for c in host["Choices"][:old_count]))
+                self.assertEqual(slot, host["Choices"][old_count]["Next"])
+                path = ROOT / "tools/route_packs/explicit_slots" / woman / (slot + ".json")
+                findings, _ = slot_brief_lint.lint([path], {"Scenes": [scene]})
+                self.assertEqual([], [f for f in findings if f["severity"] == "hard"])
+                disconnected = copy.deepcopy(scene)
+                next(n for n in disconnected["Nodes"] if n["Id"] == nid)["Choices"].pop()
+                findings, _ = slot_brief_lint.lint([path], {"Scenes": [disconnected]})
+                self.assertIn("retired", [f["code"] for f in findings])
+
+    def test_epilogue_appends_after_all_four_existing_paragraphs(self):
+        scene = next(s for s in horzalah_trickster.SCENES
+                     if s["Id"] == "horzalah.trickster.epilogue.decided")
+        page = scene["Nodes"][0]
+        self.assertEqual(5, len(page["Paragraphs"]))
+        self.assertEqual("horzalah.trickster.epilogue.decided.explicit.1", page["Paragraphs"][4]["Id"])
+        self.assertIsNone(page["Choices"][0]["Next"])
+        modules = {entry[0] for entry in HOSTS} | {horzalah_trickster}
+        story = {"Scenes": [s for module in modules for s in module.SCENES]}
+        pending = json.loads((ROOT / "tools/route_packs/plans/prose-pending.json").read_text(encoding="utf-8"))
+        self.assertEqual([], prose_pending_lint.check(story, pending, integration=True))
+        self.assertTrue(prose_pending_lint.check(story, {"version": 1, "pending": []}, integration=True))
+
+    def test_before_the_end_requires_first_bite_on_flown_branch(self):
+        scene = next(s for s in devarra_tower.SCENES if s["Id"] == "devarra.tower.before_the_end")
+        climb = next(n for n in scene["Nodes"] if n["Id"] == "climb")
+        answer = climb["Choices"][2]
+        self.assertEqual("owe_free", answer["Next"])
+        flags = {"devarra.trickster.flown"}
+        self.assertFalse(sim_choice_available(answer, SimpleNamespace(flags=flags)))
+        flags.add("devarra.tower.first_bite")
+        self.assertTrue(sim_choice_available(answer, SimpleNamespace(flags=flags)))
+        self.assertTrue(sim_choice_available(climb["Choices"][0], SimpleNamespace(flags=set())))
 
 
 if __name__ == "__main__":

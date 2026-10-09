@@ -1,7 +1,7 @@
 {
   "slot_id": "herrax.house.last_night.explicit.1",
   "host_scene": "herrax.house.last_night",
-  "host_node": "agreed",
+  "host_node": "herrax.house.last_night.explicit.1",
   "participants": [
     "Herrax",
     "Commander"
@@ -27,10 +27,10 @@
   "authored_continuity": {
     "setting": "Existing authored farewell scene; the move to her private floor follows the host's terminal handshake.",
     "history": "Committed Trickster Herrax after herrax.trickster.madam.reachable (her first night); this is a later return.",
-    "resumption": "herrax.house.last_night/agreed -> \"Good.\" -> reserved node -> scene exit (reached via say or dead). The host is terminal, so last_line is the slot's own closing beat."
+    "resumption": "herrax.house.last_night/agreed -> appended Continue (same existing receipt effects) -> herrax.house.last_night.explicit.1 -> scene exit. Legacy answers retain their original terminal targets and positions. last_line is the slot closing beat."
   },
   "last_line": "N: Before dawn Herrax is asleep across the wider half of the bed, one ragged wing over your legs. She does not wake when you dress.",
-  "default_text": "{n}She keeps hold of your hand off the dais and up her stairs, and shuts the door on the hall.{/n}",
+  "default_text": "[PROSE PENDING: herrax.house.last_night.explicit.1]",
   "example": "N: Herrax kicks the door shut behind you without letting go of your hand.\nH: Nobody downstairs gets this for any price, lover. Try not to waste it.",
   "min_lines": 14,
   "max_lines": 20,

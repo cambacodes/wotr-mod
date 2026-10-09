@@ -1,7 +1,7 @@
 {
   "slot_id": "elyanka.trickster.ch6.collateral.explicit.1",
   "host_scene": "elyanka.trickster.ch6.collateral",
-  "host_node": "rift2",
+  "host_node": "elyanka.trickster.ch6.collateral.explicit.1",
   "participants": [
     "Elyanka",
     "Commander"
@@ -27,7 +27,7 @@
   ],
   "last_line": "E: For my Lady. She likes an offering warm when it is pledged.",
   "example": "N: Elyanka lets the tent flap fall shut behind her.\nE: If the Wound means to have you, it can have what is left when I am done.",
-  "default_text": "{n}She does not go back to her hearse until the camp fires are ash.{/n}",
+  "default_text": "[PROSE PENDING: elyanka.trickster.ch6.collateral.explicit.1]",
   "min_lines": 6,
   "max_lines": 10,
   "content_scope": "Reserved explicit slot for the Commander and Elyanka only. Both Commander variants are required."

@@ -1239,3 +1239,24 @@ def _court_answer_receipts():
         dict(Text='{n}Herrax returned the refused answer unopened. On the outside she wrote: "Fine. Rokhorn\'s lies are more entertaining anyway."{/n}', Requires=[L + "court.refused"], Forbids=[]),
     ])
 _court_answer_receipts()
+
+
+# struct-slot-hosts: optional reserved continuation; retain every legacy exit.
+from copy import deepcopy as _slot_deepcopy
+from story_format import n as _slot_node
+
+for _slot_scene_id, _slot_host_id in (
+    ('herrax.house.a_night_out', 'home'),
+    ('herrax.house.her_rooms', 'beside'),
+    ('herrax.house.last_night', 'agreed'),
+):
+    _slot_id = _slot_scene_id + ".explicit.1"
+    _slot_text = "[PROSE PENDING: " + _slot_id + "]"
+    _slot_scene = next(s for s in SCENES if s["Id"] == _slot_scene_id)
+    _slot_host = next(n for n in _slot_scene["Nodes"] if n["Id"] == _slot_host_id)
+    _slot_entry = _slot_deepcopy(_slot_host["Choices"][0])
+    _slot_entry.pop("Id", None)
+    _slot_entry["Text"] = "Continue"
+    _slot_entry["Next"] = _slot_id
+    _slot_host["Choices"].append(_slot_entry)
+    _slot_scene["Nodes"].append(_slot_node(_slot_id, "Narrator", _slot_text, c("Continue")))
