@@ -266,17 +266,17 @@ def integrate(payload):
             alt['Text'] = '{n}On the chapel steps she kept her service and took the Commander as well, because she wanted both and saw no reason to go hungry for either. Her hunger was gone. Her memories were not; she told them at table, and would not be loved by anyone who needed her to forget them.{/n}'
             page['Paragraphs'].append(alt)
         if 'month after Threshold' in par['Text']:
-            par['Text'] = ('{n}She had asked for a future on the citadel wall, with the city lamps below. '
-                'When the war was over and the question came round again, she did not wait to be answered. '
+            par['Text'] = ('{n}She had asked once, on the edge of her bedroll, for the scrolls and the hand to stop, to see whether she still wanted the Commander with nothing in it for the hunger. She did. '
+                'When the war was over she did not wait to be sent for. '
                 'She took a fold of the Commander\'s sleeve in her fist and said "Stay," as if it were an order, and it was.{/n}')
     page = node(P + 'epilogue.declined', 'page')
     for par in page.get('Paragraphs', []):
         if 'daybook' in par['Text']:
             guard(par, 'Requires', INTAKE)
-            par['Text'] = '{n}She kept her daybook. The question the Commander had left unanswered sat alone on one page for a year; then she turned the page and wrote something else, and did not cross it out.{/n}'
+            par['Text'] = '{n}She kept her daybook. One line, the thing she had meant to ask the Commander, sat alone on a page for a year; then she turned the page and wrote something else, and did not cross it out.{/n}'
     page['Paragraphs'] += [
         p('{n}The Commander had once asked her for only the parts of her that prayed, and she had refused. The end of the war did not change her answer. She was all of herself or none, and the Commander had chosen none.{/n}', requires=(P + 'cost.saint_only',)),
-        p('{n}She had asked first. The Commander had asked for time, and she gave it, and did not ask again. The next question was the Commander\'s to ask, and she was far too proud, and far too busy living, to sit and wait for it.{/n}',
+        p('{n}She had never waited to be asked. The Commander took time, and she gave it, and did not ask twice. The next question was the Commander\'s to ask, and she was far too proud, and far too busy living, to sit and wait for it.{/n}',
           requires=(T + 'relapse_two',), forbids=(P + 'cost.saint_only',)),
     ]
 
