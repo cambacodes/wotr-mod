@@ -440,7 +440,10 @@ hub(T + "first_bite", "Once a year, where she chooses", '"She sent for me. Just 
     nar("bite", '''{n}Her eye stays on yours as her teeth close around your forearm. The points break the skin, no deeper than the small bite you promised. She drinks, then releases the arm. You bind it with the fleece beside you.{/n}
 {n}She raises her wing, exposing the seam where the killing blow went in. Her tail draws you across the cool stone and against her belly. You put your hand beneath the raised wing; she shifts into the touch, her claws grinding against the floor.{/n}
 "Mine," {n}she says against your hair.{/n} "Stay. I did not call you up here for your arm alone."
-{n}She draws you closer, and you reach for her.{/n}''',
+{n}She draws you closer, and you reach for her.{/n}
+{n}Your hands find the buckles of your armor and she watches every one of them open, her eye gone to a coal, her breath coming slow and hot and loud in the dark of the wing. Gauntlet, bracer, belt, the wet leather and the shirt beneath it; you set each piece on the stone and her tail takes each new stretch of bare skin in turn, coiling up your calf, round your thigh, over your hip, drawing the cold out of you with its heat. The scales under your palms run from smooth to ridged to blistering, and where you press, her whole length shudders and her claws grind furrows in the floor.{/n}
+"Mine," {n}she says again, lower.{/n} "I have eaten better than you and wanted it less. Tell me what you want, little thing. Say it out loud, so the stone hears it."
+{n}You tell her. She listens to every word with her head bent over you, her breath hot on your face, and when you finish she makes a sound in her chest like a forge bellows drawing in air. The wing comes down over the two of you. The tail takes you in a slow, tightening spiral against her belly, your bare skin to her hide, and she holds you there, hot and trembling and entirely hers, while the last of the cold goes out of the stone.{/n}''',
         c("Continue", "morning")),
     nar("morning", '''{n}The brush has burned to a black ring. Dawn reaches the doorway where you left your armor. You lie beneath her wing on the unlit side of the tower. Her scales have pressed red marks into your shoulder and hip. The fleece around your forearm is spotted with blood; the crescent beneath it throbs when you move.{/n}''',
         c("Continue", "after")),
@@ -455,7 +458,10 @@ hub(T + "first_bite", "Once a year, where she chooses", '"She sent for me. Just 
     nar("bite_free", '''{n}Her eye stays on yours as her teeth close around your forearm. The points break the skin, no deeper than the small bite you promised. She drinks, then releases the arm. You bind it with the fleece beside you.{/n}
 {n}She raises her wing, exposing the scar left by the fight in her lair. Her tail draws you across the cool stone and against her belly. You put your hand beneath the raised wing; she shifts into the touch, her claws grinding against the floor.{/n}
 "Mine," {n}she says against your hair.{/n} "Stay. I did not call you up here for your arm alone."
-{n}She draws you closer, and you reach for her.{/n}''',
+{n}She draws you closer, and you reach for her.{/n}
+{n}Your hands find the buckles of your armor and she watches every one of them open, her eye gone to a coal, her breath coming slow and hot and loud in the dark of the wing. Gauntlet, bracer, belt, the wet leather and the shirt beneath it; you set each piece on the stone and her tail takes each new stretch of bare skin in turn, coiling up your calf, round your thigh, over your hip, drawing the cold out of you with its heat. The scales under your palms run from smooth to ridged to blistering, and where you press, her whole length shudders and her claws grind furrows in the floor.{/n}
+"Mine," {n}she says again, lower.{/n} "I have eaten better than you and wanted it less. Tell me what you want, little thing. Say it out loud, so the stone hears it."
+{n}You tell her. She listens to every word with her head bent over you, her breath hot on your face, and when you finish she makes a sound in her chest like a forge bellows drawing in air. The wing comes down over the two of you. The tail takes you in a slow, tightening spiral against her belly, your bare skin to her hide, and she holds you there, hot and trembling and entirely hers, while the last of the cold goes out of the stone.{/n}''',
         c("Continue", "morning")),
 ], requires=(COMMITTED, BITTEN, CLIMBED), forbids=(BITTEN_ONCE,), delay=24)   # the tower is climbed before it is lit
 
@@ -840,7 +846,12 @@ hub(T + "under_the_wing", "The storm", '"There\'s a storm coming. Is she all rig
     dv("her", '''"Sit," {n}she says.{/n} "There. Against me." {n}Her flank is hot as a banked hearth through your wet clothes.{/n} "You are cold. Crusaders are always cold. You eat bread and wear iron and wonder why." {n}The wing settles lower, and the dark closes in, warm and close and smelling of forge-smoke and rain.{/n} "Sleep, if you want. I will not bite. It is not the day."''',
        c("[Sleep against her.]", "sleep"),
        c('"Why did you call me up in the storm?"', "why")),
-    dv("why", '''{n}The storm answers first, all around the wing.{/n} "Because in the lair, before, there was a storm like this, and I lay alone under the rock and listened to the thunder and was not afraid of it, and it was very dull." {n}Her breath stirs your wet hair.{/n} "And tonight I wanted to find out whether it would still be dull with a thing beside me that I could frighten. It is not. Sleep."''',
+    dv("why", '''{n}The storm answers first, all around the wing.{/n} "Because in the lair, before, there was a storm like this, and I lay alone under the rock and listened to the thunder and was not afraid of it, and it was very dull." {n}Her breath stirs your wet hair.{/n} "And tonight I wanted to find out whether it would still be dull with a thing beside me that I could frighten. It is not. Sleep."
+{n}You close your eyes. A claw lifts your chin before you are halfway under, no harder than a fingertip.{/n}
+"No." {n}The great head lowers over you.{/n} "I said sleep. I changed my mind. It is mine to change." {n}Her breath is a furnace across your wet shirt, and the heat draws steam out of the cloth.{/n} "Take that off. It is cold and it stinks of rain. You will not be cold under me."
+{n}You peel the soaked clothes away piece by piece, and she watches without blinking, one eye, orange, an arm's length from your face. Each time you stop she makes a low sound of impatience in her throat. Her tail is around you before the last of it hits the floor, drawing you across the stone into the hollow beneath the wing, against the roaring heat of her belly. Scales ridged and smooth against your bare skin, her claws shifting on the stone either side of you, her breath all down your back.{/n}
+"Frightened?" {n}It rumbles through your ribs.{/n} "Good. Dull would be an insult. Put your hands on me and stay frightened."
+{n}You do. She shudders under them, from the throat to the tail. The wing shuts out the storm, and she pulls you in underneath her.{/n}''',
        c("[Sleep against her.]", "sleep")),
     nar("sleep", '''{n}You sleep. Sometime in the night you wake, and the storm is still raging somewhere beyond the wing, and her great head has come around in the dark and is resting on the floor beside you, one eye half-open, orange as a coal, watching you breathe.{/n}
 {n}When she sees that you are awake she closes it, deliberately, and pretends to be asleep until the morning.{/n}''',
@@ -863,7 +874,10 @@ hub(T + "before_the_end", "What you still owe", '"I\'m going somewhere I might n
        c("Continue", "end_her")),
     dv("end_her", '''"Go down. When you leave Drezen, look back." {n}She lifts her head above the broken wall.{/n} "I want you to see how much of the sky I fill."''',
        c("[Go down the mountain. Look back.]", flags=(LAST_NIGHT,))),
-    dv("owe_free", '''"You owe me the end." {n}The laugh, soft, like a forge drawing breath.{/n} "Yes. You have been paying it in pieces since I flew from you, and you are not finished, and a thing that is still paying cannot die. I decided that the night you first owed me. I meant it as a threat." {n}She lowers her head until her brow rests against yours, hot as a forge stone.{/n} "It is still a threat. Come back and pay."''',
+    dv("owe_free", '''"You owe me the end." {n}The laugh, soft, like a forge drawing breath.{/n} "Yes. You have been paying it in pieces since I flew from you, and you are not finished, and a thing that is still paying cannot die. I decided that the night you first owed me. I meant it as a threat." {n}She lowers her head until her brow rests against yours, hot as a forge stone.{/n} "It is still a threat. Come back and pay."
+{n}The wing comes down over you both, and the dark under it is the dark of a banked furnace. Her breath rolls over your face and throat. Her tail climbs your leg without asking and winds around your thigh, and her great head turns, slowly, so that her jaw drags along your shoulder, the teeth a finger-width from the skin and held there.{/n}
+"A creditor collects before the debtor can die," {n}she says.{/n} "Take your clothes off, and let me count what I am owed."
+{n}You do, with her eye on every inch of it. She draws you in against her belly, scales ridged and blistering under your bare palms, her whole body shifting to fit you, the claws on the floor grinding as you press your hands to the seam of hide where the heat is worst. She makes a sound you have never heard from anything that lives, and holds you hard against her, and tells you in her low forge-voice exactly whose you are.{/n}''',
        c("Continue", "end_her")),
 ], requires=(COMMITTED,), forbids=(LAST_NIGHT,), delay=120, chapters=(5,))
 
