@@ -763,7 +763,7 @@
     "noct.sixth_passenger": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "627fe9b72aa81a755566b0e3776b4e1a28c541c637cedc16bdce75016198dea0"
+      "text_sha": "13209fb3c111a0119ea0335ace42f41a48972d08bfe4f5f7967af8a29c6463d2"
     },
     "noct.lamp_measure": {
       "owner": "claude",
@@ -788,7 +788,7 @@
     "noct.demonstration": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "70472c59e80f83efafb2f09b4604d1f8559269890cd9bce2c196a942e54de114"
+      "text_sha": "c163686e419c5a157cb89dbf05df2154b11c2bf5c4db31877b65563b90c5eae5"
     },
     "noct.voices_in_glass": {
       "owner": "claude",
@@ -803,7 +803,7 @@
     "noct.return_count": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "a9df2d8d88cc26579859e49ab4cbc6b43dcbcf96dbd3fc0c9e726330267cd471"
+      "text_sha": "fe1d3191d9b63d7501343b48da20bbbfc0894f7df8483bac3711f71a064aea3d"
     },
     "noct.after_the_lamps": {
       "owner": "claude",
@@ -2493,7 +2493,7 @@
     "areelu.trickster.threshold.welcome": {
       "owner": "claude",
       "since": "1dc46d5d",
-      "text_sha": "9e8e535143090ac6ca14bc478a6a76a295b9cf1a28ba06c8b67b56893e63635d"
+      "text_sha": "75ac01290b12d111212210c41e0690e4ccfadb7daa364ffa1d1e69cff38b96ff"
     },
     "areelu.trickster.truth.the_desk": {
       "owner": "claude",
