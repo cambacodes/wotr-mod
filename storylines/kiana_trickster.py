@@ -77,7 +77,7 @@ PRESENCES = {
     # Q10: a spawned copy at Arsinoe's counter (E12b NearUnit), so the pivot needs Kiana's own actor. If Arsinoe is not in
     # the capital the anchor fails, kiana.presence.failed is raised, and the letter twin carries the pivot.
     "kiana.presence": dict(Unit=KYANA, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(NearUnit=ARSINOE, Side="right", Distance=2.5),
-                           Requires=["trickster.ever"], RequiresAnyGroups=[[RETURNED, MET]], Forbids=["kiana.closed"],
+                           Requires=[], RequiresAnyGroups=[[RETURNED, MET, "kiana.aftermath_seen"]], Forbids=["kiana.closed"],
                            MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub",
                            Greeting="{n}Kiana is perched on the end of Arsinoe's counter in a borrowed robe and her wedding "
                                     "shoes, swinging one foot, with a pen behind her ear and a list of names in her lap.{/n}"),
@@ -483,7 +483,7 @@ SCENES.append(scene("kiana.trickster.pouch.second_offer", "Revised terms", "Kian
 
 # --- The betrothed history: a registered-route beat of its own (absorbs kiana.answer in that world) ---------------------
 
-SCENES.append(scene("kiana.betrothal", "What betrothal is for", "Kiana", 5, "", [
+SCENES.append(scene("kiana.betrothal", "What betrothal is for", "Kiana", 5, "What betrothal is for", [
     k("start", '''{n}Kiana has taken down the cliff and the paper moon. The borrowed castle is a storeroom again, with two chairs in it, and she is sitting in one of them with the postponed licence on her knee.{/n}
 "A woman who is only betrothed can still change her mind. That's the whole point of betrothals. It's the only good thing about them." {n}She smooths the licence flat.{/n} "So tell me, Commander, and don't be charming about it. Did you stamp this to save a war, or to keep me unmarried?"''',
       c('[Tell her to marry him] "Marry him, Kiana. When the war lets you."', "marry"),
@@ -499,7 +499,7 @@ SCENES.append(scene("kiana.betrothal", "What betrothal is for", "Kiana", 5, "", 
 "So write to me. Court the princess properly this time; she has already lost one wedding."''',
       c('[Write her an invitation.]', flags=("kiana.available", "kiana.attracted", "kiana.separated", "kiana.waited"))),
 ], requires=(H_BETROTHED, "kiana.rehearsed"), forbids=("kiana.available",), delay=72, last=5, optional=False,
-   Relationship="kiana", Remote=True, Chapters=[5], Areas=[DREZEN]))
+   Relationship="kiana", ContactUnit=KYANA, InteractionHub="kiana.presence", Chapters=[5], Areas=[DREZEN]))
 
 
 # --- The registered night, on the Trickster path (Directive 12) ---------------------------------------------------------

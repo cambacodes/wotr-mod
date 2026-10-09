@@ -1037,5 +1037,28 @@
     "beat": "Review returned-by-Commander recollection against Kitrane identity and current-presence gate; preserve responsibility for the Iz kill.",
     "ruling": "struct2-08 Claude continuity review",
     "finding": "TER-A4-02"
+  },
+  {
+    "scene": "wenduag.trickster.epilogue.exclusive_refused",
+    "node": "page",
+    "woman": "Wenduag",
+    "beat": "Dedicated exclusive-refusal closure ending; do not claim Brask was released. Preserve her refusal and CLOSED. Await coordinator Brask aftermath disposition.",
+    "ruling": "struct2-09 WEN-A4-02"
+  },
+  {
+    "scene": "wenduag.trickster.court.claim",
+    "node": "partner_exclusive_refused",
+    "choice": 2,
+    "woman": "Wenduag",
+    "beat": "Exclusive-refusal aftermath with bound, bleeding Brask. Coordinator must select consequence and a legal continuation that preserves the saved terminal Next and closure; Claude owns consequence prose.",
+    "ruling": "struct2-09 WEN-A4-02"
+  },
+  {
+    "scene": "wenduag.trickster.court.claim_in_person",
+    "node": "partner_exclusive_refused",
+    "choice": 2,
+    "woman": "Wenduag",
+    "beat": "Exclusive-refusal aftermath with bound, bleeding Brask. Coordinator must select consequence and a legal continuation that preserves the saved terminal Next and closure; Claude owns consequence prose.",
+    "ruling": "struct2-09 WEN-A4-02"
   }
 ]

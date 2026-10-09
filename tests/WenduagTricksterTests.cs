@@ -186,9 +186,12 @@ internal static class WenduagTricksterTests
 
         // Trk_Wenduag_Cairn: the burial, taken alone (Lore/Knowledge, then Bluff vs Lann); her knife in her right hand.
         var afterBlow = World(story, 3, "trickster", "trickster.ever", Killed, P + "staged", P + "stroke_clean");
+        afterBlow.Area = "3091eaedc174f2c45a95a9e9743e9b09";
+        afterBlow.Flags.Add("lann.in_party");
+        afterBlow.AvailableContacts.Add("cb29621d99b902e4da6f5d232352fbda");
         check(Avail(cairn, afterBlow) && !Avail(cairn, World(story, 3, "trickster", "trickster.ever", Killed))
-              && cairn.Remote && cairn.Kind == "event" && cairn.TricksterDevice && cairn.TricksterState == "killed",
-            "Trk_Wenduag_Cairn: the cairn plays without the staged blow, or is not a device page.");
+              && !cairn.Remote && cairn.Kind == null && cairn.TricksterDevice && cairn.TricksterState == "killed",
+            "Trk_Wenduag_Cairn: the cairn plays without the staged blow, or is not a physical Neathholm device.");
         check(Ch(cairn, "read", 0).Check?.Skill == "SkillLoreNature" && Ch(cairn, "read", 1).Check?.Skill == "SkillKnowledgeWorld"
               && Ch(cairn, "lann_custom", 0).Check?.Skill == "CheckBluff" && Ch(cairn, "lann_custom", 0).Check?.DC == 18
               && Ch(cairn, "lann_guess", 0).Check?.DC == 24,
@@ -198,12 +201,17 @@ internal static class WenduagTricksterTests
         check(!buried.Has(Returned) && !buried.Has(Started), "Trk_Wenduag_Cairn: the cairn returns her before she digs.");
         // Overlapping native losses: WenduagNotInParty_Dead may hold beside WenduagKilled; the killed world still plays through.
         var killedAndDead = World(story, 3, "trickster", "trickster.ever", Killed, Dead, P + "staged", P + "stroke_clean");
+        killedAndDead.Area = "3091eaedc174f2c45a95a9e9743e9b09";
+        killedAndDead.Flags.Add("lann.in_party");
+        killedAndDead.AvailableContacts.Add("cb29621d99b902e4da6f5d232352fbda");
         check(Avail(stage, World(story, 3, "trickster", "trickster.ever", Dead)) && Avail(cairn, killedAndDead),
             "Trk_Wenduag_Cairn: the killed world stalls when WenduagNotInParty_Dead also holds.");
         var buriedDead = Take(cairn, killedAndDead, "build", 2, P + "cairn_built", P + "cairn.mark");
+        buriedDead.Area = Drezen;
         var homeDead = Take(back, Later(buriedDead, 72), "lann", 1, Returned);
         check(Avail(trial, At(Later(homeDead, 24), 5)), "Trk_Wenduag_Cairn: the courtship does not open after a return over overlapping losses.");
 
+        buried.Area = Drezen; // Actual travel after the Neathholm burial.
         // Trk_Wenduag_Back: she digs, and comes to Drezen (72 h); the Commander's no closes.
         check(!Avail(back, Later(buried, 71)) && Avail(back, Later(buried, 72)) && back.Areas.SequenceEqual(new[] { Drezen })
               && back.Chapters.SequenceEqual(new[] { 3, 5 }) && back.TricksterDevice,

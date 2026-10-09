@@ -121,6 +121,14 @@ internal static class EmberCampaignTests
                     var changed = Program.Copy(state); changed.Flags.Add(exceptional);
                     check(endings.Count(s => s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, changed)) == 1, "Exceptional friendship has conflicting/missing endings: " + exceptional);
                 }
+                // Native finale receipts drive the shared return reader; never
+                // insert commander_back or a friendship conclusion directly.
+                var returned = Program.Copy(state);
+                returned.Flags.UnionWith(new[] { "trickster", "trickster.ever", "sacrifice", "ending.trickster" });
+                Program.CurrentAvailable(story, endings[0], returned);
+                check(returned.Has("trickster.commander_back"), "Ember return fixture has no native producer.");
+                check(endings.Count(s => s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, returned)) == 1,
+                    "Returned ordinary friendship has conflicting/missing endings.");
                 normalHistories.Add(state);
             }
         }

@@ -34,6 +34,10 @@ Authored, no canon claim: Brask, Rusk, Tuhk, the cairns, the Isles stone.
 """
 from story_format import p
 
+from pathlib import Path
+
+from tools import prose_pending_lint, voice_authority
+
 PENDING = "[PROSE PENDING:"
 W = "wenduag.trickster."
 PAIR = "household.pair.seelah_wenduag."
@@ -291,9 +295,14 @@ def integrate(payload):
         node = _node(scenes, sid, nid)
         node["Paragraphs"] = list(node.get("Paragraphs", []) or []) + [dict(x) for x in paras]
     touched = {key[0] for key in NODES} | {key[0] for key in SUBS} | {key[0] for key in ADD}
-    for sid in touched | {s for s in scenes if _owned(s)}:
-        for node in scenes[sid]["Nodes"]:
-            texts = [node.get("Text", "")] + [a["Text"] for a in node["Choices"]] + [
-                para["Text"] for para in node.get("Paragraphs", []) or []]
-            if any(PENDING in t for t in texts):
-                raise ValueError("wenduag cloud: prose still pending at %s/%s" % (sid, node["Id"]))
+    # Registered integration placeholders belong to Claude's work queue.
+    # The shared validator still rejects missing, stale or unregistered targets.
+    owned = touched | {sid for sid in scenes if _owned(sid)}
+    pending = voice_authority.read_json(Path(__file__).resolve().parents[1] /
+                                       "tools/route_packs/plans/prose-pending.json")
+    pending = {"version": pending["version"],
+               "pending": [entry for entry in pending["pending"] if entry["scene"] in owned]}
+    errors = prose_pending_lint.check({"Scenes": [scenes[sid] for sid in owned]}, pending,
+                                     integration=True)
+    if errors:
+        raise ValueError("wenduag cloud: " + "; ".join(errors))

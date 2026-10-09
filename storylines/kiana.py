@@ -21,10 +21,13 @@ def s(id, title, nodes, requires=(), forbids=(), delay=48, optional=False, **ext
     for page in nodes:
         if not page["Portrait"]:
             page["Portrait"] = "Seelah" if page["Speaker"] == "Seelah" else "Kiana"
-    SCENES.append(scene("kiana." + id, title, "Kiana", 5, "", nodes,
-                        Relationship="kiana", Remote=True, Chapters=[5], Areas=[DREZEN],
+    SCENES.append(scene("kiana." + id, title, "Kiana", 5, "" if id in ("invitation", "seelah") else title, nodes,
+                        Relationship="kiana", Chapters=[5], Areas=[DREZEN],
                         requires=("seelah.souls_returned",) + requires,
-                        forbids=forbids, delay=delay, optional=optional, **extra))
+                        forbids=forbids, delay=delay, optional=optional,
+                        **({"Remote": True} if id in ("invitation", "seelah") else
+                           {"ContactUnit": "180b0eaa5dce387458d2ebf0ee943985",
+                            "InteractionHub": "kiana.presence"}), **extra))
 
 
 s("invitation", "One unfinished sentence", [

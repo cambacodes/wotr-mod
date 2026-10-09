@@ -1,0 +1,137 @@
+{
+  "job_id": "struct2-09",
+  "base_sha": "78f9b714dd8b5ea35e58c0a37609d6a9defdbd36",
+  "escalations": [
+    {
+      "id": "WEN-A4-02",
+      "owner": "coordinator / Claude voice / continuation runtime owner",
+      "evidence": [
+        "Both court.claim variants retain partner_exclusive_refused choice[2] Next=null and EXCLUSIVE/REFUSED/CLOSED effects.",
+        "The relationship and current presence reject CLOSED; an ordinary follow-up cannot run after this choice.",
+        "A distinct epilogue.exclusive_refused selector and exact registered Claude placeholder now exist."
+      ],
+      "recommendation": "Decide Brask fate and authorize a save-safe immediate post-choice continuation. Preserve existing choice index, Next and closure; do not assert the ordinary refusal released Brask."
+    },
+    {
+      "id": "WEN-A4-03",
+      "owner": "coordinator / WenduagEcho runtime owner",
+      "evidence": [
+        "Pinned tests/wenduag-echo-acceptance.md requires retained-original destination approach/click/occupancy/reload evidence.",
+        "src/WenduagEcho.cs still names TODO_VerifiedCellarPosition and requires live destination verification.",
+        "Current export has the shared trickster.foresight.page acceptance producer; checklist producer-merge TODO corrected."
+      ],
+      "recommendation": "Supply candidate-bound retained-original custody and destination captures, approach/click/occupancy/reload, later actor loss and off-Trickster controls; no new live gate was run."
+    },
+    {
+      "id": "wenduag.trickster.killed.back",
+      "owner": "coordinator / presence-contract and runtime owner",
+      "evidence": [
+        "The return producer forbids wenduag.trickster.returned.",
+        "Existing wenduag.presence requires that same returned flag and is guarded by the shared current-path presence bootstrap.",
+        "Reusing the hub for the return producer would make its entry unavailable; native Wenduag is killed in this history."
+      ],
+      "recommendation": "Approve a pre-return actor placement/cleanup contract and its shared earned-presence bootstrap, or nominate a verified native host for the Commander quarters encounter. Keep the old scene graph and 72-hour return delay."
+    }
+  ],
+  "proposals": [
+    {
+      "id": "kiana.pre_rescue_hosts",
+      "owner": "coordinator",
+      "idea": "Consider a separate hospital-host audit for possessed.fake_gem and awake.dog_collar; these pre-return scenes cannot use the earned post-aftermath Kiana hub."
+    },
+    {
+      "id": "kiana.seelah_host",
+      "owner": "coordinator / Seelah structure owner",
+      "idea": "The Seelah reaction is a different speaker, not a Kiana outing. Consider its own companion-host audit; it retains its existing remote delivery and current Seelah guards in this job."
+    }
+  ],
+  "unrun_acceptance": [
+    "tests.test_struct2_09",
+    "tests.test_wenduag_partner_stance",
+    "Managed Ember/Kiana/Wenduag suites; not selected by the pinned writing profile."
+  ],
+  "score_acceptance": "INT/HOW/COX >=91 requires independent judging; no implementer score awarded.",
+  "own_checks": [
+    {
+      "argv": [
+        "python",
+        "expansion.py"
+      ],
+      "exit_code": 0,
+      "note": "Latest regeneration exited 0: 4082 scenes; 8 Ember, 24 Kiana and 1 Wenduag remote-to-physical conversions. Earlier attempts exited 1 for placeholder guard/registry issues, corrected.",
+      "export_digest": "4e4705e470d9a8fa87561e1122a8d14c10a7e2763ff8fa024c28bc9c47b1d589",
+      "export_scene_count": 4082
+    },
+    {
+      "argv": [
+        "python",
+        "/work/Writer/tools/id_guard.py",
+        "/work/wt/RRT-struct2-09",
+        "--baseline",
+        "/tmp/struct2-09-base-Story.json"
+      ],
+      "exit_code": 0,
+      "note": "No lost IDs or shrunk choice arrays against pinned committed export."
+    },
+    {
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_savecompat_baseline",
+        "tests.test_utf8_io"
+      ],
+      "exit_code": 0,
+      "environment": {
+        "RRT_TEST_STORY": "/work/wt/RRT-struct2-09/development/Story.json"
+      },
+      "note": "19 tests passed; earlier attempts exited 1 before placeholder fixture corrections."
+    },
+    {
+      "argv": [
+        "python",
+        "tools/claude_work_queue_lint.py"
+      ],
+      "exit_code": 0,
+      "note": "Zero hard failures."
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "own exported scope comparison",
+      "note": "710 preexisting scoped scenes and 3102 existing choice positions/text/Next targets preserved against base committed export; all old narration/dialogue source literals and LF style preserved."
+    }
+  ],
+  "runner_receipts": "Wrapper-owned; gates deliberately empty in implementer receipt. Own checks are finding evidence, not final source/profile/environment-bound admission receipts.",
+  "refused_commands": [
+    {
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_struct2_09"
+      ],
+      "process_exit": 137,
+      "test_exit": null,
+      "reason": "Not in pinned python_modules selection; supplemental tests did not run."
+    },
+    {
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_struct2_09.PendingVoiceGuardTests",
+        "tests.test_utf8_io"
+      ],
+      "process_exit": 137,
+      "test_exit": null,
+      "reason": "Supplemental module selection refused; no test result claimed."
+    }
+  ]
+}

@@ -8,10 +8,13 @@ DREZEN = "2570015799edf594daf2f076f2f975d8"
 def s(id, title, nodes, requires, forbids=(), delay=48, **extra):
     for page in nodes:
         page["Portrait"] = "Kiana"
-    SCENES.append(scene("kiana." + id, title, "Kiana", 5, "", nodes,
-                        Relationship="kiana", Remote=True, Chapters=[5], Areas=[DREZEN],
+    delivery = ({"Remote": True} if id == "another_page" else
+                {"ContactUnit": "180b0eaa5dce387458d2ebf0ee943985", "InteractionHub": "kiana.presence"})
+    SCENES.append(scene("kiana." + id, title, "Kiana", 5, "" if id == "another_page" else title, nodes,
+                        Relationship="kiana", Chapters=[5], Areas=[DREZEN],
                         requires=("seelah.souls_returned", "kiana.lovers", "kiana.morning", *requires),
-                        forbids=("kiana.closed", "inhuman", *forbids), delay=delay, optional=True, **extra))
+                        forbids=("kiana.closed", "inhuman", *forbids), delay=delay, optional=True,
+                        **delivery, **extra))
 
 
 s("another_page", "There is still time to answer", [

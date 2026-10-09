@@ -8,8 +8,9 @@ DREZEN = "2570015799edf594daf2f076f2f975d8"
 def s(id, title, nodes, after, delay=48, **extra):
     for page in nodes:
         page["Portrait"] = "Kiana"
-    SCENES.append(scene("kiana." + id, title, "Kiana", 5, "", nodes,
-        Relationship="kiana", Remote=True, Chapters=[5], Areas=[DREZEN],
+    SCENES.append(scene("kiana." + id, title, "Kiana", 5, title, nodes,
+        Relationship="kiana", ContactUnit="180b0eaa5dce387458d2ebf0ee943985",
+        InteractionHub="kiana.presence", Chapters=[5], Areas=[DREZEN],
         requires=("seelah.souls_returned", "kiana.lovers", "kiana.followthrough_kept", *after),
         forbids=("kiana.closed", "inhuman", "kiana.farewell", "kiana.future_settled"),
         ForbidOverrides={"kiana.farewell": "kiana.catchup_requested", "kiana.future_settled": "kiana.further_requested"},

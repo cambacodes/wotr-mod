@@ -15,10 +15,13 @@ SCENES = []
 def s(id, title, nodes, requires=(), delay=24):
     for node in nodes:
         node["Portrait"] = "Ember"
-    SCENES.append(scene("ember." + id, title, "Ember", 3, "", nodes,
-                        Relationship="ember", Remote=True, Chapters=[3], last=3,
+    SCENES.append(scene("ember." + id, title, "Ember", 3, title, nodes,
+                        Relationship="ember", Chapters=[3], last=3,
+                        ContactUnit="2779754eecffd044fbd4842dba55312c",
+                        AnswerLists=["f2a35965e9bc601449498bd022b04d9d"],
                         Areas=["2570015799edf594daf2f076f2f975d8"],
-                        requires=("ember.present",) + requires, delay=delay))
+                        requires=("ember.present",) + requires, delay=delay,
+                        forbids=("ember.closed", "ember_dead", "ember_gone", "ember.absent")))
 
 
 s("drawing", "A difficult likeness", [

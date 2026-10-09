@@ -392,6 +392,13 @@
       "surface": "node",
       "index": null,
       "text_sha": "7eeb6ed7f8cda8ef47bea17580c47bbbf1013973b5440ef00f4eb82308519e59"
+    },
+    {
+      "scene": "wenduag.trickster.epilogue.exclusive_refused",
+      "node": "page",
+      "surface": "node",
+      "index": null,
+      "text_sha": "7ad008e454e5bec39dc24d89feba5bb5805deecc26d0a60c49360d6b852c206d"
     }
   ]
 }

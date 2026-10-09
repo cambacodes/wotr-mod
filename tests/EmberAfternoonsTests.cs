@@ -11,6 +11,7 @@ internal static class EmberAfternoonsTests
             .Select(id => story.Scenes.Single(s => s.Id == "ember." + id)).ToArray();
         var start = new Snapshot { Chapter = 3, Hour = 1000, Area = scenes[0].Areas.Single() };
         start.Flags.UnionWith(new[] { "ember.present", "seelah.committed", "konomi.committed" });
+        start.AvailableContacts.Add("2779754eecffd044fbd4842dba55312c");
         var states = new List<Snapshot> { start };
         foreach (var scene in scenes)
         {

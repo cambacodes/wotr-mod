@@ -10,6 +10,7 @@ internal static class KianaEntryTests
         var rehearsal = story.Scenes.Single(s => s.Id == "kiana.rehearsal");
         var initial = new Snapshot { Chapter = 5, Area = invitation.Areas.Single(), Hour = 1000 };
         initial.Flags.UnionWith(invitation.Requires);
+        initial.AvailableContacts.Add("180b0eaa5dce387458d2ebf0ee943985");
         // Main.Update opens the relationship journal before the player answers the invitation.
         initial.Flags.Add(story.Relationships["kiana"].StartedFlag);
         foreach (var result in Program.Walk(invitation, initial))
