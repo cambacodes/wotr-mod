@@ -24,7 +24,7 @@ PROSE = {
 "Who taught you to sell it?" {n}you ask him quietly, while he is still shaking from a kiss.{/n} "Not the captain. The captain can't spell his own ship."
 "Nobody, I swear, nobody—a woman. Only a woman, on the quay. White shoes." {n}He hears himself.{/n} "She never came aboard. She said the mud was beneath her."
 "Her name."
-"Ilvara," {n}he says, and then, horrified, "I didn't—I never said—"
+"Ilvara," {n}he says, and then, horrified,{/n} "I didn't—I never said—"
 "And the captain's books? Who keeps them?"
 "Dessa. His girl. His slave. She writes everything down, everything, I swear on my eyes—"
 {n}Nocticula rewards him with a long kiss on the mouth, and over his head her eyes find yours. She looks hungry.{/n}
@@ -73,7 +73,7 @@ Nocticula sits back on her throne. Without turning her head she puts her hand on
 {n}Somewhere on the steps a courtier shouts, "Ten says the crusader stammers! Ten!" and someone takes the bet, and someone else raises it.{/n}
 {n}Below the dais Ilvara has straightened. Whatever has been done to her tonight, she is a performer, and she is still performing: chin up, face composed, white shoes together on the black floor. She is waiting for you to fail.{/n}''',
     ("demonstration", "exposed"): '''{n}You stand. The hall quiets by degrees, because the Lady's hand has left your knee.
-You tell them where her door came from: a scrap of the Lady's own old protection, cut from a ship she once let pass. And you tell them what it is made of. The lamps are not souls, and not quite prisoners. They are arrivals, journeys begun and never allowed to finish, held open by the travelers caught inside them. The harbor is built out of them. Every passenger who crossed and was not let out is a beam in its roof. Ilvara found an old door, opened it with a stolen permission, and has been building with people ever since, and selling them the right to leave.
+You tell them where her door came from: a scrap of the Lady's own old protection, cut from a ship she once let pass. And you tell them what it is made of. The lamps are not souls, and not quite prisoners. They are arrivals, journeys begun and never allowed to finish, held open by the travelers caught inside them. The harbor is built out of them. Every passenger who crossed and was not let out is a beam in its roof. Ilvara found an old door, opened it with a stolen permission, and has been building with people ever since, and selling them the right to leave.{/n}
 "She isn't a magician," {n}you finish.{/n} "She's a slaver who never had to buy chains."
 {n}The court howls, the way a crowd howls at an execution when the first cut is a good one. Ilvara's composure breaks all at once: her mouth works, her eyes go to the doors, and a demon with a jeweled snout leans down from the steps and spits on her white shoes.{/n}
 "Did you hear that?" {n}Nocticula's voice rides over the noise.{/n} "My crusader reads your little trick better than you perform it."''',
@@ -87,7 +87,7 @@ You sit down in it. It is very loud. Nocticula has not taken her hand from your 
 Through the door you can see the dry harbor: sand, posts, five lamps burning with nobody to tend them.
 At the first lamp he speaks a name. His voice cracks on it. He breaks the half-coin against its mate, with his teeth when his fingers fail, and a woman steps out of the flame: big, scar-armed, a brass bell clenched in her fist. Vessa. The first thing she sees, after however long she has been inside that light, is Orren's face a foot from hers.
 She knows him. You watch her know him.
-She hits him with the bell. Not hard; she has no strength yet. He goes down on the sand and stays there until Rhez jerks the rope.
+She hits him with the bell. Not hard; she has no strength yet. He goes down on the sand and stays there until Rhez jerks the rope.{/n}
 "Walk," {n}Rhez calls to her.{/n}
 {n}Vessa walks out past him. At every lamp after that it is the same: each passenger he sold steps out of the flame and sees him first, on his knees in his red coat with a coin between his teeth, and each of them knows him.{/n}
 "I promised you a spectacle," {n}Nocticula murmurs, leaning down to you.{/n} "Isn't this better than hanging?"''',

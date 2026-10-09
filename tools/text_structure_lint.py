@@ -120,4 +120,12 @@ def check(story, draft=False, exceptions=None):
                     continue
                 result[level].append(dict(scene=sid, location=location, code=code, start=start, end=end,
                                           match=text[start:end], draft=draft))
+    # Inline (native-cue) scenes render each node as one cue: gated paragraphs become Continue cues that override the
+    # node's authored answers in game (managed NativeAudienceTests, 2026-10-08). Catch it here, before the managed run.
+    for scene in story.get("Scenes", []):
+        if scene.get("NativeReturnCue"):
+            for node in scene.get("Nodes", []):
+                if node.get("Paragraphs"):
+                    result["hard"].append(dict(scene=scene["Id"], location=node["Id"], code="inline-scene-paragraphs",
+                                               start=0, end=0, match="", draft=draft))
     return result

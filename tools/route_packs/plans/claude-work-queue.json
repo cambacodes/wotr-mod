@@ -387,5 +387,50 @@
     "ruling": "coordinator-2026-10-08",
     "why": "gated paragraphs on a node with authored answers crash NativeAudienceTests",
     "dependency": "structure: add a no-answer host node (Codex structure, no dialogue)"
+  },
+  {
+    "scene": "devarra.tower.before_the_end",
+    "woman": "devarra",
+    "node": "climb",
+    "beat": "Restore the Devarra cloud reader for this node (text in git history of storylines/devarra_cloud.py, villain-route-devarra pass) once a gated host node exists: inline scenes cannot carry gated paragraphs.",
+    "ruling": "coordinator-2026-10-08",
+    "why": "inline-scene-paragraphs (NativeAudienceTests crash)",
+    "dependency": "structure: gated host node in the inline tower scene (Codex structure, no dialogue)"
+  },
+  {
+    "scene": "devarra.tower.the_dwarf",
+    "woman": "devarra",
+    "node": "protect",
+    "beat": "Restore the Devarra cloud reader for this node (text in git history of storylines/devarra_cloud.py, villain-route-devarra pass) once a gated host node exists: inline scenes cannot carry gated paragraphs.",
+    "ruling": "coordinator-2026-10-08",
+    "why": "inline-scene-paragraphs (NativeAudienceTests crash)",
+    "dependency": "structure: gated host node in the inline tower scene (Codex structure, no dialogue)"
+  },
+  {
+    "scene": "devarra.tower.the_hoard",
+    "woman": "devarra",
+    "node": "honest_her",
+    "beat": "Restore the Devarra cloud reader for this node (text in git history of storylines/devarra_cloud.py, villain-route-devarra pass) once a gated host node exists: inline scenes cannot carry gated paragraphs.",
+    "ruling": "coordinator-2026-10-08",
+    "why": "inline-scene-paragraphs (NativeAudienceTests crash)",
+    "dependency": "structure: gated host node in the inline tower scene (Codex structure, no dialogue)"
+  },
+  {
+    "scene": "devarra.tower.the_hoard",
+    "woman": "devarra",
+    "node": "steal_her",
+    "beat": "Restore the Devarra cloud reader for this node (text in git history of storylines/devarra_cloud.py, villain-route-devarra pass) once a gated host node exists: inline scenes cannot carry gated paragraphs.",
+    "ruling": "coordinator-2026-10-08",
+    "why": "inline-scene-paragraphs (NativeAudienceTests crash)",
+    "dependency": "structure: gated host node in the inline tower scene (Codex structure, no dialogue)"
+  },
+  {
+    "scene": "devarra.tower.the_hoard",
+    "woman": "devarra",
+    "node": "ask_her",
+    "beat": "Restore the Devarra cloud reader for this node (text in git history of storylines/devarra_cloud.py, villain-route-devarra pass) once a gated host node exists: inline scenes cannot carry gated paragraphs.",
+    "ruling": "coordinator-2026-10-08",
+    "why": "inline-scene-paragraphs (NativeAudienceTests crash)",
+    "dependency": "structure: gated host node in the inline tower scene (Codex structure, no dialogue)"
   }
 ]

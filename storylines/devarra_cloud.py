@@ -226,41 +226,10 @@ APPEND[(D + "epilogue.pending", "page")] = [when((BILL, CALLED), NAMED_UNBOUND),
 APPEND[(D + "epilogue.hungry", "page")] = [when((BILL, CALLED), NAMED_UNBOUND), when((BILL,), NEAREST, forbids=(CALLED,))]
 APPEND[(D + "epilogue.claimed", "page")] = [when((BILL, CALLED), NAMED_FAR), when((BILL,), NEAREST, forbids=(CALLED,))]
 APPEND[(D + "epilogue.refused", "page")] = [when((BILL,), UNCOLLECTED)]
-APPEND[(T + "before_the_end", "climb")] = [
-    when((T + "battle_price_accepted",),
-         "{n}Then, before you can answer:{/n} \"Your generals bought a battle from me. Tell them I have not chosen one, and "
-         "that I will not, because nothing in this war has been worth my wings. I have been taking the difference out of "
-         "their horses while I decided.\" {n}A bone on the floor still carries a cavalry brand.{/n} \"They can keep "
-         "waiting. Waiting is good for generals.\""),
-    when((T + "battle_offered",),
-         "{n}Then, before you can answer:{/n} \"Your scouts found a road on the Wound side burned black for a mile last week, "
-         "with a demon column standing in it, cooked. Do not ask me about it. Those were my terms.\" {n}She licks something "
-         "off a back tooth.{/n} \"Nobody thanked me. Good.\"",
-         forbids=(T + "battle_price_accepted",)),
-]
-APPEND[(T + "the_dwarf", "protect")] = [
-    when((T + "warned",),
-         "{n}Then her tail takes your legs out from under you, and she pins you to the floor among the small bones with one "
-         "claw across your chest, not quite hard enough to break anything.{/n} \"That is twice, crusader. I said once. You "
-         "keep saying that word to me as though I might come to like it.\" {n}She leans until a rib creaks, holds it there, "
-         "and lets you up.{/n}"),
-]
-APPEND[(T + "the_hoard", "honest_her")] = [
-    when((D + "debt_claimed",),
-         "{n}Then she hooks the smallest coin out of the heap, a clipped copper nobody would bend down for in a gutter, and "
-         "flicks it at your chest.{/n} \"For Vang's stone. You told me I owed you. A dragon pays what she owes in the coin "
-         "she chooses, and that is the coin. Spend it on something small.\""),
-]
-APPEND[(T + "the_hoard", "steal_her")] = [
-    when((D + "debt_claimed",),
-         "\"And that settles what you said I owed you for Vang's stone. You took your payment yourself. It saves me the "
-         "insult of choosing it.\""),
-]
-APPEND[(T + "the_hoard", "ask_her")] = [
-    when((D + "debt_claimed",),
-         "{n}A second coin follows the first, a clipped copper, and rings off your boot.{/n} \"That one is not a gift. It is "
-         "what I owed you for Vang's stone. You said I owed. I pay what I owe in the coin I choose.\""),
-]
+# Five tower readers (before_the_end/climb, the_dwarf/protect, the_hoard/{honest,steal,ask}_her) were removed
+# 2026-10-08: tower scenes are inline (NativeReturnCue) and cannot carry gated paragraphs. Their text waits in
+# claude-work-queue.json (git history of this file) for gated host nodes (structure).
+
 
 
 def _scenes(payload):
