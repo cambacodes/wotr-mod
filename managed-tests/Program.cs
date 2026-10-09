@@ -136,6 +136,8 @@ internal static class Program
     {
         var story = JsonConvert.DeserializeObject<Story>(File.ReadAllText(storyPath))!;
         Rules.Validate(story);
+        // Engine validation alone, minutes before the managed suites: catches every Story.Validate rule early (A100).
+        if (Environment.GetEnvironmentVariable("RRT_VALIDATE_ONLY") == "1") { Console.WriteLine("RRT-VALIDATE-OK"); return 0; }
         RunSuite("TerendelevDeliveryBlueprintTests", () => TerendelevDeliveryBlueprintTests.Run(Check));
         RunSuite("NativeContactStorageTests", () => NativeContactStorageTests.Run(Check));
         RunSuite("JerribethRecoveryObservationTests", () => JerribethRecoveryObservationTests.Run(Check));

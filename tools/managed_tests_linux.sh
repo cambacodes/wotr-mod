@@ -45,6 +45,8 @@ run_fixture() {
     fi
     env "$@" mono "$scratch/tests/ManagedBuildTests.exe" "$game" "$story"
 }
+# RRT_VALIDATE_ONLY=1: build + Rules.Validate on the export, nothing else (cloudcheck/gates, A100).
+if [[ "${RRT_VALIDATE_ONLY:-}" == 1 ]]; then run_fixture validate RRT_TEST_EXPANDED_EPILOGUE=0; exit; fi
 for mode in 0 1 wrong-type; do
     echo "Managed construction fixture: RRT_TEST_EXPANDED_EPILOGUE=$mode"
     run_fixture "$mode" "RRT_TEST_EXPANDED_EPILOGUE=$mode"
