@@ -486,6 +486,60 @@
       "source_branch": "cloud/arue12",
       "source_commit": "(this branch head)",
       "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.fallen.house_call",
+      "before_sha": "4bc72e0fbdb1db03010095c87b66cb0659f94da88d69759562813e5b837fb965",
+      "after_sha": "a5f9195de95a08c76e6361a00bbf20ef2470d9bf8b159c89c31a4140ad498ba0",
+      "owner": "claude",
+      "source_branch": "claude/cl-arueshalae",
+      "source_commit": "(this branch head)",
+      "reason": "villain-route-arueshalae S3: appended paragraph reads evil.home_offered (the held-out hand at the lair). after_sha computed on a simulated export (main Story.json + new scenes + arueshalae_cloud); recompute on the coordinator build."
+    },
+    {
+      "scene": "arueshalae.trickster.epilogue.fallen",
+      "before_sha": "103545289af27e30232c8fa5e8e3541acf5372b020fa435a014d495dde6604ec",
+      "after_sha": "fd7e1757c4f08eeab0c5b3a2f007a40a8069a91dd0f8d9d7a94a290c54bdf5ce",
+      "owner": "claude",
+      "source_branch": "claude/cl-arueshalae",
+      "source_commit": "(this branch head)",
+      "reason": "villain-route-arueshalae S1/S2: P3 re-voiced (the act, not a breakfast report); five appended readers (sergeant answers, the other one). after_sha computed on a simulated export (main Story.json + new scenes + arueshalae_cloud); recompute on the coordinator build."
+    },
+    {
+      "scene": "household.pair.seelah_arueshalae.fallen.settle",
+      "before_sha": "ac656b744fe6b88ac7fd1a72b55416699bf987d4ad76d91e339c42b3b1fa714b",
+      "after_sha": "54734c610dd78e10b21126d311101eaa8557a3dc3d38041a997f275d96547c1e",
+      "owner": "claude",
+      "source_branch": "claude/cl-arueshalae",
+      "source_commit": "(this branch head)",
+      "reason": "villain-route-arueshalae S4: written account restaged as her own words to the scouts; text only (J03, no paragraphs); title. after_sha computed on a simulated export (main Story.json + new scenes + arueshalae_cloud); recompute on the coordinator build."
+    },
+    {
+      "scene": "household.pair.seelah_arueshalae.fallen.retry",
+      "before_sha": "fbcddb6a325ce08e5ac1e0cb6cf368e03aec6989a016f9502bc4f4da0c305dd6",
+      "after_sha": "93ea25434870c631738fd7d4b60211543c2af7467538a20a6135555810b909d2",
+      "owner": "claude",
+      "source_branch": "claude/cl-arueshalae",
+      "source_commit": "(this branch head)",
+      "reason": "villain-route-arueshalae S4: as settle; entry and title. after_sha computed on a simulated export (main Story.json + new scenes + arueshalae_cloud); recompute on the coordinator build."
+    },
+    {
+      "scene": "arueshalae.trickster.fallen.sergeant",
+      "before_sha": null,
+      "after_sha": "ce0958db6d4ea161e8660b97f7a953c75d2ecc72288ca30f7efd51c4b73c1a44",
+      "owner": "claude",
+      "source_branch": "claude/cl-arueshalae",
+      "source_commit": "(this branch head)",
+      "reason": "villain-route-arueshalae S1: NEW scene (proposed new lock), the sergeant feed on screen on the live fallen road. after_sha computed on a simulated export (main Story.json + new scenes + arueshalae_cloud); recompute on the coordinator build."
+    },
+    {
+      "scene": "arueshalae.trickster.fallen.the_other_one",
+      "before_sha": null,
+      "after_sha": "6a0997815ee3400a8d31aff6cf0b974e856e59abbf6808379fa9f2f83d293240",
+      "owner": "claude",
+      "source_branch": "claude/cl-arueshalae",
+      "source_commit": "(this branch head)",
+      "reason": "villain-route-arueshalae S2: NEW scene (proposed new lock), live twin of the retired-road beat. after_sha computed on a simulated export (main Story.json + new scenes + arueshalae_cloud); recompute on the coordinator build."
     }
   ],
   "enroll": [

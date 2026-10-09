@@ -675,6 +675,51 @@ FALLEN_NIGHT_NODES = [
 evil_hub(FALLEN_NIGHT, "The roofs of Drezen", '"You kept the door."', FALLEN_NIGHT_NODES,
          requires=(COMMITTED, OPEN_DOOR, FALLEN_MET), forbids=(NIGHT_DONE,), delay=24, Areas=[DREZEN])
 
+# villain-route-arueshalae (cloud, 2026-10-08; tools/route_packs/redesign/arueshalae/cloud-review.md S1/S2). The living fallen
+# road had its best evil off screen: "Not a drop" named a red-bearded sergeant at the back of Fye's (house_call:refuse) and
+# only Lann's hearsay and an epilogue line ever paid it; the on-screen sergeant and "the other one" lived on the retired
+# death-return road (evil.sergeant / evil.the_other_one need arueshalae.trickster.returned, which no new save can set).
+# These two hub scenes carry them on the road a new save can play. Fye is a native Drezen anchor (the docstring above);
+# the scroll's price is the native 700 gold (ScrollOfDeathWard m_Cost).
+FALLEN_SERGEANT = P + "fallen.sergeant"
+SERGEANT_STOPPED = P + "fallen.sergeant_stopped"     # steel drawn: she let go of him, and waited
+SERGEANT_WATCHED = P + "fallen.sergeant_watched"     # the Commander sat down and watched her finish
+SERGEANT_BOUGHT = P + "fallen.sergeant_bought"       # a Scroll of Death Ward spent to buy him back
+evil_hub(FALLEN_SERGEANT, "The third company", '"The third company is one man short at muster."', [
+    a("start", '''"Is it? Then come and count him." {n}She takes you by the sleeve, through the silk, and walks you down the hill to Fye's at noon, past the soldiers at the long tables and into the back room where the kegs are stacked. The red-bearded sergeant is asleep on the bench there, smiling. She sits down, lifts his head into her lap as if she were plumping a cushion, and combs his beard with one claw.{/n}
+"There. Counted. He's still breathing; I haven't finished." {n}He turns his face into her skirt in his sleep.{/n} "He was very sweet. He has a sweetheart in Nerosyan, and he told me about her the whole time. I let him. Then I let him dream about her while I drank." {n}She looks up at you.{/n} "You said 'not a drop'. I told you what that would cost, and you let me walk out of the room. This is what it cost. Now: this is where the Commander of the crusade draws on me. Or sits down. I've been looking forward to finding out which."''',
+      c('[Draw on her] "Off him. Now. He\'s one of mine."', "stopped", flags=(FALLEN_SERGEANT, SERGEANT_STOPPED)),
+      c('[Sit down across the bench from her] "Finish."', "watched", alignment=("Evil", 2),
+        flags=(FALLEN_SERGEANT, SERGEANT_WATCHED)),
+      c('[Spend a Scroll of Death Ward: put your warded wrist on the table beside his head] "Let him go. Try me instead."',
+        "bought", requires=(WARD_HELD,), remove_item=SCROLL, flags=(FALLEN_SERGEANT, SERGEANT_BOUGHT))),
+    a("stopped", '''{n}She does not move until the point is at her throat. Then she lifts his head out of her lap and lays it on the bench, carefully, the way you set down a cup you mean to come back to.{/n}
+"Yours." {n}She laughs, delighted.{/n} "Everything is somebody's, darling. He's yours, and the cells are yours, and the whole city is yours, and you still had to come down here with steel to keep one red beard." {n}She steps round the blade, close enough that it would only take a lean.{/n} "He'll sleep till supper and wake up telling everyone it was the best dream of his life. Tomorrow he'll come back to this bench on his own feet, looking for me. You can put a sword between me and him. You can't put one between him and what he wants."''',
+      c()),
+    nar("watched", '''{n}You sit. She watches you do it, and her eyes go bright with pleasure; she has been waiting all morning for exactly this. Then she bends over him and puts her mouth to his, and does not hurry. The cold comes off the bench like the air off a cellar door. His smile goes slack. His hand slides off her knee and hangs. Once she lifts her head to be sure you are still watching, and then goes back to him.{/n}
+"There." {n}She stops a breath short of the end, and both of you know exactly where it was.{/n} "I left him enough to wake at supper. Not for his sake. I want him again, and I want you sitting there again when I have him." {n}She licks her lip.{/n} "Everyone who has tasted me said it was worth it. You're the first who watched and said nothing. I'll remember that, darling. You'll wish I hadn't."''',
+      c()),
+    a("bought", '''{n}She smells the chaplain's ink on you before your wrist touches the wood. She takes it anyway, slowly, with the sergeant's head still in her lap, puts her mouth to the inside of it, finds the ward, and laughs against your skin.{/n}
+"Seven hundred gold to buy a sergeant back from me, and he'll never know you did it." {n}She rolls him off her lap onto the bench like a sack of meal.{/n} "Take him. He'll sleep till supper either way; I'd already had the best of him." {n}She holds your wrist a moment longer than the ward needs, counting under her breath.{/n} "Do it again the next time I'm hungry. And the time after. I want to see how many scrolls one red beard is worth to you before you start to wonder."''',
+      c()),
+], requires=(FALLEN_MET, HUNGRY), forbids=(FALLEN_SERGEANT,), delay=24, optional=True, Areas=[DREZEN])
+
+FALLEN_OTHER = P + "fallen.the_other_one"
+OTHER_HAPPY = P + "fallen.other_happy"           # "Yes. Sometimes."
+OTHER_STARVING = P + "fallen.other_starving"     # "No. She was starving the whole time."
+evil_hub(FALLEN_OTHER, "The other one", '"You\'re quiet tonight."', [
+    a("start", '''"I'm thinking. Don't tease; it happens." {n}She is sitting on the edge of the map table, turning a cup of your wine round and round on the campaign map, and she has not drunk from it.{/n}
+"Your crusade. Your soldiers, your chapel, your ridiculous city with its bakeries and its cats. I was part of it, once. The other one of me." {n}She says 'the other one' as if it were someone she had met at a party and disliked.{/n} "I've been laughing at her. At her little vows and her little prayers, and her hot pies, and the way she looked at street kittens as if they were holy."''',
+      c("Continue", "question")),
+    a("question", '''{n}She stops turning the cup.{/n} "Tell me one thing, and don't lie, because I'll know; I always know." {n}Her voice is flat and careful.{/n} "Was she happy? The other one. The one who said no to everything. Before she fell. Was she ever, once, happy?"''',
+      c('"Yes. Sometimes. It was hard, and she was, sometimes."', "yes", flags=(FALLEN_OTHER, OTHER_HAPPY)),
+      c('"No. She was starving the whole time."', "no", flags=(FALLEN_OTHER, OTHER_STARVING))),
+    a("yes", '''{n}Her mouth tightens, and then it is smooth again.{/n} "Sometimes." {n}She drinks, finally, the whole cup.{/n} "Then she was a fool. Being happy sometimes, when she could have been fed always." {n}She sets the cup down on the map, very precisely, on top of Drezen.{/n} "Don't ever tell me that again. I'll think about it for a hundred years."''',
+      c()),
+    a("no", '''"Good." {n}She says it too quickly.{/n} "Good. Then I did the right thing. I chose to be fed instead of pure, and pure was never going to make me happy anyway." {n}She pours another cup.{/n} "You're lying, of course. You lie prettily. Keep doing it; it amuses me."''',
+      c()),
+], requires=(FALLEN_MET,), forbids=(FALLEN_OTHER,), delay=48, optional=True, Areas=[DREZEN])
+
 
 # --- 8. Epilogue pages (ArueshalaeEpilogue; no system effects) -------------------------------------------------------
 

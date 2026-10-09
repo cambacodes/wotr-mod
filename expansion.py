@@ -763,6 +763,9 @@ def _make_expansion(*, independent_tirabade=True):
     # villain-route-devarra (cloud): Devarra's text-only layer, after every appender so indices stay put.
     from storylines import devarra_cloud
     devarra_cloud.integrate(payload)
+    # villain-route-arueshalae (cloud): Arueshalae's fallen-road text layer and appended readers, after every appender.
+    from storylines import arueshalae_cloud
+    arueshalae_cloud.integrate(payload)
     return payload
 
 
