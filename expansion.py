@@ -776,6 +776,8 @@ def _make_expansion(*, independent_tirabade=True):
     camellia_heat.integrate(payload)
     from storylines import chadali_heat
     chadali_heat.integrate(payload)
+    from storylines import arueshalae_heat
+    arueshalae_heat.integrate(payload)
     return payload
 
 
