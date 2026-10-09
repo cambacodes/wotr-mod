@@ -2,20 +2,14 @@
   "slot_id": "camellia.trickster.returned.test_alive.explicit.1",
   "voice": "CAMELLIA: aristocratic precision; affected modesty dropping when appetite wins; calculating curiosity; possessiveness; delight in successful liars; impatient with bland sex; frank adult vocabulary; watches faces and hands; affection intensifies danger rather than curing it. No therapy language, redemption, maxims, childish mannerisms or generic seductress voice. Write new dialogue, no copied canon catchphrases. Physical description uses only verified canon; do not invent measurements, scars or physiology.",
   "scene": "SCENE: current Trickster, existing Chapter 3/5 Drezen host, Commander's private quarters, adult Camellia and adult Commander only. Living companion: no coffin injuries, widow identity loss or resurrection debt. Her judgement and withdrawal of the threatening blade have already happened; she chooses staying and initiates wanted intimacy after the Commander responds. Blood/name collection is prior history, never payment for sex. The first authored night happens once; native prior intimacy makes this a renewed night. Reserve the adult sexual passage for the user fill, ending before the retained grey-light morning. Required beats: Both are awake, mutually pursuing closeness after the test, not under a threat demanding sex. She takes the belt and climbs into the lap; bodily warmth and interest in a particular face replace a reward for survival. She keeps her murderous values, no cure or permanent safety vow. She puts the knife on the pillow pointing toward the door before dawn.",
-  "facts": [
-    "Camellia is an adult woman and Horgus Gwerm's illegitimate daughter.",
-    "Her bone-snake amulet is associated with Mireya, a spirit she invented.",
-    "She values successful deception and seeks the disbelief of trusting victims.",
-    "She is frank about sex and finds ordinary sex boring.",
-    "Rillik/Rellik was her murdered victim, not a live husband."
-  ],
+  "facts": "Camellia is an adult woman and Horgus Gwerm's illegitimate daughter. Her bone-snake amulet is associated with Mireya, a spirit she invented. She values successful deception and seeks the disbelief of trusting victims. She is frank about sex and finds ordinary sex boring. Rillik/Rellik was her murdered victim, not a live husband.",
   "required_beats": [
     "Both are awake, mutually pursuing closeness after the test, not under a threat demanding sex.",
     "She takes the belt and climbs into the lap; bodily warmth and interest in a particular face replace a reward for survival.",
     "She keeps her murderous values, no cure or permanent safety vow.",
     "She puts the knife on the pillow pointing toward the door before dawn."
   ],
-  "last_line": "C: Stay here. I want to see your face.",
+  "last_line": "N: Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands.",
   "speakers": {
     "C": "Camellia"
   },
@@ -42,5 +36,6 @@
     "C4",
     "C5",
     "C6"
-  ]
+  ],
+  "prior_stop_line": "C: Stay here. I want to see your face."
 }

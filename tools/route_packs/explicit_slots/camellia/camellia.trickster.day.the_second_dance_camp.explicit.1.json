@@ -2,20 +2,14 @@
   "slot_id": "camellia.trickster.day.the_second_dance_camp.explicit.1",
   "voice": "CAMELLIA: aristocratic precision; affected modesty dropping when appetite wins; calculating curiosity; possessiveness; delight in successful liars; impatient with bland sex; frank adult vocabulary; watches faces and hands; affection intensifies danger rather than curing it. No therapy language, redemption, maxims, childish mannerisms or generic seductress voice. Write new dialogue, no copied canon catchphrases. Physical description uses only verified canon; do not invent measurements, scars or physiology.",
   "scene": "SCENE: current Trickster, existing Chapter 3/5 Drezen host, Commander's private quarters, adult Camellia and adult Commander only. Retained-body paid return: no borrowed clawed-coffin injuries or automatic widow identity. Knife-off branch only: the Commander unbuckled the thigh strap and she let the knife fall to the floor. She abandons counting, kisses them and draws them onto cleared boards among guttering candles. Mutual return/deepening; reserve the adult sexual passage for the user fill. At dawn she retrieves and buckles the floor knife. Required beats: Acknowledge unbuckling without treating disarmament as submission or reform. Physical impatience replaces fencing/dancing maxims. Wax remains at buckle, boards under the couple, knife on floor. Morning.knife_off retains its actual outcome; no armed-night memory.",
-  "facts": [
-    "Camellia is an adult woman and Horgus Gwerm's illegitimate daughter.",
-    "Her bone-snake amulet is associated with Mireya, a spirit she invented.",
-    "She values successful deception and seeks the disbelief of trusting victims.",
-    "She is frank about sex and finds ordinary sex boring.",
-    "Rillik/Rellik was her murdered victim, not a live husband."
-  ],
+  "facts": "Camellia is an adult woman and Horgus Gwerm's illegitimate daughter. Her bone-snake amulet is associated with Mireya, a spirit she invented. She values successful deception and seeks the disbelief of trusting victims. She is frank about sex and finds ordinary sex boring. Rillik/Rellik was her murdered victim, not a live husband.",
   "required_beats": [
     "Acknowledge unbuckling without treating disarmament as submission or reform.",
     "Physical impatience replaces fencing/dancing maxims.",
     "Wax remains at buckle, boards under the couple, knife on floor.",
     "Morning.knife_off retains its actual outcome; no armed-night memory."
   ],
-  "last_line": "C: The buckle can wait until morning.",
+  "last_line": "N: Later, the last candle gutters beside the cleared floor. She listens to the watch changing beyond the shutters and rests her cheek against your shoulder.",
   "speakers": {
     "C": "Camellia"
   },
@@ -42,5 +36,6 @@
     "C4",
     "C5",
     "C6"
-  ]
+  ],
+  "prior_stop_line": "C: The buckle can wait until morning."
 }

@@ -6,7 +6,7 @@ their boundaries require editorial review. Short runtime IDs and inline source
 mappings use host_scene/host_node and optional paragraph_index/after_text.
 last_lines maps branch targets to exact boundaries when they differ. Missing
 slots are failures unless the slot index records an evidenced editorial drop.
---known-rebuilds reports the coordinator's ten rebuilding routes separately;
+--known-rebuilds reports the routes with remaining rebuild debt separately;
 it never suppresses their findings or exempts another route.
 """
 import argparse
@@ -17,9 +17,11 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = ("voice", "scene", "last_line", "speakers", "example", "facts")
+# Routes that still carry slot-brief rebuild debt (see
+# tools/route_packs/explicit_slots/REBUILD-REPORT.md). Remove a route once its
+# briefs and the harem pairs attributed to it lint clean.
 REBUILDING = frozenset(("nocticula", "jerribeth", "minagho", "chivarro",
-                       "minachiv", "arueshalae", "hepzamirah", "melazmera",
-                       "areelu", "camellia"))
+                       "arueshalae", "areelu", "camellia"))
 ALIASES = {"areelu-vorlesh": "areelu", "elyanka-camilary": "elyanka",
            "dorgelinda-stranglehold": "dorgelinda"}
 MALE_NAMES = re.compile(r"\b(Elan|Daeran|Sosiel|Lann|Woljif|Regill|Greybor|"
