@@ -3465,6 +3465,51 @@
       "source_branch": "claude/cand-7",
       "source_commit": "5470719921677c6d7e93eec3628858a0b76f3de1",
       "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "hepzamirah.trickster.bond.her_room",
+      "before_sha": "4743e2cbd8f4b38fd1952b29798b99cafbfcfec5a996f9463093392c27989d46",
+      "after_sha": "33cca2c5ba13b5a550c0213a8a2319da5da6c4960ac8542d25fc8c8f9d63151e",
+      "owner": "claude",
+      "source_branch": "claude/cand-8",
+      "source_commit": "81cbaa85699a60857782b7050de4c4c3ff92f884",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "melazmera.trickster.ch4.hunt",
+      "before_sha": "537edd74353ee2cf1ad62d8bf8c27af990a12f24deac55d46802b5d60fdf140d",
+      "after_sha": "f55cf438184767c3357c2289e2a369d4afdc5055a9170853f4215901ee086283",
+      "owner": "claude",
+      "source_branch": "claude/cand-8",
+      "source_commit": "81cbaa85699a60857782b7050de4c4c3ff92f884",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "melazmera.trickster.ch4.hunt_found",
+      "before_sha": "8b0078d68b5c24b486934c07610960dbb563a896658ae60ea49b8ab882c86ca1",
+      "after_sha": "5a6f8cab8ab5e6d309a5d873443fe7076e0f5e69905981932624e0e944c0f6fd",
+      "owner": "claude",
+      "source_branch": "claude/cand-8",
+      "source_commit": "81cbaa85699a60857782b7050de4c4c3ff92f884",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "melazmera.trickster.ch5.hunt_window",
+      "before_sha": "c5dc54916378450edeea2a1142c5bfd75a61553533f8970a349c4e436f951514",
+      "after_sha": "82df16f0ff3fb99d206c492802c036b053ae8c58a1b3d2930d304eaaf4da11ca",
+      "owner": "claude",
+      "source_branch": "claude/cand-8",
+      "source_commit": "81cbaa85699a60857782b7050de4c4c3ff92f884",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "melazmera.trickster.commit.stone",
+      "before_sha": "780b4b15409cc3fe16ef14a2b81eb54addba5efc06c712ed76289ac8cb690625",
+      "after_sha": "9dc02f03a7cd1e117b8a241158da38e2787a1c712917615ccff0940140f4ff6e",
+      "owner": "claude",
+      "source_branch": "claude/cand-8",
+      "source_commit": "81cbaa85699a60857782b7050de4c4c3ff92f884",
+      "reason": "Claude-lane prose, coordinator-reviewed"
     }
   ]
 }
