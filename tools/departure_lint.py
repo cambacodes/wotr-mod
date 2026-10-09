@@ -86,6 +86,10 @@ def check(story, data=None):
         for surface in contract["surfaces"]:
             scene = by.get(surface["scene"])
             gate = woman + (".reachable_by_letter" if surface.get("letter") else ".present_now")
+            if surface.get("letter") and not (
+                scene and (scene.get("Remote") or scene.get("Owner", "").endswith("Epilogue"))
+            ):
+                errors.append(f"{woman}/{surface['scene']}: letter surface must be remote or an epilogue page")
             target = scene or {}
             if "paragraph" in surface or "choice" in surface:
                 node = next((n for n in target.get("Nodes", []) if n["Id"] == surface["node"]), {})
