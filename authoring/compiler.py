@@ -37,6 +37,9 @@ def _legacy_module(name):
     return importlib.import_module(name)
 
 
+SCENE_KINDS = ("letter", "visit", "sending", "memory", "event", "invitation")
+
+
 def compile_story(profile, inputs=None, *, independent_tirabade=True):
     """Compile the base or expansion with its existing order and copy policy.
 
@@ -49,6 +52,11 @@ def compile_story(profile, inputs=None, *, independent_tirabade=True):
         payload = _legacy_module("expansion")._make_expansion(independent_tirabade=independent_tirabade)
     else:
         raise ValueError("Unknown story profile: " + str(profile))
+    # E15c mirrors Story.Validate: a presentation Kind is legal only on a remote scene (A96).
+    bad = [s["Id"] for s in payload["Scenes"] if s.get("Kind") is not None and (s.get("Kind") not in SCENE_KINDS
+           or not (s.get("Remote") or s.get("Owner") == "Memory"))]
+    if bad:
+        raise ValueError("Invalid scene kind (E15c, remote scenes only): " + ", ".join(bad))
     destination = None if inputs is None else inputs.destination
     text, newline, raw = serialize(payload, profile, destination)
     return CompiledStory(payload, raw, text, newline)

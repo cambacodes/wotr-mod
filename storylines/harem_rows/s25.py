@@ -203,7 +203,7 @@ def register(payload, scenes, refs):
         forbids = EXCLUSIONS + flags(step + ".seen") + tuple(household.enmity(a, b) for a, b in (PAIR, PAIR[::-1]))
         body = scene(P + step, "Off the display", "Camellia", 5, '[Camellia and Vellexia: the empty salon]', nodes,
             requires=ENVELOPE + flags("ready", *needs[step]), forbids=forbids, delay=8 if step == "morning" else 48,
-            last=5, Relationship="household", Chapters=[5], Areas=[DREZEN], InteractionHub="household.table", Kind="event",
+            last=5, Relationship="household", Chapters=[5], Areas=[DREZEN], InteractionHub="household.table",
             Participants=list(PAIR), ParticipantWomen=[], Pair=list(PAIR), RestAllowance="household.pair",
             HouseholdCategory="pair", HouseholdArc=P.rstrip("."), HouseholdArcStart=step == "company",
             HouseholdWitness=P + step + ".seen",
