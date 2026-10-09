@@ -21,6 +21,14 @@ def rule(scenes, node, old, new):
     RULES.append((tuple(scenes) if scenes else None, re.compile(node + r"\Z"), old, new))
 
 
+# (scene id, node id, flag in the paragraph's Requires, old fragment, new fragment)
+PRULES = []
+
+
+def prule(scene, node, flag, old, new):
+    PRULES.append((scene, node, flag, old, new))
+
+
 def _scenes(payload):
     return {s["Id"]: s for s in payload["Scenes"]}
 
@@ -43,6 +51,12 @@ def integrate(payload):
                 matched += 1
         if not matched:
             raise ValueError("heat g4: no node matched %r in %r" % (node_re.pattern, scene_ids))
+    for sid, nid, flag, old, new in PRULES:
+        hits = [x for n in scenes[sid]["Nodes"] if n["Id"] == nid for x in n.get("Paragraphs", [])
+                if flag in x.get("Requires", []) and x["Text"].count(old) == 1]
+        if len(hits) != 1:
+            raise ValueError("heat g4: %s/%s paragraph %r matched %d" % (sid, nid, old[:48], len(hits)))
+        hits[0]["Text"] = hits[0]["Text"].replace(old, new, 1)
     for sid, scene in scenes.items():
         for node in scene["Nodes"]:
             if "[PROSE PENDING" in node["Text"] and sid in _TOUCHED:
@@ -198,3 +212,54 @@ rule([MC + "epilogue.commit"], "waiting",
 "I have kept that bed warm for years. Come and see how warm."''')
 
 _TOUCHED.update({"minachiv.a_room_she_likes", "minachiv.after_the_last_lamp", "minachiv.the_unhired_evening"})
+
+# ======================================================================================
+# JERRIBETH
+# ======================================================================================
+J = "jerribeth."
+
+rule([J + "future"], "tenant_pinned",
+     '''{n}She pushes you back into a pillow that does not exist,''',
+     '''{n}She says nothing. She draws one claw down the front of you, pressing just hard enough to part cloth and not skin, and the room she has built shivers like a held breath: the cold carapace of her thighs, the rasp of her wings folding shut over a lamp that is not there, the buzzing that is in your teeth now and at the base of your spine.{/n}
+"You offered," {n}she says, close against your ear.{/n} "I have been collecting every time you thought about it. Hold still. I want all of it before I spend it."
+{n}She pushes you back into a pillow that does not exist,''')
+
+rule([J + "future"], "tenant_free",
+     '''in a room that is only real because you both agree it is. She lowers herself onto you''',
+     '''in a room that is only real because you both agree it is. You find the seam beneath the carapace, the one soft place on her, and the sound she makes is like a held note breaking. Her claws shake against your shoulder.{/n}
+"Careful," {n}she says, and does not mean it.{/n} "I am not accustomed to being handled. Do that again, and I may let you keep the hand."
+{n}She lowers herself onto you''')
+
+rule([J + "room_measure"], "desire",
+     '''{n}Then she bends to you.{/n}''',
+     '''{n}Then she bends to you. Her claws open your collar and the front of your clothes one fastening at a time, watching to see what each one costs, until the air of the room is on your skin and her mouth is a hand's breadth from it. The buzzing starts low in her chest. She straddles the chair, wings half open to shut out the shelves, and her hips settle onto yours with a slow, deliberate pressure that is already, undeniably, wet.{/n}''')
+
+rule([J + "trickster.epilogue.commit"], "night",
+     '''walked the Commander back to the bed by the wrists without once tightening her grip. When the Commander's knees met the mattress''',
+     '''walked the Commander back to the bed by the wrists without once tightening her grip. Her mouth, such as it was, found the Commander's throat; the buzzing she kept for private moments came up through her chest and into the Commander's skin until the shiver and the sound were the same thing.{/n}
+"I have studied every way you can be undone," {n}she said against the pulse,{/n} "and I intend to run the entire experiment."
+{n}When the Commander's knees met the mattress''')
+
+rule([J + "trickster.epilogue.commit"], "night_mind",
+     '''She pushed the Commander back into a pillow that did not exist, settled astride''',
+     '''They went down the Commander's throat and opened the shirt there with a surgeon's precision, and the cold of her came through the cloth and then through no cloth at all.{/n}
+"Here," {n}she said, touching a place low on the Commander's ribs.{/n} "And here. You flinch the same way in every memory. I have been rehearsing the rest."
+{n}She pushed the Commander back into a pillow that did not exist, settled astride''')
+
+rule([J + "trickster.visit"], "threshold",
+     '''{n}When your knees meet the edge of the mattress she lets you fall, and follows, and settles over you with her weight on her elbows and her wings half open, shutting out the lamp. Her claws close lightly round your wrists and press them into the blanket.{/n}''',
+     '''{n}When your knees meet the edge of the mattress she lets you fall, and follows. Her claws open your shirt one fastening at a time, and her cool chitin presses the length of you, and she makes a small, pleased, entirely clinical sound at what she finds. She settles over you with her weight on her elbows and her wings half open, shutting out the lamp. Her claws close lightly round your wrists and press them into the blanket.{/n}
+"You are shaking, and I have not started. Fascinating."''')
+
+rule([J + "trickster.visit"], "threshold_free",
+     '''She lets you pull her down. Her wings open''',
+     '''She lets you pull her down. Your fingers find the pale seam under the carapace, the one place on her that is not armoured, and she hisses, a long dry rasp, and arches into it before she remembers to disapprove.{/n}
+"Not there," {n}she says, and moves your hand back to it.{/n}
+{n}Her wings open''')
+
+rule([J + "unsold_evening"], "kiss",
+     '''{n}She watches your face. She is not imagining it;''',
+     '''{n}Her image opens the collar of her carapace the rest of the way, and her breath fogs the glass between you. One claw drags down the surface where your chest is, and you feel it anyway, a cold line from throat to belt.{/n}
+{n}She watches your face. She is not imagining it;''')
+
+_TOUCHED.update({"jerribeth.future", "jerribeth.room_measure", "jerribeth.unsold_evening"})
