@@ -3402,6 +3402,15 @@
       "source_branch": "claude/cand-5",
       "source_commit": "596252503d5e94a1fe2ef849b09e2a3b42a5c7b6",
       "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "arueshalae.treatment.morning",
+      "before_sha": "b1ae8ecdac40ef6df01a22176bea4d863042aa99d330021ae2635d1d7d5f8c6e",
+      "after_sha": "ebe81c12475210c6bc17a93220d22c6748297a858bfca75b159d0770a55c6785",
+      "owner": "claude",
+      "source_branch": "claude/cand-6",
+      "source_commit": "eb9a613709829d1e93d772ce83d26667ba30c0a8",
+      "reason": "Claude-lane prose, coordinator-reviewed"
     }
   ]
 }
