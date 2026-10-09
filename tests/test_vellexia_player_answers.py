@@ -6,7 +6,6 @@ import unittest
 from unittest.mock import patch
 
 from storylines import vellexia_campaign, vellexia_cloud, vellexia_opening, vellexia_trickster
-from tools import claude_work_queue_lint, prose_pending_lint
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = {
@@ -57,24 +56,22 @@ class VellexiaPlayerAnswersTests(unittest.TestCase):
                     self.assertEqual(len(old_nodes[host]['Choices']) + 1, len(current['Choices']))
                     for index in range(1, count + 1):
                         answer = current['Choices'][-1]
-                        self.assertTrue(answer['Text'].startswith('[PROSE PENDING:'))
+                        self.assertTrue(answer['Text'].startswith('"') and '{n}' not in answer['Text'])
                         self.assertFalse(answer['Set'] or answer['Requires'] or answer['Forbids'] or answer['Abort'])
                         current = nodes[answer['Next']]
                         self.assertEqual(f'{host}_commander_reply_{index}', current['Id'])
-                        self.assertTrue(current['Text'].startswith('[PROSE PENDING:'))
+                        self.assertIn(current['Text'].strip(), old_nodes[host]['Text'])
                     self.assertEqual(old_nodes[host]['Choices'], current['Choices'])
         # This assigned sibling already contains only Vellexia/Tessar speech.
         self.assertEqual(self.old['vellexia.the_clerks_own_price'],
                          self.new['vellexia.the_clerks_own_price'])
 
-    def test_all_placeholder_surfaces_are_registered_and_queued(self):
+    def test_restored_exchanges_leave_no_placeholder_or_queue_entry(self):
         pending = json.loads((ROOT / 'tools/route_packs/plans/prose-pending.json').read_text(encoding='utf-8'))
         queue = json.loads((ROOT / 'tools/route_packs/plans/claude-work-queue.json').read_text(encoding='utf-8'))
-        self.assertEqual([], prose_pending_lint.check(self.after, pending, integration=True))
-        self.assertEqual([], claude_work_queue_lint.check(queue))
-        requests = [r for r in queue if r.get('finding') == 'VEL-A4-003']
-        self.assertEqual(20, len(requests))
-        self.assertEqual(40, len(pending['pending']))
+        self.assertFalse([p for p in pending['pending'] if p['scene'].startswith('vellexia.')])
+        self.assertFalse([r for r in queue if r.get('finding') == 'VEL-A4-003'])
+        self.assertNotIn('[PROSE PENDING', json.dumps([s for s in self.after['Scenes'] if s['Id'].startswith('vellexia.')]))
 
     def test_stale_prose_binding_fails_instead_of_dropping_speech(self):
         payload = copy.deepcopy(self.before)
