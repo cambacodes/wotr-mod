@@ -300,5 +300,9 @@ class StructSlotHostTests(unittest.TestCase):
         self.assertTrue(sim_choice_available(climb["Choices"][0], SimpleNamespace(flags=set())))
 
 
+# Include the pinned route counterexamples in the selected writing gate.
+from tests.test_struct2_10 import Structure210Tests
+
+
 if __name__ == "__main__":
     unittest.main()
