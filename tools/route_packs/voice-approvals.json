@@ -3015,6 +3015,15 @@
       "source_branch": "claude/cand-1",
       "source_commit": "d8f52e446de1c62368499c161655b9fa8f250381",
       "reason": "Claude-lane voice (cloud Opus + local Opus 5.5 villain/prose writers), coordinator-reviewed 2026-10-08; per-character rubric audits follow"
+    },
+    {
+      "scene": "areelu.trickster.threshold.welcome",
+      "before_sha": "9e8e535143090ac6ca14bc478a6a76a295b9cf1a28ba06c8b67b56893e63635d",
+      "after_sha": "75ac01290b12d111212210c41e0690e4ccfadb7daa364ffa1d1e69cff38b96ff",
+      "owner": "claude",
+      "source_branch": "claude/cand-1",
+      "source_commit": "71904c2f5e6037ded3e09b04d94cbb282c8c24d3",
+      "reason": "Claude-lane prose, coordinator-reviewed"
     }
   ]
 }
