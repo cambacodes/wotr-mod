@@ -5,7 +5,7 @@ from story_format import c, n, scene
 # extension. The existing buckles node and exit retain identity and mechanics.
 EXPLICIT_PARAGRAPHS = {
     "targona.the_open_threshold.explicit.1":
-        "{n}She pulls you close on the bed and kisses you until the haste gives way to warmth. The last buckle lies beside the door.{/n}",
+        "{n}She holds you there, her brow against yours, her breath ragged. The last buckle lies beside the door.{/n}",
 }
 
 SCENES = []
@@ -373,6 +373,8 @@ s("the_open_threshold", "A door that opens both ways", [
 {n}In your rooms she does not light the lamp. She sets her back against the door and has your coat off your shoulders before the latch has finished falling, and then the buckles, quick and certain, a healer's hands that have unfastened a thousand wounded men's harness and never once with this much hurry.{/n}
 "Eleven," {n}she says against your mouth.{/n} "Eleven, Commander. Who arms you? I will have words with him."
 {n}She draws her plain wayhouse habit over her head and lets it fall, and a wing opens behind her in the dark and brushes the wall. She pushes you back onto the bed and follows you down, her knees either side of you, her hair falling round both your faces, and takes your hands and puts them where she wants them.{/n}
+{n}Her mouth leaves yours only to go down your throat, your collarbone, the middle of your chest, and the wing folds close around the pair of you without touching anything it should not. Her hands are unembarrassed now. She finds your belt in the dark, laughs low when the last buckle fights her, wins, and strips the rest of you with a soldier's economy. Her breasts are warm against your ribs, her skin tastes of salt and road, and when your mouth closes on her she gasps your name and arches into it. It is nothing like the voice that tells wounded men to be brave.{/n}
+"Do not be careful with me. I have been careful with other people's bodies for weeks." {n}She settles over your hips, thighs open around you, wet already against your skin, puts your hand back on her hip, and reaches down between you to guide the two of you together.{/n}
 ''' + EXPLICIT_PARAGRAPHS["targona.the_open_threshold.explicit.1"] + '''
 {n}Long before light she is dressing again by the window. The wounded on the eastern road will want her at the first bell, she says, and she will not let them want her in vain on your account. She kisses you once more at the door, hard, and does not say when.{/n}''',
       c("Let her go back to her road.")),
