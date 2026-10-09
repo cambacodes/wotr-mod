@@ -3384,6 +3384,24 @@
       "source_branch": "claude/cand-4",
       "source_commit": "4568f9dc5a5b28649808d74376998b09fc2fc4a8",
       "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "arueshalae.treatment.morning",
+      "before_sha": "b1ae8ecdac40ef6df01a22176bea4d863042aa99d330021ae2635d1d7d5f8c6e",
+      "after_sha": "5eeea5e22e63aa9da1e7f51eb30e92f9369e6efd0ea2cbfd7e0a9c1e503e71c2",
+      "owner": "claude",
+      "source_branch": "claude/cand-5",
+      "source_commit": "596252503d5e94a1fe2ef849b09e2a3b42a5c7b6",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "melazmera.trickster.beat.count",
+      "before_sha": "821978657f9cf4dbf0197eeadf2f0693533f659b6d7425b39f35e17749c80522",
+      "after_sha": "225ee06c862e10bbcdf27f63a2c0cd014c11089ebc925199be18cb2ccc9347d0",
+      "owner": "claude",
+      "source_branch": "claude/cand-5",
+      "source_commit": "596252503d5e94a1fe2ef849b09e2a3b42a5c7b6",
+      "reason": "Claude-lane prose, coordinator-reviewed"
     }
   ]
 }
