@@ -324,7 +324,7 @@ text("counterfeit_guest", "previous_buyer.reply.1", '''"He wants a great deal mo
 
 text("counterfeit_guest", "maker", '''"Vardess. He buys other people's inventions and shows them at his own table as though he had dreamed them himself. He keeps the best salon in Drezen: officers, merchants' wives, a priestess or two. He has wanted me at it for some time."
 {n}She turns the card that came with the theatre so you can read it. The hand is elegant and pressed too hard.{/n}
-"He has heard that I spend my evenings with the Commander. Vardess offers me a Commander who kneels. Such solicitude."''',
+"Someone told Vardess where I spend my evenings, and with whom. Vardess offers me a Commander who kneels. Such solicitude."''',
      (2, '"What does he really want?"'))
 
 text("counterfeit_guest", "maker.reply.1", '''"To show it with my approval. The Commander at my feet. Me at his table, acknowledging that he has supplied something I wanted. Everyone in the room beneath someone else. He will consider the arrangement elegant."

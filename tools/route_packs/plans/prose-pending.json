@@ -105,13 +105,6 @@
       "surface": "node",
       "index": null,
       "text_sha": "cb2fde579a3da0760b305b33e19ae2128abb2868bfe0d81142e54c5f9f4df4da"
-    },
-    {
-      "scene": "household.pair.nocticula_shamira.precedence.live",
-      "node": "shamira_reply",
-      "surface": "node",
-      "index": null,
-      "text_sha": "f100e388bc565b6213cfaa05e4cd0db6fe0a970455a2d0f36dde2a17605fafc5"
     }
   ]
 }

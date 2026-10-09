@@ -475,12 +475,13 @@ ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wa
     t("greet_unspent", '''"Commander. Greetings, my rescuer." {n}She does not smile.{/n}
 "The chaplain sent word that you worked his last healing wand through the night, from cot to cot. His letter reached me in the halls of Heaven. I came to see who would do such a thing, and why."''',
       c('[Explain] "They were dying. I could help, and give them the night."', "why")),
-    t("greet_treated_unspent", '''"Commander. Greetings, my rescuer, and my physician." {n}She does not smile.{/n}
-"You have treated this wing, and argued with it, and sat with me while it was dressed. I thought I knew what kind of soul you were. Then the chaplain wrote that you worked his last healing wand through the night. Word reached me in the halls of Heaven. I came down to see whether it was the same hand."''',
-      c('[Explain] "They were dying. I could help, and give them the night."', "greet_treated")),
-    t("greet_wayhouse_unspent", '''"Commander. Greetings, my rescuer, and my correspondent." {n}She does not smile.{/n}
-"I have been writing to you from the wayhouse on the eastern road, about doors and cups and a sergeant called Merovan. Then the chaplain wrote that you worked his last healing wand through the night. His letter found me at the wayhouse. I walked in to see whether it was the same hand that writes to me."''',
-      c('[Explain] "They were dying. I could help, and give them the night."', "greet_wayhouse")),
+    # fix-inherited2: arrival bridges into the canonical greetings; no second greeting, no explanation.
+    t("greet_treated_unspent", '''{n}She works one-handed. The wing you treated is bound tight against her back under clean dressings, and she favours it when she kneels. Halfway down the row she finds the wand on the chaplain's stool where you set it down at dawn: the infirmary's last, the one you carried from cot to cot all night. She turns it over in her fingers the way a healer weighs a tool. If she can feel how much is left in it, she does not say so.{/n}
+{n}The chaplain's letter brought her down from the halls of Heaven. She knows your hands before she looks up at your face.{/n}''',
+      c('[Go to her.]', "greet_treated")),
+    t("greet_wayhouse_unspent", '''{n}Her hem is still grey with the dust of the eastern road; she has walked in from the wayhouse without stopping to change. Halfway down the row she finds the wand on the chaplain's stool where you set it down at dawn: the infirmary's last, the one you carried from cot to cot all night. She turns it over in her fingers the way a healer weighs a tool. If she can feel how much is left in it, she does not say so.{/n}
+{n}Two letters are folded into her belt: the chaplain's, and one in your own hand, soft at the creases from reading.{/n}''',
+      c('[Go to her.]', "greet_wayhouse")),
 ], requires=("trickster.ever", WAND, FREE), forbids=(MET, CLOSED), delay=0)
 
 
