@@ -270,9 +270,9 @@ I am still in his life. He still hates part of this. If you expect me to turn hi
         book, ns = books["kiana.date"], pages("kiana.date")
         # Explicit brief: the existing first-night slot, at the initiating
         # motion; the dropped dress and promise precede this cut.
-        ns["kiana.date.explicit.1"]["Text"] = '''{n}Kiana stays over you, her bare knees on either side of your hips, her fingers tight in your collar.{/n}
+        ns["kiana.date.explicit.1"]["Text"] = '''{n}Kiana draws you down with her onto the sheet, her fingers tight in your collar, and the ribbon at her throat is the last thing either of you loosens.{/n}
 "Stay. I haven't finished with you."
-{n}The candle burns beside the abandoned dress.{/n}'''
+{n}Her skin is hot under your hands and her breath breaks against your mouth. The candle burns on beside the abandoned dress, and neither of you counts the bells.{/n}'''
         old = ns["kiss"]["Choices"][0]
         if old["Next"] is None:
             twin = replace_edge(ns["kiss"], old, "kiana.date.explicit.2")
@@ -280,9 +280,9 @@ I am still in his life. He still hates part of this. If you expect me to turn hi
             effects = tuple(twin["Set"])
             twin["Set"] = []
             retire(old)
-            book["Nodes"].append(page("kiana.date.explicit.2", '''{n}Kiana stays over you, hot and flushed, her fingers tight in your collar.{/n}
+            book["Nodes"].append(page("kiana.date.explicit.2", '''{n}Kiana pulls you down beside her, hot and flushed, her fingers tight in your collar.{/n}
 "Damn the line. Stay."
-{n}The candle burns beside the abandoned dress.{/n}''', c('[Spend the evening together.]', flags=effects)))
+{n}The dress slips from her shoulders and the script stays unread. The candle burns on beside it, and neither of you counts the bells.{/n}''', c('[Spend the evening together.]', flags=effects)))
     for sid in ("kiana.ink_after", "kiana.unborrowed_evening"):
         if sid not in books:
             continue
@@ -293,7 +293,7 @@ I am still in his life. He still hates part of this. If you expect me to turn hi
         retire(ns["kiss"]["Choices"][0])
         # Explicit brief: renewed intimacy on the desk / private bed, never
         # another first night. Default cuts at her initiating movement.
-        ns[slot]["Text"] = ('''{n}Kiana holds you against her on the cleared desk, her bare knees locked round your hips. Her ink-stained hand leaves a mark on your collar.{/n}''' if sid == "kiana.ink_after" else '''{n}Kiana stays over you, catching your hand against her bare waist. The key stays in the locked door.{/n}''')
+        ns[slot]["Text"] = ('''{n}The script goes onto the floor and the desk takes her weight. Her skin is hot where the dress slides away, her breath breaks against your throat, and her ink-stained hand leaves a mark on your collar.{/n}''' if sid == "kiana.ink_after" else '''{n}Kiana pulls you down with her, catching your hand against her waist. The dress goes, the pins scatter across the floor, and the key stays in the locked door.{/n}''')
 
     from storylines import kiana_round4
     kiana_round4.integrate(payload)

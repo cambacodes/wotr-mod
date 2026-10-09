@@ -16,6 +16,6 @@
   "max_lines": 16,
   "slot_id": "a_crossing.explicit.1",
   "source_node": "night",
-  "default_text": "{n}Anevia draws you down beside her. The scarf lies where she dropped it; beyond the door, the last runner's footsteps fade.{/n}",
+  "default_text": "{n}Her hair falls round your faces, her skin is hot under your hands, and her breath breaks against your ear while the door stays unbarred at her back. Beyond it the last runner's footsteps fade, and she does not stop to listen.{/n}",
   "continuation": "Resume existing Later, she dresses passage and terminal a_affair choice unchanged."
 }

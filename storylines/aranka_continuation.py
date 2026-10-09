@@ -476,8 +476,8 @@ s("the_story_that_follows", "The story that follows", '\"I heard a new version o
         c('"I meant I want you beside me when the next impossible thing happens."', "road"),
         c('"I meant both."', "both")),
     n("private", "Aranka", '''"Good," {n}she says.{/n} "I have been listened to all evening. I would like to be touched now."
-{n}Her hand settles at the back of your neck and she kisses you as if she had rehearsed it, which, knowing her, she has. Then she draws you off the path into the sheltered hollow behind the wall, unpins her cloak and lets it fall on the grass, and pulls you down onto it after her, her fingers already busy with your buckles and one knee hooked over your hip.{/n}
-{n}She is warm through the wool and her laces are already loose. She guides your mouth to the hollow of her throat so you can feel the song she is not singing, and arches under your hands when they find the bare small of her back, and a breath leaves her that is mostly laugh and not entirely.{/n}
+{n}Her hand settles at the back of your neck and she kisses you as if she had rehearsed it, which, knowing her, she has. Then she draws you off the path into the sheltered hollow behind the wall, unpins her cloak and lets it fall on the grass.{/n}
+{n}She guides your mouth to the hollow of her throat so you can feel the song she is not singing, and her fingers are already busy with your buckles.{/n}
 "Not one anyone else gets to hear," {n}she says against your mouth, and drags your shirt up over your head.{/n}''',
         c('[Draw her close as she strips off your shirt.]', "hollow_morning"),
         c('[Catch her hands, laughing. "Another night."]', flags=("aranka.story_conversation_done",))),
@@ -612,16 +612,17 @@ next(s for s in SCENES if s["Id"] == "aranka.no_encore_needed")["Nodes"].extend(
 "Those have become inconvenient," {n}she says.{/n}
 "I have been reminded of another inconvenience."
 {n}You retrieve the shoes while she folds the shawl. She walks beside you rather than pulling you along, letting the anticipation survive the distance. Once you reach the private shelter she has arranged for the evening, she takes you through the curtain by your belt.{/n}
-{n}Inside she kicks the shoes into a corner, pulls the laces of her dress loose with one hand and yours with the other, and laughs into your mouth when the shawl tangles round both of you. She does not stop to untangle it. She sinks back onto the bedding and pulls you down after her by the collar, her knees coming up on either side of you and her heels hooking behind your thighs, and hums the first phrase of the rehearsal song against your throat.{/n}''', c("Continue", "aranka.no_encore_needed.explicit.1"), portrait="Aranka"),
+{n}Inside she kicks the shoes into a corner and laughs into your mouth when the shawl tangles round both of you. She does not stop to untangle it.{/n}
+"Hold still. I am composing." {n}Her fingers are at your collar, her breath is warm on your throat, and she hums the first phrase of the rehearsal song against your skin and loses the tune halfway through.{/n}''', c("Continue", "aranka.no_encore_needed.explicit.1"), portrait="Aranka"),
     # User-supplied established-lovers insertion, followed by the old night aftermath.
-    n("aranka.no_encore_needed.explicit.1", "Narrator", "{n}Later, Aranka reaches for the shawl without letting go of your hand.{/n}", c("Continue", "night"), portrait="Aranka"),
+    n("aranka.no_encore_needed.explicit.1", "Narrator", "{n}The song does not get finished. The laces of her dress give way one after another under your fingers, her skin is hot against your hands, and her breath turns to a laugh and then to something that is not a laugh at all. Time loses its count between one kiss and the next, and the shawl is never untangled.{/n}", c("Continue", "night"), portrait="Aranka"),
 ])
 
 _hollow = next(s for s in SCENES if s["Id"] == "aranka.the_story_that_follows")
 next(node for node in _hollow["Nodes"] if node["Id"] == "private")["Choices"][0]["Next"] = "aranka.the_story_that_follows.explicit.1"
 # User-supplied hollow insertion; the existing deferral never traverses this slot.
 _hollow["Nodes"].append(n("aranka.the_story_that_follows.explicit.1", "Narrator",
-    "{n}The grass beyond the cloak is wet with dew.{/n}",
+    "{n}You go down together onto the wool. Her skin is warm under your hands, her laugh turns to a breath against your throat, and the buckles and laces give up one after another. Beyond the cloak the grass is wet with dew, and neither of you notices until much later.{/n}",
     c("Continue", "hollow_morning"), portrait="Aranka"))
 
 
