@@ -14651,7 +14651,7 @@ Unavailable states: `chadali.lost_at_council`, `chadali.epoch_unavailable`; fail
   - `chadali.trickster.fought.lucky/needle/0` — [Keep the letter.]
   - `chadali.trickster.fought.lucky/shut/0` — [Look at the bottom of the parcel.]; Need all: `chadali.trickster.primed`
   - `chadali.trickster.fought.lucky/shut/1` — [Put the parcel away.]; Blocked by: `chadali.trickster.primed`
-  - `chadali.trickster.fought.lucky/shut_coin/0` — [Put the coin away.]
+  - `chadali.trickster.fought.lucky/shut_coin/0` — [Put the parcel away.]
   - `chadali.trickster.fought.lucky/coin_home/0` — Read the letter.
   - `chadali.trickster.fought.lucky/coin_collected/0` — Read the letter.
 Choices recording closure, refusal or failure that blocks later scenes (avoid applicable siblings; a listed recovery must match the actual loss):
