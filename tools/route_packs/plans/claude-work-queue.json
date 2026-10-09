@@ -1404,5 +1404,29 @@
     "ruling": "lc-history-01: structure-only handoff; Claude owns prose",
     "finding": "LC-HISTORY-01",
     "dependency": "Coordinator must preserve existing generated paragraph indices 5 and 6 from storylines/harem_rows/s52.py; its late appender is outside lc-history-01 allow_paths."
+  },
+  {
+    "scene": "dorgelinda.lastcall.page",
+    "node": "page",
+    "woman": "dorgelinda",
+    "beat": "Paragraph 7: [PROSE PENDING: Dorgelinda - Last Call settled account]. Acknowledge the completed cost.told_all settlement; do not describe the original account as unresolved. Keep retained carts_signed callability and all existing costs.",
+    "ruling": "lc-history-01-a2: late-append structure; Claude owns prose",
+    "finding": "LC-HISTORY-01"
+  },
+  {
+    "scene": "dorgelinda.lastcall.page",
+    "node": "page",
+    "woman": "dorgelinda",
+    "beat": "Paragraph 8: [PROSE PENDING: Dorgelinda - Last Call current seal quarrel]. Read cold_unmended or quarrel_unmended as a current seal quarrel; do not imply private supper or reconciliation. A historical cold quarrel repaired by quarrel_mended must not activate this paragraph.",
+    "ruling": "lc-history-01-a2: late-append structure; Claude owns prose",
+    "finding": "LC-HISTORY-01"
+  },
+  {
+    "scene": "dorgelinda.lastcall.page",
+    "node": "page",
+    "woman": "dorgelinda",
+    "beat": "Paragraph 9: [PROSE PENDING: Dorgelinda - Last Call called after completed disclosure]. Read lastcall.called together with cost.told_all; acknowledge the call without replaying a disclosure already completed at the paid second ask. Do not invent a second price or settlement.",
+    "ruling": "lc-history-01-a2: late-append structure; Claude owns prose",
+    "finding": "LC-HISTORY-01"
   }
 ]
