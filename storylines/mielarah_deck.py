@@ -80,7 +80,7 @@ def deck(id, title, entry, nodes, requires, forbids=(), delay=0, **fields):
             threshold = next(node for node in delivery if node["Id"] == "threshold")
             threshold["Choices"][0]["Next"] = "explicit.1"
             # Explicit brief: first night on her coat, after her initiation; sleep before morning.
-            delivery.append(nar("explicit.1", "{n}She draws you down onto her coat, her mouth still on yours. The watch stays forward; above the rail, the lashed wheel holds its course. When the cold wakes you, she has pulled the coat over you both.{/n}", c("Continue")))
+            delivery.append(nar("explicit.1", "{n}She holds you against her on the coat, her mouth still on yours. The watch stays forward; above the rail, the lashed wheel holds its course. When the cold wakes you, she has pulled the coat over you both.{/n}", c("Continue")))
         SCENES.append(scene(id + suffix, title, "Mielarah", 5, entry, delivery,
                             requires=("trickster.ever", CONTACT, *requires, *extra),
                             forbids=(CLOSED, KILLED, twin, *forbids), delay=delay, last=5, Relationship=REL, Chapters=[5],
@@ -426,7 +426,9 @@ INTIMACY = [
         c("Continue", "threshold")),
     mi("threshold", '''{n}She pulls you down with her onto the coat and the cold planks, into the lee of the rail, and the ship sways under you both, and she holds on as if you might be the thing that rolls overboard.{/n}
 "If anything falls," {n}she breathes against your throat, fierce and unsteady,{/n} "a block, a spar, a star, I don't care, if anything falls tonight I want it to fall on both of us. Do you hear me? Both of us or neither."
-{n}Her hands are at your belt. Yours are at hers. Above you the lashed wheel creaks a quarter-turn and holds, and the stars wheel over the mast, and she pulls you down the last of the way.{/n}''',
+{n}Her hands are at your belt. Yours are at hers. Above you the lashed wheel creaks a quarter-turn and holds, and the stars wheel over the mast. The cold is a knife on bare skin and she does not seem to feel it: she has your shirt up over your ribs and her coat spread under the two of you and her own clothes open to the waist, and she takes your mouth, and then your hand, and puts it on her bare breast, and says "Warm" in a voice that cracks on the word. Her rope-callused hands go without ceremony to the rest of your clothes, dragging them open, her thigh sliding up between yours, her breath sawing against your ear.{/n}
+"Quietly," {n}she says, and then, because she has never in her life been quiet at a wheel:{/n} "No. Don't. Let them hear it in Drezen."
+{n}She hauls you over her, hooks a bare leg round your hip, her hand between your bodies, wet and certain, and pulls you down the last of the way.{/n}''',
         c("[The ship holds her course.]", flags=(NIGHT,))),
 ]
 
