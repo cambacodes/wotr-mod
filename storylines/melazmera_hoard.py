@@ -420,7 +420,9 @@ visit(M + "beat.count", "The Commander's hoard", [
         c('[Take the sapphire out of your pocket and put it on the shelf with her stones.]', "sapphire", requires=(STONE_KEPT,))),
     mz("ate", '''"Yes. And none of them came back to ask for it." {n}She sits on the edge of your bed and looks at the sapphire in your pocket.{/n} "Forty stones on the heap. One there. One seal. One Commander."
 
-{n}Her hand closes over the stone through the cloth.{/n} "You were still there when I woke. I counted twice."''',
+{n}Her hand closes over the stone through the cloth.{/n} "You were still there when I woke. I counted twice."
+
+{n}She does not count the way a person counts. She counts with her hands and her mouth, and she has decided you are next. She comes up off the bed and against you, close enough that the sapphire, still shut in her fist, presses hard between her knuckles and your hip, a warm stone between two bodies like a third heart. Her free hand goes over you in order: shoulder, ribs, belt, thigh, as if checking a hoard for gaps. Her breath is hot at your throat and smells of cold iron, and under the woman's skin you feel the plate go cold along her ribs where the shape she wears stops. Her mouth finds your pulse and stays there, hungry, grinning, tasting. Her teeth catch the collar of your shirt.{/n} "One sword," {n}she says into your skin.{/n} "One seal. One thief. Hold still. I am not finished counting you." {n}Her fist knots in the front of your shirt.{/n}''',
         c("Continue", flags=(COUNTED,))),
     mz("sapphire", '''{n}You put the grey stone on the shelf, at the end of the row of her letters, where it looks like one more of them.{/n}
 {n}She stares at it. Then she comes and picks it up, and weighs it in her palm, and puts it back into your pocket herself, and pats it flat.{/n} "No. That one does not go on the shelf. That one goes where it goes. That is the one you took." {n}Her hand stays flat against you.{/n}

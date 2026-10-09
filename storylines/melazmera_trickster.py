@@ -747,7 +747,8 @@ SCENES.append(scene(M + "visit.heap", "On the heap", "Melazmera", 5, "", [
 "Your captain," {n}she says against your mouth.{/n} "Touch it. I want you to know I let you."''',
         c("Continue", "cut")),
     nar("cut", '''{n}She pushes you back down into the stones with one hand flat on your chest, and settles astride your hips, and her hair comes down round your face like a tent, with the rock still in it, knocking against your brow. Behind her, all along the roof of the cave, her shadow spreads its wings.{/n}
-"Mine," {n}she says. Her other hand is already at your belt.{/n} "Say it, thief."''',
+{n}She is heavy and hot and bare against you, and she does not hold herself still. She grinds down once, slow, to feel what she has caught, and makes a small greedy sound in her throat, the sound she makes at a good kill. Her breasts brush your chest. Her thighs are tight round your hips and wet where they slide against you, and where the cold plate runs under the skin of her belly it chills you and the heat of her swallows the chill. She laughs, the giggle, low and delighted. She puts her mouth at your ear and her teeth in the lobe and bites, not hard enough to cut, just hard enough to count.{/n}
+"Mine," {n}she says. Her other hand is already at your belt, pulling it open.{/n} "Say it, thief."''',
         c('"Yours."', M + "visit.heap.explicit.1"),
         c("[Pull her down to you.]", M + "visit.heap.explicit.1")),
     nar("morning", '''{n}The light from the rift goes from red to grey when the sun comes up over the Wound, as if the fire down there were going to sleep. You wake in the hollow of the heap with a ruby pressing into your spine and every other stone in the place printed on your back, and a warm, enormous flank against your side that rises and falls like the sea.{/n}
