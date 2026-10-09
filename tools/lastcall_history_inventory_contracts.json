@@ -1869,8 +1869,7 @@
       "iomedae.trickster.buried_alive"
     ],
     "chadali.lastcall.luck_due": [
-      "chadali.fortunes.loan_returned",
-      "chadali.wagers.luck_lost"
+      "chadali.fortunes.loan_returned"
     ],
     "seelah.lastcall.list_due": [
       "seelah.trickster.death_returned",

@@ -2,7 +2,7 @@
 import unittest
 
 from storylines import kiana_partner as kp, kiana_round4 as r4
-import test_kiana_partner as partner_tests
+from tests import test_kiana_partner as partner_tests
 
 holds = partner_tests.holds
 walk = partner_tests.walk

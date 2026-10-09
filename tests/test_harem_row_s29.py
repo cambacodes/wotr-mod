@@ -12,7 +12,15 @@ from tools import rrt_verify, savecompat
 class S29Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.base = fresh_story(include_harem=False)
+        # Preserve the other rows required by final assembly and its delivery
+        # contracts. Isolate only S29's registration surface for these tests.
+        cls.base = fresh_story()
+        cls.base["Scenes"] = [s for s in cls.base["Scenes"] if s["Id"] != s29.P("ward")]
+        for woman in s29.PAIR:
+            cls.base.get("SeatWomen", {}).pop(woman, None)
+        # register_all likewise clears stale cap snapshots before each row.
+        cls.base["Counts"] = {key: value for key, value in cls.base.get("Counts", {}).items()
+                              if not key.startswith("household.cap.")}
 
     def setUp(self):
         self.payload = copy.deepcopy(self.base)

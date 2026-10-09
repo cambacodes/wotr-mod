@@ -4,7 +4,7 @@ import unittest
 
 from storylines import devarra_trickster as spine, devarra_tower as tower
 from storylines import devarra_round3 as r3
-from test_devarra_round2 import visible
+from tests.test_devarra_round2 import visible
 
 
 class DevarraRoundThreeTests(unittest.TestCase):

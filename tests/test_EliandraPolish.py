@@ -187,10 +187,17 @@ class EliandraPolishTests(unittest.TestCase):
 
     def test_katair_and_lastcall_claim_only_their_earned_histories(self):
         for ending in ("together", "late", "unasked"):
-            node = self.scenes[E + "epilogue." + ending]["Nodes"][0]
-            paragraph = next(p for p in node["Paragraphs"] if E + "drezen.katair_grave" in p["Requires"])
-            self.assertFalse(shown(paragraph, set()))
-            self.assertTrue(shown(paragraph, {E + "drezen.katair_grave"}))
+            graph = {n["Id"]: n for n in self.scenes[E + "epilogue." + ending]["Nodes"]}
+            # The late offer now leaves retrospective history to each answer.
+            outcomes = ("page",) if ending == "together" else (
+                "late_accepted", "late_refused", "late_friend")
+            for outcome in outcomes:
+                with self.subTest(ending=ending, outcome=outcome):
+                    history = [p for p in graph[outcome].get("Paragraphs", [])
+                               if "Stone Tree" in p["Text"]]
+                    self.assertEqual(1, len(history))
+                    self.assertFalse(shown(history[0], set()))
+                    self.assertTrue(shown(history[0], {E + "drezen.katair_grave"}))
         call = self.scenes["eliandra.lastcall.call"]
         daily = next(n for n in call["Nodes"] if n["Id"] == "daily")
         self.assertEqual(call["Nodes"][0]["Choices"][0]["Next"], daily["Id"])
