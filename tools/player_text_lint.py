@@ -11,30 +11,52 @@ def narration_free(text):
     return text.replace('{n}', '').replace('{/n}', '')
 
 
-def surfaces(story):
-    """Yield only displayed text, including conditional paragraphs and Book/journal text."""
+def surface_records(story):
+    """Enumerate exported authored text with typed, lossless locators."""
     for scene in story.get("Scenes", []):
         sid = scene["Id"]
-        yield sid, "entry", scene.get("Entry", ""), scene.get("Owner", "Narrator"), "entry"
+        yield (sid, "entry", scene.get("Entry", ""), scene.get("Owner", "Narrator"), "entry",
+               {"kind": "scene", "scene": sid, "slot": "entry"})
+        for field in ("Title", "ReturnText"):
+            if scene.get(field):
+                yield (sid, field, scene[field], scene.get("Owner", "Narrator"), "ui" if field == "Title" else "entry",
+                       {"kind": "scene", "scene": sid, "slot": field})
         for node in scene.get("Nodes", []):
             nid = node["Id"]
-            yield sid, nid, node.get("Text", ""), node.get("Speaker", "Narrator"), "node"
+            yield (sid, nid, node.get("Text", ""), node.get("Speaker", "Narrator"), "node",
+                   {"kind": "scene", "scene": sid, "node": nid, "slot": "text"})
             for i, para in enumerate(node.get("Paragraphs", [])):
-                yield sid, nid + "/paragraph/%d" % i, para.get("Text", ""), node.get("Speaker", "Narrator"), "paragraph"
+                yield (sid, nid + "/paragraph/%d" % i, para.get("Text", ""), node.get("Speaker", "Narrator"), "paragraph",
+                       {"kind": "scene", "scene": sid, "node": nid, "slot": "paragraph", "index": i})
             for i, choice in enumerate(node.get("Choices", [])):
-                yield sid, nid + "/choice/%d" % i, choice.get("Text", ""), "Commander", "choice"
-    def extra(value, path):
+                yield (sid, nid + "/choice/%d" % i, choice.get("Text", ""), "Commander", "choice",
+                       {"kind": "scene", "scene": sid, "node": nid, "slot": "choice", "index": i})
+    def extra(value, section, path):
         if isinstance(value, dict):
             for key, child in sorted(value.items()):
                 if key in {"Text", "Title", "Description", "Objective", "Guidance", "Opening", "Name"} and isinstance(child, str):
-                    yield path, key, child, "Narrator", "ui"
+                    yield ("/".join(map(str, [section, *path])), key, child, "Narrator", "ui",
+                           {"kind": section, "path": [*path, key]})
+                elif section == "Books" and key == "Sections" and isinstance(child, list):
+                    for i, label in enumerate(child):
+                        if isinstance(label, str):
+                            yield ("/".join(map(str, [section, *path, key])), str(i), label, "Narrator", "ui",
+                                   {"kind": section, "path": [*path, key, i]})
                 elif isinstance(child, (dict, list)):
-                    yield from extra(child, path + "/" + key)
+                    yield from extra(child, section, [*path, key])
         elif isinstance(value, list):
             for i, child in enumerate(value):
-                yield from extra(child, path + "/%d" % i)
-    for section in ("Books", "Journals", "Relationships", "Glossary"):
-        yield from extra(story.get(section, {}), section)
+                yield from extra(child, section, [*path, i])
+    for section in ("Books", "Journals", "Relationships", "Glossary", "Openers",
+                    "NativeTextEdits", "NativeAnswerEdits", "NativeWorldReconciliations",
+                    "ParentEpilogueEdits", "ParentEpilogueLossRules"):
+        yield from extra(story.get(section, {}), section, [])
+
+
+def surfaces(story):
+    """Keep the existing five-field lint/walker interface."""
+    for record in surface_records(story):
+        yield record[:5]
 
 
 PATTERNS = {
