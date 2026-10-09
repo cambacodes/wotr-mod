@@ -443,8 +443,8 @@ wager(REAL_WAGER, "The real wager", '"You wanted to make a proper bet?"', [
       c('"...My luck. All of it."', "stake", flags=(BET_ON_HER,)),
       c('"Not tonight."', "not_tonight")),
     ch("stake", '{n}She breathes out, then pushes the flat coin between you.{/n} "Done. It stays down until I\'ve answered. No tricks with that one."\n{n}She tucks the flower behind your ear; her fingers linger there.{/n} "Come back with the question. I\'m going to be dreadful company until you do."',
-      c('"Both."', "both")),
-    ch("both", '''"Both!" {n}She laughs, and the laugh wobbles at the end.{/n} "Heads and tails at once. Like the coin."
+      c('"Then it\'s down. I\'ll abide by it."', "both")),
+    ch("both", '''"Down it stays!" {n}She laughs, and the laugh wobbles at the end.{/n} "A bet on the table and a coin lying flat. Neither of us can say we weren't warned."
 "Go away now. Come back with the question. I'll bake. I'll bake the best batch I've ever baked, and I won't burn a single one, and if I do I'll eat them all myself and never tell you."''',
       c("[Go, and come back.]")),
     ch("not_tonight", '''"Then not tonight." {n}She nods, as if this too were fair.{/n}

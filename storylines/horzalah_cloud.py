@@ -154,7 +154,7 @@ PARTNER_READERS = (
       requires=(PAIR + "permanent_refusal",), forbids=(PAIR + "resolved",)),
     p('''{n}She never told anyone what she had read in her sister's trap instructions before she burned them. But no door in her hall was ever locked the way the Ivory Labyrinth's had been, and the locksmith who once offered to fit her one was found in his own strongroom, behind his own lock, which nobody had thought to open for a week.{/n}''',
       requires=(DOCKET + "instructions.destroyed",)),
-    p('''{n}On the back of the Commander's hand, from the knuckle almost to the wrist, ran the thin white line she had left there in a lesson. She liked to trace it with a claw when she thought nobody was watching, and said, when she was caught, that she was only checking her work.{/n}''',
+    p('''{n}On the back of the Commander's hand, from the knuckle almost to the wrist, ran the thin white line she had left there in a lesson. She liked to trace it with one fingertip when she thought nobody was watching, and said, when she was caught, that she was only checking her work.{/n}''',
       requires=(H + "beat.knife_nicked",)),
 )
 add(H + "epilogue.together", "page", *PARTNER_READERS)

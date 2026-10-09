@@ -355,7 +355,7 @@ beat(H + "beat.knife", "Hold it like this", '"Show me how you do it."', [
     hz("start", '''"Do what?" {n}She is cleaning her nails with a knife so thin you can see the light through the edge.{/n}
 "Oh. That." {n}She follows your eyes to the side of your head.{/n} "You want to know how I took it without taking half your scalp with it. You want a lesson." {n}She flips the knife over and holds it out, hilt first.{/n} "Very well. Take it. Not like that. You hold it like a quill. You are going to cut someone, mortal, not write them a letter."''',
        c("[Hold it the way she shows you.]", "hold")),
-    nar("hold", '''{n}She stands behind you and corrects your grip with her own fingers over yours, one knuckle at a time. Her claws rest on the backs of your hands, very lightly, and her breath is warm on the scar where your ear was.{/n}
+    nar("hold", '''{n}She stands behind you and corrects your grip with her own fingers over yours, one knuckle at a time. Her fingers rest on the backs of your hands, very lightly, and her breath is warm on the scar where your ear was.{/n}
 "Wrist loose," {n}she says.{/n} "Loose. Blade flat along the forearm, so the man in front of you sees an empty hand. Your other hand takes the hair and turns the head, like this, so he cannot see what the first hand is doing." {n}Her hand closes over yours and moves it in a short, flat arc through the air.{/n} "There. That is an ear. You hold it like a butcher's boy. Now take mine."''',
         c("Continue", "take")),
     hz("take", '''{n}She steps round in front of you, and draws a second knife from somewhere in her collar, and holds it loosely at her side.{/n}
@@ -443,7 +443,7 @@ beat(H + "beat.ribbon", "The bow", '"Teach me to tie that bow."', [
         c("Continue", "tied")),
     hz("tied", '''{n}She looks at the bow you have made. It is lopsided. She does not retie it.{/n}
 "Terrible," {n}she says.{/n} "I am going to wear it anyway. In my hall. On the collar. Every master in the Guild will see that the ribbon is tied badly, and none of them will dare to mention it, and they will all wonder who did it, and I will not tell them." {n}She threads it back through her collar, lopsided bow and all.{/n} "Get better at it. I intend to make you practise."
-{n}She does not go down to her day. She stays where she is, the cut ribbon trailing from two claws, one hip against the bed, and looks you over the way she looks at a lock she has decided to open. Last night's marks are still on your shoulder; she finds them with her thumb and presses until you feel each one.{/n}
+{n}She does not go down to her day. She stays where she is, the cut ribbon trailing from two fingers, one hip against the bed, and looks you over the way she looks at a lock she has decided to open. Last night's marks are still on your shoulder; she finds them with her thumb and presses until you feel each one.{/n}
 "Clumsy. Your hands are clumsy everywhere, I recall, except where I put them." {n}Her breathing has changed. Her eyes have gone dark with the flame in them, and she tilts her head so the unbuckled edge of the collar falls open and shows the pale scar beneath.{/n} "The masters will wait. I have kept better men than they are waiting, and enjoyed it."''',
        c('"Every morning?"', flags=(P_RIBBON,)),
        c("[Straighten the bow a little.]", flags=(P_RIBBON,))),
@@ -467,11 +467,11 @@ beat(H + "beat.spit", "In the street", '"What happened here?"', [
 "Thank you. I will not say that again, so do not ask."''',
        c("[Don't ask.]", flags=(SPIT,))),
     nar("hers", '''{n}She moves once. The boy's sword is in the gutter, and the boy is on his knees in front of her, with her fingers under his chin, tipping his face up to hers. She has not drawn a knife. She does not need to.{/n}
-"Your family?" {n}She digs a claw beneath his chin until he stops struggling.{/n} "The Commander killed my sister in Colyphyr. I enjoyed hearing about it. You look less pleased with your loss."
+"Your family?" {n}She digs the point of her knife beneath his chin until he stops struggling.{/n} "The Commander killed my sister in Colyphyr. I enjoyed hearing about it. You look less pleased with your loss."
 {n}She wipes the spit from her cheek with her free hand and smears it across his mouth.{/n} "Lick it up. There. You can swallow something besides grief."''',
         c("Continue", "hers2")),
     hz("hers2", '''{n}She lets him go. He picks up his sword and does not look at her, and his friends take him away, and the street starts breathing again.{/n}
-{n}Horzalah inspects the blood beneath her claw.{/n} "I wanted his tongue. But your watch would have swarmed me, and I came to Drezen for better sport." {n}She flicks the blood onto the cobbles.{/n} "Let him explain to his friends why he knelt."''',
+{n}Horzalah inspects the blood on her knife.{/n} "I wanted his tongue. But your watch would have swarmed me, and I came to Drezen for better sport." {n}She flicks the blood onto the cobbles.{/n} "Let him explain to his friends why he knelt."''',
        c("[You won't.]", flags=(SPIT,))),
     nar("between", '''{n}You step in between them, and for a heartbeat both of them look at you with the same expression, the one people wear when they have been denied something they badly wanted.{/n}
 {n}The boy sheathes his sword first. His friends take him away. Horzalah wipes her cheek with one knuckle.{/n}''',
@@ -663,7 +663,7 @@ beat(H + "beat.hat", "Wear a hat", '"I bought a hat."', [
 "Take that thing off. It was made by a man who has never seen a knife." {n}The dresser unwraps a hat: black felt, narrow-brimmed, cut a little higher over the left side than the right, so that the brim sits clear of the scar instead of hiding it. There is a thin white band round the crown, tied at the side in a bow, with the ends cut on the slant.{/n}''',
        c("[Put it on.]", "fitted")),
     hz("fitted", '''{n}She walks round you once, as she walked round her ear on the notice board, and nods.{/n}
-"There. Now it shows. A hat that hides a mark is an apology. A hat that shows it off is a boast." {n}She flicks the ribbon with one claw.{/n} "You are not apologising for anything of mine, mortal. Wear it in the street. Wear it in front of your priests."''',
+"There. Now it shows. A hat that hides a mark is an apology. A hat that shows it off is a boast." {n}She flicks the ribbon with one finger.{/n} "You are not apologising for anything of mine, mortal. Wear it in the street. Wear it in front of your priests."''',
        c("[Wear it.]", flags=(HAT,))),
     hz("off", '''"No." {n}She says it sharply, and then, more quietly:{/n} "No. Keep it on. It suits you, and he made it well, and I will look at it and think about what I gave away, and it will do me good." {n}She turns back to the shelves.{/n} "Just do not wear it in my hall. My masters would laugh, and then I would have to buy a great deal of ribbon."''',
        c("[Keep it on.]", flags=(HAT,))),
@@ -739,18 +739,18 @@ beat(H + "beat.second_night", "Your turn", '"Come up tonight."', [
     nar("night", '''{n}She comes after the midnight bell, through no door at all, as she always does. The room folds and unfolds, and she is standing by your bed in the dark with her collar already in her hand, and she drops it on your map table, across the Worldwound.{/n}
 {n}She does not wait to be asked this time, and she does not ask. She pushes you back against the wall with one hand flat on your chest and holds you there, looking at you in the light of the one candle, as if memorising the place.{/n}''',
         c("Continue", "night2")),
-    hz("night2", '''"On my side of the Abyss you were my guest," {n}she says, against your mouth.{/n} "Here I am yours. That is the custom, is it not, among you mortals? The host is responsible for the guest's comfort." {n}Her claws find the laces of your shirt and do not hurry.{/n} "Be responsible, then. Be very responsible."''',
+    hz("night2", '''"On my side of the Abyss you were my guest," {n}she says, against your mouth.{/n} "Here I am yours. That is the custom, is it not, among you mortals? The host is responsible for the guest's comfort." {n}Her fingers find the laces of your shirt and do not hurry.{/n} "Be responsible, then. Be very responsible."''',
        c("[Draw her down onto the bed.]", "draw"),
        c('"Your turn to wait."', "wait")),
     nar("draw", '''{n}You take her by the hips and turn her, and she lets herself be turned, which she has never done, and you walk her back to the bed with her mouth still on yours. Her leathers come apart under your hands a lace at a time. She is lean and hot and hard as a drawn bow, and when the backs of her knees meet the edge of the bed she sits, and pulls you down after her by the front of your open shirt.{/n}
-{n}Her claws rake once, lightly, down your ribs. Her heels lock behind your thighs and draw you in against her.{/n}''',
+{n}Her hand drags once, slow and hard, down your ribs, the grip of someone who could break you and has chosen to hold. Her heels lock behind your thighs and draw you in against her.{/n}''',
         c("Continue", "cut")),
-    nar("wait", '''{n}She stops. Her claws stop, halfway down your laces. She looks at you with an expression you have never seen on her: surprise, and then, slowly, something that is very nearly delight.{/n}
+    nar("wait", '''{n}She stops. Her fingers stop, halfway down your laces. She looks at you with an expression you have never seen on her: surprise, and then, slowly, something that is very nearly delight.{/n}
 {n}"Oh," she says softly. "Oh, you learn." And she stands perfectly still, with her hands at her sides and her pale throat bare in the candlelight, and lets you undo her: every lace of the leathers, every buckle, the long line of her back under your palms, the scar under your mouth. She does not move. Her breath does. By the time the last of it is on the floor she is shaking with the effort of standing still.{/n}''',
         c("Continue", "wait2")),
     hz("wait2", '''"Enough," {n}she says through her teeth. She takes two fistfuls of your shirt and pulls you onto the bed beneath her. Her knees settle on either side of you; she bends until her bare throat brushes your mouth.{/n}''',
        c("Continue", "cut")),
-    nar("cut", '''{n}Her mouth closes on yours, hard enough to bruise. What is left of your clothes goes where hers went, and her hips settle onto yours in one slow, deliberate grind that drags a sound out of her she will deny in the morning. She catches both your wrists in her claws and pins them to the pillow, just short of drawing blood, and looks down at what she has caught: all long muscle and fever-heat, the white band of the old collar bright in the candlelight, her hair hanging round both your faces.{/n}
+    nar("cut", '''{n}Her mouth closes on yours, hard enough to bruise. What is left of your clothes goes where hers went, and her hips settle onto yours in one slow, deliberate grind that drags a sound out of her she will deny in the morning. She catches both your wrists in her hands and pins them to the pillow, just short of drawing blood, and looks down at what she has caught: all long muscle and fever-heat, the white band of the old collar bright in the candlelight, her hair hanging round both your faces.{/n}
 "Let your sentries listen," {n}she says against your jaw.{/n} "Let the one on the left hear every minute of it. I want your whole citadel to know whose bed I am in." {n}She reaches toward the bedside candle, and the room goes dark.{/n}''',
         c("Continue", "after")),
     nar("after", '''{n}When the morning bell rings she is sitting on the edge of your map table in nothing but her scar, buckling on her collar, with the Worldwound pressed flat under her thigh.{/n}
@@ -810,7 +810,7 @@ beat(H + "beat.used", "You served me well", '"In Yozz\'s hall you nearly said so
 # --- 26. What she tells in person: a master who tried her chair, and the masters who stood. ------------------------------
 
 beat(H + "beat.masters", "A vacancy", '"You look pleased with yourself."', [
-    hz("start", '''"I am." {n}She is cleaning under her claws with the point of a very thin knife, and she does not stop.{/n}
+    hz("start", '''"I am." {n}She is cleaning under her nails with the point of a very thin knife, and she does not stop.{/n}
 "One of my masters tried my chair the night before last. Not the one who got up when I came in with the box; that one is the most loyal knife I have ever owned. Another. An old one, from Yozz's time, who had decided that a woman who comes home with a piece of her enemy instead of his head has gone soft."''',
        c('"And?"', "and"),
        c('"Did you kill him?"', "kill")),
@@ -1050,7 +1050,7 @@ def _round2_guild():
     scenes[H+"beat.ear"]["Nodes"].append(hz("road_rumour", '''"Your soldiers tell the crossroads story. They say a beaten demon took an ear and left the crusader thanking her. The dwarf's old account has grown in the telling. I have grown too. They now give me six knives." {n}She bares her teeth.{/n} "At least they remember who took the trophy."''',c("Continue","ask")))
     ns=nodes("beat.cup")
     ns["guessed"]["Text"]=ns["guessed"]["Text"].replace("You pick one.","You take the cup she offered.")
-    ns["swap"]["Text"]='''"Clever. Yozz always gave the clever answer." {n}She pours the offered wine onto the cobbles, where it hisses, then fills the empty cup from the other. While she turns them, her claw brushes both rims. She drinks first and hands you the cup she originally offered.{/n}
+    ns["swap"]["Text"]='''"Clever. Yozz always gave the clever answer." {n}She pours the offered wine onto the cobbles, where it hisses, then fills the empty cup from the other. While she turns them, her finger brushes both rims. She drinks first and hands you the cup she originally offered.{/n}
 "Fresh wine. A smaller dose, on the rims. You let me handle your cup again, mortal. That was careless. We will both have bad dreams tonight." {n}She smiles over her empty cup.{/n} "I shall blame you for mine."'''
     ns=nodes("beat.question")
     ns["sick"]["Text"]='''"Your colour is back. The quartermaster heard you were sick and decided it was the cook. My people watched him sweat until the second bell." {n}She laughs.{/n} "A kitchen full of knives, and he suspected the stew. Your war deserves better enemies than that fool."'''
