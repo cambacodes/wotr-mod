@@ -378,5 +378,14 @@
     "finding": "konomi:D05",
     "ruling": "r5-S1",
     "dependency": "storylines/konomi_private.py, storylines/konomi_private_absence.py, storylines/konomi_return_invitation.py, storylines/konomi_round3.py: supported reunion placement/fallback and both checked contests need the section 6 route-local scope."
+  },
+  {
+    "scene": "areelu.trickster.threshold.welcome",
+    "woman": "areelu",
+    "node": "start",
+    "beat": "Restore Areelu's two Iomedae-pair readers (records opened to a banner; apology forged in her name) once a no-answer host beat exists before the welcome answers; text is in git history of storylines/areelu_cloud.py (Areelu cloud pass).",
+    "ruling": "coordinator-2026-10-08",
+    "why": "gated paragraphs on a node with authored answers crash NativeAudienceTests",
+    "dependency": "structure: add a no-answer host node (Codex structure, no dialogue)"
   }
 ]

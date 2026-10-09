@@ -83,11 +83,10 @@ text(S, "frost", "You made the offer through my lens", '''
 # ---------------------------------------------------------------------------------------------------------------------
 # Chapter 6: the gate reads the Iomedae pair (three files opened for a goddess, or an apology forged in her name).
 # ---------------------------------------------------------------------------------------------------------------------
-add("areelu.trickster.threshold.welcome", "start",
-    p('''{n}Her eyes go to your hands, as if she expects to find ink on them.{/n} "You read three of my subjects aloud to a banner. The miller, the drover, the mason. Your goddess wanted their names. She did not ask what the mason said when the restraint failed, and I did not volunteer it. Ask me inside. He was the most informative of the three."''',
-      requires=(RECORDS,)),
-    p('''"You also wrote an apology in my name and read it to a goddess." {n}Her smile does not move.{/n} "I have been called a great many things. I have never before been called sorry in someone else's hand. Do not do it again, Commander. I keep a list."''',
-      requires=(FORGERY,), forbids=(RECORDS,)))
+# The two Iomedae-pair readers for threshold.welcome/start were removed 2026-10-08: every node of that scene has
+# authored answers, so gated paragraphs there crash the native audience (managed NativeAudienceTests). They wait in
+# claude-work-queue.json for a structural host (a no-answer beat before the answers).
+
 
 # ---------------------------------------------------------------------------------------------------------------------
 # Epilogue closures: her voice, not a settlement clerk's; true for every history that reaches them.
