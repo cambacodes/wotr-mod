@@ -23,7 +23,7 @@
     "hepzamirah.trickster.body.terms": {
       "owner": "claude",
       "since": "d01b8e48",
-      "text_sha": "11b3ba159c8d0469c3fc65d4f002b1921528225d135ac5e0966f7ae82083e58c"
+      "text_sha": "b427d6de7709108f5aee7603f32990716a39c15bffa4bafa4abc9c94d6fb476c"
     },
     "hepzamirah.trickster.epilogue.leavable": {
       "owner": "claude",
@@ -83,7 +83,7 @@
     "hepzamirah.trickster.bond.eve": {
       "owner": "claude",
       "since": "d01b8e48",
-      "text_sha": "6a80ea9892427d7ff946e94d4817441cafea7f39e504ec68b00876e6f4d88bc9"
+      "text_sha": "3d0f9a728f78f4ee67ce8c43b487bbed3b14146ea49b76240ae36bea0a4f1368"
     },
     "hepzamirah.trickster.flesh.the_market": {
       "owner": "claude",
@@ -143,12 +143,12 @@
     "hepzamirah.trickster.bond.her_room": {
       "owner": "claude",
       "since": "d01b8e48",
-      "text_sha": "9b091f3059891244327120481bf2c1f26770964f6e98a79dd223f027860e88c6"
+      "text_sha": "4743e2cbd8f4b38fd1952b29798b99cafbfcfec5a996f9463093392c27989d46"
     },
     "hepzamirah.trickster.bond.gift": {
       "owner": "claude",
       "since": "d01b8e48",
-      "text_sha": "d2ed5f5392e8c690d0d504a93a9d9227fbb02e70a400c9589c8f90eee82103dc"
+      "text_sha": "d3cd2e616bcd7321be1e26086d3e46371af8484065be106c63d9f3dcbb33d95e"
     },
     "hepzamirah.trickster.flesh.the_song": {
       "owner": "claude",
@@ -373,7 +373,7 @@
     "jerribeth.future": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "4df4f563864303cca25528af4a0f43801feec17be0c79c9867f75b74f85b23f0"
+      "text_sha": "8469692f3bcf99c7162cdc3e47a27d6f549b93c9a9f64820310c4845fc7f9cb4"
     },
     "jerribeth.ordinary": {
       "owner": "claude",
@@ -438,7 +438,7 @@
     "jerribeth.unsold_evening": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "a7ebb232f19eeef1f8dcde3793f3d583c4aede117d9379eb5570919e0a32e6c8"
+      "text_sha": "b17436ad7ab9831faf623bca0ebb23a15df37606bc52547b338c94fc67bc3e64"
     },
     "jerribeth.purchaser_answer": {
       "owner": "claude",
@@ -483,7 +483,7 @@
     "jerribeth.room_measure": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "504dea821577bd7a80e5bac2b5e0638cf50f020e016c04240eb66035b109d64e"
+      "text_sha": "d2679faa071d8813fb006e24d6dec6fdbefbef12d456559a994a2ed3e64778ed"
     },
     "jerribeth.short_invitation": {
       "owner": "claude",
@@ -553,7 +553,7 @@
     "minachiv.the_unhired_evening": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "a5f2c2be75257130274e71f36935f35ba7a19ebba81c9460d67c235edab701ee"
+      "text_sha": "3f8e7e33b25134b747c91d127da8070ac4f69057abf92aa9477339ce1576ee1d"
     },
     "minachiv.the_answer_after_business": {
       "owner": "claude",
@@ -563,7 +563,7 @@
     "minachiv.minaghos_unfinished_sentence": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "77f7436f7927e82c8c40033117c2512ee2c9a2554bc846fb2f455fe562db9d0f"
+      "text_sha": "a5f9e5b05eac7213dbd75aae7f8422063c346244c0199dea784591da983fd885"
     },
     "minachiv.the_performer_and_the_key": {
       "owner": "claude",
@@ -578,7 +578,7 @@
     "minachiv.a_room_she_likes": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "bab1689f6a3325434f7dadaa283ec645d8e536ffa77efd43f5fceb9a8f0443f2"
+      "text_sha": "9ae211a8ad7845c16f4b8598c0a1b6868b3da51db546e6eb206017d6f29b235c"
     },
     "minachiv.the_price_of_her_name": {
       "owner": "claude",
@@ -618,7 +618,7 @@
     "minachiv.after_the_last_lamp": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "26a54f9b9c950de7a05902187fa5cc7ca0d9b42562b4e015ea18abba64d75213"
+      "text_sha": "ead3b16c18e40d460efaa88ed3e0ed05041abdc8657cfe4ad500cde93f0cc3f0"
     },
     "minachiv.the_cost_in_daylight": {
       "owner": "claude",
@@ -633,7 +633,7 @@
     "minachiv.before_the_last_road": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "9f405a58a8af5c0af07c43a06dd021e7c630dd35f3aacbce1585fe5858314eb7"
+      "text_sha": "3708b74d21bee909caabd545eff4c0bc9917c6ed0e4522ef44dfc6a8cfc41065"
     },
     "minachiv.ending_together": {
       "owner": "claude",
@@ -758,7 +758,7 @@
     "noct.unlit_quay": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "34551e7072be09ee32cf145e8faf7d6ef1bcc4f329521b8dbd7ce27f5caf5ae8"
+      "text_sha": "ca2b796d06c2c555a4e3997eee4451e01a2f6f7c8212c54406d18c543f73945c"
     },
     "noct.sixth_passenger": {
       "owner": "claude",
@@ -778,7 +778,7 @@
     "noct.her_own_face": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "3cdf7e98fd64174a0cae66aac3de2ff1d707107e1bd1a79d8c6dc38075e74043"
+      "text_sha": "af00a6869826e7167bf76675686dc52cf4efc320dc22c8527d24dbaf516bc537"
     },
     "noct.white_shoes": {
       "owner": "claude",
@@ -813,7 +813,7 @@
     "noct.another_place": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "f3d21870f91b8b87288b2ad8d566f27cd765664db3e15b976237b45858c32af5"
+      "text_sha": "385a5510a1359492c8b75376b6ba324df34f6fa20ca47d5625679bc4db2bc104"
     },
     "noct.hearing": {
       "owner": "claude",
@@ -823,12 +823,12 @@
     "noct.last_buyer": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "a33f37ed01a89f898f92b3d72d3a97cf827f65efe0e80ddec4528bb665a39596"
+      "text_sha": "59fe8874abc0da9e3b1f0710af3806588a29e6beab8f8a1f75972ba2665fc8c0"
     },
     "noct.empty_chair": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "4e16520ff8a1452a4ff1fc0dff498fd61d4595b940c6a872304418d1c9ebedf2"
+      "text_sha": "fa858d04d12f8b25b2ddde2580b40f3a9dfa4a9414ecab48ec22d7324c889627"
     },
     "noct.mask_and_bell": {
       "owner": "claude",
@@ -848,7 +848,7 @@
     "noct.unborrowed_evening": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "e5eda9585584bcea1be016271050fae5e750e978569b7d9ab74db407f19d813f"
+      "text_sha": "8574948c36c674adffda77216939bb47f5d48a3024595a66e868852a35ad7c92"
     },
     "noct.bell_without_master": {
       "owner": "claude",
@@ -873,7 +873,7 @@
     "noct.second_door": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "3e108532fdbf477094ff5557235816e8e77e18cb608a429c270b2dbd28e95fe3"
+      "text_sha": "1c32586bfc05ce0ca285864caee7446b0ddbb32fb08b1f1fc67d138b7756969b"
     },
     "noct.ending_company": {
       "owner": "claude",
@@ -1458,7 +1458,7 @@
     "noct.acq.the_paid_address": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "4ced1af64c0365a054a31f2f471ace1c1384a7e279de86ae723b09f9ef340d82"
+      "text_sha": "07c7793a55992424fa7845d1c8253682accda455393f5bbb1afa541a21e2dffd"
     },
     "noct.acq.the_retained_copy": {
       "owner": "claude",
@@ -1468,7 +1468,7 @@
     "noct.acq.an_answer_of_her_own": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "1ec2389c11ad7446b60cf2c7b800f42a5a5e7f467714962351765bad20cacdd7"
+      "text_sha": "169cf8d2d408072a812fd596dd555c2962d361a823d5543fe25b5ef6e71a0b3c"
     },
     "noct.join.an_unfinished_map": {
       "owner": "claude",
@@ -1523,7 +1523,7 @@
     "jerribeth.trickster.epilogue.commit": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "abfe60dc8bfae18f0bd0833b644b7d30086300587c31f64c4c9917cf47c968a6"
+      "text_sha": "5b87d4164a21140ebfd2e894f7829673b19a6982842bacd8841c4f33a73a6040"
     },
     "jerribeth.lastcall.page": {
       "owner": "claude",
@@ -1568,7 +1568,7 @@
     "jerribeth.trickster.visit": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "f4e5f2d20f218c157e2563f67005e111aa696b5f107c8d756b8baa94b274f353"
+      "text_sha": "c6a3dc8b6168ce843f2f72e2d39d1b187e53c72a4f923280d45603820b655d54"
     },
     "jerribeth.trickster.visit_letter": {
       "owner": "claude",
@@ -1598,7 +1598,7 @@
     "nocticula.trickster.defeated.chair": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "ddf514a484e6f872136f6b52e17f56ceab2ae4e71e5a72e6cd81471576ba74b9"
+      "text_sha": "0bcaabf90728162c9e92cf6fb0206545cee17d591104eb0af824549c1d44abd7"
     },
     "nocticula.trickster.defeated.morning": {
       "owner": "claude",
@@ -1668,7 +1668,7 @@
     "nocticula.trickster.epilogue.commit": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "97d4ffce681338f7a008cde8a78fd97146f7eb613a24dcf61696e00eb25747b9"
+      "text_sha": "d3375686c73eaf9343264e563ec9ef71c05009879c73864bb7aa79126fbd2036"
     },
     "nocticula.trickster.epilogue.declined": {
       "owner": "claude",
@@ -1863,12 +1863,12 @@
     "arueshalae.trickster.evil.window": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "9592f8084a52f40935f70dd634cb1cf5848c328efd174b196781016649e48ef6"
+      "text_sha": "94f4d18f0cce4d5cccb88da190f86c9e76680c94151814815f5b9deee63c3c0f"
     },
     "arueshalae.trickster.evil.window_yard": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "1cb1707a83370639af06eef3b162d015fa5e89e07e272c944fee1ac5c8f8b3d8"
+      "text_sha": "e5ff00d8844731a69085630afbe9c9442758c6542d59d1356204becb2ebb5f53"
     },
     "arueshalae.trickster.fallen.house_call": {
       "owner": "claude",
@@ -1883,7 +1883,7 @@
     "arueshalae.trickster.fallen.roof": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "e39f41a89cf5871b06bd7ecc4b5afd140180cdeab9d41e543a02c53adcec8d13"
+      "text_sha": "dffe439f0591bc53c0aed4da20edccb238603bbec0b8ff2b6ba003760835f5f9"
     },
     "arueshalae.trickster.epilogue.commit": {
       "owner": "claude",
@@ -2033,7 +2033,7 @@
     "arueshalae.treatment.night": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "239329b01d94b0d6d246c9e121d5835a1d7ee9f5e59999021fb1da80a9f0f1f7"
+      "text_sha": "cb0680f93a68416cd006e0b34e7709f8db50e28961502e50e06244d63b6d956b"
     },
     "arueshalae.treatment.morning": {
       "owner": "claude",
@@ -2333,7 +2333,7 @@
     "noct.acq.epilogue.correspondence": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "10022e9bbba89e4ba6bca5f3480f6facda8b92d4efeae7e6c461c3ed915c0db2"
+      "text_sha": "e7c5de7f8d7c80d25146c891cf4ada12be781668ee35458bbd4b7fbb8dc2548a"
     },
     "jerribeth.lastcall.call": {
       "owner": "claude",
@@ -2443,7 +2443,7 @@
     "hepzamirah.trickster.bond.crooked": {
       "owner": "claude",
       "since": "1dc46d5d",
-      "text_sha": "50a8ac456da61789798d1e40b65a79a685e44ab72fa255b34edd46ca48c28f1f"
+      "text_sha": "84bc2a5bed3f279118e776cf7f05b6acdb7da3f1dd1990368137df65e09a54e9"
     },
     "hepzamirah.trickster.flesh.unsent": {
       "owner": "claude",
@@ -2573,7 +2573,7 @@
     "areelu.trickster.report.rooms": {
       "owner": "claude",
       "since": "1dc46d5d",
-      "text_sha": "488c7acd8fd30bc7e482aeaaf241a9e121db81663efa54ad456bf9b88a0fcebd"
+      "text_sha": "922ad11e75b70996e8db4108b35bb592dd253d04c37c41cbc998c04d105ec7d5"
     },
     "areelu.trickster.report.grey": {
       "owner": "claude",
@@ -2743,7 +2743,7 @@
     "melazmera.trickster.visit.heap": {
       "owner": "claude",
       "since": "1dc46d5d",
-      "text_sha": "04fbb2c4bf3d46307f930bdae7fa4619146e90eab22278c732ab8cc6f85df255"
+      "text_sha": "72144c2a9fe0c8fb2b939857386d212b2673bf5826a83429959da3c34775afdb"
     },
     "melazmera.trickster.react.greybor_colyphyr": {
       "owner": "claude",
@@ -2808,7 +2808,7 @@
     "melazmera.trickster.beat.count": {
       "owner": "claude",
       "since": "1dc46d5d",
-      "text_sha": "ae2dd1080478bd132097f7941cd0d78003bc4ced1a31361cd53d99235e8ec808"
+      "text_sha": "821978657f9cf4dbf0197eeadf2f0693533f659b6d7425b39f35e17749c80522"
     },
     "melazmera.trickster.beat.war": {
       "owner": "claude",
