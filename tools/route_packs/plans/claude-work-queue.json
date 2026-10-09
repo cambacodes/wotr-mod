@@ -1084,5 +1084,46 @@
     "woman": "Commander",
     "beat": "Worldwound encounter staging after coordinator approves an entry that preserves both native final-list contexts and final-choice continuation.",
     "ruling": "struct2-10: held for coordinator delivery decision; Claude owns subsequent text; no placeholder text authorized until target is bound."
+  },
+  {
+    "scene": "galfrey.trickster.kitrane.irabeth",
+    "node": "struct2_irabeth_absent",
+    "woman": "galfrey",
+    "beat": "Remember Irabeth's actual Iz service while acknowledging current loss or departure; do not stage her body or erase history.",
+    "finding": "RUBRIC D04",
+    "ruling": "struct2-11"
+  },
+  {
+    "scene": "galfrey.trickster.kitrane.irabeth_stall",
+    "node": "struct2_irabeth_absent",
+    "woman": "galfrey",
+    "beat": "Remember Irabeth's actual Iz service while acknowledging current loss or departure; do not stage her body or erase history.",
+    "finding": "RUBRIC D04",
+    "ruling": "struct2-11"
+  },
+  {
+    "scene": "iomedae.trickster.threshold.banner",
+    "node": "decide",
+    "woman": "iomedae",
+    "beat": "Clarify that the undecided answer concerns answering the Commander in the fire, preserving the already accepted courtship.",
+    "finding": "trickster_all_romance-c6-p1-001",
+    "ruling": "struct2-11"
+  },
+  {
+    "scene": "iomedae.trickster.epilogue.after",
+    "node": "struct2_lifetime_summary",
+    "woman": "iomedae",
+    "beat": "Introduce the existing lifetime consequences without staging the optional vigil reunion; eligible ordinary, flask and bridge survivors must all retain their actual history.",
+    "finding": "IOM-A3-02",
+    "ruling": "struct2-11"
+  },
+  {
+    "scene": "iomedae.trickster.epilogue.after",
+    "node": "page",
+    "choice": 2,
+    "woman": "iomedae",
+    "beat": "Label the non-intimate read-on choice clearly, distinguishing it from the retained saved terminal Continue and optional vigil reunion.",
+    "finding": "IOM-A3-02",
+    "ruling": "struct2-11"
   }
 ]

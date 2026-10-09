@@ -274,6 +274,16 @@ def bypass_retained_copy(payload):
     by = {s["Id"]: s for s in payload["Scenes"]}
     retire(by["noct.acq.the_retained_copy"])
     s = by["noct.acq.the_paid_address"]
+    # struct2-11: investigate at the player's Drezen address; Nocticula's
+    # existing mark correspondence remains a channel, not a visiting body.
+    s.pop("Kind", None)
+    s.update(Remote=False, Areas=["2570015799edf594daf2f076f2f975d8"])
+    start = next(node for node in s["Nodes"] if node["Id"] == "start")
+    payload["Relationships"]["nocticula.acquisition"].setdefault("JournalEntries", []).append(dict(
+        Id="struct2.paid_address", Title=s["Title"],
+        Description=start["Choices"][0]["Text"],
+        OpenWhen=[["noct.acq.borrowed_signature_done"]],
+        SettledWhen=[["noct.acq.the_paid_address_done"]]))
     for node in s["Nodes"]:
         if node["Id"].startswith("the_retained_copy."):
             node["Text"] = RETIRED_TEXT

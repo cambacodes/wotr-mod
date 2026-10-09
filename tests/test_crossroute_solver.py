@@ -166,6 +166,25 @@ class SolverTests(unittest.TestCase):
 
 
 class S2ClosureProofTests(unittest.TestCase):
+    def test_four_greetings_and_legends_are_selectable_with_iomedae_romance_closed(self):
+        from tests.story_fixture import fresh_story
+        story = fresh_story()
+        model = verify.Model(story)
+        for suffix in ("", "_scarred", "_stall", "_scarred_stall"):
+            scene = model.by_id["galfrey.trickster.return.kitrane" + suffix]
+            nodes = {n["Id"]: n for n in scene["Nodes"]}
+            state = verify.SimState(5, 1000)
+            state.flags.update({"trickster", "chapter_later", "iomedae.closed", "iomedae.epoch_unavailable",
+                                "galfrey.trickster.eulogy.legend"})
+            verify.sim_complete(model, state)
+            self.assertIn("iomedae.closed", state.flags)
+            self.assertNotIn("iomedae.present_now", state.flags)
+            for index, choice in enumerate(nodes["name"]["Choices"][:3]):
+                with self.subTest(scene=scene["Id"], node="name", index=index):
+                    self.assertTrue(verify.sim_choice_available(choice, state))
+            with self.subTest(scene=scene["Id"], node="heard", history="legend"):
+                self.assertTrue(verify.sim_choice_available(nodes["heard"]["Choices"][1], state))
+
     def test_audited_reference_edges_do_not_depend_on_foreign_closed_flags(self):
         from tests.story_fixture import fresh_story
         from tools.crossroute_checks.common import fields

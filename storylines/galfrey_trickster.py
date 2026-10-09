@@ -1336,3 +1336,10 @@ def _round4_direct_histories(hosts):
 
 
 _round4_direct_histories(SCENES)
+
+
+# struct2-11: the briefing takes place at the player's Drezen camp tent.
+# The same event and saved answer targets remain; rest delivery is retired.
+_struct2_briefing = next(s for s in SCENES if s["Id"] == BRIEFED_ID)
+_struct2_briefing.pop("Kind", None)
+_struct2_briefing.update(Remote=False, Areas=[DREZEN], Entry=_struct2_briefing["Title"])

@@ -119,6 +119,21 @@ SCENES.append(scene("ending_ascend_promised", "The promise before the ascent", "
 def integrate(payload):
     """Apply only after all expansion scenes are appended; leave the standalone route intact."""
     by_id = {item["Id"]: item for item in payload["Scenes"]}
+    # struct2-11: the existing local market investigation and its separate
+    # evidence conversations become visible quest objectives. Reuse authored
+    # labels; retain every lead's actual producer and the settlement aftermath.
+    journal = payload["Relationships"]["tirabade"].setdefault("JournalEntries", [])
+    for sid, opened, settled in (
+        ("three_stolen_roads", ["three_small_journeys.kept", "kept_terms"], "three_stolen_roads.settled"),
+        ("three_borrowed_names", ["three_open_road.kept", "kept_terms"], "three_borrowed_names.heard"),
+        ("three_back_of_seal", ["three_borrowed_names.heard", "kept_terms"], "three_back_of_seal.kept"),
+        ("three_beth_account", ["three_borrowed_names.heard", "kept_terms"], "three_beth_account.kept"),
+        ("three_counterclaim", ["three_back_of_seal.kept", "three_beth_account.kept", "kept_terms"], "three_counterclaim.kept"),
+    ):
+        event = by_id[sid]
+        journal.append(dict(Id="struct2." + sid, Title=event["Title"],
+            Description=event["Nodes"][0]["Choices"][0]["Text"],
+            OpenWhen=[opened], SettledWhen=[[settled]]))
     for required in ("three_choose_days", "three_more_days", "three_kept_days", "three_rooms_unlocked",
                      "ending_promised", "ending_ascend_promised"):
         if required not in by_id:

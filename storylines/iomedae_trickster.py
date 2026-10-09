@@ -1191,6 +1191,13 @@ def integrate(payload):
             raise ValueError("Conflicting derived key: " + key)
         payload["Derived"][key] = [list(g) for g in groups]
     payload.setdefault("PortraitFallbacks", {}).setdefault("Iomedae", PORTRAIT_GUID)
+    # These Iomedae-owned encounters are supplied before this route's hook.
+    # E6 reactions require Remote or a native answer list; their local banner
+    # meetings are ordinary area encounters, retaining all participant gates.
+    for host in payload["Scenes"]:
+        if host["Id"] in (E + "react.ix_a.targona", E + "react.ix_a.yaniel"):
+            host.pop("Kind", None)
+            host.update(Remote=False, Reaction=False, Areas=[DREZEN], Entry=host["Title"])
 
 
 # Shared flask consumers remain partitioned at their sources. Reconcile
@@ -1206,3 +1213,22 @@ def integrate_joint(payload):
         p("{n}The Commander had never raised her banner at Threshold. There had been no crossing on her cloth, no bargain with the Lady of Graves for a return. Iomedae's visits were her own choice; the flask had its own terms.{/n}", forbids=(CARRIED,)),
         p("{n}Areelu later measured the empty flask and recorded what the Commander had drained from the Wound she created. She had not witnessed the crossing inside the seam or heard its terms from Iomedae.{/n}", requires=(BURIED_ALIVE, H2, "crossroute.areelu.available")),
     ])
+
+
+# struct2-11: the argument is offered where the Commander raises the banner.
+# Iomedae remains its voice; this does not place a divine body in Drezen.
+_struct2_disputation = next(s for s in SCENES if s["Id"] == E + "disputation")
+_struct2_disputation.pop("Kind", None)
+_struct2_disputation.update(Remote=False, Areas=[DREZEN], Entry=_struct2_disputation["Title"])
+
+
+# IOM-A3-02: retain the saved terminal Continue and offer a separate lifetime
+# account to every ending eligible for this page, without an intimate gate.
+# endings_job4 still moves the reunion's account to its existing morning.
+from copy import deepcopy as _struct2_copy
+_struct2_after = next(s for s in SCENES if s["Id"] == E + "epilogue.after")
+_struct2_page = _struct2_after["Nodes"][0]
+_struct2_page["Choices"].append(c("[PROSE PENDING: choice - Read the lifetime account without the vigil reunion.]", "struct2_lifetime_summary"))
+_struct2_after["Nodes"].append(nar("struct2_lifetime_summary",
+    "[PROSE PENDING: Read the lifetime account without requiring an intimate reunion.]",
+    paragraphs=_struct2_copy(_struct2_page["Paragraphs"][2:])))

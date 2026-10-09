@@ -399,6 +399,34 @@
       "surface": "node",
       "index": null,
       "text_sha": "7ad008e454e5bec39dc24d89feba5bb5805deecc26d0a60c49360d6b852c206d"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.irabeth",
+      "node": "struct2_irabeth_absent",
+      "surface": "node",
+      "index": null,
+      "text_sha": "c48fd09ab7088eb7ce3ec89e22b612725afeaf3d19a0d10ad61efc64bb4d5fbb"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.irabeth_stall",
+      "node": "struct2_irabeth_absent",
+      "surface": "node",
+      "index": null,
+      "text_sha": "c48fd09ab7088eb7ce3ec89e22b612725afeaf3d19a0d10ad61efc64bb4d5fbb"
+    },
+    {
+      "scene": "iomedae.trickster.epilogue.after",
+      "node": "struct2_lifetime_summary",
+      "surface": "node",
+      "index": null,
+      "text_sha": "3ed6031ce49650b718c55be14f062e477224ffeecd88fdb8f8ac90e274ee9a04"
+    },
+    {
+      "scene": "iomedae.trickster.epilogue.after",
+      "node": "page",
+      "surface": "choice",
+      "index": 2,
+      "text_sha": "586b6cc61629343054f40290c332c19af605e5c1eb1320f25ffa42a4bab33574"
     }
   ]
 }
