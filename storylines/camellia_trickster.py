@@ -550,7 +550,7 @@ met(P + "returned.test", "A knife at the right height", '"Come to your quarters 
         c("[Keep it]", "threshold", flags=(COMMITTED,))),
     cam("yes_a", '''"Stay?" {n}She laughs, softly, as if you had said something charming in a language she is still learning.{/n} "I've been staying all along, my friend. You simply never asked me in so many words." {n}She slides her knife into your belt, hilt first, and leaves her hand there.{/n} "Keep it close. One day I shall want it back, and you will know the day, because I shall be smiling."''',
         c("[Keep it]", "threshold", flags=(COMMITTED,))),
-    nar("threshold", '''{n}She does not take her hand away. She takes your belt instead, and walks you backwards by it until the edge of the bed stops you, and then she climbs into your lap with her skirts in her fists and the knife's hilt digging into both of you.{/n}
+    nar("threshold", '''{n}She does not take her hand away. She takes your belt instead, and walks you backwards by it until the edge of the bed stops you, and then she pushes you down onto it and leans over you with her skirts in her fists and the knife's hilt digging into both of you.{/n}
 {n}She kisses the way she talks, politely and then not at all. Her teeth find your lower lip and test it, exactly as hard as she means to. Her breath is quick and hot and smells of lilies and iron. When your hands find the laces at her back she makes a small, pleased sound and does not help, and when the last one gives she catches your wrist and holds your palm flat over her heart, so you can count it with her. It is going very fast.{/n}
 "Beat," {n}she whispers against your mouth.{/n} "Beat. Beat."''',
         c("[Put out the lamp.]", "morning")),

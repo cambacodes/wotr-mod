@@ -21,7 +21,7 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "default_text": "{n}The knife stays in the window frame. Camellia opens the last fastening of your shirt and pulls you against her, her mouth warm from the kiss.{/n}\n\"Tonight I want you here.\"",
+  "default_text": "{n}The knife stays in the window frame. Camellia opens the last fastening of your shirt and pulls you against her, her mouth warm from the kiss.{/n}\n\"Tonight I want you here.\"\n{n}Rain on the shutters, her hands in your hair, her mouth at your throat, and time stops mattering. By the time the rain slackens her voice has gone to gravel, and the knife in the window frame is the only thing in the room still keeping its composure.{/n}",
   "insertion": {
     "scene_id": "camellia.trickster.bond.not_today",
     "after_node": "night",

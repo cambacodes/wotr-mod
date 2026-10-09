@@ -147,7 +147,7 @@ met(DECK_AGAIN, "The deck, again", '"You brought the cards."', [
 "You did not." {n}She studies your mouth, then your hands. Her smile tightens.{/n} "I watched your fingers the whole time. How did you do it?"
 {n}You don't answer. She begins to laugh, helplessly, and pulls you down onto the silk with her, scattering the rest of the deck across the floor.{/n}''',
         c("Continue", "silk")),
-    nar("silk", '''{n}The cards slide under your shoulders like cold scales. She is astride you before the last of them has stopped moving, her knees in the black silk, her hair come loose over both of you, and she is still laughing, low, into your mouth.{/n}
+    nar("silk", '''{n}The cards slide under your shoulders like cold scales. She is over you before the last of them has stopped moving, her hair come loose over both of you, and she is still laughing, low, into your mouth.{/n}
 {n}Her knife is out. You did not see her draw it. She lays the flat of it along your throat, cool, and trails it down, slowly, opening your shirt one button at a time with the point, and her breath stops each time the steel touches skin. When the last button goes she sets the blade down on the silk beside your head, within her reach, not yours, and presses her mouth to the place where it rested.{/n}
 "Don't tell me," {n}she whispers.{/n} "Don't ever tell me whether you did."''',
         c("[Pull her down to you]", "close")),

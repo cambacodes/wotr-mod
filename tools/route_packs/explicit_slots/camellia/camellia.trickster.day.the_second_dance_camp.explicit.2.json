@@ -21,7 +21,7 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "default_text": "{n}She leaves the knife in its sheath and presses closer, then takes your collar in both hands. Her kiss breaks the count; she draws you down onto the boards with her.{/n}\n\"Leave it there. Come here.\"",
+  "default_text": "{n}She leaves the knife in its sheath and presses closer, then takes your collar in both hands. Her kiss breaks the count; she draws you down onto the boards with her.{/n}\n\"Leave it there. Come here.\"\n{n}Her breath hitches against your mouth and the world goes down to skin and candlelight and the dark hilt pressing between you. She is loud, once, and laughs at herself for it, and does not apologise.{/n}",
   "insertion": {
     "scene_id": "camellia.trickster.day.the_second_dance_camp",
     "after_node": "end",

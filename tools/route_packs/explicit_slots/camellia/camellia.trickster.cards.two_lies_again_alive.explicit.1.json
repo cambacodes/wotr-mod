@@ -21,7 +21,7 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "default_text": "{n}She pulls your shirt free and drops it after the knife. Her hand closes behind your neck; the next kiss leaves her laughing against your mouth.{/n}\n\"You still owe me three truths.\"",
+  "default_text": "{n}She pulls your shirt free and drops it after the knife. Her hand closes behind your neck; the next kiss leaves her laughing against your mouth.{/n}\n\"You still owe me three truths.\"\n{n}The three truths come out of you one at a time, between kisses, and your voice cracks on the second. She hears it and shudders with delight, and the pillow, the knife and the rest of the night go out of the world.{/n}",
   "insertion": {
     "scene_id": "camellia.trickster.cards.two_lies_again_alive",
     "after_node": "all",
