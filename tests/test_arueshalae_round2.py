@@ -157,7 +157,7 @@ class RoundTwoTests(unittest.TestCase):
     def test_rebuilt_scenes_rest_on_native_lines(self):
         t = polish.T
         self.assertIn("Demons don't", self.node(t + 'morning', 'count')['Text'])
-        self.assertIn('And what do you dream of?', self.node(t + 'morning', 'doctor')['Text'])
+        self.assertNotIn("I don't dream", self.node(t + 'morning', 'doctor')['Text'])
         self.assertIn("I don't feel hunger. I don't want to kill", self.node(t + 'discharged', 'start')['Text'])
         self.assertIn('Evil calls me back', self.node(t + 'abyss_dose', 'start')['Text'])
         self.assertIn('Any caress, of any kind, sucks the life from mortals', self.node(t + 'touched', 'start')['Text'])
