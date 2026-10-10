@@ -2172,3 +2172,9 @@ def integrate_fix14_reports(payload):
     for _fix14_visit in _fix14_visits[:2]:
         _fix14_visit["Requires"].append("nenio.present_now")
     _fix14_visits[0]["Forbids"].append(NENIO_BACK)
+
+    # Keep local-history accounts gated; the common report closure covers entry.
+    _fix14_node(_fix14_report(payload, 'graft'), 'after').setdefault("Paragraphs", []).append(p('[PROSE PENDING: areelu.trickster.report.graft/after - introduce the recorded graft aftermath for stand, wait and sleep histories without assuming a chosen response]'))
+    _fix14_node(_fix14_report(payload, 'crossroads'), 'end').setdefault("Paragraphs", []).append(p('[PROSE PENDING: areelu.trickster.report.crossroads/end - close the report for watch, rift, mortal purchase, witch purchase and public disclosure histories without inventing an action]'))
+    _fix14_node(_fix14_report(payload, 'dagger'), 'end').setdefault("Paragraphs", []).append(p('[PROSE PENDING: areelu.trickster.report.dagger/end - close the dagger report for given and retained dagger histories without assuming permission]'))
+    _fix14_node(_fix14_report(payload, 'visitors'), 'end').setdefault("Paragraphs", []).append(p('[PROSE PENDING: areelu.trickster.report.visitors/end - close the visitors report for open and shut door histories without promising another visit]'))

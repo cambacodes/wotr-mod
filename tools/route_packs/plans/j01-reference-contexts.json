@@ -2352,6 +2352,766 @@
           "yaniel.trickster.left_free"
         ]
       }
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.0.name.alive",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "db7edb0d2902eed20c40ab7ddc882cb85d3f2376e2f41145c87e7df372ddb921",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.0.alive.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "80f9e036414b9c09c70e01f3c514e72993293f1f1c42721ba2bb08bc635f93c2",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.0.name.body",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "cebe36542dbe9cc23c28c50dcf4546300df3e503f7bda00881c0e4fc2c0e5c81",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.0.body.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "7a426322bc799331a4dcb0bb04a2573503f648fb1becd619670724e029eaa07f",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.0.name.dead",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "e0fe43e0bb2ed304d863cad839c54beba45ed15aa522c31830cf9afbae7b95a9",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.0.mind.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "0c382d73ad4f8c07fe95230ec848a7b9315bdd290e3127e22d6468d21193ba9d",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.0.captive.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.0.dead.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.0.cast.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.0.declined.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.1.name.alive",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "db7edb0d2902eed20c40ab7ddc882cb85d3f2376e2f41145c87e7df372ddb921",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.1.alive.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "80f9e036414b9c09c70e01f3c514e72993293f1f1c42721ba2bb08bc635f93c2",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.1.name.body",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "cebe36542dbe9cc23c28c50dcf4546300df3e503f7bda00881c0e4fc2c0e5c81",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.1.body.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "7a426322bc799331a4dcb0bb04a2573503f648fb1becd619670724e029eaa07f",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.1.name.dead",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "e0fe43e0bb2ed304d863cad839c54beba45ed15aa522c31830cf9afbae7b95a9",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.1.mind.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "0c382d73ad4f8c07fe95230ec848a7b9315bdd290e3127e22d6468d21193ba9d",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.1.captive.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.1.dead.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.1.cast.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.1.declined.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.2.name.alive",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "db7edb0d2902eed20c40ab7ddc882cb85d3f2376e2f41145c87e7df372ddb921",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.2.alive.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "80f9e036414b9c09c70e01f3c514e72993293f1f1c42721ba2bb08bc635f93c2",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.2.name.body",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "cebe36542dbe9cc23c28c50dcf4546300df3e503f7bda00881c0e4fc2c0e5c81",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.2.body.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "7a426322bc799331a4dcb0bb04a2573503f648fb1becd619670724e029eaa07f",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.2.name.dead",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "e0fe43e0bb2ed304d863cad839c54beba45ed15aa522c31830cf9afbae7b95a9",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.2.mind.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "0c382d73ad4f8c07fe95230ec848a7b9315bdd290e3127e22d6468d21193ba9d",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.2.captive.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.2.dead.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.2.cast.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_terms.future.2.declined.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_discovery.end.0.alive",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "d227082a9bff9565c667c4ff69858c8a86d724590ba68e853647dd67ff0c977d",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_discovery.end.0.body",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "d227082a9bff9565c667c4ff69858c8a86d724590ba68e853647dd67ff0c977d",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_discovery.end.0.captive",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "862bdf9f77c203b9da054c96fde95d6b82cd0d5665b17f1302b9bdd1fb3dcb0d",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "partner_discovery.end.0.hidden",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "686d2f378ebe9a53e589c844f88effee0042a67c118524bcd1a1d28ba23f6ba3",
+      "reason": "Nocticula round-2 terms/discovery: recorded partner history, letter or court message, or earned mental voice; no current physical appearance"
+    },
+    {
+      "scene": "noct.acq.an_answer_of_her_own",
+      "node": "partner_terms.risk.0.name.alive",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "db7edb0d2902eed20c40ab7ddc882cb85d3f2376e2f41145c87e7df372ddb921",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "noct.acq.an_answer_of_her_own",
+      "node": "partner_terms.risk.0.alive.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "80f9e036414b9c09c70e01f3c514e72993293f1f1c42721ba2bb08bc635f93c2",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "noct.acq.an_answer_of_her_own",
+      "node": "partner_terms.risk.0.name.body",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "cebe36542dbe9cc23c28c50dcf4546300df3e503f7bda00881c0e4fc2c0e5c81",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "noct.acq.an_answer_of_her_own",
+      "node": "partner_terms.risk.0.body.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "7a426322bc799331a4dcb0bb04a2573503f648fb1becd619670724e029eaa07f",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "noct.acq.an_answer_of_her_own",
+      "node": "partner_terms.risk.0.name.dead",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "e0fe43e0bb2ed304d863cad839c54beba45ed15aa522c31830cf9afbae7b95a9",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "noct.acq.an_answer_of_her_own",
+      "node": "partner_terms.risk.0.mind.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "0c382d73ad4f8c07fe95230ec848a7b9315bdd290e3127e22d6468d21193ba9d",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "noct.acq.an_answer_of_her_own",
+      "node": "partner_terms.risk.0.captive.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "noct.acq.an_answer_of_her_own",
+      "node": "partner_terms.risk.0.dead.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "noct.acq.an_answer_of_her_own",
+      "node": "partner_terms.risk.0.cast.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "noct.acq.an_answer_of_her_own",
+      "node": "partner_terms.risk.0.declined.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "noct.acq.an_answer_of_her_own",
+      "node": "partner_discovery.accept.0.captive",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "4f9de954153c8cca82c2f3c3e8333ec5ccde69281911d8dd1a707b2b40f8dc8b",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.0.name.alive",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "db7edb0d2902eed20c40ab7ddc882cb85d3f2376e2f41145c87e7df372ddb921",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.0.alive.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "80f9e036414b9c09c70e01f3c514e72993293f1f1c42721ba2bb08bc635f93c2",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.0.name.body",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "cebe36542dbe9cc23c28c50dcf4546300df3e503f7bda00881c0e4fc2c0e5c81",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.0.body.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "7a426322bc799331a4dcb0bb04a2573503f648fb1becd619670724e029eaa07f",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.0.name.dead",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "e0fe43e0bb2ed304d863cad839c54beba45ed15aa522c31830cf9afbae7b95a9",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.0.mind.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "0c382d73ad4f8c07fe95230ec848a7b9315bdd290e3127e22d6468d21193ba9d",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.0.captive.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.0.dead.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.0.cast.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.0.declined.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.1.name.alive",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "db7edb0d2902eed20c40ab7ddc882cb85d3f2376e2f41145c87e7df372ddb921",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.1.alive.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "80f9e036414b9c09c70e01f3c514e72993293f1f1c42721ba2bb08bc635f93c2",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.1.name.body",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "cebe36542dbe9cc23c28c50dcf4546300df3e503f7bda00881c0e4fc2c0e5c81",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.1.body.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "7a426322bc799331a4dcb0bb04a2573503f648fb1becd619670724e029eaa07f",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.1.name.dead",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "e0fe43e0bb2ed304d863cad839c54beba45ed15aa522c31830cf9afbae7b95a9",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.1.mind.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "0c382d73ad4f8c07fe95230ec848a7b9315bdd290e3127e22d6468d21193ba9d",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.1.captive.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.1.dead.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.1.cast.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_true.1.declined.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.0.name.alive",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "db7edb0d2902eed20c40ab7ddc882cb85d3f2376e2f41145c87e7df372ddb921",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.0.alive.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "80f9e036414b9c09c70e01f3c514e72993293f1f1c42721ba2bb08bc635f93c2",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.0.name.body",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "cebe36542dbe9cc23c28c50dcf4546300df3e503f7bda00881c0e4fc2c0e5c81",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.0.body.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "7a426322bc799331a4dcb0bb04a2573503f648fb1becd619670724e029eaa07f",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.0.name.dead",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "e0fe43e0bb2ed304d863cad839c54beba45ed15aa522c31830cf9afbae7b95a9",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.0.mind.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "0c382d73ad4f8c07fe95230ec848a7b9315bdd290e3127e22d6468d21193ba9d",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.0.captive.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.0.dead.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.0.cast.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.0.declined.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.1.name.alive",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "db7edb0d2902eed20c40ab7ddc882cb85d3f2376e2f41145c87e7df372ddb921",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.1.alive.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "80f9e036414b9c09c70e01f3c514e72993293f1f1c42721ba2bb08bc635f93c2",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.1.name.body",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "cebe36542dbe9cc23c28c50dcf4546300df3e503f7bda00881c0e4fc2c0e5c81",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.1.body.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "7a426322bc799331a4dcb0bb04a2573503f648fb1becd619670724e029eaa07f",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.1.name.dead",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "e0fe43e0bb2ed304d863cad839c54beba45ed15aa522c31830cf9afbae7b95a9",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.1.mind.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "0c382d73ad4f8c07fe95230ec848a7b9315bdd290e3127e22d6468d21193ba9d",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.1.captive.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.1.dead.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.1.cast.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.defeated.chair",
+      "node": "partner_terms.verdict_joke.1.declined.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.partner_terms.threshold",
+      "node": "terms.name.alive",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "db7edb0d2902eed20c40ab7ddc882cb85d3f2376e2f41145c87e7df372ddb921",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.partner_terms.threshold",
+      "node": "terms.alive.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "80f9e036414b9c09c70e01f3c514e72993293f1f1c42721ba2bb08bc635f93c2",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.partner_terms.threshold",
+      "node": "terms.name.body",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "cebe36542dbe9cc23c28c50dcf4546300df3e503f7bda00881c0e4fc2c0e5c81",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.partner_terms.threshold",
+      "node": "terms.body.share",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "7a426322bc799331a4dcb0bb04a2573503f648fb1becd619670724e029eaa07f",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.partner_terms.threshold",
+      "node": "terms.name.dead",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "e0fe43e0bb2ed304d863cad839c54beba45ed15aa522c31830cf9afbae7b95a9",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.partner_terms.threshold",
+      "node": "terms.mind.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "0c382d73ad4f8c07fe95230ec848a7b9315bdd290e3127e22d6468d21193ba9d",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.partner_terms.threshold",
+      "node": "terms.captive.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.partner_terms.threshold",
+      "node": "terms.dead.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.partner_terms.threshold",
+      "node": "terms.cast.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
+    },
+    {
+      "scene": "nocticula.trickster.partner_terms.threshold",
+      "node": "terms.declined.chosen",
+      "slot": "text",
+      "woman": "shamira",
+      "text_sha256": "78609016007948559c3839c71147fadad117952d52f47db6892a3695bef91405",
+      "reason": "Nocticula round-2 partner terms: recorded history, correspondence/court message or earned mental voice; no physical participation"
     }
   ],
   "class_sweep": {

@@ -86,9 +86,11 @@ class NocticulaRound2Tests(unittest.TestCase):
             self.assertFalse(any(old.get(k) for k in EXIT_MECHANICS))
             self.assertEqual(choice_identities(self.scenes[sid], n)[0]["GuidFor"],
                              "answer." + sid + "." + key + ".continue")
-            collection = next(p for p in n["Paragraphs"] if "My favour. A chair" in p["Text"])
-            self.assertTrue(allowed(collection, {PAID}))
-            self.assertFalse(allowed(collection, {REFUSED}))
+            collection = [p for p in n["Paragraphs"] if p.get("Requires") == [PAID]]
+            self.assertTrue(collection)
+            for paragraph in collection:
+                self.assertTrue(allowed(paragraph, {PAID}))
+                self.assertFalse(allowed(paragraph, {REFUSED}))
 
     def test_daeran_is_not_invented_by_absence_of_loss_flags(self):
         choices = self.nodes("nocticula.trickster.defeated.morning")["start"]["Choices"]

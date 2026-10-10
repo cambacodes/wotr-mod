@@ -442,3 +442,6 @@ _letter["Nodes"].extend([
     nar("coin_home", '{n}A crushed white flower lies in the envelope. The coin is still on its saucer in your quarters.{/n}', c("Read the letter.", "hurt")),
     nar("coin_collected", '{n}A sun is drawn at the foot of the letter. Beside it she has written: "The coin stays flat in my basket. That wager stays paid, whatever you write next." There is no coin in the envelope.{/n}', c("Read the letter.", "hurt")),
 ])
+
+
+_spine[P + "epilogue.declined"]["Nodes"][0]["Paragraphs"].append(p('[PROSE PENDING: chadali.trickster.epilogue.declined/page - account for the declined question in every eligible history including no coin or luck forfeiture; do not imply commitment or revive a forfeited coin]'))
