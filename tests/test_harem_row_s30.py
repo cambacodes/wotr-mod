@@ -109,10 +109,20 @@ class S30Tests(unittest.TestCase):
         import copy
         from storylines import lastcall_ledger
         from storylines.harem_rows import register_all
+        from types import SimpleNamespace
+        from unittest.mock import patch
         before = copy.deepcopy((household.ENTRIES, lastcall_ledger.EXTRA_ENTRIES))
-        first, second = fresh_story(include_harem=False), fresh_story(include_harem=False)
+        first, second = fresh_story(), fresh_story()
         for payload in (first, second):
-            register_all(payload, payload['Scenes'], payload['Etudes'])
+            payload['Scenes'] = [s for s in payload['Scenes'] if s['Id'] != s30.SCENE_ID]
+            ledger = payload['Books']['trickster.ledger']['Entries']
+            ledger[:] = [e for e in ledger if e['Id'] != s30.PREFIX + 'seating']
+            # Exercise the real discovery/drain boundary for this owned row;
+            # unrelated registrars reject already-registered assembled scenes.
+            with patch('storylines.harem_rows.pkgutil.iter_modules',
+                       return_value=[SimpleNamespace(name='s30')]):
+                register_all(payload, payload['Scenes'], payload['Etudes'])
+                register_all(payload, payload['Scenes'], payload['Etudes'])
         self.assertTrue(first == second, "Repeated registration changed the generated story")
         self.assertEqual(before, (household.ENTRIES, lastcall_ledger.EXTRA_ENTRIES))
         self.assertEqual(sum(s['Id'] == s30.SCENE_ID for s in first['Scenes']), 1)

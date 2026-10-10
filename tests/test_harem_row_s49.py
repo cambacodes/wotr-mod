@@ -39,7 +39,7 @@ class RowS49(unittest.TestCase):
                 bad = copy.deepcopy(state)
                 bad.flags.remove(missing)
                 self.assertFalse(rules.sim_available(self.model, scene, bad), (step, missing))
-            for blocker in ("wenduag.closed", "vellexia.closed", "vellexia.trickster.visited",
+            for blocker in ("wenduag.closed", "vellexia.closed",
                             "vellexia.trickster.kept_as_mirror", "sacrifice",
                             "wenduag.dead", "vellexia.dead", "wenduag.epoch_unavailable",
                             "vellexia.epoch_unavailable"):
@@ -163,7 +163,7 @@ class RowS49(unittest.TestCase):
                     self.assertFalse(set(choice["Set"]).intersection(s49.flags(
                         "bond.both_deeds", "observance.kept", "desire.both_wanted", "morning.done")))
 
-    def test_historical_body_and_settlement_do_not_extend_vellexias_stay(self):
+    def test_visit_history_does_not_replace_vellexias_current_body(self):
         for step in self.by:
             state = self.state(step)
             state.flags.update(s49.flags("wenduag_quarry_yielded", "vellexia_watch_kept",
@@ -171,6 +171,8 @@ class RowS49(unittest.TestCase):
             state.flags.add("vellexia.trickster.returned")
             self.assertTrue(rules.sim_available(self.model, self.by[step], state), step)
             state.flags.add("vellexia.trickster.visited")
+            self.assertTrue(rules.sim_available(self.model, self.by[step], state), step)
+            state.flags.remove("vellexia.present_now")
             self.assertIn("vellexia.trickster.in_person", state.flags)
             self.assertFalse(rules.sim_available(self.model, self.by[step], state), step)
 

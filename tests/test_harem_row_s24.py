@@ -3,7 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
-from tests.story_fixture import fresh_story
+from tests.story_fixture import fresh_story, row_registration_fixture
 
 from storylines import household
 from storylines.harem_rows import s24
@@ -13,7 +13,7 @@ from tools import rrt_verify, savecompat
 class S24Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.payload = fresh_story(include_harem=False)
+        cls.payload = row_registration_fixture(s24)
         s24.register(cls.payload, cls.payload["Scenes"], cls.payload["Etudes"])
         cls.model = rrt_verify.Model(cls.payload)
         cls.rows = {s["Id"]: s for s in cls.payload["Scenes"] if s["Id"].startswith(s24.PREFIX)}
@@ -60,7 +60,7 @@ class S24Tests(unittest.TestCase):
                 state = self.state()
                 state.flags.add(self.payload["Relationships"][woman]["ClosedFlag"])
                 self.assertFalse(self.available("settle.good", state))
-            for flag in ("vellexia.trickster.kept_as_mirror", "vellexia.trickster.visited",
+            for flag in ("vellexia.trickster.kept_as_mirror",
                          "engine.l12.commander_unreturned", "trickster.failed"):
                 state = self.state()
                 state.flags.add(flag)

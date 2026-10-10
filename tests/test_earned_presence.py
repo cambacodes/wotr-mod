@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import sys
 import unittest
+from tests.story_fixture import fresh_story
 from tests.structure import without_prose
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -325,10 +326,10 @@ class GuardPass(unittest.TestCase):
 class GeneratedStory(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads(STORY.read_text(encoding="utf-8"))
+        cls.story = fresh_story()
 
     def test_current_path_reader(self):
-        story = json.loads(STORY.read_text(encoding="utf-8"))
+        story = fresh_story()
         self.assertEqual(story["Derived"].get(ep.TRICKSTER_NOW), [["trickster"]])
         self.assertTrue({"trickster.failed", "dragon", "legend", "swarm"} <= set(story["DerivedForbids"][ep.TRICKSTER_NOW]))
         leaky = [x["Id"] for x in story["Scenes"] if "trickster" in x["Requires"]

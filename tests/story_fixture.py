@@ -35,3 +35,24 @@ def _assembled(include_harem=True):
 
 def fresh_story(include_harem=True):
     return copy.deepcopy(_assembled(include_harem))
+
+
+def row_registration_fixture(module):
+    """Keep assembled dependencies and exercise this row's authoring registrar.
+
+    Final controllers decorate row choices and contacts. Registrar unit tests
+    build their own row before those passes; full-export tests cover delivery.
+    """
+    story = fresh_story()
+    prefix = getattr(module, 'PREFIX', None) or module.P
+    story['Scenes'] = [s for s in story['Scenes'] if not s['Id'].startswith(prefix)]
+    if module.__name__.endswith('.s42'):
+        # S42 also appends this owned continuation to Kaylessa's clearing.
+        clearing = next(s for s in story['Scenes'] if s['Id'] == 'kaylessa.clearing.where_i_was_meant_to_die')
+        clearing['Nodes'] = [n for n in clearing['Nodes'] if n['Id'] != 's42_cover']
+        opening = clearing['Nodes'][0]
+        opening['Choices'] = [c for c in opening['Choices'] if c.get('Next') != 's42_cover']
+    module.register(story, story['Scenes'], story['Etudes'])
+    from storylines import scene_kinds
+    scene_kinds.integrate(story)
+    return story

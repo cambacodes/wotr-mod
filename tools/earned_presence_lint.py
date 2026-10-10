@@ -73,6 +73,7 @@ class Trickster:
     """Does a key imply the mythic-Trickster path? Memoized, conservative on cycles and unknown keys."""
 
     def __init__(self, story, roots=None, never=()):
+        self.story = story
         self.roots = set(ep.TRICKSTER_ROOTS if roots is None else roots)
         self.never = set(never)   # keys that prove nothing (T6: the run latches)
         self.derived = story.get("Derived") or {}
@@ -124,6 +125,35 @@ class Trickster:
             return True
         groups = self.derived.get(key)
         return bool(groups) and all(self.group_ok(g) or all(k in self.native for k in g) for g in groups)
+
+
+    def loss_lift_ok(self, loss, key):
+        """A native living branch cannot lift a death it explicitly excludes.
+
+        Under the actual loss, a mixed presence predicate must imply an
+        existing registered return which still passes the earned-path check.
+        """
+        if self.lift_ok(key):
+            return True
+        if key not in self.derived:
+            return False
+        returns = {rel['UnavailableOverrides'][loss]
+                   for rel in self.story.get('Relationships', {}).values()
+                   if loss in rel.get('UnavailableOverrides', {})}
+        returns.update(epoch['Overrides'][loss]
+                       for epoch in self.story.get('DepartureEpochs', {}).values()
+                       if loss in epoch.get('Overrides', {}))
+        returns = {returned for returned in returns if self.lift_ok(returned)}
+        if not returns:
+            return False
+        if not hasattr(self, '_loss_proof'):
+            import copy
+            from tools.rrt_verify import Model
+            from tools.crossroute_checks.common import Proof
+            self._loss_proof = Proof(Model(copy.deepcopy(self.story)))
+        from tools.crossroute_checks.common import AND, lit
+        return any(self._loss_proof.implies(AND(lit(loss), lit(key)), lit(returned))
+                   for returned in returns)
 
 
 def loss_flags(rel):
@@ -206,8 +236,12 @@ DEPARTURE_FLAG = re.compile(r"(?:^|[._])(?:left_free|gone(?:_to_[a-z0-9_]+)?|dep
 DEVICE_COMPLETION_FLAG = re.compile(r"(?:^|[._])device[._](?:done|complete|completed)$")
 
 
-def producer_presence_errors(story):
-    """T7 producers use current power; P1 physical partners obey RouteOpen and register departures."""
+def producer_presence_errors(story, *, relationships=None):
+    """T7 producers use current power; P1 partners register physical departures.
+
+    relationships scopes the dependency checker for isolated fixtures. The
+    production check/CLI defaults to the complete delivery inventory.
+    """
     hard = []
     producers = return_producers(story)
     rels = story.get("Relationships") or {}
@@ -245,7 +279,7 @@ def producer_presence_errors(story):
     hard.extend(presence_exception_schema.errors(story))
     hard.extend(presence_failure_lint.check(story))
     # eng7-f4: the strict verifier covers contact/return dependencies on every route.
-    hard.extend(presence_dependency_lint.check(story))
+    hard.extend(presence_dependency_lint.check(story, relationships=relationships))
     # eng7-f4 end
     return hard
 
@@ -357,7 +391,7 @@ def check(story, review=False):
                 if c.get("Revive") and not trk.context(s, c):
                     hard.append("T4 %s/%s: a revival outside the Trickster path" % (s["Id"], n.get("Id")))
         for flag, lift in sorted((s.get("ForbidOverrides") or {}).items()):
-            if flag in losses and not trk.lift_ok(lift):
+            if flag in losses and not trk.loss_lift_ok(flag, lift):
                 hard.append("T5 %s: ForbidOverrides %s -> %s lifts a loss off the Trickster path" % (s["Id"], flag, lift))
 
     # T6: the current path. `act` proves a Trickster act without the run latches (the live power and trickster.now count).

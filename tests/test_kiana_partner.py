@@ -55,13 +55,18 @@ class KianaPartnerTests(unittest.TestCase):
             # Late living-partner talks now dispatch rather than manufacture
             # Elan's reply immediately. Continue each history at its later
             # delivery; the separate D29/D30 tests assert elapsed-time gates.
-            if sid in r4.HOSTS:
+            if sid in r4.ALL_HOSTS:
+                early = sid == "kiana.morning"
+                share_sent, breakup_sent = ((r4.EARLY_SHARE_SENT, r4.EARLY_BREAKUP_SENT)
+                                             if early else (r4.SHARE_SENT, r4.BREAKUP_SENT))
                 resumed = []
                 for state in outcomes:
+                    if state & {share_sent, breakup_sent}:
+                        self.assertFalse(state & {partner.SHARE, partner.EXCLUSIVE, "kiana.committed", "kiana.separated"})
                     state |= {"trickster.now", "trickster.ever"}
-                    if r4.SHARE_SENT in state:
+                    if share_sent in state:
                         resumed.extend(walk(books[sid + ".elan_reply"]["Nodes"], "partner_elan_terms", state))
-                    elif r4.BREAKUP_SENT in state:
+                    elif breakup_sent in state:
                         waiting = walk(books[sid + ".elan_parting"]["Nodes"], "partner_breakup", state)
                         for delivered in waiting:
                             resumed.extend(walk(books[sid + ".after_delivery"]["Nodes"], "partner_exclusive_yes", delivered))

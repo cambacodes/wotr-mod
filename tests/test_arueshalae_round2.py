@@ -181,8 +181,9 @@ class RoundTwoTests(unittest.TestCase):
                     self.assertEqual(1, len(answers))
                     target = base + ('.first_dream_seen' if seen and base != 'doctor_e' else '')
                     self.assertEqual(target, answers[0]['Next'])
-                    text = self.node(sid, target)['Text']
-                    self.assertEqual(seen and base != 'doctor_e', text.startswith('[PROSE PENDING:'))
+                    # The reviewed prose fill resolves the held nodes; the
+                    # native-history partition and answer targets remain.
+                    self.assertIn(target, {n['Id'] for n in self.scenes[sid]['Nodes']})
 
     def test_old_acquaintance_callback_histories_are_disjoint(self):
         sid = polish.T + 'old_acquaintance'
