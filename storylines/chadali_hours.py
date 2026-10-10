@@ -361,3 +361,11 @@ def integrate(payload):
         requires=(SAW_THE_FAIR, "council.epilogue_convened"),
         forbids=("ending.wound_closed",),
     ))
+
+
+# fix14-a: the earlier earring scene always completes its recovery.
+_number = next(s for s in SCENES if s['Id'] == NUMBER)
+for _node in _number['Nodes']:
+    if _node['Id'] in ('zero', 'half', 'keep'):
+        _node['Text'] = ('[PROSE PENDING: ' + NUMBER + '/' + _node['Id']
+                         + ' - Acknowledge the recovered earring; preserve unilateral generosity, irritation and this luck allocation; do not invent another loss]')

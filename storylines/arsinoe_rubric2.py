@@ -1,7 +1,7 @@
 """ARS-A2-02: retain heat-transformed roof nodes behind earned history."""
 from copy import deepcopy
 
-from story_format import n
+from story_format import n, p
 
 
 NIGHT = """{n}Arsinoe turned the key in the lock behind her. The lease lay on the sideboard where she had set it, folded, and she did not look at it. Her fingers were already at the Commander's collar.{/n}
@@ -36,5 +36,47 @@ def integrate(payload):
         # Its appended twins must consume the same earned outcome explicitly.
         alternate["Requires"].append(route.LATE_COMMITTED)
         offer["Choices"].append(alternate)
-        late["Nodes"].append(n(new, node["Speaker"], beat,
-                               *deepcopy(node["Choices"])))
+        callback = n(new, node["Speaker"], beat, *deepcopy(node["Choices"]))
+        account_callbacks(callback, route)
+        late["Nodes"].append(callback)
+
+
+def account_callbacks(node, route):
+    """Replace unsupported financial sentences; preserve the surrounding heat."""
+    spans = {
+        "rubric2_cauldron_night": (
+            'Three renewals, every one paid late, and I entered every one as punctual. I have never falsified an account in my life.',
+            'The lien stands. '),
+        "rubric2_cauldron_return": (
+            'The lease has not changed. ',
+            'I have been entering your payments as late for weeks, and I have been in no hurry whatever to collect.',),
+    }
+    text = node['Text']
+    # Split exact retained text around the account assertions. Paragraph order
+    # preserves the original staging and all non-financial wording verbatim.
+    parts = []
+    for assertion in spans[node['Id']]:
+        before, text = text.split(assertion, 1)
+        parts.append(before)
+    node['Text'] = parts[0]
+    node['Paragraphs'] = []
+    def pending(brief, requires=(), forbids=()):
+        node['Paragraphs'].append(p(
+            '[PROSE PENDING: arsinoe.trickster.late.commit/' + node['Id'] + ' - ' + brief + ']',
+            requires=requires, forbids=forbids))
+        node['Paragraphs'][-1]['Id'] = 'fix14.account.' + str(len(node['Paragraphs']) - 1)
+    pending('Last Call returned the property and closed the lease account; recall settlement, never an outstanding lien or invented payments', (route.CALLED,))
+    pending('Property burst without Last Call settlement; the loss account remains outstanding, with only actually pledged collateral',
+            ('arsinoe.siphon_burst',), (route.CALLED,))
+    pending('Last Call ended with property returned intact without her call; collateral released, rent accounted separately',
+            (route.LC,), (route.CALLED, 'arsinoe.siphon_burst'))
+    pending('Before settlement or recorded return, recall the existing lease and only its earned collateral; do not invent renewal payments',
+            (), (route.CALLED, route.LC, 'arsinoe.siphon_burst'))
+    for key, label in ((route.STILL, 'still'), (route.WORD, 'pledged word'), (route.LIEN, 'Worldwound lien')):
+        pending('Recall ' + label + ' as the recorded collateral, with release or liability matching the preceding account history', (key,))
+    pending('Recall the three waived renewals, without claiming paid late renewals', (route.GRACE,))
+    pending('No rent grace was earned; do not claim waived or recorded paid renewals', (), (route.GRACE,))
+    # Remaining original fragments keep their wording and relative order.
+    for part in parts[1:]:
+        node['Paragraphs'].append(dict(p(part), Text=part))
+    node['Paragraphs'].append(dict(p(text), Text=text))
