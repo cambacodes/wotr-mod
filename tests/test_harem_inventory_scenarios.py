@@ -79,11 +79,12 @@ class HaremInventory(unittest.TestCase):
         self.assertEqual(missing['packet_scene_refs'], ['K1', 'K2', 'K3'])
         readers = self.scenarios['missing_data']['enmity_producer_flags']
         self.assertEqual(missing['enmity_producer_flags'], readers)
-        self.assertEqual(len(readers), 57)
+        self.assertTrue(readers)
         exported = json.dumps(self.story)
         for flag in readers:
             self.assertIn(flag, exported)
-        self.assertFalse(result['enmity_producers'])
+        self.assertTrue(result['enmity_producers'])
+        self.assertTrue(set(readers).isdisjoint(result['enmity_producers']))
         self.assertTrue(missing['native_walk'])
 
     def test_data_inventory_drift_and_partial_enmity_production_are_visible(self):

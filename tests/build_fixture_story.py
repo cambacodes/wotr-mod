@@ -10,7 +10,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 if "--no-harem" in sys.argv:
     os.environ["RRT_PARTIAL_BUILD"] = "1"
     import storylines.harem_rows as rows
-    rows.register_all = lambda *args: None
+    rows.register_all = lambda *args: False
 import expansion
 
-print(json.dumps(expansion.make_expansion()))
+from authoring import generation_errors
+
+try:
+    print(json.dumps(expansion.make_expansion()))
+except generation_errors.GenerationErrors:
+    print(json.dumps(generation_errors.errors), file=sys.stderr)
+    raise

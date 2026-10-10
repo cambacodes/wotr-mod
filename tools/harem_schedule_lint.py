@@ -218,10 +218,12 @@ def scene_load_errors(story, data):
         if category == "protected" and any('.cap.' in f for f in s.get("Forbids", [])):
             errors.append("K8: protected discovery %s has a Counts cap" % s["Id"])
         errors.extend(delayed_clock_errors(s, story))
+    # Contradictory retained manuscripts consume no live optional budget.
+    active = [s for s in scenes if not set(s.get("Requires", [])) & set(s.get("Forbids", []))]
     for chapter, caps in data.get("load_caps", {}).items():
         chapter = int(chapter)
         arcs, starts, carried = {}, set(), set()
-        for s in scenes:
+        for s in active:
             if s["HouseholdCategory"] != "pair" or chapter not in s.get("Chapters", range(s["MinChapter"], s["MaxChapter"] + 1)):
                 continue
             arc = s.get("HouseholdArc")
@@ -229,7 +231,7 @@ def scene_load_errors(story, data):
                 errors.append("K8: optional step %s needs an arc id" % s["Id"])
                 continue
             arcs.setdefault(arc, set()).add(s["HouseholdWitness"])
-        for s in scenes:
+        for s in active:
             if not s.get("HouseholdArcStart"):
                 continue
             arc = s.get("HouseholdArc")
@@ -240,7 +242,7 @@ def scene_load_errors(story, data):
                 carried.add(arc)
         # Earlier starts consume their remaining steps even when this chapter allows additional new starts.
         maximum = sum(len(arcs[arc]) for arc in carried if arc in arcs)
-        maximum += sum(sorted((len(steps) for arc, steps in arcs.items() if arc not in carried), reverse=True)[:caps.get("arcs", 0)])
+        maximum += sum(sorted((len(steps) for arc, steps in arcs.items() if arc not in carried), reverse=True)[:max(0, caps.get("arcs", 0) - len(carried))])
         if any(arc not in starts | carried for arc in arcs):
             errors.append("K8: Ch%d optional arc has no registered start" % chapter)
         if chapter == 3:

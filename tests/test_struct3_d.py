@@ -134,7 +134,7 @@ class Structure3DTests(unittest.TestCase):
                      ((L + 'quarrel_cold', L + 'quarrel_mended'), True)]
         for history, want_supper in histories:
             with self.subTest(history=history):
-                flags = self.flags('dorgelinda.committed', D + 'cost.audit_hostile', *history)
+                flags = self.flags('dorgelinda.committed', D + 'cost.audit_hostile', D + 'cost.twice_weekly', *history)
                 # Existing supper paragraph index 2 retains its identity.
                 self.assertEqual(want_supper, enabled(paras[2], flags),
                                  'LC-HISTORY-01: private supper contradicts current seal history')

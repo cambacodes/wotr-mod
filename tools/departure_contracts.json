@@ -13368,10 +13368,6 @@
           "letter": false
         },
         {
-          "scene": "nidalynn.trickster.epilogue.unreturned",
-          "letter": false
-        },
-        {
           "scene": "nidalynn.trickster.hearth.listening",
           "letter": false
         },
@@ -13536,6 +13532,10 @@
         {
           "scene": "nidalynn.trickster.epilogue.given",
           "reason": "fix15: recorded departure/closure history, not current bodily participation."
+        },
+        {
+          "scene": "nidalynn.trickster.epilogue.unreturned",
+          "reason": "fix18: recorded departure history; no current Nidalynn body is staged."
         }
       ],
       "presences": [

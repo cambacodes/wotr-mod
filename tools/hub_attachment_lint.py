@@ -17,7 +17,7 @@ HUB_REACTIONS = {**dict.fromkeys(HUBS, REACTIONS), CH6_HUB: REACTIONS[:1]}
 # end eng7-f3
 
 
-def gameplay_entry_diagnostics(story, contract=None):
+def gameplay_entry_diagnostics(story, contract=None, *, omitted_layers=()):
     """Exact R5 inventory. Unimplemented actions remain blockers, never delivery proof.
 
     The Terendelev v1 contract is retained below. R5 rows distinguish completed
@@ -30,6 +30,8 @@ def gameplay_entry_diagnostics(story, contract=None):
     routes = set(story.get('Relationships', {})) | {s.get('Relationship') for s in scenes.values()}
     out = []
     for row in contract.get('route_entries', []):
+        if row.get('owning_layer') in omitted_layers:
+            continue
         if row['route'] not in routes and row['scene'] not in scenes:
             continue
         errors = []
@@ -87,15 +89,15 @@ def gameplay_entry_diagnostics(story, contract=None):
 
 
 # eng8-q8f: manual reading is never an in-world entry witness.
-def gameplay_entry_lint(story):
+def gameplay_entry_lint(story, *, omitted_layers=()):
     contract = json.loads((Path(__file__).with_name('gameplay_entry_inventory_contracts.json')).read_text(encoding="utf-8"))
     scenes = {s['Id']: s for s in story['Scenes']}
     if (contract['scope'] not in story.get('Relationships', {})
             and not any(s.get('Relationship') == contract['scope'] for s in scenes.values())):
-        return [row['scene'] + ': ' + error for row in gameplay_entry_diagnostics(story, contract)
+        return [row['scene'] + ': ' + error for row in gameplay_entry_diagnostics(story, contract, omitted_layers=omitted_layers)
                 for error in row['errors']]
     errors = [row['scene'] + ': ' + error + ' (' + ','.join(row['findings']) + ')'
-              for row in gameplay_entry_diagnostics(story, contract)
+              for row in gameplay_entry_diagnostics(story, contract, omitted_layers=omitted_layers)
               for error in row['errors']]
     for row in contract['entries']:
         for suffix, hub in zip(('', '_awning'), contract['hubs']):
@@ -129,20 +131,20 @@ def gameplay_entry_lint(story):
 # end eng8-q8f
 
 
-def integrate(story):
+def integrate(story, *, omitted_layers=()):
     """Authored attachment only: preserve scene identity, native lists and all route gates."""
     # eng7-f3
     for key, reactions in HUB_REACTIONS.items():
         story['Presences'][key]['ReactionScenes'] = list(reactions)
     # end eng7-f3
-    errors = lint(story)
+    errors = lint(story, omitted_layers=omitted_layers)
     if errors:
         raise ValueError('; '.join(errors))
 
 
-def lint(story):
+def lint(story, *, omitted_layers=()):
     scenes = {s['Id']: s for s in story['Scenes']}
-    errors = gameplay_entry_lint(story)  # eng8-q8f: build and CLI enforce nominated delivery rows.
+    errors = gameplay_entry_lint(story, omitted_layers=omitted_layers)  # eng8-q8f: build and CLI enforce nominated delivery rows.
     for key, presence in story.get('Presences', {}).items():
         entries = presence.get('ReactionScenes', [])
         if entries and key not in HUB_REACTIONS:  # eng7-f3
@@ -161,8 +163,10 @@ def lint(story):
             errors.append('unearned visitor hub: ' + key)
     # eng7-f3: reject a free, misplaced or broadened Chapter 6 delivery.
     presence = story.get('Presences', {}).get(CH6_HUB, {})
-    reaction = scenes.get(REACTIONS[0], {})
-    required = {'trickster.ever', 'nenio.trickster.visitor', 'nenio.trickster.returned', *(f for f in reaction.get('Requires', []) if f != 'nocticula.present_now')}
+    # The presence owns its earned visitor window; final cross-route readers
+    # guard the optional reaction, rather than changing that presence contract.
+    required = {'trickster.ever', 'nenio.trickster.visitor', 'nenio.trickster.returned',
+                'noct.defeated_not_dead', 'nocticula.trickster.cost.shade_secret'}
     # The Nenio hub can remain while Nocticula's optional reaction is unavailable.
     if (not required <= set(presence.get('Requires', []))
             or not {'nenio.closed', 'nenio.dissolved', REACTIONS[0], 'sacrifice'} <= set(presence.get('Forbids', []))

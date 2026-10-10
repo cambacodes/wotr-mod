@@ -179,6 +179,13 @@ class CaptiveDeliveryTests(unittest.TestCase):
     def test_all_living_sublines_obey_channel_silence_and_current_presence(self):
         for woman in row.PAIR:
             paragraphs = row.living_paragraphs(woman)
+            rescue = [p for p in paragraphs if "iomedae.trickster.buried_alive" in p["Requires"]]
+            paragraphs = [p for p in paragraphs if p not in rescue]
+            for paragraph in rescue:
+                self.assertTrue({row.P + "resolved", row.reader_key(woman), "sacrifice",
+                                 "trickster.commander_back", "iomedae.trickster.buried_alive"}
+                                <= set(paragraph["Requires"]))
+                self.assertEqual(paragraph["AnyGroups"], [])
             for index in range(0, len(paragraphs), 2):
                 living, returned = paragraphs[index:index + 2]
                 self.assertEqual(living['Forbids'], [*returned['Forbids'], 'sacrifice'])

@@ -247,7 +247,7 @@ def pair(scenes):
             require(block, 'minachiv.future_two')
 
 
-def wenduag(payload, scenes):
+def wenduag(payload, scenes, *, include_harem=True):
     from storylines import wenduag_partner_stance as stance
     exception = 'wenduag.partner.vellexia_exception'
     for sid, event in scenes.items():
@@ -278,7 +278,7 @@ def wenduag(payload, scenes):
     payload.setdefault('DerivedForbids', {})['wenduag.partner.no_exclusive_claim'] = [stance.EXCLUSIVE]
     # villain-route-wenduag (cloud): late text-only layer; keep it last for her text.
     from storylines import wenduag_cloud
-    wenduag_cloud.integrate(payload)
+    wenduag_cloud.integrate(payload, include_harem=include_harem)
 
 
 def aranka(payload, scenes):
@@ -331,7 +331,7 @@ def aranka(payload, scenes):
     call['Text'] = call['Text'].replace(route.THALL_CALL, '')
 
 
-def integrate(payload):
+def integrate(payload, *, include_harem=True):
     scenes = {s['Id']: s for s in payload['Scenes']}
     # Readiness remains an opportunity reader. Campaign codas read acceptance.
     for route in ('gesmerha', 'devarra', 'eliandra', 'jerribeth', 'chadali', 'hepzamirah'):
@@ -344,5 +344,5 @@ def integrate(payload):
     eliandra(payload, scenes)
     soana(scenes)
     pair(scenes)
-    wenduag(payload, scenes)
+    wenduag(payload, scenes, include_harem=include_harem)
     aranka(payload, scenes)

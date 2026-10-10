@@ -9,7 +9,9 @@ def walk(test, model, scene, state):
     outcomes = []
 
     def visit(node_id, incoming, path):
-        test.assertNotIn(node_id, path, (scene["Id"], path))
+        checkpoint = (node_id, frozenset(incoming.flags),
+                      tuple(sorted((incoming.crusade_resources or {}).items())))
+        test.assertNotIn(checkpoint, path, (scene["Id"], node_id))
         node = nodes[node_id]
         current = copy.deepcopy(incoming)
         for flag in node.get("EnterSet", []):
@@ -45,7 +47,7 @@ def walk(test, model, scene, state):
             targets = [check["Success"], check["Failure"]] if check else [answer["Next"]]
             for target in targets:
                 if target and not answer["Abort"]:
-                    visit(target, state, (*path, node_id))
+                    visit(target, state, (*path, checkpoint))
                 else:
                     outcomes.append(copy.deepcopy(state))
 

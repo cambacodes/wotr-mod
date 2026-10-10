@@ -303,6 +303,7 @@
     },
     {
       "scene": "household.ensemble.ch5.arrows",
+      "owning_layer": "harem",
       "route": "delamere",
       "findings": [
         "delamere:D05"
@@ -557,6 +558,7 @@
     },
     {
       "scene": "household.docket.gesmerha_jerribeth.account",
+      "owning_layer": "harem",
       "route": "gesmerha",
       "findings": [
         "gesmerha:D09"

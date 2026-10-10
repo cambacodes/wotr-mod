@@ -171,8 +171,14 @@ class ForesightSurfaceTests(unittest.TestCase):
         def late_registration(*args):
             # This assembly stage follows foresight.integrate. The final
             # export is a snapshot; late means during assembly, not afterward.
+            result = register(*args)
+            payload = args[0]
+            host = copy.deepcopy(next(s for s in payload["Scenes"]
+                                      if foresight.PAGE_TAKEN in s.get("Requires", [])))
+            host["Id"] = consumer
+            payload["Scenes"].append(host)
             foresight.CONSUMERS[consumer] = foresight.PAGE_TAKEN
-            return register(*args)
+            return result
 
         try:
             with patch.object(harem_rows, "register_all", side_effect=late_registration):

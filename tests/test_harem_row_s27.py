@@ -2,7 +2,7 @@
 import copy
 import unittest
 
-from tests.story_fixture import fresh_story
+from tests.story_fixture import fresh_story, row_registration_fixture
 from storylines.harem_rows import s27 as row
 from tools import rrt_verify as rules
 from tools.harem_schedule_lint import delayed_clock_errors
@@ -22,7 +22,8 @@ class S27Tests(unittest.TestCase):
         state.flags.update(['trickster', 'trickster.foresight.accepted', 'household.table.kept',
             'soana.committed', 'soana.progression_kept', 'soana.late_thorn_tested',
             'soana.late_future_chosen', 'soana.partner_stance.secret',
-            'camellia.committed', 'camellia.trickster.terms_named'])
+            'camellia.committed', 'camellia.trickster.terms_named',
+            'soana.trickster.returned', 'soana.trickster.accounting_invited', 'chapter_later'])
         rules.sim_complete(self.model, state)
         return state
 
@@ -106,6 +107,8 @@ class S27Tests(unittest.TestCase):
                          'soana.returned_actor_lost', 'camellia.returned_actor_lost', *row.ENMITY):
                 state = copy.deepcopy(base)
                 state.flags.add(flag)
+                if flag in ("soana.dead", "soana.killed_by_camellia", "soana.forest_dead"):
+                    state.flags.discard("soana.trickster.returned")
                 rules.sim_complete(self.model, state)
                 self.assertFalse(rules.sim_available(self.model, scene, state), flag)
             returned = copy.deepcopy(base)
@@ -124,9 +127,10 @@ class S27Tests(unittest.TestCase):
             self.assertEqual(scene['ContactUnit'], row.SOANA)
             self.assertEqual(scene['AdditionalContactUnits'], [row.CAMELLIA])
             self.assertEqual(scene['Participants'], ['soana', 'camellia'])
-            self.assertTrue(scene['ManualOnly'])
+            self.assertFalse(scene.get('ManualOnly'))
+            self.assertTrue(scene['Entry'])
             self.assertEqual(scene['Chapters'], [5])
-            self.assertIsNone(scene['InteractionHub'])
+            self.assertEqual(scene['InteractionHub'], 'soana.presence')
             self.assertEqual(scene['RestAllowance'], 'household.protected')
             for node in scene['Nodes']:
                 self.assertEqual(node.get('Paragraphs', []), [])
@@ -146,7 +150,7 @@ class S27Tests(unittest.TestCase):
     def test_registration_is_repeatable_without_mutating_base_scene_list(self):
         from story import scenes
         before = copy.deepcopy(scenes)
-        first, second = fresh_story(include_harem=False), fresh_story(include_harem=False)
+        first, second = row_registration_fixture(row), row_registration_fixture(row)
         for payload in (first, second):
             row.register(payload, payload["Scenes"], payload["Etudes"])
         self.assertEqual(scenes, before)

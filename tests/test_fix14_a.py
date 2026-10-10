@@ -44,7 +44,9 @@ class Fix14ATests(unittest.TestCase):
         for flag, index in (('chadali.wagers.coin_lost', 0), ('chadali.wagers.luck_lost', 1)):
             flags = base | {flag}
             self.assertTrue(visible(scene, flags))
-            self.assertEqual([i for i, p in enumerate(scene['Nodes'][0]['Paragraphs']) if visible(p, flags)], [index])
+            stakes = [p for p in scene['Nodes'][0]['Paragraphs']
+                      if any(f.startswith('chadali.wagers.') for f in p['Requires'])]
+            self.assertEqual([i for i, p in enumerate(stakes) if visible(p, flags)], [index])
             self.assertFalse(visible(scene, flags | {'chadali.trickster.hall_sealed'}))
 
     def test_recovered_earring_keeps_all_allocation_outcomes(self):

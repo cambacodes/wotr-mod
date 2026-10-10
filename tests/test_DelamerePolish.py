@@ -183,14 +183,18 @@ class DelamerePolishTests(unittest.TestCase):
                 state = SimState(3, 5000)
                 state.flags.update(flags)
                 self.assertTrue(sim_available(self.model, waking, state))
+                before = set(flags)
                 flags, _ = play(waking, flags)
+                state.times.update({flag: state.hour for flag in flags - before})
                 for scene in ("woken.count", "woken.feasting_table", "woken.red_blood",
                               "woods.second_hunt_page" if dead else "woods.second_hunt"):
                     flags = self.derive(flags)
                     state.flags = flags.copy()
                     state.hour += 200
                     self.assertTrue(sim_available(self.model, self.scenes[P + scene], state), scene)
+                    before = set(flags)
                     flags, _ = play(self.scenes[P + scene], flags)
+                    state.times.update({flag: state.hour for flag in flags - before})
                 self.assertIn("delamere.committed", flags)
                 hide = self.scenes[P + "woken.hide"]
                 state.flags = self.derive(flags)

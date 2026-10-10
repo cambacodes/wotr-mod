@@ -18,7 +18,7 @@ CONTRACTS = json.loads((Path(__file__).resolve().parents[1] /
                        "tools/earned_outcome_inventory_contracts.json").read_text(encoding="utf-8"))
 
 
-def integrate(payload):
+def integrate(payload, *, include_harem=True):
     # Authoring constants may share override dictionaries across sibling pages.
     # Detach only the surfaces this pass writes: reader changes must not mutate
     # authoring constants consumed by a later export. ForesightConsumers keeps
@@ -157,7 +157,7 @@ def integrate(payload):
     # Job 3's route-owned late graphs join the ordinary proof pass. Their local
     # choices carry no campaign yes; their new prose gets the same live guards.
     from storylines import endings_job3
-    endings_job3.integrate(payload)
+    endings_job3.integrate(payload, include_harem=include_harem)
 
     # The generator only adds a gate when the current path does not prove it.
     model = verify.Model(copy.deepcopy(payload))

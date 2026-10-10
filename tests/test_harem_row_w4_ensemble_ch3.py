@@ -5,6 +5,7 @@ import unittest
 from tests.story_fixture import fresh_story
 from tests.harem_row_walk import walk
 from storylines.harem_rows import w4_ensemble_ch3 as row
+from storylines import household
 from tools import rrt_verify as rules, savecompat
 
 
@@ -17,12 +18,13 @@ class Ch3EnsembleTests(unittest.TestCase):
 
     def state(self):
         state = rules.SimState(3, 1000)
-        state.flags.update(self.scene["Requires"])
-        # Qualified SeatWomen contracts are integrator-owned; party inputs here
-        # exercise a current bodily channel, independently of return history.
-        for woman in row.WOMEN:
-            seat = self.story.get("SeatWomen", {}).get(woman, {})
-            state.flags.update(seat.get("Requires", []))
+        state.flags.update({"trickster", "trickster.foresight.accepted",
+                            household.KEPT, "seelah.committed", "seelah.chosen_future",
+                            "seelah.short_future_chosen", "seelah.in_party",
+                            "nenio.committed", "nenio.trickster.test_running",
+                            "nenio.trickster.first_night", "nenio.in_party",
+                            "wenduag.romance_finished.latched", "wenduag.in_party"})
+        rules.sim_complete(self.model, state)
         return state
 
     def test_current_page_path_bodies_and_chapter(self):

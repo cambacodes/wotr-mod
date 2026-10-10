@@ -2,8 +2,8 @@
 import copy
 import unittest
 
-from tests.story_fixture import fresh_story
-from storylines import household
+from tests.story_fixture import fresh_story, row_registration_fixture
+from storylines import household, harem_caps
 from storylines.harem_rows import ensemble_ch5 as row
 from tools import rrt_verify as v, savecompat, payoff_lint, departure_lint, player_text_lint
 
@@ -11,7 +11,11 @@ from tools import rrt_verify as v, savecompat, payoff_lint, departure_lint, play
 class EnsembleCh5Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = fresh_story()
+        # Row behavior is exercised before the final current-contact pass.
+        # The shipped Delamere contact remains a declared D05 delivery debt.
+        cls.story = row_registration_fixture(row)
+        cls.story["Counts"].pop("household.cap.ch5.dynamic", None)
+        harem_caps.apply(cls.story)
         cls.model = v.Model(cls.story)
         cls.scene = cls.model.by_id[row.SCENE_ID]
 
@@ -30,6 +34,13 @@ class EnsembleCh5Tests(unittest.TestCase):
 
     def available(self, **kwargs):
         return v.sim_available(self.model, self.scene, self.state(**kwargs))
+
+    def test_full_export_withholds_unimplemented_delamere_body(self):
+        story = fresh_story()
+        model = v.Model(story)
+        scene = model.by_id[row.SCENE_ID]
+        self.assertEqual(scene["ParticipantContacts"]["delamere"]["Options"], [])
+        self.assertFalse(v.sim_available(model, scene, self.state()))
 
     def test_live_table_ch5_only_and_no_page_substitutes(self):
         self.assertTrue(self.available())

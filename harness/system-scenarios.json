@@ -179,6 +179,7 @@
         "seelah.chosen_future",
         "seelah.committed",
         "seelah.harem.attitude.yaniel.friend",
+        "seelah.in_party",
         "seelah.short_future_chosen",
         "trickster",
         "trickster.foresight.accepted",
@@ -316,10 +317,12 @@
         "household.table.kept",
         "seelah.chosen_future",
         "seelah.committed",
+        "seelah.in_party",
         "seelah.short_future_chosen",
         "trickster",
         "trickster.foresight.accepted",
         "wenduag.committed",
+        "wenduag.in_party",
         "wenduag.trickster.claim.given",
         "wenduag.trickster.gate_seen",
         "wenduag.trickster.proved"
@@ -829,9 +832,17 @@
             "kiana.morning/promise/0",
             "kiana.morning/yes/2",
             "kiana.morning/partner_terms/0",
-            "kiana.morning/partner_share/0",
-            "kiana.morning/partner_elan_terms/0",
-            "kiana.morning/partner_share_yes/0"
+            "kiana.morning/partner_share/1"
+          ],
+          "ExpectFlags": [
+            "kiana.partner_early.share_sent"
+          ]
+        },
+        {
+          "Scene": "kiana.morning.elan_reply",
+          "Answers": [
+            "kiana.morning.elan_reply/partner_elan_terms/0",
+            "kiana.morning.elan_reply/partner_share_yes/0"
           ],
           "ExpectFlags": [
             "kiana.committed",
