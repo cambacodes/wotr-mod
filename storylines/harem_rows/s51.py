@@ -68,9 +68,9 @@ def build_scenes():
     out.append(scene(P + "cell", "A usable trail", "Areelu", 5,
         '"Nidalynn remembers Windstep. Your field work may still lead hunters to its survivors."', [
         n("start", "Areelu", '''{n}A field bundle lies beside the cell's apparatus, under a cover marked with a mare. Areelu's projection watches you unfold Nidalynn's cloth; its hands remain smoke and light.{/n}
-"The grazing ground. Yes. I followed the displacement east. Those leaves would still serve a hunter — or your scouts."
+"Windstep. Yes. I followed the herding families east after the first year. People with animals move slowly, and slow things can be counted. I wanted subjects who had lived beside the rift and not yet been changed by it, and I took them from that trail. Those leaves would still lead a hunter to whoever is left. Or your scouts."
 {n}Her gaze passes over the stitched stars.{/n}
-"She wants the pasture back. I cannot give her that. These leaves are another matter. Take them, and stop calling them an apology. There is no second working copy here."
+"She wants the pasture back. I cannot give her that, and I would not if I could. These leaves are another matter. Take them, and stop calling them an apology. There is no second working copy here."
 "I want you at Threshold. I will discard a field route to keep you moving toward it. I will not discard my purpose."''',
           c("[Perception] Find the pursuit slip before burning the route.",
             check=dict(Skill="SkillPerception", DC=24, Success="erased", Failure="incomplete", CommanderOnly=True)),
@@ -167,7 +167,7 @@ def register(payload, scenes, refs):
     readers = {
         "nidalynn.lastcall.page": "{n}Nidalynn kept the cover with the mare beneath the stars. She had inspected the answer brought from Areelu's cell; she had not forgiven the Architect. Reudger's name stayed beside the names of the warriors.{/n}",
         "nidalynn.trickster.epilogue.salt": "{n}The mare-marked cover remained by Nidalynn's mending. The trail through Windstep had burned, and with it a route the crusade could have used. She kept the accusation and the memory of Reudger the White.{/n}",
-        "areelu.lastcall.page": "{n}Areelu had surrendered the Windstep field route to keep the Commander's attention on Threshold. The original and its pursuit slip had burned. Her larger work remained hers; Nidalynn's accusation remained against it.{/n}",
+
     }
     for host in scenes:
         if host["Id"] in ("areelu.trickster.wager.struck", "areelu.trickster.rivalry.lens"):
@@ -183,7 +183,7 @@ def register(payload, scenes, refs):
         if host["Id"] in readers:
             host["Nodes"][0].setdefault("Paragraphs", []).append(p(
                 readers[host["Id"]], requires=flags("accounted", "no_absolution", "cost.areelu_field_notes_lost")))
-        if host["Id"] in ("nidalynn.lastcall.page", "areelu.lastcall.page"):
+        if host["Id"] == "nidalynn.lastcall.page":
             host["Nodes"][0].setdefault("Paragraphs", []).append(p(
                 "{n}The Windstep complaint had gone unanswered. The lost pasture had not been made whole.{/n}",
                 requires=flags("unanswered")))

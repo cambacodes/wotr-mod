@@ -310,6 +310,9 @@ s("a_crossing", "A door left unlatched", "Anevia", 3,
 "No speeches. Not tonight. Just don't lie to me while we're doin' this."
 {n}She crosses the room in four steps and pulls the scarf from the chair to drop it on the floor, as though clearing the last piece of evidence. Her fingers are quick and not quite steady on your buckles; she swears at one, gives up on it and drags your shirt over your head instead. Her own laces she undoes herself, watching your face the whole time.{/n}
 {n}She walks you backwards until the edge of the bed catches your knees and pushes you down onto it. Her hands flatten on your chest. For a heartbeat she holds there, breathing hard, as if memorizing the moment for a report she will never file. Then she leans down, her hair falling around both your faces, and drags you up against her.{/n}
+"Don't. Don't say it." {n}Her voice has gone rough; she has caught the look on your face and knows exactly what it says about the look on hers.{/n} "That ain't Beth's doin'. That's all me, and I've been carryin' it round for weeks. Damn me for it."
+{n}A boot scrapes in the corridor, a runner's, slowing at her unbarred door. Anevia freezes above you with her own fist against her mouth, eyes bright and wicked over her knuckles. The footsteps drift on. She lets her breath out, half a laugh and half a groan, takes the fist from her mouth and hangs there over you, palms flat on your chest.{/n}
+"Eyes on me. No lyin'. Tell me you want it too."
 {n}Later, she dresses in silence. She puts her scarf on twice before she is satisfied with how it sits. At the door she presses her forehead briefly to yours.{/n}
 "I wanted that. Whatever happens, I won't make you carry the lie that I didn't."
 {n}She checks the passage and goes home. The dispatches have already gone; her wife will know that much.{/n}''', c('[Let her leave.]', flags=("a_affair",))),

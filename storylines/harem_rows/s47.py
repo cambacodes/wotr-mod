@@ -36,27 +36,23 @@ def inspection():
     return scene(P + "inspection", "The borrowed face", "Areelu", 5,
                  '"Yaniel sent evidence. I brought it without borrowing her face."', [
         n("start", "conversant",
-          '{n}The projection turns toward the folded paper. Beside the crystal, a working index lies open on the bench.{/n} '
-          '"She survived the Fane and now sends me a likeness. Does she think I have forgotten it? Unfold it. I can see from here."',
+          '{n}The projection turns toward the folded paper. Beside the crystal lie the pages of the guise, taken down from life while Yaniel lay on her tables: the voice, the stance, the scar, the way she carries her sword hand.{/n} "She survived the Fane and now sends me a likeness. Does she think I have forgotten it? I studied that face for years before I wore it. Unfold it. I can see from here."',
           c("[Lay the comparison beside the projected face.]", "comparison"),
           c('"Forget it. Keep using what you took."', "declined"), later()),
         n("comparison", "conversant",
-          '"Yes. That is the face I wore. It opened doors that would have closed against mine." '
-          '{n}The projection indicates a line in the index without touching it.{/n} "Her name. Her appearance. Useful among crusaders, less useful now that she walks your walls."'
-          '\n{n}A cult lookout could still be deceived by that face. The comparison lies within your reach.{/n}',
+          '''"Yes. That is the face I wore. It opened doors that would have closed against mine, and men wept to see it and told it everything." {n}The projection indicates a line in the pages without touching it.{/n} "Her name. Her appearance. Useful among crusaders. Less useful now that she walks your walls and can contradict me."
+{n}A cult lookout could still be deceived by that face. The comparison lies within your reach.{/n}''',
           c('"Give up using her name and likeness in your reconnaissance and published work. I will give up the lookout con."', "undertaking"),
           c("[Leave the original comparison in Areelu's laboratory.]", "retained"),
           c("[Take the evidence away without a remedy.]", "unsettled"), later()),
         n("undertaking", "conversant",
-          '"Strike out that entry. Name and likeness, both. I will retire that guise and its use in my published work. My notes remain mine. So do the others." '
-          '{n}She watches the pen in your hand.{/n} "And you will not put my name on a false result made from her specimen. I have enough enemies producing those without your assistance."'
-          '\n{n}Yaniel\'s original lies beside the index. The exclusion is still waiting for your pen.{/n}',
+          '''"Strike out that entry. Name and likeness, both. I will retire the guise; I have worn better. My notes remain mine. So do my other faces." {n}She watches the pen in your hand.{/n} "And you will not put her name to a lie made from my work. I have enough enemies producing those without your assistance."
+{n}Yaniel's original lies beside the pages. The exclusion is still waiting for your pen.{/n}''',
           finish("[Strike out the entry, check the exclusion and take the originals home.]",
                  "inspection.remedied", "proof.quest_done", "face.excluded", "original.returned",
                  "cost.areelu_specific_guise", "cost.commander_reconnaissance"), later()),
         n("retained", "conversant",
-          '"Leave it on the bench. I can collect it when my work here resumes." '
-          '{n}The original is still in your hand. Yaniel lent it for inspection; leaving it would give the witch a fresh likeness to keep.{/n}',
+          '"Leave it on the bench. I may want to wear her again when my work here resumes, and a fresh likeness saves a great deal of guessing." {n}The original is still in your hand. Yaniel lent it for inspection; leaving it would give the witch a fresh likeness to keep.{/n}',
           finish("[Leave the original on the bench.]", "inspection.unsettled", "original.retained", "mandate.broken"), later()),
         n("unsettled", "conversant",
           '"Then take it. She can keep her accusation. I can keep my methods." '
@@ -153,7 +149,7 @@ def register(payload, scenes, refs):
             p("{n}The original came home. The exclusion covered Yaniel's name and likeness; it answered neither her captivity nor the poison.{/n}", requires=(P + "proof.quest_done", P + "original.returned")),
             p("{n}The Commander left Yaniel's original in Areelu's laboratory. That breach remained beside the accusation; no returned original answered it.{/n}", requires=(P + "mandate.broken",), forbids=(P + "original.returned",)),
         ],
-        "areelu": [p("{n}At the laboratory projection, Areelu traded away the use of Yaniel's name and likeness. She kept her notes and her other guises. The exclusion made no claim on her remorse.{/n}", requires=(P + "cost.areelu_specific_guise",))],
+
     }
     for partner, paragraphs in records.items():
         host = next(s for s in scenes if s["Id"] == partner + ".lastcall.page")

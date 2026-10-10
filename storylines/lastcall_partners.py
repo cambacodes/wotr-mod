@@ -910,7 +910,7 @@ def call_in_scenes(factory):
         choices = [c(text, flags=(resolved(part["rel"]),), requires=req, forbids=forb) if extra is None
                    else c(text, flags=(called(part["rel"]), resolved(part["rel"])) + tuple(extra), requires=req, forbids=forb)
                    for text, extra, req, forb in spec["choices"]]
-        node = n("call", "Narrator", spec["text"], *choices)
+        node = n("call", "Narrator", CALL_SETUP.get(part["rel"], spec["text"]), *choices)
         # Offered on any deal her route produced, whether or not the romance committed (ledger 05 row 11: every debt is
         # called in once). The coda still needs the commit.
         any_groups = [sorted({k for g in part["deal"] for k in g})]
@@ -955,6 +955,14 @@ def open_debts():
     return [callable_key(part["rel"]) for part in PARTNERS if part["call"]]
 
 
+AREELU_HOUSEHOLD_PARAGRAPHS = (p('''{n}I gave up one face at my laboratory projection: Yaniel's, the name and the likeness. It opened a great many doors in Drezen, and men told it things they would not have told their priests. She may have it back. I keep what I learned wearing it, and I have other faces.{/n}''',
+                requires=('household.pair.yaniel_areelu.cost.areelu_specific_guise',)), p('''{n}I burned a field route through Windstep to keep the Commander walking toward Threshold. Whoever is left out there is harder to find now. Nidalynn inspected the ashes and did not forgive me. She was not asked to.{/n}''',
+                requires=('household.pair.nidalynn_areelu.accounted', 'household.pair.nidalynn_areelu.no_absolution', 'household.pair.nidalynn_areelu.cost.areelu_field_notes_lost', 'crossroute.nidalynn.available')), p('''{n}The Windstep complaint went unanswered. The pasture is still ash. I did not expect otherwise, and I did not lose sleep over it.{/n}''',
+                requires=('household.pair.nidalynn_areelu.unanswered',)), p('''{n}Nidalynn's cloth with the mare on it was carried to my cell and carried away again, and nobody has shown her what became of the trail. I could tell her. Nobody has asked me.{/n}''',
+                requires=('household.pair.nidalynn_areelu.notice.carried', 'crossroute.nidalynn.available'),
+                forbids=('household.pair.nidalynn_areelu.accounted', 'household.pair.nidalynn_areelu.unanswered')), p('''{n}I opened three files for the Commander's goddess: a miller, a drover, a mason. She has their names now. I have the rest of the annex, which she did not think to ask for. The goddess who was mortal not so long ago should learn to phrase her demands more carefully.{/n}''',
+                requires=('household.pair.iomedae_areelu.cost.areelu_records_opened',)))
+
 def pages():
     """Block B. Every page belongs to the framework relationship (lastcall), as do the call-ins: the routes' own suites keep
     judging their routes, and LastCallTests judges these. `Partner` names the route each page codas, for placement.
@@ -963,6 +971,10 @@ def pages():
     attack, sacrifice and the parent failure explicitly (page_forbids/page_forbid_overrides), and plays in Chapter 6 only."""
     out = []
     for part in PARTNERS:
+        opener = "{n}Dorgelinda Stranglehold kept the Logistics Council's books for five years after the war, and read every line of them herself. She said a quartermaster who stops reading has stopped paying attention, and she never stopped.{/n}" if part["rel"] == "dorgelinda" else part["opener"]
+        paragraphs = part["paragraphs"]
+        if part["rel"] == "areelu":
+            paragraphs = (*paragraphs, *AREELU_HOUSEHOLD_PARAGRAPHS)
         forbids = ((part["declined"],) if part["declined"] else ()) + part["page_forbids"]
         extra = dict(Relationship="lastcall")
         if part["declined"]:
@@ -974,17 +986,12 @@ def pages():
         if part.get("page_commit_groups"):
             extra["RequiresAnyGroups"] = [sorted({k for g in part["page_commit_groups"] for k in g}, key=lambda k: k != part["commit"])]
             page = scene(part["key"] + ".lastcall.page", part["title"], "Epilogue", 1, "", [
-                n("page", "Narrator", part["opener"], paragraphs=part["paragraphs"])],
+                n("page", "Narrator", opener, paragraphs=paragraphs)],
                 requires=("trickster.ever", ACTIVE, page_guard_key(part["rel"])), forbids=forbids, last=99, **extra)
         else:
             page = scene(part["key"] + ".lastcall.page", part["title"], "Epilogue", 1, "", [
-                n("page", "Narrator", part["opener"], paragraphs=part["paragraphs"])],
+                n("page", "Narrator", opener, paragraphs=paragraphs)],
                 requires=("trickster.ever", ACTIVE, page_guard_key(part["rel"]), part["commit"]), forbids=forbids, last=99, **extra)
-        if part["key"] == "dorgelinda":
-            # LC-HISTORY-01: the retained base cue has no paragraph conditions.
-            # Hold its unconditional account claim for Claude; paragraph positions stay fixed.
-            node = page["Nodes"][0]
-            node["Text"] = "{n}Dorgelinda Stranglehold kept the Logistics Council's books for five years after the war. She said a quartermaster who closes every line has stopped paying attention, and she read the entries in the Commander's name every day.{/n}"
         if part["key"] == "aranka":   # coordinator ruling 2026-10-02: her coda belongs to the ending (R2-6)
             page.update(MinChapter=6, MaxChapter=6, Chapters=[6])
         out.append((part["rel"], page))
@@ -1223,11 +1230,11 @@ _so["call"]["entry"] = '[Name the Wintersun account] "Soana. The blood, the guar
 _so["call"]["text"] = '{n}You name the price actually paid at Wintersun. The blood is gone; the guardian cannot be paid twice. A leash reclaimed is hers again. Only a strand still tied to you can pull at your wrist.{/n}'
 
 _ey = _history_partners["elyanka"]
-_ey["paragraphs"][4].update(Text='{n}The Commander had died at Threshold. Elyanka presented her bequest when the living body returned. She was refused possession: there was no corpse to hand over. She contested it, furious at having a death notice and breathing collateral. The cork did not erase her claim.{/n}', Requires=[H2, RECOVERED])
+_ey["paragraphs"][4].update(Text='{n}The Commander had died at Threshold, and came back breathing. Elyanka was at the door when the living body was carried in, with the hearse in the street and her six behind her, come to take what had fallen due. There was nothing to take. She laid two cold fingers on the Commander\'s throat in front of the whole hall, found the pulse, and shrieked at it like a cheated fishwife; then she laughed until she had to sit down. "Dead, and sweating," she said. "The cork changes nothing. The death is in her book, and the body is still mine when it stops."{/n}', Requires=[H2, RECOVERED])
 _ey["paragraphs"][5]["Requires"].append(HELD)
 _ey["paragraphs"][5]["Text"] = '{n}The Commander walked away from Threshold carrying a bottled death. No death had yet made the bequest payable. Elyanka weighed the flask through the coat. "You insolent sack of meat," she said. "I can wait."{/n}'
-_ey["paragraphs"][6]["Text"] = '{n}The Commander\'s death notice reached Elyanka. She demanded the body and found the coffin empty. She refused to withdraw the bequest: someone had kept her collateral from her, and she intended to learn who.{/n}'
-_ey["paragraphs"] += (page_p('In private Elyanka inspected the returned body and the empty flask. The death remained in Pharasma\'s book. "A death proved, and no corpse delivered," she said. She kept her claim contested; she did not report the stranger to Drezen.', requires=(H2, BRIDGE)),)
+_ey["paragraphs"][6]["Text"] = "{n}The Commander's death notice reached Elyanka in the dead-house, and she had the hearse at the chapel before the bell stopped. She tore the lid off the coffin with her own hands and found it empty. Nobody in the chapel would say where the body had gone. She named the chaplains to their faces, one by one, and promised each of them that she would learn who had kept her collateral from her, and what they tasted like.{/n}"
+_ey["paragraphs"] += (page_p('Elyanka had the returned body brought to the dead-house behind drawn curtains and went over it by candlelight, the empty flask on the trestle beside it. The death was in Pharasma\'s book; the body was warm. "Proved dead, and still not on my table," she said, and laughed until the candle guttered. She told nobody in Drezen who the stranger was. A secret kept was a debt owed her, and she liked those better than meat.', requires=(H2, BRIDGE)),)
 
 _io = _history_partners["iomedae"]
 _io["paragraphs"][0]["Requires"] = [BRIDGE, H2]
@@ -1240,7 +1247,7 @@ _io["paragraphs"][5]["Text"] = '{n}' + _io["paragraphs"][5]["Text"] + '{/n}'
 _history_debts["mutasafen"]["page_called"] = "Mutasafen's account survived Threshold. Delivered blood remained on his bench; funding had bought the body, while a forged vial or a murdered courier left him demanding another payment. Hepzamirah did not call that paid in full."
 _history_debts["wintersun"]["page_called"] = "The Wintersun account was read against the old rites. Given blood and a dead guardian could not be collected again. A reclaimed leash stayed Soana's; a second strand still bound the life pledged to it. Last orders altered none of those terms."
 _history_debts["baphomet"]["page_called"] = "Baphomet's seal still marked the debtor. The returned Commander was breathing; a death notice did not deliver a body to the Lord of the Minotaurs. His claim remained disputed. No one in Drezen mistook his silence for forgiveness."
-_history_debts["whispering_way"]["page_called"] = "The Whispering Way demanded the body named in the death notice. Its collector was shown a living Commander and refused possession. He returned to Caliphas with the bequest still disputed."
+_history_debts["whispering_way"]["page_called"] = 'The Whispering Way demanded the body named in the death notice. Its collector was shown a living Commander and refused possession. He returned to Caliphas with the bequest still disputed.'
 _history_debts["socoth"]["page_called"] = "Socothbenoth still held the listening right or the story promised him. Calling his account at Threshold had named the obligation; it had not supplied the conversation. His next demand arrived scented with perfume."
 _history_debts["ramisa"]["page_called"] = "Ramisa kept the seat or the bill sold in her market. The Commander had called her name at Threshold; no new dedication or flask had been promised with it. She kept asking what the performance was worth."
 _history_debts["herrax"]["page_called"] = "Herrax still held the favour on account. The call at Threshold gave her a living debtor to dun. It supplied no payment, and she let the interest stand."
@@ -1414,13 +1421,12 @@ def call_in_scenes(factory):
     ):
         host = by[rel + ".lastcall.call"]
         node = host["Nodes"][0]
-        old_text = node["Text"]
+        old_text = next(part["call"]["text"] for part in PARTNERS if part["rel"] == rel)
         receipt = rel + ".lastcall.history_shown"
         # Old answers keep their order, targets and effects; only the history
         # delivery precedes them. No repeated choice can skip that delivery.
         for choice in node["Choices"]:
             choice["Requires"].append(receipt)
-        node["Text"] = CALL_SETUP[rel]
         for name, requires, forbids, groups in variants:
             target = "fix15_" + name
             node["Choices"].append(c("Continue", target, requires=requires, forbids=(*forbids, receipt)))
@@ -1428,12 +1434,4 @@ def call_in_scenes(factory):
             text = old_text if supported else CALL_HISTORY[rel][name]
             host["Nodes"].append(n(target, "Narrator", text,
                 c("Continue", "call", flags=(receipt,))))
-    return out
-
-_fix15_pages = pages
-def pages():
-    out = _fix15_pages()
-    for rel, page in out:
-        if rel == "dorgelinda":
-            page["Nodes"][0]["Text"] = "{n}Dorgelinda Stranglehold kept the Logistics Council's books for five years after the war, and read every line of them herself. She said a quartermaster who stops reading has stopped paying attention, and she never stopped.{/n}"
     return out

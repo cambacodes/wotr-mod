@@ -91,8 +91,8 @@ The banner platform is ready to receive the account. The witch's lens will carry
           c("[Later.]", abort=True)),
         ar("originals.work", '''{n}You return to the salvage chest with the quartermaster. Between two warped boards you find the detached intake leaves. Their seals match the bundle; each carries a name, a code and a relative's identifying mark. Back at your desk, you compare the leaves with the index and turn the lens toward the damaged columns.
 Frost gathers on its rim. Areelu's corrections appear beside your transcriptions.{/n}
-"K-22. That mark means extraction, not release. Do not send his family looking for a man who died on my table."
-{n}She rebuilds the three damaged code correspondences, one stroke at a time. The dispatch candles burn down untouched.{/n}''',
+"K-22. That mark means extraction, not release. He was awake for it; the method required that. Do not send his family looking for a man who died on my table."
+{n}She rebuilds the three damaged code correspondences, one stroke at a time, and adds a column nobody asked for: the hour at which each man stopped asking for his family. The dispatch candles burn down untouched.{/n}''',
            c("[Copy each name beside its case and retain the technical annotations.]", "originals")),
         ar("originals", CASES + '''
 "Keep the incineration temperatures. They were recorded for a reason. Your goddess may find them offensive; that does not make them inaccurate."
@@ -106,7 +106,7 @@ Frost gathers on its rim. Areelu's corrections appear beside your transcriptions
 All three men ask for the fate behind the mark. You write their names and accounts beneath the codes, then return to the lens.{/n}''',
           c("[Give Areelu Berun's, Merek's and Davor's named accounts through the lens.]", "families.match")),
         ar("families.match", '''{n}You read each relative's name and identifying account into the dark glass. Areelu copies them. The witnesses who trusted you can no longer remain anonymous in this inquiry.{/n}
-"The brand is sufficient. The disappearance date is not; that column records admission, not capture."
+"The brand is sufficient. The disappearance date is not; that column records admission, not capture. The drover sat in a cage for nine days before I had a table free for him."
 {n}She restores the damaged cross-references and supplies the matching case observations.{/n}
 "Your witnesses are useful. They have corrected an intake error. That does not entitle them to the rest of my work."
 {n}You retain a copy of the three cases. She retains hers.{/n}''',

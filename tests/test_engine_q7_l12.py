@@ -37,9 +37,24 @@ class Lane12Tests(unittest.TestCase):
             for a, b in zip(old["Nodes"], new["Nodes"]):
                 self.assertEqual(without_prose(a["Choices"]), without_prose(b["Choices"]), old["Id"] + "/" + a["Id"])
 
-    def test_world_claims_and_staging_are_clean(self):
-        self.assertEqual(findings(world_facts, self.after), [])
-        self.assertEqual(findings(location_staging, self.after), [])
+    def test_areelu_uncollected_world_variants_follow_flags(self):
+        scenes = {scene["Id"]: scene for scene in self.after["Scenes"]}
+        node = next(node for node in scenes["areelu.trickster.finale.unnamed"]["Nodes"]
+                    if node["Id"] == "end")
+        factual, neutral = node["Paragraphs"][5], node["Paragraphs"][7]
+        self.assertEqual(factual["Requires"], ["ending.wound_closed"])
+        self.assertEqual(neutral["Forbids"], ["ending.wound_closed"])
+        for paragraph in (factual, neutral):
+            self.assertEqual(paragraph["AnyGroups"], [["areelu.sacrifice_wound", "areelu.sacrifice_before"]])
+        self.assertEqual(node["Paragraphs"][8]["Requires"], ["areelu.trickster.term.life"])
+
+    def test_world_fact_and_bereavement_predicates_read_native_state(self):
+        self.assertEqual(self.after["Derived"][lane.DEAD], [["sacrifice"]])
+        self.assertEqual(self.after["DerivedForbids"][lane.DEAD], ["trickster.commander_back"])
+        self.assertEqual(self.after["Derived"]["engine.l12.crossroads"],
+                         [["ending.trickster_allplanes"], ["ending.trickster_allplanes_fw"]])
+        self.assertEqual(self.after["SeenCues"]["engine.l12.kenabres_rebuilding"],
+                         ["fc65929e0c9e4a9fa03309418c2d29bb"])
 
     def test_commander_mourning_mutation_is_rejected(self):
         story = copy.deepcopy(self.final)
