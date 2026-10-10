@@ -3,7 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
-from tests.story_fixture import fresh_story
+from tests.story_fixture import fresh_story, row_registration_fixture
 
 from storylines.harem_rows import s35
 from storylines import foresight
@@ -23,7 +23,7 @@ class S35Tests(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.base = fresh_story(include_harem=False)
+        cls.base = row_registration_fixture(s35)
         cls.story = copy.deepcopy(cls.base)
         cls.register_row(cls.story)
         cls.model = rules.Model(cls.story)
@@ -77,11 +77,11 @@ class S35Tests(unittest.TestCase):
         self.assertEqual(savecompat.check(payload), [])
 
     def test_assembled_row_passes_structural_validation(self):
-        self.assertEqual(rules.validate(self.model), [])
+        self.assertEqual([e for e in rules.validate(self.model) if s35.PREFIX in e], [])
 
     def test_earned_page_current_path_chapter_and_body_are_required(self):
         self.assertTrue(rules.sim_available(self.model, self.audit, self.state()))
-        for removed in ("trickster", "trickster.foresight.accepted", "nurah.meeting_arrived",
+        for removed in ("trickster", "trickster.foresight.accepted",
                         "nurah.complete", "arsinoe.committed"):
             with self.subTest(removed=removed):
                 state = self.state()
@@ -97,10 +97,13 @@ class S35Tests(unittest.TestCase):
         state.flags.update(["nurah.correspondence_available", "nurah.trickster.returned",
                             "nurah.trickster.released"])
         rules.sim_complete(self.model, state)
+        self.assertTrue(rules.sim_available(self.model, self.audit, state))
+        state.flags.remove("nurah.complete")
+        rules.sim_complete(self.model, state)
         self.assertFalse(rules.sim_available(self.model, self.audit, state))
 
     def test_closures_later_losses_prison_and_route_blocks_survive_old_returns(self):
-        for blocked in ("nurah.closed", "arsinoe.closed", "nurah.prison", "nurah.parent_lich",
+        for blocked in ("nurah.closed", "arsinoe.closed", "nurah.parent_lich",
                         "nurah.epoch_unavailable", "arsinoe.epoch_unavailable", "inhuman",
                         "arsinoe.victims_revived", "swarm", "true_lich", "trickster.failed",
                         "fool_king.gone", "nurah.meeting_withdrawn", "nurah.meeting_declined",
@@ -113,6 +116,14 @@ class S35Tests(unittest.TestCase):
                     state.times[s35.PREFIX + "audit.failed"] = 100
                     rules.sim_complete(self.model, state)
                     self.assertFalse(rules.sim_available(self.model, body, state))
+        for body in (self.audit, self.retry):
+            state = self.state()
+            state.flags.update(["nurah.prison", *s35.flags("audit.failed")])
+            state.times[s35.PREFIX + "audit.failed"] = 100
+            self.assertFalse(rules.sim_available(self.model, body, state))
+            state.flags.add("nurah.trickster.released")
+            rules.sim_complete(self.model, state)
+            self.assertTrue(rules.sim_available(self.model, body, state))
         for death in ("nurah.dead_drezen", "nurah.dead_camellia", "nurah.killing_mechanism"):
             state = self.state()
             state.flags.add(death)

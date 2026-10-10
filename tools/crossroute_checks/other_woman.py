@@ -21,7 +21,7 @@ NATIVE_AUDIENCES = {
 # eng7-l14: independent Tirabade refusals leave the native wife/officer in
 # place. Other routes use closure for departures, dismissal or hard refusal;
 # their existing RouteOpen closure remains part of cross-route availability.
-LIVING_AFTER_ROMANCE_REFUSAL = {"irabeth", "anevia"}
+LIVING_AFTER_ROMANCE_REFUSAL = {"irabeth", "anevia", "arsinoe"}
 NATIVE_COMPANIONS = {"seelah", "ember", "nenio", "arueshalae", "wenduag", "camellia"}
 
 # eng7-l14: these canon-dead bodies have no native death loss in Relationships.

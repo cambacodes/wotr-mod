@@ -263,10 +263,10 @@ class GuardPassTests(unittest.TestCase):
         self.assertNotIn("Arsinoe", neutral["Text"])
         self.assertEqual(neutral["Choices"], original["Nodes"][-1]["Choices"])
         proof = Proof(verify.Model(copy.deepcopy(story)))
-        losses = ["arsinoe.closed", *story["Relationships"]["arsinoe"]["UnavailableFlags"]]
+        losses = story["Relationships"]["arsinoe"]["UnavailableFlags"]
         paid = AND(lit("chapter_later"), lit("seelah.morning"), lit("seelah.souls_returned"))
         live = AND(paid, *(lit(flag, False) for flag in losses))
-        self.assertTrue(proof.implies(live, fields(nodes["start"]["Choices"][0])))
+        self.assertTrue(proof.implies(AND(live, lit("arsinoe.closed")), fields(nodes["start"]["Choices"][0])))
         self.assertTrue(proof.implies(live, fields(nodes["hurt"]["Choices"][0])))
         self.assertTrue(proof.implies(live, NOT(fields(nodes["hurt"]["Choices"][1]))))
         for loss in losses:

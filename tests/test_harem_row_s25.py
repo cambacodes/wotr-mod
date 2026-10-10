@@ -3,7 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
-from tests.story_fixture import fresh_story
+from tests.story_fixture import fresh_story, row_registration_fixture
 from tests.harem_row_walk import walk as walk_answers
 
 from storylines import household
@@ -16,11 +16,11 @@ ROOT = Path(__file__).resolve().parents[1]
 class S25Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.base = fresh_story(include_harem=False)
+        cls.base = row_registration_fixture(s25)
         cls.payload = copy.deepcopy(cls.base)
         cls.entries_before = copy.deepcopy(household.ENTRIES)
         s25.register(cls.payload, cls.payload["Scenes"], cls.payload["Etudes"])
-        cls.rows = {s["Id"].removeprefix(s25.P): rrt_verify.norm_scene(s)
+        cls.rows = {s["Id"].removeprefix(s25.P): rrt_verify.norm_scene(copy.deepcopy(s))
                     for s in cls.payload["Scenes"] if s["Id"].startswith(s25.P)}
         # Exercise the real availability oracle on this row, without enumerating
         # every unrelated route's dialogue graph for each pair acceptance walk.
@@ -124,7 +124,8 @@ class S25Tests(unittest.TestCase):
             self.assertTrue(rrt_verify.sim_available(self.model, body, state))
             self.assertFalse(set(body["Requires"]) & set(body["Forbids"]))
             self.assertFalse(body["ManualOnly"])
-            self.assertEqual(body["Kind"], "event")
+            # Kind labels remote rest deliveries; this is a local Table entry.
+            self.assertFalse(body["Remote"])
             self.assertEqual(body["InteractionHub"], "household.table")
             for woman in s25.PAIR:
                 self.assertIn(woman + ".present_now", body["Requires"])

@@ -139,7 +139,7 @@ class ReturnInProgressTests(unittest.TestCase):
         before = copy.deepcopy(s)
         ep.integrate_presences(s)
         self.assertEqual(s, before)
-        self.assertFalse(lint.producer_presence_errors(s))
+        self.assertFalse(lint.producer_presence_errors(s, relationships={"aranka"}))
         rel = s["Relationships"]["aranka"]
         self.assertEqual(rel["UnavailableOverrides"], {"aranka.ran_failure": "aranka.trickster.moral_repaired"})
         key = ep.presence_guard("aranka")
@@ -163,7 +163,7 @@ class ReturnInProgressTests(unittest.TestCase):
                     s["DerivedForbids"][key].remove("aranka.closed")
                 else:
                     s["DerivedOpenRoutes"] = {key: ["aranka"]}
-                self.assertTrue(any(x.startswith("P1") for x in lint.producer_presence_errors(s)))
+                self.assertTrue(any(x.startswith("P1") for x in lint.producer_presence_errors(s, relationships={"aranka"})))
 
     def test_exception_needs_reason_registered_loss_and_live_producer(self):
         # eng7-l06: mutate the serialized contract; module globals cannot influence standalone readers.
@@ -181,9 +181,9 @@ class ReturnInProgressTests(unittest.TestCase):
             else:
                 entry["Flag"] = "chapter_later"
             with self.subTest(mutation=mutation):
-                self.assertTrue(any(x.startswith("P1") for x in lint.producer_presence_errors(bad)))
+                self.assertTrue(any(x.startswith("P1") for x in lint.producer_presence_errors(bad, relationships={"aranka"})))
         s["Scenes"][0]["Requires"] = ["trickster.ever"]
-        self.assertTrue(any(x.startswith("T7") for x in lint.producer_presence_errors(s)))
+        self.assertTrue(any(x.startswith("T7") for x in lint.producer_presence_errors(s, relationships={"aranka"})))
 
 
 if __name__ == "__main__":

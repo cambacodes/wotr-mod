@@ -83,15 +83,34 @@ class StanceAgencyTests(unittest.TestCase):
         results = self.walk(sid, "partner_answer_distant", {"trickster", j.PLANT, j.RETURNED, "jerribeth.shared_work"}, ("partner_resume",))
         self.assertFalse(any(j.CHOSEN in flags for flags, _ in results))
 
+    def finish_kiana_correspondence(self, results):
+        from storylines import kiana_round4 as r4
+        completed = []
+        for flags, trace in results:
+            if flags & {r4.EARLY_SHARE_SENT, r4.EARLY_BREAKUP_SENT}:
+                self.assertFalse(flags & {k.SHARE, k.EXCLUSIVE, "kiana.committed", "kiana.separated"})
+                flags |= {"trickster.now", "trickster.ever"}
+            if r4.EARLY_SHARE_SENT in flags:
+                completed.extend(self.walk("kiana.morning.elan_reply", "partner_elan_terms", flags))
+            elif r4.EARLY_BREAKUP_SENT in flags:
+                delivered = self.walk("kiana.morning.elan_parting", "partner_breakup", flags)
+                for after, _ in delivered:
+                    completed.extend(self.walk("kiana.morning.after_delivery", "partner_exclusive_yes", after))
+            else:
+                completed.append((flags, trace))
+        return completed
+
     def test_kiana_chooses_after_company_and_rehearsal(self):
         for proof, expected in ((set(), False), ({"kiana.company", "kiana.rehearsed"}, True),
                                 ({"kiana.trickster.met", "kiana.rehearsed"}, True), ({"kiana.trickster.met"}, False)):
-            results = self.walk("kiana.morning", "partner_answer", {"trickster", k.OPEN, *proof})
+            results = self.finish_kiana_correspondence(
+                self.walk("kiana.morning", "partner_answer", {"trickster", k.OPEN, *proof}))
             self.assertEqual(any(k.EXCLUSIVE in flags and "kiana.separated" in flags for flags, _ in results), expected)
             if not expected:
                 self.assertTrue(any(k.SHARE in flags and "kiana.committed" in flags for flags, _ in results))
                 self.assertTrue(any(k.EXCLUSIVE in flags and "kiana.closed" in flags for flags, _ in results))
-        coerced = self.walk("kiana.morning", "partner_refuse", {"trickster", k.OPEN})
+        coerced = self.finish_kiana_correspondence(
+            self.walk("kiana.morning", "partner_refuse", {"trickster", k.OPEN}))
         self.assertTrue(any(k.SHARE in flags and "kiana.committed" in flags for flags, _ in coerced))
         self.assertTrue(any(k.EXCLUSIVE in flags and "kiana.closed" in flags for flags, _ in coerced))
 

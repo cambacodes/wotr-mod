@@ -4,6 +4,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from tests.story_fixture import fresh_story
 from pathlib import Path
 from tools.presence_exception_schema import errors
 from tools.presence_failure_lint import check as receipt_errors
@@ -14,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class PresenceExceptionExportTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads((ROOT / "development/Story.json").read_text(encoding="utf-8"))
+        cls.story = fresh_story()
 
     def test_fresh_process_parity(self):
         with tempfile.TemporaryDirectory(prefix="eng7-l06-") as scratch:
@@ -50,5 +51,10 @@ class PresenceExceptionExportTests(unittest.TestCase):
             scene.setdefault("Requires", []).append("gesmerha.presence.failed")
             self.assertTrue(receipt_errors(bad), suffix)
         bad = copy.deepcopy(self.story)
-        bad["Derived"]["gesmerha.trickster.late_committed"][-1][-1] = "gesmerha.presence.failed"
+        scene = next(s for s in bad["Scenes"] if s["Id"] == "gesmerha.trickster.epilogue.commit")
+        groups = scene["RequiresAnyGroups"]
+        witnessed = [g for g in groups if "gesmerha.presence.failure_observed" in g]
+        self.assertTrue(witnessed)
+        for group in witnessed:
+            group[group.index("gesmerha.presence.failure_observed")] = "gesmerha.presence.failed"
         self.assertTrue(receipt_errors(bad))

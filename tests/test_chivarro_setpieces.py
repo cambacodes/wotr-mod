@@ -171,7 +171,8 @@ class ChivarroSetpieceTests(unittest.TestCase):
             ids = {node["Id"]: node for node in self.pages[sid]["Nodes"]}
             ids.update({para["Id"]: para for node in self.pages[sid]["Nodes"]
                         for para in node.get("Paragraphs", []) if "Id" in para})
-            held = ".alone.minagho" in sid or all("minagho" in x for x in brief["source_nodes"])
+            sources = brief.get("source_nodes") or [brief["source"]["node"]]
+            held = ".alone.minagho" in sid or all("minagho" in x for x in sources)
             if held:
                 self.assertNotIn(brief["slot_id"], ids)
             else:

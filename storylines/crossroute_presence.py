@@ -54,7 +54,7 @@ def availability(payload, woman, route, known=None, distant=False, native_audien
         payload.setdefault("DerivedForbids", {})[native_key] = list(rel.get("UnavailableFlags", []))
         derived[closure_key] = [[open_key], [native_key]]
         inputs.append(closure_key)
-    elif woman not in LIVING_AFTER_ROMANCE_REFUSAL and woman != "arsinoe" and not native_audience:
+    elif woman not in LIVING_AFTER_ROMANCE_REFUSAL and not native_audience:
         payload.setdefault("DerivedForbids", {})[key] = [rel["ClosedFlag"]]
     for i, loss in enumerate(f for f in rel.get("UnavailableFlags", []) if f not in other):
         if loss not in overrides:
@@ -127,7 +127,7 @@ def scene_guard(scene, payload, woman, route, known=None, distant=False):
         for flag in ("trickster.ever", BODY_RETURNS[woman]):
             if flag not in scene.setdefault("Requires", []):
                 scene["Requires"].append(flag)
-    if woman not in LIVING_AFTER_ROMANCE_REFUSAL and woman != "arsinoe":
+    if woman not in LIVING_AFTER_ROMANCE_REFUSAL:
         closed = rel["ClosedFlag"]
         if closed not in scene.setdefault("Forbids", []):
             # Foreign relationship-state forbids are not valid on reactions.
@@ -489,7 +489,7 @@ def integrate(payload):
                 if absent not in choice.setdefault("Forbids", []):
                     choice["Forbids"].append(absent)
                 return
-            if woman not in LIVING_AFTER_ROMANCE_REFUSAL | NATIVE_COMPANIONS | {"arsinoe"}:
+            if woman not in LIVING_AFTER_ROMANCE_REFUSAL | NATIVE_COMPANIONS:
                 vetoes.append(rel["ClosedFlag"])
             for flag in vetoes:
                 if flag not in choice.setdefault("Forbids", []):
@@ -596,7 +596,7 @@ def integrate(payload):
                     and block.node["Id"] == "cut"
                     and not pattern.fullmatch(block.node.get("Speaker", ""))
                     and hashlib.sha256(block.text.encode("utf-8")).hexdigest()
-                    == "e72ebd3198b5342f6a3fca1b087a63532e312a4476f4ae0c4d66dd0b544a2db6"):
+                    == "6496a086b350002a6fe3ce4c005e7d65064ae288ffc805a86dfb13e7a2555a75"):
                 continue
             native = native_contexts.get(block.scene["Id"], {})
             if any(pattern.fullmatch(name) for name in native.get("Speakers", [])) or pattern.search(native.get("Mentions", "")):

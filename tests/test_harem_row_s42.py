@@ -3,7 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
-from tests.story_fixture import fresh_story
+from tests.story_fixture import fresh_story, row_registration_fixture
 
 from storylines.harem_rows import s42
 from tools import rrt_verify as rules, savecompat
@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class RowS42(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.base = fresh_story(include_harem=False)
+        cls.base = row_registration_fixture(s42)
         cls.story = copy.deepcopy(cls.base)
         s42.register(cls.story, cls.story["Scenes"], cls.story["Etudes"])
         cls.model = rules.Model(cls.story)
