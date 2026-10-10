@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <DefineConstants>$(DefineConstants);C2_STANDALONE</DefineConstants>
+    <GameDir Condition="'$(GameDir)' == ''">/wrath/</GameDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../src/Story.cs" Link="Story.cs" />
+    <Compile Include="ValidationOnlyRunner.cs" />
+    <Compile Include="ValidationReportTests.cs" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(GameDir)Wrath_Data/Managed/Newtonsoft.Json.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

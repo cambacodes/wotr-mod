@@ -33,7 +33,7 @@ internal static class Program
             profiledSeconds += timer.Elapsed.TotalSeconds;
             suiteTimings.Add(new { suite = name, seconds = timer.Elapsed.TotalSeconds, assertions = checks - before });
             string? output = Environment.GetEnvironmentVariable("RRT_MANAGED_TIMINGS");
-            if (!string.IsNullOrEmpty(output)) File.WriteAllText(output, JsonConvert.SerializeObject(suiteTimings));
+            if (!string.IsNullOrEmpty(output)) File.WriteAllText(output, JsonConvert.SerializeObject(suiteTimings), new UTF8Encoding(false));
         }
     }
     private static int checks;
@@ -118,6 +118,8 @@ internal static class Program
     [MethodImpl(MethodImplOptions.NoInlining)]
     public static int Run(string game, string storyPath, string modDirectory)
     {
+        if (Environment.GetEnvironmentVariable("RRT_VALIDATE_ONLY") == "1")
+            return ValidationOnlyRunner.Run(storyPath);
         var timer = System.Diagnostics.Stopwatch.StartNew();
         try { return RunConstruction(game, storyPath, modDirectory); }
         finally
@@ -127,17 +129,15 @@ internal static class Program
             {
                 suiteTimings.Add(new { suite = "ManagedConstructionAndNativeInline", seconds = timer.Elapsed.TotalSeconds - profiledSeconds,
                     assertions = checks - profiledChecks });
-                File.WriteAllText(output, JsonConvert.SerializeObject(suiteTimings));
+                File.WriteAllText(output, JsonConvert.SerializeObject(suiteTimings), new UTF8Encoding(false));
             }
         }
     }
 
     private static int RunConstruction(string game, string storyPath, string modDirectory)
     {
-        var story = JsonConvert.DeserializeObject<Story>(File.ReadAllText(storyPath))!;
+        var story = JsonConvert.DeserializeObject<Story>(File.ReadAllText(storyPath, Encoding.UTF8))!;
         Rules.Validate(story);
-        // Engine validation alone, minutes before the managed suites: catches every Story.Validate rule early (A100).
-        if (Environment.GetEnvironmentVariable("RRT_VALIDATE_ONLY") == "1") { Console.WriteLine("RRT-VALIDATE-OK"); return 0; }
         RunSuite("TerendelevDeliveryBlueprintTests", () => TerendelevDeliveryBlueprintTests.Run(Check));
         RunSuite("NativeContactStorageTests", () => NativeContactStorageTests.Run(Check));
         RunSuite("JerribethRecoveryObservationTests", () => JerribethRecoveryObservationTests.Run(Check));
