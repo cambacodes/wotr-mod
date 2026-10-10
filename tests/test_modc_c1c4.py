@@ -22,6 +22,13 @@ def payload():
         {"Id": "end", "Text": "done", "Choices": [], "Paragraphs": []}]} for sid in ("s1", "s2")]}
 
 
+def inspectable(folder, code):
+    # Gates refuse inline `python -c` (unauditable); run the case as a script file from the repo root.
+    path = Path(folder) / "generation_case.py"
+    path.write_text("import os, sys\nsys.path.insert(0, os.getcwd())\n" + code + "\n", encoding="utf-8")
+    return str(path)
+
+
 class CompleteGenerationTests(unittest.TestCase):
     def command(self, body=None, *, existing=None, startup_failure=False, writer_failure=False):
         # A fresh process runs the actual CLI dispatch, compiler and writer.
@@ -34,19 +41,18 @@ class CompleteGenerationTests(unittest.TestCase):
             env = {**os.environ, "RRT_STORY_OUTPUT": str(output), "RRT_GENERATION_REPORT": str(report),
                    "PYTHONDONTWRITEBYTECODE": "1"}
             if startup_failure:
-                argv = [sys.executable, "-c", '\n'.join([
+                argv = [sys.executable, inspectable(folder, '\n'.join([
                     'import builtins, runpy',
                     'original = builtins.__import__',
                     'def importing(name, *args, **kwargs):',
                     '    if name == "story": raise RuntimeError("injected import failure")',
                     '    return original(name, *args, **kwargs)',
                     'builtins.__import__ = importing',
-                    'runpy.run_path("expansion.py", run_name="__main__")'])]
+                    'runpy.run_path("expansion.py", run_name="__main__")']))]
             elif body is None:
                 argv = [sys.executable, "expansion.py"]
             else:
                 script = '''import runpy
-from unittest.mock import patch
 from tests.test_modc_c1c4 import payload
 from storylines import heat_text
 import expansion
@@ -54,16 +60,18 @@ import expansion
 def build(**kwargs):
     data = payload()
 ''' + body + '''\n    return data
-with patch.object(expansion, "_make_expansion", build):
-    runpy.run_path("expansion.py", run_name="__main__")
+expansion._make_expansion = build  # fresh process: plain assignment, no test framework in the case script
+runpy.run_path("expansion.py", run_name="__main__")
 '''
                 if writer_failure:
-                    script = script.replace('with patch.object(expansion, "_make_expansion", build):', '\n'.join([
+                    script = script.replace('expansion._make_expansion = build', '\n'.join([
                         'def failing_writer(destination, compiled):',
                         '    destination.write_bytes(b"partial")',
                         '    raise OSError("injected write failure")',
-                        'with patch.object(expansion, "_make_expansion", build), patch("authoring._serialization.write_story", failing_writer):']))
-                argv = [sys.executable, "-c", script]
+                        'import authoring._serialization as _serialization',
+                        '_serialization.write_story = failing_writer',
+                        'expansion._make_expansion = build']))
+                argv = [sys.executable, inspectable(folder, script)]
             completed = subprocess.run(argv, cwd=ROOT, env=env, capture_output=True, encoding="utf-8", timeout=600)
             raw = report.read_bytes()
             self.assertFalse(raw.startswith(b"\xef\xbb\xbf"))
