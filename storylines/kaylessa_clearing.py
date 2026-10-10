@@ -368,13 +368,19 @@ here(HUNTER, "The next one", '"You\'ve got blood on your sleeve."', [
         c('"He came to kill you. He\'s yours. Do what you want with him."', "hers", flags=(HUNTER_HERS,))),
     kay("turned", '''"A message." {n}She considers it the way a quartermaster considers a bill.{/n} "Yes. Broken fingers, both hands, so he can't draw a bow again. And a letter pinned to his coat in my own hand, in Elven, saying who I am and what I know, for every guard between here and the border to read on his way."
 {n}She stands.{/n} "It's crueller than killing him. The Council will have to decide whether to hide him too."''',
-        c("[Let her go to the cellar.]")),
+        c("[Let her go to the cellar.]", requires=(N + "hunter_turned_shown",)),
+        c("Continue", "turned_shown", forbids=(N + "hunter_turned_shown",))),
     kay("hers", '''"Mine." {n}She turns the arrowhead between her fingers.{/n} "You know what I'd enjoy doing to him in that cellar. Don't pretend you don't."
 "I'll break his fingers and pin the letter to his coat. Let the Council see what their duty bought. I want him alive when he tells them who did it."''',
-        c("[Let her go to the cellar.]")),
+        c("[Let her go to the cellar.]", requires=(N + "hunter_hers_shown",)),
+        c("Continue", "hers_shown", forbids=(N + "hunter_hers_shown",))),
     kay("letter_source", '''"The seal got my letter through. It didn't keep my name hidden. Now a hunter has come looking for the woman who signed it." {n}She wipes the arrowhead.{/n} "He's in the cooper's cellar. Alive."''', c("Continue", "ask")),
     kay("scout_source", '''"Someone in Kyonin wants to meet your drow scout. He asked the wrong questions at the tailor's, then tried the east wall with a knife." {n}She shows you the bloodied rag.{/n} "They may not have my name yet. He didn't get to ask. He's in the cooper's cellar. Alive."''', c("Continue", "ask")),
     kay("market_source", '''"A hunter followed the market's story here. A drow with a bow, under the tailor's awning. He brought a knife to find out the rest." {n}She puts down the rag.{/n} "They may not have my name yet. He's in the cooper's cellar. Alive."''', c("Continue", "ask")),
+    nar("turned_shown", "[PROSE PENDING: kaylessa.clearing.the_next_hunter/turned_shown - For the selected message history, bring the Commander with Kaylessa to the cooper's cellar and show her breaking the living hunter's fingers on both hands and pinning the letter for Kyonin. The Commander witnesses and authorizes the selected act; stage it, do not summarize. Preserve threats, cruelty and the living dispatch. Use Cue_0065 appetite and Cue_0022 resistance as native anchors.]",
+        c("Continue", flags=(N + "hunter_turned_shown",))),
+    nar("hers_shown", "[PROSE PENDING: kaylessa.clearing.the_next_hunter/hers_shown - For the selected hers history, bring the Commander with Kaylessa to the cooper's cellar and show her enjoying the selected cruelty: broken fingers on both hands, the pinned letter, and the hunter kept alive to report who did it. The Commander witnesses and authorizes the selected act; stage it, do not summarize. Preserve appetite, guilt, threats and costs, using native Cue_0065 and Cue_0022.]",
+        c("Continue", flags=(N + "hunter_hers_shown",))),
 ], requires=(), delay=48, chapters=(5,), any_groups=((COUNCIL_KNOWS, LETTER_SENT, "kaylessa.wasps.claimed_as_scout", "kaylessa.wasps.let_them_look"),))
 
 

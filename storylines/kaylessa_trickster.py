@@ -622,9 +622,9 @@ meet(BEAST_SCENE, "The lamp-holder", '"You look like you\'ve heard something."',
     nar("too_late", '''{n}She isn't listening. She's looking at Tessariel's hands on the chain, and whatever looks out through her eyes has already decided. There is no more time for clever words. There is only the key in your hand, and the doorway.{/n}''',
         c('[Give her the key and walk away] "Take your hour."', "fed", flags=(BEAST_MET, BEAST_FED), alignment=("Evil", 1)),
         c('[Stand in the doorway] "No."', "stopped", flags=(BEAST_MET, BEAST_STOPPED))),
-    nar("fed", '''{n}You give her the key. She takes it without touching your fingers. On the stairs you hear the first sound behind you, and it isn't Tessariel's.{/n}
-{n}An hour later Kaylessa comes up into the market with clean hands and sits down on her crate under the awning. She has washed her face. Her shoulders are loose, like a woman after a long sleep.{/n}''',
-        c("Continue", "fed_after")),
+    nar("fed", "[PROSE PENDING: kaylessa.trickster.after.the_beast/fed - Stage the key handoff in the cell for the beast-fed history; keep the Commander at the doorway to witness the selected cruelty before any departure. Preserve Tessariel, Kaylessa's appetite and resistance, the Evil cost and guilt. Do not jump to the washed aftermath.]",
+        c("Continue", "fed_after", requires=(P + "beast_cruelty_shown",)),
+        c("Continue", "fed_shown", forbids=(P + "beast_cruelty_shown",))),
     kay("fed_after", '''"It's quiet now. For tonight." {n}She looks at her hands in her lap.{/n}
 "She held the lamp for nobody, soldier. I didn't need one. I see perfectly well in the dark." {n}The words are light. Her voice isn't.{/n} "Don't ever give me that key again. Or do. I can't tell any more which of us is asking."''',
         c("[Sit with her until the market closes.]")),
@@ -642,6 +642,8 @@ meet(BEAST_SCENE, "The lamp-holder", '"You look like you\'ve heard something."',
 {n}Tessariel stares at her. Then, very slowly, she nods.{/n}
 {n}Kaylessa stands, and hands you the key, and doesn't let go of it straight away.{/n} "That was a good trick, soldier. Don't do it to me."''',
         c("[Unlock the chain.]", flags=(BEAST_MET, WASP_SENT))),
+    nar("fed_shown", '[PROSE PENDING: kaylessa.trickster.after.the_beast/fed_shown - For the selected beast-fed history, show Kaylessa acting on Tessariel in the cell with the Commander witnessing and authorizing the selected act; stage it, do not summarize. Anchor violent appetite in native Cue_0065 and resistance in Cue_0022. Retain cruelty, guilt, threats and downstream dagger consequences; do not redeem or soften. End before the existing fed_after aftermath.]',
+        c("Continue", "fed_after", flags=(P + "beast_cruelty_shown",))),
 ], requires=(CLOCK,), forbids=(BEAST_MET,), delay=48, optional=False)
 
 

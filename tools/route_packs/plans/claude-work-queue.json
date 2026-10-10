@@ -987,5 +987,75 @@
     "woman": "delamere",
     "beat": "Shared integration owner: partition the public called hunting reunion against iomedae.trickster.buried_alive. Supply a concealed hunting reunion preserving Delamere appetite, agency, both romances, both earned bridges and recovered_corked/public_return exclusions. Inspect recovery and collector siblings. Register any new placeholder at implementation.",
     "ruling": "fix14-b"
+  },
+  {
+    "scene": "kaylessa.trickster.after.the_beast",
+    "node": "fed",
+    "woman": "kaylessa",
+    "beat": "Stage the key handoff in the cell for the beast-fed history; keep the Commander at the doorway to witness the selected cruelty before any departure. Preserve Tessariel, Kaylessa's appetite and resistance, the Evil cost and guilt. Do not jump to the washed aftermath.",
+    "ruling": "fix14-c"
+  },
+  {
+    "scene": "kaylessa.trickster.after.the_beast",
+    "node": "fed_shown",
+    "woman": "kaylessa",
+    "beat": "For the selected beast-fed history, show Kaylessa acting on Tessariel in the cell with the Commander witnessing and authorizing the selected act; stage it, do not summarize. Anchor violent appetite in native Cue_0065 and resistance in Cue_0022. Retain cruelty, guilt, threats and downstream dagger consequences; do not redeem or soften. End before the existing fed_after aftermath.",
+    "ruling": "fix14-c"
+  },
+  {
+    "scene": "kaylessa.clearing.the_next_hunter",
+    "node": "turned_shown",
+    "woman": "kaylessa",
+    "beat": "For the selected message history, bring the Commander with Kaylessa to the cooper's cellar and show her breaking the living hunter's fingers on both hands and pinning the letter for Kyonin. The Commander witnesses and authorizes the selected act; stage it, do not summarize. Preserve threats, cruelty and the living dispatch. Use Cue_0065 appetite and Cue_0022 resistance as native anchors.",
+    "ruling": "fix14-c"
+  },
+  {
+    "scene": "kaylessa.clearing.the_next_hunter",
+    "node": "hers_shown",
+    "woman": "kaylessa",
+    "beat": "For the selected hers history, bring the Commander with Kaylessa to the cooper's cellar and show her enjoying the selected cruelty: broken fingers on both hands, the pinned letter, and the hunter kept alive to report who did it. The Commander witnesses and authorizes the selected act; stage it, do not summarize. Preserve appetite, guilt, threats and costs, using native Cue_0065 and Cue_0022.",
+    "ruling": "fix14-c"
+  },
+  {
+    "scene": "jannah.trickster.circle_night",
+    "node": "down",
+    "woman": "jannah",
+    "beat": "Correct the later belt gesture for kiss -> learn -> down: the belt and clothing have already been removed. Retain the fencing metaphor, desire and canon-calibrated cut; keep IDs and choices. Claude owns the line; structure lane preserves intimate wording.",
+    "ruling": "fix14-c"
+  },
+  {
+    "scene": "household.pair.camellia_arueshalae.choice",
+    "node": "cut",
+    "woman": "camellia",
+    "beat": "Shared household/Camellia-Arueshalae owner: correct Death Ward scope to energy drain and negative energy protection plus death-effect save bonus. Retain seven-minute duration, consumed scroll debit, charged dangerous scene and aftermath; inspect sibling ward descriptions.",
+    "ruling": "fix14-c"
+  },
+  {
+    "scene": "household.pair.kaylessa_camellia.retry",
+    "node": "sealed",
+    "woman": "kaylessa",
+    "beat": "Shared S42 owner: show the carrier murder in an in-person node where the Commander witnesses and acts; stage it, do not summarize through clean gloves. Preserve cruelty and costs. Claude owns prose; shared structural owner owns the staged encounter.",
+    "ruling": "fix14-c"
+  },
+  {
+    "scene": "devarra.trickster.epilogue.woken",
+    "node": "page",
+    "woman": "devarra",
+    "beat": "Shared Devarra owner and coordinator: separate successful hatching history from physical location and departure. Add save-compatible crowd-rescue north, lie_kept, goat.lie_kept, ownership-departure and current-loss variants in woken and commit. Retain child survival, Nidalynn departure and historical one_short debt. Claude supplies changed prose.",
+    "ruling": "fix14-c"
+  },
+  {
+    "scene": "terendelev.lastcall.call",
+    "node": "call",
+    "woman": "terendelev",
+    "beat": "Shared Last Call owners: preserve the callable uncommitted wound-paid returned Terendelev. Branch call and ledger on actual oath and dressing receipts; write a truthful blood-thread version when those events are unearned. Inspect returned stranger dressing variants as siblings. Do not invent commitment from restitution.",
+    "ruling": "fix14-c"
+  },
+  {
+    "scene": "wenduag.trickster.early.yaniel",
+    "node": "returned_yaniel",
+    "woman": "wenduag",
+    "beat": "Wenduag owners: returned means freed living arrival, not resurrection after Commander murder. Revise returned_yaniel, returned_ally and the first Commander reply to living arrival; preserve suspicion of the strong rival and threats using keyed native Wenduag samples. Inspect court and native-visit variants and their reply continuations. Keep explicit-kill closure.",
+    "ruling": "fix14-c"
   }
 ]
