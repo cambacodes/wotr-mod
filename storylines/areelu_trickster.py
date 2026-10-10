@@ -2111,3 +2111,58 @@ _bottled_end["Paragraphs"].extend([
     p('{n}"Empty," she said, setting her crystal beneath the lamp. "I made the vessel. I did not make the banner you crossed on. Pharasma kept the death; I have the glass to measure." She closed the shutters before writing the stranger\'s name in her private notes.{/n}', requires=("iomedae.trickster.buried_alive",)),
 ])
 # end endings1
+
+# fix14-b: terminal accounts read the selected local report history.
+def _fix14_report(payload, suffix):
+    return next(s for s in payload["Scenes"] if s["Id"] == P + "report." + suffix)
+
+def _fix14_node(host, nid):
+    return next(n for n in host["Nodes"] if n["Id"] == nid)
+
+def integrate_fix14_reports(payload):
+    _fix14_host = _fix14_report(payload, 'dagger')
+    _fix14_end = _fix14_node(_fix14_host, 'end')
+    _fix14_old = _fix14_end["Text"]
+    _fix14_end["Text"] = ""
+    _fix14_node(_fix14_host, 'give_mortal').setdefault("EnterSet", []).append('areelu.trickster.report.dagger.history.give_mortal')
+    _fix14_node(_fix14_host, 'give_witch').setdefault("EnterSet", []).append('areelu.trickster.report.dagger.history.give_witch')
+    _fix14_node(_fix14_host, 'keep').setdefault("EnterSet", []).append('areelu.trickster.report.dagger.history.keep')
+    _fix14_end.setdefault("Paragraphs", []).append(p(_fix14_old, any_groups=(('areelu.trickster.report.dagger.history.give_mortal','areelu.trickster.report.dagger.history.give_witch',),)))
+    _fix14_end.setdefault("Paragraphs", []).append(p('[PROSE PENDING: areelu.trickster.report.dagger/end - record refusal, her later unauthorized holding and return to the boot; no voluntary offer]', requires=('areelu.trickster.report.dagger.history.keep',)))
+    _fix14_host = _fix14_report(payload, 'graft')
+    _fix14_end = _fix14_node(_fix14_host, 'after')
+    _fix14_old = _fix14_end["Text"]
+    _fix14_end["Text"] = ""
+    _fix14_node(_fix14_host, 'stand').setdefault("EnterSet", []).append('areelu.trickster.report.graft.history.stand')
+    _fix14_node(_fix14_host, 'wait').setdefault("EnterSet", []).append('areelu.trickster.report.graft.history.wait')
+    _fix14_node(_fix14_host, 'sleep').setdefault("EnterSet", []).append('areelu.trickster.report.graft.history.sleep')
+    _fix14_end.setdefault("Paragraphs", []).append(p('[PROSE PENDING: areelu.trickster.report.graft/after - record the Commander standing beside her until dawn and her Abyss response; no solitary return or sleeping Commander]', requires=('areelu.trickster.report.graft.history.stand',)))
+    _fix14_end.setdefault("Paragraphs", []).append(p('[PROSE PENDING: areelu.trickster.report.graft/after - record the Commander waiting awake and her declined proposition; preserve her agency]', requires=('areelu.trickster.report.graft.history.wait',)))
+    _fix14_end.setdefault("Paragraphs", []).append(p('[PROSE PENDING: areelu.trickster.report.graft/after - record the Commander sleeping through her outing and her unanswered Abyss call]', requires=('areelu.trickster.report.graft.history.sleep',)))
+    _fix14_host = _fix14_report(payload, 'crossroads')
+    _fix14_end = _fix14_node(_fix14_host, 'end')
+    _fix14_old = _fix14_end["Text"]
+    _fix14_end["Text"] = ""
+    _fix14_node(_fix14_host, 'rift_after').setdefault("EnterSet", []).append('areelu.trickster.report.crossroads.history.rift_after')
+    _fix14_node(_fix14_host, 'buy_mortal').setdefault("EnterSet", []).append('areelu.trickster.report.crossroads.history.buy_mortal')
+    _fix14_node(_fix14_host, 'buy_witch').setdefault("EnterSet", []).append('areelu.trickster.report.crossroads.history.buy_witch')
+    _fix14_node(_fix14_host, 'loud').setdefault("EnterSet", []).append('areelu.trickster.report.crossroads.history.loud')
+    _fix14_node(_fix14_host, 'watch').setdefault("EnterSet", []).append('areelu.trickster.report.crossroads.history.watch')
+    _fix14_end.setdefault("Paragraphs", []).append(p(_fix14_old, any_groups=(('areelu.trickster.report.crossroads.history.watch',),)))
+    _fix14_end.setdefault("Paragraphs", []).append(p('[PROSE PENDING: areelu.trickster.report.crossroads/end - record the rift visit and changed use of her work without inventing a collected stone]', requires=('areelu.trickster.report.crossroads.history.rift_after',)))
+    _fix14_end.setdefault("Paragraphs", []).append(p('[PROSE PENDING: areelu.trickster.report.crossroads/end - record buying and correcting the forged leaf and her lost power; no collected stone]', requires=('areelu.trickster.report.crossroads.history.buy_mortal',)))
+    _fix14_end.setdefault("Paragraphs", []).append(p('[PROSE PENDING: areelu.trickster.report.crossroads/end - record buying and correcting the forged leaf and the stallholder recognizing her; no collected stone]', requires=('areelu.trickster.report.crossroads.history.buy_witch',)))
+    _fix14_end.setdefault("Paragraphs", []).append(p('[PROSE PENDING: areelu.trickster.report.crossroads/end - record the public forgery joke and its consequences; no collected stone]', requires=('areelu.trickster.report.crossroads.history.loud',)))
+    _fix14_host = _fix14_report(payload, 'visitors')
+    _fix14_end = _fix14_node(_fix14_host, 'end')
+    _fix14_old = _fix14_end["Text"]
+    _fix14_end["Text"] = ""
+    _fix14_node(_fix14_host, 'shut').setdefault("EnterSet", []).append('areelu.trickster.report.visitors.history.shut')
+    _fix14_end.setdefault("Paragraphs", []).append(p(_fix14_old, forbids=('areelu.trickster.report.visitors.history.shut',)))
+    _fix14_end.setdefault("Paragraphs", []).append(p('[PROSE PENDING: areelu.trickster.report.visitors/end - record the Commander closing the door and visitors ceasing, retaining her objection; no growing guest list]', requires=('areelu.trickster.report.visitors.history.shut',)))
+
+    _fix14_after = next(s for s in payload["Scenes"] if s["Id"] == P + "finale.after")
+    _fix14_visits = _fix14_node(_fix14_after, "end")["Paragraphs"]
+    for _fix14_visit in _fix14_visits[:2]:
+        _fix14_visit["Requires"].append("nenio.present_now")
+    _fix14_visits[0]["Forbids"].append(NENIO_BACK)

@@ -2118,6 +2118,110 @@
       "woman": "nocticula",
       "text_sha256": "c2212276639aa24daf7ef1d68f71c33cf42a15ef7ebac372f34d3f3689e1fc41",
       "reason": "SHAMIRA-A4-02: historical death location, played refusal/exclusivity, or hypothetical laughter; no current Nocticula appearance or new response."
+    },
+    {
+      "scene": "hepzamirah.trickster.body.hounds",
+      "node": "joke",
+      "slot": "choice[2]",
+      "woman": "areelu",
+      "text_sha256": "b5b39cb447d99c8fc20512e75d4edeb20cb66224c09cc219f2c40c2137a6a2a3",
+      "reason": "fix14-b: historical laboratory/provenance, impersonated face, city reference or religious allegiance; no physical participant"
+    },
+    {
+      "scene": "hepzamirah.trickster.bond.the_call",
+      "node": "sworn",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "b37e667db1ee1cc5a00789640f6c7782cbb4c5fa9a28b914be91472e85bf1e8e",
+      "reason": "fix14-b: historical laboratory/provenance, impersonated face, city reference or religious allegiance; no physical participant"
+    },
+    {
+      "scene": "hepzamirah.trickster.bond.eve",
+      "node": "last",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "4a1943fac889b65ab91569030f0a4cc747240cd395c337bfc4e3734689763190",
+      "reason": "fix14-b: historical laboratory/provenance, impersonated face, city reference or religious allegiance; no physical participant"
+    },
+    {
+      "scene": "melazmera.trickster.ch4.plan",
+      "node": "crown",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "8fc64ad0f0353eabf096007a45269eb9a25fab7bae23c2700a571c1174f09938",
+      "reason": "fix14-b: historical laboratory/provenance, impersonated face, city reference or religious allegiance; no physical participant"
+    },
+    {
+      "scene": "melazmera.trickster.epilogue.together",
+      "node": "page",
+      "slot": "paragraph[13]",
+      "woman": "iomedae",
+      "text_sha256": "cbd8cf55c5363ae1dac909a06bb5ec8b23edb799ca2002f32e9bc8abbd2b1ef2",
+      "reason": "fix14-b: historical laboratory/provenance, impersonated face, city reference or religious allegiance; no physical participant"
+    },
+    {
+      "scene": "melazmera.trickster.epilogue.commit",
+      "node": "page",
+      "slot": "paragraph[11]",
+      "woman": "iomedae",
+      "text_sha256": "cbd8cf55c5363ae1dac909a06bb5ec8b23edb799ca2002f32e9bc8abbd2b1ef2",
+      "reason": "fix14-b: historical laboratory/provenance, impersonated face, city reference or religious allegiance; no physical participant"
+    },
+    {
+      "scene": "melazmera.trickster.epilogue.declined",
+      "node": "page",
+      "slot": "paragraph[11]",
+      "woman": "iomedae",
+      "text_sha256": "cbd8cf55c5363ae1dac909a06bb5ec8b23edb799ca2002f32e9bc8abbd2b1ef2",
+      "reason": "fix14-b: historical laboratory/provenance, impersonated face, city reference or religious allegiance; no physical participant"
+    },
+    {
+      "scene": "melazmera.trickster.epilogue.left_free",
+      "node": "page",
+      "slot": "paragraph[13]",
+      "woman": "iomedae",
+      "text_sha256": "cbd8cf55c5363ae1dac909a06bb5ec8b23edb799ca2002f32e9bc8abbd2b1ef2",
+      "reason": "fix14-b: historical laboratory/provenance, impersonated face, city reference or religious allegiance; no physical participant"
+    },
+    {
+      "scene": "melazmera.trickster.ch4.queen_after",
+      "node": "rock",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "061ea12b3f3afe16cf4c6cc635d53821372d2f2f8a4e106ff5a7f076018b89fe",
+      "reason": "fix14-b: historical laboratory/provenance, impersonated face, city reference or religious allegiance; no physical participant"
+    },
+    {
+      "scene": "melazmera.trickster.ch4.queen_after",
+      "node": "rock",
+      "slot": "choice[1]",
+      "woman": "nocticula",
+      "text_sha256": "2ad5a990caf74f44a155d83eea335304acd6207150dbc58f2def0c21824225f6",
+      "reason": "fix14-b: historical laboratory/provenance, impersonated face, city reference or religious allegiance; no physical participant"
+    },
+    {
+      "scene": "melazmera.trickster.beat.inquisitor",
+      "node": "start",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "5e17c3abc82a9d7220dd4829030027d552bba9cc0a573e0de941fcee976c1ec0",
+      "reason": "fix14-b: historical laboratory/provenance, impersonated face, city reference or religious allegiance; no physical participant"
+    },
+    {
+      "scene": "melazmera.trickster.stone.second",
+      "node": "tail",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "931c6b6807de9c4d30697c8231fe3db36f3296521670338057f56ee8370964cc",
+      "reason": "fix14-b: city named for the Lady in Shadow; no physical participant"
+    },
+    {
+      "scene": "hepzamirah.trickster.body.terms",
+      "node": "why",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "b57bf4b7e796d88697887da5350712167345d00e7b63313f5eece2e0d81c1383",
+      "reason": "fix14-b: Vorlesh laboratory and earlier captivity are historical references, not a current participant"
     }
   ],
   "class_sweep": {

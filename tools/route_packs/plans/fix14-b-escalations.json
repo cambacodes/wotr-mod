@@ -1,0 +1,115 @@
+{
+  "job_id": "fix14-b",
+  "status": "ESCALATE: coordinator application required; shared catalogs and Last Call sources unchanged",
+  "historical_areelu": {
+    "owners": [
+      "Areelu implementation owner",
+      "earned outcome/payoff/departure coordinator"
+    ],
+    "scene": "areelu.trickster.finale.unnamed",
+    "retain_requires": [
+      "trickster.ever",
+      "areelu.trickster.wager_struck",
+      "areelu.died_at_finale",
+      "areelu.committed"
+    ],
+    "retain_forbids": [
+      "areelu.trickster.survives",
+      "areelu.trickster.declined",
+      "areelu.trickster.stake_only",
+      "areelu.closed",
+      "areelu.trickster.commander_burned"
+    ],
+    "remove_injected_living_readers": [
+      "areelu.outcome.route_open",
+      "areelu.payoff.partner",
+      "areelu.present_now"
+    ],
+    "remove_injected_death_forbids": [
+      "areelu.sacrifice_trickster",
+      "areelu.dead_fight"
+    ],
+    "catalogs": [
+      "tools/earned_outcome_inventory_contracts.json",
+      "tools/payoff_contracts.json",
+      "tools/departure_contracts.json"
+    ],
+    "siblings": [
+      "areelu.trickster.finale.stake_only",
+      "areelu.trickster.finale.report_stands"
+    ],
+    "acceptance": "Native fight, incineration and both Wound-sacrifice deaths with prior accepted wager show closure; rewritten survival hides it; later absence remains."
+  },
+  "hepzamirah_reference_guards": {
+    "owner": "presence/departure coordinator",
+    "catalog": "tools/departure_contracts.json",
+    "remove_foreign_surfaces": [
+      {
+        "woman": "areelu",
+        "scene": "hepzamirah.trickster.body.hounds",
+        "node": "joke",
+        "choice": 2
+      },
+      {
+        "woman": "areelu",
+        "scene": "hepzamirah.trickster.bond.the_call",
+        "node": "if",
+        "choice": 0
+      },
+      {
+        "woman": "horzalah",
+        "scene": "hepzamirah.trickster.body.terms",
+        "node": "price",
+        "choice": 2
+      },
+      {
+        "woman": "areelu",
+        "scene": "hepzamirah.trickster.bond.eve",
+        "all_foreign_surfaces": true
+      }
+    ],
+    "retain": "All Hepzamirah current-life, cost, closure guards and real Horzalah sister_at_gate/wrong_princess participation.",
+    "acceptance": "Earn the four route prerequisites, then independently close or lose Areelu and Horzalah; explanation, forged vial, oath and eve stay available."
+  },
+  "unavailable_creditor": {
+    "owner": "shared Last Call owner",
+    "files": [
+      "storylines/lastcall.py",
+      "storylines/lastcall_partners.py"
+    ],
+    "flags": [
+      "eritrice.trickster.cost.censured",
+      "council.fought_nocta_allied",
+      "eritrice.closed",
+      "lastcall.prepared"
+    ],
+    "preserve": "Chosen refusal/skipped reconciliation and Eritrice current absence.",
+    "acceptance": "Censured -> Council fight -> skipped or struck reconciliation -> prepared bottle -> Threshold has an explicit settlement/leave-unsettled action and access to both earned last_joke consumers.",
+    "status": "Audit blocker not reproduced on the fresh structural story; verify attribution/current runtime before authorizing a settlement change.",
+    "contrary_evidence": {
+      "DerivedOpenRoutes/eritrice.lastcall.callable": [
+        "eritrice"
+      ],
+      "current_epoch_loss_witness": {
+        "callable": false,
+        "present_now": false,
+        "call_enabled": false
+      },
+      "runtime": "src/Story.cs Rules.RouteOpen checks EpochUnavailableFlags before relationship loss overrides; DerivedAvailable checks DerivedOpenRoutes.",
+      "native_fight_producer": "storylines/trickster_world.py:85 council.fought_nocta_allied -> FightAgainstCouncilNoctaAllied / f4004d2687004c646bbe3a047d15f78f"
+    }
+  },
+  "shared_history_partitions": {
+    "owner": "shared Last Call/integration coordinator",
+    "galfrey": "cost.alone without cost.found_late must not select deathbed-participation introduction; preserve callable entitlement and use registered Claude brief.",
+    "delamere": "called/public hunting paragraph forbids iomedae.trickster.buried_alive; concealed alternative preserves both bridge outcomes; keep recovered_corked/public_return gates."
+  },
+  "generation_blocker": {
+    "owner": "heat-calibration/integration owner",
+    "file": "storylines/heat_cal_g.py",
+    "address": "_arueshalae/arueshalae.treatment.night/undress",
+    "observed_error": "heat layer: snippet not found exactly once",
+    "attribution": "unknown: no matching baseline runner receipt supplied",
+    "action": "Resolve exact-text layer composition without altering this lane intimate wording."
+  }
+}

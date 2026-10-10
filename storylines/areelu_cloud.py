@@ -277,3 +277,7 @@ def integrate(payload):
         for outcome in ("paid", "refused", "batch_funded", "batch_refused"):
             node.setdefault("Paragraphs", []).append(p(
                 CAMPAIGN[kind][outcome], requires=(EXPERIMENT + kind + "." + outcome,)))
+
+    # fix14-b: select local histories after the final voice transformation.
+    from storylines.areelu_trickster import integrate_fix14_reports
+    integrate_fix14_reports(payload)

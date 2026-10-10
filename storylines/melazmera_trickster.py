@@ -1002,3 +1002,13 @@ def integrate_meeting_history(payload):
     replacement["Forbids"] = list(paragraph["Forbids"])
     paragraph["Forbids"] = [*paragraph["Forbids"], "trickster.ever"]
     page["Paragraphs"].append(replacement)
+
+# fix14-b: staging follows the final route prose transform.
+def integrate_fix14_staging(payload):
+    _fix14_scene = next(s for s in payload["Scenes"] if s["Id"] == 'melazmera.trickster.ch5.hunger')
+    next(n for n in _fix14_scene["Nodes"] if n["Id"] == 'cultists')["Text"] = '[PROSE PENDING: melazmera.trickster.ch5.hunger/cultists - stage the authorized predation in person in the cellar with the Commander witnessing and able to act; retain appetite, victim suffering, secrecy, Evil selection and later consequences; stage it, do not summarize; native action 2433842e-cbb0-4a1d-8bb9-c6bda4cc4468 and appetite 70c883b1-6364-43bd-b7a0-0f5f89a41b48]'
+    next(n for n in _fix14_scene["Nodes"] if n["Id"] == 'cultists_after')["Text"] = '[PROSE PENDING: melazmera.trickster.ch5.hunger/cultists_after - show the immediate aftermath of the witnessed cellar predation and retain seven victims, intact locks, secrecy and FAT consequence; do not replace the act with a gaoler report]'
+    next(n for n in _fix14_scene["Nodes"] if n["Id"] == 'cultists')["Choices"].append(c('[PROSE PENDING: melazmera.trickster.ch5.hunger/cultists - Commander acts in person during the witnessed predation; preserve inflicted cruelty, Evil selection, secrecy and the earned consequences]', 'cultists_after', flags=()))
+    _fix14_scene = next(s for s in payload["Scenes"] if s["Id"] == 'melazmera.trickster.beat.inquisitor')
+    next(n for n in _fix14_scene["Nodes"] if n["Id"] == 'do')["Text"] = '[PROSE PENDING: melazmera.trickster.beat.inquisitor/do - stage the authorized predation in person in the cellar with the Commander witnessing and able to act; retain appetite, victim suffering, secrecy, Evil selection and later consequences; stage it, do not summarize; native action 2433842e-cbb0-4a1d-8bb9-c6bda4cc4468 and appetite 70c883b1-6364-43bd-b7a0-0f5f89a41b48]'
+    next(n for n in _fix14_scene["Nodes"] if n["Id"] == 'do')["Choices"].append(c('[PROSE PENDING: melazmera.trickster.beat.inquisitor/do - Commander acts in person during the witnessed predation; preserve inflicted cruelty, Evil selection, secrecy and the earned consequences]', None, flags=('melazmera.trickster.beat.inquisitor_eaten', 'melazmera.trickster.cost.inquisitor')))
