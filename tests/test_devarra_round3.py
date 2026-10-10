@@ -1,13 +1,12 @@
 """Route-local history dispatch and legacy exit checks, without fabricated yes."""
 from copy import deepcopy
 import unittest
-
 from storylines import devarra_trickster as spine, devarra_tower as tower
 from storylines import devarra_round3 as r3
 from tests.test_devarra_round2 import visible
 
-
 class DevarraRoundThreeTests(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
         payload = {'Scenes': deepcopy(spine.SCENES + tower.SCENES)}
@@ -15,14 +14,15 @@ class DevarraRoundThreeTests(unittest.TestCase):
         cls.scenes = {s['Id']: s for s in payload['Scenes']}
 
     def node(self, scene, node):
-        return next(n for n in self.scenes[scene]['Nodes'] if n['Id'] == node)
+        return next((n for n in self.scenes[scene]['Nodes'] if n['Id'] == node))
 
     def test_late_page_requires_actual_yes_and_keeps_inert_legacy_exit(self):
         page = self.scenes[r3.P + 'epilogue.commit']
         pending = {'trickster.ever', spine.TESTED, spine.RETURNED}
         self.assertFalse(visible(page, pending))
         self.assertTrue({r3.LATE_YES, spine.COMMITTED} <= set(page['Requires']))
-        exit = page['Nodes'][0]['Choices'][0]
+        ordered_answer_1, *ordered_answer_1_rest = page['Nodes'][0]['Choices']
+        exit = ordered_answer_1
         self.assertEqual(exit['Set'], [])
         self.assertIsNone(exit['Next'])
         self.assertNotIn('Crusade', exit)
@@ -42,25 +42,22 @@ class DevarraRoundThreeTests(unittest.TestCase):
 
     def test_prior_entries_select_one_public_wager(self):
         choices = self.node(r3.T + 'the_garrison_book', 'start')['Choices']
-        for flags, expected in ((set(), 'on_her'), ({tower.VAULT_OPENED}, 'on_her_vault'),
-                                ({spine.COOK_GIVEN}, 'on_her_cook'),
-                                ({tower.VAULT_OPENED, spine.COOK_GIVEN}, 'on_her_vault')):
+        for flags, expected in ((set(), 'on_her'), ({tower.VAULT_OPENED}, 'on_her_vault'), ({spine.COOK_GIVEN}, 'on_her_cook'), ({tower.VAULT_OPENED, spine.COOK_GIVEN}, 'on_her_vault')):
             options = [c['Next'] for c in choices if visible(c, flags) and c['Next'].startswith('on_her')]
             self.assertEqual(options, [expected])
 
     def test_voluntary_battle_keeps_old_mechanics_without_buying_story(self):
-        ask = self.node(r3.T + 'the_generals', 'ask')['Choices'][0]
-        bargain = self.node(r3.T + 'the_generals', 'bargain')['Choices'][0]
+        answers = {nid: self.node(r3.T + 'the_generals', nid)['Choices'] for nid in ('ask', 'bargain')}
+        ask, = answers['ask']
+        bargain, = answers['bargain']
         self.assertIn(tower.ONE_BATTLE, ask['Set'])
         self.assertIn(tower.ONE_BATTLE, bargain['Set'])
         self.assertIn(r3.VOLUNTARY, ask['Set'])
         self.assertNotIn(r3.PURCHASED, ask['Set'])
+        self.assertIn(r3.PURCHASED, bargain['Set'])
         paragraphs = self.node(r3.P + 'epilogue.woken', 'page')['Paragraphs']
-        voluntary = '\n'.join(p['Text'] for p in paragraphs if visible(p, set(ask['Set'])))
-        self.assertNotIn('every death in it', voluntary)
-        purchased = '\n'.join(p['Text'] for p in paragraphs if visible(p, set(bargain['Set'])))
-        self.assertIn('every death in it', purchased)
-
-
+        purchased = next((p for p in paragraphs if r3.PURCHASED in p.get('Requires', ())))
+        self.assertFalse(visible(purchased, set(ask['Set'])))
+        self.assertTrue(visible(purchased, set(bargain['Set'])))
 if __name__ == '__main__':
     unittest.main()
