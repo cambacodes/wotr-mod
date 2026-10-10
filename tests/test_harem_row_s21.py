@@ -65,19 +65,25 @@ class S21Watch(unittest.TestCase):
             for node_id in ("history", "equipment"):
                 selectable = [c for c in self.nodes[node_id]["Choices"]
                               if rrt_verify.sim_choice_available(c, state)]
-                self.assertEqual(len(selectable), 1, (values, node_id))
+                _single_result, = selectable
         state = self.state()
         state.flags.add("yaniel.radiance_held")  # stash supplies no drawn blade
         selected = [c for c in self.nodes["equipment"]["Choices"]
                     if rrt_verify.sim_choice_available(c, state)]
-        self.assertEqual(selected[0]["Next"], "stored_blade")
+        self.assertEqual(select_answer(selected, (('stored_blade', False, None, None, ('yaniel.radiance_held',), ('yaniel.trickster.carries', 'yaniel.radiance_in_party')),), expected_position=0)["Next"], "stored_blade")
 
     def test_outcomes_abort_allowance_and_registration_are_separate(self):
         root = self.nodes["start"]["Choices"]
         self.assertEqual([c["Next"] for c in root], ["history", "declined", None])
-        self.assertTrue(root[2]["Abort"])
-        self.assertEqual(root[2]["Set"], [])
-        writes = {node["Id"]: node["Choices"][0]["Set"] for node in self.body["Nodes"]}
+        self.assertTrue(select_answer(root, ((None, True, None, None, (), ()),), expected_position=2)["Abort"])
+        self.assertEqual(select_answer(root, ((None, True, None, None, (), ()),), expected_position=2)["Set"], [])
+        writes = {node["Id"]: select_answer(node["Choices"],
+                (('equipment', False, None, None, (), ()),
+                 (None, False, None, None, (), ()),
+                 ('history', False, None, None, (), ()),
+                 ('sister', False, None, None, ('yaniel.seelah_sister',), ()),
+                 ('veteran_blade', False, None, None, ('yaniel.trickster.carries',), ()),
+                 ('directed', False, None, None, (), ())), expected_position=0)["Set"] for node in self.body["Nodes"]}
         self.assertEqual(writes["directed"], list(s21.KEPT))
         self.assertEqual(writes["declined"], [s21.P + "watch.seen", s21.P + "watch.declined"])
         self.assertTrue(all(not flags for node, flags in writes.items()
@@ -89,13 +95,44 @@ class S21Watch(unittest.TestCase):
         state.flags.add(s21.P + "watch.seen")
         self.assertFalse(rrt_verify.sim_available(self.model, self.body, state))
         story = copy.deepcopy(self.story)
-        before = len(story["Scenes"])
+        before = [s["Id"] for s in story["Scenes"]]
         s21.register(story, story["Scenes"], story["Etudes"])
-        self.assertEqual(len(story["Scenes"]), before)
+        self.assertEqual([s["Id"] for s in story["Scenes"]], before)
         self.assertEqual(self.body["HouseholdCategory"], "dynamic")
         self.assertNotIn("HouseholdArcStart", self.body)
         self.assertFalse(any(n.get("Paragraphs") for n in self.body["Nodes"]))
 
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
 
 if __name__ == "__main__":
     unittest.main()

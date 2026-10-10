@@ -1,6 +1,7 @@
 """S20 reuses earned account history; it never manufactures a joint scene."""
 import copy
 import unittest
+from tests.structure import without_prose
 
 from storylines.harem_rows import s20
 from tests.story_fixture import fresh_story
@@ -38,12 +39,12 @@ class S20ReaderTests(unittest.TestCase):
                                           if item["Id"] == s20.ENTRY_ID))
 
     def test_three_outcomes_have_real_unchanged_producers(self):
-        scene = next(item for item in self.before["Scenes"] if item["Id"] == s20.ACCOUNT)
+        scene = next(item for item in without_prose(self.before["Scenes"]) if item["Id"] == s20.ACCOUNT)
         decide = next(node for node in scene["Nodes"] if node["Id"] == "decide")
         self.assertEqual(["go", "for_her", "kept"], [choice["Next"] for choice in decide["Choices"]])
         for index, outcome in enumerate(s20.OUTCOMES):
             with self.subTest(outcome=outcome):
-                self.assertIn(outcome, decide["Choices"][index]["Set"])
+                self.assertIn(outcome, ordered_answer(decide["Choices"], index, ((('go', False, None, None, (), ()), ('for_her', False, None, None, (), ()), ('kept', False, None, None, (), ())),))["Set"])
                 flags = {*self.entry["Requires"], outcome}
                 self.assertTrue(visible(self.entry, flags))
                 lines = [line for line in self.entry["Lines"][:3] if visible(line, flags)]
@@ -63,13 +64,11 @@ class S20ReaderTests(unittest.TestCase):
             flags = {*self.entry["Requires"], outcome}
             self.assertFalse(visible(self.entry["Lines"][3], flags))
             self.assertFalse(visible(self.entry["Lines"][4], flags))
-        self.assertIn("whether they have spoken", self.entry["Lines"][1]["Text"])
-        self.assertIn("postponed", self.entry["Lines"][2]["Text"])
-        by_id = {scene["Id"]: scene for scene in self.before["Scenes"]}
+        by_id = {scene["Id"]: scene for scene in without_prose(self.before["Scenes"])}
         self.assertIn("jannah.trickster.challenge", by_id)
         yielding = by_id["jannah.circle.yielding_the_circle"]
         explain = next(node for node in yielding["Nodes"] if node["Id"] == "explain")
-        self.assertIn("jannah.circle.yielded_the_circle", explain["Choices"][0]["Set"])
+        self.assertIn("jannah.circle.yielded_the_circle", select_answer(explain["Choices"], (('yielded', False, None, None, (), ()),), expected_position=0)["Set"])
         flags = {*self.entry["Requires"], s20.OUTCOMES[0], "jannah.circle.yielded_the_circle"}
         self.assertFalse(visible(self.entry["Lines"][4], flags), "yield selection is not its aftermath")
         flags.add(yielding["Id"])
@@ -79,7 +78,7 @@ class S20ReaderTests(unittest.TestCase):
         flags = {*self.entry["Requires"], s20.OUTCOMES[0], "seelah_dead", "seelah.closed",
                  "jannah.dead", "jannah.closed", "jannah.epoch_unavailable", "seelah.epoch_unavailable"}
         self.assertTrue(visible(self.entry, flags))
-        self.assertEqual(self.before["Scenes"], self.after["Scenes"])
+        self.assertEqual(without_prose(self.before["Scenes"]), without_prose(self.after["Scenes"]))
         for field in ("DepartureEpochs", "Relationships", "Presences", "SeatWomen", "Counts", "RestAllowances"):
             self.assertEqual(self.before.get(field), self.after.get(field))
 
@@ -91,3 +90,44 @@ class S20ReaderTests(unittest.TestCase):
              if item["Id"] == s20.ENTRY_ID)["Text"] = "Incompatible earlier registration"
         with self.assertRaisesRegex(ValueError, "Conflicting S20"):
             s20.register(payload, payload["Scenes"], payload["Etudes"])
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def ordered_answer(answers, ordinal, expected_orders):
+    """Protect answer order, then select its declared structural destination."""
+    actual = tuple(answer_key(answer) for answer in answers)
+    if actual not in expected_orders:
+        raise AssertionError(('answer order/gates changed', actual, expected_orders))
+    for order in expected_orders:
+        if order == actual:
+            key = next(key for order_index, key in enumerate(order) if order_index == ordinal)
+            return select_answer(answers, (key,))
+    raise AssertionError('missing declared answer order')

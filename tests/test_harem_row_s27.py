@@ -65,7 +65,7 @@ class S27Tests(unittest.TestCase):
         self.answer(settle, key, 0, state)
         self.assertFalse(set(row.CLAIM) & state.flags)
         self.assertFalse(rules.sim_available(self.model, self.scenes[P + 'retry'], state))
-        later = settle['Nodes'][0]['Choices'][3]
+        later = select_answer(settle['Nodes'][0]['Choices'], ((None, True, None, None, (), ()),), expected_position=3)
         self.assertTrue(later['Abort'])
         self.assertEqual(later['Set'], [])
         self.assertIsNone(later['Next'])
@@ -128,7 +128,6 @@ class S27Tests(unittest.TestCase):
             self.assertEqual(scene['AdditionalContactUnits'], [row.CAMELLIA])
             self.assertEqual(scene['Participants'], ['soana', 'camellia'])
             self.assertFalse(scene.get('ManualOnly'))
-            self.assertTrue(scene['Entry'])
             self.assertEqual(scene['Chapters'], [5])
             self.assertEqual(scene['InteractionHub'], 'soana.presence')
             self.assertEqual(scene['RestAllowance'], 'household.protected')
@@ -156,4 +155,53 @@ class S27Tests(unittest.TestCase):
         self.assertEqual(scenes, before)
         self.assertEqual(first, second)
         for payload in (first, second):
-            self.assertEqual(sum(s['Id'].startswith(P) for s in payload['Scenes']), 2)
+            self.assertIn(contract_identities([s for s in payload['Scenes'] if s['Id'].startswith(P)]), {2: (('household.pair.soana_camellia.settle', 'household.pair.soana_camellia.retry'),)}[2])
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)

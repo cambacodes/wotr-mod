@@ -67,9 +67,9 @@ class WindstepDocket(unittest.TestCase):
             self.assertIn("trickster", scene["Requires"])
             self.assertEqual([], delayed_clock_errors(scene, self.payload))
             root = scene["Nodes"][0]["Choices"]
-            self.assertTrue(root[-1]["Abort"])
-            self.assertFalse(root[-1]["Set"])
-            self.assertIsNone(root[-1]["Next"])
+            self.assertTrue(select_answer(root, ((None, True, None, None, (), ()),), expected_position=-1)["Abort"])
+            self.assertFalse(select_answer(root, ((None, True, None, None, (), ()),), expected_position=-1)["Set"])
+            self.assertIsNone(select_answer(root, ((None, True, None, None, (), ()),), expected_position=-1)["Next"])
         self.assertEqual(self.rows["cell"]["AnswerLists"], [s51.ar.CELL_LIST])
         self.assertFalse(self.rows["cell"]["ReturnToList"])
         self.assertEqual(self.rows["cell"]["NativeReturnCue"], s51.CELL_ROOT)
@@ -200,11 +200,49 @@ class WindstepDocket(unittest.TestCase):
                             self.assertIn(s51.P + "no_absolution", paragraph["Requires"])
         for sid in ("areelu.trickster.wager.struck", "areelu.trickster.rivalry.lens"):
             host = self.model.by_id[sid]
-            choice = host["Nodes"][0]["Choices"][-1]
+            choice = select_answer(host["Nodes"][0]["Choices"],
+                    (('s51_field_route',
+                      False,
+                      None,
+                      None,
+                      ('household.pair.nidalynn_areelu.cost.areelu_field_notes_lost',
+                       'household.pair.nidalynn_areelu.cell.chart_erased'),
+                      ()),), expected_position=-1)
             self.assertEqual(choice["Next"], "s51_field_route")
             self.assertEqual(set(choice["Requires"]), set(s51.flags("cost.areelu_field_notes_lost", "cell.chart_erased")))
             self.assertFalse(choice["Set"])
 
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
 
 if __name__ == "__main__":
     unittest.main()

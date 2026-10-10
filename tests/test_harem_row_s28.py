@@ -41,7 +41,37 @@ class S28Tests(unittest.TestCase):
         index = route
         visited = []
         while True:
-            answer = node["Choices"][index]
+            answer = ordered_answer(node["Choices"], index,
+                    (((None, False, None, None, (), ()),),
+                     (('vellexia_answer', False, None, None, (), ()),),
+                     (('jerribeth_answer', False, None, None, (), ()),
+                      ('jerribeth_no', False, None, None, (), ()),
+                      ('vellexia_no', False, None, None, (), ()),
+                      ('friends_only', False, None, None, (), ()),
+                      (None, True, None, None, (), ())),
+                     (('jerribeth', False, None, None, (), ()),),
+                     (('invited', False, None, None, (), ()),),
+                     (('mutual', False, None, None, (), ()),),
+                     (('appointment', False, None, None, (), ()),),
+                     (('stay', False, None, None, (), ()),
+                      ('declined', False, None, None, (), ()),
+                      (None, True, None, None, (), ())),
+                     (('account', False, None, None, (), ()),),
+                     (('end', False, None, None, (), ()), (None, True, None, None, (), ())),
+                     (('heard', False, None, None, (), ()),
+                      ('muddled', False, None, None, (), ()),
+                      ('declined', False, None, None, (), ()),
+                      (None, True, None, None, (), ())),
+                     (('explicit.1', False, None, None, (), ()),),
+                     (('reply', False, None, None, (), ()),),
+                     (('company', False, None, None, (), ()),
+                      ('declined', False, None, None, (), ()),
+                      (None, True, None, None, (), ())),
+                     (('vellexia', False, None, None, (), ()),),
+                     ((None, False, 'heard', 'muddled', (), ()),
+                      ('heard', False, None, None, (), ()),
+                      ('declined', False, None, None, (), ()),
+                      (None, True, None, None, (), ()))))
             self.assertTrue(rules.sim_choice_available(answer, st))
             visited.append(node["Id"])
             if answer["Abort"]:
@@ -64,7 +94,7 @@ class S28Tests(unittest.TestCase):
             for mind in (False, True):
                 with self.subTest(defected=defected, mind=mind):
                     offers = self.offered(self.state(defected=defected, mind=mind))
-                    self.assertEqual(len(offers), 1)
+                    _single_result, = offers
                     self.assertIn("defected" if defected else "client", offers[0]["Id"])
                     self.assertEqual(offers[0]["Id"].endswith(".mind"), mind)
 
@@ -103,7 +133,7 @@ class S28Tests(unittest.TestCase):
         st.flags.add("sacrifice")
         self.assertEqual(self.offered(st), [])
         st.flags.add("trickster.commander_back")
-        self.assertEqual(len(self.offered(st)), 1)
+        _single_result, = self.offered(st)
 
     def test_deeds_follow_both_replies_on_check_and_labor_success(self):
         for defected in (False, True):
@@ -131,7 +161,7 @@ class S28Tests(unittest.TestCase):
                 self.assertEqual(self.offered(st), [])
                 st.hour += 1
                 offers = self.offered(st)
-                self.assertEqual(len(offers), 1)
+                _single_result, = offers
                 self.assertIn("retry.", offers[0]["Id"])
                 before = copy.deepcopy(st.__dict__)
                 self.finish(offers[0], st, root)
@@ -167,7 +197,15 @@ class S28Tests(unittest.TestCase):
         self.assertEqual(self.offered(st), [])
 
     def test_registered_content_does_not_activate_optional_arc_or_change_marhevok(self):
-        self.assertEqual(len(self.rows), 8)
+        self.assertIn(contract_identities(self.rows),
+                {8: (('household.pair.jerribeth_vellexia.settle.defected',
+                      'household.pair.jerribeth_vellexia.settle.defected.mind',
+                      'household.pair.jerribeth_vellexia.settle.client',
+                      'household.pair.jerribeth_vellexia.settle.client.mind',
+                      'household.pair.jerribeth_vellexia.retry.defected',
+                      'household.pair.jerribeth_vellexia.retry.defected.mind',
+                      'household.pair.jerribeth_vellexia.retry.client',
+                      'household.pair.jerribeth_vellexia.retry.client.mind'),)}[8])
         self.assertFalse(any(s["HouseholdCategory"] == "pair" for s in self.rows))
         for page in self.rows:
             writes = [f for node in page["Nodes"] for answer in node["Choices"] for f in answer["Set"]]
@@ -186,14 +224,19 @@ class S28Tests(unittest.TestCase):
     def test_candidates_keep_all_personal_outcomes_and_empty_slot_aftermath(self):
         candidate = s28.OPTIONAL_CANDIDATES[2]
         nodes = {n["Id"]: n for n in candidate["Nodes"]}
-        self.assertEqual(nodes["start"]["Choices"][0]["Next"], "jerribeth_answer")
-        self.assertEqual(nodes["jerribeth_answer"]["Choices"][0]["Next"], "vellexia_answer")
-        self.assertEqual(nodes["vellexia_answer"]["Choices"][0]["Next"], "mutual")
-        self.assertEqual(nodes["explicit.1"]["Choices"][0]["Next"], "appointment")
-        self.assertEqual(nodes["explicit.1"]["Choices"][0]["Set"], [])
-        self.assertEqual(len(nodes["start"]["Choices"]), 5)
+        self.assertEqual(select_answer(nodes["start"]["Choices"], (('jerribeth_answer', False, None, None, (), ()),), expected_position=0)["Next"], "jerribeth_answer")
+        self.assertEqual(select_answer(nodes["jerribeth_answer"]["Choices"], (('vellexia_answer', False, None, None, (), ()),), expected_position=0)["Next"], "vellexia_answer")
+        self.assertEqual(select_answer(nodes["vellexia_answer"]["Choices"], (('mutual', False, None, None, (), ()),), expected_position=0)["Next"], "mutual")
+        self.assertEqual(select_answer(nodes["explicit.1"]["Choices"], (('appointment', False, None, None, (), ()),), expected_position=0)["Next"], "appointment")
+        self.assertEqual(select_answer(nodes["explicit.1"]["Choices"], (('appointment', False, None, None, (), ()),), expected_position=0)["Set"], [])
+        self.assertIn(contract_identities(nodes['start']['Choices']),
+                {5: ((('jerribeth_answer', None, None, False, (), ()),
+                      ('jerribeth_no', None, None, False, (), ()),
+                      ('vellexia_no', None, None, False, (), ()),
+                      ('friends_only', None, None, False, (), ()),
+                      (None, None, None, True, (), ())),)}[5])
         self.assertEqual([s["DelayHours"] for s in s28.OPTIONAL_CANDIDATES], [48, 48, 48, 8])
-        self.assertEqual(sum(bool(s.get("HouseholdArcStart")) for s in s28.OPTIONAL_CANDIDATES), 1)
+        self.assertIn(contract_identities([s for s in s28.OPTIONAL_CANDIDATES if bool(s.get('HouseholdArcStart'))]), {1: (('household.pair.jerribeth_vellexia.company',),)}[1])
         root = Path(__file__).resolve().parents[1]
         brief = json.loads((root / "tools/route_packs/explicit_slots/harem" /
                            (candidate["Id"] + ".explicit.1.json")).read_text(encoding="utf-8"))
@@ -219,7 +262,7 @@ class S28Tests(unittest.TestCase):
     def test_all_staged_steps_recheck_bodies_and_prescribed_clocks(self):
         predecessors = ("account.kept", "company.both_friends",
                         "invitation.both_interested", "choice.both_yes")
-        self.assertEqual(sum(s["DelayHours"] for s in s28.OPTIONAL_CANDIDATES), 152)
+        self.assertEqual([s["DelayHours"] for s in s28.OPTIONAL_CANDIDATES], [48, 48, 48, 8])
         for page, predecessor in zip(s28.OPTIONAL_CANDIDATES, predecessors):
             with self.subTest(step=page["Id"]):
                 self.assertIn(s28.P + predecessor, page["Requires"])
@@ -236,12 +279,26 @@ class S28Tests(unittest.TestCase):
         for page in s28.OPTIONAL_CANDIDATES:
             page = rules.norm_scene(page)
             start = next(n for n in page["Nodes"] if n["Id"] == "start")
-            for index in range(len(start["Choices"])):
+            step = page["Id"].removeprefix(s28.P)
+            for index in {"company": (0, 1, 2), "invitation": (0, 1, 2),
+                          "choice": (0, 1, 2, 3, 4), "morning": (0, 1)}[step]:
                 with self.subTest(step=page["Id"], answer=index):
                     st = self.state()
                     before = copy.deepcopy(st.__dict__)
                     visited = self.finish(page, st, index)
-                    if start["Choices"][index]["Abort"]:
+                    if ordered_answer(start["Choices"], index,
+                            ((('company', False, None, None, (), ()),
+                              ('declined', False, None, None, (), ()),
+                              (None, True, None, None, (), ())),
+                             (('jerribeth_answer', False, None, None, (), ()),
+                              ('jerribeth_no', False, None, None, (), ()),
+                              ('vellexia_no', False, None, None, (), ()),
+                              ('friends_only', False, None, None, (), ()),
+                              (None, True, None, None, (), ())),
+                             (('end', False, None, None, (), ()), (None, True, None, None, (), ())),
+                             (('stay', False, None, None, (), ()),
+                              ('declined', False, None, None, (), ()),
+                              (None, True, None, None, (), ()))))["Abort"]:
                         self.assertEqual(st.__dict__, before)
                         continue
                     step = page["Id"].removeprefix(s28.P)
@@ -264,6 +321,70 @@ class S28Tests(unittest.TestCase):
             self.assertEqual(presence["MinChapter"], 5)
             self.assertEqual(presence["MaxChapter"], 5)
 
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
+
+
+
+
+def ordered_answer(answers, ordinal, expected_orders):
+    """Protect answer order, then select its declared structural destination."""
+    actual = tuple(answer_key(answer) for answer in answers)
+    if actual not in expected_orders:
+        raise AssertionError(('answer order/gates changed', actual, expected_orders))
+    for order in expected_orders:
+        if order == actual:
+            key = next(key for order_index, key in enumerate(order) if order_index == ordinal)
+            return select_answer(answers, (key,))
+    raise AssertionError('missing declared answer order')
 
 if __name__ == "__main__":
     unittest.main()

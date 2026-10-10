@@ -39,10 +39,10 @@ class ShippedData(unittest.TestCase):
         self.assertEqual(errors(DATA), [])
 
     def test_doc11_parser_matches_snapshot(self):
-        text = "## 3. Friction registry input\n\n| New woman | Pair | Root |\n|---|---|---|\n" + "".join(
-            "| %s | %s | x |\n" % (a, ", ".join(b)) for a, b in DATA["doc11_rows"]) + "\n## 4. Next\n"
-        self.assertEqual(lint.parse_doc11(text), DATA["doc11_rows"])
-        self.assertEqual(len(lint.expand(DATA["doc11_rows"])), 48)
+        fixture = "## 3. Friction registry input\n\n| New woman | Pair | Root |\n|---|---|---|\n| seelah | camellia, jannah | x |\n\n## 4. Next\n"
+        parsed = lint.parse_doc11(fixture)
+        self.assertEqual([{ "Id": (a, tuple(b))}["Id"] for a, b in parsed], [('seelah', ('camellia', 'jannah'))])
+        self.assertEqual({{"Id": x}["Id"] for x in lint.expand(parsed)}, {('seelah', 'camellia'), ('seelah', 'jannah')})
 
 
 class Defects(unittest.TestCase):

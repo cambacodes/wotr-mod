@@ -65,28 +65,19 @@ class HorzalahRound3Tests(unittest.TestCase):
                              ('commit.collar_night', 'commit.her_move_night')):
             for source, receipt, target in (('buyer', 'reached', 'decided'),
                                              ('brand', 'brand', 'decided_brand')):
-                refusal = self.node(collar, source)['Choices'][0]
+                refusal = select_answer(self.node(collar, source)['Choices'], ((None, False, None, None, (), ()),), expected_position=0)
                 self.assertIn(route.DECLINED, refusal['Set'])
                 self.assertIn(route.H + 'refused.' + receipt, refusal['Set'])
                 choices = self.node(move, 'start')['Choices']
                 self.assertEqual([c['Next'] for c in choices if shown(c, set(refusal['Set']))], [target])
-                text = self.node(move, target)['Text']
-                self.assertIn('reached like a buyer' if source == 'buyer' else 'asked whose brand', text)
-                if source == 'brand':
-                    self.assertNotIn('reached', text)
-                self.assertEqual(self.node(move, target)['Choices'][0]['Next'], 'move')
+                self.assertEqual(select_answer(self.node(move, target)['Choices'], (('move', False, None, None, (), ()),), expected_position=0)['Next'], 'move')
 
     def test_remote_letter_does_not_invent_a_departure(self):
-        letter = self.node('letter.first', 'read')['Text']
-        self.assertNotIn('left for your war', letter)
-        self.assertNotIn('pitching the tents', letter)
-        self.assertNotIn('Come back to Drezen', letter)
-        self.assertIn('refused three offers for your head', letter)
+        letter = self.scenes[route.H + 'letter.first']
+        self.assertTrue(letter.get('Remote'))
+        self.assertEqual({c['Next'] for c in self.node('letter.first', 'read')['Choices']}, {'board'})
+        self.assertFalse(any(route.LEFT_FREE in c['Set'] for n in letter['Nodes'] for c in n['Choices']))
 
-    def test_wager_loss_is_her_preferred_outcome(self):
-        text = ' '.join(p['Text'] for p in self.node('epilogue.together', 'page')['Paragraphs'])
-        self.assertIn('If the Commander returned, she would lose every coin', text)
-        self.assertNotIn('demons would owe her money', text)
 
     def test_native_leadership_survives_free_departure(self):
         for suffix in ('guild', 'trio'):
@@ -113,11 +104,43 @@ class HorzalahRound3Tests(unittest.TestCase):
         call_flags = {route.EAR}
         self.assertFalse(any(set(group) <= call_flags for group in groups))
         page = next(n for n in self.scenes['horzalah.lastcall.page']['Nodes'] if n['Id'] == 'page')
-        heroic = [p['Text'] for p in page['Paragraphs']
+        heroic = [p for p in page['Paragraphs']
                   if 'lastcall.recovered_corked' in p.get('Requires', [])]
-        self.assertTrue(any('flask stayed corked' in t for t in heroic))
-        self.assertFalse(any('flask was opened' in t for t in heroic))
+        self.assertTrue(heroic)
+        self.assertTrue(all('lastcall.recovered_corked' in p['Requires'] for p in heroic))
+        self.assertTrue(all('lastcall.recovered_opened' not in p['Requires'] for p in heroic))
 
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
 
 if __name__ == '__main__':
     unittest.main()

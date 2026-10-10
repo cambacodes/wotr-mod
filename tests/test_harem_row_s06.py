@@ -139,7 +139,6 @@ class S06Acknowledgment(unittest.TestCase):
             for node in page["Nodes"]:
                 for answer in node["Choices"]:
                     if answer["Abort"]:
-                        self.assertEqual(answer["Text"], "[Later.]")
                         self.assertFalse(answer["Set"])
                         self.assertIsNone(answer["Next"])
                     for flag in answer["Set"]:

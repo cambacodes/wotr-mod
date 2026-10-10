@@ -29,7 +29,7 @@ class S13Tests(unittest.TestCase):
         return state
 
     def finish(self, state, step, node):
-        answer = next(n for n in self.rows[step]["Nodes"] if n["Id"] == node)["Choices"][0]
+        answer = select_answer(next(n for n in self.rows[step]["Nodes"] if n["Id"] == node)["Choices"], ((None, False, None, None, (), ()),), expected_position=0)
         state.flags.update(answer["Set"])
         state.times.update({key: state.hour for key in answer["Set"]})
         rules.sim_complete(self.model, state)
@@ -46,7 +46,7 @@ class S13Tests(unittest.TestCase):
         self.assertTrue(rules.sim_available(self.model, self.rows["ack"], state))
         outcomes = walk(self, self.model, self.rows["ack"], state)
         complete = [s for s in outcomes if s13.REFUSED in s.flags]
-        self.assertEqual(len(complete), 1)
+        _single_result, = complete
         self.assertIn(s13.P + "ack.heard", complete[0].flags)
         self.assertNotIn(s13.P + "nenio.friend", complete[0].flags)
         self.assertNotIn(s13.REFUSED, self.story.get("SeenCues", {}))
@@ -161,13 +161,14 @@ class S13Tests(unittest.TestCase):
     def test_ward_is_consumed_after_both_answers_with_selectable_fallback(self):
         scene = self.rows["choice.warded"]
         nodes = {n["Id"]: n for n in scene["Nodes"]}
-        self.assertEqual(nodes["start"]["Choices"][0]["Next"], "nenio_yes")
-        self.assertEqual(nodes["nenio_yes"]["Choices"][0]["Next"], "arueshalae_yes")
-        self.assertEqual(nodes["arueshalae_yes"]["Choices"][0]["Next"], "ward_application")
+        self.assertEqual(select_answer(nodes["start"]["Choices"], (('nenio_yes', False, None, None, ('arueshalae.ward_held',), ()),), expected_position=0)["Next"], "nenio_yes")
+        self.assertEqual(select_answer(nodes["nenio_yes"]["Choices"], (('arueshalae_yes', False, None, None, (), ()),), expected_position=0)["Next"], "arueshalae_yes")
+        self.assertEqual(select_answer(nodes["arueshalae_yes"]["Choices"], (('ward_application', False, None, None, (), ()),), expected_position=0)["Next"], "ward_application")
         costs = [(n["Id"], c) for n in scene["Nodes"] for c in n["Choices"] if c.get("RemoveItem")]
-        self.assertEqual(len(costs), 1)
-        self.assertEqual(costs[0][0], "ward_application")
-        self.assertEqual(costs[0][1]["RemoveItem"], s13.SCROLL)
+        _single_result, = costs
+        cost_node, cost_answer = _single_result
+        self.assertEqual(cost_node, "ward_application")
+        self.assertEqual(cost_answer["RemoveItem"], s13.SCROLL)
         for held in (False, True):
             state = self.state()
             if held:
@@ -178,7 +179,7 @@ class S13Tests(unittest.TestCase):
             self.assertTrue(all(s13.P + "choice.ward_spent" in s.flags for s in yes))
         # Inventory disappears after agreeing: ward_application still has an exit.
         state = self.state()
-        self.assertEqual(sum(rules.sim_choice_available(c, state) for c in nodes["ward_application"]["Choices"]), 1)
+        self.assertIn(contract_identities([c for c in nodes['ward_application']['Choices'] if rules.sim_choice_available(c, state)]), {1: ((('declined', None, None, False, (), ()),),)}[1])
 
     def test_slot_empty_filled_flow_and_refusal_outcomes(self):
         for step, body in self.rows.items():
@@ -188,7 +189,7 @@ class S13Tests(unittest.TestCase):
             filled = copy.deepcopy(body)
             for node in filled["Nodes"]:
                 if node["Id"] == s13.P + "choice.explicit.1":
-                    self.assertEqual(node["Choices"][0]["Set"], [])
+                    self.assertEqual(select_answer(node["Choices"], (('kept_safe', False, None, None, (), ()), ('kept_warded', False, None, None, (), ())), expected_position=0)["Set"], [])
                     node["Text"] = "User supplied interval."
             self.assertEqual([s.flags for s in original], [s.flags for s in walk(self, self.model, filled, state)])
             if step not in ("ack", "morning"):
@@ -211,6 +212,57 @@ class S13Tests(unittest.TestCase):
         writes = {f for b in self.rows.values() for n in b["Nodes"] for c in n["Choices"] for f in c["Set"]}
         self.assertTrue(all(f.startswith(s13.P) or f == s13.REFUSED for f in writes))
         self.assertFalse(writes.intersection(story["Derived"]))
+
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
 
 
 if __name__ == "__main__":

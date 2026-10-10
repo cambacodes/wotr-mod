@@ -62,7 +62,14 @@ class S44Tests(unittest.TestCase):
             retry = '.retry.' in scene['Id']
             nodes = {n['Id']: n for n in scene['Nodes']}
             start = nodes['start']['Choices']
-            self.assertEqual(len(start), 3 if retry else 4)
+            self.assertIn(contract_identities(start),
+                    {4: (((None, 'held', 'fell', False, (), ()),
+                          ('padded', None, None, False, (), ()),
+                          ('declined', None, None, False, (), ()),
+                          (None, None, None, True, (), ())),),
+                     3: ((('kept', None, None, False, (), ()),
+                          ('refused', None, None, False, (), ()),
+                          (None, None, None, True, (), ())),)}[3 if retry else 4])
             for choice in start:
                 self.assertEqual(choice['Set'], [])
             expected = ({'kept': ('retry.done',) + s44.SUCCESS + ('cost.commander_demonstration',),
@@ -74,10 +81,10 @@ class S44Tests(unittest.TestCase):
             for nid, suffixes in expected.items():
                 choices = nodes[nid]['Choices']
                 step = 'retry' if retry else 'settle'
-                self.assertEqual(choices[0]['Set'], [s44.P + f for f in (step + '.seen',) + suffixes])
-                self.assertTrue(choices[1]['Abort'])
-                self.assertFalse(choices[1]['Set'])
-                self.assertFalse(choices[1].get('NativeNext'))
+                self.assertEqual(select_answer(choices, ((None, False, None, None, (), ()),), expected_position=0)['Set'], [s44.P + f for f in (step + '.seen',) + suffixes])
+                self.assertTrue(select_answer(choices, ((None, True, None, None, (), ()),), expected_position=1)['Abort'])
+                self.assertFalse(select_answer(choices, ((None, True, None, None, (), ()),), expected_position=1)['Set'])
+                self.assertFalse(select_answer(choices, ((None, True, None, None, (), ()),), expected_position=1).get('NativeNext'))
             for node in scene['Nodes']:
                 for choice in node['Choices']:
                     self.assertFalse(any('.harem.' in flag for flag in choice['Set']))
@@ -92,7 +99,7 @@ class S44Tests(unittest.TestCase):
                 self.assertIn(s44.P + 'settle.failed', scene['Requires'])
                 self.assertNotIn(s44.P + 'settle.seen', scene['Forbids'])
             else:
-                check = scene['Nodes'][0]['Choices'][0]['Check']
+                check = select_answer(scene['Nodes'][0]['Choices'], ((None, False, 'held', 'fell', (), ()),), expected_position=0)['Check']
                 self.assertEqual(check, dict(Skill='SkillAthletics', DC=26, Success='held', Failure='fell'))
 
     def test_engine_respect_declarations_require_both_deed_and_cost(self):
@@ -131,18 +138,18 @@ class S44Tests(unittest.TestCase):
             initial = model.by_id[s44.P + 'settle.' + branch]
             retry = model.by_id[s44.P + 'retry.' + branch]
             state = self.state(initial)
-            failure = next(n for n in initial['Nodes'] if n['Id'] == 'fell')['Choices'][0]
+            failure = select_answer(next(n for n in initial['Nodes'] if n['Id'] == 'fell')['Choices'], ((None, False, None, None, (), ()),), expected_position=0)
             state.flags.update(failure['Set'])
             state.times.update({flag: 0 for flag in failure['Set']})
             for hour, available in ((47, False), (48, True)):
                 state.hour = hour
                 self.assertEqual(rrt_verify.sim_available(model, retry, copy.deepcopy(state)), available)
             paused = copy.deepcopy(state)
-            abort = next(n for n in retry['Nodes'] if n['Id'] == 'kept')['Choices'][1]
+            abort = select_answer(next(n for n in retry['Nodes'] if n['Id'] == 'kept')['Choices'], ((None, True, None, None, (), ()),), expected_position=1)
             self.assertTrue(abort['Abort'])
             self.assertEqual(abort['Set'], [])
             self.assertEqual(state.flags, paused.flags)
-            success = next(n for n in retry['Nodes'] if n['Id'] == 'kept')['Choices'][0]
+            success = select_answer(next(n for n in retry['Nodes'] if n['Id'] == 'kept')['Choices'], ((None, False, None, None, (), ()),), expected_position=0)
             state.flags.update(success['Set'])
             rrt_verify.sim_complete(model, state)
             self.assertIn(s44.P + 'settle.failed', state.flags)
@@ -176,6 +183,57 @@ class S44Tests(unittest.TestCase):
                 self.assertFalse(rrt_verify.sim_available(model, scene, opposed))
                 opposed.flags.add(a + '.harem.reconciled.' + b)
                 self.assertTrue(rrt_verify.sim_available(model, scene, opposed))
+
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
 
 
 if __name__ == '__main__':

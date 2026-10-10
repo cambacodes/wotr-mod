@@ -31,20 +31,32 @@ class S19Contract(unittest.TestCase):
         foresight.CONSUMERS.update(self.foresight)
 
     def test_shared_ids_choices_and_terminal_sets(self):
-        self.assertEqual(len(self.rows), 4)
+        self.assertIn(contract_identities(self.rows),
+                {4: (('household.pair.arueshalae_minagho.settle.good',
+                      'household.pair.arueshalae_minagho.settle.fallen',
+                      'household.pair.arueshalae_minagho.retry.good',
+                      'household.pair.arueshalae_minagho.retry.fallen'),)}[4])
         for row in self.rows:
             step, branch = row["Id"][len(s19.P):].split(".")
             nodes = {n["Id"]: n for n in row["Nodes"]}
             root = nodes["start"]["Choices"]
-            self.assertEqual(len(root), 4)
-            self.assertTrue(root[3]["Abort"])
+            self.assertIn(contract_identities(root),
+                    {4: ((('carry', None, None, False, (), ()),
+                          ('failed', None, None, False, (), ()),
+                          ('declined', None, None, False, (), ()),
+                          (None, None, None, True, (), ())),
+                         ((None, 'draw', 'botched', False, (), ()),
+                          ('carry', None, None, False, (), ()),
+                          ('declined', None, None, False, (), ()),
+                          (None, None, None, True, (), ())))}[4])
+            self.assertTrue(select_answer(root, ((None, True, None, None, (), ()),), expected_position=3)["Abort"])
             self.assertTrue(all(not c["Set"] for c in root))
-            self.assertEqual(root[0].get("Check", {}).get("DC"), 20 if step == "settle" else None)
+            self.assertEqual((next(c for c in root if c.get("Check")) if step == "settle" else next(c for c in root if c["Next"] == "carry")).get("Check", {}).get("DC"), 20 if step == "settle" else None)
             for key, node in nodes.items():
                 if key == "start":
                     continue
-                self.assertEqual(len(node["Choices"]), 1)
-                choice = node["Choices"][0]
+                _single_result, = node['Choices']
+                choice = select_answer(node["Choices"], ((None, False, None, None, (), ()),), expected_position=0)
                 self.assertIsNone(choice["Next"])
                 outcome = "kept" if key in ("draw", "carry") else "failed" if key in ("botched", "failed") else "declined"
                 self.assertEqual(set(choice["Set"]), set(s19.terminal(step, outcome, branch)))
@@ -94,10 +106,14 @@ class S19Contract(unittest.TestCase):
 
     def test_registration_is_repeatable_and_history_survives_departure(self):
         s19.register(self.payload, self.payload["Scenes"], self.payload["Etudes"])
-        self.assertEqual(len([s for s in self.payload["Scenes"] if s["Id"].startswith(s19.P)]), 4)
+        self.assertIn(contract_identities([s for s in self.payload['Scenes'] if s['Id'].startswith(s19.P)]),
+                {4: (('household.pair.arueshalae_minagho.settle.good',
+                      'household.pair.arueshalae_minagho.settle.fallen',
+                      'household.pair.arueshalae_minagho.retry.good',
+                      'household.pair.arueshalae_minagho.retry.fallen'),)}[4])
         ledger = self.payload["Books"]["trickster.ledger"]["Entries"]
         entries = [e for e in ledger if e["Id"] == "seating.s19"]
-        self.assertEqual(len(entries), 1)
+        _single_result, = entries
         self.assertFalse(any("present_now" in f for f in entries[0]["Requires"]))
         self.assertTrue(all(not any("present_now" in f for f in line["Requires"]) for line in entries[0]["Lines"]))
 
@@ -148,6 +164,57 @@ class S19Contract(unittest.TestCase):
         self.assertTrue(rrt_verify.sim_available(model, retry, state))
         state.rest_spent["household.protected"] = 2
         self.assertFalse(rrt_verify.sim_available(model, retry, state))
+
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
 
 
 if __name__ == "__main__":

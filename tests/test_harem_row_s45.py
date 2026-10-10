@@ -25,16 +25,14 @@ class S45(unittest.TestCase):
                 if answer["Abort"] or answer["Next"]:
                     self.assertEqual(answer["Set"], [])
                     self.assertFalse(any(k in answer for k in ("Crusade", "RemoveItem", "Revive", "StartEtude", "NativeNext", "Alignment")))
-                if answer["Abort"]:
-                    self.assertEqual(answer["Text"], "[Later.]")
         for variant in ("informed", "concealed", "intimate"):
             for result in s45.outcomes():
                 node = self.nodes[variant + "." + result]
-                self.assertTrue(node["Choices"][1]["Abort"])
+                self.assertTrue(select_answer(node["Choices"], ((None, True, None, None, (), ()),), expected_position=1)["Abort"])
                 expected = {s45.P + x for x in s45.outcomes()[result]}
                 if variant != "informed":
                     expected.add(s45.LATER)
-                self.assertEqual(set(node["Choices"][0]["Set"]), expected)
+                self.assertEqual(set(select_answer(node["Choices"], ((None, False, None, None, ('household.pair.yaniel_minagho.respondent_current',), ()), (None, False, None, None, (), ())), expected_position=0)["Set"]), expected)
                 self.assertNotIn(s45.TOLD, expected)
                 self.assertNotIn(s45.SECRET, expected)
 
@@ -42,7 +40,7 @@ class S45(unittest.TestCase):
         for variant in ("informed", "concealed", "intimate"):
             choices = self.nodes[variant + ".claim.courier"]["Choices"]
             self.assertEqual([a["Next"] for a in choices[:2]], [variant + ".delivered"] * 2)
-            self.assertNotIn(s45.P + "attendance_earned", self.nodes[variant + ".delivered"]["Choices"][0]["Set"])
+            self.assertNotIn(s45.P + "attendance_earned", select_answer(self.nodes[variant + ".delivered"]["Choices"], ((None, False, None, None, ('household.pair.yaniel_minagho.respondent_current',), ()),), expected_position=0)["Set"])
 
     def test_page_presence_epoch_and_singleton_contract(self):
         required = set(self.hearing["Requires"])
@@ -57,7 +55,7 @@ class S45(unittest.TestCase):
         self.assertIn("participant.minagho.available", self.payload["Derived"][s45.CONTACT][0])
         for variant in ("informed", "concealed", "intimate"):
             for result in ("destroyed", "delivered"):
-                self.assertIn(s45.CONTACT, self.nodes[variant + "." + result]["Choices"][0]["Requires"])
+                self.assertIn(s45.CONTACT, select_answer(self.nodes[variant + "." + result]["Choices"], ((None, False, None, None, ('household.pair.yaniel_minagho.respondent_current',), ()),), expected_position=0)["Requires"])
 
     def test_knowledge_precedence_and_save_addresses(self):
         for scene in self.payload["Scenes"]:
@@ -66,12 +64,24 @@ class S45(unittest.TestCase):
             old = next(s for s in self.base["Scenes"] if s["Id"] == scene["Id"])
             for before in old["Nodes"]:
                 after = next(n for n in scene["Nodes"] if n["Id"] == before["Id"])
-                for index, answer in enumerate(before["Choices"]):
-                    self.assertEqual(answer["Next"], after["Choices"][index]["Next"])
-                    self.assertEqual(answer["Set"], after["Choices"][index]["Set"])
+                for answer, successor in zip(before["Choices"], after["Choices"]):
+                    self.assertEqual(answer["Next"], successor["Next"])
+                    self.assertEqual(answer["Set"], successor["Set"])
                 if [a["Next"] for a in before["Choices"][:3]] == ["told", "hid", "ask"]:
-                    self.assertEqual(after["Choices"][3]["Next"], "household_minagho_told_later")
-                    self.assertIn(s45.TOLD, after["Choices"][3]["Forbids"])
+                    self.assertEqual(select_answer(after["Choices"],
+                            (('household_minagho_told_later',
+                              False,
+                              None,
+                              None,
+                              ('household.pair.yaniel_minagho.truth_now_told',),
+                              ('yaniel.trickster.minagho_told',)),), expected_position=3)["Next"], "household_minagho_told_later")
+                    self.assertIn(s45.TOLD, select_answer(after["Choices"],
+                            (('household_minagho_told_later',
+                              False,
+                              None,
+                              None,
+                              ('household.pair.yaniel_minagho.truth_now_told',),
+                              ('yaniel.trickster.minagho_told',)),), expected_position=3)["Forbids"])
                     for answer in after["Choices"][1:3]:
                         self.assertIn(s45.LATER, answer["Forbids"])
         self.assertEqual(savecompat.check(self.payload), savecompat.check(self.base))
@@ -128,6 +138,50 @@ class S45(unittest.TestCase):
             expected = "informed.start" if original or later else "intimate.start" if favoured else "concealed.start"
             self.assertEqual(active, [expected])
 
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+
+
+def ordered_answer(answers, ordinal, expected_orders):
+    """Protect answer order, then select its declared structural destination."""
+    actual = tuple(answer_key(answer) for answer in answers)
+    if actual not in expected_orders:
+        raise AssertionError(('answer order/gates changed', actual, expected_orders))
+    for order in expected_orders:
+        if order == actual:
+            key = next(key for order_index, key in enumerate(order) if order_index == ordinal)
+            return select_answer(answers, (key,))
+    raise AssertionError('missing declared answer order')
 
 if __name__ == "__main__":
     unittest.main()

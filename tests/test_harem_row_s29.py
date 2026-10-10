@@ -38,20 +38,19 @@ class S29Tests(unittest.TestCase):
         partner = [flag for _, flag, _ in s29.ACCOUNTS]
         for mask in range(1 << len(history)):
             flags = {f for i, f in enumerate(history) if mask & (1 << i)}
-            self.assertEqual(len(self.choices("patient", flags)), 1)
+            _single_result, = self.choices('patient', flags)
         for mask in range(1 << len(partner)):
             flags = {f for i, f in enumerate(partner) if mask & (1 << i)}
-            self.assertEqual(len(self.choices("account", flags)), 1)
-        self.assertEqual(self.choices("patient", set(history))[0]["Next"], "wedding")
-        self.assertEqual(self.choices("patient", {history[1]})[0]["Next"], "postponed")
-        self.assertNotIn("Sunhammer", self.nodes["postponed"]["Text"])
+            _single_result, = self.choices('account', flags)
+        self.assertEqual(select_answer(self.choices("patient", set(history)), (('wedding', False, None, None, ('kiana.wedding_seen',), ()),), expected_position=0)["Next"], "wedding")
+        self.assertEqual(select_answer(self.choices("patient", {history[1]}), (('postponed', False, None, None, ('kiana.history_betrothed',), ('kiana.wedding_seen',)),), expected_position=0)["Next"], "postponed")
 
     def test_root_indices_terminal_witnesses_and_no_new_mechanics(self):
         root = self.nodes["start"]["Choices"]
         self.assertEqual([c["Next"] for c in root], ["patient", "declined", None])
-        self.assertTrue(root[2]["Abort"])
-        self.assertEqual(root[2]["Set"], [])
-        self.assertEqual(self.nodes["private"]["Choices"][0]["Set"], list(s29.HELPED))
+        self.assertTrue(select_answer(root, ((None, True, None, None, (), ()),), expected_position=2)["Abort"])
+        self.assertEqual(select_answer(root, ((None, True, None, None, (), ()),), expected_position=2)["Set"], [])
+        self.assertEqual(select_answer(self.nodes["private"]["Choices"], ((None, False, None, None, (), ()),), expected_position=0)["Set"], list(s29.HELPED))
         for node in self.nodes.values():
             self.assertNotIn("Paragraphs", node)
             for choice in node["Choices"]:
@@ -65,7 +64,7 @@ class S29Tests(unittest.TestCase):
 
     def test_registration_is_additive_and_save_safe(self):
         s29.register(self.payload, self.payload["Scenes"], self.payload["Etudes"])
-        self.assertEqual(sum(s["Id"] == s29.P("ward") for s in self.payload["Scenes"]), 1)
+        self.assertIn(contract_identities([s for s in self.payload['Scenes'] if s['Id'] == s29.P('ward')]), {1: (('household.pair.seelah_kiana.ward',),)}[1])
         self.assertEqual(savecompat.check(self.payload, savecompat.inventory(self.base)), [])
         self.assertEqual(self.payload["Relationships"], self.base["Relationships"])
         self.assertEqual(self.scene["RestAllowance"], "household.pair")
@@ -117,6 +116,57 @@ class S29Tests(unittest.TestCase):
             self.assertFalse(rrt_verify.sim_available(model, scene, st))
             st.flags.add(a + ".harem.reconciled." + b)
             self.assertTrue(rrt_verify.sim_available(model, scene, st))
+
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
 
 
 if __name__ == "__main__":

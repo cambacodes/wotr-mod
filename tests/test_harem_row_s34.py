@@ -41,7 +41,7 @@ class S34ReservationTests(unittest.TestCase):
                 for child in value:
                     yield from entries(child)
         rows = [entry for entry in entries(schedule) if entry.get("ref") == "S34"]
-        self.assertEqual(1, len(rows))
+        _single_result, = rows
         row = rows[0]
         self.assertEqual("reserved", row["status"])
         self.assertEqual(("5.03", 5, 1, 1),

@@ -41,7 +41,7 @@ class S37(unittest.TestCase):
         choice = nodes["start"]["Choices"][index]
         path = [choice]
         while choice["Next"]:
-            choice = nodes[choice["Next"]]["Choices"][0]
+            choice = select_answer(nodes[choice["Next"]]["Choices"], ((None, False, None, None, (), ()),), expected_position=0)
             path.append(choice)
         return verify.sim_play(self.model, body, state, {}, plan=((1, 0, 0, len(path)), path))
 
@@ -98,7 +98,7 @@ class S37(unittest.TestCase):
         self.assertFalse(self.available("repair", state))
         self.assertNotIn(row.key("goods.equipment_impounded"), state.flags)
         for body in row.SCENES:
-            abort = body["Nodes"][0]["Choices"][-1]
+            abort = select_answer(body["Nodes"][0]["Choices"], ((None, True, None, None, (), ()),), expected_position=-1)
             self.assertTrue(abort["Abort"])
             self.assertEqual(abort["Set"], [])
             self.assertNotIn("Crusade", abort)
@@ -142,14 +142,83 @@ class S37(unittest.TestCase):
         for woman in ("delamere", "hepzamirah"):
             page = self.model.by_id[woman + ".lastcall.page"]
             paras = [p for p in page["Nodes"][0]["Paragraphs"] if p.get("Id", "").startswith(row.key("reader.lastcall."))]
-            self.assertEqual(len(paras), 18)
+            self.assertIn(contract_identities(paras),
+                    {18: (('household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.resolved.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.resolved.returned',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.known.present_claim.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.known.present_claim.returned',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.delamere_stone_received.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.delamere_stone_received.returned',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.delamere_stores_guarded.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.delamere_stores_guarded.returned',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.delamere_goods_received.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.delamere_goods_received.returned',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.hepzamirah_captain_dismissed.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.hepzamirah_captain_dismissed.returned',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.hepzamirah_guard_claim_yielded.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.hepzamirah_guard_claim_yielded.returned',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.commander_prize_yielded.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.commander_prize_yielded.returned',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.commander_stores_replaced.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.commander_stores_replaced.returned'),
+                          ('household.pair.delamere_hepzamirah.reader.lastcall.delamere.resolved.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.resolved.returned',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.known.present_claim.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.known.present_claim.returned',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.delamere_stone_received.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.delamere_stone_received.returned',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.delamere_stores_guarded.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.delamere_stores_guarded.returned',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.delamere_goods_received.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.delamere_goods_received.returned',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.hepzamirah_captain_dismissed.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.hepzamirah_captain_dismissed.returned',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.hepzamirah_guard_claim_yielded.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.hepzamirah_guard_claim_yielded.returned',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.commander_prize_yielded.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.commander_prize_yielded.returned',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.commander_stores_replaced.living',
+                           'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.commander_stores_replaced.returned'))}[18])
             state = self.state()
             state.flags.update([row.key("resolved")] + [row.key("cost." + cost) for cost in row.COSTS])
             for sacrificed, returned, expected in ((False, False, 8), (True, False, 0), (True, True, 8)):
                 flags = set(state.flags)
                 if sacrificed: flags.add("sacrifice")
                 if returned: flags.add("trickster.commander_back")
-                self.assertEqual(sum(shown(p, flags) for p in paras), expected)
+                self.assertIn(contract_identities([p for p in paras if shown(p, flags)]),
+                        {8: (('household.pair.delamere_hepzamirah.reader.lastcall.delamere.resolved.living',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.delamere_stone_received.living',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.delamere_stores_guarded.living',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.delamere_goods_received.living',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.hepzamirah_captain_dismissed.living',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.hepzamirah_guard_claim_yielded.living',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.commander_prize_yielded.living',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.commander_stores_replaced.living'),
+                             ('household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.resolved.returned',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.delamere_stone_received.returned',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.delamere_stores_guarded.returned',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.delamere_goods_received.returned',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.hepzamirah_captain_dismissed.returned',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.hepzamirah_guard_claim_yielded.returned',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.commander_prize_yielded.returned',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.commander_stores_replaced.returned'),
+                             ('household.pair.delamere_hepzamirah.reader.lastcall.delamere.resolved.returned',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.delamere_stone_received.returned',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.delamere_stores_guarded.returned',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.delamere_goods_received.returned',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.hepzamirah_captain_dismissed.returned',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.hepzamirah_guard_claim_yielded.returned',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.commander_prize_yielded.returned',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.delamere.cost.commander_stores_replaced.returned'),
+                             ('household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.resolved.living',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.delamere_stone_received.living',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.delamere_stores_guarded.living',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.delamere_goods_received.living',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.hepzamirah_captain_dismissed.living',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.hepzamirah_guard_claim_yielded.living',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.commander_prize_yielded.living',
+                              'household.pair.delamere_hepzamirah.reader.lastcall.hepzamirah.cost.commander_stores_replaced.living')),
+                         0: ((),)}[expected])
             state.flags.add(woman + ".closed")
             verify.sim_complete(self.model, state)
             self.assertFalse(any(shown(p, state.flags) for p in paras))
@@ -183,7 +252,7 @@ class S37(unittest.TestCase):
         }
         for (step, terminal), flags in expected.items():
             node = next(n for n in self.body(step)["Nodes"] if n["Id"] == terminal)
-            self.assertEqual(node["Choices"][0]["Set"], [row.key(f) for f in flags.split()])
+            self.assertEqual(select_answer(node["Choices"], ((None, False, None, None, (), ()),), expected_position=0)["Set"], [row.key(f) for f in flags.split()])
         state = self.state()
         self.play("open", 0, state)
         self.advance(state)
@@ -198,6 +267,57 @@ class S37(unittest.TestCase):
         self.advance(restored)
         self.assertTrue(self.play("repair", 0, restored))
         self.assertIn(row.key("proof.goods_returned"), restored.flags)
+
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
 
 
 if __name__ == "__main__":

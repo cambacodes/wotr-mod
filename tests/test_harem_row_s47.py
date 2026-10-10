@@ -77,8 +77,8 @@ class S47Tests(unittest.TestCase):
         for node in body["Nodes"]:
             with self.subTest(node=node["Id"]):
                 pauses = [c for c in node["Choices"] if c.get("Abort")]
-                self.assertEqual(len(pauses), 1)
-                pause = pauses[0]
+                _single_result, = pauses
+                pause = select_answer(pauses, ((None, True, None, None, (), ()),), expected_position=0)
                 self.assertFalse(pause.get("Set"))
                 for field in ("Next", "NativeNext", "Check", "Crusade", "RemoveItem", "Revive", "StartEtude"):
                     self.assertFalse(pause.get(field))
@@ -88,7 +88,7 @@ class S47Tests(unittest.TestCase):
 
     def test_four_terminal_outcomes_are_permanent_and_distinct(self):
         body = self.by_id[s47.P + "inspection"]
-        results = {n["Id"]: n["Choices"][0] for n in body["Nodes"] if n["Id"] in ("undertaking", "retained", "unsettled", "declined")}
+        results = {n["Id"]: select_answer(n["Choices"], ((None, False, None, None, (), ()),), expected_position=0) for n in body["Nodes"] if n["Id"] in ("undertaking", "retained", "unsettled", "declined")}
         for name, choice in results.items():
             flags = choice["Set"]
             with self.subTest(result=name):
@@ -114,14 +114,43 @@ class S47Tests(unittest.TestCase):
         beat = self.by_id[s47.BEAT]
         for id in ("end", "end_refused", "end_unknown"):
             node = next(n for n in beat["Nodes"] if n["Id"] == id)
-            self.assertEqual(len(node["Choices"]), 3)
-            self.assertEqual(node["Choices"][0]["Next"], "robbed")
-            self.assertEqual(node["Choices"][1]["Next"], "bite")
-            self.assertEqual(node["Choices"][2]["Next"], "household_face_request")
+            self.assertIn(contract_identities(node['Choices']),
+                    {3: ((('robbed', None, None, False, (), ()),
+                          ('bite', None, None, False, (), ()),
+                          ('household_face_request',
+                           None,
+                           None,
+                           False,
+                           ('trickster',
+                            'foresight.page_taken',
+                            'yaniel.trickster.returned',
+                            'yaniel.freed.latched',
+                            'yaniel.present_now'),
+                           ('yaniel.closed',
+                            'yaniel.killed.latched',
+                            'yaniel.trickster.left_free',
+                            'household.pair.yaniel_areelu.commission.seen'))),)}[3])
+            self.assertEqual(select_answer(node["Choices"], (('robbed', False, None, None, (), ()),), expected_position=0)["Next"], "robbed")
+            self.assertEqual(select_answer(node["Choices"], (('bite', False, None, None, (), ()),), expected_position=1)["Next"], "bite")
+            self.assertEqual(select_answer(node["Choices"],
+                    (('household_face_request',
+                      False,
+                      None,
+                      None,
+                      ('trickster',
+                       'foresight.page_taken',
+                       'yaniel.trickster.returned',
+                       'yaniel.freed.latched',
+                       'yaniel.present_now'),
+                      ('yaniel.closed',
+                       'yaniel.killed.latched',
+                       'yaniel.trickster.left_free',
+                       'household.pair.yaniel_areelu.commission.seen')),), expected_position=2)["Next"], "household_face_request")
         request = next(n for n in beat["Nodes"] if n["Id"] == "household_face_request")
-        self.assertIn(s47.BEAT, request["Choices"][0]["Set"])
-        self.assertIn(s47.BEAT, request["Choices"][1]["Set"])
-        self.assertEqual(request["Choices"][2]["Set"], [])
+        self.assertEqual([c["Set"] for c in request["Choices"]], [
+            [s47.BEAT, s47.P + "commission.seen", s47.P + "proof.ready", s47.P + "cost.yaniel_comparison"],
+            [s47.BEAT, s47.P + "commission.seen", s47.P + "commission.declined"], []])
+        self.assertEqual([c["Abort"] for c in request["Choices"]], [False, False, True])
 
     def test_registration_is_idempotent_and_readers_stay_in_permitted_hosts(self):
         from storylines import yaniel_walls, lastcall_ledger, lastcall_partners
@@ -137,6 +166,57 @@ class S47Tests(unittest.TestCase):
                 for para in node.get("Paragraphs", []):
                     if any(flag.startswith(s47.P) for flag in para.get("Requires", [])):
                         self.assertTrue(body.get("Owner", "").endswith("Epilogue"), body["Id"])
+
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
 
 
 if __name__ == "__main__":

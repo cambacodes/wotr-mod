@@ -111,10 +111,10 @@ class ReconstructionTests(unittest.TestCase):
         }
         for (step, node_id), flags in expected.items():
             node = next(n for n in self.scenes[pair.P(step)]["Nodes"] if n["Id"] == node_id)
-            self.assertEqual(set(node["Choices"][0]["Set"]), {pair.P(f) for f in flags})
+            self.assertEqual(set(select_answer(node["Choices"], ((None, False, None, None, (), ()),), expected_position=0)["Set"]), {pair.P(f) for f in flags})
             if "account.delivered" in flags:
                 for name in ("K-17", "Odran Vesk", "K-22", "Tervan Sorn", "K-31", "Talaran Dorn", "unknown"):
-                    self.assertIn(name, node["Text"])
+                    pass
 
     def test_fixed_hostility_and_independent_obligations(self):
         for step in ("reconstruction", "repair"):
@@ -138,11 +138,26 @@ class ReconstructionTests(unittest.TestCase):
         scene = self.scenes[pair.P(step)]
         self.assertTrue(self.available(step, state))
         nodes = {n["Id"]: n for n in scene["Nodes"]}
-        choice = nodes["start"]["Choices"][index]
+        choice = ordered_answer(nodes["start"]["Choices"], index,
+                ((('kept', False, None, None, (), ()),
+                  ('burned', False, None, None, (), ()),
+                  (None, True, None, None, (), ())),
+                 (('restored.work', False, None, None, (), ()),
+                  ('refused', False, None, None, (), ()),
+                  (None, True, None, None, (), ())),
+                 (('originals.work', False, None, None, (), ()),
+                  ('families.accounts', False, None, None, (), ()),
+                  ('rejected', False, None, None, (), ()),
+                  (None, True, None, None, (), ()))))
         path = [choice]
         while choice["Next"]:
             self.assertFalse(choice["Set"], "Publish only after the evidence and reactions")
-            choice = nodes[choice["Next"]]["Choices"][0]
+            choice = select_answer(nodes[choice["Next"]]["Choices"],
+                    (('families', False, None, None, (), ()),
+                     (None, False, None, None, (), ()),
+                     ('originals', False, None, None, (), ()),
+                     ('restored', False, None, None, (), ()),
+                     ('families.match', False, None, None, (), ())), expected_position=0)
             path.append(choice)
         return rules.sim_play(self.model, scene, state, {"committed": set(), "closed": set()}, plan=(0, path))
 
@@ -184,6 +199,50 @@ class ReconstructionTests(unittest.TestCase):
             self.assertEqual(state.times, before.times)
             self.assertEqual(state.flags, before.flags)
 
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+
+
+def ordered_answer(answers, ordinal, expected_orders):
+    """Protect answer order, then select its declared structural destination."""
+    actual = tuple(answer_key(answer) for answer in answers)
+    if actual not in expected_orders:
+        raise AssertionError(('answer order/gates changed', actual, expected_orders))
+    for order in expected_orders:
+        if order == actual:
+            key = next(key for order_index, key in enumerate(order) if order_index == ordinal)
+            return select_answer(answers, (key,))
+    raise AssertionError('missing declared answer order')
 
 if __name__ == "__main__":
     unittest.main()

@@ -47,7 +47,7 @@ class S12ContractTests(unittest.TestCase):
             body = self.rows[s12.P(step)]
             choices = body["Nodes"][0]["Choices"]
             self.assertEqual([c["Next"] for c in choices[:len(targets)]], targets)
-            self.assertEqual(choices[-1]["Next"], "bench_work")
+            self.assertEqual(select_answer(choices, (('bench_work', False, None, None, (), ()),), expected_position=-1)["Next"], "bench_work")
             self.assertEqual(body["RestAllowance"], "household.protected")
             self.assertEqual(body["HouseholdCategory"], "protected")
             self.assertEqual(body["Chapters"], [5])
@@ -62,9 +62,33 @@ class S12ContractTests(unittest.TestCase):
     def test_both_approaches_finish_after_both_women_act_and_keep_asymmetry(self):
         nodes = {n["Id"]: n for n in self.rows[s12.P("settle")]["Nodes"]}
         for node in ("lesson", "bench_work", "manual_correction"):
-            self.assertEqual(nodes[node]["Choices"][0]["Set"], [])
+            self.assertEqual(select_answer(nodes[node]["Choices"], (('manual_correction', False, None, None, (), ()), ('revision', False, None, None, (), ())), expected_position=0)["Set"], [])
         done = [st for st in self.outcomes("settle", self.state()) if s12.P("settle.done") in st.flags]
-        self.assertEqual(len(done), 2)
+        self.assertIn(contract_identities(done),
+                {2: ((('household.craft.method_witnessed',
+                       'household.pair.nenio_camellia.cost.camellia_method_shown',
+                       'household.pair.nenio_camellia.cost.commander_bench_labour',
+                       'household.pair.nenio_camellia.cost.nenio_first_classification_yielded',
+                       'household.pair.nenio_camellia.deed.camellia_correction',
+                       'household.pair.nenio_camellia.deed.nenio_revision',
+                       'household.pair.nenio_camellia.ready',
+                       'household.pair.nenio_camellia.settle',
+                       'household.pair.nenio_camellia.settle.done',
+                       'household.pair.nenio_camellia.settle.seen',
+                       'household.stance_eligible',
+                       'household.table.kept'),
+                      ('household.craft.method_witnessed',
+                       'household.pair.nenio_camellia.cost.camellia_method_shown',
+                       'household.pair.nenio_camellia.cost.commander_bench_labour',
+                       'household.pair.nenio_camellia.cost.nenio_first_classification_yielded',
+                       'household.pair.nenio_camellia.deed.camellia_correction',
+                       'household.pair.nenio_camellia.deed.nenio_revision',
+                       'household.pair.nenio_camellia.ready',
+                       'household.pair.nenio_camellia.settle',
+                       'household.pair.nenio_camellia.settle.done',
+                       'household.pair.nenio_camellia.settle.seen',
+                       'household.stance_eligible',
+                       'household.table.kept')),)}[2])
         for state in done:
             self.assertTrue(set(s12.DEED_COSTS) <= state.flags)
             self.assertIn(s12.SHARED_CRAFT_WITNESS, state.flags)
@@ -119,7 +143,7 @@ class S12ContractTests(unittest.TestCase):
             state.flags.add(s12.P("settle.failed"))
             state.times[s12.P("settle.failed")] = 52
             aborted = [st for st in self.outcomes(step, state) if st.flags == state.flags]
-            self.assertEqual(len(aborted), 1)
+            _single_result, = aborted
             self.assertEqual(aborted[0].rest_spent, {})
 
     def test_unpaid_off_path_absence_closure_and_latest_losses_block(self):
@@ -166,6 +190,57 @@ class S12ContractTests(unittest.TestCase):
         state.flags.add("nenio.harem.reconciled.camellia")
         self.complete(state)
         self.assertIn("nenio.harem.attitude.camellia.respect", state.flags)
+
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
 
 
 if __name__ == "__main__":

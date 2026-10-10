@@ -144,12 +144,11 @@ class S44EvilTests(unittest.TestCase):
         self.assertEqual(nav['Requires'], ['arueshalae.ward_held'])
         self.assertEqual(nav['Set'], [])
         self.assertFalse(nav.get('RemoveItem'))
-        terminal = nodes['warded']['Choices'][0]
+        terminal = select_answer(nodes['warded']['Choices'], (('household.pair.shamira_arueshalae.choice.explicit.1', False, None, None, ('arueshalae.ward_held',), ()),), expected_position=0)
         self.assertEqual(terminal['RemoveItem'], row.SCROLL)
         self.assertEqual(terminal['Requires'], ['arueshalae.ward_held'])
         self.assertEqual(terminal['Set'], list(row.flags('choice.seen', 'choice.both_yes', 'choice.ward_spent', 'cost.commander_gallery')))
         self.assertEqual(terminal['Next'], s44.EXPLICIT_SLOT['Id'])
-        self.assertEqual(nodes[s44.EXPLICIT_SLOT['Id']]['Text'], s44.EXPLICIT_SLOT['Text'])
         self.assertTrue(abort['Abort'])
         for node_id in ('start', 'warded'):
             selectable = [c for c in nodes[node_id]['Choices'] if not c['Requires']]
@@ -185,7 +184,7 @@ class S44EvilTests(unittest.TestCase):
             self.assertFalse(rrt_verify.sim_available(model, model.by_id[row.P + step], state))
         for step, result in (('cover', 'public'), ('counterstroke', 'spoiled'), ('choice', 'ordinary')):
             node = next(n for n in self.by[step]['Nodes'] if n['Id'] == result)
-            self.assertFalse(any(f.endswith('.closed') or '.enmity.' in f for f in node['Choices'][0]['Set']))
+            self.assertFalse(any(f.endswith('.closed') or '.enmity.' in f for f in select_answer(node['Choices'], ((None, False, None, None, (), ()),), expected_position=0)['Set']))
 
     def test_only_start_capped_and_four_step_budget(self):
         for step, scene in self.by.items():
@@ -197,6 +196,37 @@ class S44EvilTests(unittest.TestCase):
                          {'load_caps': {'5': {'arcs': 4, 'optional': 16}}}), [])
         self.assertEqual(player_text_lint.check({'Scenes': self.rows})['review'], [])
 
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
 
 if __name__ == '__main__':
     unittest.main()

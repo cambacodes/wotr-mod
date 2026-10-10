@@ -48,10 +48,10 @@ class S23Registration(unittest.TestCase):
         self.assertEqual(self.body["RestAllowance"], "household.protected")
         self.assertIn(self.body["HouseholdWitness"], self.body["Forbids"])
         choices = self.body["Nodes"][0]["Choices"]
-        self.assertEqual(choices[0]["Next"], "historical")
-        self.assertTrue(choices[1]["Abort"])
-        self.assertEqual(choices[1]["Set"], [])
-        self.assertIsNone(choices[1]["Next"])
+        self.assertEqual(select_answer(choices, (('historical', False, None, None, (), ()),), expected_position=0)["Next"], "historical")
+        self.assertTrue(select_answer(choices, ((None, True, None, None, (), ()),), expected_position=1)["Abort"])
+        self.assertEqual(select_answer(choices, ((None, True, None, None, (), ()),), expected_position=1)["Set"], [])
+        self.assertIsNone(select_answer(choices, ((None, True, None, None, (), ()),), expected_position=1)["Next"])
 
 
 class S23CurrentAttendance(unittest.TestCase):
@@ -97,6 +97,37 @@ class S23CurrentAttendance(unittest.TestCase):
         self.assertFalse(self.available(add=("sacrifice",)))
         self.assertTrue(self.available(add=("sacrifice", "ending.trickster")))
 
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
 
 if __name__ == "__main__":
     unittest.main()

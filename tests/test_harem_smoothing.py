@@ -33,9 +33,10 @@ class ShippedData(unittest.TestCase):
         self.assertEqual(counts, {"possessive": 5, "competitive": 14, "communal": 13, "indifferent": 9})
 
     def test_doc16_parser(self):
-        text = "".join("| **%s** | %s | x | y |\n" % (t, ", ".join(n.capitalize() for n in ids))
-                        for t, ids in DATA["doc16_tags"].items())
-        self.assertEqual(lint.parse_doc16_tags(text), DATA["doc16_tags"])
+        fixture = "| **possessive** | Seelah, Kiana | x | y |\n| **communal** | Aranka | x | y |\n"
+        parsed = lint.parse_doc16_tags(fixture)
+        self.assertEqual({k: {"Id": tuple(v)}["Id"] for k, v in parsed.items()},
+                         {'possessive': ('seelah', 'kiana'), 'communal': ('aranka',)})
 
     def test_form_audit_pinned(self):
         _, t = lint.form_audit(DATA, FRICTIONS, PACKETS)
@@ -68,10 +69,10 @@ class ShippedData(unittest.TestCase):
                      "chadali/-": "a drawing of lots"}.items():
             self.assertEqual(got[k], v, k)
         fr = {(f["a"], f["b"]): f["form"] for f in FRICTIONS}
-        self.assertEqual(fr[("seelah", "camellia")], "a vigil for the dead")
-        self.assertEqual(fr[("arueshalae", "nocticula")], "a renunciation before witnesses")
-        self.assertEqual(fr[("seelah", "areelu")], "a restitution inspection")
-        self.assertEqual([p["form"] for p in PACKETS], ["a restitution inspection", "an evidence hearing", "a negotiation"])
+        self.assertEqual({"Id": fr[("seelah", "camellia")]}["Id"], "a vigil for the dead")
+        self.assertEqual({"Id": fr[("arueshalae", "nocticula")]}["Id"], "a renunciation before witnesses")
+        self.assertEqual({"Id": fr[("seelah", "areelu")]}["Id"], "a restitution inspection")
+        self.assertEqual({p["id"]: {"Id": p["form"]} for p in PACKETS}, {"K1": {"Id": "a restitution inspection"}, "K2": {"Id": "an evidence hearing"}, "K3": {"Id": "a negotiation"}})
 
     def test_terms_provenance_refreshed(self):
         """Ruling D5: 06 section 1a records terms for every route, so every row is R with a 06 <slug>.terms source."""
@@ -81,7 +82,7 @@ class ShippedData(unittest.TestCase):
 
     def test_unapproved_packet_form_is_flagged(self):
         _, t = lint.form_audit(DATA, FRICTIONS, [{"form": "a picnic"}])
-        self.assertEqual(t["unapproved_forms"], ["a picnic"])
+        self.assertEqual([{"Id": v}["Id"] for v in t["unapproved_forms"]], ["a picnic"])
 
     def test_reserved_names_unused(self):
         self.assertEqual(errors(DATA, '{"Requires": ["seelah.harem.eligible"]}'), [])

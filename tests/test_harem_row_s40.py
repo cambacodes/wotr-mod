@@ -29,15 +29,25 @@ class CaptiveDeliveryTests(unittest.TestCase):
     def walk(self, step, choice, result=None):
         body = next(s for s in self.story['Scenes'] if s['Id'] == row.P + step)
         nodes = {n['Id']: n for n in body['Nodes']}
-        answer = nodes['start']['Choices'][choice]
+        answer = ordered_answer(nodes['start']['Choices'], choice,
+                ((('complete', False, None, None, (), ()),
+                  ('declined', False, None, None, (), ()),
+                  (None, True, None, None, (), ())),
+                 ((None, False, 'six', 'short', (), ()),
+                  ('paid', False, None, None, (), ()),
+                  ('falsified', False, None, None, (), ()),
+                  (None, True, None, None, (), ())),
+                 (('commissioned', False, None, None, (), ()),
+                  ('refused', False, None, None, (), ()),
+                  (None, True, None, None, (), ()))))
         self.assertFalse(answer['Set'])
         if answer['Abort']:
             return set(), None
         destination = answer.get('Next') or answer['Check'][result]
         terminal = nodes[destination]['Choices']
-        self.assertEqual(len(terminal), 1)
-        self.assertFalse(terminal[0]['Abort'])
-        return set(terminal[0]['Set']), terminal[0].get('Crusade')
+        _single_result, = terminal
+        self.assertFalse(select_answer(terminal, ((None, False, None, None, (), ()),), expected_position=0)['Abort'])
+        return set(select_answer(terminal, ((None, False, None, None, (), ()),), expected_position=0)['Set']), select_answer(terminal, ((None, False, None, None, (), ()),), expected_position=0).get('Crusade')
 
     def test_all_deeds_refusals_checks_costs_and_aborts(self):
         cases = [('open', 0, None, 'open.ready', -200),
@@ -125,10 +135,43 @@ class CaptiveDeliveryTests(unittest.TestCase):
                 if returned:
                     state.flags.add('ending.trickster')
                 verify.sim_complete(self.model, state)
-                self.assertEqual(sum(visible(p, state) for p in paras), expected)
+                self.assertIn(contract_identities([p for p in paras if visible(p, state)]),
+                        {1: (((None,
+                               None,
+                               None,
+                               False,
+                               ('household.pair.iomedae_nocticula.resolved',
+                                'household.pair.iomedae_nocticula.reader.nocticula.open',
+                                'sacrifice',
+                                'trickster.commander_back'),
+                               ()),),
+                             ((None,
+                               None,
+                               None,
+                               False,
+                               ('household.pair.iomedae_nocticula.resolved',
+                                'household.pair.iomedae_nocticula.reader.nocticula.open'),
+                               ('sacrifice',)),),
+                             ((None,
+                               None,
+                               None,
+                               False,
+                               ('household.pair.iomedae_nocticula.resolved',
+                                'household.pair.iomedae_nocticula.reader.iomedae.open'),
+                               ('iomedae.trickster.buried_alive', 'sacrifice')),),
+                             ((None,
+                               None,
+                               None,
+                               False,
+                               ('household.pair.iomedae_nocticula.resolved',
+                                'household.pair.iomedae_nocticula.reader.iomedae.open',
+                                'sacrifice',
+                                'trickster.commander_back'),
+                               ('iomedae.trickster.buried_alive',)),)),
+                         0: ((),)}[expected])
                 state.flags.add('iomedae.closed' if woman == 'iomedae' else 'noct.closed')
                 verify.sim_complete(self.model, state)
-                self.assertEqual(sum(visible(p, state) for p in paras), 0)
+                self.assertIn(contract_identities([p for p in paras if visible(p, state)]), {0: ((),)}[0])
         ledger = self.story['Books']['trickster.ledger']['Entries']
         for suffix in ['ledger', 'seating']:
             entry = next(e for e in ledger if e['Id'] == row.P + 'reader.' + suffix)
@@ -142,9 +185,19 @@ class CaptiveDeliveryTests(unittest.TestCase):
         def play(step, choice, result=None):
             body = self.body(step)
             nodes = {n['Id']: n for n in body['Nodes']}
-            first = nodes['start']['Choices'][choice]
+            first = ordered_answer(nodes['start']['Choices'], choice,
+                    ((('complete', False, None, None, (), ()),
+                      ('declined', False, None, None, (), ()),
+                      (None, True, None, None, (), ())),
+                     ((None, False, 'six', 'short', (), ()),
+                      ('paid', False, None, None, (), ()),
+                      ('falsified', False, None, None, (), ()),
+                      (None, True, None, None, (), ())),
+                     (('commissioned', False, None, None, (), ()),
+                      ('refused', False, None, None, (), ()),
+                      (None, True, None, None, (), ()))))
             destination = first.get('Next') or first['Check'][result]
-            last = nodes[destination]['Choices'][0]
+            last = select_answer(nodes[destination]['Choices'], ((None, False, None, None, (), ()),), expected_position=0)
             return verify.sim_play(self.model, body, state, set(), plan=(0, [first, last]))
 
         self.assertTrue(play('open', 0))
@@ -211,7 +264,7 @@ class CaptiveDeliveryTests(unittest.TestCase):
                                               ('delivery', 'paid', 500, 'open.ready'),
                                               ('ransom', 'complete', 700, 'delivery.failed')]:
             body = self.body(step)
-            answer = next(n for n in body['Nodes'] if n['Id'] == node_id)['Choices'][0]
+            answer = select_answer(next(n for n in body['Nodes'] if n['Id'] == node_id)['Choices'], ((None, False, None, None, (), ()),), expected_position=0)
             for funds in (None, 0, price - 1):
                 state = self.state()
                 if witness:
@@ -224,6 +277,70 @@ class CaptiveDeliveryTests(unittest.TestCase):
                                                        lambda: self.fail('unaffordable deed published')))
                 self.assertEqual((state.flags, state.times, state.rest_spent), before)
 
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
+
+
+
+
+def ordered_answer(answers, ordinal, expected_orders):
+    """Protect answer order, then select its declared structural destination."""
+    actual = tuple(answer_key(answer) for answer in answers)
+    if actual not in expected_orders:
+        raise AssertionError(('answer order/gates changed', actual, expected_orders))
+    for order in expected_orders:
+        if order == actual:
+            key = next(key for order_index, key in enumerate(order) if order_index == ordinal)
+            return select_answer(answers, (key,))
+    raise AssertionError('missing declared answer order')
 
 if __name__ == '__main__':
     unittest.main()

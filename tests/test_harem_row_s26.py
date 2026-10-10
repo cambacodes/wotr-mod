@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.structure import without_prose
 from tests.story_fixture import fresh_story
 
 from storylines.harem_rows import s26
@@ -82,14 +83,14 @@ class S26Tests(unittest.TestCase):
         state = self.state(s26.RETURNED, s26.TENANT)
         self.assertNotIn(s26.REMEDY, state.flags)
         root = self.scene["Nodes"][0]["Choices"]
-        self.assertEqual(root[0]["Requires"], [s26.REMEDY])
-        self.assertTrue(root[2]["Abort"])
-        self.assertEqual(root[2]["Set"], [])
+        self.assertEqual(select_answer(root, (('remedy_reserved', False, None, None, ('household.docket.gesmerha_jerribeth.remedy.authorized',), ()),), expected_position=0)["Requires"], [s26.REMEDY])
+        self.assertTrue(select_answer(root, ((None, True, None, None, (), ()),), expected_position=2)["Abort"])
+        self.assertEqual(select_answer(root, ((None, True, None, None, (), ()),), expected_position=2)["Set"], [])
         writes = {f for node in self.scene["Nodes"] for answer in node["Choices"] for f in answer["Set"]}
         self.assertEqual(writes, {*s26.WITNESSES, s26.P + "jerribeth_reply_heard"})
         for field in ("Relationships", "Etudes", "SelectedAnswers", "CompletedQuests", "Presences", "SeatWomen"):
             self.assertEqual(self.base[field], self.story[field], field)
-        self.assertEqual(self.base["Scenes"], self.story["Scenes"][:-1])
+        self.assertEqual(without_prose(self.base["Scenes"]), without_prose(self.story["Scenes"][:-1]))
 
     def test_destroyed_clan_cannot_select_surviving_clan_recall(self):
         state = self.state("gesmerha.dead", "soana.forest_dead", "gesmerha.truth", "gesmerha.illusions")
@@ -144,6 +145,37 @@ class S26Tests(unittest.TestCase):
         self.assertTrue(any(surface['scene'] == fragment['surface']['scene']
                             for surface in data['women']['gesmerha']['surfaces']))
 
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
 
 if __name__ == "__main__":
     unittest.main()

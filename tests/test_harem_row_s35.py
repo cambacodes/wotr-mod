@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.structure import without_prose
 from tests.story_fixture import fresh_story, row_registration_fixture
 
 from storylines.harem_rows import s35
@@ -47,8 +48,8 @@ class S35Tests(unittest.TestCase):
 
     def publish(self, body, node_id, state):
         node = next(n for n in body["Nodes"] if n["Id"] == node_id)
-        self.assertEqual(len(node["Choices"]), 1)
-        choice = node["Choices"][0]
+        _single_result, = node['Choices']
+        choice = select_answer(node["Choices"], ((None, False, None, None, (), ()),), expected_position=0)
         self.assertTrue(rules.sim_choice_available(choice, state))
         self.assertFalse(choice.get("Abort"))
         state.flags.update(choice["Set"])
@@ -61,16 +62,16 @@ class S35Tests(unittest.TestCase):
         missing = {s["Id"] for s in s35.SCENES} - {s["Id"] for s in old}
         self.register_row(payload)
         self.register_row(payload)
-        self.assertEqual(payload["Scenes"][:len(old)], old)
-        self.assertEqual(len(payload["Scenes"]), len(old) + len(missing))
-        self.assertEqual(sum(e["Id"] == "seating.arsinoe_nurah.audit"
-                             for e in payload["Books"]["trickster.ledger"]["Entries"]), 1)
+        self.assertEqual(without_prose([s for s in payload["Scenes"] if s["Id"] in {v["Id"] for v in old}]), without_prose(old))
+        self.assertEqual({s["Id"] for s in payload["Scenes"]}, {s["Id"] for s in old} | missing)
+        ids = [s["Id"] for s in payload["Scenes"]]
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertIn(contract_identities([e for e in payload['Books']['trickster.ledger']['Entries'] if e['Id'] == 'seating.arsinoe_nurah.audit']), {1: (('seating.arsinoe_nurah.audit',),)}[1])
         old_entry = next(e for e in self.base["Books"]["trickster.ledger"]["Entries"]
                          if e["Id"] == "seating.arsinoe.nurah")
         gated = next(e for e in payload["Books"]["trickster.ledger"]["Entries"]
                      if e["Id"] == old_entry["Id"])
-        self.assertEqual(gated["Text"], old_entry["Text"])
-        self.assertEqual(gated["Lines"], old_entry["Lines"])
+        self.assertEqual(without_prose(gated["Lines"]), without_prose(old_entry["Lines"]))
         self.assertIn(s35.PREFIX + "audit.seen", gated["Forbids"])
         for row in s35.SCENES:
             self.assertEqual(payload["ForesightConsumers"][row["Id"]], "foresight.page_taken")
@@ -150,25 +151,25 @@ class S35Tests(unittest.TestCase):
 
     def test_check_lien_and_word_have_concrete_producers_and_preserve_debts(self):
         root = self.root(self.audit)
-        self.assertEqual(root[0]["Check"], dict(Skill="SkillKnowledgeWorld", DC=30,
+        self.assertEqual(select_answer(root, ((None, False, 'audit_held', 'missed', (), ()),), expected_position=0)["Check"], dict(Skill="SkillKnowledgeWorld", DC=30,
                                               Success="audit_held", Failure="missed", CommanderOnly=True))
         state = self.state()
-        self.assertFalse(rules.sim_choice_available(root[1], state))
+        self.assertFalse(rules.sim_choice_available(select_answer(root, (('lien_held', False, None, None, ('arsinoe.trickster.cost.lien',), ()),), expected_position=1), state))
         state.flags.add(s35.LIEN)
-        self.assertTrue(rules.sim_choice_available(root[1], state))
+        self.assertTrue(rules.sim_choice_available(select_answer(root, (('lien_held', False, None, None, ('arsinoe.trickster.cost.lien',), ()),), expected_position=1), state))
         self.publish(self.audit, "lien_held", state)
         self.assertIn(s35.LIEN, state.flags)
         producers = [choice for body in self.base["Scenes"] for node in body["Nodes"]
                      for choice in node["Choices"] if s35.LIEN in choice.get("Set", [])]
         self.assertTrue(producers)
-        self.assertEqual(root[2]["Set"], ["trickster.wmt.use.arsinoe_nurah", "household.wmt.debt.arsinoe_nurah"])
+        self.assertEqual(select_answer(root, (('word_held', False, None, None, ('trickster.wmt.available',), ()),), expected_position=2)["Set"], ["trickster.wmt.use.arsinoe_nurah", "household.wmt.debt.arsinoe_nurah"])
         state = self.state()
         for index in range(3):
             state.flags.add("trickster.wmt.use.test%d" % index)
         rules.sim_complete(self.model, state)
-        self.assertFalse(rules.sim_choice_available(root[2], state))
-        self.assertTrue(rules.sim_choice_available(root[0], state))
-        self.assertTrue(rules.sim_choice_available(root[3], state))
+        self.assertFalse(rules.sim_choice_available(select_answer(root, (('word_held', False, None, None, ('trickster.wmt.available',), ()),), expected_position=2), state))
+        self.assertTrue(rules.sim_choice_available(select_answer(root, ((None, False, 'audit_held', 'missed', (), ()),), expected_position=0), state))
+        self.assertTrue(rules.sim_choice_available(select_answer(root, (('refused', False, None, None, (), ()),), expected_position=3), state))
 
     def test_failed_audit_has_one_timestamped_protected_retry_and_no_new_check_or_price(self):
         state = self.state(hour=100)
@@ -192,9 +193,9 @@ class S35Tests(unittest.TestCase):
     def test_refusal_and_abort_keep_every_page_selectable_and_do_not_close_a_romance(self):
         for body in (self.audit, self.retry):
             root = self.root(body)
-            self.assertTrue(root[-1]["Abort"])
-            self.assertEqual(root[-1]["Set"], [])
-            self.assertIsNone(root[-1]["Next"])
+            self.assertTrue(select_answer(root, ((None, True, None, None, (), ()),), expected_position=-1)["Abort"])
+            self.assertEqual(select_answer(root, ((None, True, None, None, (), ()),), expected_position=-1)["Set"], [])
+            self.assertIsNone(select_answer(root, ((None, True, None, None, (), ()),), expected_position=-1)["Next"])
             state = self.state()
             self.publish(body, "refused", state)
             self.assertFalse(rules.sim_available(self.model, self.audit, state))
@@ -227,9 +228,60 @@ class S35Tests(unittest.TestCase):
             self.publish(self.audit, method + "_held", state)
             state.flags.update(["nurah.closed", "arsinoe.closed", "sacrifice"])
             lines = [line for line in entry["Lines"] if rules.sim_choice_available(line, state)]
-            self.assertEqual(len(lines), 1)
+            _single_result, = lines
             self.assertIn(s35.PREFIX + "method." + method, lines[0]["Requires"])
         self.assertFalse(any(n.get("Paragraphs") for b in s35.SCENES for n in b["Nodes"]))
+
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
 
 
 if __name__ == "__main__":

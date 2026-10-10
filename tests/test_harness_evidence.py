@@ -7,7 +7,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
-from tools.harness_evidence import evaluate
+from tools.harness_evidence import evaluate as validate_evidence
 
 
 class EvidenceTests(unittest.TestCase):
@@ -23,11 +23,11 @@ class EvidenceTests(unittest.TestCase):
             placement='native-area', contacts=['woman'], owner='coordinator')
 
     def test_same_supplied_fixture_executes_but_cannot_close_earning(self):
-        fixture = evaluate(self.report, [self.requirement])
+        fixture = validate_evidence(self.report, [self.requirement])
         self.assertTrue(fixture['execution_passed'])
         self.assertTrue(fixture['acceptance_passed'])
         earning = dict(self.requirement, kind='earned campaign')
-        actual = evaluate(self.report, [earning])
+        actual = validate_evidence(self.report, [earning])
         self.assertFalse(actual['acceptance_passed'])
         self.assertIn('evidence kind unproved: earned campaign', actual['requirements'][0]['remaining'])
 
@@ -36,12 +36,12 @@ class EvidenceTests(unittest.TestCase):
         self.report['Plan']['ForceSetRequires'] = True  # inert unless Force is selected
         run = self.report['Saves'][0]['Runs'][0]
         run['Forced'] = False
-        self.assertTrue(evaluate(self.report, [dict(self.requirement, kind='real save')])['acceptance_passed'])
-        self.assertFalse(evaluate(self.report, [dict(self.requirement, kind='rendered')])['acceptance_passed'])
+        self.assertTrue(validate_evidence(self.report, [dict(self.requirement, kind='real save')])['acceptance_passed'])
+        self.assertFalse(validate_evidence(self.report, [dict(self.requirement, kind='rendered')])['acceptance_passed'])
         run['Screenshots'] = ['bound-page.png']
-        self.assertTrue(evaluate(self.report, [dict(self.requirement, kind='rendered')])['acceptance_passed'])
+        self.assertTrue(validate_evidence(self.report, [dict(self.requirement, kind='rendered')])['acceptance_passed'])
         self.report['Plan']['SeenCues'] = ['injected-native-history']
-        self.assertFalse(evaluate(self.report, [dict(self.requirement, kind='real save')])['acceptance_passed'])
+        self.assertFalse(validate_evidence(self.report, [dict(self.requirement, kind='real save')])['acceptance_passed'])
 
     def test_wrong_path_missing_contact_version_skip_and_truncation_leave_open(self):
         mutations = [lambda r: r['Saves'][0]['State'].update(Area='azata-only-area'),
@@ -54,15 +54,15 @@ class EvidenceTests(unittest.TestCase):
         for mutate in mutations:
             report = copy.deepcopy(self.report)
             mutate(report)
-            self.assertFalse(evaluate(report, [self.requirement])['acceptance_passed'])
+            self.assertFalse(validate_evidence(report, [self.requirement])['acceptance_passed'])
 
     def test_empty_or_missing_inventory_and_owner_remain_open(self):
-        self.assertFalse(evaluate(self.report, [])['acceptance_passed'])
+        self.assertFalse(validate_evidence(self.report, [])['acceptance_passed'])
         requirement = dict(self.requirement)
         requirement.pop('owner')
-        self.assertFalse(evaluate(self.report, [requirement])['acceptance_passed'])
+        self.assertFalse(validate_evidence(self.report, [requirement])['acceptance_passed'])
         self.report['Saves'][0]['Runs'] = []
-        self.assertFalse(evaluate(self.report, [self.requirement])['acceptance_passed'])
+        self.assertFalse(validate_evidence(self.report, [self.requirement])['acceptance_passed'])
 
     def test_public_receipt_includes_identity_and_keeps_earning_open(self):
         root = Path(__file__).resolve().parents[1]
@@ -75,7 +75,7 @@ class EvidenceTests(unittest.TestCase):
             requirements.write_text(json.dumps([dict(self.requirement, kind='earned campaign')]), encoding="utf-8")
             result = subprocess.run([sys.executable, str(root / 'tools/harness_evidence.py'), str(report),
                 '--requirements', str(requirements), '--out', str(out), '--source-hash', 'a' * 64,
-                '--export-hash', 'b' * 64], capture_output=True, text=True, timeout=10)
+                '--export-hash', 'b' * 64], capture_output=True, text=True, encoding="utf-8", timeout=10)
             self.assertEqual(2, result.returncode, result.stderr)
             receipt = json.loads(out.read_text(encoding="utf-8"))
             self.assertEqual('a' * 64, receipt['source_hash'])
@@ -116,7 +116,7 @@ Console.WriteLine("PASS offline live report coverage");''', encoding="utf-8")
             env = dict(os.environ)
             env.pop('RRT_TEST_BUILD_ROOT', None)
             result = subprocess.run(['dotnet', 'run', '--project', str(temp / 'Report.csproj'), '-c', 'Release'],
-                                    cwd=temp, env=env, capture_output=True, text=True, timeout=90)
+                                    cwd=temp, env=env, capture_output=True, text=True, encoding="utf-8", timeout=90)
             self.assertEqual(0, result.returncode, result.stdout + result.stderr)
 
 
