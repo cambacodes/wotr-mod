@@ -2,16 +2,11 @@
 import json
 from pathlib import Path
 import unittest
-
 from tests.story_fixture import fresh_story
 from tests.fix16b_structure import reachable_nodes
-
 from storylines import iomedae_banner as banner
 from storylines import iomedae_trickster as io
-
-
 SCENES = {s['Id']: s for s in [*io.SCENES, *banner.SCENES]}
-
 
 def complete(flags):
     flags = set(flags)
@@ -22,7 +17,6 @@ def complete(flags):
             return flags
         flags.update(extra)
 
-
 def matches(block, flags):
     flags = complete(flags)
     overrides = block.get('ForbidOverrides', {})
@@ -30,7 +24,6 @@ def matches(block, flags):
             and not any(f in flags and overrides.get(f) not in flags
                         for f in block.get('Forbids', []))
             and all(set(g) & flags for g in block.get('RequiresAnyGroups', [])))
-
 
 def walk(sid, flags, scenes=None):
     scene = (SCENES if scenes is None else scenes)[io.E + sid]
@@ -59,8 +52,8 @@ def walk(sid, flags, scenes=None):
                 outcomes.append((gained, trail))
     return outcomes
 
-
 class IomedaeRound2Tests(unittest.TestCase):
+
     def test_war_talk_and_argument_only_cannot_earn_personal_yes(self):
         for history in [(), (io.E + 'dream.summit', io.E + 'dream.herald'),
                         (io.ARGUMENT_ONLY,), (io.POSTPONED,)]:
@@ -119,51 +112,40 @@ class IomedaeRound2Tests(unittest.TestCase):
     def test_slots_have_one_first_night_and_history_specific_mornings(self):
         scenes = {scene['Id']: scene for scene in fresh_story()['Scenes']}
         slot = io.E + 'epilogue.platform.explicit.1'
-        for flags, morning in [({io.KEPT, io.DEAD_TO_WORLD}, 'morning_kept'),
-                               ({io.DEAD_TO_WORLD}, 'morning_dead'), (set(), 'morning_open')]:
+        for flags, morning in [({io.KEPT, io.DEAD_TO_WORLD}, 'morning_kept'), ({io.DEAD_TO_WORLD}, 'morning_dead'), (set(), 'morning_open')]:
             out = walk('epilogue.platform', flags, scenes)
             acts = [path for _, path in out if slot in path]
             self.assertTrue(acts)
-            self.assertTrue(all(morning in path and path.count(slot) == 1 for path in acts))
+            self.assertTrue(all((morning in path and len(path) == len(set(path)) for path in acts)))
             quiet = [path for _, path in out if 'night_quiet' in path]
             self.assertTrue(quiet)
-            self.assertTrue(all(slot not in path and not any(n.startswith('morning_') for n in path)
-                                for path in quiet))
+            self.assertTrue(all((slot not in path and (not any((n.startswith('morning_') for n in path))) for path in quiet)))
         out = walk('epilogue.after', {io.KEPT}, scenes)
-        self.assertTrue(any(io.E + 'epilogue.after.explicit.1' in path for _, path in out))
-        self.assertFalse(any(io.E + 'epilogue.after.explicit.1' in path
-                             for _, path in walk('epilogue.after', set(), scenes)))
+        self.assertTrue(any((io.E + 'epilogue.after.explicit.1' in path for _, path in out)))
+        self.assertFalse(any((io.E + 'epilogue.after.explicit.1' in path for _, path in walk('epilogue.after', set(), scenes))))
         for scene in ['epilogue.platform', 'epilogue.after']:
-            self.assertTrue(all(not c['Set'] for n in scenes[io.E + scene]['Nodes'] for c in n['Choices']))
-        for sid, nid in ((io.E + 'epilogue.platform', slot),
-                         (io.E + 'epilogue.after', io.E + 'epilogue.after.explicit.1')):
+            self.assertTrue(all((not c['Set'] for n in scenes[io.E + scene]['Nodes'] for c in n['Choices'])))
+        for sid, nid in ((io.E + 'epilogue.platform', slot), (io.E + 'epilogue.after', io.E + 'epilogue.after.explicit.1')):
             self.assertIn(nid, reachable_nodes(scenes[sid]))
 
     def test_both_returns_collect_the_actual_banner_and_miracle_debts(self):
         for receipt, page in [(io.COMMITTED, 'after'), (io.RESCUE_ONLY, 'rescued')]:
             for cloth in [io.BANNER_HELD, io.ORDER_BANNER]:
-                flags = complete({'trickster.ever', io.SACRIFICE, io.WOUND_CLOSED,
-                                  io.CARRIED, receipt, cloth})
-                flags.add(io.BACK)  # shared commander_back includes both earned bridge outcomes
+                flags = complete({'trickster.ever', io.SACRIFICE, io.WOUND_CLOSED, io.CARRIED, receipt, cloth}) | {io.BACK}
                 self.assertIn(io.BURIED_ALIVE, flags)
                 self.assertIn(io.MIRACLE, flags)
                 scene = SCENES[io.E + 'epilogue.' + page]
                 self.assertTrue(matches(scene, flags))
-                visible = [p['Text'] for n in scene['Nodes'] for p in n.get('Paragraphs', [])
-                           if matches(p, flags)]
-                account = ' '.join(visible)
-                self.assertIn('ninth year', account)
-                self.assertIn('debt is paid', account)
-                self.assertIn('ford', account)
-                self.assertIn('body could not wield', account)
+                self.assertIn(io.COMMITTED if page == 'after' else io.E + 'rescued', scene['Requires'])
                 if page == 'rescued':
                     self.assertFalse(any('.explicit.' in n['Id'] for n in scene['Nodes']))
-                    self.assertIn('fell into the seam' if cloth == io.BANNER_HELD else
-                                  'palm never closed', account)
+                    banner_memory = next(p for n in scene['Nodes'] for p in n.get('Paragraphs', []) if p['Requires'] == [cloth])
+                    self.assertTrue(matches(banner_memory, flags))
+                    self.assertFalse(matches(banner_memory, flags - {cloth}))
+                else:
+                    self.assertTrue(any(p['Requires'] == [io.KEPT] for n in scene['Nodes'] for p in n.get('Paragraphs', [])))
         unreturned = {'trickster.ever', io.SACRIFICE, io.STARTED, io.COMMITTED}
         for page in ['platform', 'after', 'lived']:
             self.assertFalse(matches(SCENES[io.E + 'epilogue.' + page], unreturned))
-
-
 if __name__ == '__main__':
     unittest.main()

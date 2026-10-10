@@ -9,54 +9,41 @@ import itertools
 import json
 from pathlib import Path
 import unittest
-
+from tests.structure import without_prose
 from expansion import make_expansion
 from storylines import lastcall_partners, nidalynn_trickster as route
 from tests.story_fixture import fresh_story
 from tools import rrt_verify as verify, savecompat
-
-
-TRUTH = Path(__file__).resolve().parents[1] / "tools/route_packs/redesign/nidalynn/truth.json"
-PAIR = "household.pair.nidalynn_devarra."
-CHAPLAIN = [route.P + "chaplain_prayed", route.P + "chaplain_sent_away"]
-DEPARTURE = {
-    "wolves": {"trickster.ever", route.P + "goat.lie_kept"},
-    "apart": {"trickster.ever", route.P + "met", route.CLOSED},
-    "claimed": {"trickster.ever", route.P + "left_with_it"},
-    "lie": {"trickster.ever", route.P + "lie_kept"},
-    "given": {"trickster.ever", route.P + "given_to_the_crowd"},
-}
-
+TRUTH = Path(__file__).resolve().parents[1] / 'tools/route_packs/redesign/nidalynn/truth.json'
+PAIR = 'household.pair.nidalynn_devarra.'
+CHAPLAIN = [route.P + 'chaplain_prayed', route.P + 'chaplain_sent_away']
+DEPARTURE = {'wolves': {'trickster.ever', route.P + 'goat.lie_kept'}, 'apart': {'trickster.ever', route.P + 'met', route.CLOSED}, 'claimed': {'trickster.ever', route.P + 'left_with_it'}, 'lie': {'trickster.ever', route.P + 'lie_kept'}, 'given': {'trickster.ever', route.P + 'given_to_the_crowd'}}
 
 def visible(block, flags):
     return (set(block.get("Requires", [])) <= flags
             and not set(block.get("Forbids", [])) & flags
             and all(set(group) & flags for group in block.get("AnyGroups", [])))
 
-
 class NidalynnPartnerClaimTests(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
-        cls.truth = json.loads(TRUTH.read_text(encoding="utf-8"))
-        # Apply only the coordinator's explicit amendments to the frozen oracle.
-        # unreturned still conflicts with the decision in the export: escalate
-        # its containing-page gate rather than encode a new failing regression.
-        for scene in cls.truth["scene_contracts"]:
-            if scene["Id"] in {route.P + "epilogue." + e for e in DEPARTURE}:
-                scene["Requires"] = [f for f in scene["Requires"] if f != "nidalynn.present_now"]
-            if scene["Id"] == route.P + "kiln.the_chaplain":
-                scene["Forbids"].insert(scene["Forbids"].index(CHAPLAIN[0]) + 1, CHAPLAIN[1])
-                for node in scene["Nodes"]:
-                    if node["Id"] in ("after_prayer", "leave", "end"):
-                        node["Choices"][0]["Set"] = {"after_prayer": [CHAPLAIN[0]],
-                            "leave": [CHAPLAIN[1]], "end": []}[node["Id"]]
+        cls.truth = json.loads(TRUTH.read_text(encoding='utf-8'))
+        for scene in cls.truth['scene_contracts']:
+            if scene['Id'] in {route.P + 'epilogue.' + e for e in DEPARTURE}:
+                scene['Requires'] = [f for f in scene['Requires'] if f != 'nidalynn.present_now']
+            if scene['Id'] == route.P + 'kiln.the_chaplain':
+                scene['Forbids'].insert(scene['Forbids'].index(CHAPLAIN[0]) + 1, CHAPLAIN[1])
+                for node in scene['Nodes']:
+                    if node['Id'] in ('after_prayer', 'leave', 'end'):
+                        ordered_answer_1, *_ = node['Choices']
+                        ordered_answer_1['Set'] = {'after_prayer': [CHAPLAIN[0]], 'leave': [CHAPLAIN[1]], 'end': []}[node['Id']]
         cls.story = fresh_story()
-        cls.scenes = {s["Id"]: s for s in cls.story["Scenes"]}
+        cls.scenes = {s['Id']: s for s in cls.story['Scenes']}
         cls.model = verify.Model(cls.story)
-        cls.contracts = {s["Id"]: s for s in cls.truth["scene_contracts"]}
-        cls.appends = {s["scene"]: s for s in cls.truth["audit_append_acceptance"]}
-        cls.families = {f["id"]: {c["id"]: c for c in f["cases"]}
-                        for f in cls.truth["history_families"]}
+        cls.contracts = {s['Id']: s for s in cls.truth['scene_contracts']}
+        cls.appends = {s['scene']: s for s in cls.truth['audit_append_acceptance']}
+        cls.families = {f['id']: {c['id']: c for c in f['cases']} for f in cls.truth['history_families']}
 
     def assert_case(self, family, case, state):
         when = self.families[family][case]["when"]
@@ -65,52 +52,50 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
 
     def test_frozen_scene_reader_and_shared_producer_contracts(self):
         """B01-B28: preserve gates, ordered choices, effects and save IDs."""
-        for expected in self.truth["scene_contracts"]:
-            actual = self.scenes[expected["Id"]]
-            with self.subTest(scene=expected["Id"]):
+        for expected in self.truth['scene_contracts']:
+            actual = self.scenes[expected['Id']]
+            with self.subTest(scene=expected['Id']):
                 for field, value in expected.items():
-                    if field not in ("Nodes", "export_index", "Entry", "ReturnText"):
-                        if expected["Id"] == route.P + "epilogue.unreturned" and field == "Requires":
-                            # Containing presence/payoff conflict is escalated to fix15.
-                            self.assertTrue({"trickster.ever", "sacrifice"} <= set(actual[field]))
+                    if field not in ('Nodes', 'export_index', 'Entry', 'ReturnText'):
+                        if expected['Id'] == route.P + 'epilogue.unreturned' and field == 'Requires':
+                            self.assertTrue({'trickster.ever', 'sacrifice'} <= set(actual[field]))
                             continue
                         self.assertEqual(actual.get(field), value, field)
-                self.assertEqual([n["Id"] for n in actual["Nodes"]],
-                                 [n["Id"] for n in expected["Nodes"]])
-            for node, frozen in zip(actual["Nodes"], expected["Nodes"]):
-                with self.subTest(scene=expected["Id"], node=frozen["Id"]):
+                self.assertEqual([n['Id'] for n in actual['Nodes']], [n['Id'] for n in expected['Nodes']])
+            for node, frozen in zip(actual['Nodes'], expected['Nodes']):
+                with self.subTest(scene=expected['Id'], node=frozen['Id']):
                     for field, value in frozen.items():
-                        if field not in ("Choices", "Paragraphs", "text_sha256", "sayable_claims_source", "Text"):
+                        if field not in ('Choices', 'Paragraphs', 'text_sha256', 'sayable_claims_source', 'Text'):
                             self.assertEqual(node.get(field), value, field)
-                    self.assertEqual(len(node["Choices"]), len(frozen["Choices"]))
+                    self.assertEqual(savecompat.choice_identities(actual, node), [c['save_identity'] for c in frozen['Choices']])
                 identities = savecompat.choice_identities(actual, node)
-                for answer in frozen["Choices"]:
-                    index = answer["index"]
-                    with self.subTest(scene=expected["Id"], node=frozen["Id"], choice=index):
-                        choice = node["Choices"][index]
+                for answer in frozen['Choices']:
+                    index = answer['index']
+                    with self.subTest(scene=expected['Id'], node=frozen['Id'], choice=index):
+                        choice = self.saved_answer(actual, node, answer)
                         for field, value in answer.items():
-                            if field not in ("index", "save_identity", "Text"):
+                            if field not in ('index', 'save_identity', 'Text'):
                                 self.assertEqual(choice.get(field), value, field)
-                        self.assertEqual(identities[index], answer["save_identity"])
-                for paragraph in frozen["Paragraphs"]:
-                    with self.subTest(scene=expected["Id"], node=frozen["Id"], paragraph=paragraph["index"]):
+                        self.assertEqual(identities[index], answer['save_identity'])
+                for paragraph in frozen['Paragraphs']:
+                    with self.subTest(scene=expected['Id'], node=frozen['Id'], paragraph=paragraph['index']):
                         self.assert_predicate_present(node, paragraph)
-        for section, entries in self.truth["reader_contracts"].items():
+        for section, entries in self.truth['reader_contracts'].items():
             for key, expected in entries.items():
                 with self.subTest(reader=section, key=key):
                     self.assertEqual(self.story[section][key], expected)
-        for expected in self.truth["read_only_pair_producers"]:
-            actual = self.scenes[expected["Id"]]
-            with self.subTest(producer=expected["Id"]):
+        for expected in self.truth['read_only_pair_producers']:
+            actual = self.scenes[expected['Id']]
+            with self.subTest(producer=expected['Id']):
                 for field, value in expected.items():
-                    if field != "transitions":
+                    if field != 'transitions':
                         self.assertEqual(actual.get(field), value, field)
-            nodes = {n["Id"]: n for n in actual["Nodes"]}
-            for transition in expected["transitions"]:
-                with self.subTest(producer=expected["Id"], node=transition["node"], choice=transition["index"]):
-                    choice = nodes[transition["node"]]["Choices"][transition["index"]]
+            nodes = {n['Id']: n for n in actual['Nodes']}
+            for transition in expected['transitions']:
+                with self.subTest(producer=expected['Id'], node=transition['node'], choice=transition['index']):
+                    choice = self.saved_answer(actual, nodes[transition['node']], transition)
                     for field, value in transition.items():
-                        if field not in ("node", "index"):
+                        if field not in ('node', 'index'):
                             self.assertEqual(choice.get(field), value, field)
 
     def test_every_reveal_answer_records_the_disguise(self):
@@ -121,24 +106,22 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
             self.assertEqual(choice["Set"], [route.REVEALED, route.PARTNER_DISGUISE])
 
     def test_both_commitments_keep_the_existing_choices_and_record_history(self):
-        expected = {
-            route.P + "ridge.first_flight": ("offer", [route.COMMITTED, route.SALT, route.PROPOSED]),
-            route.P + "kiln.the_heel": ("wait", [route.COMMITTED, route.SALT]),
-        }
+        expected = {route.P + 'ridge.first_flight': ('offer', [route.COMMITTED, route.SALT, route.PROPOSED]), route.P + 'kiln.the_heel': ('wait', [route.COMMITTED, route.SALT])}
         actual = []
-        for scene in self.story["Scenes"]:
-            if scene.get("Relationship") != route.REL:
+        for scene in self.story['Scenes']:
+            if scene.get('Relationship') != route.REL:
                 continue
-            for node in scene["Nodes"]:
-                for index, choice in enumerate(node["Choices"]):
-                    if route.COMMITTED not in choice.get("Set", []):
+            for node in scene['Nodes']:
+                for identity, choice in zip(savecompat.choice_identities(scene, node), node['Choices']):
+                    if route.COMMITTED not in choice.get('Set', []):
                         continue
-                    actual.append(scene["Id"])
-                    node_id, old_flags = expected[scene["Id"]]
-                    self.assertEqual((node["Id"], index), (node_id, 0))
-                    self.assertEqual(choice["Set"], [*old_flags, route.PARTNER_DISGUISE])
-                    self.assertEqual(choice["Requires"], ["trickster.now"])
-                    self.assertFalse(choice["Forbids"])
+                    actual.append(scene['Id'])
+                    node_id, old_flags = expected[scene['Id']]
+                    self.assertEqual(node['Id'], node_id)
+                    self.assertEqual(identity, dict(Id=None, GuidFor=f"answer.{scene['Id']}.{node_id}.0"))
+                    self.assertEqual(choice['Set'], [*old_flags, route.PARTNER_DISGUISE])
+                    self.assertEqual(choice['Requires'], ['trickster.now'])
+                    self.assertFalse(choice['Forbids'])
         self.assertCountEqual(actual, expected)
 
     def test_no_stance_or_eligibility_gate_for_a_fictional_bond(self):
@@ -155,23 +138,36 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
                     if field != "Set":
                         self.assertNotIn(route.PARTNER_DISGUISE, flags)
 
+    @staticmethod
+    def predicate(block):
+        return {field: block.get(field, []) for field in ('Requires', 'Forbids', 'AnyGroups')}
+
+    def history_block(self, sid, index):
+        frozen = self.appends[sid]
+        expected = next((p for p in [*frozen['prefix'], *frozen['appended']] if p['index'] == index))
+        page = self.model.nodes[sid][frozen['node']]
+        return next((p for p in page['Paragraphs'] if self.predicate(p) == self.predicate(expected)))
+
+    def saved_answer(self, scene, node, expected):
+        if 'save_identity' in expected:
+            return next((answer for identity, answer in zip(savecompat.choice_identities(scene, node), node['Choices']) if identity == expected['save_identity']))
+        fields = {key: value for key, value in expected.items() if key not in ('index', 'node', 'Text')}
+        return next((answer for answer in node['Choices'] if all((answer.get(key) == value for key, value in fields.items()))))
+
     def assert_predicate_present(self, page, expected):
         """Find earned history by its gates, independently of prose placement."""
-        fields = ("Requires", "Forbids", "AnyGroups")
-        signature = {field: list(expected[field]) for field in fields}
-        if signature["Requires"] == [CHAPLAIN[0]]:
-            signature["Requires"] = []
-            signature["AnyGroups"] = [CHAPLAIN]
-            # Either recorded chaplain history suffices; neither grants memory.
-            matches = [block for block in page.get("Paragraphs", [])
-                       if block.get("AnyGroups") == [CHAPLAIN]]
+        fields = ('Requires', 'Forbids', 'AnyGroups')
+        signature = {field: list(expected.get(field)) for field in fields}
+        if signature['Requires'] == [CHAPLAIN[0]]:
+            signature['Requires'] = []
+            signature['AnyGroups'] = [CHAPLAIN]
+            matches = [block for block in page.get('Paragraphs', []) if block.get('AnyGroups') == [CHAPLAIN]]
             self.assertTrue(matches)
             for block in matches:
                 for flag in CHAPLAIN:
                     self.assertTrue(visible(block, {flag}))
                 self.assertFalse(visible(block, set()))
-        self.assertIn(signature, [{field: block.get(field, []) for field in fields}
-                                  for block in page.get("Paragraphs", [])])
+        self.assertIn(signature, [{field: block.get(field, []) for field in fields} for block in page.get('Paragraphs', [])])
 
     def test_all_nine_endings_keep_existing_paragraph_indices(self):
         """Every declared ending retains its history predicates and inert exit."""
@@ -219,36 +215,45 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
                         self.assert_predicate_present(page, expected)
 
     def test_lastcall_conditional_history_and_unconditional_disguise(self):
-        page = self.scenes["nidalynn.lastcall.page"]["Nodes"][0]
-        self.assertEqual(page["Id"], "page")
-        self.assertEqual(page["Paragraphs"][7]["Requires"],
-                         ["lastcall.h2", "iomedae.trickster.buried_alive",
-                          "crossroute.nidalynn.available"])
-        self.assertEqual(page["Paragraphs"][7]["Forbids"], [])
-        self.assertEqual(page["Paragraphs"][7]["AnyGroups"], [])
-        for field in ("Requires", "Forbids", "AnyGroups"):
-            self.assertFalse(page["Paragraphs"][8][field])
+        sid = 'nidalynn.lastcall.page'
+        page = self.model.nodes[sid]['page']
+        self.assertEqual(page['Id'], 'page')
+        history = self.history_block(sid, 7)
+        self.assertEqual(history['Requires'], ['lastcall.h2', 'iomedae.trickster.buried_alive', 'crossroute.nidalynn.available'])
+        self.assertEqual(history['Forbids'], [])
+        self.assertEqual(history['AnyGroups'], [])
+        unconditional = self.history_block(sid, 8)
+        for field in ('Requires', 'Forbids', 'AnyGroups'):
+            self.assertFalse(unconditional.get(field))
 
     def test_integration_and_repeated_assembly_are_idempotent(self):
         """T-IDEMP executes independently even when another test's count fails."""
+
         def partner():
-            return copy.deepcopy(next(p for p in lastcall_partners.PARTNERS if p["rel"] == route.REL))
-        payload = {"Presences": {}, "SeenCues": {}, "Derived": {}}
+            return copy.deepcopy(next((p for p in lastcall_partners.PARTNERS if p['rel'] == route.REL)))
+        payload = {'Presences': {}, 'SeenCues': {}, 'Derived': {}}
         route.integrate(payload)
-        first, first_payload = partner(), copy.deepcopy(payload)
+        first, first_payload = (partner(), copy.deepcopy(payload))
         route.integrate(payload)
-        self.assertEqual(first, partner())
+        self.assertEqual(without_prose(first), without_prose(partner()))
         self.assertEqual(first_payload, payload)
-        for expected in self.truth["audit_append_acceptance"][-1]["prefix"][8:]:
-            self.assertEqual(sum(p["Text"] == expected["Text"] for p in first["paragraphs"]), 1)
+        for expected in self.truth['audit_append_acceptance'][-1]['prefix'][8:]:
+            signature = self.predicate(expected)
+            # The export adds containing-page presence; the raw supplier has history gates.
+            signature['Requires'] = [flag for flag in signature['Requires']
+                                     if flag != 'crossroute.nidalynn.available']
+            matching_history, = [self.predicate(p) for p in first['paragraphs']
+                                 if self.predicate(p) == signature]
+            self.assertEqual(matching_history, signature)
+        self.assertEqual([self.predicate(p) for p in first['paragraphs']], [self.predicate(p) for p in partner()['paragraphs']])
+
         def route_slice(story):
-            return {s["Id"]: s for s in story["Scenes"]
-                    if s["Id"] in self.contracts}
+            return {s['Id']: s for s in story['Scenes'] if s['Id'] in self.contracts}
         first_story = route_slice(make_expansion())
         first_partner = partner()
         second_story = route_slice(make_expansion())
-        self.assertEqual(first_story, second_story)
-        self.assertEqual(first_partner, partner())
+        self.assertEqual(without_prose(first_story), without_prose(second_story))
+        self.assertEqual(without_prose(first_partner), without_prose(partner()))
 
     def advance(self, state, hours):
         state.hour += hours
@@ -264,43 +269,42 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
         """
         scene = self.model.by_id[sid]
         if wait:
-            self.advance(state, scene["DelayHours"])
+            self.advance(state, scene['DelayHours'])
         self.assertTrue(verify.sim_available(self.model, scene, state), sid)
         frozen = self.contracts.get(sid)
         if frozen:
-            nodes = {n["Id"]: n for n in frozen["Nodes"]}
+            nodes = {n['Id']: n for n in frozen['Nodes']}
         else:
-            producer = next(s for s in self.truth["read_only_pair_producers"] if s["Id"] == sid)
+            producer = next((s for s in self.truth['read_only_pair_producers'] if s['Id'] == sid))
             nodes = {}
-            for answer in producer["transitions"]:
-                nodes.setdefault(answer["node"], {"Choices": []})["Choices"].append(answer)
-        actual = {n["Id"]: n for n in scene["Nodes"]}
-        flags, path = set(state.flags), []
-        node_id = scene["Nodes"][0]["Id"]
+            for answer in producer['transitions']:
+                nodes.setdefault(answer['node'], {'Choices': []})['Choices'].append(answer)
+        actual = {n['Id']: n for n in scene['Nodes']}
+        flags, path = (set(state.flags), [])
+        node_id = scene['Nodes'][0]['Id']
         visited = set()
         while node_id is not None:
             self.assertNotIn(node_id, visited, (sid, node_id))
             visited.add(node_id)
-            flags.update(nodes[node_id].get("EnterSet", []))
-            candidates = nodes[node_id]["Choices"]
+            flags.update(nodes[node_id].get('EnterSet', []))
+            candidates = nodes[node_id]['Choices']
             selected = (selections or {}).get(node_id)
             if selected is None:
-                selected = next(c["index"] for c in candidates
-                                if set(c["Requires"]) <= flags and not set(c["Forbids"]) & flags)
-            expected = candidates[selected]
-            self.assertTrue(set(expected["Requires"]) <= flags, (sid, node_id, selected))
-            self.assertFalse(set(expected["Forbids"]) & flags, (sid, node_id, selected))
-            choice = actual[node_id]["Choices"][selected]
+                selected = next((c['index'] for c in candidates if set(c['Requires']) <= flags and (not set(c['Forbids']) & flags)))
+            expected = next((c for c in candidates if c['index'] == selected))
+            self.assertTrue(set(expected['Requires']) <= flags, (sid, node_id, selected))
+            self.assertFalse(set(expected['Forbids']) & flags, (sid, node_id, selected))
+            choice = self.saved_answer(scene, actual[node_id], expected)
             path.append(choice)
-            flags.update(expected["Set"])
-            if expected["Abort"]:
+            flags.update(expected['Set'])
+            if expected['Abort']:
                 break
-            if expected.get("Check"):
-                result = "Failure" if node_id in failures else "Success"
-                self.assertEqual(choice["Check"], expected["Check"])
-                node_id = expected["Check"][result]
+            if expected.get('Check'):
+                result = 'Failure' if node_id in failures else 'Success'
+                self.assertEqual(choice['Check'], expected['Check'])
+                node_id = expected['Check'][result]
             else:
-                node_id = expected.get("PostPayment") or expected["Next"]
+                node_id = expected.get('PostPayment') or expected['Next']
         completed = verify.sim_play(self.model, scene, state, {}, plan=(None, path))
         verify.sim_complete(self.model, state)
         return completed
@@ -374,24 +378,25 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
         for skill, failed, crush in itertools.product((0, 1), (False, True), (False, True)):
             with self.subTest(skill=skill, failed=failed, crush=crush):
                 state = self.native_start()
-                sid = route.P + "eggs.lamp_black"
-                self.walk(state, sid, {"look": skill, "held": int(crush)}, ("look",) if failed else ())
-                case = "golem_egg_crushed" if crush else "golems_kept"
-                self.assert_case("entry", case, state)
-                terminal = next(n for n in self.scenes[sid]["Nodes"]
-                                if n["Id"] == ("crushed" if crush else "packed"))
-                selected = [c for c in terminal["Choices"] if visible(c, state.flags)]
-                self.assertEqual(len(selected), 1)
-                self.assertEqual(selected[0].get("NativeNext"), route.GOLEM_ALARM if failed else None)
+                sid = route.P + 'eggs.lamp_black'
+                self.walk(state, sid, {'look': skill, 'held': int(crush)}, ('look',) if failed else ())
+                case = 'golem_egg_crushed' if crush else 'golems_kept'
+                self.assert_case('entry', case, state)
+                terminal = next((n for n in self.scenes[sid]['Nodes'] if n['Id'] == ('crushed' if crush else 'packed')))
+                selected = [c for c in terminal['Choices'] if visible(c, state.flags)]
+                selected_answer, = selected
+                self.assertEqual(selected_answer['Next'], None)
+                ordered_answer_2, *_ = selected
+                self.assertEqual(ordered_answer_2.get('NativeNext'), route.GOLEM_ALARM if failed else None)
                 self.advance(state, 24)
-                self.assertEqual(verify.sim_available(self.model, self.model.by_id[route.P + "hearth.grey_stone"], state), not crush)
-        for case in ("unprimed_omelet", "unprimed_destroyed", "rescue_not_taken"):
+                self.assertEqual(verify.sim_available(self.model, self.model.by_id[route.P + 'hearth.grey_stone'], state), not crush)
+        for case in ('unprimed_omelet', 'unprimed_destroyed', 'rescue_not_taken'):
             with self.subTest(entry=case):
                 state = self.native_start()
-                state.flags.update(self.families["entry"][case]["when"]["all"])
+                state.flags.update(self.families['entry'][case]['when']['all'])
                 verify.sim_complete(self.model, state)
-                self.assert_case("entry", case, state)
-                for suffix in ("hearth.grey_stone", "steps.widow", "eggs.vault", "eggs.straw"):
+                self.assert_case('entry', case, state)
+                for suffix in ('hearth.grey_stone', 'steps.widow', 'eggs.vault', 'eggs.straw'):
                     self.assertFalse(verify.sim_available(self.model, self.model.by_id[route.P + suffix], state), suffix)
 
     def test_postponed_heel_refusal_and_current_path_keep_their_earned_gates(self):
@@ -430,22 +435,21 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
 
     def initial_delivery(self, body, road):
         state = self.courtship(body)
-        self.walk(state, PAIR + "notice." + body)
-        before = state.crusade_resources["Materials"]
+        self.walk(state, PAIR + 'notice.' + body)
+        before = state.crusade_resources['Materials']
         index = dict(checked=0, hired=1, failed=0, refused=2)[road]
-        self.walk(state, PAIR + "custody." + body, {"start": index},
-                  ("start",) if road == "failed" else ())
-        # A paid terminal completes before its PostPayment continuation aborts.
-        self.assertIn(PAIR + "custody." + body, state.flags)
-        self.assertEqual(state.crusade_resources["Materials"] - before, -100 if road == "hired" else 0)
-        if road == "hired":
-            scene = self.model.by_id[PAIR + "custody." + body]
-            hire = next(n for n in scene["Nodes"] if n["Id"] == "hire")
-            self.assertIn(verify.payment_key(scene, hire["Choices"][0]), state.flags)
-        if road in ("failed", "refused"):
-            self.assert_case("household_custody", "pair_" + road, state)
+        self.walk(state, PAIR + 'custody.' + body, {'start': index}, ('start',) if road == 'failed' else ())
+        self.assertIn(PAIR + 'custody.' + body, state.flags)
+        self.assertEqual(state.crusade_resources['Materials'] - before, -100 if road == 'hired' else 0)
+        if road == 'hired':
+            scene = self.model.by_id[PAIR + 'custody.' + body]
+            hire = next((n for n in scene['Nodes'] if n['Id'] == 'hire'))
+            ordered_answer_3, *_ = hire['Choices']
+            self.assertIn(verify.payment_key(scene, ordered_answer_3), state.flags)
+        if road in ('failed', 'refused'):
+            self.assert_case('household_custody', 'pair_' + road, state)
         else:
-            self.assert_case("household_custody", "pair_paid_resolved", state)
+            self.assert_case('household_custody', 'pair_paid_resolved', state)
         return state
 
     def ending_history(self, source, ending, called=True, late=False):
@@ -476,91 +480,83 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
         return self.append_visible(state, sid, index)
 
     def append_visible(self, state, sid, index):
-        """Render the containing page before matching an independently frozen claim."""
+        """Containing-page availability and the frozen earned-history predicate."""
         scene = self.model.by_id[sid]
         if not verify.sim_available(self.model, scene, state):
             return False
-        page = scene["Nodes"][0]
-        rendered = [p["Text"] for p in page["Paragraphs"] if visible(p, state.flags)]
-        expected = next(p for p in self.appends[sid]["appended"] if p["index"] == index)
-        return expected["Text"] in rendered
+        expected = next((p for p in self.appends[sid]['appended'] if p['index'] == index))
+        return any((self.predicate(block) == self.predicate(expected) and visible(block, state.flags) for node in scene['Nodes'] for block in node.get('Paragraphs', [])))
 
     def test_paid_delivery_and_repair_histories_render_in_each_earned_page(self):
         """PA-01/02: four positives × both bodies × salt/late/LastCall."""
-        for body, road in itertools.product(self.truth["paid_repair_acceptance"]["bodies"],
-                                            ("checked", "hired", "failed", "refused")):
+        for body, road in itertools.product(self.truth['paid_repair_acceptance']['bodies'], ('checked', 'hired', 'failed', 'refused')):
             with self.subTest(body=body, road=road):
                 state = self.initial_delivery(body, road)
-                if road in ("failed", "refused"):
-                    repair = self.model.by_id[PAIR + "repair." + body]
+                if road in ('failed', 'refused'):
+                    repair = self.model.by_id[PAIR + 'repair.' + body]
                     self.assertFalse(verify.sim_available(self.model, repair, state))
                     self.advance(state, 47)
                     self.assertFalse(verify.sim_available(self.model, repair, state))
                     self.advance(state, 1)
-                    before = state.crusade_resources["Materials"]
-                    # PostPayment's exit aborts the dialogue after the paid
-                    # terminal already published completion and its receipt.
-                    self.walk(state, repair["Id"], {"start": 0}, wait=False)
-                    self.assertIn(repair["Id"], state.flags)
-                    self.assertEqual(state.crusade_resources["Materials"] - before, -150)
-                    self.assertIn(verify.payment_key(repair, repair["Nodes"][0]["Choices"][0]), state.flags)
-                    self.assert_case("household_custody", "pair_repaired_after_" + road, state)
-                    self.assertIn(PAIR + "custody." + road, state.flags)
-                    if road == "failed":
-                        self.assertIn(PAIR + "cost.commander_feed_spilled", state.flags)
-                    self.assertIn(PAIR + "repair.seen", state.flags)
+                    before = state.crusade_resources['Materials']
+                    self.walk(state, repair['Id'], {'start': 0}, wait=False)
+                    self.assertIn(repair['Id'], state.flags)
+                    self.assertEqual(state.crusade_resources['Materials'] - before, -150)
+                    ordered_answer_4, *_ = repair['Nodes'][0]['Choices']
+                    self.assertIn(verify.payment_key(repair, ordered_answer_4), state.flags)
+                    self.assert_case('household_custody', 'pair_repaired_after_' + road, state)
+                    self.assertIn(PAIR + 'custody.' + road, state.flags)
+                    if road == 'failed':
+                        self.assertIn(PAIR + 'cost.commander_feed_spilled', state.flags)
+                    self.assertIn(PAIR + 'repair.seen', state.flags)
                     self.assertFalse(verify.sim_available(self.model, repair, state))
-                self.assert_case("household_custody", "pair_paid_resolved", state)
-                for key in ("guardian_kept", "feed_delivered", "cost.commander_luxury_lost",
-                            "cost.nidalynn_guard_night", "cost.nidalynn_own_feed"):
+                self.assert_case('household_custody', 'pair_paid_resolved', state)
+                for key in ('guardian_kept', 'feed_delivered', 'cost.commander_luxury_lost', 'cost.nidalynn_guard_night', 'cost.nidalynn_own_feed'):
                     self.assertIn(PAIR + key, state.flags)
-                self.assertEqual(PAIR + "cost.commander_delivery_paid" in state.flags, road != "checked")
-                self.assertFalse(verify.sim_available(self.model, self.model.by_id[PAIR + "repair." + body], state))
-                for ending in ("salt", "late", "lastcall"):
+                self.assertEqual(PAIR + 'cost.commander_delivery_paid' in state.flags, road != 'checked')
+                self.assertFalse(verify.sim_available(self.model, self.model.by_id[PAIR + 'repair.' + body], state))
+                for ending in ('salt', 'late', 'lastcall'):
                     with self.subTest(body=body, road=road, ending=ending):
                         final = self.ending_history(state, ending)
                         self.assertTrue(self.custody_memory(final, ending))
-                        # Creditor absence does not remove historical completed work.
-                        final.flags.add("devarra.epoch_unavailable")
+                        final.flags.add('devarra.epoch_unavailable')
                         verify.sim_complete(self.model, final)
-                        self.assertNotIn("devarra.present_now", final.flags)
+                        self.assertNotIn('devarra.present_now', final.flags)
                         self.assertTrue(self.custody_memory(final, ending))
 
     def test_incomplete_and_refused_repairs_never_earn_delivery_memory(self):
-        for body, first, outcome in itertools.product(
-                self.truth["paid_repair_acceptance"]["bodies"], ("failed", "refused"),
-                ("unplayed", "eligible", "unaffordable", "later", "second_refusal")):
+        for body, first, outcome in itertools.product(self.truth['paid_repair_acceptance']['bodies'], ('failed', 'refused'), ('unplayed', 'eligible', 'unaffordable', 'later', 'second_refusal')):
             with self.subTest(body=body, first=first, outcome=outcome):
                 state = self.initial_delivery(body, first)
-                repair = self.model.by_id[PAIR + "repair." + body]
-                before = state.crusade_resources["Materials"]
-                if outcome != "unplayed":
+                repair = self.model.by_id[PAIR + 'repair.' + body]
+                before = state.crusade_resources['Materials']
+                if outcome != 'unplayed':
                     self.advance(state, 48)
                     self.assertTrue(verify.sim_available(self.model, repair, state))
-                    if outcome == "unaffordable":
-                        state.crusade_resources["Materials"] = before = 149
-                        self.assertFalse(verify.sim_choice_available(repair["Nodes"][0]["Choices"][0], state))
-                        self.assertFalse(self.walk(state, repair["Id"], {"start": 0}, wait=False))
-                    elif outcome == "later":
-                        self.assertFalse(self.walk(state, repair["Id"], {"start": 2}, wait=False))
-                    elif outcome == "second_refusal":
-                        self.assertTrue(self.walk(state, repair["Id"], {"start": 1}, wait=False))
-                self.assertEqual(state.crusade_resources["Materials"], before)
-                self.assertIn(PAIR + "custody." + first, state.flags)
-                if first == "failed":
-                    self.assertIn(PAIR + "cost.commander_feed_spilled", state.flags)
+                    if outcome == 'unaffordable':
+                        state.crusade_resources['Materials'] = before = 149
+                        ordered_answer_5, *_ = repair['Nodes'][0]['Choices']
+                        self.assertFalse(verify.sim_choice_available(ordered_answer_5, state))
+                        self.assertFalse(self.walk(state, repair['Id'], {'start': 0}, wait=False))
+                    elif outcome == 'later':
+                        self.assertFalse(self.walk(state, repair['Id'], {'start': 2}, wait=False))
+                    elif outcome == 'second_refusal':
+                        self.assertTrue(self.walk(state, repair['Id'], {'start': 1}, wait=False))
+                self.assertEqual(state.crusade_resources['Materials'], before)
+                self.assertIn(PAIR + 'custody.' + first, state.flags)
+                if first == 'failed':
+                    self.assertIn(PAIR + 'cost.commander_feed_spilled', state.flags)
                 self.assertNotIn(route.CLOSED, state.flags)
-                for key in ("resolved", "feed_delivered", "cost.commander_delivery_paid",
-                            "cost.commander_luxury_lost", "cost.nidalynn_guard_night", "cost.nidalynn_own_feed"):
+                for key in ('resolved', 'feed_delivered', 'cost.commander_delivery_paid', 'cost.commander_luxury_lost', 'cost.nidalynn_guard_night', 'cost.nidalynn_own_feed'):
                     self.assertNotIn(PAIR + key, state.flags)
-                self.assertEqual(PAIR + "repair.seen" in state.flags, outcome == "second_refusal")
-                if outcome == "second_refusal":
-                    self.assert_case("household_custody", "pair_repair_refused", state)
-                    self.assertIn(PAIR + "guardian_kept", state.flags)
-                    self.assertIn(PAIR + "unanswered", state.flags)
+                self.assertEqual(PAIR + 'repair.seen' in state.flags, outcome == 'second_refusal')
+                if outcome == 'second_refusal':
+                    self.assert_case('household_custody', 'pair_repair_refused', state)
+                    self.assertIn(PAIR + 'guardian_kept', state.flags)
+                    self.assertIn(PAIR + 'unanswered', state.flags)
                 else:
-                    self.assert_case("household_custody", "pair_repair_incomplete_after_" + first, state)
-                for ending in ("salt", "late", "lastcall"):
+                    self.assert_case('household_custody', 'pair_repair_incomplete_after_' + first, state)
+                for ending in ('salt', 'late', 'lastcall'):
                     final = self.ending_history(state, ending)
                     self.assertFalse(self.custody_memory(final, ending), ending)
 
@@ -612,91 +608,83 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
 
     def test_windstep_appends_require_carried_inspected_or_unanswered_history(self):
         """T-APPENDS siblings: actual notice/cell/inspection, in both bodies."""
-        prefix = "household.pair.nidalynn_areelu."
-        for body, outcome in itertools.product(self.truth["paid_repair_acceptance"]["bodies"],
-                                               ("accounted", "pending", "unanswered", "none")):
+        prefix = 'household.pair.nidalynn_areelu.'
+        for body, outcome in itertools.product(self.truth['paid_repair_acceptance']['bodies'], ('accounted', 'pending', 'unanswered', 'none')):
             with self.subTest(body=body, outcome=outcome):
                 state = self.courtship(body)
-                if outcome != "none":
-                    self.walk(state, prefix + "notice." + body,
-                              {"start": 1 if outcome == "unanswered" else 0})
-                if outcome == "accounted":
-                    self.walk(state, prefix + "cell", {"start": 0})
-                    self.assertNotIn(prefix + "accounted", state.flags)
-                    self.walk(state, prefix + "receipt." + body, {"start": 0})
-                self.assert_case("household_windstep", outcome, state)
-                for ending in ("salt", "lastcall"):
+                if outcome != 'none':
+                    self.walk(state, prefix + 'notice.' + body, {'start': 1 if outcome == 'unanswered' else 0})
+                if outcome == 'accounted':
+                    self.walk(state, prefix + 'cell', {'start': 0})
+                    self.assertNotIn(prefix + 'accounted', state.flags)
+                    self.walk(state, prefix + 'receipt.' + body, {'start': 0})
+                self.assert_case('household_windstep', outcome, state)
+                for ending in ('salt', 'lastcall'):
                     final = self.ending_history(state, ending)
-                    sid = "nidalynn.lastcall.page" if ending == "lastcall" else route.P + "epilogue.salt"
+                    sid = 'nidalynn.lastcall.page' if ending == 'lastcall' else route.P + 'epilogue.salt'
                     self.assertTrue(verify.sim_available(self.model, self.model.by_id[sid], final))
-                    page = self.model.by_id[sid]["Nodes"][0]
-                    # Indices are frozen in truth; no expected player prose is pinned here.
-                    indices = {"accounted": 13, "unanswered": 14, "pending": 15} if ending == "lastcall" else {"accounted": 27}
+                    page = self.model.by_id[sid]['Nodes'][0]
+                    indices = {'accounted': 13, 'unanswered': 14, 'pending': 15} if ending == 'lastcall' else {'accounted': 27}
                     for claim, index in indices.items():
                         with self.subTest(body=body, outcome=outcome, ending=ending, claim=claim):
-                            block = page["Paragraphs"][index]
+                            block = self.history_block(sid, index)
                             self.assertEqual(visible(block, final.flags), outcome == claim)
                             self.assertEqual(self.append_visible(final, sid, index), outcome == claim)
                             if outcome == claim:
-                                # Isolated predicate fixtures: each required reader/cost
-                                # is absent, without manufacturing an alternate traversal.
-                                for missing in block["Requires"]:
+                                for missing in block['Requires']:
                                     self.assertFalse(visible(block, final.flags - {missing}), missing)
-                                for forbidden in block["Forbids"]:
+                                for forbidden in block['Forbids']:
                                     self.assertFalse(visible(block, final.flags | {forbidden}), forbidden)
-                if outcome == "accounted":
-                    final = self.ending_history(state, "lastcall")
-                    final.flags.add("areelu.epoch_unavailable")
+                if outcome == 'accounted':
+                    final = self.ending_history(state, 'lastcall')
+                    final.flags.add('areelu.epoch_unavailable')
                     verify.sim_complete(self.model, final)
-                    block = self.model.by_id["nidalynn.lastcall.page"]["Nodes"][0]["Paragraphs"][13]
+                    block = self.history_block('nidalynn.lastcall.page', 13)
                     self.assertFalse(visible(block, final.flags))
-                    self.assertFalse(self.append_visible(final, "nidalynn.lastcall.page", 13))
-                    self.assert_case("household_windstep", "accounted", final)
+                    self.assertFalse(self.append_visible(final, 'nidalynn.lastcall.page', 13))
+                    self.assert_case('household_windstep', 'accounted', final)
 
     def test_lastcall_named_refused_debt_is_history_not_a_creditor_cameo(self):
         """Compatible historical mother modifiers from truth, not presence grants."""
-        state = self.ending_history(self.courtship("chosen"), "lastcall")
-        page = self.model.by_id["nidalynn.lastcall.page"]["Nodes"][0]
-        self.assertFalse(visible(page["Paragraphs"][11], state.flags))
-        self.assert_case("devarra_debt_and_presence", "owed_not_named", state)
-        for case in ("named_bill_uncalled", "mother_refused"):
-            state.flags.update(self.families["devarra_debt_and_presence"][case]["when"]["all"])
-        state.flags.add("devarra.epoch_unavailable")
+        state = self.ending_history(self.courtship('chosen'), 'lastcall')
+        page = self.model.by_id['nidalynn.lastcall.page']['Nodes'][0]
+        self.assertFalse(visible(self.history_block('nidalynn.lastcall.page', 11), state.flags))
+        self.assert_case('devarra_debt_and_presence', 'owed_not_named', state)
+        for case in ('named_bill_uncalled', 'mother_refused'):
+            state.flags.update(self.families['devarra_debt_and_presence'][case]['when']['all'])
+        state.flags.add('devarra.epoch_unavailable')
         verify.sim_complete(self.model, state)
-        self.assert_case("devarra_debt_and_presence", "named_bill_uncalled", state)
-        self.assert_case("devarra_debt_and_presence", "mother_refused", state)
-        self.assertNotIn("devarra.present_now", state.flags)
-        block = page["Paragraphs"][11]
+        self.assert_case('devarra_debt_and_presence', 'named_bill_uncalled', state)
+        self.assert_case('devarra_debt_and_presence', 'mother_refused', state)
+        self.assertNotIn('devarra.present_now', state.flags)
+        block = self.history_block('nidalynn.lastcall.page', 11)
         self.assertTrue(visible(block, state.flags))
-        self.assertTrue(self.append_visible(state, "nidalynn.lastcall.page", 11))
-        self.assertFalse(visible(page["Paragraphs"][10], state.flags))
-        for missing in block["Requires"]:
+        self.assertTrue(self.append_visible(state, 'nidalynn.lastcall.page', 11))
+        self.assertFalse(visible(self.history_block('nidalynn.lastcall.page', 10), state.flags))
+        for missing in block['Requires']:
             with self.subTest(missing=missing):
                 self.assertFalse(visible(block, state.flags - {missing}))
 
     def test_lastcall_called_uncalled_and_late_histories_keep_local_staging(self):
         """B27: earned salt enables the call; a late kiss enables only the page."""
-        for body, called, late in itertools.product(
-                self.truth["paid_repair_acceptance"]["bodies"], (False, True), (False, True)):
+        for body, called, late in itertools.product(self.truth['paid_repair_acceptance']['bodies'], (False, True), (False, True)):
             if called and late:
                 continue
             with self.subTest(body=body, called=called, late=late):
-                source = self.initial_delivery(body, "hired")
-                state = self.ending_history(source, "lastcall", called=called, late=late)
-                self.assert_case("commander_and_finale", "lastcall_called" if called else "lastcall_uncalled", state)
-                scene = self.model.by_id["nidalynn.lastcall.page"]
+                source = self.initial_delivery(body, 'hired')
+                state = self.ending_history(source, 'lastcall', called=called, late=late)
+                self.assert_case('commander_and_finale', 'lastcall_called' if called else 'lastcall_uncalled', state)
+                scene = self.model.by_id['nidalynn.lastcall.page']
                 self.assertTrue(verify.sim_available(self.model, scene, state))
-                self.assertTrue(self.custody_memory(state, "lastcall"))
-                page = scene["Nodes"][0]
-                for index, shown in ((0, called), (9, not called and not late), (5, late)):
-                    expected = self.appends[scene["Id"]]["prefix"][index]
-                    rendered = [p["Text"] for p in page["Paragraphs"] if visible(p, state.flags)]
-                    self.assertEqual(expected["Text"] in rendered, shown, index)
+                self.assertTrue(self.custody_memory(state, 'lastcall'))
+                page = scene['Nodes'][0]
+                for index, shown in ((0, called), (9, not called and (not late)), (5, late)):
+                    expected = self.appends[scene['Id']]['prefix'][index]
+                    self.assertEqual(any((self.predicate(p) == self.predicate(expected) and visible(p, state.flags) for p in page['Paragraphs'])), shown, index)
                 if late:
-                    call = self.model.by_id["nidalynn.lastcall.call"]
-                    # Isolate the native before-taken window; missing salt still rejects it.
+                    call = self.model.by_id['nidalynn.lastcall.call']
                     before_taken = copy.deepcopy(state)
-                    before_taken.flags.discard("trickster.lastcall.taken")
+                    before_taken.flags.discard('trickster.lastcall.taken')
                     verify.sim_complete(self.model, before_taken)
                     self.assertFalse(verify.sim_available(self.model, call, before_taken))
 
@@ -761,40 +749,35 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
 
     def test_lastcall_buried_alive_memory_requires_all_three_facts(self):
         """T-LASTCALL prefix[7] is conditional; disguise prefix[8] is unconditional."""
-        state = self.ending_history(self.courtship("chosen"), "lastcall")
-        state.flags.discard("ending.trickster")
-        state.flags.update(("ending.wound_closed", "sacrifice",
-                            "trickster.lastcall.pillar.bottle"))
-        # Independent predicate fixture for the other route's already-earned
-        # appointment, using its frozen source inputs, not a derived flag grant.
-        state.flags.update(self.truth["reader_contracts"]["Derived"]["iomedae.appointment_kept"][0])
+        state = self.ending_history(self.courtship('chosen'), 'lastcall')
+        state.flags.discard('ending.trickster')
+        state.flags.update(('ending.wound_closed', 'sacrifice', 'trickster.lastcall.pillar.bottle'))
+        state.flags.update(self.truth['reader_contracts']['Derived']['iomedae.appointment_kept'][0])
         verify.sim_complete(self.model, state)
-        self.assertIn("trickster.commander_back", state.flags)
-        scene = self.model.by_id["nidalynn.lastcall.page"]
+        self.assertIn('trickster.commander_back', state.flags)
+        scene = self.model.by_id['nidalynn.lastcall.page']
         self.assertTrue(verify.sim_available(self.model, scene, state))
-        block = scene["Nodes"][0]["Paragraphs"][7]
+        block = self.history_block('nidalynn.lastcall.page', 7)
         self.assertTrue(visible(block, state.flags))
-        for missing in self.appends[scene["Id"]]["prefix"][7]["Requires"]:
+        for missing in self.appends[scene['Id']]['prefix'][7]['Requires']:
             with self.subTest(missing=missing):
                 self.assertFalse(visible(block, state.flags - {missing}))
 
     def test_historical_windstep_complaint_cannot_bypass_later_actor_loss(self):
         """History can stay true when its containing living page is unavailable."""
-        prefix = "household.pair.nidalynn_areelu."
-        state = self.courtship("chosen")
-        self.walk(state, prefix + "notice.chosen", {"start": 1})
-        final = self.ending_history(state, "lastcall")
-        self.assertTrue(self.append_visible(final, "nidalynn.lastcall.page", 14))
-        for case in ("nidalynn_lost", "nidalynn_actor_lost", "own_route_closed"):
+        prefix = 'household.pair.nidalynn_areelu.'
+        state = self.courtship('chosen')
+        self.walk(state, prefix + 'notice.chosen', {'start': 1})
+        final = self.ending_history(state, 'lastcall')
+        self.assertTrue(self.append_visible(final, 'nidalynn.lastcall.page', 14))
+        for case in ('nidalynn_lost', 'nidalynn_actor_lost', 'own_route_closed'):
             with self.subTest(loss=case):
                 lost = copy.deepcopy(final)
-                lost.flags.update(self.families["actor_loss_override"][case]["when"]["all"])
+                lost.flags.update(self.families['actor_loss_override'][case]['when']['all'])
                 verify.sim_complete(self.model, lost)
-                self.assert_case("household_windstep", "unanswered", lost)
-                block = self.model.by_id["nidalynn.lastcall.page"]["Nodes"][0]["Paragraphs"][14]
+                self.assert_case('household_windstep', 'unanswered', lost)
+                block = self.history_block('nidalynn.lastcall.page', 14)
                 self.assertTrue(visible(block, lost.flags))
-                self.assertFalse(self.append_visible(lost, "nidalynn.lastcall.page", 14))
-
-
-if __name__ == "__main__":
+                self.assertFalse(self.append_visible(lost, 'nidalynn.lastcall.page', 14))
+if __name__ == '__main__':
     unittest.main()

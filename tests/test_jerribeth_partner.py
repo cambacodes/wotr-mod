@@ -4,16 +4,14 @@ import json
 from pathlib import Path
 from itertools import product
 import unittest
-
+from itertools import zip_longest
 from storylines import jerribeth, jerribeth_partner as route, jerribeth_trickster
 from story_format import c, n
 from tests.structure import without_prose
 
-
 def allowed(record, flags):
     return (set(record.get("Requires", ())) <= flags
             and not set(record.get("Forbids", ())) & flags)
-
 
 def walk(scene, flags, start=None):
     nodes = {n["Id"]: n for n in scene["Nodes"]}
@@ -37,8 +35,8 @@ def walk(scene, flags, start=None):
                 ends.append(state)
     return visited, ends
 
-
 class PartnerTermsTests(unittest.TestCase):
+
     def setUp(self):
         self.future = copy.deepcopy(next(s for s in jerribeth.SCENES if s["Id"] == "jerribeth.future"))
         self.before = copy.deepcopy(self.future)
@@ -66,13 +64,13 @@ class PartnerTermsTests(unittest.TestCase):
     def test_every_current_fate_and_tenant_has_one_status_branch(self):
         for dead, chief, plant, returned in product((False, True), repeat=4):
             flags = {key for key, yes in zip((*route.FATES, route.RETURNED), (dead, chief, plant, returned)) if yes}
-            choices = [fate for fate, guard in route.fate_guards().items() if allowed({
-                "Requires": guard.get("requires", ()), "Forbids": guard.get("forbids", ())}, flags)]
-            self.assertEqual(len(choices), 1)
+            choices = [fate for fate, guard in route.fate_guards().items() if allowed({'Requires': guard.get('requires', ()), 'Forbids': guard.get('forbids', ())}, flags)]
+            selected_fate, = choices
+            self.assertIn(selected_fate, route.fate_guards())
             if dead:
-                self.assertEqual(choices, ["dead"])
-            elif returned and plant and not chief:
-                self.assertEqual(choices, ["distant"])
+                self.assertEqual(choices, ['dead'])
+            elif returned and plant and (not chief):
+                self.assertEqual(choices, ['distant'])
 
     def test_all_commits_have_terms_and_single_stance_exclusive_is_refused(self):
         for fate in ((), (route.PLANT,), (route.DEAD,), (route.CHIEF,), (route.PLANT, route.RETURNED)):
@@ -92,14 +90,13 @@ class PartnerTermsTests(unittest.TestCase):
                 self.assertTrue(any(node == "partner_name" for node, held in visited))
 
     def test_old_nodes_indices_destinations_and_effects_survive(self):
-        nodes = {n["Id"]: n for n in self.future["Nodes"]}
-        self.assertEqual([n["Id"] for n in self.future["Nodes"]][:len(self.before["Nodes"])],
-                         [n["Id"] for n in self.before["Nodes"]])
-        for node in self.before["Nodes"]:
-            for i, choice in enumerate(node["Choices"]):
-                after = nodes[node["Id"]]["Choices"][i]
-                self.assertEqual(after["Next"], choice["Next"])
-                self.assertEqual(after["Set"], choice["Set"])
+        nodes = {n['Id']: n for n in self.future['Nodes']}
+        self.assertTrue(all((new is not None and old['Id'] == new['Id'] for old, new in zip_longest(self.before['Nodes'], self.future['Nodes']) if old is not None)))
+        for node in self.before['Nodes']:
+            self.assertTrue(all(new is not None for old, new in zip_longest(node['Choices'], nodes[node['Id']]['Choices']) if old is not None))
+            for choice, after in zip(node['Choices'], nodes[node['Id']]['Choices']):
+                self.assertEqual(after['Next'], choice['Next'])
+                self.assertEqual(after['Set'], choice['Set'])
 
     def test_mid_scene_save_can_get_terms_without_dead_end(self):
         for node_id in ("promise", "short_future"):
@@ -119,24 +116,31 @@ class PartnerTermsTests(unittest.TestCase):
             self.assertTrue(any("jerribeth.closed" in held for held in ends))
 
     def test_every_fate_has_one_epilogue_status_without_stance(self):
-        paragraphs = route.partner_paragraphs()[:5]
+        guards = [
+            ([route.DEAD], []),
+            ([route.CHIEF], [route.DEAD]),
+            ([route.PLANT], [route.DEAD, route.CHIEF, route.RETURNED, route.CHOSEN]),
+            ([route.PLANT, route.RETURNED], [route.DEAD, route.CHIEF]),
+            ([], list(route.FATES)),
+        ]
+        paragraphs = [p for p in route.partner_paragraphs()
+                      if (p.get('Requires', []), p.get('Forbids', [])) in guards]
         for flags in (set(), {route.PLANT}, {route.DEAD}, {route.CHIEF}, {route.PLANT, route.RETURNED}, {route.PLANT, route.DEAD}):
-            self.assertEqual(sum(allowed(p, flags) for p in paragraphs), 1)
+            status, = [p for p in paragraphs if allowed(p, flags)]
+            self.assertTrue(status.get('Requires') or status.get('Forbids'))
 
     def test_existing_visit_keeps_answers_for_all_stances_and_current_fates(self):
-        fixture = {"Id": "jerribeth.test_visit", "Nodes": [n("arrival_terms", "Jerribeth", "", c(next="threshold")),
-                   n("threshold", "Jerribeth", "", c())]}
-        route.install_discovery(fixture, {"arrival_terms"})
-        route.install_shared_witness(fixture, {"arrival_terms"})
+        fixture = {'Id': 'jerribeth.test_visit', 'Nodes': [n('arrival_terms', 'Jerribeth', '', c(next='threshold')), n('threshold', 'Jerribeth', '', c())]}
+        route.install_discovery(fixture, {'arrival_terms'})
+        route.install_shared_witness(fixture, {'arrival_terms'})
         for fate in ((), (route.PLANT,), (route.DEAD,), (route.CHIEF,), (route.PLANT, route.DEAD), (route.PLANT, route.RETURNED)):
             for stance in ((), (route.SHARE,), (route.SECRET,)):
-                self.assertEqual(sum(allowed(ch, {*fate, *stance})
-                                     for ch in fixture["Nodes"][0]["Choices"]), 1)
+                entry, = [a for a in fixture['Nodes'][0]['Choices'] if allowed(a, {*fate, *stance})]
+                self.assertIn(entry['Next'], {n['Id'] for n in fixture['Nodes']})
                 visited, ends = walk(fixture, {*fate, *stance})
                 self.assertTrue(ends)
-                shows = any(node == "partner_witness_arrival_terms" for node, held in visited)
-                self.assertEqual(shows, route.SHARE in stance and route.PLANT in fate
-                                 and route.DEAD not in fate and route.RETURNED not in fate)
+                shows = any((node == 'partner_witness_arrival_terms' for node, held in visited))
+                self.assertEqual(shows, route.SHARE in stance and route.PLANT in fate and (route.DEAD not in fate) and (route.RETURNED not in fate))
 
     def test_secret_exposure_receipt_keeps_reaction_after_native_death(self):
         fixture = {"Id": "jerribeth.test_visit", "Nodes": [n("arrival_terms", "Jerribeth", "", c())]}
@@ -145,10 +149,9 @@ class PartnerTermsTests(unittest.TestCase):
         survivor = next(held for held in ends if "jerribeth.closed" not in held)
         self.assertIn("jerribeth.partner_exposure.plant", survivor)
         after_death = set(survivor) | {route.DEAD}
-        exposed = [i for i, paragraph in enumerate(route.partner_paragraphs())
+        exposed = [paragraph for paragraph in route.partner_paragraphs()
                    if route.EXPOSED in paragraph.get("Requires", ()) and allowed(paragraph, after_death)]
-        self.assertEqual(len(exposed), 1)
-
-
-if __name__ == "__main__":
+        exposed_receipt, = exposed
+        self.assertIn(route.EXPOSED, exposed_receipt['Requires'])
+if __name__ == '__main__':
     unittest.main()

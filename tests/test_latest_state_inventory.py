@@ -2,12 +2,11 @@
 from tests.story_fixture import fresh_story
 import copy
 import unittest
-
 import expansion
 from tools import return_provenance_lint as lint
 
-
 class LatestStateInventoryTests(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
         cls.story = fresh_story()
@@ -73,9 +72,9 @@ class LatestStateInventoryTests(unittest.TestCase):
         p = self.data['wenduag']['departure_producer']
         for mutation in ('receipt', 'return'):
             story = copy.deepcopy(self.story)
-            scene = next(s for s in story['Scenes'] if s['Id'] == p['scene'])
-            node = next(x for x in scene['Nodes'] if x['Id'] == p['node'])
-            choice = node['Choices'][p['choice']]
+            scene = next((s for s in story['Scenes'] if s['Id'] == p['scene']))
+            node = next((x for x in scene['Nodes'] if x['Id'] == p['node']))
+            choice = next((a for a in node['Choices'] if p['receipt'] in a['Set']))
             if mutation == 'receipt':
                 choice['Set'].remove(p['receipt'])
             else:
@@ -84,16 +83,14 @@ class LatestStateInventoryTests(unittest.TestCase):
 
     def test_departure_lint_exception_requires_exact_closure_coproduction(self):
         p = self.data['wenduag']['departure_producer']
-        scene = next(s for s in self.story['Scenes'] if s['Id'] == p['scene'])
-        node = next(x for x in scene['Nodes'] if x['Id'] == p['node'])
-        choice = copy.deepcopy(node['Choices'][p['choice']])
+        scene = next((s for s in self.story['Scenes'] if s['Id'] == p['scene']))
+        node = next((x for x in scene['Nodes'] if x['Id'] == p['node']))
+        choice = copy.deepcopy(next((a for a in node['Choices'] if p['receipt'] in a['Set'])))
         args = ('wenduag', p['scene'], p['node'], p['choice'], choice, p['receipt'])
         self.assertTrue(lint.registered_closing_departure(*args))
         self.assertFalse(lint.registered_closing_departure('wenduag', p['scene'], 'other', p['choice'], choice, p['receipt']))
         self.assertFalse(lint.registered_closing_departure('wenduag', p['scene'], p['node'], p['choice'] + 1, choice, p['receipt']))
         choice['Set'].remove('wenduag.closed')
         self.assertFalse(lint.registered_closing_departure(*args))
-
-
 if __name__ == '__main__':
     unittest.main()

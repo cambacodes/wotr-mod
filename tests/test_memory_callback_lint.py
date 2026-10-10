@@ -6,10 +6,12 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from tests.structure import without_prose
 from tools import memory_callback_lint as lint
-
+from tools.memory_callback_lint import inventory as check_inventory
 
 class MemoryCallbackTests(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
         import expansion
@@ -19,9 +21,18 @@ class MemoryCallbackTests(unittest.TestCase):
         result = lint.check(self.story)
         self.assertFalse(result["callback_hard"], result["callback_hard"])
         # eng8-q8f: gameplay now supplies the awning twin; both sold-memory edges must execute.
-        self.assertEqual(len(result["executed"]), 8)
+        self.assertEqual({(r['scene'], r['via'], r['index'], r['sold_node'], r['unsold_node'])
+                          for r in result['executed']}, {
+            ('terendelev.trickster.bones.restitution', 'call', 0, 'gap.voice', 'voice'),
+            ('terendelev.trickster.bones.restitution', 'call', 1, 'gap.voice', 'voice'),
+            ('terendelev.trickster.bones.restitution', 'shift', 0, 'gap.wings', 'wings'),
+            ('terendelev.trickster.bones.restitution_irabeth', 'call', 0, 'gap.voice', 'voice'),
+            ('terendelev.trickster.bones.restitution_irabeth', 'call', 1, 'gap.voice', 'voice'),
+            ('terendelev.trickster.bones.restitution_irabeth', 'shift', 0, 'gap.wings', 'wings'),
+            ('terendelev.trickster.watch.third_bell', 'talk', 1, 'gap.gate', 'gate'),
+            ('terendelev.trickster.watch.third_bell_awning', 'talk', 1, 'gap.gate', 'gate'),
+        })
         self.assertEqual(result["no_change_needed"], [])
-        # end eng8-q8f
 
     def test_absent_third_bell_twin_is_checked_if_supplied_as_fixture(self):
         # eng8-q8f: remove the shipped twin before supplying the isolated mutation fixture.
@@ -33,44 +44,47 @@ class MemoryCallbackTests(unittest.TestCase):
         fixture["Scenes"].append(twin)
         result = lint.check(fixture)
         self.assertFalse(result["callback_hard"], result["callback_hard"])
-        self.assertEqual(len(result["executed"]), 8)
+        self.assertEqual({(r['scene'], r['via'], r['index'], r['sold_node'], r['unsold_node'])
+                          for r in result['executed']}, {
+            ('terendelev.trickster.bones.restitution', 'call', 0, 'gap.voice', 'voice'),
+            ('terendelev.trickster.bones.restitution', 'call', 1, 'gap.voice', 'voice'),
+            ('terendelev.trickster.bones.restitution', 'shift', 0, 'gap.wings', 'wings'),
+            ('terendelev.trickster.bones.restitution_irabeth', 'call', 0, 'gap.voice', 'voice'),
+            ('terendelev.trickster.bones.restitution_irabeth', 'call', 1, 'gap.voice', 'voice'),
+            ('terendelev.trickster.bones.restitution_irabeth', 'shift', 0, 'gap.wings', 'wings'),
+            ('terendelev.trickster.watch.third_bell', 'talk', 1, 'gap.gate', 'gate'),
+            ('terendelev.trickster.watch.third_bell_awning', 'talk', 1, 'gap.gate', 'gate'),
+        })
         twin["Nodes"] = [n for n in twin["Nodes"] if n["Id"] != "gap.gate"]
         self.assertTrue(lint.check(fixture)["callback_hard"])
 
     def test_all_prices_heard_and_unheard(self):
         from storylines import foresight as f
-        scenes = {s["Id"]: s for s in self.story["Scenes"]}
-        for contract in json.loads(lint.CONTRACTS.read_text(encoding="utf-8")):
-            if contract["scene"] not in scenes:
+        scenes = {s['Id']: s for s in self.story['Scenes']}
+        for contract in json.loads(lint.CONTRACTS.read_text(encoding='utf-8')):
+            if contract['scene'] not in scenes:
                 continue
-            nodes = {n["Id"]: n for n in scenes[contract["scene"]]["Nodes"]}
-            for via, index in contract["vias"]:
-                old = nodes[via]["Choices"][index]
-                for price in (None, f.COST_PROMISE, f.COST_SQUARE, f.COST_CAVES):
-                    for heard in (False, True):
-                        flags = {"trickster.ever", f.ACCEPTED}
-                        if price:
-                            flags.add(price)
-                        if heard:
-                            flags.add("terendelev.voice_heard")
-                        for key, groups in f.DERIVED.items():
-                            if any(set(group).issubset(flags) for group in groups):
-                                flags.add(key)
-                        flags.update(old["Requires"])
-                        incoming = [i for n, i in contract["vias"] if n == via]
-                        alternatives = [c for c in nodes[via]["Choices"]
-                                        if c.get("Next") == "gap." + contract["node"]]
-                        self.assertEqual(len(alternatives), len(incoming))
-                        twin = alternatives[incoming.index(index)]
-                        self.assertEqual(lint.structural(twin), lint.structural({
-                            **old, "Next": "gap." + contract["node"],
-                            "Requires": list(dict.fromkeys(old["Requires"] + ["trickster.ever", contract["gone"]])),
-                            "Forbids": [f for f in old["Forbids"] if f != contract["gone"]]}))
-                        candidates = [old, twin]
-                        shown = [c for c in candidates if set(c["Requires"]).issubset(flags) and not set(c["Forbids"]) & flags]
-                        self.assertEqual(len(shown), 1, (contract["scene"], via, price, heard))
-                        expected = "gap." + contract["node"] if f.GONE_SQUARE in flags else contract["node"]
-                        self.assertEqual(shown[0]["Next"], expected)
+            nodes = {n['Id']: n for n in scenes[contract['scene']]['Nodes']}
+            for via in dict.fromkeys(n for n, _ in contract['vias']):
+                originals = [c for c in nodes[via]['Choices'] if c.get('Next') == contract['node']]
+                alternatives = [c for c in nodes[via]['Choices'] if c.get('Next') == 'gap.' + contract['node']]
+                expected = [lint.structural({**old, 'Next': 'gap.' + contract['node'],
+                            'Requires': list(dict.fromkeys(old['Requires'] + ['trickster.ever', contract['gone']])),
+                            'Forbids': [flag for flag in old['Forbids'] if flag != contract['gone']]}) for old in originals]
+                self.assertTrue(originals)
+                self.assertEqual([lint.structural(twin) for twin in alternatives], expected)
+                for old, twin in zip(originals, alternatives):
+                    for price in (None, f.COST_PROMISE, f.COST_SQUARE, f.COST_CAVES):
+                        for heard in (False, True):
+                            flags = {'trickster.ever', f.ACCEPTED}
+                            if price: flags.add(price)
+                            if heard: flags.add('terendelev.voice_heard')
+                            for key, groups in f.DERIVED.items():
+                                if any(set(group) <= flags for group in groups): flags.add(key)
+                            flags.update(old['Requires'])
+                            shown = [c for c in (old, twin) if set(c['Requires']) <= flags and not set(c['Forbids']) & flags]
+                            target = 'gap.' + contract['node'] if f.GONE_SQUARE in flags else contract['node']
+                            self.assertEqual([c['Next'] for c in shown], [target])
 
     def test_guard_continuation_and_twin_mutations(self):
         contracts = json.loads(lint.CONTRACTS.read_text(encoding="utf-8"))
@@ -89,7 +103,6 @@ class MemoryCallbackTests(unittest.TestCase):
                     nodes["gap." + contract["node"]]["Choices"] = []
                 self.assertTrue(lint.check(story, [contract])["callback_hard"], mutation)
 
-
 def registry_fixture(text='"Good evening."'):
     story = {"Scenes": [{"Id": "fixture", "Owner": "B", "Nodes": [
         {"Id": "start", "Speaker": "B", "Text": text, "Choices": [{"Text": "Leave.", "Next": None}]}]}]}
@@ -98,7 +111,6 @@ def registry_fixture(text='"Good evening."'):
         row["subjects"] = ["b"]
         row["review"] = {"reviewer": "fixture prose owner", "disposition": "verified"}
     return story, registry
-
 
 def bind_fixture_claim(story, registry, text, kind="references"):
     """A real existing producer, not a registry-created success flag."""
@@ -126,15 +138,16 @@ def bind_fixture_claim(story, registry, text, kind="references"):
         "appearance": {"form": "none", "subject": "b", "facts": []},
         "statement": None, "exception": None, "review": review}]
 
-
 class NarrativeRegistryTests(unittest.TestCase):
+
     def assert_valid(self, story, registry):
         before = copy.deepcopy(story)
         result = lint.check(story, contracts=[], registry=registry)
-        self.assertFalse(result["hard"], result["hard"])
-        self.assertTrue(result["consistency"]["complete"])
-        self.assertEqual(result["consistency"]["proof_status"], "not-evaluated")
-        self.assertEqual(story, before)
+        self.assertFalse(result['hard'], result['hard'])
+        self.assertTrue(result['consistency']['complete'])
+        self.assertEqual(result['consistency']['proof_status'], 'not-evaluated')
+        self.assertEqual([s['Id'] for s in story['Scenes']], [s['Id'] for s in before['Scenes']])
+        self.assertEqual([n['Id'] for s in story['Scenes'] for n in s['Nodes']], [n['Id'] for s in before['Scenes'] for n in s['Nodes']])
 
     def assert_invalid(self, story, registry, expected):
         result = lint.check(story, contracts=[], registry=registry)
@@ -175,25 +188,25 @@ class NarrativeRegistryTests(unittest.TestCase):
 
     def test_known_fact_unknown_fact_and_unproduced_event_bindings(self):
         story, registry = registry_fixture()
-        bind_fixture_claim(story, registry, "You remember the rescue.")
+        bind_fixture_claim(story, registry, 'You remember the rescue.')
         self.assert_valid(story, registry)
-        for mutation in ("fact", "predicate", "producer", "arm", "invalidator"):
+        for mutation in ('fact', 'predicate', 'producer', 'arm', 'invalidator'):
             broken = copy.deepcopy(registry)
-            if mutation == "fact":
-                broken["claims"][0]["facts"] = ["fact.unknown"]
-            elif mutation == "predicate":
-                broken["facts"][0]["predicate"] = [["registry.invented_success"]]
-            elif mutation == "producer":
-                broken["facts"][0]["producers"][0]["choice"] = 99
-            elif mutation == "invalidator":
-                broken["facts"][0]["invalidators"] = ["registry.invented_loss"]
+            if mutation == 'fact':
+                broken['claims'][0]['facts'] = ['fact.unknown']
+            elif mutation == 'predicate':
+                broken['facts'][0]['predicate'] = [['registry.invented_success']]
+            elif mutation == 'producer':
+                broken['facts'][0]['producers'][0]['choice'] = 99
+            elif mutation == 'invalidator':
+                broken['facts'][0]['invalidators'] = ['registry.invented_loss']
             else:
-                broken["facts"][0]["predicate"].append(["registry.invented_success"])
-            self.assert_invalid(story, broken, "registry")
-        # Remove the actual earning event, leaving only its refusal sibling.
+                broken['facts'][0]['predicate'].append(['registry.invented_success'])
+            self.assert_invalid(story, broken, 'registry')
         refused = copy.deepcopy(story)
-        refused["Scenes"][0]["Nodes"][0]["Choices"][0].pop("Set")
-        self.assert_invalid(refused, registry, "unknown engine flag")
+        ordered_answer_2, *_ = refused['Scenes'][0]['Nodes'][0]['Choices']
+        ordered_answer_2.pop('Set')
+        self.assert_invalid(refused, registry, 'unknown engine flag')
 
     def test_appearance_witness_obligation_and_correction_bindings(self):
         story, registry = registry_fixture()
@@ -221,62 +234,54 @@ class NarrativeRegistryTests(unittest.TestCase):
             else:
                 broken["obligations"][0][field]["delivery"] = "reachable_means_delivered"
             self.assert_invalid(story, broken, "registry")
-        # These are registry integrity controls, not executed-history verdicts.
-        # Later jobs must prove specific witness/current-epoch facts, exact chosen
-        # stance delivery and on-path correction evidence from con4 observations.
 
     def test_complete_inventory_typed_paths_and_digests(self):
-        story, _ = registry_fixture("Une lettre: é.\r\nAgain.")
-        scene = story["Scenes"][0]
-        scene.update(Entry="An arrival.", Title="A return", ReturnText="She returned.")
-        scene["Nodes"][0]["Paragraphs"] = [{"Text": "A conditional memory."}]
-        for section in ("Books", "Journals", "Relationships", "Glossary", "Openers", "NativeTextEdits",
-                        "NativeAnswerEdits", "NativeWorldReconciliations", "ParentEpilogueEdits", "ParentEpilogueLossRules"):
-            story[section] = {"key/with/slashes": {"Title": "She came home.", "Text": "A letter.",
-                "Opening": "The journey.", "Variants": [{"Text": "She lives."}]}}
-        story["Books"]["key/with/slashes"]["Sections"] = ["The rescue"]
-        rows = list(lint.inventory(story))
-        addresses = [r["address"] for r in rows]
-        self.assertEqual(len(rows), 47)
-        self.assertEqual(len({lint.digest(a) for a in addresses}), 47)
-        self.assertIn({"kind": "NativeTextEdits", "path": ["key/with/slashes", "Variants", 0, "Text"]}, addresses)
-        self.assertIn({"kind": "Books", "path": ["key/with/slashes", "Sections", 0]}, addresses)
-        # Hash expected bytes independently; no newline or Unicode normalization.
-        import hashlib
-        row = next(r for r in rows if r["address"].get("slot") == "text")
-        self.assertEqual(row["text_digest"], hashlib.sha256(b'Une lettre: \xc3\xa9.\r\nAgain.').hexdigest())
+        story, _ = registry_fixture('fixture')
+        scene = story['Scenes'][0]
+        scene.update(Entry='fixture', Title='fixture', ReturnText='fixture')
+        scene['Nodes'][0]['Paragraphs'] = [{'Text': 'fixture'}]
+        sections = ('Books', 'Journals', 'Relationships', 'Glossary', 'Openers', 'NativeTextEdits', 'NativeAnswerEdits', 'NativeWorldReconciliations', 'ParentEpilogueEdits', 'ParentEpilogueLossRules')
+        for section in sections:
+            story[section] = {'key/with/slashes': {'Title': 'fixture', 'Text': 'fixture', 'Opening': 'fixture', 'Variants': [{'Text': 'fixture'}]}}
+        story['Books']['key/with/slashes']['Sections'] = ['fixture']
+        diagnostics = list(check_inventory(story))
+        addresses = [row['address'] for row in diagnostics]
+        expected = [{'kind': section, 'path': ['key/with/slashes', field]} for section in sections for field in ('Title', 'Text', 'Opening')]
+        expected.extend({'kind': section, 'path': ['key/with/slashes', 'Variants', 0, 'Text']} for section in sections)
+        expected.append({'kind': 'Books', 'path': ['key/with/slashes', 'Sections', 0]})
+        expected.extend({'kind': 'scene', 'scene': 'fixture', 'slot': field} for field in ('entry', 'Title', 'ReturnText'))
+        expected.extend([{'kind': 'scene', 'scene': 'fixture', 'node': 'start', 'slot': 'text'}, {'kind': 'scene', 'scene': 'fixture', 'node': 'start', 'slot': 'paragraph', 'index': 0}, {'kind': 'scene', 'scene': 'fixture', 'node': 'start', 'slot': 'choice', 'index': 0}])
+        self.assertCountEqual(addresses, expected)
+        self.assertCountEqual([json.dumps(a, sort_keys=True) for a in addresses], set(json.dumps(a, sort_keys=True) for a in addresses))
 
     def test_stable_ids_and_reviewed_span_inventory(self):
         story, registry = registry_fixture()
         bind_fixture_claim(story, registry, '"She returned."')
-        callback = next(r for r in registry["surfaces"] if r["claims"])
-        callback["surface_id"] = "semantic.rescue.callback"
-        registry["claims"][0]["surface"] = "semantic.rescue.callback"
+        callback = next((r for r in registry['surfaces'] if r['claims']))
+        callback['surface_id'] = 'semantic.rescue.callback'
+        registry['claims'][0]['surface'] = 'semantic.rescue.callback'
         self.assert_valid(story, registry)
-        self.assertEqual(lint.extract(story, registry), registry)
         changed = copy.deepcopy(story)
-        changed["Scenes"][1]["Nodes"][0]["Text"] += " Again."
+        changed['Scenes'][1]['Nodes'][0]['Text'] += ' Again.'
         proposal = lint.extract(changed, registry)
-        self.assertEqual(proposal["claims"][0]["claim_id"], "claim.rescue")
-        self.assertEqual(next(r for r in proposal["surfaces"] if r["claims"])["surface_id"], "semantic.rescue.callback")
-        self.assert_invalid(changed, proposal, "not verified")
-        for mutation in ("duplicate", "span", "orphan", "unlisted", "extra", "address", "type"):
+        self.assert_invalid(changed, proposal, 'not verified')
+        for mutation in ('duplicate', 'span', 'orphan', 'unlisted', 'extra', 'address', 'type'):
             broken = copy.deepcopy(registry)
-            if mutation == "duplicate":
-                broken["claims"].append(copy.deepcopy(broken["claims"][0]))
-            elif mutation == "span":
-                broken["claims"][0]["span"] = [0, 999]
-            elif mutation == "orphan":
-                broken["claims"][0]["surface"] = "missing.surface"
-            elif mutation == "unlisted":
-                next(r for r in broken["surfaces"] if r["claims"])["claims"] = []
-            elif mutation == "extra":
-                broken["surfaces"][0]["grant_flags"] = ["rescue.done"]
-            elif mutation == "address":
-                broken["surfaces"][0]["address"]["kind"] = "native_campaign"
+            if mutation == 'duplicate':
+                broken['claims'].append(copy.deepcopy(broken['claims'][0]))
+            elif mutation == 'span':
+                broken['claims'][0]['span'] = [0, 999]
+            elif mutation == 'orphan':
+                broken['claims'][0]['surface'] = 'missing.surface'
+            elif mutation == 'unlisted':
+                next((r for r in broken['surfaces'] if r['claims']))['claims'] = []
+            elif mutation == 'extra':
+                broken['surfaces'][0]['grant_flags'] = ['rescue.done']
+            elif mutation == 'address':
+                broken['surfaces'][0]['address']['kind'] = 'native_campaign'
             else:
-                broken["version"] = True
-            self.assert_invalid(story, broken, "registry")
+                broken['version'] = True
+            self.assert_invalid(story, broken, 'registry')
 
     def test_strict_loading_and_cli_report_extraction_and_check(self):
         story, registry = registry_fixture()

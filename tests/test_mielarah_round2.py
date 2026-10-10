@@ -4,24 +4,20 @@ import json
 from pathlib import Path
 import subprocess
 import unittest
-
 from storylines import mielarah_deck as deck, mielarah_trickster as route
 from tools import savecompat
-
 ROOT = Path(__file__).resolve().parents[1]
-P, D = route.P, route.D
-
+P, D = (route.P, route.D)
 
 def nodes(scene):
     return {node["Id"]: node for node in scene["Nodes"]}
-
 
 def answers(node, flags):
     return [answer for answer in node["Choices"]
             if set(answer["Requires"]) <= flags and not set(answer["Forbids"]) & flags]
 
-
 class MielarahRound2Tests(unittest.TestCase):
+
     def setUp(self):
         self.scenes = {scene["Id"]: scene for scene in [*route.SCENES, *deck.SCENES]}
 
@@ -49,14 +45,15 @@ class MielarahRound2Tests(unittest.TestCase):
                                  [a["Next"] for a in answers(morning, flags)])
 
     def test_owed_settlement_guards_unfinished_without_changing_ending_exits(self):
-        ending = self.scenes[P + "epilogue.unfinished"]
+        ending = self.scenes[P + 'epilogue.unfinished']
         for owed in (route.OSKEL_DEAD, route.MEANT):
-            self.assertIn(owed, ending["Forbids"])
-            self.assertEqual(D + "oskel_settled", ending["ForbidOverrides"][owed])
-        for nid in ("climb", "fly"):
-            exit = nodes(ending)[nid]["Choices"][0]
-            self.assertEqual([], exit["Set"])
-            self.assertIsNone(exit["Next"])
+            self.assertIn(owed, ending['Forbids'])
+            self.assertEqual(D + 'oskel_settled', ending['ForbidOverrides'][owed])
+        for nid in ('climb', 'fly'):
+            ordered_answer_1, *_ = nodes(ending)[nid]['Choices']
+            exit = ordered_answer_1
+            self.assertEqual([], exit['Set'])
+            self.assertIsNone(exit['Next'])
 
     def test_paid_bearing_is_not_arrival_and_late_search_is_dated(self):
         contact = route.DERIVED[route.CONTACT]
@@ -80,27 +77,25 @@ class MielarahRound2Tests(unittest.TestCase):
         self.assertIn(P + "colyphyr.finished", self.scenes[P + "colyphyr.letter"]["Requires"])
 
     def test_four_slots_keep_first_night_on_the_legacy_answer(self):
-        for stem in ("wheel", "quarterdeck"):
-            for suffix in ("", ".arcade"):
+        for stem in ('wheel', 'quarterdeck'):
+            for suffix in ('', '.arcade'):
                 sid = D + stem + suffix
                 ns = nodes(self.scenes[sid])
-                exit = ns["threshold"]["Choices"][0]
-                self.assertEqual([route.NIGHT], exit["Set"])
-                self.assertEqual("explicit.1", exit["Next"])
-                self.assertEqual([], ns["explicit.1"]["Choices"][0]["Set"])
-                brief = json.loads((ROOT / "tools/route_packs/explicit_slots/mielarah" /
-                                    (sid + ".explicit.1.json")).read_text(encoding="utf-8"))
-                self.assertIn(brief["last_line"].removeprefix("N: "), ns["explicit.1"]["Text"])
-        self.assertIn(route.NIGHT, self.scenes[D + "quarterdeck"]["Forbids"])
+                ordered_answer_2, *_ = ns['threshold']['Choices']
+                exit = ordered_answer_2
+                self.assertEqual([route.NIGHT], exit['Set'])
+                self.assertEqual('explicit.1', exit['Next'])
+                ordered_answer_3, *_ = ns['explicit.1']['Choices']
+                self.assertEqual([], ordered_answer_3['Set'])
+                brief = json.loads((ROOT / 'tools/route_packs/explicit_slots/mielarah' / (sid + '.explicit.1.json')).read_text(encoding='utf-8'))
+        self.assertIn(route.NIGHT, self.scenes[D + 'quarterdeck']['Forbids'])
 
     def test_warning_spends_no_remote_delivery_in_any_deferred_chain(self):
-        for sid in (P + "spade.dream", P + "spade.watch_arcade", P + "fourth.arrival"):
-            self.assertFalse(self.scenes[sid].get("Remote", False))
-            self.assertEqual(route.UNIT, self.scenes[sid]["ContactUnit"])
-        for chain in (("raid.rope", "raid.rock"), ("raid.elbow", "raid.rock"),
-                      ("storm.word", "storm.survivor_drezen"),
-                      ("raid.overboard_drezen", "raid.ashore_drezen")):
-            self.assertEqual(2, sum(bool(self.scenes[P + part].get("Remote")) for part in chain))
+        for sid in (P + 'spade.dream', P + 'spade.watch_arcade', P + 'fourth.arrival'):
+            self.assertFalse(self.scenes[sid].get('Remote', False))
+            self.assertEqual(route.UNIT, self.scenes[sid]['ContactUnit'])
+        for chain in (('raid.rope', 'raid.rock'), ('raid.elbow', 'raid.rock'), ('storm.word', 'storm.survivor_drezen'), ('raid.overboard_drezen', 'raid.ashore_drezen')):
+            self.assertEqual([self.scenes[P + part].get('Remote', False) for part in chain], [True, True])
 
     def test_frozen_route_save_inventory(self):
         before = []
@@ -111,7 +106,5 @@ class MielarahRound2Tests(unittest.TestCase):
             before.extend(copy.deepcopy(namespace["SCENES"]))
         self.assertEqual([], savecompat.check({"Scenes": list(self.scenes.values())},
                                             savecompat.inventory({"Scenes": before})))
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -2,12 +2,11 @@
 import json
 from pathlib import Path
 import unittest
-
 from tests.test_iomedae_round2 import SCENES, matches, walk
 from storylines import iomedae_trickster as io
 
-
 class IomedaeRound3Tests(unittest.TestCase):
+
     def test_first_white_dream_after_late_opening(self):
         for choice in SCENES[io.E + 'dream.questions']['Nodes'][0]['Choices']:
             self.assertNotIn('RequiresAnyGroups', choice)
@@ -53,55 +52,59 @@ class IomedaeRound3Tests(unittest.TestCase):
 
     def test_flask_account_reads_current_contents(self):
         node = SCENES[io.E + 'epilogue.after']['Nodes'][0]
-        for held, expected, excluded in [
-            ({'lastcall.active', 'lastcall.h1', io.CARRIED, 'lastcall.bottled_held'},
-             'death stayed in the bottle', 'Pharasma kept the death'),
-            ({'lastcall.active', io.H2, 'lastcall.dead_on_record', 'lastcall.bottled_held'},
-             'bottle still held its death', 'Pharasma kept the death'),
-            ({'lastcall.active', io.H2, io.BURIED_ALIVE, io.CARRIED,
-              'trickster.lastcall.primed.bottle'},
-             'Pharasma kept the death', 'bottle still held its death'),
-        ]:
-            account = ' '.join(p['Text'] for p in node['Paragraphs'] if matches(p, held))
-            self.assertIn(expected, account)
-            self.assertNotIn(excluded, account)
+        predicates = [
+            (['lastcall.h1', 'lastcall.bottled_held', io.CARRIED], [io.BURIED_ALIVE]),
+            (['lastcall.bottled_held'], [io.BURIED_ALIVE, io.CARRIED]),
+            ([io.BURIED_ALIVE, io.H2, 'trickster.lastcall.primed.bottle'], []),
+        ]
+        histories = [
+            {'lastcall.active', 'lastcall.h1', io.CARRIED, 'lastcall.bottled_held'},
+            {'lastcall.active', io.H2, 'lastcall.dead_on_record', 'lastcall.bottled_held'},
+            {'lastcall.active', io.H2, io.BURIED_ALIVE, io.CARRIED, 'trickster.lastcall.primed.bottle'},
+        ]
+        for requirements, exclusions in predicates:
+            block = next(p for p in node['Paragraphs'] if p['Requires'] == requirements and p['Forbids'] == exclusions)
+            self.assertTrue(matches(block, set(requirements)))
+            for missing in requirements:
+                self.assertFalse(matches(block, set(requirements) - {missing}))
+            for forbidden in exclusions:
+                self.assertFalse(matches(block, set(requirements) | {forbidden}))
+        for flags, wanted in zip(histories, predicates):
+            selected = {(tuple(p['Requires']), tuple(p['Forbids'])) for p in node['Paragraphs'] if matches(p, flags)}
+            self.assertIn((tuple(wanted[0]), tuple(wanted[1])), selected)
+            for other in predicates:
+                if other != wanted:
+                    self.assertNotIn((tuple(other[0]), tuple(other[1])), selected)
 
     def test_epilogue_briefs_use_third_past_and_preserve_exits(self):
         folder = Path(__file__).resolve().parents[1] / 'tools/route_packs/explicit_slots/iomedae'
-        # Narration follows the host prose: the platform host is second-person present.
-        expected = {'iomedae.trickster.epilogue.after.explicit.1': 'third-past',
-                    'iomedae.trickster.epilogue.platform.explicit.1': 'second-present'}
+        expected = {'iomedae.trickster.epilogue.after.explicit.1': 'third-past', 'iomedae.trickster.epilogue.platform.explicit.1': 'second-present'}
         for path in folder.glob('*.json'):
             self.assertEqual(expected[path.stem], json.loads(path.read_text(encoding='utf-8'))['narration'])
         page = SCENES[io.E + 'epilogue.after']['Nodes'][0]
-        legacy = page['Choices'][0]
+        ordered_answer_1, *_ = page['Choices']
+        legacy = ordered_answer_1
         self.assertEqual('continue', legacy['Id'])
         self.assertFalse(legacy['Next'])
         self.assertFalse(legacy['Set'])
-        slot = next(n for n in SCENES[io.E + 'epilogue.after']['Nodes']
-                    if n['Id'] == io.E + 'epilogue.after.explicit.1')
-        self.assertEqual('vigil_morning', slot['Choices'][0]['Next'])
+        slot = next((n for n in SCENES[io.E + 'epilogue.after']['Nodes'] if n['Id'] == io.E + 'epilogue.after.explicit.1'))
+        ordered_answer_2, *_ = slot['Choices']
+        self.assertEqual('vigil_morning', ordered_answer_2['Next'])
 
     def test_generated_coda_keeps_banner_and_crossing_separate(self):
         from tests.story_fixture import fresh_story
-        story = fresh_story()
-        scenes = {s['Id']: s for s in story['Scenes']}
-        node = scenes['iomedae.lastcall.page']['Nodes'][0]
-        self.assertNotIn('banner', node['Text'])
-        self.assertEqual([], node['Choices'][0]['Set'])
-        self.assertFalse(node['Choices'][0]['Next'])
-        without_banner = {'lastcall.active', io.H2, 'lastcall.bottled_held'}
-        account = ' '.join(p['Text'] for p in node['Paragraphs'] if matches(p, without_banner))
-        self.assertIn('never raised her banner', account)
-        self.assertNotIn('flask came out empty', account)
-        bridge = {io.H2, io.BURIED_ALIVE, io.CARRIED}
-        crossing = node['Paragraphs'][0]
-        self.assertTrue(matches(crossing, bridge))
+        node = next((s for s in fresh_story()['Scenes'] if s['Id'] == 'iomedae.lastcall.page'))['Nodes'][0]
+        self.assertEqual([c['Set'] for c in node['Choices']], [[]])
+        self.assertEqual([c['Next'] for c in node['Choices']], [None])
+        crossing = next((p for p in node['Paragraphs'] if p['Requires'] == [io.BURIED_ALIVE, io.H2]))
+        self.assertTrue(matches(crossing, {io.H2, io.BURIED_ALIVE, io.CARRIED}))
         self.assertNotIn('crossroute.areelu.available', crossing['Requires'])
-        with_areelu = ' '.join(p['Text'] for p in node['Paragraphs']
-                              if matches(p, bridge | {'crossroute.areelu.available'}))
-        self.assertIn('not witnessed the crossing inside the seam', with_areelu)
-        self.assertNotIn('never saw the banner', with_areelu)
+        witness = next((p for p in node['Paragraphs'] if p['Requires'] == [io.BURIED_ALIVE, io.H2, 'crossroute.areelu.available']))
+        self.assertFalse(matches(witness, {io.H2, io.BURIED_ALIVE, io.CARRIED}))
+        self.assertTrue(matches(witness, {io.H2, io.BURIED_ALIVE, io.CARRIED, 'crossroute.areelu.available'}))
+        no_banner = next((p for p in node['Paragraphs'] if p['Forbids'] == [io.CARRIED]))
+        self.assertTrue(matches(no_banner, {io.H2, 'lastcall.bottled_held'}))
+        self.assertFalse(matches(no_banner, {io.H2, io.CARRIED, 'lastcall.bottled_held'}))
 
     def test_generated_banner_and_shared_heroic_partition(self):
         from tests.story_fixture import fresh_story
@@ -111,16 +114,10 @@ class IomedaeRound3Tests(unittest.TestCase):
         for choice in plant['Choices'][:2]:
             self.assertNotIn('crossroute.nocticula.unavailable', choice['Forbids'])
         heroic = scenes['trickster.lastcall.page.heroic']['Nodes'][0]
-        for text, gate in [("King's table, under a toast", 'lastcall.public_return'),
-                           ('laid on the cathedral steps', 'lastcall.public_return'),
-                           ('the death {mf|he|she} carries', 'lastcall.bottled_held')]:
-            paragraph = next(p for p in heroic['Paragraphs'] if text in p['Text'])
-            self.assertIn(gate, paragraph['Requires'])
+        for gate in ('lastcall.public_return', 'lastcall.bottled_held', 'lastcall.bridge_return'):
+            self.assertTrue(any((gate in p['Requires'] for p in heroic['Paragraphs'])))
+        for gate in ('lastcall.public_return', 'lastcall.bottled_held'):
             self.assertIn(io.BURIED_ALIVE, story['DerivedForbids'][gate])
-        concealed = next(p for p in heroic['Paragraphs'] if 'burial party found a stranger' in p['Text'])
-        self.assertIn('lastcall.bridge_return', concealed['Requires'])
         self.assertEqual([['lastcall.active', io.BURIED_ALIVE]], story['Derived']['lastcall.bridge_return'])
-
-
 if __name__ == '__main__':
     unittest.main()

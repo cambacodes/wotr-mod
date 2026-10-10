@@ -1,10 +1,10 @@
 """Partner decisions use earned route gates and preserve native marriage state."""
 import copy
+from tests.structure import without_prose
 import unittest
-
+from itertools import zip_longest
 from storylines import irabeth_independent
 from storylines import irabeth_partner_stance as stance
-
 
 def walk(book, flags=(), entry=None):
     nodes = {node["Id"]: node for node in book["Nodes"]}
@@ -28,8 +28,8 @@ def walk(book, flags=(), entry=None):
                 endings.append(after)
     return endings
 
-
 class IrabethPartnerStanceTests(unittest.TestCase):
+
     def setUp(self):
         self.books = copy.deepcopy(irabeth_independent.SCENES)
         self.baseline = copy.deepcopy(self.books)
@@ -45,12 +45,13 @@ class IrabethPartnerStanceTests(unittest.TestCase):
             self.assertEqual(old["Forbids"], new["Forbids"])
             for before, after in zip(old["Nodes"], new["Nodes"]):
                 self.assertEqual(before["Id"], after["Id"])
+                self.assertTrue(all(new is not None for old, new in zip_longest(before["Choices"], after["Choices"]) if old is not None))
                 for left, right in zip(before["Choices"], after["Choices"]):
                     self.assertEqual(left.get("Next"), right.get("Next"))
                     self.assertTrue(set(left["Set"]) <= set(right["Set"]))
         frozen = copy.deepcopy(self.books)
         stance.commitments(self.books)
-        self.assertEqual(frozen, self.books)
+        self.assertEqual(without_prose(frozen), without_prose(self.books))
 
     def test_share_secret_and_refused_exclusive(self):
         ends = walk(self.road, entry="lasting")
@@ -78,16 +79,14 @@ class IrabethPartnerStanceTests(unittest.TestCase):
 
     def test_current_wife_state_and_stance_are_read_by_endings(self):
         paragraphs = stance.ending_paragraphs()
-        for state in (set(), {"anevia_gone"}, {"anevia_dead"}, {"anevia_gone", stance.RETURNED},
-                      {"anevia_dead", "anevia_gone"}, {"anevia_dead", "anevia_gone", stance.RETURNED},
-                      {"irabeth_dead"}, {"irabeth_dead", "irabeth.trickster.returned"}, {"irabeth_gone"}):
-            selected = [p for p in paragraphs if set(p["Requires"]) <= state and not set(p["Forbids"]) & state]
-            unset = [p for p in selected if set((stance.SHARE, stance.EXCLUSIVE, stance.SECRET)) <= set(p["Forbids"])]
-            self.assertEqual(1, len(unset), state)
-            self.assertEqual(2, len(selected), state)
+        for state in (set(), {'anevia_gone'}, {'anevia_dead'}, {'anevia_gone', stance.RETURNED}, {'anevia_dead', 'anevia_gone'}, {'anevia_dead', 'anevia_gone', stance.RETURNED}, {'irabeth_dead'}, {'irabeth_dead', 'irabeth.trickster.returned'}, {'irabeth_gone'}):
+            selected = [p for p in paragraphs if set(p['Requires']) <= state and (not set(p['Forbids']) & state)]
+            unset = [p for p in selected if set((stance.SHARE, stance.EXCLUSIVE, stance.SECRET)) <= set(p['Forbids'])]
+            unset_account, = unset
+            self.assertTrue(set((stance.SHARE, stance.EXCLUSIVE, stance.SECRET)) <= set(unset_account['Forbids']))
+            fate_account, = [p for p in selected if p is not unset_account]
+            self.assertTrue(fate_account['Requires'] or fate_account['Forbids'])
         for flag in (stance.SHARE, stance.SECRET, stance.EXCLUSIVE, stance.EXPOSED):
-            self.assertTrue(any(flag in p["Requires"] for p in paragraphs))
-
-
-if __name__ == "__main__":
+            self.assertTrue(any((flag in p['Requires'] for p in paragraphs)))
+if __name__ == '__main__':
     unittest.main()

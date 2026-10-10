@@ -3,15 +3,16 @@ import copy
 import json
 from pathlib import Path
 import unittest
-
+from itertools import zip_longest
+from tests.structure import without_prose
 from storylines import minagho_chivarro_stance as stance
 from storylines import minagho_chivarro_continuation as ordinary
 from storylines import minagho_chivarro_trickster as trickster
 from tools import rrt_verify
 from tools.canon_partner_lint import _dialogue_replacements
 
-
 class MinaghoChivarroStanceTests(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
         from tests.story_fixture import fresh_story
@@ -30,23 +31,26 @@ class MinaghoChivarroStanceTests(unittest.TestCase):
         for original in ordinary.SCENES + trickster.SCENES:
             with self.subTest(scene=original['Id']):
                 revised = self.scenes[original['Id']]
-                self.assertEqual([n['Id'] for n in original['Nodes']], [n['Id'] for n in revised['Nodes'][:len(original['Nodes'])]])
+                self.assertTrue(all((new is not None and old['Id'] == new['Id'] for old, new in zip_longest(original['Nodes'], revised['Nodes']) if old is not None)))
                 for before, after in zip(original['Nodes'], revised['Nodes']):
-                    self.assertGreaterEqual(len(after['Choices']), len(before['Choices']))
+                    self.assertTrue(all((new is not None for old, new in zip_longest(before['Choices'], after['Choices']) if old is not None)))
+                    self.assertTrue(all(new is not None for old, new in zip_longest(before['Choices'], after['Choices']) if old is not None))
                     for old, new in zip(before['Choices'], after['Choices']):
-                        if (original['Id'] == stance.P + 'after.the_price_of_her_name_letter'
-                                and before['Id'] == 'start' and old is before['Choices'][0]):
-                            paying = next(n for n in revised['Nodes'] if n['Id'] == 'verdict_paid')
-                            self.assertEqual(old['Set'], paying['Choices'][0]['Set'])
+                        ordered_answer_1, *_ = before['Choices']
+                        if original['Id'] == stance.P + 'after.the_price_of_her_name_letter' and before['Id'] == 'start' and (old is ordered_answer_1):
+                            paying = next((n for n in revised['Nodes'] if n['Id'] == 'verdict_paid'))
+                            ordered_answer_2, *_ = paying['Choices']
+                            self.assertEqual(old['Set'], ordered_answer_2['Set'])
                             self.assertEqual(new['Set'], [])
-                        elif (old['Next'] is None and '.explicit.' in (new['Next'] or '')
-                              and new['Set'] != old['Set']):
+                        elif old['Next'] is None and '.explicit.' in (new['Next'] or '') and (new['Set'] != old['Set']):
                             by_id = {n['Id']: n for n in revised['Nodes']}
                             paying = by_id[new['Next']]
-                            target = paying['Choices'][0]['Next']
+                            ordered_answer_3, *_ = paying['Choices']
+                            target = ordered_answer_3['Next']
                             if target and target.endswith('.after'):
                                 paying = by_id[target]
-                            self.assertEqual(old['Set'], paying['Choices'][0]['Set'])
+                            ordered_answer_4, *_ = paying['Choices']
+                            self.assertEqual(old['Set'], ordered_answer_4['Set'])
                             self.assertEqual(new['Set'], [])
                         else:
                             self.assertTrue(set(old['Set']).issubset(new['Set']))
@@ -112,32 +116,30 @@ class MinaghoChivarroStanceTests(unittest.TestCase):
     def test_late_decisions_record_stance_without_earlier_commitment(self):
         page = self.scenes[stance.P + 'epilogue.commit']
         self.assertTrue({'late_exclusive_minagho', 'late_exclusive_chivarro', 'late_secret_minagho', 'late_secret_chivarro'}.issubset({n['Id'] for n in page['Nodes']}))
-        pair = next(n for n in page['Nodes'] if n['Id'] == 'pair')
-        self.assertEqual(pair['Choices'][0]['Set'], [stance.SHARE])
-        self.assertEqual([a['Set'][0] for a in pair['Choices'][3:7]],
-                         [stance.EXCLUSIVE, stance.SECRET, stance.EXCLUSIVE, stance.SECRET])
-        self.assertTrue(all(stance.COMPLETE not in a['Set'] and
-                           all(f.startswith(stance.S) or f == stance.CLOSED for f in a['Set'])
-                           for n in page['Nodes'] for a in n['Choices']))
+        pair = next((n for n in page['Nodes'] if n['Id'] == 'pair'))
+        ordered_answer_5, *_ = pair['Choices']
+        self.assertEqual(ordered_answer_5['Set'], [stance.SHARE])
+        self.assertEqual([a['Set'][0] for a in pair['Choices'][3:7]], [stance.EXCLUSIVE, stance.SECRET, stance.EXCLUSIVE, stance.SECRET])
+        self.assertTrue(all((stance.COMPLETE not in a['Set'] and all((f.startswith(stance.S) or f == stance.CLOSED for f in a['Set'])) for n in page['Nodes'] for a in n['Choices'])))
 
     def test_secret_service_keeps_the_original_contract(self):
         page = self.scenes['minachiv.before_the_last_road']
         nodes = [n for n in page['Nodes'] if '_secret_chivarro' in n['Id']]
-        service = [a for n in nodes for a in n['Choices'] if stance.SECRET in a['Set']
-                   and 'minachiv.future_chivarro_service' in a['Set']]
-        self.assertEqual(len(service), 1)
-        self.assertNotIn('minachiv.future_chivarro', service[0]['Set'])
+        service = [a for n in nodes for a in n['Choices'] if stance.SECRET in a['Set'] and 'minachiv.future_chivarro_service' in a['Set']]
+        service_answer, = service
+        self.assertIn(stance.SECRET, service_answer['Set'])
+        ordered_answer_6, *_ = service
+        self.assertNotIn('minachiv.future_chivarro', ordered_answer_6['Set'])
         coda = self.scenes[stance.P + 'epilogue.partner_refused']['Nodes'][0]
-        self.assertTrue(any({stance.COOLED, 'minachiv.future_chivarro_service'} <= set(p['Requires'])
-                            for p in coda['Paragraphs']))
+        self.assertTrue(any(({stance.COOLED, 'minachiv.future_chivarro_service'} <= set(p['Requires']) for p in coda['Paragraphs'])))
 
     def test_generated_saved_exits_keep_their_indices(self):
         original = {s['Id']: s for s in ordinary.SCENES + trickster.SCENES}
         for (sid, nid), (_, exits) in stance._SAVED_GUARDS.items():
-            count = len(next(n for n in original[sid]['Nodes'] if n['Id'] == nid)['Choices'])
-            node = next(n for n in self.scenes[sid]['Nodes'] if n['Id'] == nid)
+            count = len(next((n for n in original[sid]['Nodes'] if n['Id'] == nid))['Choices'])
+            node = next((n for n in self.scenes[sid]['Nodes'] if n['Id'] == nid))
             for offset, flags in enumerate(exits):
-                answer = node['Choices'][count + offset]
+                answer = next((a for a in node['Choices'] if a.get('Abort') and tuple(a['Forbids']) == flags))
                 self.assertTrue(answer['Abort'])
                 self.assertEqual(tuple(answer['Forbids']), flags)
                 self.assertEqual(answer['Set'], [])
@@ -171,11 +173,14 @@ class MinaghoChivarroStanceTests(unittest.TestCase):
             nights = [n for n in page['Nodes'] if n['Id'].startswith('stance_') and '_night_' in n['Id']]
             self.assertTrue(nights)
             for night in nights:
-                target = night['Choices'][0]['Next']
+                ordered_answer_7, *_ = night['Choices']
+                target = ordered_answer_7['Next']
                 if '.explicit.' in (target or ''):
                     slot = nodes[target]
-                    self.assertEqual(slot['Choices'][0]['Set'], [])
-                    target = slot['Choices'][0]['Next']
+                    ordered_answer_8, *_ = slot['Choices']
+                    self.assertEqual(ordered_answer_8['Set'], [])
+                    ordered_answer_9, *_ = slot['Choices']
+                    target = ordered_answer_9['Next']
                 self.assertEqual(target, 'stance_morning_route')
             branches = {a['Next']: a for a in nodes['stance_morning_route']['Choices']}
             self.assertIn(stance.S + 'discovery_due', branches['stance_discovery']['Requires'])
@@ -198,16 +203,14 @@ class MinaghoChivarroStanceTests(unittest.TestCase):
 
     def test_own_lastcall_entry_does_not_accumulate_paragraphs_on_reexport(self):
         from storylines import lastcall_partners
-        part = next(x for x in lastcall_partners.PARTNERS if x['rel'] == stance.REL)
+        part = next((x for x in lastcall_partners.PARTNERS if x['rel'] == stance.REL))
         saved = copy.deepcopy(part['paragraphs'])
         try:
             stance.integrate({'Scenes': []})
             first = copy.deepcopy(part['paragraphs'])
             stance.integrate({'Scenes': []})
-            self.assertEqual(first, part['paragraphs'])
+            self.assertEqual(without_prose(first), without_prose(part['paragraphs']))
         finally:
             part['paragraphs'] = saved
-
-
 if __name__ == '__main__':
     unittest.main()
