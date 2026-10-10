@@ -155943,8 +155943,7 @@
       "Chapter": 6,
       "Flags": [
         "nidalynn.committed",
-        "nidalynn.payoff.partner",
-        "nidalynn.present_now",
+        "nidalynn.payoff.recorded_partner",
         "sacrifice",
         "trickster.ever"
       ],
