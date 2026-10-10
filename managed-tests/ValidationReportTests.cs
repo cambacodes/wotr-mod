@@ -32,7 +32,7 @@ internal static class ValidationReportTests
         };
         foreach (string id in new[] { "first", "second" })
             story.Scenes.Add(new Scene { Id = id, Relationship = "her", Remote = true,
-                Nodes = new List<Node> { new Node { Id = "end", Text = "fixture",
+                Nodes = new List<Tirabade.Node> { new Tirabade.Node { Id = "end", Text = "fixture",
                     Choices = new List<Choice> { new Choice { Id = "finish", Set = new[] { "her.done" } } } } } });
         return story;
     }
