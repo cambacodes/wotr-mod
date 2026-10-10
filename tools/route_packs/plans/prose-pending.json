@@ -1,47 +1,4 @@
 {
   "version": 1,
-  "pending": [
-    {
-      "scene": "eritrice.trickster.reconciled_debate",
-      "node": "exchange",
-      "surface": "paragraph",
-      "index": 2,
-      "text_sha": "8b90d07501e2677e1d5b822dd0f8086f72159d4484bdae3b8422c7088b009f22"
-    },
-    {
-      "scene": "areelu.trickster.report.graft",
-      "node": "after",
-      "surface": "paragraph",
-      "index": 3,
-      "text_sha": "2b1b6fff18ff509187e6e5b94e56d40759ddd9252117d3a010f338b30d845236"
-    },
-    {
-      "scene": "areelu.trickster.report.crossroads",
-      "node": "end",
-      "surface": "paragraph",
-      "index": 7,
-      "text_sha": "c5dcb823927bc58432ae3d173f03fbdeae1e109c1ab5678ba413723573da87a1"
-    },
-    {
-      "scene": "areelu.trickster.report.dagger",
-      "node": "end",
-      "surface": "paragraph",
-      "index": 2,
-      "text_sha": "007c479f0b0dfccdb325bcc4a8495a928d91a1da4a123ee8040c9ee75087894e"
-    },
-    {
-      "scene": "areelu.trickster.report.visitors",
-      "node": "end",
-      "surface": "paragraph",
-      "index": 2,
-      "text_sha": "a3921bec66ceb24adaf333f82b2fa087206c457fdc35d3909ff2edaaf05031a2"
-    },
-    {
-      "scene": "chadali.trickster.epilogue.declined",
-      "node": "page",
-      "surface": "paragraph",
-      "index": 2,
-      "text_sha": "93489d9079bf7b7747963f9e5e088d5f6c40e5735d994f713f58b9d2f852a9df"
-    }
-  ]
+  "pending": []
 }
