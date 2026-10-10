@@ -769,19 +769,8 @@ def _make_expansion(*, independent_tirabade=True):
     # villain-route-nocticula (cloud): Nocticula's text-only layer and appended readers, after every appender.
     from storylines import nocticula_cloud
     nocticula_cloud.integrate(payload)
-    # heat pass g1 (HEAT, Directive 12): build-up text of the explicit slots, last, text only.
     from storylines import anevia_heat
     anevia_heat.integrate(payload)
-    # heat-g4 (Claude prose): build-up to the explicit boundary for Minagho, Chivarro, Jerribeth, Wenduag, Gesmerha,
-    # Hepzamirah and Shamira. Text only, last, so no earlier layer can overwrite it and no index moves.
-    from storylines import heat_g4
-    heat_g4.integrate(payload)
-    # heat calibration, batch b (Claude prose): official-register rewrite of the Minagho/Chivarro, Jerribeth and household cuts.
-    from storylines import heat_cal_b
-    heat_cal_b.integrate(payload)
-    # heat calibration batch g (Claude prose): official-register rewrite of the intimate scenes, text only, last.
-    from storylines import heat_cal_g
-    heat_cal_g.integrate(payload)
     return payload
 
 

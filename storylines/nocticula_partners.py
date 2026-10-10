@@ -7,6 +7,8 @@ no meeting, resurrection, shell, native breakup or reconciliation is granted.
 Only Nocticula entries are changed, including her Last Call template.
 """
 from copy import deepcopy
+import json
+from pathlib import Path
 
 from story_format import c, n, p, scene
 
@@ -76,7 +78,8 @@ def terms_nodes(prefix, resume, closed):
             answer = ('"Another amusement? Keep the mortal away from my throne. When you tire of crusade reports, you know where I am."'
                       if state == "alive" else
                       '"Your bed is yours. My Harem is mine. Send your mortal if you want an answer; I would enjoy finding out what else you have told them."')
-            out.append(n(base + ".share", "Narrator", staging + "\n" + answer,
+            out.append(n(base + ".share", "Narrator", staging + '''
+''' + answer,
                          c('"And you, Nocticula?"', base + ".share_answer"), portrait="Shamira"))
             out.append(nt(base + ".share_answer", '"She may have your ear. She may try for rather more. Carry nothing from my pillow to her throne, and nothing from hers to mine. I shall enjoy watching which of us she thinks she can cheat first."',
                           c('[Accept their terms.]', resume, flags=(TERMS, P + "share"))))
@@ -92,7 +95,8 @@ def terms_nodes(prefix, resume, closed):
             out.append(nt(base + ".share", '"There is nobody left to tell. You may share my company; you will not borrow a dead woman\'s approval."',
                           c('[Keep her name in the agreement.]', resume, flags=(TERMS, P + "share"))))
         if state in LIVING:
-            out.append(nt(base + ".exclusive", '"End it? You speak as though I were dismissing a chambermaid. I choose who comes to my bed. Her treachery did not transfer that choice to you."\n{n}Her smile widens.{/n} "You may ask for me. You may not order me to erase her. Shall I show you the door?"',
+            out.append(nt(base + ".exclusive", '''"End it? You speak as though I were dismissing a chambermaid. I choose who comes to my bed. Her treachery did not transfer that choice to you."
+{n}Her smile widens.{/n} "You may ask for me. You may not order me to erase her. Shall I show you the door?"''',
                           c('"Then let her know about us."', base + ".share"),
                           c('"Keep me secret, then."', base + ".secret"),
                           c('"Yes. We are finished."', flags=(P + "exclusive", REFUSED, closed))))
@@ -440,7 +444,17 @@ def take_new_accounts(s):
     return out
 
 
-def slot(scene_, host, number, cut, *, split=None):
+def slot_default(key):
+    """The slot JSON owns the approved cut, for ordinary and acquired twins."""
+    donor = key.split(".acquired.")[0]
+    if ".acquired." in key:
+        donor += ".explicit." + key.rsplit(".explicit.", 1)[1]
+    root = Path(__file__).resolve().parents[1] / "tools/route_packs/explicit_slots/nocticula"
+    brief = json.loads((root / (donor + ".json")).read_text(encoding="utf-8"))
+    return brief.get("variant_defaults", {}).get(key, brief["default_text"])
+
+
+def slot(scene_, host, number, *, split=None):
     """An appended fill node; old node/answer indices and old targets survive.
 
     The empty fill is a heated cut. Its answers carry the original aftermath
@@ -458,7 +472,7 @@ def slot(scene_, host, number, cut, *, split=None):
     if split:
         before, after = text.split(split, 1)
         # The harbor text keeps narration open across the old cut.
-        original["Text"] = before.rstrip() + "{/n}"
+        original["Text"] = before.rstrip() + ("" if (scene_["Id"], host) in {("noct.unlit_quay", "later"), ("noct.second_door", "power")} else "{/n}")
         after = "{n}" + split + after
         after = after.replace("Later, the lamp burns beside the couch. ", "")
         after = after.replace("The book has fallen open on the floor. ", "")
@@ -470,12 +484,12 @@ def slot(scene_, host, number, cut, *, split=None):
     # Explicit content brief: see tools/route_packs/explicit_slots/nocticula/<id>.json.
     if after:
         aftermath = scene_["Id"] + ".aftermath." + str(number)
-        scene_["Nodes"].append(n(key, "Narrator", cut,
+        scene_["Nodes"].append(n(key, "Narrator", slot_default(key),
                                   c("Continue", aftermath), portrait="Nocticula"))
         scene_["Nodes"].append(n(aftermath, "Narrator", after,
                                   *old_choices, portrait="Nocticula"))
     else:
-        scene_["Nodes"].append(n(key, "Narrator", cut,
+        scene_["Nodes"].append(n(key, "Narrator", slot_default(key),
                                   *old_choices, portrait="Nocticula"))
 
 
@@ -489,18 +503,16 @@ def polish_situation(s):
         s["Nodes"][0].setdefault("Paragraphs", []).extend(harbor_receipts())
     if donor == "noct.unlit_quay":
         slot(s, "later", 1,
-             "{n}She pulls you down onto the cushions. Below the rail the quay goes quiet; beyond it, the city burns until morning.{/n}",
              split="Later, the flower")
     elif donor == "noct.her_own_face":
         # N2: start/face prose now lives in the base scene (voice-locked).
         slot(s, "night", 1,
-             "{n}She draws you down beside her, leaving the lamp where you can see her face. Later, the book lies open on the floor.{/n}",
              split="Later she lies beside you")
     elif donor == "noct.second_door":
         # N3: end/yes/power prose lives in the base scene (voice-locked).
-        slot(s, "yes", 1, "{n}The latch falls behind you. Through the door, the Harem has gone very quiet.{/n}",
+        slot(s, "yes", 1,
              split="Much later, the room comes back.")
-        slot(s, "power", 2, "{n}She pulls you down beside her. Much later, she remembers the courtier.{/n}",
+        slot(s, "power", 2,
              split="A long while afterwards she asks")
     elif donor == "noct.unborrowed_evening":
         pass  # N3: want/honest prose now lives in the base scene (voice-locked).
@@ -518,28 +530,23 @@ def polish_situation(s):
 {n}The next stroke arrives smaller, crowded against the place where your fingers rest.{/n}
 "Move your hand. I am not finished with you."'''
         slot(s, "accept", 1,
-             "{n}You bring the sheet closer. Her next line arrives before the ink beneath your answer has dried. At dawn, the dispatch still waits.{/n}",
              split="At dawn, a last line")
     elif sid == "nocticula.trickster.defeated.chair":
-        slot(s, "threshold", 1,
-             "{n}Her cold hand closes over yours. Beyond the darkness, Threshold's fires burn through the night.{/n}")
+        slot(s, "threshold", 1)
         node(s, "threshold")["Text"] = node(s, "threshold")["Text"].replace(
             "The dark around her widens and closes over the two of you like a drawn curtain.",
             "A sentry's footsteps halt nearby. Nocticula turns her head toward the sound. Her shadow shuts out the campfires; the footsteps recede. She returns her attention to you.")
     elif sid == "nocticula.trickster.epilogue.commit":
-        for host, number, cut in (
-            ("kissed", 1, "She kept the Commander close in the royal chair. The last lamp burned low before morning."),
-            ("knelt", 2, "She caught the Commander's hand and drew them nearer. The palace lamps burned low before morning."),
-            ("walked", 3, "She drew the Commander down beside her. The last lamp burned low before morning."),
-        ):
-            slot(s, host, number, "{n}" + cut + "{/n}")
+        for host, number in (("kissed", 1), ("knelt", 2), ("walked", 3)):
+            slot(s, host, number)
         collection = p("{n}The next spring a sealed note found the Commander: \"My favour. A chair at your right hand, wherever you eat. I did not ask for your bed.\" The Commander set it there. Nocticula came to dinner, looked once at the empty place beside her debtor, and sat down. She returned the following month without asking whether the refusal had changed.{/n}",
                        requires=("nocticula.trickster.cost.shade_paid",))
         # The legacy inert Continue exits stay exactly inert. Collection is
         # paid-only epilogue narration, independent of any romantic yes.
         for host in ("refused_page", "inn"):
             node(s, host).setdefault("Paragraphs", []).append(deepcopy(collection))
-        node(s, "yes_page")["Text"] += "\n{n}A servant appears with a tray. Nocticula waves her out before she has crossed the threshold. The door shuts; the queen lays a hand on the chair's arm.{/n}"
+        node(s, "yes_page")["Text"] += '''
+{n}A servant appears with a tray. Nocticula waves her out before she has crossed the threshold. The door shuts; the queen lays a hand on the chair's arm.{/n}'''
 
 
 def add_correspondence_visit(ep):
@@ -560,12 +567,15 @@ def add_correspondence_visit(ep):
 "I considered leaving you outside. Come in. I want to hear how you would have described the wait."''',
            c("[Enter at her invitation.]", "admitted"),
            c("[Use the paid return passage.]", "letters")),
-        nt("admitted", '{n}Nocticula sent the attendants away. The old undertaking lay beside her glass. She had not torn it up.{/n}\n\"You wanted my company. Yes. Tonight I want yours.\"\n{n}She caught the Commander by the coat and drew them close. Her other hand stayed on the door until the Commander reached for her; then she closed it. Her mouth found theirs; she pulled the coat free of their shoulders and let it fall. The Commander caught her wrist as she reached for the next fastening. She smiled, guided that hand to her waist, and resumed.{/n}',
+        nt("admitted", '''{n}Nocticula sent the attendants away. The old undertaking lay beside her glass. She had not torn it up.{/n}
+"You wanted my company. Yes. Tonight I want yours."
+{n}She caught the Commander by the coat and drew them close. Her other hand stayed on the door until the Commander reached for her; then she closed it. Her mouth found theirs; she pulled the coat free of their shoulders and let it fall. The Commander caught her wrist as she reached for the next fastening. She smiled, guided that hand to her waist, and resumed.{/n}''',
            c("[Stay with her.]", ep["Id"] + ".explicit.1"),
            c("[Keep the visit to conversation.]", "conversation")),
-        n(ep["Id"] + ".explicit.1", "Narrator", "{n}Nocticula took the Commander's hand and closed the chamber door. At dawn, the half-seal rested beside the travel papers.{/n}",
+        n(ep["Id"] + ".explicit.1", "Narrator", slot_default(ep["Id"] + ".explicit.1"),
           c("Continue", "morning"), portrait="Nocticula"),
-        n("morning", "Narrator", "{n}At dawn she was still there, reading a broker's appeal over the Commander's shoulder. She crossed out his proposed fee, kissed the bare shoulder beneath her hand, and returned the travel papers.{/n}\n\"Go. Ask for the next visit through the mark. I may make you wait longer.\"",
+        n("morning", "Narrator", '''{n}At dawn she was still there, reading a broker's appeal over the Commander's shoulder. She crossed out his proposed fee, kissed the bare shoulder beneath her hand, and returned the travel papers.{/n}
+"Go. Ask for the next visit through the mark. I may make you wait longer."''',
           c(), portrait="Nocticula", paragraphs=visit_paragraphs()),
         n("conversation", "Narrator", "{n}Nocticula kept the Commander beside her until the landing court's bells sounded. When the return spell was due she rose, touched their mouth with one finger, and withdrew it smiling. The next letter arrived three nights later, with a correction to the last argument.{/n}",
           c(), portrait="Nocticula", paragraphs=visit_paragraphs()),

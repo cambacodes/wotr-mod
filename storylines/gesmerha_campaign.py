@@ -300,13 +300,15 @@ s("what_she_asks", "The question without a chorus", '"You wanted an afternoon wi
     n("touch", "Gesmerha", '''{n}She lifts her hand to your face and finds it at once. Her thumb rests at the corner of your mouth, reading it the way she reads the edge of a cut. Then she kisses you, once, lightly, and draws back just far enough to breathe.{/n}
 "I have thought about that more than was wise."
 {n}The second kiss is not light. Her hand slides to the back of your neck and holds you there. When you shift toward her, the shawl pins her to the bench; she yanks it out from under her hip with a curse to the spirits that makes you both laugh, throws it to the floor, and comes back to you with a good deal less ceremony.{/n}
+{n}Her hand has gone to the front of your shirt, firm and unhesitating, and her other cups the back of your head as she kisses her way along your jaw. You feel her smile when your breath stutters.{/n}
 "The door," {n}she says against your mouth.{/n} "Or this bench, until the light goes. Say which. I have waited long enough."''',
       c('"The door."', "private"),
       c('"The bench. Just this, today."', "hold")),
     n("private", "Gesmerha", '''{n}You bar the workshop door. Gesmerha takes your hand and leads you to the pallet behind the curtain, ducking beneath the low shelf.{/n}
 "Mind your head. I refuse to explain this to a healer."
-{n}She kisses you before you can answer. Her fingers work your belt loose; your hands find the hem of her shift and she pulls it off herself. She presses close, warm skin against yours, then draws you down onto the pallet.{/n}
-"Stay. The clan has had me since dawn. I want this afternoon."''',
+{n}She kisses you before you can answer, and her fingers work your belt loose with the speed of long practice. When your hands find the hem of her shift she pulls it off herself and presses close, warm skin against yours, her breath short against your mouth.{/n}
+"Stay. The clan has had me since dawn. I want this afternoon, and I want to learn what these hands do when they are not holding a tool."
+{n}She draws you down onto the pallet, and the light through the shutter goes on moving across the wall without either of you.{/n}''',
       c('[Continue]', "after_private")),
     n("hold", "Gesmerha", '''"Come nearer, then. I have plans for this bench."
 {n}She hauls your arm around her shoulders and settles its weight where she wants it. When your fingers find the tie in her hair, she catches them.{/n}

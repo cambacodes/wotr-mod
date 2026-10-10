@@ -302,7 +302,12 @@ It is worse than you remembered. Halfway through writing it, you cross out a wor
 "Enough about the broker. I would have your collar open by now. Your belt on the floor. My mouth at your throat, until you forgot that clever answer."
 {n}Ink pools at the end of the last stroke.{/n}
 "My robe would be next. Your hands on my bare hips, where I could see them. You have been thinking about my bed, Commander. Tell me what you wanted there."
-{n}She leaves room beneath the question. You draw the sheet closer. The unfinished dispatch waits beside the lamp.
+{n}She leaves room beneath the question. You draw the sheet closer. The unfinished dispatch waits beside the lamp.{/n}
+{n}Her next line arrives while the ink is still wet, in a hand grown less careful by degrees.{/n}
+"I have been honest about my bed, so be honest about yours. I would take you slowly, to teach you what impatience costs, and I would not stop when you begged. Your wrists where I could see them. My name in your mouth more often than you have said it in all your clever letters, and every time you would mean it."
+{n}The page smells faintly of night-blooming flowers. Beneath the last line she has drawn one thin black crescent, as if marking where a nail would go.{/n}
+"The undertaking I kept is still in my drawer, darling. It is not a kindness, and neither is anything I want from you. Write me what you would let me do."
+{n}You dip the pen. The lamp gutters, and your hand is not entirely steady.
 At dawn, a last line waits beside your answer: "That was worth reading. Burn it before your clerk arrives. I keep my copy."{/n}''', c('Keep the agreed correspondence and spend the rest of this evening in it.', flags=f("an_answer_of_her_own_done"))),
     page("decline", "Nocticula", '''"Declined." {n}The word sits alone on the page for a while, as if she were letting it cool.{/n}
 "Nobody declines me twice in the same year, Commander. Choose your next refusal with more care than this one. I keep your undertaking; I keep everything that is signed to me. You may spend the rest of the war watching me not use it, and wondering why."

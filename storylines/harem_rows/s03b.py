@@ -52,38 +52,36 @@ def _terminal(step, result, speaker, text):
 def _nodes(step):
     retry = step == "retry"
     opening = (
-        '''{n}Seelah lays the account of the last hearing beside the crusade banner. Arueshalae turns it over with one claw.{/n}
-"Still hiding behind Desna? Ask me again. I liked the answer."'''
+        '''{n}The boy with the Desnan star on his bridle is back from the Wound road, alive, and saddling again. Arueshalae turns the little star over with one claw while Seelah watches from the stable door.{/n}
+"Still hiding behind Desna, sister? Ask me again. I liked the answer."'''
         if retry else
-        '''{n}Seelah catches Arueshalae lifting the crusade banner's trailing edge with one claw. She pulls the cloth free and lays a stool beneath it.{/n}
-"Sit down. Before someone sends you out with our scouts thinking they're getting a servant of Desna. I backed you once. I'm not going to pretend I didn't. But I want to hear what you're offering them now."
-{n}Arueshalae sits astride the stool, her wings spread behind her.{/n}
+        '''{n}In the stable yard three of Seelah's scouts are saddling for the Wound road. The youngest still has a little Desnan star tied to his bridle, the kind Arueshalae used to bless for anyone who asked. Seelah sees it, and sees Arueshalae watching it, and plants herself between them.{/n}
+"They ride with you at dawn, and half of them think they're riding with a servant of Desna. I backed you once. I'm not going to pretend I didn't. So tell them what they're riding with. Your mouth, not mine."
+{n}Arueshalae leans back against the stable door and stretches her wings until the horses shy.{/n}
 "A succubus. They might even enjoy being disappointed."'''
     )
-    choices = [c('"Let her give her own account."' if retry else
-                 '"Admit what she says here. Nothing she hasn\'t said."', "heard")]
+    choices = [c('"Let her tell them herself."' if retry else
+                 '"Let her tell them herself. Every word."', "heard")]
     if not retry:
-        choices.append(c('"The old Desnan account is enough."', "misheard"))
+        choices.append(c('"Leave the boy his star. It keeps him brave."', "misheard"))
     choices.extend([
-        c('"Leave that account unanswered."' if retry else '"End the hearing."', "refused"),
+        c('"Nobody tells them anything."' if retry else '"Nobody tells them anything. Turn the horses out."', "refused"),
         c("[Later.]", abort=True),
     ])
     nodes = [n("start", "Arueshalae" if retry else "Seelah", opening, *choices),
-             _terminal(step, "heard", "Arueshalae", '''"Mine. I'm wearing my own colors. No prayers, no dreary little promises. I wanted to be hungry again."
-{n}Seelah holds her gaze, then crosses Desna's name out of the account.{/n}
-"I was right to help you try. You chose what to do with it. I'll tell the scouts exactly what you said. And I won't call you sister."
+             _terminal(step, "heard", "Arueshalae", '''{n}She walks down the line of horses, slowly, and stops at the youngest scout, the one with a little Desnan star still tied to his bridle. She flicks it with one claw.{/n} "I gave that up. The goddess, the prayers, the dreary little promises. I wanted to be hungry again, and now I am." {n}She leans in until he leans back against his horse.{/n} "Ride close to me tomorrow and you'll come home. Come close to me tonight and you won't. That's all you need to know about me, sweet."
+{n}The boy cuts the star off his bridle himself. Seelah watches him do it, then turns to Arueshalae.{/n} "I was right to help you try. You chose what to do with it. I won't call you sister."
 "Oh, I shall keep calling you sister. That face you make is delicious."
-{n}Seelah pins the corrected account beneath the banner. She moves her stool out of reach of Arueshalae's wings. The succubus laughs, but makes no attempt to take the paper back.{/n}''')]
+{n}Before nightfall Seelah moves the scouts' tents to the far side of the yard. Arueshalae laughs at that, and leaves them alone. For now.{/n}''')]
     if not retry:
-        nodes.append(_terminal(step, "misheard", "Seelah", '''{n}Seelah takes the account from you before it reaches the banner.{/n}
-"No. Desna's name doesn't make this true. She hasn't offered those scouts a damned thing."
+        nodes.append(_terminal(step, "misheard", "Seelah", '''{n}Seelah turns on you, not on her.{/n}
+"No. Desna's star doesn't make it true. She hasn't offered these boys a damned thing but her teeth."
 {n}Arueshalae stretches, grinning at the paladin.{/n}
-"But you liked me so much better that way. Perhaps you should keep it. Read it when you miss your little sister."
-{n}Seelah folds the account and sets it aside. Nothing has been corrected.{/n}'''))
-    nodes.append(_terminal(step, "refused", "Seelah", '''{n}Seelah pulls the stool away from the banner.{/n}
-"Then I have no account to give them. I'll warn the scouts myself."
-"Do describe me properly. Some of them have such dull imaginations."
-{n}Arueshalae bares her teeth at Seelah. The paladin leaves with the unamended account under her arm.{/n}'''))
+"But you liked me so much better that way. Leave him his trinket. It'll give him something to hold on to while I eat."
+{n}Seelah says nothing more. The star stays on the bridle, and the scouts ride out at dawn believing what they believed.{/n}'''))
+    nodes.append(_terminal(step, "refused", "Seelah", '''{n}Seelah turns the scouts' horses round with her own hands.{/n} "Then they don't ride with her. I'll take them up the Wound road myself."
+"Do describe me properly on the way. Some of them have such dull imaginations."
+{n}Arueshalae bares her teeth at Seelah. The paladin leads the horses out of the yard and does not look back.{/n}'''))
     return nodes
 
 
@@ -110,8 +108,8 @@ def _scene(payload, step):
         requires.append(p("settle.failed"))
         forbids.extend([p("settle.done"), p("unsettled")])
     return scene(
-        p(step), "What the witness said", "Seelah", 5,
-        "[Seelah and Arueshalae: hear her account again]" if step == "retry" else
+        p(step), "Whose colors", "Seelah", 5,
+        "[Seelah and Arueshalae: the boy with the star]" if step == "retry" else
         "[Seelah and Arueshalae: whose colors?]", _nodes(step),
         requires=tuple(dict.fromkeys(requires)), forbids=tuple(dict.fromkeys(forbids)),
         last=5, delay=48 if step == "retry" else 0,

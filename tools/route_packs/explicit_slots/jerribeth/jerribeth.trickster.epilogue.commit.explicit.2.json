@@ -25,7 +25,7 @@
   "min_lines": 10,
   "max_lines": 18,
   "narration": "third-past",
-  "default_text": "{n}The room she made closed around them both. The real breakfast table stood empty until noon.{/n}",
+  "default_text": "{n}The room she made closed around them both, and she was thorough in it: every nerve the Commander had, in the order she had catalogued them. The real breakfast table stood empty until noon.{/n}",
   "placement": {
     "scene": "jerribeth.trickster.epilogue.commit",
     "after_node": "night_mind",

@@ -43,7 +43,8 @@ def _nodes(step, fallen):
         opening += '''{n}Arueshalae's fingers tighten on the staff.{/n} "I remember you, Vellexia. And I remember what you call amusement. We can cross staves. Nothing else."
 "You used to finish your pleasures. Has Desna forbidden that too?"'''
     if step == "retry":
-        opening += '''\n{n}Arueshalae places her staff back on the table. Vellexia's smile thins. Neither will take it up until you stand between the cleared benches.{/n}'''
+        opening += '''
+{n}Arueshalae places her staff back on the table. Vellexia's smile thins. Neither will take it up until you stand between the cleared benches.{/n}'''
         choices = (
             c('"Keep your distance. I will call the halt."', "refereed"),
             c('"Finish it without a referee."', "failed"),
@@ -59,13 +60,14 @@ def _nodes(step, fallen):
             c('[Later.]', abort=True),
         )
     ending = ('''"Find yourself a pet who stops when you clap." {n}Arueshalae lowers her staff without approaching.{/n}
-"Oh, I have plenty. Very few can knock a weapon out of my hands."'''
+"Oh, I have plenty. Half of them are holding up my lamps. Very few could ever knock a weapon out of my hands. You were always my favourite."'''
               if fallen else
               '''"You wanted a bout. That is what I finished." {n}Arueshalae lowers her staff without approaching.{/n}
-"How dreary. And how irritating that you did it well."''')
+"How dreary. And how irritating that you did it well. I taught you better than sticks, little bird. I taught you to finish."''')
     deed = '''{n}You stay at the edge of the cleared floor. Each time Vellexia tries to close the distance, you call them back to staff's reach. The soldiers' briefing waits while the staves crack together. Arueshalae catches Vellexia's shaft with her own and sends it spinning under a bench.{/n}
 "Enough," {n}Arueshalae says. Vellexia's hand opens. She leaves the fallen staff where it lies.{/n}
-''' + ending + '''\n{n}Vellexia steps aside for the crusaders, still smiling at Arueshalae. The assault map can finally be unrolled.{/n}'''
+''' + ending + '''
+{n}Vellexia steps aside for the crusaders, still smiling at Arueshalae. The assault map can finally be unrolled.{/n}'''
     result = "failed" if step == "retry" else "botched"
     failure = ('''{n}You turn away. Vellexia slides her grip up the staff and beckons Arueshalae closer.{/n}
 "No sticks, then. Show me what you really want."
@@ -77,17 +79,20 @@ def _nodes(step, fallen):
 ''')
     failure += ('''"Order your own pets about." {n}Arueshalae turns her back on Vellexia.{/n}'''
                 if fallen else '''"I know what comes after that invitation. I will not do it again." {n}Arueshalae turns her back on Vellexia.{/n}''')
-    failure += '''\n"And here I thought a war might cure this city's dullness." {n}Vellexia tosses her staff onto the table. The crusaders retrieve their map.{/n}'''
+    failure += '''
+"And here I thought a war might cure this city's dullness. Run along, then. You always did come back hungrier." {n}Vellexia tosses her staff onto the table. The crusaders retrieve their map.{/n}'''
     nodes = [n("start", "Narrator", opening, *choices)]
     if step == "settle":
-        nodes.append(n("bounded", "Narrator", '''{n}You haul the benches clear and catch the first crossing of the staves before Vellexia can turn it into a rush.{/n}\n''' + deed,
+        nodes.append(n("bounded", "Narrator", '''{n}You haul the benches clear and catch the first crossing of the staves before Vellexia can turn it into a rush.{/n}
+''' + deed,
                        c(flags=_success(step, fallen))))
     nodes.extend([
-        n("refereed", "Narrator", '''{n}You move the last bench yourself and take your place. Neither woman gets a private audience tonight.{/n}\n''' + deed,
+        n("refereed", "Narrator", '''{n}You move the last bench yourself and take your place. Neither woman gets a private audience tonight.{/n}
+''' + deed,
           c(flags=_success(step, fallen))),
         n(result, "Narrator", failure, c(flags=(P(step + ".seen"), P(step + ".failed"), P("bout.interrupted")))),
         n("declined", "Narrator", '''{n}Arueshalae puts down her staff. Vellexia lets hers fall with a clatter among the cups.{/n}
-"Do bring me something less tedious next time, Commander. Your war will not last forever."
+"Do bring me something less tedious next time, Commander. Your war will not last forever, and neither will her diet."
 {n}Arueshalae pulls the assault map out from under the staff and spreads it for the waiting soldiers.{/n}''',
           c(flags=(P(step + ".seen"), P(step + ".declined")))),
     ])

@@ -44,10 +44,10 @@ def nodes(evil, retry=False):
     opening = """{n}The Fool King's upper landing overlooks soldiers drinking before their next march to the Worldwound. Shamira removes a loose bracelet and sets it beside the rail.{/n}
 "One of my queen's creatures will demonstrate an escape. I shall test the grip myself."
 {n}Arueshalae answers without lowering her wing.{/n}
-""" + name + """
+""" + name + '''
 {n}Arueshalae spreads one wing. Shamira studies the angle, then reaches for the bracelet again.{/n}
-"Show me, then. If this body disgraces me, I would rather discover it here than before an enemy."
-"""
+"Show me, then. This body was grown in a garden for a customer who never paid. I want to know whether it can break a hold before somebody at my court finds out that it cannot."
+'''
     if not evil:
         opening += '"Over the coat," {n}Arueshalae says, drawing the cloth over her wrist.{/n} "I still hunger. This is a hold, not a feeding."'
     else:
@@ -70,7 +70,7 @@ def nodes(evil, retry=False):
 {n}The padding is ready. You will take the first slow tumble, with the soldiers watching, before the two women attempt the escape.{/n}""",
                 ("retry.done",) + SUCCESS + ("cost.commander_demonstration",),
                 close.replace("Clear the landing.", "Finish the padded demonstration.")),
-            terminal("retry", "refused", '"Then I keep my claim," {n}Shamira says. Arueshalae folds her wings and leaves the bracelet untouched.{/n}',
+            terminal("retry", "refused", '"Then I keep my claim," {n}Shamira says.{/n} "She was my city\'s before she was anybody\'s." {n}Arueshalae folds her wings and leaves the bracelet untouched.{/n}',
                 ("retry.declined", "claim.unsettled"), "[Finish.]" )]
     return [n("start", "Narrator", opening + """
 {n}The narrow landing leaves little room to catch a falling body. There are cushions downstairs, but fetching them means helping the demonstrator drag them up — and taking the first tumble yourself.{/n}""",
@@ -86,7 +86,7 @@ def nodes(evil, retry=False):
         terminal("settle", "fell", """{n}Your foot slips on spilled beer. Arueshalae draws back before taking the hold; Shamira closes her fingers over the bracelet.{/n}
 "No. I am not breaking my neck for your tavern.\"""",
             ("settle.failed", "landing_stopped")),
-        terminal("settle", "declined", '"A pity," {n}Shamira says. Arueshalae looks at the bracelet, then back at her.{/n} "Keep it. And keep your hands off my name."',
+        terminal("settle", "declined", '"A pity," {n}Shamira says.{/n} "I had girls flayed for less than walking out of my court, little bird. You were always lucky." {n}Arueshalae looks at the bracelet, then back at her.{/n} "Keep it. And keep your hands off my name."',
             ("settle.declined", "claim.unsettled"))]
 
 

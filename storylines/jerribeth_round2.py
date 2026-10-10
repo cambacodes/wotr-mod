@@ -117,7 +117,8 @@ def disclosure(event, target):
     old["Choices"].extend(c('"And Marhevok?"', "marhevok_early_" + fate, **guard)
                           for fate, guard in partner.fate_guards().items())
     texts = {
-        "plant": '{n}She turns the image toward a pot. Human eyes stare from its fleshy bud; a vine pulls taut against the rim.{/n}\n"Marhevok. My lover. I found him a shape I could keep. He still watches me. You wanted to know what I do with devotion."',
+        "plant": '''{n}She turns the image toward a pot. Human eyes stare from its fleshy bud; a vine pulls taut against the rim.{/n}
+"Marhevok. My lover. I found him a shape I could keep. He still watches me. You wanted to know what I do with devotion."''',
         "chief": '"Marhevok went back to Wintersun to make amends to his people. He called me his sun even as he left. I keep his letters. You need not expect him to congratulate you."',
         "dead": '"Marhevok is dead. He loved me. Do not look so relieved: you have heard how I kept him, not a promise that I shall keep you differently."',
         "distant": '"Marhevok was in his pot when I lost my body. My lover, left in the Sanctum. Your skull has no room for his roots, and I have no news to tell you."',
@@ -179,7 +180,8 @@ def debt_and_presence(events):
         for carrier, text in (
             ("king", '{n}One toast remains: the deserter lowering his cup at the Fool King\'s bench, her voice coming from his mouth.{/n}'),
             ("levy", '{n}One toast remains: the Wintersun sergeant pouring your cup among the levy, her voice coming from his mouth.{/n}')):
-            future["Nodes"].append(page(id + "_" + carrier, text + '\n"Interest received. Now we may talk about promises."', c("Continue", destination)))
+            future["Nodes"].append(page(id + "_" + carrier, text + '''
+"Interest received. Now we may talk about promises."''', c("Continue", destination)))
     unfinished = events["jerribeth.ending_unfinished"]
     unfinished["Forbids"].append("sacrifice")
     unfinished.setdefault("ForbidOverrides", {})["sacrifice"] = "trickster.commander_back"
@@ -196,10 +198,13 @@ def scale_decision(event):
         answer["Requires"].append(SCALE_BACK)
     old["Choices"].extend((c('[Keep the scale.]', "scale_keep", flags=(SCALE,)),
                            c('[Return it when she next opens the frame.]', "scale_return", flags=(SCALE_BACK,))))
-    event["Nodes"].append(page("scale_keep", '"I take the first hour now. Your quartermasters can wait."\n{n}She watches you put the scale beside the frame. When the next watch is called, she is still telling you which of Drezen\'s locks she dislikes. You have heard a great deal about the one on your door.{/n}',
+    event["Nodes"].append(page("scale_keep", '''"I take the first hour now. Your quartermasters can wait."
+{n}She watches you put the scale beside the frame. When the next watch is called, she is still telling you which of Drezen's locks she dislikes. You have heard a great deal about the one on your door.{/n}''',
                                c('[Stay for the hour she collects, then keep the scale.]', "scale_kept_receipt", flags=(SCALE_PAID,))))
     event["Nodes"].append(page("scale_kept_receipt", '"One hour received. Keep it another night and I shall come looking for the next."', *copy.deepcopy(saved)))
-    event["Nodes"].append(page("scale_return", '{n}You place the sliver against the frame. She holds up its bare edge on her side, studies your expression, and laughs.{/n}\n"Square. How disappointing. I had plans for your next hour. I shall have to make you want them."\n{n}The scale stays beside the frame until she can reclaim it in person.{/n}', *copy.deepcopy(saved)))
+    event["Nodes"].append(page("scale_return", '''{n}You place the sliver against the frame. She holds up its bare edge on her side, studies your expression, and laughs.{/n}
+"Square. How disappointing. I had plans for your next hour. I shall have to make you want them."
+{n}The scale stays beside the frame until she can reclaim it in person.{/n}''', *copy.deepcopy(saved)))
 
 
 def integrate(payload):
@@ -317,8 +322,11 @@ def write_situations(events):
             "Spend it here, then. I will not ask you to steal it from somebody else so that I can admire the theft.",
             "Spend it here. I have ruined a perfectly good lamp for you. Your officers may have the next watch.")
     node(after, "after")["Text"] = '{n}She lets the room stay dark. Her hands are still in the frame; the ruined lamp remains where she left it.{/n}'
-    node(events["jerribeth.counterfeit_after"], "after")["Text"] += '\n{n}She closes the window before calling for Serit. The image she left for you stays out of his drawings.{/n}'
-    node(events["jerribeth.room_measure"], "end")["Text"] += '\n{n}She keeps the street dark while the next march is called outside your room. Before you close the frame, her claws touch her collar again.{/n}\n"Come back. I have not finished with you."'
+    node(events["jerribeth.counterfeit_after"], "after")["Text"] += '''
+{n}She closes the window before calling for Serit. The image she left for you stays out of his drawings.{/n}'''
+    node(events["jerribeth.room_measure"], "end")["Text"] += '''
+{n}She keeps the street dark while the next march is called outside your room. Before you close the frame, her claws touch her collar again.{/n}
+"Come back. I have not finished with you."'''
 
     refuge = events["jerribeth.refuge"]
     start = node(refuge, "start")
@@ -334,9 +342,11 @@ def write_situations(events):
         text = ('"Vellexia is gone. Her name opens fewer doors already."' if lost else
                 '"Vellexia still has her house. Whether I care to remain useful there is another question."')
         if betrayed:
-            text += '\n"You saw which side I chose when the fighting began. I do not intend to spend the rest of my life being thanked for it. I intend to profit."'
+            text += '''
+"You saw which side I chose when the fighting began. I do not intend to spend the rest of my life being thanked for it. I intend to profit."'''
         else:
-            text += '\n"A patroness has appetites. So have I. I have not confused protection with ownership."'
+            text += '''
+"A patroness has appetites. So have I. I have not confused protection with ownership."'''
         # Fate-specific early disclosure follows; no imported actor or patron
         # romance closure changes the facts here.
         answers = copy.deepcopy(saved)
@@ -348,9 +358,13 @@ def write_situations(events):
     # exposure nor makes the chief travel to the Abyss.
     for item in refuge["Nodes"]:
         if item["Id"] == "marhevok_early_plant":
-            item["Text"] += '\n{n}A vine pulls the curtain into view. She tears the hem free and puts it back between the pot and the frame.{/n}\n"He notices where I aim my voice. Cloth will not keep your name out forever."'
+            item["Text"] += '''
+{n}A vine pulls the curtain into view. She tears the hem free and puts it back between the pot and the frame.{/n}
+"He notices where I aim my voice. Cloth will not keep your name out forever."'''
         elif item["Id"] == "marhevok_early_chief":
-            item["Text"] += '\n{n}She raises a letter bearing his mark.{/n}\n"He asks who occupies my evenings. I have not answered that question yet. He has a village to govern. I have other uses for his jealousy."'
+            item["Text"] += '''
+{n}She raises a letter bearing his mark.{/n}
+"He asks who occupies my evenings. I have not answered that question yet. He has a village to govern. I have other uses for his jealousy."'''
 
     visit = events["jerribeth.trickster.visit"]
     arrival = node(visit, "arrival")
@@ -383,18 +397,23 @@ def write_situations(events):
 {n}After dark she knocks three times at your quarters. Her own shape fills the doorway; both cases rest beneath her folded wings. Behind you, the reports for Threshold lie unread.{/n}''', *saved),
     ])
     cases = node(visit, "collector_after")
-    cases["Text"] += '\n"Two cases. The things I kept, and the things I want near you. Do not call either a gift."'
+    cases["Text"] += '''
+"Two cases. The things I kept, and the things I want near you. Do not call either a gift."'''
     cases["Choices"][0]["Text"] = '[Take the cases inside on the terms you agreed.]'
     cases["Choices"].extend((c('"Leave the cases a moment. Tell me plainly why you came back."', "collector_plain"),
                                c('"The affair is what I promised. Keep it that way."', "collector_affair", requires=("jerribeth.short_future_chosen",))))
     visit["Nodes"].extend([
-        page("collector_plain", '"Because I wanted you. There. How little pleasure that gives me to say."\n{n}She touches the latch of the specimen case, then leaves it shut.{/n}\n"I still want everything in here. You have become another thing I choose to keep close. Do not expect me to be gracious about it."', *copy.deepcopy(saved)),
-        page("collector_affair", '"An evening, then. And another when you can pay attention. I heard the promise you made. I chose it."\n{n}She leaves the cases beside the door instead of unpacking them.{/n}', *copy.deepcopy(saved)),
+        page("collector_plain", '''"Because I wanted you. There. How little pleasure that gives me to say."
+{n}She touches the latch of the specimen case, then leaves it shut.{/n}
+"I still want everything in here. You have become another thing I choose to keep close. Do not expect me to be gracious about it."''', *copy.deepcopy(saved)),
+        page("collector_affair", '''"An evening, then. And another when you can pay attention. I heard the promise you made. I chose it."
+{n}She leaves the cases beside the door instead of unpacking them.{/n}''', *copy.deepcopy(saved)),
     ])
     # Marhevok remains in his room until her portable-pot witness/discovery;
     # no extra rescue, disappearance or death is inferred from the cache loss.
     for id in ("morning", "morning_free"):
-        node(visit, id)["Text"] += '\n{n}The cases are gone with her. The smaller one left an indentation beside the bed. The frame lights again before the next march; she has returned to finish the evening she claimed.{/n}'
+        node(visit, id)["Text"] += '''
+{n}The cases are gone with her. The smaller one left an indentation beside the bed. The frame lights again before the next march; she has returned to finish the evening she claimed.{/n}'''
     scale_decision(visit)
     # Physical legacy copies retain their own scale branch and destinations.
     scale_decision(events["jerribeth.future"])
@@ -404,8 +423,10 @@ def write_situations(events):
         answers = ([c('[Keep the evening, without going to bed.]', flags=(VISITED,))] if event is visit else
                    [c('[Keep the next evening for her.]', "end", forbids=("jerribeth.short_future_chosen",), flags=("jerribeth.chosen_future",)),
                     c('[Keep the shorter promise.]', "short_end", requires=("jerribeth.short_future_chosen",))])
-        event["Nodes"].append(page(destination, '"You make me unpack two cases and then offer me a chair. Very well. Bring it closer."\n{n}She stays for the watch. Her collection remains shut; she wants an audience for herself.{/n}' if event is visit else
-                                 '"Then we keep the room lit."\n{n}She sits beside you in the imagining while the real frame stays dark. No marks wait for you at dawn.{/n}', *answers))
+        event["Nodes"].append(page(destination, '''"You make me unpack two cases and then offer me a chair. Very well. Bring it closer."
+{n}She stays for the watch. Her collection remains shut; she wants an audience for herself.{/n}''' if event is visit else
+                                 '''"Then we keep the room lit."
+{n}She sits beside you in the imagining while the real frame stays dark. No marks wait for you at dawn.{/n}''', *answers))
 
     future = events["jerribeth.future"]
     tenant = node(future, "tenant_body")
@@ -426,18 +447,25 @@ def write_situations(events):
 {n}She leads you out of the shared room, then lets its walls fall. Her collection stays in the space she rented. The private arrangement she built around it is gone.{/n}''',
              c('[Follow her out.]', "mental_after", flags=(MIND_LOST,)),
              c('"I can wake myself. Stay until I do."', "mental_after", flags=(MIND_LOST,))),
-        page("mental_after", '"I could have stayed on my side. You would have woken eventually."\n{n}She is quiet behind your left eye. Then the buzzing returns.{/n}\n"Do not make me explain why I came back. Invite me again. I prefer questions I can charge for."',
+        page("mental_after", '''"I could have stayed on my side. You would have woken eventually."
+{n}She is quiet behind your left eye. Then the buzzing returns.{/n}
+"Do not make me explain why I came back. Invite me again. I prefer questions I can charge for."''',
              *(c("Continue", "mental_receipt_" + id, requires=("jerribeth.mental_origin." + id,)) for id in ("tenant_morning", "tenant_morning_free"))),
     ])
     shelves = node(future, "mental_after")
-    shelves["Text"] += '\n{n}Two shelves take shape in her rented space: the memories she keeps for herself, and an empty space facing your imagined chair.{/n}\n"The things I kept. The things I want near you. I have not given up either."'
+    shelves["Text"] += '''
+{n}Two shelves take shape in her rented space: the memories she keeps for herself, and an empty space facing your imagined chair.{/n}
+"The things I kept. The things I want near you. I have not given up either."'''
     answers = copy.deepcopy(shelves["Choices"])
     shelves["Choices"].extend((
         c('"Tell me plainly why you came back."', "mental_plain"),
         c('"Keep the affair we promised. Nothing more."', "mental_affair", requires=("jerribeth.short_future_chosen",))))
     future["Nodes"].extend((
-        page("mental_plain", '"Because I wanted you in it. I could have shut the door. I did not."\n{n}The shelves remain on her side of the lease. Her voice comes closer.{/n}\n"That answer belongs to you. My collection does not."', *copy.deepcopy(answers)),
-        page("mental_affair", '"The evenings, then. I heard you. I have quite enough shelf space without furnishing it with promises you did not make."\n{n}She leaves the imagined chair where she put it.{/n}', *copy.deepcopy(answers)),
+        page("mental_plain", '''"Because I wanted you in it. I could have shut the door. I did not."
+{n}The shelves remain on her side of the lease. Her voice comes closer.{/n}
+"That answer belongs to you. My collection does not."''', *copy.deepcopy(answers)),
+        page("mental_affair", '''"The evenings, then. I heard you. I have quite enough shelf space without furnishing it with promises you did not make."
+{n}She leaves the imagined chair where she put it.{/n}''', *copy.deepcopy(answers)),
     ))
     # Distinctive payoff is remembered only after her actual chosen return.
     for event in events.values():
@@ -506,7 +534,8 @@ def late_debts(event):
             event["Nodes"].append(page(id, '"First, the toast you drank for free. Every cup before mine. I told you there would be interest. The forfeit buys something else."',
                 c('[Pay the interest, then answer her offer.]', id + "_paid"),
                 c('[Refuse. Keep your memories, and keep your hand.]', "torn_mind" if target == "signed_mind" else "torn")))
-            event["Nodes"].append(page(id + "_paid", '{n}The remembered cups empty. The faces across them vanish. One evening remains, the one when her voice first answered your toast.{/n}\n"Interest received. Now show me your hand. I still choose whether to take it."', c("Continue", target)))
+            event["Nodes"].append(page(id + "_paid", '''{n}The remembered cups empty. The faces across them vanish. One evening remains, the one when her voice first answered your toast.{/n}
+"Interest received. Now show me your hand. I still choose whether to take it."''', c("Continue", target)))
 
 
 def localize_late_choices(event):
@@ -670,6 +699,16 @@ def localize_late_choices(event):
     start["Choices"].append(c('Continue', retained_start, forbids=("trickster.ever",)))
     event["Nodes"].extend(retained)
     event["Nodes"].extend(clones)
+    node(event, 'night')["Text"] = '''{n}She did not wait for the table to be cleared. She let the guise go at the bedroom door, all of it, and the room was suddenly too small for her: antennae brushing the lintel, wings folded and rasping against the frame like pages turning, the smell of cold stone and of fruit left on an altar.{/n}
+"Most people close their eyes."
+{n}The Commander did not. She undid the Commander's collar with the care she had once given her locusts, one fastening at a time, watching to see what each one cost, and walked the Commander back to the bed by the wrists without once tightening her grip. Her mouth, such as it was, found the Commander's throat; the buzzing she kept for private moments came up through her chest and into the Commander's skin until the shiver and the sound were the same thing.{/n}
+"I have studied every way you can be undone," {n}she said against the pulse,{/n} "and I intend to run the entire experiment."
+{n}When the Commander's knees met the mattress she let them fall and followed, wings half open to shut out the window, her cool weight against the Commander, the buzzing low enough to be felt in the teeth.{/n}'''
+    node(event, 'night_mind')["Text"] = '''{n}The room she built was the Commander's own bedroom, exactly, down to the crack in the ceiling, and the only thing in it that did not belong there was her, in her own form, sitting on the edge of the bed with her carapace catching the light of a lamp that was not lit.{/n}
+"I know where every nerve in this house runs. You have such instructive memories."
+{n}Her claws traced the Commander's jaw, and the Commander felt every point of them. They went down the Commander's throat and opened the shirt there with a surgeon's precision, and the cold of her came through the cloth and then through no cloth at all.{/n}
+"Here," {n}she said, touching a place low on the Commander's ribs.{/n} "And here. You flinch the same way in every memory. I have been rehearsing the rest."
+{n}She pushed the Commander back into a pillow that did not exist, bent over the Commander with her wings opening over them both, and the sound in the skull went through every part of the Commander like pages turning very fast.{/n}'''
 
 
 # Frozen round-two graph emitter: identity retention only; new offers enter
@@ -767,3 +806,13 @@ def _legacy_localize_late_choices(event):
                 answer["Forbids"].append("trickster.ever")
     start["Choices"].append(c('[Hear her offer.]', local_start))
     event["Nodes"].extend(clones)
+    node(event, 'night')["Text"] = '''{n}She did not wait for the table to be cleared. She let the guise go at the bedroom door, all of it, and the room was suddenly too small for her: antennae brushing the lintel, wings folded and rasping against the frame like pages turning, the smell of cold stone and of fruit left on an altar.{/n}
+"Most people close their eyes."
+{n}The Commander did not. She undid the Commander's collar with the care she had once given her locusts, one fastening at a time, watching to see what each one cost, and walked the Commander back to the bed by the wrists without once tightening her grip. Her mouth, such as it was, found the Commander's throat; the buzzing she kept for private moments came up through her chest and into the Commander's skin until the shiver and the sound were the same thing.{/n}
+"I have studied every way you can be undone," {n}she said against the pulse,{/n} "and I intend to run the entire experiment."
+{n}When the Commander's knees met the mattress she let them fall and followed, wings half open to shut out the window, her cool weight against the Commander, the buzzing low enough to be felt in the teeth.{/n}'''
+    node(event, 'night_mind')["Text"] = '''{n}The room she built was the Commander's own bedroom, exactly, down to the crack in the ceiling, and the only thing in it that did not belong there was her, in her own form, sitting on the edge of the bed with her carapace catching the light of a lamp that was not lit.{/n}
+"I know where every nerve in this house runs. You have such instructive memories."
+{n}Her claws traced the Commander's jaw, and the Commander felt every point of them. They went down the Commander's throat and opened the shirt there with a surgeon's precision, and the cold of her came through the cloth and then through no cloth at all.{/n}
+"Here," {n}she said, touching a place low on the Commander's ribs.{/n} "And here. You flinch the same way in every memory. I have been rehearsing the rest."
+{n}She pushed the Commander back into a pillow that did not exist, bent over the Commander with her wings opening over them both, and the sound in the skull went through every part of the Commander like pages turning very fast.{/n}'''

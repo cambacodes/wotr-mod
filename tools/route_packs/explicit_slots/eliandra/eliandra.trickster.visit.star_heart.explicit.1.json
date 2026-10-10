@@ -14,6 +14,6 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "default_text": "{n}Eliandra holds you there with both legs locked behind you, her breath hard against your mouth. The last chart slips from the table.{/n}",
+  "default_text": "{n}Her breath breaks hard against your mouth, and the starlight comes down over the two of you. When the peak takes her she says your name, and then, startled, laughs at herself, a priestess with her whole sky looking on. The last chart slips from the table.{/n}",
   "placement": "charts -> appended explicit.1 -> existing morning"
 }

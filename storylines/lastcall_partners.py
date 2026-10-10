@@ -305,7 +305,7 @@ partner("nurah", "nurah", "nurah.complete", "nurah.closed", "The Last Chapter",
         page_p('''Ramisa came for the story she had bought, and Nurah wrote it for her in a single night, every word true, and dedicated it to the marilith with the author's compliments and none of her gratitude.''', requires=(called("nurah"),), forbids=(NU + "cost.bill_in_your_name",)),
         page_p('''She never forgot being currency, and she never pretended to. She kept the memory the way she kept her pen: close, sharp, and pointed at anyone who looked as if they might try it again.''', requires=(NU + "cost.larva_memory",)),
         page_p('''Her name went on the cover next to the Commander's. She had insisted. She was right to.''', requires=(NU + "cost.coauthor",)),
-        page_p('''Her name went on the cover above the Commander's, in larger letters. She had insisted. The Commander had let her.''', requires=(NU + "cost.name_above",)),
+        page_p('The Commander had once asked for a name above hers on the cover, and had been told no. The book says so in a footnote, in the smallest type she owned.', requires=(NU + "cost.name_above",)),
         page_p('''She wrote the Commander's obituary herself, for a Nerosyan broadsheet. It was vicious, accurate and extremely popular.''', requires=(ON_RECORD,)),
     # Sol quality pass (Nurah TRK/BEL): a soul paid for in gold leaves no debt, so the call-in is offered only on the story
     # she sold (ramisa_audience) or on the duplicate bill Ramisa kept; for the bill alone the story is sold here, on screen,

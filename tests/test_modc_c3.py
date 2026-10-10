@@ -17,7 +17,8 @@ ROOT = Path(__file__).resolve().parents[1]
 class ExportEquivalenceTests(unittest.TestCase):
     def setUp(self):
         self.fixture = {'Scenes': [{'Id': 'scene', 'Nodes': [
-            {'Id': 'start', 'Text': 'α\nβ', 'Paragraphs': [
+            {'Id': 'start', 'Text': '''α
+β''', 'Paragraphs': [
                 {'Text': 'γ', 'Requires': ['earned']}], 'Choices': [
                     {'Text': 'δ', 'Next': 'end', 'Set': ['paid']},
                     {'Text': 'ε', 'Next': None}]}]}],
@@ -39,7 +40,8 @@ class ExportEquivalenceTests(unittest.TestCase):
     def test_reports_all_mutated_fields(self):
         changed = copy.deepcopy(self.fixture)
         node = changed['Scenes'][0]['Nodes'][0]
-        node['Text'] += '\n'
+        node['Text'] += '''
+'''
         node['Paragraphs'][0]['Text'] += '!'
         node['Choices'][0]['Set'].append('extra')
         changed['Books']['ledger']['Text'] += '!'
@@ -69,7 +71,10 @@ class ExportEquivalenceTests(unittest.TestCase):
 
 class RetiredOverlayTests(unittest.TestCase):
     def test_retired_overlays_are_absent_from_build_imports(self):
-        retired = {'arueshalae_heat', 'camellia_heat', 'chadali_heat'}
+        retired = {'arueshalae_heat', 'camellia_heat', 'chadali_heat',
+                   'nocticula_heat', 'heat_g4', 'heat_cal_b',
+                   'heat_cal_g', 'zzz_shamira_pairs', 'zzz_vellexia_pairs',
+                   'zzz_nocticula_pairs'}
         paths = [ROOT / 'expansion.py', *(ROOT / 'storylines').rglob('*.py')]
         for path in paths:
             tree = ast.parse(path.read_text(encoding='utf-8-sig'))
@@ -79,8 +84,17 @@ class RetiredOverlayTests(unittest.TestCase):
                     if isinstance(node, ast.ImportFrom) and node.module:
                         names.add(node.module.rsplit('.', 1)[-1])
                     self.assertFalse(names & retired, str(path))
+        for name in ('herrax_cloud', 'nurah_cloud', 'arueshalae_cloud'):
+            path = ROOT / 'storylines' / (name + '.py')
+            tree = ast.parse(path.read_text(encoding='utf-8'))
+            replacing_calls = [node for node in ast.walk(tree)
+                               if isinstance(node, ast.Call)
+                               and isinstance(node.func, ast.Attribute)
+                               and node.func.attr in {'replace', 'sub', 'subn'}]
+            self.assertFalse(replacing_calls, str(path))
         for name in retired:
-            self.assertFalse((ROOT / 'storylines' / (name + '.py')).exists())
+            self.assertFalse(list((ROOT / 'storylines').rglob(name + '.py')))
+
 
 
 if __name__ == '__main__':

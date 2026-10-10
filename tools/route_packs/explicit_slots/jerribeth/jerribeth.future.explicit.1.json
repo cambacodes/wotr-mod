@@ -24,7 +24,7 @@
   "example": "N: Her claws close on your wrists and press them into the blanket.\nJ: Hold still. No. Stiller than that. I want to see how long you last.\nN: Her laughter buzzes behind your left eye, very pleased.",
   "min_lines": 10,
   "max_lines": 18,
-  "default_text": "{n}The imagined lamp goes out. Her voice stays inside the room she has made until the real dawn reaches your shutters.{/n}",
+  "default_text": "{n}The imagined lamp goes out. The buzzing climbs through your skin until you cannot tell her pleasure from your own, and her voice stays inside the room she has made, quiet and satisfied, until the real dawn reaches your shutters.{/n}",
   "placement": {
     "scene": "jerribeth.future",
     "after_node": "tenant_pinned",

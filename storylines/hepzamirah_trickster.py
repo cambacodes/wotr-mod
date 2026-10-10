@@ -470,7 +470,8 @@ yard(P + "body.terms", "Terms, in person", '"You wanted the clown."', [
     nar("threshold", '''{n}She leads you backwards through the yard. The smith turns to his anvil. At her door she plants a hand against your chest; you catch her coat and pull her into the kiss. Her broken horn scrapes your temple. She laughs against your mouth, tasting blood.{/n}
 "Still smell of his prison. Come here."
 {n}She opens the latch herself. Inside, she tears your coat open at the buckles and pushes her own clothes off her shoulders. Your hands follow the rough skin along her ribs; she presses your palm there before drawing you down onto the cot.{/n}
-"Mine tonight." {n}She bends to kiss you again. You meet her halfway.{/n} "I have wanted something that was not a leash for a long time, worm. Do not mistake that for gentleness. I will leave marks."''',
+"Mine tonight." {n}She bends to kiss you again. You meet her halfway. Her teeth close on your lip and stay. A hand fists in your hair and drags your head back; the other fists in your belt and hauls you against her, with no gentleness at all. The horn stump rakes your cheek as she brings her mouth to your ear.{/n}
+"Hold still, whelp. I am deciding how much of you I want." "I have wanted something that was not a leash for a long time, worm. Do not mistake that for gentleness. I will leave marks."''',
         c("[Let her have her rule.]")),
     hz("refused", '''"I knelt once, to a father who promised me everything. I will not do it for a jailer with good manners."
 {n}She walks out of the yard without a glance at anyone. By morning her door stands open and her room is empty, except for the jar of wildflowers, unbroken, set in the middle of the floor.{/n}''',

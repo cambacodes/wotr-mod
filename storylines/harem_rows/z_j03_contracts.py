@@ -161,24 +161,11 @@ def power(payload):
                      Success="held", Failure="failed")
         if retry:
             root.append(c('[Diplomacy: present the same renunciation.]', check=check))
-            body["Nodes"].append(pending("failed", "nocticula",
-                "want rank acknowledged / reject the repeated renunciation / public claim remains disputed",
+            body["Nodes"].append(n('failed', "Nocticula", '{n}The same sheet comes back a second time. The mark has not bothered to strike anything out; it has written underneath, small and amused, where every soldier at the Table can read it.{/n} "Twice. The second time is always less convincing, girl. I am still the Lady in Shadow, you are still mine until I say otherwise, and I have not said it."',
                 c('Continue', flags=flags(p, "retry.seen", "unsettled")),
                 c('"Then leave the claim disputed."', "refused")))
         else:
             root[0]["Check"] = check
-        for node in body["Nodes"]:
-            if node["Id"] in ("held", "failed") or body["Id"].endswith("corrupted"):
-                if not node["Text"].startswith("[PROSE PENDING:"):
-                    woman = "nocticula" if node["Id"] in ("held", "failed") else "arueshalae"
-                    beat = {
-                        "start": "want her own name / publicly dictate renunciation over the crusade map / defy her former mistress",
-                        "held": "want rank without conceding the throne / answer through the acquired seal, acknowledge Arueshalae's name / limit this claim, no summons",
-                        "answer": "want freedom from ownership / answer the queen in her own name and sign / public defiance",
-                        "failed": "want obedience / return a sealed rejection / ownership claim remains disputed",
-                        "refused": "want the crusade or her own appetite / withhold the renunciation / leave the claim disputed",
-                    }[node["Id"]]
-                    node["Text"] = "[PROSE PENDING: " + woman + " - " + beat + "]"
         # These acquired correspondence forms are alternatives, never an
         # AND requiring two mutually exclusive selections.
         body["RequiresAnyGroups"] = [["noct.acq.channel_provisional", "noct.acq.channel_letters_only"]]
@@ -359,7 +346,7 @@ def precedence(payload):
           c('[Carry each title exactly as she gives it.]', "queen_reply"),
           c('[Keep only the old account.]', "history"), c('[Later.]', abort=True)),
         deepcopy(body["Nodes"][1]),
-        pending("queen_reply", "nocticula", "want court precedence / separately answer through her acquired seal and assert her priority / tolerate her lover's public counterclaim",
+        n('queen_reply', "Nocticula", '{n}The first sheet carries the Lady in Shadow\'s seal, pressed so deep it has cut the paper.{/n} "My Ardent Dream wishes it known that she sits beside me. How sweet. She sits where I put her, and she will go on sitting there because it amuses me to watch her want the chair next to it. Read her claim aloud at your table if you like, Commander. I shall let it stand. I have always liked a little treason with my wine."',
                 c('Continue', "shamira_reply")),
         n("shamira_reply", "Shamira", SHAMIRA_PRECEDENCE,
                 c('Continue', flags=flags(p, "precedence.seen", "resolved", "nocticula_claim_answered",

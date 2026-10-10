@@ -418,10 +418,10 @@ sitting(TWICE, "Twice nightly", '"Is the chair in session?"', [
     e("move", '''"I move that the debate be held twice nightly." {n}She says it with perfect solemnity, and then ruins it by purring at the end.{/n}
 "Seconded?" {n}She turns her head, and her whiskers brush your jaw, and her breath is warm on your throat.{/n} "The floor is taking a very long time to second a simple motion. I want you, and I am not a patient lion. I will count to three. One."''',
       c("[Second it before she reaches two.]", "carried")),
-    e("carried", '''"Carried." {n}She pushes the scroll off her knees, swings one leg across you, and settles astride your lap on the edge of the Council\'s table, with a creak of old wood and a rumble in her chest that is very nearly a purr. She takes your hands and sets them on the belt at her waist, and holds them there until you pull it loose. Only then, with her mouth already on yours and her gown sliding off one shoulder, does she reach back and pinch out the candle.{/n}
+    e("carried", '''"Carried." {n}She pushes the scroll off her knees, turns to face you and pulls you to the edge of the Council's table with a creak of old wood and a rumble in her chest that is very nearly a purr. She takes your hands and sets them on the belt at her waist, and holds them there until you pull it loose. Only then, with her mouth already on yours and her gown sliding off one shoulder, does she reach back and pinch out the candle.{/n}
 {n}The minutes slide from the table. This time she leaves them where they fall. "I shall write it down in the morning," she murmurs against your mouth. "Give me something worth the ink."{/n}
-{n}Her gown is off your hands and off her shoulders before the last page lands, the Council\'s table creaking under her weight. She is all muscle under the cloth, tawny and heavy and hot, and her claws, sheathed with great care, rake down your back as she grinds against your lap with the rumble in her chest climbing into something that is no longer very much like a purr. She takes your hand, leads it between her thighs, and holds it there: she is wet and open and already rocking, her mouth at your ear.{/n}
-"Again. As the last time. And not slowly; I have been minuting my own impatience since morning." {n}She tears your belt the rest of the way open, pushes you back flat on the table among the fallen papers, and shifts her weight over you, reaching down between you to take what she means to have.{/n}''',
+{n}Her gown is off your hands and off her shoulders before the last page lands, the Council's table creaking under her weight. She is all muscle under the cloth, tawny and heavy and hot, and her claws, sheathed with great care, rake down your back while the rumble in her chest climbs into something that is no longer very much like a purr.{/n}
+"Again. As the last time. And not slowly; I have been minuting my own impatience since morning." {n}She tears your belt the rest of the way open and pushes you back among the fallen papers.{/n}''',
       c("[Give her a great deal to write.]", flags=(K + "twice_nightly_carried",))),
 ], requires=(RECORD,), forbids=(TWICE,), delay=24)
 
@@ -963,14 +963,20 @@ sitting(HEARING, "The devil's objection", '"Call the hearing on Alichino\'s moti
       c('"I acted without appointment. Your chair admitted debate. The Worldwound is here, and our soldiers are dying."', "defense", requires=(K + "defense_planned",)),
       c('"Cobblehoof, will you take the chair for this motion?"', "recusal", requires=(K + "recusal_planned",)),
       c("[Leave the motion pending.]", "unfinished")),
-    nar("offer", '{n}Alichino smiles. "A hearing is worth very little without a guaranteed result. I should prefer approval." Eritrice draws a line under the word in his notebook.{/n}\n"No member may sell the forum\'s future vote," {n}she says. The devil changes the wording: "A guaranteed hearing. No approval promised."{/n}',
+    nar("offer", '''{n}Alichino smiles. "A hearing is worth very little without a guaranteed result. I should prefer approval." Eritrice draws a line under the word in his notebook.{/n}
+"No member may sell the forum's future vote," {n}she says. The devil changes the wording: "A guaranteed hearing. No approval promised."{/n}''',
       c('"That wording. Read the censure with it."', "signed"),
       c('"Then leave your motion pending."', "unfinished")),
-    nar("signed", '{n}Alichino reads the censure once more, taking his time. Then he signs: "Motion withdrawn in exchange for a hearing, should the Crossroads be established." He keeps the counter-proposal. Eritrice keeps his withdrawal.{/n}\n"I shall bring a most profitable argument," {n}he says. Eritrice sands the signature without smiling.{/n}',
+    nar("signed", '''{n}Alichino reads the censure once more, taking his time. Then he signs: "Motion withdrawn in exchange for a hearing, should the Crossroads be established." He keeps the counter-proposal. Eritrice keeps his withdrawal.{/n}
+"I shall bring a most profitable argument," {n}he says. Eritrice sands the signature without smiling.{/n}''',
       c("[Let her enter the withdrawal.]", flags=(K + "alichino_handled",))),
-    nar("defense", '{n}Alichino taps the casualty list. "Precisely. A mortal emergency dressed as universal business." Eritrice turns the scroll toward him.{/n}\n"The Wound connects planes. Its victims are not a defect in the motion. The Commander has answered the censure without asking me to erase it."\n{n}The devil refuses withdrawal. Eritrice enters both arguments and defers the disputed motion while the Council attends to the Wound.{/n}',
+    nar("defense", '''{n}Alichino taps the casualty list. "Precisely. A mortal emergency dressed as universal business." Eritrice turns the scroll toward him.{/n}
+"The Wound connects planes. Its victims are not a defect in the motion. The Commander has answered the censure without asking me to erase it."
+{n}The devil refuses withdrawal. Eritrice enters both arguments and defers the disputed motion while the Council attends to the Wound.{/n}''',
       c("[Accept that the case remains disputed.]", flags=(K + "argued_own_case",))),
-    nar("recusal", '{n}Cobblehoof snorts, then takes the head of the table. Eritrice moves to a member\'s seat, bringing the censure with her. Alichino opens his notebook again.{/n}\n"We have the Wound to consider," {n}Cobblehoof says. "Expelling our mortal can wait."{/n}\n"Enter the deferral," {n}Eritrice says. "And my dissent from the motion. I recused myself from the chair, not from this Council."{/n}',
+    nar("recusal", '''{n}Cobblehoof snorts, then takes the head of the table. Eritrice moves to a member's seat, bringing the censure with her. Alichino opens his notebook again.{/n}
+"We have the Wound to consider," {n}Cobblehoof says. "Expelling our mortal can wait."{/n}
+"Enter the deferral," {n}Eritrice says. "And my dissent from the motion. I recused myself from the chair, not from this Council."{/n}''',
       c("[Let the acting chair adjourn the hearing.]", flags=(K + "chair_recused",))),
     e("unfinished", '"The motion remains pending. No agreement has been reached." {n}She keeps the censure on the table.{/n} "My invitation remains mine. Alichino may dispute that too, if he has more ink to waste."',
       c("[Return to the war business.]", flags=(PENDING,))),
@@ -982,7 +988,8 @@ sitting(K + "aid_heard", "The army's motion", '"The first item: aid for the army
     e("ruling", '"No aid granted. The chair votes for the motion; the chair cannot turn that vote into food." {n}She enters the refusal beneath the casualty figures.{/n} "I promised a hearing. Here is its result. It stays in the minutes."', c("[Take the answer back to the army.]")),
 ], requires=(K + "aid_first",), forbids=(K + "aid_heard", K + "aid_cancelled", "council.debrief_motion", "council.walked_out"), delay=0)
 SCENES.append(scene(K + "aid_cancelled", "Unfinished business", "Eritrice", 5, "", [
-    e("cancelled", '"The Council no longer offers another sitting for your army\'s motion. No aid was granted. I have marked the pending hearing cancelled, not carried."\n{n}Her letter encloses the unchanged request, with its casualty figures.{/n}', c("[File the unanswered request.]")),
+    e("cancelled", '''"The Council no longer offers another sitting for your army's motion. No aid was granted. I have marked the pending hearing cancelled, not carried."
+{n}Her letter encloses the unchanged request, with its casualty figures.{/n}''', c("[File the unanswered request.]")),
 ], requires=("trickster.ever", K + "aid_first"), forbids=(CLOSED, K + "aid_heard", K + "aid_cancelled"),
     RequiresAnyGroups=[["council.debrief_motion", "council.walked_out", "council.fought", "council.fought_nocta_allied"]],
     Remote=True, Relationship="eritrice", last=5))
@@ -993,21 +1000,27 @@ for _s in SCENES:
         # S2: user's fill process supplies the return to an established lover.
         _carried["Choices"][0]["Next"] = TWICE + ".explicit.1"
         _s["Nodes"].append(nar(TWICE + ".explicit.1",
-            '{n}Her gown falls across the abandoned scroll. She draws you from the edge onto the tabletop, still kissing, and lies back beneath you in the dark. The fallen scroll waits beneath Alichino\'s chair until morning.{/n}', c("[...]")))
+            '''{n}Her gown falls across the abandoned scroll, and the Council's table takes the rest of the night's weight. In the dark the rumble in her chest breaks, once, into a cry the empty room hands back to her.{/n}
+"Minute that," {n}she says into your shoulder, a long while later.{/n} "Tomorrow. The fallen scroll can wait beneath Alichino's chair until morning."''', c("[...]")))
 
 sitting(K + "second_morning", "Worth the ink", '"You promised another record."', [
-    e("morning", '{n}She retrieves the scroll from under Alichino\'s chair, then your shirt. Her gown is tied crookedly; she catches you looking and pulls you into a brief, hungry kiss.{/n}\n"I did. A second private session. Carried."\n{n}She writes the line on a fresh sheet and reads it aloud while fastening your collar.{/n} "I have a sitting to chair. Tonight I intend to come back. Leave the lamp where it is."', c("[Help her gather the scattered clothing.]")),
+    e("morning", '''{n}She retrieves the scroll from under Alichino's chair, then your shirt. Her gown is tied crookedly; she catches you looking and pulls you into a brief, hungry kiss.{/n}
+"I did. A second private session. Carried."
+{n}She writes the line on a fresh sheet and reads it aloud while fastening your collar.{/n} "I have a sitting to chair. Tonight I intend to come back. Leave the lamp where it is."''', c("[Help her gather the scattered clothing.]")),
 ], requires=(K + "twice_nightly_carried",), forbids=(K + "second_morning",), delay=6)
 
 for _s in SCENES:
     if _s["Id"] == ELDEST:
         _both = next(x for x in _s["Nodes"] if x["Id"] == "both")
-        _both["Text"] += '\n"You promised another exercise. Here it is: two meanings in one remark. Neither cancels the other. Now give me an objection. I still cannot read the cipher."'
+        _both["Text"] += '''
+"You promised another exercise. Here it is: two meanings in one remark. Neither cancels the other. Now give me an objection. I still cannot read the cipher."'''
     if _s["Id"] == K + "so_many_years":
-        _s["Nodes"][0]["Text"] += '\n"Socothbenoth\'s departure tells me that his purposes and mine were not the same. It does not tell me every reason he had. Any promise to investigate remains open; I will not invent its answer."'
+        _s["Nodes"][0]["Text"] += '''
+"Socothbenoth's departure tells me that his purposes and mine were not the same. It does not tell me every reason he had. Any promise to investigate remains open; I will not invent its answer."'''
     if _s["Id"] == JEALOUS:
         for _name in ("nothing", "like"):
-            next(x for x in _s["Nodes"] if x["Id"] == _name)["Text"] += '\n{n}She takes your face between her hands and kisses you hard, then draws back, breathing through her nose. Her claws stay sheathed.{/n} "There. My wish, not a ruling."'
+            next(x for x in _s["Nodes"] if x["Id"] == _name)["Text"] += '''
+{n}She takes your face between her hands and kisses you hard, then draws back, breathing through her nose. Her claws stay sheathed.{/n} "There. My wish, not a ruling."'''
 
 # ERI-02: her question is answered from the conduct this hearing actually recorded.
 _hearing = next(x for x in SCENES if x["Id"] == HEARING)
@@ -1028,7 +1041,8 @@ _hearing["Nodes"].extend([
 # PUBLIC and its spoken/withdrawn receipts have producers only when the staged
 # public scene is exported. integrate_public adds their exclusions in that case.
 SCENES.append(scene(K + "protection_cancelled", "The unspoken objection", "Eritrice", 5, "", [
-    e("cancelled", '"The opportunity to raise Chadali\'s contribution has passed. My private request was not spoken before the Council. I have marked it cancelled."\n{n}The enclosed draft has a ruled line through its proposed hearing date; the words remain legible.{/n} "Do not write that we won an exemption. There was no such vote."', c("[Keep the cancelled draft with its date.]")),
+    e("cancelled", '''"The opportunity to raise Chadali's contribution has passed. My private request was not spoken before the Council. I have marked it cancelled."
+{n}The enclosed draft has a ruled line through its proposed hearing date; the words remain legible.{/n} "Do not write that we won an exemption. There was no such vote."''', c("[Keep the cancelled draft with its date.]")),
 ], requires=("trickster.ever", K + "a_lie_for_the_chair"),
     RequiresAnyGroups=[[LIED_FOR_HER, PROTECTION_REQUESTED, TRUTH_FOR_CHADALI],
         [EXTRACTED, "council.debrief_motion", "council.walked_out", "council.fought", "council.fought_nocta_allied"]],

@@ -189,7 +189,8 @@ def _commit(page, node, answer, serial):
     if page["Id"].startswith(P):
         answer["Next"] = tag + "_share"
     if pair:
-        page["Nodes"].append(_node(tag + "_share", "Chivarro", ('{n}Chivarro answers above Minagho\'s signature.{/n} "Minagho keeps me, honey. You join us; you do not divide the takings."\n{n}Minagho adds a line beneath it.{/n} "And she keeps me. Knock before coming in, Golarian. If we do not answer, entertain yourself outside."' if remote else '"Minagho keeps me, honey. You join us; you do not divide the takings." {n}Minagho catches Chivarro\'s chin and kisses her.{/n} "And she keeps me. Knock before coming in, Golarian. If we do not answer, entertain yourself outside."'), c("Continue", old["Next"])))
+        page["Nodes"].append(_node(tag + "_share", "Chivarro", ('''{n}Chivarro answers above Minagho's signature.{/n} "Minagho keeps me, honey. You join us; you do not divide the takings."
+{n}Minagho adds a line beneath it.{/n} "And she keeps me. Knock before coming in, Golarian. If we do not answer, entertain yourself outside."''' if remote else '"Minagho keeps me, honey. You join us; you do not divide the takings." {n}Minagho catches Chivarro\'s chin and kisses her.{/n} "And she keeps me. Knock before coming in, Golarian. If we do not answer, entertain yourself outside."'), c("Continue", old["Next"])))
     elif not page["Id"].startswith(P):
         woman = women[0]
         other = "Chivarro" if woman == "minagho" else "Minagho"
@@ -208,7 +209,8 @@ def _commit(page, node, answer, serial):
         reply = ('"Keep her company. Keep your hands off her bargains with me. And if you bring the Goat to her door, I shall send him to yours."' if other == "chivarro" else '"Chivarro wants you. That does not make her yours. Hurt her and I will open you from throat to crotch. She can charge for the mess."')
         page["Nodes"].extend([
             _node(tag + "_present", other.capitalize(), reply, c("Continue", old["Next"])),
-            _node(tag + "_letter", other.capitalize(), '{n}She sends your terms with her next letter. The reply comes back in the other woman\'s hand, with your name underlined.{/n}\n' + reply, c("Continue", old["Next"])),
+            _node(tag + "_letter", other.capitalize(), '''{n}She sends your terms with her next letter. The reply comes back in the other woman's hand, with your name underlined.{/n}
+''' + reply, c("Continue", old["Next"])),
             _node(tag + "_dead", speaker, ('"Chivarro is dead. I have chosen to stay. Do not ever tell me what I should forget."' if woman == "minagho" else '"Minagho is dead. You have my answer, honey. Hers is not for sale."'), c("Continue", old["Next"])),
             _node(tag + "_absent", speaker, ('"I will not call silence permission. If Chivarro can answer, she will. Until then, you have what I offer tonight. Nothing of hers."' if woman == "minagho" else '"No answer from Minagho. If she comes back, we settle this with her. Until then, you have my room, honey. Not her place in it."'), c("Continue", old["Next"])),
         ])
@@ -232,7 +234,8 @@ def _commit(page, node, answer, serial):
         reaction = ('"Trying to evict me, honey? From a woman you never owned? Keep your little citadel. She has answered you."' if other == "chivarro" else '"You asked her to throw me away? I have gutted people for less. She has given you your answer. Try to hear it through that thick skull."')
         for kind in (("present", "letter") if page["Id"].startswith(P) else ("present",)):
             page["Nodes"].append(_node(end + "_" + kind, other.capitalize(),
-                ('{n}The next letter comes back with the demand copied beneath her refusal.{/n}\n' if kind == "letter" or remote else '') + reaction,
+                ('''{n}The next letter comes back with the demand copied beneath her refusal.{/n}
+''' if kind == "letter" or remote else '') + reaction,
                 deepcopy(back), c('"Then we are finished."', flags=(EXCLUSIVE, COOLED, CLOSED))))
         if page["Id"].startswith(P):
             page["Nodes"].append(_node(end + "_unknown", woman.capitalize(),
@@ -257,7 +260,14 @@ def _commit(page, node, answer, serial):
         if not page["Id"].startswith(P):
             nxt = _discovery(page["Nodes"], "_" + str(serial) + "_" + woman, woman)
         page["Nodes"].append(_node(tag + "_night_" + woman, woman.capitalize(),
-            ('{n}Minagho comes after the watch changes. She kicks the door shut, tears your shirt open and presses you against it. Her mouth catches yours; her fingers work the buckle at your waist.{/n}\n"Quiet, Golarian. I want her to wonder where I spent the night."\n{n}She draws you toward the bed by your open collar.{/n}' if woman == "minagho" else '{n}Chivarro comes without a lamp. She drops your belt beside the door and opens her gown, watching your hands as you catch her bare waist. Her kiss drives you back against the bed.{/n}\n"Keep that pretty mouth occupied, honey. I do not want Minagho hearing it."\n{n}She pushes you onto the mattress and follows.{/n}'),
+            ('''{n}Minagho comes after the watch changes. She kicks the door shut, tears your shirt open and slams you against it. Her mouth catches yours; her teeth find your lip and stay there until she tastes blood.{/n}
+"Quiet, Golarian. I want her to wonder where I spent the night."
+{n}Chivarro's step sounds on the stair below and neither of you moves. Minagho laughs without a sound into your throat, one claw hooked in your open collar, and waits for the step to pass before she hauls you toward the bed.{/n}
+"She would know my scent on you from across the market. Let her. Let her find it on the sheets and choke on it. Hands, Golarian. I am not made of glass."
+{n}Her dress is already sliding off her shoulder when your hands find her hips.{/n}''' if woman == "minagho" else '''{n}Chivarro comes without a lamp. She drops your belt beside the door and opens her gown, watching your hands as you catch her bare waist. Her kiss drives you back against the bed.{/n}
+"Keep that pretty mouth occupied, honey. I do not want Minagho hearing it."
+{n}She pushes you onto the mattress and follows, strips you with brisk, practised fingers and bends over you, her mouth moving down your throat to your chest. She smiles against your skin when you stop pretending to be unmoved, and takes your hand from her waist and holds it to her hip.{/n}
+"There. Warm. Do not make a speech about it."'''),
             c("Continue", nxt, flags=(nightflag,) if page["Id"].startswith(P) else ())))
 
 
@@ -277,9 +287,11 @@ def _morning(page):
         _node(letter_entry, "Narrator", '{n}The night has found its way into a letter. The reply is folded over the offending lines, with your name cut through the paper.{/n}',
               c("Continue", letter_entry + "_chivarro", requires=(TARGET_M,)),
               c("Continue", letter_entry + "_minagho", forbids=(TARGET_M,))),
-        _node(letter_entry + "_chivarro", "Chivarro", '{n}Minagho has sent Chivarro a description of the night, ending with a question: did she miss anything? Chivarro\'s reply is short.{/n}\n"You piece of shit. Both of you. Ask me next time you want me angry, honey. Commander, find another bed. She has already agreed."', c("Continue", letter_entry + "_minagho_answers")),
+        _node(letter_entry + "_chivarro", "Chivarro", '''{n}Minagho has sent Chivarro a description of the night, ending with a question: did she miss anything? Chivarro's reply is short.{/n}
+"You piece of shit. Both of you. Ask me next time you want me angry, honey. Commander, find another bed. She has already agreed."''', c("Continue", letter_entry + "_minagho_answers")),
         _node(letter_entry + "_minagho_answers", "Minagho", '"I wanted to hear her angry. You wanted a secret. One of us got what we wanted." {n}Minagho folds the reply and keeps it.{/n} "Chivarro stays mine, Golarian. Your night is over."', c("[Leave.]", flags=(EXPOSED, COOLED, CLOSED))),
-        _node(letter_entry + "_minagho", "Minagho", '{n}Chivarro copied the night\'s receipt into her next letter. Minagho has returned it with a knife slit through the total.{/n}\n"Chivarro. Send me that bill again and I will collect it from your lover\'s throat. You wanted me to know. Now we both know."', c("Continue", letter_entry + "_chivarro_answers")),
+        _node(letter_entry + "_minagho", "Minagho", '''{n}Chivarro copied the night's receipt into her next letter. Minagho has returned it with a knife slit through the total.{/n}
+"Chivarro. Send me that bill again and I will collect it from your lover's throat. You wanted me to know. Now we both know."''', c("Continue", letter_entry + "_chivarro_answers")),
         _node(letter_entry + "_chivarro_answers", "Chivarro", '"I wanted her answer, honey. And I have it." {n}Chivarro keeps the slashed receipt and takes back your key.{/n} "You have paid for one night. Minagho has had me for much longer. Your visits end here."', c("[Leave.]", flags=(EXPOSED, COOLED, CLOSED))),
     ])
     if target:
@@ -319,7 +331,9 @@ def _arrival(page):
         return
     discovery = _discovery(page["Nodes"], "_return", "minagho" if target == TARGET_M else "chivarro", returned=True)
     page["Nodes"].append(_node("stance_share_return", "Chivarro" if target == TARGET_M else "Minagho",
-        ('"You made terms while I was away, honey?" {n}Chivarro catches Minagho\'s wrist.{/n} "Let us finish them. She still comes to my bed. When I want her alone, your invitation waits."\n"Her terms," {n}Minagho tells you.{/n} "You heard mine. Answer her."' if target == TARGET_M else '"Chivarro tells me she has been keeping your bed warm." {n}Minagho catches Chivarro\'s hand.{/n} "She still comes to mine. When I ask for her alone, you leave us to it."\n"You have my answer, honey," {n}Chivarro tells you.{/n} "Now she gets hers."'),
+        ('''"You made terms while I was away, honey?" {n}Chivarro catches Minagho's wrist.{/n} "Let us finish them. She still comes to my bed. When I want her alone, your invitation waits."
+"Her terms," {n}Minagho tells you.{/n} "You heard mine. Answer her."''' if target == TARGET_M else '''"Chivarro tells me she has been keeping your bed warm." {n}Minagho catches Chivarro's hand.{/n} "She still comes to mine. When I ask for her alone, you leave us to it."
+"You have my answer, honey," {n}Chivarro tells you.{/n} "Now she gets hers."'''),
         c('"Agreed. Your terms, too."'), c('"Then keep each other. I am leaving."', flags=(COOLED, CLOSED))))
     for node, answer in candidates:
         clone = deepcopy(answer)
@@ -345,11 +359,18 @@ def _late(page):
     if page["Id"] != P + "epilogue.commit":
         return
     pair = next(x for x in page["Nodes"] if x["Id"] == "pair")
-    pair["Text"] += '\n"Minagho stays with me," {n}Chivarro says.{/n} "Come to our house, honey, and you take us as we are."\n"And you leave when we want the bed to ourselves," {n}Minagho adds, pulling Chivarro close.{/n} "Agreed?"'
+    pair["Text"] += '''
+"Minagho stays with me," {n}Chivarro says.{/n} "Come to our house, honey, and you take us as we are."
+"And you leave when we want the bed to ourselves," {n}Minagho adds, pulling Chivarro close.{/n} "Agreed?"
+{n}Her hand is already inside Chivarro's gown as she says it. Chivarro lets it stay, and lets you see.{/n}
+"We started without you last night, honey," {n}Chivarro says.{/n} "An excellent rehearsal. Come and find out what it was rehearsing for."'''
     pair["Choices"][0]["Text"] = '[Go.] "Your terms. Both of you."'
     pair["Choices"][0]["Set"].append(SHARE)
     waiting = next(x for x in page["Nodes"] if x["Id"] == "waiting")
-    waiting["Text"] += '\n"Minagho\'s place stays hers," {n}Chivarro says.{/n} "If she comes back, she answers for herself. You have my invitation, honey. Read it properly."'
+    waiting["Text"] += '''
+"Minagho's place stays hers," {n}Chivarro says.{/n} "If she comes back, she answers for herself. You have my invitation, honey. Read it properly."
+{n}She has dressed for a visit, which is to say barely, and does not pretend otherwise.{/n}
+"I have kept that bed warm for years. Come and see how warm."'''
     waiting["Choices"][0]["Set"].append(SHARE)
     waiting["Choices"].extend([
         c('"Leave Minagho. I want you to myself."', "late_waiting_exclusive", flags=(EXCLUSIVE,),
@@ -359,10 +380,14 @@ def _late(page):
     ])
     page["Nodes"].extend([
         _node("late_waiting_exclusive", "Chivarro", '"No, honey. Minagho has not come back. That does not give you her place." {n}Chivarro takes back the key.{/n} "If she can answer, she will. You have my answer. Leave."', c("Continue", flags=(COOLED, CLOSED))),
-        _node("late_waiting_secret", "Chivarro", '{n}Chivarro comes late, without a lamp. She opens her gown and catches your hands against her bare waist. Her kiss drives you back against the bed.{/n}\n"You want a secret, honey? Lock the door. And remember whose place you asked for."\n{n}She pushes you onto the mattress and follows.{/n}',
+        _node("late_waiting_secret", "Chivarro", '''{n}Chivarro comes late, without a lamp. She opens her gown and catches your hands against her bare waist. Her kiss drives you back against the bed.{/n}
+"You want a secret, honey? Lock the door. And remember whose place you asked for."
+{n}She pushes you onto the mattress and follows.{/n}''',
               c("Continue", "late_waiting_reply", requires=(STATE + "minagho.distant",), flags=(EXPOSED,)),
               c("Continue", requires=(STATE + "minagho.unknown",))),
-        _node("late_waiting_reply", "Chivarro", '{n}Chivarro copied the night\'s receipt into her next letter. Minagho returned it with a knife slit through the total.{/n}\n"Send me that bill again, Chivarro, and I will collect it from your lover\'s throat."\n{n}Chivarro folds the reply and takes back your key.{/n} "I wanted her answer, honey. She stays. You go."', c("Continue", flags=(COOLED, CLOSED))),
+        _node("late_waiting_reply", "Chivarro", '''{n}Chivarro copied the night's receipt into her next letter. Minagho returned it with a knife slit through the total.{/n}
+"Send me that bill again, Chivarro, and I will collect it from your lover's throat."
+{n}Chivarro folds the reply and takes back your key.{/n} "I wanted her answer, honey. She stays. You go."''', c("Continue", flags=(COOLED, CLOSED))),
     ])
     for woman in ("minagho", "chivarro"):
         other = "chivarro" if woman == "minagho" else "minagho"
@@ -380,7 +405,10 @@ def _late(page):
             _node(secret, woman.capitalize(),
                 ('{n}Minagho comes late, still wearing Chivarro\'s scent. She kisses you against the locked door, pulls your shirt open and draws you to the bed.{/n} "Quiet, Golarian. Let her wonder."' if woman == "minagho" else '{n}Chivarro comes late, without a lamp. She opens her gown, catches your hands against her bare waist, and pushes you back onto the bed.{/n} "Quiet, honey. This night is ours."'), c("Continue", secret + "_dawn", flags=(EXPOSED,))),
             _node(secret + "_dawn", other.capitalize(),
-                ('{n}At dawn Chivarro lets herself in. She looks at the clothes, then at Minagho\'s hand on your bare waist.{/n} "You piece of shit. You could have asked me. Get dressed."\n{n}Minagho releases you.{/n} "I enjoyed the secret. But I choose her, Golarian. Go."\n{n}The invitations stopped. The two women kept their house, and each other.{/n}' if other == "chivarro" else '{n}At dawn Minagho lets herself in. She drives a dagger through your discarded belt into the door.{/n} "Chivarro. Tell this idiot where to go before I carve directions into that pretty skin."\n"You have had your night, honey. She stays. You leave." {n}Chivarro throws your shirt at you. No further invitation came; Minagho and Chivarro kept each other.{/n}'), c("Continue", flags=(COOLED, CLOSED))),
+                ('''{n}At dawn Chivarro lets herself in. She looks at the clothes, then at Minagho's hand on your bare waist.{/n} "You piece of shit. You could have asked me. Get dressed."
+{n}Minagho releases you.{/n} "I enjoyed the secret. But I choose her, Golarian. Go."
+{n}The invitations stopped. The two women kept their house, and each other.{/n}''' if other == "chivarro" else '''{n}At dawn Minagho lets herself in. She drives a dagger through your discarded belt into the door.{/n} "Chivarro. Tell this idiot where to go before I carve directions into that pretty skin."
+"You have had your night, honey. She stays. You leave." {n}Chivarro throws your shirt at you. No further invitation came; Minagho and Chivarro kept each other.{/n}'''), c("Continue", flags=(COOLED, CLOSED))),
         ])
 
 
@@ -417,9 +445,11 @@ def integrate(payload):
         if page["Id"] == "minachiv.before_the_last_road":
             for node in page["Nodes"]:
                 if node["Id"] == "minagho":
-                    node["Text"] += '\n"She comes back to me, honey," {n}Chivarro tells you.{/n} "You may keep her company. You do not buy my place beside her."'
+                    node["Text"] += '''
+"She comes back to me, honey," {n}Chivarro tells you.{/n} "You may keep her company. You do not buy my place beside her."'''
                 elif node["Id"] in {"friendship", "service"}:
-                    node["Text"] += '\n"Chivarro wants you," {n}Minagho says.{/n} "She still comes back to me. Hurt her and I will open you from throat to crotch."'
+                    node["Text"] += '''
+"Chivarro wants you," {n}Minagho says.{/n} "She still comes back to me. Hurt her and I will open you from throat to crotch."'''
         _morning(page)
         _arrival(page)
         _late(page)

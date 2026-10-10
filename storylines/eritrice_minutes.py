@@ -528,14 +528,14 @@ minutes(ADJOURNED, "Adjourned", '"The chair called for an adjournment?"', [
 {n}Against your mouth:{/n} "Point of order. You are wearing a great deal of armour for a private session."''',
       c("Continue", "armour")),
     e("armour", '''{n}She undoes the buckles herself, one by one, with the same patient attention she gives to a long agenda, and every time a strap comes free she says its name, as if entering it in the record. You have never heard anyone make the word "vambrace" sound like that.{/n}
-{n}When the last of it is on the floor she pushes you back until you are sitting on the edge of the Council's long table, among the inkwells, and stands between your knees, and looks at you in the lamplight, unhurried, the way she reads a motion twice before she votes.{/n}''',
+{n}When the last of it is on the floor she pushes you back until you are sitting on the edge of the Council's long table, among the inkwells, and stands close in front of you, and looks at you in the lamplight, unhurried, the way she reads a motion twice before she votes.{/n}''',
       c("Continue", "look")),
     e("look", '''{n}For once she says nothing at all. Her amethyst eyes are very dark, and her breathing is the only sound in the hall. She pulls the belt of her gown loose with one claw, and it falls open, and she watches your face, not the gown, while it does.{/n}
 "The floor has the question, Commander."''',
       c('[Pull her down to you by the open gown.]', "cut", flags=(M + "night",))),
-    e("cut", '''{n}She comes the whole way: one knee on the table beside your hip and then the other, until she is astride you among the inkwells and her weight settles onto your thighs, and she pushes you flat on your back on the Council\'s table with one hand spread on your chest. She reaches past you, without taking her eyes from yours, and turns the lamp down to nothing; and in the last of its light you see her other hand move the scroll recording your two ayes to safety at the far end of the table, even now, even then.{/n}
-{n}Then the proud hand returns. It closes in your hair and drags your mouth to hers, and she kisses you with open, snarling hunger, a rumble in her chest like a lion in the next room. Her gown is already off her shoulders; she shrugs the rest of it down, and in the dark the heavy warmth of her moves on you, tawny and strong, her claws held in against your ribs with a care that makes your pulse jump. She finds your belt and strips you with no ceremony at all.{/n}
-"I do not say this lightly," {n}she says, low, her mouth against your ear.{/n} "I want you. Not the vote. Not the minutes. You." {n}Her thighs lock round your hips and her hand slides down between you to put you where she wants you.{/n}''',
+    e("cut", '''{n}She comes the whole way: one hand spread on your chest, pushing you flat on the Council's table among the inkwells. She reaches past you, without taking her eyes from yours, and turns the lamp down to nothing; and in the last of its light you see her other hand move the scroll recording your two ayes to safety at the far end of the table, even now, even then.{/n}
+{n}Then the proud hand returns. It closes in your hair and drags your mouth to hers, and she kisses you with open, snarling hunger, a rumble in her chest like a lion in the next room. Her gown is already off her shoulders; she shrugs the rest of it down, and in the dark the heavy warmth of her presses against you, tawny and strong, her claws held in against your ribs with a care that makes your pulse jump. She finds your belt and strips you with no ceremony at all.{/n}
+"I do not say this lightly," {n}she says, low, her mouth against your ear.{/n} "I want you. Not the vote. Not the minutes. You."''',
       c("[...]")),
 ], requires=(COMMITTED,), forbids=(ADJOURNED,), delay=12)
 
@@ -564,7 +564,8 @@ minutes(RECORD, "The record", '"You\'re writing already?"', [
 {n}Slowly, as if arguing it with herself:{/n} "An omission is not a lie. The record shows that a session took place. It does not claim that nothing happened." {n}She writes, at last, in a small tight hand: "The chair was otherwise occupied."{/n}
 "That is true." {n}She stares at the small line.{/n} "I have written the truth so that Alichino will learn nothing from it. I am not sure whether to be pleased."''',
       c("[Take her ink-stained hand.]", flags=(OMITTED,))),
-    e("read_third", '{n}You lean over her shoulder. Beneath the date, in her upright hand: "Private session. Present: the chair; the Commander. Business: the motion carried at third reading, enacted." The quill hovers over the next line.{/n}\n"You see my difficulty. \'Enacted\' is true. It says very little about what you did to my table."',
+    e("read_third", '''{n}You lean over her shoulder. Beneath the date, in her upright hand: "Private session. Present: the chair; the Commander. Business: the motion carried at third reading, enacted." The quill hovers over the next line.{/n}
+"You see my difficulty. 'Enacted' is true. It says very little about what you did to my table."''',
       c('"Then write it all."', "all"),
       c('"Then leave the rest blank."', "blank")),
 ], requires=(M + "night",), forbids=(RECORD,), delay=6)
@@ -662,10 +663,12 @@ for _s in SCENES:
         _cut = next(x for x in _s["Nodes"] if x["Id"] == "cut")
         _cut["Choices"][0]["Next"] = ADJOURNED + ".explicit.1"
         _s["Nodes"].append(nar(ADJOURNED + ".explicit.1",
-            '{n}She draws you against her, her gown slipping free, and the last light goes out. The scroll lies untouched at the far end of the table.{/n}', c("[...]")))
+            '''{n}The last light goes out. There is only the heat of her, the rumble in her chest climbing past a purr into something with no name in the Council's minutes, her claws held in against your ribs until the peak takes her and, for once, they are not held in quite enough. The scroll lies untouched at the far end of the table.{/n}
+"Strike that from the record," {n}she says afterwards, hoarse, and does not lift her cheek from your chest.{/n} "No. Keep it. Keep all of it."''', c("[...]")))
 
 SCENES.append(scene(M + "extraction_account", "The contribution", "Eritrice", 5, "", [
-    e("account", '"You told me to contribute, and I said I would tell you what it cost. It was excruciating. I held the cauldron until it was done. Do not improve that word in your reply."\n{n}Below it she has entered the date of the contribution, distinct from the date of this letter.{/n}',
+    e("account", '''"You told me to contribute, and I said I would tell you what it cost. It was excruciating. I held the cauldron until it was done. Do not improve that word in your reply."
+{n}Below it she has entered the date of the contribution, distinct from the date of this letter.{/n}''',
       c('[Answer her account plainly.]', flags=(PAIN_REPORTED,))),
 ], requires=("trickster.ever", URGED, EXTRACTED), forbids=(CLOSED, LOST, PAIN_REPORTED),
     Remote=True, Relationship="eritrice", delay=6, last=5))
@@ -680,7 +683,8 @@ for _s in SCENES:
 # Optional knowledge promises are collected within the existing future discussion, never used to buy an aye.
 for _s in SCENES:
     if _s["Id"] == AT_WORST:
-        next(x for x in _s["Nodes"] if x["Id"] == "truth")["Text"] += '\n"I still have not read the hidden pages myself. If you promised me an account, do not confuse that promise with a reading already delivered."'
+        next(x for x in _s["Nodes"] if x["Id"] == "truth")["Text"] += '''
+"I still have not read the hidden pages myself. If you promised me an account, do not confuse that promise with a reading already delivered."'''
     if _s["Id"] == STANDING:
         _start = _s["Nodes"][0]
         _start["Choices"].extend((
@@ -690,9 +694,11 @@ for _s in SCENES:
                 requires=(M + "exercise_promised",), forbids=(M + "exercise_paid",)),
         ))
         _s["Nodes"].extend((
-            nar("reading_account", '{n}You give her the account of the deciphered pages, distinguishing their contents from your conclusions. She takes notes, then reads the account back, stopping wherever the two differ.{/n}\n"Your reading, entered under your name. Mine remains unfinished. Now we can dispute the evidence instead of the title."',
+            nar("reading_account", '''{n}You give her the account of the deciphered pages, distinguishing their contents from your conclusions. She takes notes, then reads the account back, stopping wherever the two differ.{/n}
+"Your reading, entered under your name. Mine remains unfinished. Now we can dispute the evidence instead of the title."''',
                 c("[Return to the standing item.]", "start", flags=(M + "reading_reported",))),
-            e("exercise_again", '"A deliberate design cannot be a mistake. That was my inference." {n}She draws a line through it again on the fresh page.{/n} "No. Intention does not guarantee the result, or excuse it. This objection holds. I shall put it beside the Crossroads draft too."\n{n}She pushes her chair nearer yours.{/n} "There is your second exercise. Now answer the question I actually called this sitting for."',
+            e("exercise_again", '''"A deliberate design cannot be a mistake. That was my inference." {n}She draws a line through it again on the fresh page.{/n} "No. Intention does not guarantee the result, or excuse it. This objection holds. I shall put it beside the Crossroads draft too."
+{n}She pushes her chair nearer yours.{/n} "There is your second exercise. Now answer the question I actually called this sitting for."''',
                 c("[Return to her question.]", "start", flags=(M + "exercise_paid",))),
         ))
 
@@ -718,7 +724,9 @@ for _name, _opening in (
 ):
     _variant = _copy.deepcopy(_nodes["motion"])
     _variant["Id"] = _name
-    _variant["Text"] = _opening + "\n" + _variant["Text"].split("\n", 1)[1]
+    _variant["Text"] = _opening + '''
+''' + _variant["Text"].split('''
+''', 1)[1]
     _point["Nodes"].append(_variant)
 for _node in [n for n in _point["Nodes"] if n["Id"].startswith("motion")]:
     _node["Choices"][2]["Requires"].append(_hall_motion)
@@ -732,7 +740,8 @@ for _name, _record in (
 ):
     _variant = _copy.deepcopy(_nodes["minutes"])
     _variant["Id"] = _name
-    _variant["Text"] = _variant["Text"].split(" {n}She looks at", 1)[0] + "\n" + _record
+    _variant["Text"] = _variant["Text"].split(" {n}She looks at", 1)[0] + '''
+''' + _record
     _point["Nodes"].append(_variant)
 _quill = next(s for s in SCENES if s["Id"] == QUILL)
 _held = next(n for n in _quill["Nodes"] if n["Id"] == "held")
@@ -749,7 +758,9 @@ for _name, _recall in (
 ):
     _variant = _copy.deepcopy(_honest)
     _variant["Id"] = _name
-    _lines = _variant["Text"].split("\n")
+    _lines = _variant["Text"].split('''
+''')
     _lines[1] = _recall
-    _variant["Text"] = "\n".join(_lines)
+    _variant["Text"] = '''
+'''.join(_lines)
     _quill["Nodes"].append(_variant)

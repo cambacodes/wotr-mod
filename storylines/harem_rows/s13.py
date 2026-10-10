@@ -130,8 +130,14 @@ def choice(warded=False):
         page("arueshalae_yes", "Arueshalae", '''"Yes. I want your mouth on mine."
 {n}Arueshalae loosens the fastening at her throat. Nenio's gaze follows her fingers.{/n}''',
              c("Continue", after_yes)),
-        page("cut", "Narrator", ('''{n}The chapel's ward is still cold on Nenio's skin when she returns. Arueshalae draws her close and kisses her. Nenio catches the loosened collar in her fingers; Arueshalae presses into her hands. They leave the bench for the room above, with seven minutes before the ward expires.{/n}'''
-             if warded else '''{n}Arueshalae draws Nenio close and kisses her. Nenio catches the loosened collar in her fingers; Arueshalae presses into her hands. They leave the observation unfinished and climb the stairs together.{/n}'''),
+        page("cut", "Narrator", ('''{n}The chapel's ward is still cold on Nenio's skin when she returns. Arueshalae draws her close and kisses her. Nenio catches the loosened collar in her fingers; Arueshalae presses into her hands.{/n}
+"This is not for procreation," {n}Nenio says against her mouth.{/n} "It is for pleasure. I shall compare the data afterward."
+"Take your notes with your hands," {n}Arueshalae murmurs.{/n}
+{n}They leave the bench for the room above, with seven minutes before the ward expires.{/n}'''
+             if warded else '''{n}Arueshalae draws Nenio close and kisses her. Nenio catches the loosened collar in her fingers; Arueshalae presses into her hands.{/n}
+"This is not for procreation," {n}Nenio says against her mouth.{/n} "It is for pleasure. I shall compare the data afterward."
+"Take your notes with your hands," {n}Arueshalae murmurs.{/n}
+{n}They leave the observation unfinished and climb the stairs together.{/n}'''),
              c("Continue", P + "choice.explicit.1")),
         terminal(finish, "Arueshalae", ('''{n}They separate before the ward fades. Arueshalae straightens Nenio's collar, then retrieves her bow downstairs.{/n}
 "I will see you at the bench."
@@ -151,7 +157,7 @@ def choice(warded=False):
             c('[Leave the scroll and return to ordinary company.]', "declined")))
     # Slot carries no effects; empty/filled text leads to the same aftermath.
     nodes.append(page(P + "choice.explicit.1", "Narrator",
-                      "{n}The chronometer stays in its case downstairs.{/n}", c("Continue", finish)))
+                      "{n}The chronometer stays in its case downstairs. Overhead a stair creaks and a door shuts; a while later Nenio's voice carries down, high and astonished, remarking that this was not in the literature.{/n}", c("Continue", finish)))
     return nodes
 
 

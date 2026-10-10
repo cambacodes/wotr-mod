@@ -42,10 +42,9 @@ def nodes(step, kitrane):
                "Before her officers, Galfrey revokes the escort authority her orderly claimed for the sortie.")
     consent = ('"I can pledge my sword and my name. Mendev\'s orders are no longer mine to give."'
                if kitrane else '"I will withdraw that authority. My wounded soldiers are not a disguise for scouts."')
-    deed = ('{n}The courier returns with Nocticula\'s countermand, addressed to the factor by name.{/n}\n'
-            '"You were told to waive this levy. You will refund your demand and surrender its collection to another. '
-            'Try selling my protection twice again, and I shall collect from you personally."\n'
-            '{n}' + sponsor + ' The correction is read aloud; the orderly stands red-faced beside her.{/n}\n'
+    deed = ('''{n}The courier returns with Nocticula's countermand, addressed to the factor by name.{/n}
+"You were told to waive this levy. Refund it. Then come to the Harem, on your knees, and explain to me why my protection was for sale twice. Bring the hand you collected with; you will not be taking it home."
+{n}''' + sponsor + ' The correction is read aloud; the orderly stands red-faced beside her.{/n}\n'
             '"I condemn her traffic in slaves. I also heard her instruction. She has kept this undertaking."\n'
             '{n}At Drezen\'s departure office, you dismiss the mustered scout captain. He watches you burn the pilot\'s '
             'only survey: both concealed observation points and the patrol interval curl into ash. '
@@ -70,9 +69,9 @@ def nodes(step, kitrane):
                      'I shall remember it if one strays."',
                      ("open.seen", "open.ready", "survey.acquired", "sortie.mustered", "cost.courier_fares",
                       "cost.commander_guarantor_promised"), ("Finances", -200)),
-            terminal("insult", '{n}Your courier delivers the undertaking stripped of Nocticula\'s title. Her reply comes back unopened '
-                     'inside a second envelope.{/n}\n"Have your clerk learn whom he addresses before he petitions me."\n'
-                     '"You sent an insult in the wounded men\'s names," {n}' + name + ' says. She puts the petition away.{/n}',
+            terminal("insult", '''{n}Your courier delivers the undertaking stripped of Nocticula's title. Her reply comes back unopened inside a second envelope.{/n}
+"Teach your clerk whom he addresses, Commander, or send him to me and I will teach him. He will not need the lesson twice. He will not need a tongue for it, either."
+"You sent an insult in the wounded men's names," {n}''' + name + ' says. She puts the petition away.{/n}',
                      ("open.seen", "open.insult_sent", "permanent_refusal")),
         ]
     if step == "undertaking":

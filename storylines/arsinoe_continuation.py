@@ -447,16 +447,16 @@ _h["uncertain"]["Text"] = '''"Then we have tonight. I would rather have that tha
 "I have work tomorrow. So have you. I expect we can survive wasting the rest of this evening."'''
 _h["kiss"]["Text"] = '''{n}Arsinoe meets your kiss with her hand against your cheek. The second is hers; she holds you close until the chair creaks beneath you. She laughs against your mouth and gets to her feet, drawing you up with her.{/n}
 "This furniture is intolerable. I should have spent more on it."
-{n}She kisses you again beside the table. The book lies open, the drinks unfinished. Her fingers catch in your collar, then work lower, over your belt, and she smiles at what she finds there.{/n}
+{n}She kisses you again beside the table. The book lies open, the drinks unfinished. Her fingers catch in your collar and work it loose, then find your belt, and she smiles against your jaw at how quickly your breath goes.{/n}
 "You could stay. I have no intention of reading another page tonight."
-{n}She backs you against the table edge, takes your hand and presses it inside the silk at her throat, onto her bare breast, nipple hard in your palm. Her breath comes short. She chose her clasps tonight and counted every one of them, and she wants every one of them undone. Her thigh slides between yours.{/n}
+{n}She backs you against the table edge, takes your hand and presses it flat to the silk at her throat, over her heartbeat. Her breath comes short. She chose her clasps tonight and counted every one of them, and she wants every one of them undone.{/n}
 "Decide, Commander. Walk out, or stay and be thorough."'''
 # The old kiss-and-leave exit keeps its position and effects. Overnight is optional.
 _h["kiss"]["Choices"].append(c('"Then I will stay."', "arsinoe_the_unprofitable_hour.explicit.1"))
 # Explicit slot U: her chosen finery, unfinished drink, initiative; no future promise.
 _hour["Nodes"].extend([
-    n("arsinoe_the_unprofitable_hour.explicit.1", "Arsinoe", '''{n}Arsinoe leaves the book open and draws you to the bed. She lets the silk fall, strips you with quick, impatient hands, and pulls you down over her, thighs open around your hips, one hand already guiding you where she wants you.{/n}
-"The shop can wait until morning."''', c("Continue", "private_morning")),
+    n("arsinoe_the_unprofitable_hour.explicit.1", "Arsinoe", '''{n}Arsinoe leaves the book open and draws you to the bed. The silk slides from her shoulders as though it had only been waiting for the order, and she strips you with quick, impatient hands, skin to skin before the lamp has finished steadying. She pulls you down with her, and for a while the only sound is her breath and the bell of some distant hour that neither of you counts.{/n}
+"The shop can wait until morning. Look at me properly. I did not buy the silk for the shelf."''', c("Continue", "private_morning")),
     n("private_morning", "Arsinoe", '''{n}In the morning, Arsinoe searches beneath the bed for her clasp. You find it caught in your discarded collar. She takes it, then bends to kiss you before pinning up her hair.{/n}
 "I chose it carefully. Next time I shall choose something harder to lose."
 {n}A customer knocks at the shutter. She looks toward the sound, then gives you one more kiss.{/n}

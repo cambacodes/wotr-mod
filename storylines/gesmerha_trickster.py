@@ -197,7 +197,7 @@ NIGHT = '''{n}She hangs the chisels out of reach, spreads a folded cloth over th
 "One commission finished. And you stayed to hear what I wanted when it was done. Come closer. I have had enough patrons."
 {n}She kisses you, then draws you back for a second kiss that leaves her breathing hard. Her fingers find your belt; she opens it, laughing when you catch the buckle before it falls. She pulls off her shift and guides your hands to her waist.{/n}
 "Here. The bench will hold us. I checked."
-{n}She draws you down with her onto the cloth. Beyond the yard a patrol passes toward the walls; she keeps you close until its boots fade.{/n}'''
+{n}She draws you down with her onto the cloth. Beyond the yard a patrol passes toward the walls, and she goes still against you, listening, her breath held against your throat, until its boots fade; then she laughs, low and ragged, and does not trouble to be quiet again.{/n}'''
 NIGHT_REPAIRED = NIGHT.replace(
     "One commission finished. And you stayed to hear what I wanted when it was done. Come closer. I have had enough patrons.",
     "The commission and the wooden hands. Both finished. You have spent three days here; I want this night with you too.")
@@ -232,6 +232,7 @@ in_yard(P + "returned.bench", "What comes after", '"You said to ask you when it 
         c('"Finish your life without me, carver. You\'ve earned it."', flags=(CLOSED, "gesmerha.parted"))),
     g("terms", '''"I want you here when the work is done. In my bed, stranger. You listen when I curse the grain, and you came back to hear me without another order ready. I have been wanting you for days."
 {n}She reaches for your hand and draws it against her waist.{/n}
+"I have chiselled since dawn and I am still not tired enough to stop thinking about your hands." {n}Her other hand finds your collar and stays there, and she tips her head so that her mouth is at your ear, her breath warm and unsteady.{/n}
 "Leave the purse outside. I will not have another coin driven into anything of mine. Can you do that?"''',
         c('"No more purses. Not for you. I swear it."', "night", flags=(COMMITTED,)),
         c('"I can\'t swear that. Buying things is what I do."', "postpone")),
@@ -260,7 +261,9 @@ in_yard(P + "returned.second_ask", "A pair that were never for sale", '"About wh
         c('"Not like this."', flags=(CLOSED,))),
     nar("sat", '''{n}For three days the smith brings couriers to the gate while she sets your hands against a folded cloth. Between sittings you eat, stretch, and hear their reports. Each time you return she finds the pose again by touch.{/n}
 {n}On the third evening she compares the wooden hands with yours and puts the knife away. She keeps your hands in hers.{/n}
-"Done. I will keep these. And I want you to stay tonight. I have been thinking about it through every damned finger."''',
+"Done. I will keep these. And I want you to stay tonight. I have been thinking about it through every damned finger."
+{n}She sets the carving down and puts both your hands, the real ones, against her ribs, and holds them over the quick drum of her heart. Her thumb rubs once across your knuckle, as if checking the grain.{/n}
+"Three days I have had your hands in front of me and not once been allowed to do more than measure them. Come here. Let me find out what they do when nobody is posing."''',
         c("Continue", "night", forbids=(FLINCHED,)),
         c("Continue", "night_flinched", requires=(FLINCHED,))),
     g("night", NIGHT_REPAIRED, c("Continue", "morning")),
@@ -728,7 +731,8 @@ def _round2(payload, by_id):
         ("gesmerha.late_ending_friends", '{n}On the next visit she laid the pieces out on the old playing rows and reminded the Commander of the outer-row rule. The second game lasted through supper.{/n}'),
         ("gesmerha.late_ending_open", '{n}The Commander returned with the unflattering story she had requested. She laughed, moved her cup to make room, and asked for the parts still being left out.{/n}'),
     ):
-        by_id[sid]["Nodes"][0]["Text"] += "\n" + text
+        by_id[sid]["Nodes"][0]["Text"] += '''
+''' + text
 
 
 # Authored job-2 commission conclusions; sacrifice grants no reconciliation.

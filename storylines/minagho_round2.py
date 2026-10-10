@@ -204,17 +204,12 @@ def _heat(pages):
         '{n}Minagho pulls your hand into her lap and turns the palm upward. Her thumb presses the scar; '
         'her other hand catches your jaw. She kisses you before you can ask what she found.{/n}\n'
         '"You keep coming back. His hunters have better excuses. Stay until the watch changes."')
-    # SP5 near-discovery uses the already announced hour, no new intruder/event.
-    for key, woman in (("minagho_kiss", "Minagho"), ("chivarro_kiss", "Chivarro")):
-        node = _nodes(page)[key]
-        node["Text"] = node["Text"].replace('{n}Later',
-            '{n}A step sounds on the stair. ' + woman + ' catches your collar and holds you still, '
-            'listening. The step passes; she pulls you close again.{/n}\n\n{n}Later', 1)
     # Correct the robe before every later night removes it.
     page = pages["minachiv.after_the_last_lamp"]
     for node in page["Nodes"]:
         if node["Id"] == "start":
-            node["Text"] += '\n{n}She wears a plain robe, fastened at the shoulder with a pin.{/n}'
+            node["Text"] += '''
+{n}She wears a plain robe, fastened at the shoulder with a pin.{/n}'''
     # Invitations are a return, not another initiation or another arrival.
     for sid in ("minachiv.a_room_she_likes", "minachiv.after_the_last_lamp"):
         for node in pages[sid]["Nodes"]:
@@ -284,11 +279,13 @@ def _receipts(pages):
         old = copy.deepcopy(node["Choices"])
         native_text = node["Text"]
         if sid.endswith("two_answers"):
-            native_text = native_text.replace('"Chivarro?"\n', '').replace(
+            native_text = native_text.replace('''"Chivarro?"
+''', '').replace(
                 '"She has answered. We have arranged',
                 '{n}Minagho taps the other signature.{/n} "She has answered. We have arranged')
         else:
-            native_text = native_text.replace('"You came."\n"An extraordinary deduction."',
+            native_text = native_text.replace('''"You came."
+"An extraordinary deduction."''',
                 '{n}Minagho catches Chivarro\'s wrist.{/n} "You came."\n'
                 '{n}Chivarro smiles.{/n} "An extraordinary deduction."')
         node["Text"] = ('{n}You reach the shuttered gaming house at the appointed hour. '
@@ -353,8 +350,16 @@ def _slots(pages):
         # A dedicated heated-cut default, filled only by the user's later batch.
         # Brief: willing participants/voice/act/continuity are in the matching JSON.
         body = original["Text"]
-        split = next((body.index(mark) for mark in ('\n\n{n}Later', '\n\n{n}Near dawn',
-            '\n\n{n}At dawn', '\n\n{n}In the morning') if mark in body), len(body))
+        split = next((body.index(mark) for mark in ('''
+
+{n}Later''', '''
+
+{n}Near dawn''',
+            '''
+
+{n}At dawn''', '''
+
+{n}In the morning''') if mark in body), len(body))
         lead, after = body[:split], body[split:]
         if page["Owner"].endswith("Epilogue"):
             # Original saved terminal choices keep Next/Abort/Set and costs.
@@ -363,7 +368,7 @@ def _slots(pages):
                     if answer["Next"] == nid:
                         answer["Next"] = slotid
             original["Text"] = after.strip() or '{n}The invitation has been answered.{/n}'
-            page["Nodes"].append(n(slotid, original["Speaker"], lead + '\n' + brief["default_text"],
+            page["Nodes"].append(n(slotid, original["Speaker"], brief["default_text"],
                                    c("Continue", nid), portrait=original.get("Portrait", "")))
         else:
             targets = copy.deepcopy(original["Choices"])
@@ -374,7 +379,7 @@ def _slots(pages):
             # Retain its original effects on the old answer, once only.
             continuation = [c("Continue", a["Next"], requires=tuple(a["Requires"]),
                               forbids=tuple(a["Forbids"]), abort=a["Abort"]) for a in targets]
-            page["Nodes"].append(n(slotid, original["Speaker"], brief["default_text"] + ('\n' + after if after else ''),
+            page["Nodes"].append(n(slotid, original["Speaker"], brief["default_text"],
                                    *continuation, portrait=original.get("Portrait", "")))
 
 

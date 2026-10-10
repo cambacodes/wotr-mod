@@ -421,7 +421,7 @@ SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocke
       c('[Finish breakfast.]', "collected")),
     nar("night", '''{n}She did not wait for the table to be cleared. She let the guise go at the bedroom door, all of it, and the room was suddenly too small for her: antennae brushing the lintel, wings folded and rasping against the frame like pages turning, the smell of cold stone and of fruit left on an altar.{/n}
 "Most people close their eyes."
-{n}The Commander did not. She undid the Commander's collar with the care she had once given her locusts, one fastening at a time, watching to see what each one cost, and walked the Commander back to the bed by the wrists without once tightening her grip. When the Commander's knees met the mattress she let them fall and followed, wings half open to shut out the window, settled astride, and lowered herself onto the Commander, buzzing low enough to be felt in the teeth.{/n}''',
+{n}The Commander did not. She undid the Commander's collar with the care she had once given her locusts, one fastening at a time, watching to see what each one cost, and walked the Commander back to the bed by the wrists without once tightening her grip. When the Commander's knees met the mattress she let them fall and followed, wings half open to shut out the window, her cool weight against the Commander, the buzzing low enough to be felt in the teeth.{/n}''',
       c("Continue", "night_after")),
     nar("night_after", '''{n}She was gone by noon, which she called restraint. The Commander found small crescents on both wrists where her claws had rested, very precise, as if counted, and one folded locust wing on the pillow. They healed slowly. The Commander was in no hurry for them to.{/n}
 {n}A note in her hand lay on the breakfast table, which nobody had dared to clear: "Rent received. The forfeit stands. I have not decided which memory. You will be the second to know."{/n}''',
@@ -431,7 +431,7 @@ SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocke
       c("Continue", "night_mind")),
     nar("night_mind", '''{n}The room she built was the Commander's own bedroom, exactly, down to the crack in the ceiling, and the only thing in it that did not belong there was her, in her own form, sitting on the edge of the bed with her carapace catching the light of a lamp that was not lit.{/n}
 "I know where every nerve in this house runs. You have such instructive memories."
-{n}Her claws traced the Commander's jaw, and the Commander felt every point of them. She pushed the Commander back into a pillow that did not exist, settled astride with her wings opening over them both, and lowered herself onto the Commander with a sound in the skull like pages turning very fast.{/n}''',
+{n}Her claws traced the Commander's jaw, and the Commander felt every point of them. She pushed the Commander back into a pillow that did not exist, bent over the Commander with her wings opening over them both, and the sound in the skull went through every part of the Commander like pages turning very fast.{/n}''',
       c("Continue", "night_mind_after")),
     nar("night_mind_after", '''{n}The Commander woke alone, as the Commander had lain down, with no marks anywhere and the exact memory of where every one of them should be.{/n}
 {n}Behind the left eye, something neat and patient was very pleased with itself. "Rent received. The forfeit stands. I have not decided which memory. You will be the second to know."{/n}''',
@@ -706,7 +706,7 @@ IN_PERSON = [
       c('[Keep your hands, and pull her down to you.]', "threshold_free")),
     nar("threshold_free", '''{n}You take your hands back and put them on her instead: the ridge of her carapace, the cold hinge of a wing. Your grip is not careful, and something small and glossy comes away in your fingers. She goes very still, and then the buzzing starts again, lower, and you realise it is a laugh.{/n}
 "Oh," {n}she says.{/n} "You are going to be difficult. Good."
-{n}She lets you pull her down. Her wings open over you both and shut out the lamp, and the sound you have only ever heard in your skull is in your skin now, everywhere she touches, and she lowers herself onto you.{/n}''',
+{n}She lets you pull her down. Her wings open over you both and shut out the lamp, and the sound you have only ever heard in your skull is in your skin now, everywhere she touches, and she draws you down into the dark under them.{/n}''',
       c("Continue", "morning_free")),
     nar("morning_free", '''{n}She is gone before the watch changes. Your wrists are unmarked. On the pillow lies the sliver of chitin you took, dark and glossy, prised from the edge of her wing by your own hand.{/n}
 {n}Behind your left eye, something neat and patient is thinking very hard.{/n} "You kept your hands, and you took a piece of me with them. A thing that holds still is finished. A thing that fights stays interesting. I intend to keep you interesting for a long time."
@@ -715,7 +715,7 @@ IN_PERSON = [
       c(_KEEP[0], "short_end", requires=("jerribeth.short_future_chosen",))),
     nar("threshold", '''{n}You hold out your wrists. She takes them as if you had handed her something breakable and rare, and walks you backwards to the bed without once tightening her grip. Her mouth, or what serves her for one, is at your throat, and the buzzing you have only ever heard in your head is in your skin now, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}
 {n}When your knees meet the edge of the mattress she lets you fall, and follows, and settles over you with her weight on her elbows and her wings half open, shutting out the lamp. Her claws close lightly round your wrists and press them into the blanket.{/n}
-"Terms accepted," {n}she says, very softly, against your ear, and lowers herself onto you.{/n}''',
+"Terms accepted," {n}she says, very softly, against your ear, and the cool length of her presses against you.{/n}''',
       c("Continue", "morning")),
     nar("morning", '''{n}She is gone before the watch changes. The sheets smell of cold stone. There are small crescents on your skin where her claws rested, very precise, as if she had counted them. You press a thumb to one. It stings, exactly as much as she meant it to, and you find you are in no hurry for it to heal.{/n}
 {n}Tucked into the frame, where the image should be, is one dry locust wing, veined like a leaf and folded exactly in half. When you touch it, a voice that is not quite a memory arrives behind your left eye: "The forfeit stands. I have not decided which memory. You will be the second to know."{/n}''',
@@ -734,9 +734,13 @@ IN_PERSON = [
 "I shall not take your hands in here unless you give them. In this house, that is the only rule I keep."''',
       c('[Give her your wrists.]', "tenant_pinned"),
       c('[Reach for her instead.]', "tenant_free")),
-    nar("tenant_pinned", '''{n}She pushes you back into a pillow that does not exist, settles her weight over you, pins your wrists where you offered them, and lowers herself onto you.{/n}''',
+    nar("tenant_pinned", '''{n}She says nothing. She draws one claw down the front of you, pressing just hard enough to part cloth and not skin, and the room she has built shivers like a held breath: the cold of her carapace, the rasp of her wings folding shut over a lamp that is not there, the buzzing that is in your teeth now and at the base of your spine.{/n}
+"You offered," {n}she says, close against your ear.{/n} "I have been collecting every time you thought about it. Hold still. I want all of it before I spend it."
+{n}She pushes you back into a pillow that does not exist, bends over you, pins your wrists where you offered them, and the buzzing closes over your skin like a hand.{/n}''',
       c("Continue", "tenant_morning")),
-    nar("tenant_free", '''{n}You reach for her, and she lets you find her, ridge and hinge and the cold edge of a wing, in a room that is only real because you both agree it is. She lowers herself onto you with a sound in your skull like pages turning very fast.{/n}''',
+    nar("tenant_free", '''{n}You reach for her, and she lets you find her, ridge and hinge and the cold edge of a wing, in a room that is only real because you both agree it is. You find the pale seam where her wing meets the carapace, the one soft place on her, and the sound she makes is like a held note breaking. Her claws shake against your shoulder.{/n}
+"Careful," {n}she says, and does not mean it.{/n} "I am not accustomed to being handled. Do that again, and I may let you keep the hand."
+{n}She pulls you down against the cold ridge of her with a sound in your skull like pages turning very fast.{/n}''',
       c("Continue", "tenant_morning_free")),
     nar("tenant_morning_free", '''{n}You wake alone, as you went to sleep. Your hands still remember the shape of something that was never in the room.{/n}
 {n}Behind your left eye, something neat and patient is unusually quiet. Then: "You reached. Tenants are not supposed to be reached for. I shall have to renegotiate."{/n}''',
@@ -767,6 +771,17 @@ def _visit_nodes():
             node["Text"] = VISIT_ARRIVAL.strip()
         elif node["Id"] == "arrival_terms":
             node["Text"] = VISIT_TERMS.strip()
+        elif node["Id"] == 'threshold_free':
+            node["Text"] = '''{n}You take your hands back and put them on her instead: the ridge of her carapace, the cold hinge of a wing. Your grip is not careful, and something small and glossy comes away in your fingers. She goes very still, and then the buzzing starts again, lower, and you realise it is a laugh.{/n}
+"Oh," {n}she says.{/n} "You are going to be difficult. Good."
+{n}She lets you pull her down. Your fingers find the pale seam where her wing meets the carapace, the one place on her that is not armoured, and she hisses, a long dry rasp, and arches into it before she remembers to disapprove.{/n}
+"Not there," {n}she says, and moves your hand to the curve of her back, and leaves it.{/n}
+{n}Her wings open over you both and shut out the lamp, and the sound you have only ever heard in your skull is in your skin now, everywhere she touches, and she draws you down into the dark under them.{/n}'''
+        elif node["Id"] == 'threshold':
+            node["Text"] = '''{n}You hold out your wrists. She takes them as if you had handed her something breakable and rare, and walks you backwards to the bed without once tightening her grip. Her mouth, or what serves her for one, is at your throat, and the buzzing you have only ever heard in your head is in your skin now, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}
+{n}When your knees meet the edge of the mattress she lets you fall, and follows. Her claws open your shirt one fastening at a time, and her cool chitin presses the length of you, and she makes a small, pleased, entirely clinical sound at what she finds. She bends over you with her weight on her elbows and her wings half open, shutting out the lamp. Her claws close lightly round your wrists and press them into the blanket.{/n}
+"You are shaking, and I have not started. Fascinating."
+"Terms accepted," {n}she says, very softly, against your ear, and the cool length of her presses against you.{/n}'''
         elif node["Id"] in ("morning", "morning_free"):
             node["Choices"] = [c(_KEEP[0], flags=(VISITED,))]
     return nodes
@@ -1004,7 +1019,8 @@ def integrate(payload):
             elif not choice.get("Abort") and "jerribeth.closed" not in choice["Set"]:
                 choice["Set"] = [*choice["Set"], *agreed["Set"], "jerribeth.collection", XANTHIR_IN_PRICE]
         if node["Id"] == "x_start":
-            node["Text"] = X_BRIDGE + "\n" + node["Text"]
+            node["Text"] = X_BRIDGE + '''
+''' + node["Text"]
         price["Nodes"].append(node)
 
     # G6(b), the late commit, and the Trickster paragraphs on the endings that close her story.

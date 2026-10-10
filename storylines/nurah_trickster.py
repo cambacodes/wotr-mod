@@ -201,7 +201,9 @@ def tempers(extra):
 cell("nurah.trickster.prison.night_out", "Professional disgust", '"Sleep well, madam?"', [
     nu("start", '''{n}Nurah is sitting on the bunk exactly where you left her. There is rampart grit on her shoes, and the pardon lies across her knee, face up.{/n} "I didn't sleep. I couldn't, with that thing in the room. Around the second bell I scraped the tail off your 'Q' with a bent nail. Then I lifted your seal with lamp-heat and set it back the right way up. Then I changed the date to today, because a pardon dated tomorrow is an insult to the profession."
 {n}She holds up her hands. The ink is under every nail.{/n} "I forged my own pardon, Commander. Out of professional disgust. I suspect that was your whole plan."
-{n}She taps the gaol ledger's copy of her sentence, which still says: imprisoned.{/n} "So I went for a walk. The door opens for a pardoned woman, it turns out, and nobody in Drezen looks at a halfling after dark. I read your casualty lists in the archive and came back before the guard changed, because I wanted to ask you one thing to your face.
+{n}She taps the gaol ledger's copy of her sentence, which still says: imprisoned.{/n} "So I went for a walk. The door opens for a pardoned woman, it turns out, and nobody in Drezen looks at a halfling after dark. I read your casualty lists in the archive."
+{n}She draws a strip of paper out of her sleeve: a column of names copied in her small stitched hand, with a neat tick beside some of them.{/n} "Bottleneck Gate. The men under the wall when I leaned over it and shouted 'there they are, there they are!' The demons went where I pointed. I ticked the ones I watched go down screaming. Your clerks had misspelled four of them, so I corrected those. Somebody ought to spell them properly, and it was never going to be you lot."
+{n}She folds the strip and tucks it in beside the pardon, as pleased with herself as a cook putting away a good recipe.{/n} "Then I came back before the guard changed, because I wanted to ask you one thing to your face.
 "You could have just opened the door. I'd have run to the nearest demon with a library. You'd rather keep me. Why?"''',
        *tempers((RELEASED,)),
        c('"Because you\'re mine now. The pardon says so."', "refused", flags=(CLOSED, "nurah.trickster.cost.owned_line"))),
@@ -689,7 +691,8 @@ SCENES.append(scene("nurah.trickster.epilogue.bereaved", "The last chapter, unre
 # publication date throughout: her Last Call coda also publishes two years after the Threshold.
 SCENES.append(scene("nurah.trickster.epilogue.the_margin", "Author's terms", "Epilogue", 5, "", [
     nar("start", '''{n}Two years after the Threshold a book came out of the River Kingdoms: "To the Abyss and Back: The Crusade Through the Eyes of a Former Cultist". It was banned in several countries, and a bounty was put on its author's head. The inquisitors never found her. She was writing the sequel at the Commander's desk, in the Commander's shirt, and complaining about the light.{/n}
-{n}The author's terms she had set held to the last page: her name on the cover, and nobody's above it. She read the Commander nothing until it was bound, and then read the whole of it aloud, in bed, over four nights, stopping to argue with her own sentences. On the fourth night she shut the book on your hand, climbed over it into your arms and demanded your attention elsewhere.{/n}''',
+{n}Her terms held to the last page: her name on the cover, and nobody's above it. She read the Commander nothing until it was bound, and then read the whole of it aloud, in bed, over four nights, stopping to argue with her own sentences. On the fourth night she shut the book on your hand, climbed over it into your arms and demanded your attention elsewhere.{/n}
+{n}That fourth night she did not wait for the epigraph. She threw the book aside and kissed you until the argument went out of her sentences, and your shirt, which she had been wearing for a week, went over the lamp. She bit your shoulder hard enough to make a point, grinning like a woman who had been banned in several countries and found it flattering, and after that neither of you said anything fit to publish.{/n}''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS + (
             p("{n}Her name went on the cover next to the Commander's, in the same typeface. She told everyone it had been her idea.{/n}",
               requires=("nurah.trickster.cost.coauthor",)),
@@ -788,7 +791,8 @@ REACTIONS = [
 # instead (Sol quality pass, INT). A Camellia raised from a retained death is back on her companion hub (camellia_trickster
 # FOREIGN_REACTIONS lifts camellia.dead there), and keeps the originals.
 VEILED = ("camellia.killed", "camellia.trickster.returned")
-CARD = "{n}A folded card comes up with the evening dispatches, sent over from Fye's tavern by his pot-boy. It smells of lilies. It was left, the boy says, by the lady at the far end of the bar, who has still not touched her wine.{/n}\n"
+CARD = '''{n}A folded card comes up with the evening dispatches, sent over from Fye's tavern by his pot-boy. It smells of lilies. It was left, the boy says, by the lady at the far end of the bar, who has still not touched her wine.{/n}
+'''
 REACTIONS += [
     reaction("Camellia", "nurah.trickster.react.camellia_veiled_pardon", (LEDGER, RELEASED, *VEILED),
              CARD + '''"You gave the little traitor a pardon. How merciful of you. I have been dead, darling, so I know exactly what mercy is worth: it is worth what someone is willing to pay to take it back. I do hope nobody makes you an offer for her. I would hate to be outbid."''',
@@ -957,9 +961,7 @@ for _scene in list(SCENES):
 # A manuscript is a threat of publication, not an already circulated edition.
 SCENES.append(reaction('Irabeth', 'nurah.trickster.react.irabeth_manuscript',
     (GHOST, RAN_OFF),
-    '"The prisoner left with a dedication in a very familiar hand. I hope you know '
-    'what she will do with it." {n}Irabeth closes the gaol report.{/n} '
-    '"A traitor has our casualty lists and your handwriting. I need more than a joke for the watch."',
+    '"The prisoner left with a dedication in a very familiar hand. I hope you know what she will do with it." {n}Irabeth closes the gaol report.{/n} "A traitor walked out of my gaol with a book about this army under her arm and your handwriting on its first page. She pointed demons at my soldiers from the wall at Bottleneck Gate, Commander. I need more than a joke for the watch."',
     answer_list=IRABETH_HUB, chapter=3, last=5,
     forbids=('irabeth_dead', PRINTER_PAID, PUBLISHED),
     ForbidOverrides={'irabeth_dead': 'irabeth.trickster.returned'}))
@@ -1259,8 +1261,6 @@ _COMMIT_CUTS = {
     'nurah.trickster.epilogue.commit.explicit.1': '''{n}The Commander glanced toward the open door. Nurah caught the Commander's chin, turned it back, and kissed the hesitation out of the Commander's mouth. "Let them listen," she said. "Let them take notes." The old chair complained, the dress went the way of the closed book, and the rest was breath and skin and ink on both their mouths.{/n}''',
     'nurah.trickster.epilogue.commit.explicit.2': '''{n}A proof slid beneath the Commander's elbow and tore. Nurah caught the reaching hand, pressed it flat to her hip, and pulled the Commander down among the loose pages with a feral grin. The closed book stayed where it lay.{/n}''',
 }
-_MARGIN_HEAT = '''
-{n}That fourth night she did not wait for the epigraph. She threw the book aside and kissed you until the argument went out of her sentences, and your shirt, which she had been wearing for a week, went over the lamp. She bit your shoulder hard enough to make a point, grinning like a woman who had been banned in several countries and found it flattering, and after that neither of you said anything fit to publish.{/n}'''
 
 for _scene in SCENES:
     _sid = _scene['Id']
@@ -1274,5 +1274,3 @@ for _scene in SCENES:
                 _node['Text'] = _node['Text'].rstrip() + _COMMIT_HEAT[_node['Id']]
             elif _node['Id'] in _COMMIT_CUTS:
                 _node['Text'] = _COMMIT_CUTS[_node['Id']]
-        elif _sid == 'nurah.trickster.epilogue.the_margin' and _node['Id'] == 'start':
-            _node['Text'] = _node['Text'].rstrip() + _MARGIN_HEAT

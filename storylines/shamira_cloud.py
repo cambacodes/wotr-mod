@@ -69,10 +69,6 @@ SUBS = [
     # The partner pages wrote 'Her lady' mid-sentence.
     ("shamira.trickster.epilogue.", "to bring to Her lady's bed.", "to bring to her lady's bed.", 2),
     # The night given back was flat; the throw of the game was a shrug.
-    ("shamira.trickster.after.night_alone",
-     '''"You made my whole court watch you ask, only to give the night back." {n}She pulls you down onto the step beside her.{/n} "I shall use it. Tonight, the memory you offered on the wardrobe floor. I remember it."''',
-     '''"You came the whole length of my Harem to ask me for a night alone, in front of my court, and then you gave it back." {n}She pulls you down onto the step beside her, hard enough to bruise.{/n} "Half of them think I refused you. The other half think you are mine. Both halves are right."
-{n}Her cold fingers close round the back of your neck.{/n} "I shall take the coal tonight, and the memory you showed me on the wardrobe floor with it. You offered. I never give anything back."''', 2),
     ("shamira.trickster.harem",
      '''{n}Her mouth parts. She withdraws from your mind and holds out her hand.{/n} "That was deliberate. Come here, then. I have an answer of my own."''',
      '''{n}Her mouth parts. She withdraws from your mind, and the court voice goes out of hers.{/n} "That was deliberate. You lost on purpose, in my house, with your eyes open." {n}She holds out her hand.{/n} "Nobody throws a game to me. They cheat, and then they die. Come here, then. I have an answer of my own, and you will not like all of it."''', 2),

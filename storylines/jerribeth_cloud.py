@@ -165,6 +165,7 @@ text("unsold_evening", "near.reply.1", '''"I pretend for a living. Tonight I wan
      (1, TALK))
 text("unsold_evening", "kiss", '''{n}Her image draws so close the candles behind her go out. She hooks a claw under the edge of her carapace at the throat and lifts it, a fraction, so that you see the pale seam beneath, the one place on her that is not armoured.{/n}
 "Here. Your mouth here. I would not let you be gentle about it. Mine would already be inside that aggravating collar of yours, and I would be counting every sound you made, and making you make them again until I had them right."
+{n}Her image opens the collar of her carapace the rest of the way, and her breath fogs the glass between you. One claw drags down the surface where your chest is, and you feel it anyway, a cold line from throat to belt.{/n}
 {n}She watches your face. She is not imagining it; she is studying it, the way she studied the widow's.{/n}
 "Now say something. I want to hear what this does to your voice."''',
      (0, GO_ON), (1, STOP))
