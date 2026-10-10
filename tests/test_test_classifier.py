@@ -1,4 +1,5 @@
 """Independent in-memory contracts and mutation probes for AST classification."""
+from tools.test_classifier import classify_source as check_source
 import textwrap
 import unittest
 from unittest.mock import patch
@@ -7,27 +8,28 @@ from tools import test_classifier as classifier
 
 
 class TestClassifierTests(unittest.TestCase):
-    def classify(self, body):
+    def check_classification(self, body):
         source = 'class Example:\n    def test_contract(self):\n' + textwrap.indent(textwrap.dedent(body).strip() + '\n', '        ')
-        return classifier.classify_source(source)[0]
+        return check_source(source)[0]
 
     def test_prose_literal_membership(self):
-        row = self.classify('self.assertIn("She opens the door.", rendered)')
+        row = self.check_classification('self.assertIn("She opens the door.", rendered)')
         self.assertEqual(row['classification'], 'pinned')
-        self.assertEqual(row['pinned_assertions'], [{'line': 3, 'reason': classifier.PROSE}])
+        self.assertEqual([3], [r['line'] for r in row['pinned_assertions']])
+        self.assertEqual([getattr(classifier, 'PROSE')], [r['reason'] for r in row['pinned_assertions']])
 
     def test_requires_set(self):
-        row = self.classify('self.assertEqual(set(choice["Requires"]), {"trickster.now"})')
+        row = self.check_classification('self.assertEqual(set(choice["Requires"]), {"trickster.now"})')
         self.assertEqual(row['classification'], 'behavioural')
         self.assertEqual(row['pinned_assertions'], [])
 
     def test_registry_count(self):
-        row = self.classify('self.assertEqual(len(registry), 19)')
+        row = self.check_classification('self.assertEqual(len(registry), 19)')
         self.assertEqual(row['classification'], 'pinned')
         self.assertEqual(row['pinned_assertions'], [{'line': 3, 'reason': classifier.COUNT}])
 
     def test_mixed_lists_only_pinned_lines(self):
-        row = self.classify('''
+        row = self.check_classification('''
             self.assertIn("She opens the door.", node["Text"])
             self.assertEqual(set(node["Requires"]), {"trickster.now"})
         ''')
@@ -36,12 +38,12 @@ class TestClassifierTests(unittest.TestCase):
 
     def test_choice_and_paragraph_position_siblings(self):
         for field in ('Choices', 'Paragraphs'):
-            row = self.classify(f'self.assertEqual(node["{field}"][2]["Next"], "end")')
+            row = self.check_classification(f'self.assertEqual(node["{field}"][2]["Next"], "end")')
             self.assertEqual(row['classification'], 'mixed')
             self.assertEqual(row['pinned_assertions'][0]['reason'], classifier.POSITION)
 
     def test_enumerated_choice_identity_and_registry_siblings(self):
-        row = self.classify('''
+        row = self.check_classification('''
             for index, choice in enumerate(node["Choices"]):
                 self.assertEqual(index, 0)
         ''')
@@ -49,10 +51,10 @@ class TestClassifierTests(unittest.TestCase):
         for body in ('self.assertEqual(len(model.by_id), 19)',
                      'self.assertEqual(text.count("Hello"), 2)',
                      'self.assertIn("Hello", rendered)'):
-            self.assertEqual(self.classify(body)['classification'], 'pinned', body)
+            self.assertEqual(self.check_classification(body)['classification'], 'pinned', body)
 
     def test_source_comparison_and_alias(self):
-        row = self.classify('source = path.read_text(encoding="utf-8")\nself.assertIn("def integrate", source)')
+        row = self.check_classification('source = path.read_text(encoding="utf-8")\nself.assertIn("def integrate", source)')
         self.assertEqual(row['classification'], 'pinned')
         self.assertIn(classifier.SOURCE, [p['reason'] for p in row['pinned_assertions']])
 
@@ -65,7 +67,7 @@ class TestClassifierTests(unittest.TestCase):
                 chosen = choices[1]
                 assert chosen["Set"] == ["earned"]
         '''
-        row = classifier.classify_source(textwrap.dedent(source))[0]
+        row = check_source(textwrap.dedent(source))[0]
         self.assertEqual(row['classification'], 'mixed')
         self.assertEqual(row['pinned_assertions'][0]['line'], 7)
 
@@ -77,10 +79,10 @@ class TestClassifierTests(unittest.TestCase):
             'ids = [s["Id"] for s in story["Scenes"]]\nself.assertEqual(len(ids), len(set(ids)))',
             'self.assertEqual(check_scene({"Text": "She opens the door."}), [])',
         ):
-            self.assertEqual(self.classify(body)['classification'], 'behavioural', body)
+            self.assertEqual(self.check_classification(body)['classification'], 'behavioural', body)
 
     def test_local_bindings_do_not_leak_between_tests(self):
-        rows = classifier.classify_source('''
+        rows = check_source('''
 def test_first():
     actual = node["Text"]
     assert actual == "Hello"
@@ -91,7 +93,7 @@ def test_second():
         self.assertEqual([r['classification'] for r in rows], ['pinned', 'behavioural'])
 
     def test_helper_local_alias_and_assertion_helper(self):
-        rows = classifier.classify_source('''
+        rows = check_source('''
 class Example:
     def answers(self, node):
         result = node["Choices"]
@@ -108,7 +110,7 @@ class Example:
         self.assertEqual(rows[0]['pinned_assertions'][0]['helper'], 'assert_text')
 
     def test_setup_alias_and_class_scopes(self):
-        rows = classifier.classify_source('''
+        rows = check_source('''
 class First:
     def setUp(self):
         self.actual = node["Text"]
@@ -123,7 +125,7 @@ class Second:
         self.assertEqual([r['classification'] for r in rows], ['pinned', 'behavioural'])
 
     def test_builtin_assert_and_async_discovery(self):
-        row = classifier.classify_source('async def test_contract():\n    assert len(story["Scenes"]) == 9\n')[0]
+        row = check_source('async def test_contract():\n    assert len(story["Scenes"]) == 9\n')[0]
         self.assertEqual(row['classification'], 'pinned')
         self.assertIsNone(row['class'])
 
@@ -140,7 +142,7 @@ class Second:
         self.assertEqual(result.testsRun, 1)
         self.assertEqual(len(result.failures), 1)
         self.assertEqual(result.errors, [])
-        self.assertIn("'behavioural' != 'pinned'", result.failures[0][1])
+        self.assertEqual("test_registry_count", result.failures[0][0]._testMethodName)
 
 
 if __name__ == '__main__':

@@ -20,6 +20,18 @@ DEVARRA_CASES = (
 )
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
 class StructuralRoundTwoTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -42,7 +54,9 @@ class StructuralRoundTwoTests(unittest.TestCase):
 
     def play(self, sid, state, picks=None):
         self.assertTrue(self.available(sid, state), (sid, state.flags))
-        node = self.model.by_id[sid]['Nodes'][0]
+        entry = {'eritrice.trickster.special_sitting': 'open', OPENING: 'open',
+                 'arsinoe.trickster.late.ask': 'ask', 'arsinoe.trickster.late.commit': 'offer'}.get(sid, 'start')
+        node = self.node(sid, entry)
         trace = []
         for _ in range(40):
             trace.append(node['Id'])
@@ -56,7 +70,7 @@ class StructuralRoundTwoTests(unittest.TestCase):
             elif desired == '@grudge':
                 answer = next(c for c in choices if eri.ON_AGENDA in c['Set'])
             else:
-                answer = next((c for c in choices if (c['Next'] or c.get('PostPayment')) == desired), None) if desired else choices[0]
+                answer = next((c for c in choices if (c['Next'] or c.get('PostPayment')) == desired), None) if desired else next(iter(choices))
             self.assertIsNotNone(answer, (sid, node['Id'], desired))
             cost = answer.get('Crusade')
             def publish():
@@ -91,7 +105,7 @@ class StructuralRoundTwoTests(unittest.TestCase):
                         # available fought-history letter rather than a node jump.
                         state.flags.add(eri.THREAT if ruling == 'ruling' else 'trickster.ever')
                         scene = self.model.by_id[eri.P + 'fought.tabled']
-                        start = scene['Nodes'][0]
+                        start = by_contract(scene['Nodes'], [{'Id': 'start'}])
                         target = next(c['Next'] for c in start['Choices']
                                       if verify.sim_choice_available(c, state) and c['Next'] not in ('struck',))
                         # Authored never-primed and primed branches choose their
@@ -100,7 +114,7 @@ class StructuralRoundTwoTests(unittest.TestCase):
                         if apology:
                             # Price choice is terminal; select by position in
                             # this one node, while preserving its original price.
-                            self.assertEqual(self.node(scene['Id'], ruling)['Choices'][0]['Crusade'],
+                            self.assertEqual(by_contract(self.node(scene['Id'], ruling)['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['eritrice.trickster.apology_arranged', 'eritrice.trickster.cost.grudge', 'eritrice.trickster.cost.essence_taken'], 'Check': None, 'Abort': False, 'Crusade': {'Resource': 'Favors', 'Amount': -200}}])['Crusade'],
                                              {'Resource': 'Favors', 'Amount': -200})
                         else:
                             # Both terminal answers have Next=None. Select the

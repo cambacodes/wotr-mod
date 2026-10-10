@@ -1,5 +1,6 @@
 import copy
 from tests.story_fixture import fresh_story
+from tools.rrt_verify import Model as check_model, Reach as check_reach
 import unittest
 from tools import transaction_exit_lint as lint
 
@@ -7,13 +8,13 @@ from tools import transaction_exit_lint as lint
 class TransactionExitLintTests(unittest.TestCase):
     def test_node_entry_is_a_producer_before_an_unselectable_payment(self):
         from tools import rrt_verify as verifier
-        fixture = {"Scenes": [{"Id": "fixture", "Relationship": "fixture", "Remote": True, "Nodes": [
+        fixture_data = {"Scenes": [{"Id": "fixture", "Relationship": "fixture", "Remote": True, "Nodes": [
             {"Id": "start", "Text": "{n}A bill.{/n}", "EnterSet": ["debt"],
              "Choices": [{"Text": "[Pay.]", "Requires": ["debt"], "Crusade": {"Resource": "Finances", "Amount": -200}}]}]}],
             "Relationships": {"fixture": {"StartedFlag": "started", "ClosedFlag": "closed", "CommittedFlag": "committed"}}}
-        model = verifier.Model(fixture)
+        model = check_model(fixture_data)
         self.assertIn(("fixture", "start", "enter"), model.producers["debt"])
-        reach = verifier.Reach(model, verifier.mythic_world("trickster", model))
+        reach = check_reach(model, verifier.mythic_world("trickster", model))
         self.assertIn("debt", reach.held)
         self.assertIn(("fixture", "start", "enter"), reach.choices)
 

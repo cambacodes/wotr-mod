@@ -730,7 +730,9 @@ class SoanaSaveCompatibilityTests(unittest.TestCase):
                 self.assertEqual([n['Id'] for n in event['Nodes'][:len(old_nodes)]], list(old_nodes))
                 for page in event['Nodes'][:len(old_nodes)]:
                     old_answers = old_nodes[page['Id']]
-                    self.assertGreaterEqual(len(page['Choices']), len(old_answers))
+                    actual_contracts = [(a.get('Next'), tuple(a['Set']), a.get('NativeNext'), a.get('Check'))
+                                        for a in page['Choices']]
+                    self.assertEqual(old_answers, actual_contracts[:len(old_answers)])
                     for actual, previous in zip(page['Choices'], old_answers):
                         current = (actual.get('Next'), tuple(actual['Set']), actual.get('NativeNext'), actual.get('Check'))
                         self.assertEqual(current, previous, (event['Id'], page['Id']))

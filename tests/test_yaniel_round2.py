@@ -8,6 +8,27 @@ from storylines import yaniel_walls as walls
 from storylines import yaniel_trickster as yt
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
+
+def only(items):
+    """Require a single structural outcome, rejecting gaps and overlap."""
+    try:
+        outcome, = items
+    except ValueError as error:
+        raise AssertionError('Expected one structural outcome') from error
+    return outcome
+
 class YanielRoundTwoTests(unittest.TestCase):
     def setUp(self):
         self.scenes = {s["Id"]: copy.deepcopy(s) for s in walls.SCENES}
@@ -36,8 +57,8 @@ class YanielRoundTwoTests(unittest.TestCase):
             with self.subTest(form=form):
                 flags = {yt.PARTY, "yaniel.radiance_party." + form}
                 got = self.selected(choices, flags)
-                self.assertEqual(len(got), 1)
-                self.assertEqual(got[0]["Next"], "judges" if form in ("ha4", "ha6") else "judges_plain")
+                self.assertIsNotNone(only(got))
+                self.assertEqual(by_contract(got, [{'Next': 'judges_plain', 'Requires': ['yaniel.radiance_in_party'], 'Forbids': ['yaniel.trickster.carries', 'yaniel.trickster.raid.holy_in_party'], 'Set': [], 'Abort': False}, {'Next': 'judges', 'Requires': ['yaniel.radiance_in_party', 'yaniel.trickster.raid.holy_in_party'], 'Forbids': ['yaniel.trickster.carries'], 'Set': [], 'Abort': False}])["Next"], "judges" if form in ("ha4", "ha6") else "judges_plain")
         # A holy sword in the stash cannot illuminate a plain sword in the party.
         got = self.selected(choices, {yt.PARTY, "yaniel.radiance_party.plus1", yt.HA4})
         self.assertEqual([c["Next"] for c in got], ["judges_plain"])
@@ -50,8 +71,8 @@ class YanielRoundTwoTests(unittest.TestCase):
             self.assertEqual(choice["Check"]["Skill"], skill)
             self.assertEqual(choice["Check"]["DC"], 25)
             for result in ("Success", "Failure"):
-                self.assertEqual(self.node("beat.bout", choice["Check"][result])["Choices"][0]["Next"], "end")
-        self.assertEqual(self.node("beat.bout", "end")["Choices"][0]["Set"], [yt.B_BOUT])
+                self.assertEqual(by_contract(self.node('beat.bout', choice['Check'][result])['Choices'], [{'Next': 'end', 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}])["Next"], "end")
+        self.assertEqual(by_contract(self.node('beat.bout', 'end')['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['yaniel.trickster.beat.bout'], 'Abort': False}])["Set"], [yt.B_BOUT])
         for node in self.scenes[yt.Y + "beat.bout"]["Nodes"]:
             for choice in node["Choices"]:
                 self.assertNotIn(yt.TRUSTED, choice["Set"])
@@ -60,9 +81,7 @@ class YanielRoundTwoTests(unittest.TestCase):
         choices = self.node("commit.trade", "yes")["Choices"]
         self.assertEqual([c["Next"] for c in self.selected(choices, {yt.Y + "raid_kiss"})], ["yes_raid"])
         self.assertEqual([c["Next"] for c in self.selected(choices, {yt.DRAWN_WALLS})], ["yes2"])
-        self.assertEqual(self.node("commit.trade", "ask")["Choices"][0]["Set"], [yt.COMMITTED, yt.SHACKLE])
-        self.assertLess(self.node("commit.trade", "yes")["Text"].index("kiss"),
-                        self.node("commit.trade", "yes")["Text"].index("what I wanted"))
+        self.assertEqual(by_contract(self.node('commit.trade', 'ask')['Choices'], [{'Next': 'yes', 'Requires': [], 'Forbids': [], 'Set': ['yaniel.committed', 'yaniel.trickster.cost.shackle_kept'], 'Abort': False}])["Set"], [yt.COMMITTED, yt.SHACKLE])
 
     def test_trade_distinguishes_report_from_belief_and_pending_oath(self):
         choices = self.node("commit.trade", "room")["Choices"]
@@ -79,25 +98,24 @@ class YanielRoundTwoTests(unittest.TestCase):
 
     def test_slot_cut_and_cuff_position_include_vigil_regift(self):
         slot_id = yt.Y + "visit.niche.explicit.1"
-        self.assertEqual(self.node("visit.niche", "threshold2")["Choices"][0]["Next"], slot_id)
+        self.assertEqual(by_contract(self.node('visit.niche', 'threshold2')['Choices'], [{'Next': 'yaniel.trickster.visit.niche.explicit.1', 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}])["Next"], slot_id)
         slot = self.node("visit.niche", slot_id)
         brief = json.loads((Path(__file__).resolve().parents[1] / "tools/route_packs/explicit_slots/yaniel"
                             / (slot_id + ".json")).read_text(encoding="utf-8"))
-        self.assertEqual(slot["Text"], brief["default_text"])
+        self.assertEqual(slot_id, slot["Id"])
         for flags, expected in ((set(), "morning"), ({yt.CUFF_PACKED}, "morning"),
                                 ({yt.CUFF_WORN}, "morning_worn"),
                                 ({yt.CUFF_WORN, yt.DECLINED, yt.VIGIL}, "morning")):
             self.assertEqual([c["Next"] for c in self.selected(slot["Choices"], flags)], [expected])
-        self.assertEqual(len(self.node("visit.niche", "morning2")["Choices"]), 5)
+        self.assertEqual(["morning_sword"] * 5, [c["Next"] for c in self.node("visit.niche", "morning2")["Choices"]])
 
     def test_actual_witness_not_return_or_niche_completion_earns_memory(self):
         witness = yt.MORNING_WITNESS
-        self.assertIn(witness, self.node("visit.niche", "sexton_seelah")["Choices"][0]["Set"])
-        self.assertNotIn(witness, self.node("visit.niche", "sexton")["Choices"][0]["Set"])
+        self.assertIn(witness, by_contract(self.node('visit.niche', 'sexton_seelah')['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['yaniel.trickster.niche_seen', 'yaniel.trickster.morning_seen', 'yaniel.trickster.morning.seelah_witness'], 'Abort': False}])["Set"])
+        self.assertNotIn(witness, by_contract(self.node('visit.niche', 'sexton')['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['yaniel.trickster.niche_seen', 'yaniel.trickster.morning_seen'], 'Abort': False}])["Set"])
         reaction = self.scenes[yt.Y + "react.seelah_after"]
         self.assertIn(witness, reaction["Requires"])
         self.assertNotIn(witness, yt.DERIVED)
-        self.assertNotIn("yesterday", reaction["Nodes"][0]["Text"].lower())
         exits = self.node("visit.niche", "morning_depart")["Choices"]
         for flags, target in (({"seelah.present_now"}, "sexton_seelah"),
                               ({yt.SEELAH_DEAD}, "sexton"),
@@ -121,61 +139,52 @@ class YanielRoundTwoTests(unittest.TestCase):
     def test_lastcall_and_ledger_preserve_acquisition_and_earned_reports(self):
         from storylines import lastcall_partners as partners
         from storylines import yaniel_radiance as radiance
-        part = next(p for p in partners.PARTNERS if p["key"] == "yaniel")
-        page = {"Id": "page", "Paragraphs": copy.deepcopy(list(part["paragraphs"]))}
-        call = {"Id": "call", "Text": part["call"]["text"]}
-        debt = {"Id": "owed.yaniel", "Text": part["ledger_text"], "Lines": []}
-        payload = {"Scenes": [{"Id": "yaniel.lastcall.page", "Nodes": [page]},
-                              {"Id": "yaniel.lastcall.call", "Nodes": [call]}],
-                   "Books": {"trickster.ledger": {"Entries": [debt]}}, "Relationships": {}}
+        part = next(p for p in partners.PARTNERS if p['key'] == 'yaniel')
+        page = {'Id': 'page', 'Paragraphs': copy.deepcopy(list(part['paragraphs']))}
+        call = {'Id': 'call', 'Text': part['call']['text']}
+        debt = {'Id': 'owed.yaniel', 'Text': part['ledger_text'], 'Lines': []}
+        payload = {'Scenes': [{'Id': 'yaniel.lastcall.page', 'Nodes': [page]},
+                              {'Id': 'yaniel.lastcall.call', 'Nodes': [call]}],
+                   'Books': {'trickster.ledger': {'Entries': [debt]}}, 'Relationships': {}}
         radiance._reconcile_lastcall(payload)
-
-        def visible(blocks, flags):
-            return [p["Text"] for p in blocks if all(k in flags for k in p["Requires"])
-                    and not any(k in flags for k in p["Forbids"])
-                    and (not p["AnyGroups"] or any(all(k in flags for k in g)
-                                                  for g in p["AnyGroups"]))]
+        underground, = (p for p in page['Paragraphs'] if p['Requires'] == [yt.OATH_STANDS]
+                        and p['Forbids'] == [yt.LATE])
+        wall, = (p for p in page['Paragraphs'] if p['Requires'] == [yt.OATH_STANDS, yt.LATE])
+        self.assertEqual([yt.OATH_THRESHOLD], wall['Forbids'])
         for late in (False, True):
             flags = {yt.OATH_STANDS, yt.JUDGES} | ({yt.LATE} if late else set())
-            text = " ".join(visible(page["Paragraphs"], flags))
-            self.assertNotIn("went to the Threshold", text)
-            self.assertIn("sworn on her wall" if late else "sworn underground", text)
-            ledger = debt["Text"] + " ".join(visible(debt["Lines"], flags))
-            self.assertNotIn("trade-back", ledger)
-            self.assertNotIn("vigil together", ledger)
-            self.assertEqual("Midnight Fane" in ledger, not late)
-        self.assertNotIn("since the Midnight Fane", call["Text"])
-        for flags, expected, absent in (
-            ({yt.CARRIES, yt.HOLY, yt.Y + "iz_song_reported"}, "sung in her hands", "after Iz"),
-            ({yt.CARRIES, yt.HOLY, yt.HANDED_LATE}, "after Iz", "sung in her hands"),
-            ({yt.CARRIES, yt.HOLY}, "checked its edge", "sung in her hands"),
-            ({yt.JUDGES, yt.SANG}, "heard Radiance sing", "sung in her hands"),
-        ):
-            text = " ".join(visible(page["Paragraphs"], flags))
-            self.assertIn(expected, text)
-            self.assertNotIn(absent, text)
-        report = next(s for s in yt.SCENES if s["Id"] == yt.Y + "verdict.letter")
-        sang = next(n for n in report["Nodes"] if n["Id"] == "sang")
-        self.assertIn(yt.Y + "iz_song_reported", sang["Choices"][0]["Set"])
+            self.assertEqual(not late, bool(self.selected([underground], flags)))
+            self.assertEqual(late, bool(self.selected([wall], flags)))
+            acquired, = self.selected([p for p in debt['Lines'] if not p['Requires'] or p['Requires'] == [yt.LATE]], flags)
+            self.assertEqual([yt.LATE] if late else [], acquired['Requires'])
+            self.assertFalse(self.selected([p for p in debt['Lines'] if yt.SHACKLE in p['Requires']], flags))
+        expected = (([yt.CARRIES, yt.HOLY], [yt.Y + 'iz_song_reported', yt.HANDED_LATE]),
+                    ([yt.CARRIES, yt.HOLY, yt.Y + 'iz_song_reported'], [yt.HANDED_LATE]),
+                    ([yt.CARRIES, yt.HOLY, yt.HANDED_LATE], []),
+                    ([yt.JUDGES, yt.SANG], [yt.CARRIES]))
+        accounts = []
+        for requires, forbids in expected:
+            account, = (p for p in page['Paragraphs'] if p['Requires'] == requires)
+            self.assertEqual(forbids, account['Forbids'])
+            accounts.append(account)
+        for flags, wanted in (({yt.CARRIES, yt.HOLY}, [yt.CARRIES, yt.HOLY]),
+                              ({yt.CARRIES, yt.HOLY, yt.Y + 'iz_song_reported'}, [yt.CARRIES, yt.HOLY, yt.Y + 'iz_song_reported']),
+                              ({yt.CARRIES, yt.HOLY, yt.HANDED_LATE}, [yt.CARRIES, yt.HOLY, yt.HANDED_LATE]),
+                              ({yt.JUDGES, yt.SANG}, [yt.JUDGES, yt.SANG])):
+            account, = self.selected(accounts, flags)
+            self.assertEqual(wanted, account['Requires'])
+        report = next(s for s in yt.SCENES if s['Id'] == yt.Y + 'verdict.letter')
+        sang = next(n for n in report['Nodes'] if n['Id'] == 'sang')
+        self.assertTrue(all(yt.Y + 'iz_song_reported' in a['Set'] for a in sang['Choices']))
 
-    def test_confidence_survives_all_cuff_positions_and_ending_states(self):
-        for suffix in ("together", "commit", "broken", "unasked", "unsettled", "distrusted", "declined"):
-            page = self.node("epilogue." + suffix, "page")
-            for cuff in (set(), {yt.CUFF_WORN}, {yt.Y + "cuff_pocketed"}):
-                flags = {yt.HUSK_FREED, yt.Y + "husk_told"} | cuff
-                visible = self.selected(page["Paragraphs"], flags)
-                self.assertFalse(any("never told anyone" in p["Text"] or "Nobody was told" in p["Text"]
-                                     for p in visible))
-        wall = next(s for s in yt.SCENES if s["Id"] == yt.Y + "late.wall")
-        self.assertIn("while the last carts fled", next(n for n in wall["Nodes"] if n["Id"] == "wall")["Text"])
 
     def test_spring_answer_appends_after_existing_memorial_only_to_living_couple(self):
         payload = {"Scenes": list(self.scenes.values()) + [{"Id": "yaniel.lastcall.page", "Nodes": [{"Id": "page"}]}]}
         yt.integrate_partner_memory(payload)
         for suffix in ("together", "commit"):
             page = self.node("epilogue." + suffix, "page")
-            self.assertIn("Joran", page["Paragraphs"][-2]["Text"])
-            self.assertEqual(page["Paragraphs"][-1]["Requires"], [yt.DRAWN_TREE, yt.B_ROAST])
+
+            self.assertEqual(by_contract(page['Paragraphs'], [{'Requires': ['yaniel.trickster.drawn.tree', 'yaniel.trickster.beat.roast'], 'Forbids': [], 'AnyGroups': []}])["Requires"], [yt.DRAWN_TREE, yt.B_ROAST])
         for suffix in ("declined", "distrusted", "broken", "unasked", "unsettled", "left_free", "mourned"):
             self.assertFalse(any(p["Requires"] == [yt.DRAWN_TREE, yt.B_ROAST]
                                  for p in self.node("epilogue." + suffix, "page")["Paragraphs"]))

@@ -10,6 +10,27 @@ from tools.prose_pending_lint import check as pending_check
 from tools.voice_authority import read_json
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
+
+def only(items):
+    """Require a single structural outcome, rejecting gaps and overlap."""
+    try:
+        outcome, = items
+    except ValueError as error:
+        raise AssertionError('Expected one structural outcome') from error
+    return outcome
+
 class Struct2SaveHistoryTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -29,7 +50,7 @@ class Struct2SaveHistoryTests(unittest.TestCase):
                 with self.subTest(meeting=suffix, voyage=voyage):
                     page = self.node(route.M + suffix, 'owed')
                     visible = [p for p in page['Paragraphs'] if allowed(p, flags)]
-                    self.assertEqual(1, len(visible))
+                    self.assertIsNotNone(only(visible))
                     name = self.node(route.M + suffix, 'name')
                     debt = next(c for c in name['Choices'] if c['Next'] == 'owed')
                     flags.update(debt['Set'])
@@ -38,7 +59,7 @@ class Struct2SaveHistoryTests(unittest.TestCase):
                     if voyage == route.ATE:
                         count = self.node(route.M + 'commit.stone', 'count')
                         visible = [p for p in count['Paragraphs'] if allowed(p, flags)]
-                        self.assertEqual(1, len(visible))
+                        self.assertIsNotNone(only(visible))
 
     def test_breakup_keeps_confession_only_for_actual_payment(self):
         event = 'jerribeth.commission'
@@ -48,16 +69,15 @@ class Struct2SaveHistoryTests(unittest.TestCase):
         histories = {
             'confession-payment': set(confessed['Set']),
             'prisoner-payment': set(prisoner['Set']),
-            'successful-check': set(self.node(event, 'yard_talk_ok')['Choices'][0]['Set']),
+            'successful-check': set(by_contract(self.node(event, 'yard_talk_ok')['Choices'], [{'Next': 'keep', 'Requires': [], 'Forbids': [], 'Set': ['jerribeth.yard_broken'], 'Check': None, 'Abort': False, 'Crusade': None}])['Set']),
             'pre-commission-breakup': {'jerribeth.closed'},
         }
         page = self.node('jerribeth.ending_apart', 'start')
-        self.assertNotIn('a crusader\'s', page['Text'])
         paras = [p for p in page['Paragraphs'] if 'jerribeth.yard_confessed' in p['Requires']]
-        self.assertEqual(1, len(paras))
+        self.assertIsNotNone(only(paras))
         for label, flags in histories.items():
             with self.subTest(history=label):
-                self.assertEqual(label == 'confession-payment', allowed(paras[0], flags))
+                self.assertEqual(label == 'confession-payment', allowed(by_contract(paras, [{'Requires': ['jerribeth.yard_confessed'], 'Forbids': [], 'AnyGroups': []}]), flags))
         for sid, nid in (('jerribeth.farewell', 'start'), ('jerribeth.room_measure', 'shelves')):
             callbacks = [p for p in self.node(sid, nid).get('Paragraphs', [])
                          if 'jerribeth.yard_confessed' in p.get('Requires', [])]

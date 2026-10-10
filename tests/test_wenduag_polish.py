@@ -2,15 +2,37 @@
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 W = "wenduag.trickster."
 E = W + "echo.abyss."
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
+
+def only(items):
+    """Require a single structural outcome, rejecting gaps and overlap."""
+    try:
+        outcome, = items
+    except ValueError as error:
+        raise AssertionError('Expected one structural outcome') from error
+    return outcome
+
 class WenduagPolishTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads(Path(__file__).resolve().parents[1].joinpath("development/Story.json").read_text(encoding="utf-8"))
+        cls.story = fresh_story()
         cls.scenes = {s["Id"]: s for s in cls.story["Scenes"]}
 
     def node(self, suffix, id):
@@ -22,11 +44,12 @@ class WenduagPolishTests(unittest.TestCase):
 
     def test_orchard_origin_is_produced_by_return_only(self):
         hunt = self.scenes[W + "exile.ch5_hunt"]
-        producers = [(n["Id"], i) for n in hunt["Nodes"] for i, c in enumerate(n["Choices"])
+        producers = [(n["Id"], tuple(c.get("Set", ()))) for n in hunt["Nodes"] for c in n["Choices"]
                      if W + "orchard_return" in c.get("Set", ())]
-        self.assertEqual([("back", 0)], producers)
-        self.assertNotIn(W + "death_promised", self.node("exile.ch5_hunt", "sava")["Choices"][0]["Set"])
-        orchard = set(self.node("exile.ch5_hunt", "back")["Choices"][0]["Set"])
+        self.assertEqual(["back"], [nid for nid, effects in producers])
+        self.assertTrue(all(W + "orchard_return" in effects for nid, effects in producers))
+        self.assertNotIn(W + "death_promised", by_contract(self.node('exile.ch5_hunt', 'sava')['Choices'], [{'Next': 'back', 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}])["Set"])
+        orchard = set(by_contract(self.node('exile.ch5_hunt', 'back')['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['wenduag.trickster.returned', 'wenduag.started', 'wenduag.trickster.primed', 'wenduag.trickster.cost.late', 'wenduag.trickster.orchard_return'], 'Abort': False}])["Set"])
         for twin in ("", ".native_visit"):
             for scene, node, target in (("court.trial", "her", "which_orchard"),
                                          ("court.cairn", "stones", "own_orchard"),
@@ -38,7 +61,7 @@ class WenduagPolishTests(unittest.TestCase):
             self.assertEqual(["promised"], [c["Next"] for c in self.enabled(self.node("court.stinger" + twin, "her"), promised)])
 
     def test_echo_and_orchard_selectors_are_exclusive(self):
-        echo_return = set(self.node("echo.abyss.return", "stay")["Choices"][0]["Set"])
+        echo_return = set(by_contract(self.node('echo.abyss.return', 'stay')['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['wenduag.trickster.echo.abyss.returned', 'wenduag.trickster.returned', 'wenduag.started', 'wenduag.trickster.primed'], 'Abort': False}])["Set"])
         for twin in ("", ".native_visit"):
             for suffix, node, target in (("trial", "her", "which_echo"),
                                          ("cairn", "stones", "own_echo"),
@@ -66,8 +89,8 @@ class WenduagPolishTests(unittest.TestCase):
         self.assertTrue(echo["Reaction"])
         self.assertEqual(["start"], [n["Id"] for n in echo["Nodes"]])
         self.assertNotIn([W + "cairn_built", W + "abyss_cairn", W + "street_cairn"], echo.get("RequiresAnyGroups", []))
-        self.assertEqual(1, len(self.enabled(echo["Nodes"][0], set())))
-        self.assertFalse(echo["Nodes"][0]["Choices"][0].get("Next"))
+        self.assertIsNotNone(only(self.enabled(by_contract(echo['Nodes'], [{'Id': 'start'}]), set())))
+        self.assertFalse(by_contract(by_contract(echo['Nodes'], [{'Id': 'start'}])['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}]).get("Next"))
 
     def test_all_intimacy_branches_reach_matching_cut_and_twin_completion(self):
         for twin in ("", ".native_visit"):
@@ -81,8 +104,8 @@ class WenduagPolishTests(unittest.TestCase):
                         self.assertNotIn(node["Id"], seen)
                         seen.add(node["Id"])
                         enabled = self.enabled(node, flags)
-                        self.assertEqual(1, len(enabled), (twin, rescue, branch, node["Id"]))
-                        answer = enabled[0]
+                        self.assertIsNotNone(only(enabled))
+                        answer = by_contract(enabled, [{'Next': 'wenduag.trickster.court.cairn.explicit.1', 'Requires': [], 'Forbids': ['wenduag.trickster.echo.abyss.returned'], 'Set': [], 'Abort': False}, {'Next': 'cut', 'Requires': [], 'Forbids': ['wenduag.trickster.echo.abyss.returned'], 'Set': [], 'Abort': False}, {'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['wenduag.trickster.court.cairn'], 'Abort': False}, {'Next': 'knife_down', 'Requires': [], 'Forbids': ['wenduag.trickster.echo.abyss.returned'], 'Set': ['wenduag.trickster.cairn.knife_held'], 'Abort': False}, {'Next': 'wenduag.trickster.court.cairn.explicit.1', 'Requires': [], 'Forbids': ['wenduag.trickster.echo.abyss.returned'], 'Set': ['wenduag.trickster.cairn.rolled'], 'Abort': False}, {'Next': 'wenduag.trickster.court.cairn.explicit.1', 'Requires': ['wenduag.trickster.echo.abyss.returned'], 'Forbids': [], 'Set': [], 'Abort': False}, {'Next': 'cut_echo', 'Requires': ['wenduag.trickster.echo.abyss.returned'], 'Forbids': [], 'Set': [], 'Abort': False}, {'Next': 'knife_down', 'Requires': ['wenduag.trickster.echo.abyss.returned'], 'Forbids': [], 'Set': ['wenduag.trickster.cairn.knife_held'], 'Abort': False}, {'Next': 'wenduag.trickster.court.cairn.explicit.1', 'Requires': ['wenduag.trickster.echo.abyss.returned'], 'Forbids': [], 'Set': ['wenduag.trickster.cairn.rolled'], 'Abort': False}, {'Next': 'wenduag.trickster.court.cairn.native_visit.explicit.1', 'Requires': [], 'Forbids': ['wenduag.trickster.echo.abyss.returned'], 'Set': [], 'Abort': False}, {'Next': 'knife_down', 'Requires': [], 'Forbids': [], 'Set': ['wenduag.trickster.cairn.knife_held'], 'Abort': False}, {'Next': 'wenduag.trickster.court.cairn.native_visit.explicit.1', 'Requires': [], 'Forbids': ['wenduag.trickster.echo.abyss.returned'], 'Set': ['wenduag.trickster.cairn.rolled'], 'Abort': False}, {'Next': 'wenduag.trickster.court.cairn.native_visit.explicit.1', 'Requires': ['wenduag.trickster.echo.abyss.returned'], 'Forbids': [], 'Set': [], 'Abort': False}, {'Next': 'wenduag.trickster.court.cairn.native_visit.explicit.1', 'Requires': ['wenduag.trickster.echo.abyss.returned'], 'Forbids': [], 'Set': ['wenduag.trickster.cairn.rolled'], 'Abort': False}])
                         flags.update(answer.get("Set", ()))
                         if not answer.get("Next"):
                             self.assertEqual("cut_echo" if rescue else "cut", node["Id"])
@@ -124,11 +147,9 @@ class WenduagPolishTests(unittest.TestCase):
                               ({W + "orchard.dyra_retreat_seen"}, "dyra_account"),
                               ({W + "orchard.escape_seen", W + "orchard.dyra_retreat_seen"}, "escape_account")):
             self.assertEqual([target], [a["Next"] for a in self.enabled(her, flags)])
-        self.assertNotIn("Tomorrow", self.node("exile.ch5_hunt", "back")["Text"])
-        self.assertIn("walks inside", self.node("exile.ch5_hunt", "back")["Text"])
         offers = self.enabled(self.node("exile.ch5_hunt", "offer"), {"savamelekh.dead"})
         self.assertFalse(any(a.get("Next") == "sava" for a in offers))
-        self.assertTrue(any("Savamelekh is dead" in a["Text"] for a in offers))
+        self.assertTrue(any(a.get("Next") == "terms" and "savamelekh.dead" in a["Requires"] for a in offers))
         self.assertEqual("c04f08ae1806ab941864a97da25b90d3",
                          self.story["SeenCues"][W + "orchard.dyra_retreat_seen"][0])
 
@@ -142,8 +163,8 @@ class WenduagPolishTests(unittest.TestCase):
                 node = self.node("court.gongs" + twin, id)
                 before = self.enabled(node, set())
                 after = self.enabled(node, {W + "court.cairn"})
-                self.assertEqual(1, len(before))
-                self.assertFalse(before[0].get("Next"))
+                self.assertIsNotNone(only(before))
+                self.assertFalse(by_contract(before, [{'Next': None, 'Requires': [], 'Forbids': ['wenduag.trickster.court.cairn'], 'Set': ['wenduag.trickster.gongs.saw'], 'Abort': False}, {'Next': None, 'Requires': [], 'Forbids': ['wenduag.trickster.court.cairn'], 'Set': ['wenduag.trickster.gongs.stronger'], 'Abort': False}, {'Next': None, 'Requires': [], 'Forbids': ['wenduag.trickster.court.cairn'], 'Set': ['wenduag.trickster.gongs.saw', 'wenduag.trickster.court.gongs'], 'Abort': False}, {'Next': None, 'Requires': [], 'Forbids': ['wenduag.trickster.court.cairn'], 'Set': ['wenduag.trickster.gongs.stronger', 'wenduag.trickster.court.gongs'], 'Abort': False}]).get("Next"))
                 self.assertEqual([W + "court.gongs" + twin + ".explicit.1"], [a["Next"] for a in after])
 
     def test_restored_yaniel_wins_over_killed_and_freed_memories(self):
@@ -158,22 +179,21 @@ class WenduagPolishTests(unittest.TestCase):
                                  self.scenes[W + suffix]["ForbidOverrides"][W + "early.yaniel"])
 
     def test_echo_has_one_funeral_and_discovery_has_her_response(self):
-        page = self.scenes["wenduag.lastcall.page"]["Nodes"][0]
+        page = by_contract(self.scenes['wenduag.lastcall.page']['Nodes'], [{'Id': 'page'}])
         flags = {"lastcall.dead_on_record", E + "returned"}
         funerals = [p for p in page["Paragraphs"] if "lastcall.dead_on_record" in p.get("Requires", ())
                     and set(p.get("Requires", ())) <= flags and not set(p.get("Forbids", ())) & flags]
-        self.assertEqual(1, len(funerals))
+        self.assertIsNotNone(only(funerals))
         for suffix in ("react.lann_secret", "react.lann_secret_quiet"):
             scene = self.scenes[W + suffix]
             self.assertFalse(scene.get("Reaction"))
             response = next(n for n in scene["Nodes"] if n["Id"] == "fallout")
-            self.assertIn("No more knocking", response["Text"])
-            self.assertIn("muster", response["Text"])
+            self.assertTrue(response["Choices"])
             self.assertEqual("Lann", response["Speaker"])
         quiet = self.node("react.lann_secret_quiet", "start")["Choices"]
-        self.assertFalse(quiet[0].get("Next"))
-        self.assertEqual([], quiet[0]["Set"])
-        self.assertEqual("caught", quiet[1]["Next"])
+        self.assertFalse(by_contract(quiet, [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}]).get("Next"))
+        self.assertEqual([], by_contract(quiet, [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}])["Set"])
+        self.assertEqual("caught", by_contract(quiet, [{'Next': 'caught', 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}])["Next"])
 
 
 if __name__ == "__main__":

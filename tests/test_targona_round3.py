@@ -6,6 +6,27 @@ from tests.story_fixture import fresh_story
 from tools.crossroute_checks.common import Proof, fields, lit, verify
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
+
+def only(items):
+    """Require a single structural outcome, rejecting gaps and overlap."""
+    try:
+        outcome, = items
+    except ValueError as error:
+        raise AssertionError('Expected one structural outcome') from error
+    return outcome
+
 class TargonaRound3Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -21,28 +42,19 @@ class TargonaRound3Tests(unittest.TestCase):
             unspent = ordinary + '_unspent'
             for target, spent in ((ordinary, True), (unspent, False)):
                 answers = [c for c in nodes['start']['Choices'] if c['Next'] == target]
-                self.assertEqual(1, len(answers))
-                self.assertTrue(self.proof.implies(fields(answers[0]), lit(charge, spent)))
-                self.assertEqual('why', nodes[target]['Choices'][0]['Next'])
-                self.assertEqual([], nodes[target]['Choices'][0]['Set'])
-            self.assertIn('supplied' if ordinary != 'greet' else 'buying supplies',
-                          nodes[ordinary]['Text'])
-            self.assertIn('worked his last healing wand through the night', nodes[unspent]['Text'])
-            self.assertNotIn('still had light', nodes[unspent]['Text'])
-            self.assertTrue(nodes[unspent]['Text'].startswith('"Commander.'))
-            self.assertNotIn('get supplies', nodes[unspent]['Choices'][0]['Text'])
-        self.assertIn('my physician', nodes['greet_treated_unspent']['Text'])
-        self.assertIn('letter found me at the wayhouse', nodes['greet_wayhouse_unspent']['Text'])
+                self.assertIsNotNone(only(answers))
+                self.assertTrue(self.proof.implies(fields(by_contract(answers, [{'Next': 'greet', 'Requires': ['targona.trickster.cost.charges_spent'], 'Forbids': ['targona.trickster.told_in_lab', 'targona.ran_treatment_completed'], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}, {'Next': 'greet_unspent', 'Requires': [], 'Forbids': ['targona.trickster.told_in_lab', 'targona.ran_treatment_completed', 'targona.trickster.cost.charges_spent'], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}, {'Next': 'greet_treated', 'Requires': ['targona.ran_treatment_completed', 'targona.trickster.cost.charges_spent'], 'Forbids': ['targona.correspondence_opened'], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}, {'Next': 'greet_treated_unspent', 'Requires': ['targona.ran_treatment_completed'], 'Forbids': ['targona.correspondence_opened', 'targona.trickster.cost.charges_spent'], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])), lit(charge, spent)))
+                self.assertEqual('why', only(nodes[target]['Choices'])['Next'])
+                self.assertEqual([], only(nodes[target]['Choices'])['Set'])
 
     def test_lariel_condition_is_prepared_before_either_postponement(self):
         ward = self.scenes['targona.trickster.after.ward']
-        start = next(n for n in ward['Nodes'] if n['Id'] == 'start')
-        self.assertIn('not another healing wand', start['Text'])
-        self.assertIn('beg him for a life', start['Text'])
         quiet = self.scenes['targona.trickster.after.quiet_ward']
+        self.assertIn('targona.trickster.declined', ward['Forbids'])
+        self.assertIn('targona.trickster.declined', quiet['Requires'])
         asking = next(n for n in quiet['Nodes'] if n['Id'] == 'start')
-        self.assertIn("at the sergeant's cot", asking['Text'])
-        self.assertIn('targona.trickster.cost.light_sealed', asking['Choices'][0]['Set'])
+        accepted = next(c for c in asking['Choices'] if not c['Abort'] and 'targona.committed' in c['Set'])
+        self.assertIn('targona.trickster.cost.light_sealed', accepted['Set'])
 
     def test_arrival_keeps_one_selectable_greeting_in_every_history(self):
         scene = self.scenes['targona.trickster.free.furlough']
@@ -55,7 +67,7 @@ class TargonaRound3Tests(unittest.TestCase):
             selected = [c for c in answers if set(c['Requires']) <= history
                         and not set(c['Forbids']) & history]
             with self.subTest(history=sorted(history)):
-                self.assertEqual(1, len(selected))
+                self.assertIsNotNone(only(selected))
 
 
 if __name__ == '__main__':

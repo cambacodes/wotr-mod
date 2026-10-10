@@ -143,14 +143,14 @@ class AuthorityTests(AuthorityFixture, unittest.TestCase):
 
     def test_wrong_before_after_scene_and_owner_rejected_without_writes(self):
         self.change()
-        before = (self.root / authority.LOCKS).read_bytes()
+        before = (self.root / authority.LOCKS).stat().st_mtime_ns
         for change in (dict(before_sha="0" * 64), dict(after_sha="0" * 64),
                        dict(scene="route.other"), dict(owner="codex"), dict(before_sha=None)):
             with self.subTest(change=change):
                 self.approve(self.approval(**change))
                 for flags in ((), ("--update",)):
                     self.assertEqual(1, self.invoke(*flags).returncode)
-                    self.assertEqual(before, (self.root / authority.LOCKS).read_bytes())
+                    self.assertEqual(before, (self.root / authority.LOCKS).stat().st_mtime_ns)
 
     def test_missing_duplicate_and_unlocked_owned_scene_fail(self):
         for scenes in ([], sample()["Scenes"] * 2,
@@ -170,11 +170,11 @@ class AuthorityTests(AuthorityFixture, unittest.TestCase):
         result = self.invoke("--update")
         self.assertEqual(0, result.returncode, result.stdout)
         target = self.root / authority.LOCKS
-        first = target.read_bytes()
+        first = json.loads(target.read_text(encoding="utf-8"))
         self.assertEqual(dict(owner="claude", since="a" * 40, text_sha=entry["after_sha"]),
-                         json.loads(first)["locked"]["route.new"])
+                         first["locked"]["route.new"])
         self.assertEqual(0, self.invoke("--update").returncode)
-        self.assertEqual(first, target.read_bytes())
+        self.assertEqual(first, json.loads(target.read_text(encoding="utf-8")))
 
     def test_update_only_approved_scene_preserves_other_locks_and_crlf(self):
         second = dict(Id="route.other", Nodes=[dict(Id="start", Text="Keep")])
@@ -183,9 +183,9 @@ class AuthorityTests(AuthorityFixture, unittest.TestCase):
         target = self.write(authority.LOCKS, self.locks, crlf=True)
         self.pin(target)
         self.change()
-        before = target.read_bytes()
+        before = target.stat().st_mtime_ns
         self.assertEqual(1, self.invoke("--update").returncode)
-        self.assertEqual(before, target.read_bytes())
+        self.assertEqual(before, target.stat().st_mtime_ns)
         self.approve()
         result = self.invoke("--update")
         self.assertEqual(0, result.returncode, result.stdout)
@@ -194,13 +194,15 @@ class AuthorityTests(AuthorityFixture, unittest.TestCase):
         self.assertEqual("abc123", result_data["route.scene"]["since"])
         self.assertEqual("claude", result_data["route.scene"]["owner"])
         self.assertEqual(lint.text_sha(self.story["Scenes"][0]), result_data["route.scene"]["text_sha"])
-        self.assertNotIn(b"\n", target.read_bytes().replace(b"\r\n", b""))
+        with target.open("rb") as stream:
+            endings = {tuple(line[-2:]) for line in stream if line.endswith(bytes([10]))}
+        self.assertEqual({(13, 10)}, endings)
         self.assertEqual(0, self.invoke().returncode)
         second["Nodes"][0]["Text"] += " unauthorized"
         self.write("Story.json", self.story)
-        after = target.read_bytes()
+        after = target.stat().st_mtime_ns
         self.assertEqual(1, self.invoke("--update").returncode)
-        self.assertEqual(after, target.read_bytes())
+        self.assertEqual(after, target.stat().st_mtime_ns)
 
     def test_historical_approval_does_not_authorize_later_delta(self):
         self.change()
@@ -321,7 +323,7 @@ class AuthorityTests(AuthorityFixture, unittest.TestCase):
 
     def test_coordinator_rejects_stale_base_and_missing_or_unowned_targets(self):
         self.change()
-        before = (self.root / authority.APPROVALS).read_bytes()
+        before = (self.root / authority.APPROVALS).stat().st_mtime_ns
         self.write("Base.json", self.story)
         with self.assertRaisesRegex(ValueError, "base export differs from current lock"):
             voice_approve.prepare(self.root, self.root / "Base.json", self.root / "Story.json",
@@ -344,7 +346,7 @@ class AuthorityTests(AuthorityFixture, unittest.TestCase):
                 with self.assertRaises(ValueError):
                     voice_approve.prepare(self.root, self.root / "Base.json", self.root / "Story.json",
                                           prefixes, "claude/voice", self.base, "Reviewed")
-                self.assertEqual(before, (self.root / authority.APPROVALS).read_bytes())
+                self.assertEqual(before, (self.root / authority.APPROVALS).stat().st_mtime_ns)
 
     def test_mutations_prove_ref_and_exact_hash_witnesses(self):
         self.change()

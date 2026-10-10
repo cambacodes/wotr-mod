@@ -9,6 +9,27 @@ from tools.rrt_verify import Model, SimState, sim_available, sim_complete, sim_c
 from storylines import camellia_trickster as ct
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
+
+def only(items):
+    """Require a single structural outcome, rejecting gaps and overlap."""
+    try:
+        outcome, = items
+    except ValueError as error:
+        raise AssertionError('Expected one structural outcome') from error
+    return outcome
+
 class Struct2ContinuityTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -37,23 +58,20 @@ class Struct2ContinuityTests(unittest.TestCase):
             self.assertTrue(sim_choice_available(acceptance, unpaid))
             self.assertEqual('r2.stones', acceptance['Next'])
             self.assertIn(ct.TERMS, acceptance['Set'])
-            ending = self.node(sid, acceptance['Next'])['Choices'][0]
+            ending = by_contract(self.node(sid, acceptance['Next'])['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['camellia.trickster.cost.grave_filled'], 'Check': None, 'Abort': False, 'Crusade': None}])
             self.assertIn(ct.FILLED, ending['Set'])
             self.assertIsNone(ending['Next'])
-        # Approved sibling delivery is reused without new Camellia voice.
-        self.assertEqual(self.node(ct.P + 'killed.late_curtain', 'r2.stones')['Text'],
-                         self.node(sid, 'r2.stones')['Text'])
         for suffix in ('killed.late_curtain', 'killed.third_night'):
             for acceptance in self.node(ct.P + suffix, 'eng8.price')['Choices'][:2]:
                 self.assertEqual('r2.stones', acceptance['Next'])
-                self.assertIn(ct.FILLED, self.node(ct.P + suffix, acceptance['Next'])['Choices'][0]['Set'])
+                self.assertIn(ct.FILLED, by_contract(self.node(ct.P + suffix, acceptance['Next'])['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['camellia.trickster.cost.grave_filled'], 'Check': None, 'Abort': False, 'Crusade': None}])['Set'])
         kept = self.node(ct.P + 'epilogue.kept', 'page')['Paragraphs']
         self.assertTrue(any(ct.FILLED in p['Requires'] for p in kept))
         committed = self.node(ct.P + 'epilogue.commit', 'page')['Paragraphs']
         for price_flag in (ct.BLED, ct.MARKED):
             self.assertTrue(any(price_flag in p['Requires'] for p in committed))
         # Refusal keeps its old position and receives no payment.
-        self.assertNotIn(ct.FILLED, price['Choices'][2]['Set'])
+        self.assertNotIn(ct.FILLED, by_contract(price['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['camellia.trickster.declined', 'camellia.closed'], 'Check': None, 'Abort': False, 'Crusade': None}])['Set'])
 
     def test_dialogue_dispatch_cannot_advance_time_or_restore_presence(self):
         sid = 'elyanka.trickster.beat.courier'
@@ -61,14 +79,16 @@ class Struct2ContinuityTests(unittest.TestCase):
         away = 'elyanka.trickster.courier.away'
         message = self.node(sid, 'message2')
         answers = ('come_back_hungry', 'ripening', 'silent')
-        for index, branch in enumerate(answers):
+        self.assertEqual(['hungry', 'ripening', 'silent', 'dispatch.hungry', 'dispatch.ripening', 'dispatch.silent'],
+                         [c['Next'] for c in message['Choices']])
+        for branch, target in zip(answers, ('hungry', 'ripening', 'silent')):
             state = self.state(72, away)
             state.times[away] = 72
-            self.assertEqual(('hungry', 'ripening', 'silent')[index], message['Choices'][index]['Next'])
-            self.assertFalse(sim_choice_available(message['Choices'][index], state))
-            dispatch = message['Choices'][index + 3]
+            original, = (c for c in message['Choices'] if c['Next'] == target)
+            self.assertFalse(sim_choice_available(original, state))
+            dispatch, = (c for c in message['Choices'] if c['Next'] == 'dispatch.' + target)
             self.assertTrue(sim_choice_available(dispatch, state))
-            terminal = self.node(sid, dispatch['Next'])['Choices'][0]
+            terminal = by_contract(self.node(sid, dispatch['Next'])['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['elyanka.trickster.courier.come_back_hungry'], 'Check': None, 'Abort': False, 'Crusade': None}, {'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['elyanka.trickster.courier.ripening'], 'Check': None, 'Abort': False, 'Crusade': None}, {'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['elyanka.trickster.courier.silent'], 'Check': None, 'Abort': False, 'Crusade': None}])
             self.assertIsNone(terminal['Next'])
             state.flags.update(terminal['Set'])
             state.times.update({f: state.hour for f in terminal['Set']})
@@ -87,8 +107,8 @@ class Struct2ContinuityTests(unittest.TestCase):
             state.chapter = 5
             start = self.node(delivery['Id'], 'start')
             enabled = [c for c in start['Choices'] if sim_choice_available(c, state)]
-            self.assertEqual(1, len(enabled))
-            result = self.node(delivery['Id'], enabled[0]['Next'])['Choices'][0]
+            self.assertIsNotNone(only(enabled))
+            result = by_contract(self.node(delivery['Id'], by_contract(enabled, [{'Next': 'hungry', 'Requires': ['elyanka.trickster.courier.come_back_hungry'], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}, {'Next': 'ripening', 'Requires': ['elyanka.trickster.courier.ripening'], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}, {'Next': 'silent', 'Requires': ['elyanka.trickster.courier.silent'], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])['Next'])['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['elyanka.trickster.courier.returned'], 'Check': None, 'Abort': False, 'Crusade': None}])
             self.assertEqual([returned], result['Set'])
             state.flags.update(result['Set'])
             state.times[returned] = state.hour

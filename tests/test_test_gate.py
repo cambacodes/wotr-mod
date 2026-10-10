@@ -1,4 +1,5 @@
 """H07 public gate probes; all commands and mutations run in disposable fixtures."""
+from tools.gate_receipts import hard_count as check_hard_count
 import json
 import os
 from pathlib import Path
@@ -45,27 +46,27 @@ class GateTests(unittest.TestCase):
         self.env = dict(os.environ, PATH=str(self.base) + os.pathsep + os.environ['PATH'],
                         PYTHONDONTWRITEBYTECODE='1')
 
-    def gate(self, receipt='receipt.json', *argv):
-        result = subprocess.run(['bash', 'tools/fast_gate.sh', '--json', str(self.base / receipt),
+    def gate(self, diagnostics='receipt.json', *argv):
+        result = subprocess.run(['bash', 'tools/fast_gate.sh', '--json', str(self.base / diagnostics),
                                  '--timeout', '3', *argv], cwd=self.repo, env=self.env,
                                 capture_output=True, text=True, timeout=25)
-        return result, json.loads((self.base / receipt).read_text(encoding="utf-8"))
+        return result, json.loads((self.base / diagnostics).read_text(encoding="utf-8"))
 
     def test_actual_commands_inventory_and_receipt_identity(self):
-        result, receipt = self.gate()
+        result, diagnostics = self.gate()
         self.assertEqual(0, result.returncode, result.stdout + result.stderr)
-        self.assertTrue(receipt['passed'])
-        self.assertEqual(1, receipt['scene_count'])
+        self.assertTrue(diagnostics['passed'])
+        self.assertEqual(1, diagnostics['scene_count'])
         for key in ('source_hash', 'export_hash', 'policy_hash'):
-            self.assertEqual(64, len(receipt[key]))
+            self.assertEqual(64, len(diagnostics[key]))
         self.assertEqual({'verify', 'crossroute', 'pacing', 'schedule', 'smoothing', 'slot',
-                          'payoff', 'departure', 'voice', 'python', 'rules'}, set(receipt['coverage']))
-        python = next(s for s in receipt['stages'] if s['stage'] == 'python')
-        rules = next(s for s in receipt['stages'] if s['stage'] == 'rules')
+                          'payoff', 'departure', 'voice', 'python', 'rules'}, set(diagnostics['coverage']))
+        python = next(s for s in diagnostics['stages'] if s['stage'] == 'python')
+        rules = next(s for s in diagnostics['stages'] if s['stage'] == 'rules')
         self.assertEqual('Python tests', python['check_kind'])
         self.assertEqual('C# progression', rules['check_kind'])
         self.assertIn('--suites=FixtureProgression', rules['command'])
-        self.assertFalse(any('discover' in s['command'] for s in receipt['stages']))
+        self.assertFalse(any('discover' in s['command'] for s in diagnostics['stages']))
 
     def test_ownership_modes_and_both_approval_records_survive_merge(self):
         from argparse import Namespace
@@ -86,8 +87,8 @@ class GateTests(unittest.TestCase):
     def test_required_lint_omission_through_public_plan_fails(self):
         from tools.gate_receipts import lint_commands
         commands = lint_commands('python', Path('story'), '/wrath', Path('/tmp/probe'))
-        with patch.object(test_gate, 'select', return_value={'python': [], 'suites': []}), \
-             patch.object(test_gate, 'lint_commands', return_value=[c for c in commands if c[0] != 'voice']), \
+        with patch.object(test_gate, 'select', return_value={'python': [], 'suites': []}),\
+             patch.object(test_gate, 'lint_commands', return_value=[c for c in commands if c[0] != 'voice']),\
              patch.object(sys, 'argv', ['test_gate.py', '--plan', '--files', 'tools/test_gate.py']):
             with self.assertRaisesRegex(ValueError, 'voice'):
                 test_gate.main()
@@ -96,49 +97,49 @@ class GateTests(unittest.TestCase):
                 validate_coverage([c for c in commands if c[0] != label])
 
     def test_zero_hard_failures_is_zero(self):
-        self.assertEqual(0, hard_count('HARD FAILURES: 0\nDeparture: 0 hard failures'))
-        self.assertEqual(3, hard_count('3 hard failures'))
+        self.assertEqual(0, check_hard_count('HARD FAILURES: 0\nDeparture: 0 hard failures'))
+        self.assertEqual(3, check_hard_count('3 hard failures'))
 
     def test_missing_execution_cannot_leave_a_zero_exit_receipt(self):
         runner = StageRunner(self.repo, self.base, self.env, 1, {})
-        receipt = runner.write(self.base / 'omitted.json', 'FAST', {}, {'rules': {'kind': 'C# progression'}},
+        diagnostics = runner.write(self.base / 'omitted.json', 'FAST', {}, {'rules': {'kind': 'C# progression'}},
                                ['rules'], .01, 0)
-        self.assertEqual(125, receipt['exit'])
-        self.assertFalse(receipt['passed'])
-        self.assertFalse(receipt['coverage']['rules']['complete'])
+        self.assertEqual(125, diagnostics['exit'])
+        self.assertFalse(diagnostics['passed'])
+        self.assertFalse(diagnostics['coverage']['rules']['complete'])
         runner.stages.append({'stage': 'rules', 'exit': 1, 'complete': True})
-        receipt = runner.write(None, 'FAST', {}, {'rules': {'kind': 'C# progression'}}, ['rules'], .01, 0)
-        self.assertEqual(1, receipt['exit'])
-        self.assertFalse(receipt['passed'])
-        self.assertFalse(receipt['coverage']['rules']['passed'])
+        diagnostics = runner.write(None, 'FAST', {}, {'rules': {'kind': 'C# progression'}}, ['rules'], .01, 0)
+        self.assertEqual(1, diagnostics['exit'])
+        self.assertFalse(diagnostics['passed'])
+        self.assertFalse(diagnostics['coverage']['rules']['passed'])
 
     def test_exit_143_is_incomplete_and_receipt_survives(self):
         (self.repo / 'expansion.py').write_text('raise SystemExit(143)\n', encoding="utf-8")
-        result, receipt = self.gate()
+        result, diagnostics = self.gate()
         self.assertEqual(143, result.returncode)
-        self.assertFalse(receipt['complete'])
-        expansion = next(s for s in receipt['stages'] if s['stage'] == 'expansion')
+        self.assertFalse(diagnostics['complete'])
+        expansion = next(s for s in diagnostics['stages'] if s['stage'] == 'expansion')
         self.assertEqual(143, expansion['exit'])
         self.assertFalse(expansion['complete'])
-        self.assertTrue(any(s.get('incomplete_reason') == 'skipped after failed prerequisite' for s in receipt['stages']))
+        self.assertTrue(any(s.get('incomplete_reason') == 'skipped after failed prerequisite' for s in diagnostics['stages']))
 
     def test_baseline_red_and_new_red_are_distinct_without_exemption(self):
         lint = self.repo / 'tools/payoff_lint.py'
         lint.write_text('print("HARD old defect")\nraise SystemExit(1)\n', encoding="utf-8")
-        result, baseline = self.gate('baseline.json', '--collect-failures')
+        result, diagnostics_baseline = self.gate('baseline.json', '--collect-failures')
         self.assertEqual(1, result.returncode)
-        self.assertTrue(baseline['complete'])
+        self.assertTrue(diagnostics_baseline['complete'])
         pin = sha256(self.base / 'baseline.json')
         lint.write_text('print("HARD old defect\\nHARD new defect")\nraise SystemExit(1)\n', encoding="utf-8")
-        result, current = self.gate('new.json', '--collect-failures', '--baseline', str(self.base / 'baseline.json'),
+        result, diagnostics_current = self.gate('new.json', '--collect-failures', '--baseline', str(self.base / 'baseline.json'),
                                     '--baseline-sha256', pin)
         self.assertEqual(1, result.returncode)
-        stage = next(s for s in current['stages'] if s['stage'] == 'payoff')
-        self.assertEqual(pin, current['baseline']['_receipt_pin'])
-        self.assertEqual(baseline['source_hash'], current['baseline']['source_hash'])
+        stage = next(s for s in diagnostics_current['stages'] if s['stage'] == 'payoff')
+        self.assertEqual(pin, diagnostics_current['baseline']['_receipt_pin'])
+        self.assertEqual(diagnostics_baseline['source_hash'], diagnostics_current['baseline']['source_hash'])
         self.assertEqual(['HARD old defect'], stage['defects']['baseline'])
         self.assertEqual(['HARD new defect'], stage['defects']['new'])
-        self.assertFalse(current['passed'])
+        self.assertFalse(diagnostics_current['passed'])
 
     def test_baseline_pin_mismatch_fails_closed(self):
         self.gate('baseline.json')
@@ -170,8 +171,8 @@ class GateTests(unittest.TestCase):
         child = 'import time; from pathlib import Path; time.sleep(1); Path(' + repr(str(escaped)) + ').touch()'
         (self.repo / 'expansion.py').write_text('import subprocess,sys,time\nfrom pathlib import Path\n'
             'subprocess.Popen([sys.executable,"-c",' + repr(child) + '])\nPath(' + repr(str(ready)) + ').touch()\ntime.sleep(20)\n', encoding="utf-8")
-        receipt = self.base / 'cancelled.json'
-        process = subprocess.Popen(['bash', 'tools/fast_gate.sh', '--json', str(receipt), '--timeout', '5'],
+        diagnostics = self.base / 'cancelled.json'
+        process = subprocess.Popen(['bash', 'tools/fast_gate.sh', '--json', str(diagnostics), '--timeout', '5'],
             cwd=self.repo, env=self.env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         try:
             deadline = time.monotonic() + 5
@@ -181,7 +182,7 @@ class GateTests(unittest.TestCase):
             process.send_signal(signal.SIGTERM)
             out, error = process.communicate(timeout=10)
             self.assertEqual(143, process.returncode, out + error)
-            self.assertFalse(json.loads(receipt.read_text(encoding="utf-8"))['complete'])
+            self.assertFalse(json.loads(diagnostics.read_text(encoding="utf-8"))['complete'])
             time.sleep(1.1)
             self.assertFalse(escaped.exists(), 'cancelled gate left a descendant')
         finally:

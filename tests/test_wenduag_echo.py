@@ -8,6 +8,27 @@ import unittest
 from storylines import wenduag_echo as echo
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
+
+def only(items):
+    """Require a single structural outcome, rejecting gaps and overlap."""
+    try:
+        outcome, = items
+    except ValueError as error:
+        raise AssertionError('Expected one structural outcome') from error
+    return outcome
+
 class WenduagEchoTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -21,28 +42,22 @@ class WenduagEchoTests(unittest.TestCase):
         cls.scenes = {scene["Id"]: scene for scene in cls.story["Scenes"]}
 
     def test_existing_scene_nodes_choices_keep_saved_identities(self):
-        old_ids = [scene["Id"] for scene in self.before["Scenes"]]
-        self.assertEqual(old_ids, [scene["Id"] for scene in self.story["Scenes"] if scene["Id"] in old_ids])
-        for original in self.before["Scenes"]:
-            if original.get("Relationship") != "wenduag":
+        old_ids = [scene['Id'] for scene in self.before['Scenes']]
+        self.assertEqual(old_ids, [scene['Id'] for scene in self.story['Scenes'] if scene['Id'] in old_ids])
+        for original in self.before['Scenes']:
+            if original.get('Relationship') != 'wenduag':
                 continue
-            current = self.scenes[original["Id"]]
-            old_node_ids = [node["Id"] for node in original["Nodes"]]
-            self.assertEqual(old_node_ids,
-                             [node["Id"] for node in current["Nodes"] if node["Id"] in old_node_ids])
-            for old_node in original["Nodes"]:
-                new_node = next(node for node in current["Nodes"] if node["Id"] == old_node["Id"])
-                self.assertGreaterEqual(len(new_node["Choices"]), len(old_node["Choices"]))
-                for index, old_choice in enumerate(old_node["Choices"]):
-                    new_choice = new_node["Choices"][index]
-                    # Prose and incoming links may be polished while indices and
-                    # effects remain saved references. Ending exits keep both.
-                    fields = ("Set", "Abort", "Check", "Crusade", "Revive", "NativeNext", "StartEtude")
-                    if original["Owner"].endswith("Epilogue"):
-                        fields += ("Text", "Next")
-                    for field in fields:
-                        self.assertEqual(old_choice.get(field), new_choice.get(field),
-                                         f"{original['Id']}/{old_node['Id']}[{index}]/{field}")
+            current = self.scenes[original['Id']]
+            old_node_ids = [node['Id'] for node in original['Nodes']]
+            self.assertEqual(old_node_ids, [node['Id'] for node in current['Nodes'] if node['Id'] in old_node_ids])
+            for old_node in original['Nodes']:
+                new_node = next(node for node in current['Nodes'] if node['Id'] == old_node['Id'])
+                fields = ('Set', 'Abort', 'Check', 'Crusade', 'Revive', 'NativeNext', 'StartEtude')
+                if original['Owner'].endswith('Epilogue'):
+                    fields += ('Next',)
+                expected = [{k: a.get(k) for k in fields} for a in old_node['Choices']]
+                actual = iter({k: a.get(k) for k in fields} for a in new_node['Choices'])
+                self.assertEqual(expected, [next(actual, None) for _ in expected], (original['Id'], old_node['Id']))
 
     def test_preparation_payment_and_wrong_branch(self):
         scene = self.scenes[echo.E + "prepare"]
@@ -73,16 +88,16 @@ class WenduagEchoTests(unittest.TestCase):
         pickup = self.scenes[echo.E + "pickup"]
         rescued = [(node, choice) for node in pickup["Nodes"] for choice in node["Choices"]
                    if echo.E + "rescued" in choice.get("Set", [])]
-        self.assertEqual(1, len(rescued))
-        self.assertEqual("shelter", rescued[0][0]["Id"])
-        self.assertEqual(-150, rescued[0][1]["Crusade"]["Amount"])
+        transport_node, transport_answer = only(rescued)
+        self.assertEqual("shelter", transport_node["Id"])
+        self.assertEqual(-150, transport_answer["Crusade"]["Amount"])
         for node in pickup["Nodes"]:
             for choice in node["Choices"]:
                 self.assertNotIn(echo.W + "returned", choice.get("Set", []))
                 self.assertNotIn("wenduag.committed", choice.get("Set", []))
         for id in ("hidden", "open"):
             node = next(node for node in pickup["Nodes"] if node["Id"] == id)
-            self.assertIn(echo.E + "cost.used_lann", node["Choices"][0]["Set"])
+            self.assertIn(echo.E + "cost.used_lann", by_contract(node['Choices'], [{'Next': 'shelter', 'Requires': [], 'Forbids': [], 'Set': ['wenduag.trickster.echo.abyss.cost.used_lann'], 'Abort': False}])["Set"])
 
     def test_every_inherited_burial_branch_has_exclusive_echo_variant(self):
         for suffix, old, new in (("court.trial", "which_back", "which_echo"),
@@ -93,8 +108,8 @@ class WenduagEchoTests(unittest.TestCase):
             self.assertTrue(any(choice.get("Next") == old and echo.E + "returned" in choice["Forbids"] for choice in choices))
             self.assertTrue(any(choice.get("Next") == new and echo.E + "returned" in choice["Requires"] for choice in choices))
         self.assertIn(echo.E + "returned", self.scenes[echo.W + "react.regill_watch"]["Forbids"])
-        coda = self.scenes["wenduag.lastcall.page"]["Nodes"][0]["Paragraphs"]
-        self.assertIn(echo.E + "returned", coda[1]["Forbids"])
+        coda = by_contract(self.scenes['wenduag.lastcall.page']['Nodes'], [{'Id': 'page'}])["Paragraphs"]
+        self.assertIn(echo.E + "returned", by_contract(coda, [{'Requires': ['lastcall.dead_on_record', 'lann.in_party'], 'Forbids': ['wenduag.trickster.echo.abyss.returned', 'lann.dead', 'lann.kicked_out', 'lann.plot_absent'], 'AnyGroups': [['wenduag.trickster.cairn_built', 'wenduag.trickster.abyss_cairn', 'wenduag.trickster.street_cairn']]}])["Forbids"])
         self.assertTrue(any(echo.E + "returned" in paragraph["Requires"] for paragraph in coda))
         entry = next(entry for entry in self.story["Books"]["trickster.ledger"]["Entries"] if entry["Id"] == "owed.wenduag.echo")
         self.assertIn(echo.E + "unavailable", entry["Forbids"])

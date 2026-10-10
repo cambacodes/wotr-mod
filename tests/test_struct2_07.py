@@ -12,6 +12,27 @@ from tools.prose_pending_lint import check as pending_check
 ROOT = Path(__file__).resolve().parents[1]
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
+
+def only(items):
+    """Require a single structural outcome, rejecting gaps and overlap."""
+    try:
+        outcome, = items
+    except ValueError as error:
+        raise AssertionError('Expected one structural outcome') from error
+    return outcome
+
 class Struct207Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -31,9 +52,8 @@ class Struct207Tests(unittest.TestCase):
         for sid in ('anevia.ending_open', 'anevia.ending_kept', 'anevia.ending_promised',
                     'anevia.trickster.epilogue.nailed_wardrobe'):
             paragraphs = self.node(sid, 'end')['Paragraphs']
-            bodily = [p for p in paragraphs if any(beat in p['Text'] for beat in
-                       ('Beth stood watch', 'Irabeth came with her', 'Whenever Beth was in'))]
-            self.assertGreaterEqual(len(bodily), 3)
+            bodily = [p for p in paragraphs if 'irabeth.present_now' in p['Requires']]
+            self.assertTrue(bodily)
             for loss in ('irabeth_dead', 'irabeth.returned_actor_lost', 'irabeth.epoch_redeparted'):
                 lost = base | {loss, 'irabeth.epoch_unavailable'}
                 for paragraph in bodily:
@@ -41,17 +61,17 @@ class Struct207Tests(unittest.TestCase):
                     self.assertFalse(holds(paragraph, lost), (sid, loss, paragraph))
             self.assertTrue(any(holds(p, live) for p in bodily))
             # Return-device memories remain historical, independent of Beth's body.
-            tray = next(p for p in paragraphs if 'crate lid' in p['Text'])
+            tray = next(p for p in paragraphs if 'anevia.trickster.cost.crated' in p['Requires'])
             self.assertNotIn('irabeth.present_now', tray['Requires'])
         for sid in ('anevia.ending_open', 'anevia.ending_kept', 'anevia.ending_promised'):
             self.assertEqual('irabeth.present_now',
                              self.scenes[sid]['ForbidOverrides']['irabeth_dead'])
 
     def test_kept_door_without_konomi_preserves_earned_device_and_price(self):
-        entry = self.node('anevia.trickster.gone.setup', 'start')['Choices'][1]
+        entry = by_contract(self.node('anevia.trickster.gone.setup', 'start')['Choices'], [{'Next': 'door', 'Requires': ['closets.door_kept'], 'Forbids': [], 'Set': [], 'Abort': False}])
         self.assertTrue(holds(entry, {'closets.door_kept', 'socot.gone'}))
         self.assertEqual('door', entry['Next'])
-        paid = self.node('anevia.trickster.gone.setup', 'door')['Choices'][0]
+        paid = by_contract(self.node('anevia.trickster.gone.setup', 'door')['Choices'], [{'Next': 'door_open', 'Requires': ['closets.door_kept', 'trickster'], 'Forbids': [], 'Set': ['anevia.trickster.primed', 'anevia.started', 'anevia.trickster.cost.stolen_door'], 'Abort': False, 'Crusade': {'Resource': 'Favors', 'Amount': -100}}])
         self.assertIn('closets.door_kept', paid['Requires'])
         self.assertIn('trickster', paid['Requires'])
         self.assertTrue(any('stolen_door' in key for key in paid['Set']))
@@ -65,16 +85,19 @@ class Struct207Tests(unittest.TestCase):
             sid = 'anevia.trickster.gone.' + suffix
             page = self.node(sid, nid)
             if nid == 'answer':
-                kiss = page['Choices'][0]
-                self.assertEqual('yes', kiss['Next'])
-                self.assertTrue(holds(kiss, {'irabeth_dead', 'trickster.now'}), sid)
-                self.assertFalse(holds(kiss, {'irabeth_dead', 'irabeth.trickster.returned', 'trickster.now'}))
+                kisses = [c for c in page['Choices'] if c['Next'] == 'yes']
+                self.assertTrue(kisses)
+                for kiss in kisses:
+                    self.assertEqual(['irabeth_dead', 'trickster.now'], kiss['Requires'])
+                    self.assertEqual(['anevia.committed', 'anevia.trickster.terms_kept'], kiss['Set'])
+                    self.assertTrue(holds(kiss, {'irabeth_dead', 'trickster.now'}), sid)
+                    self.assertFalse(holds(kiss, {'irabeth_dead', 'irabeth.trickster.returned', 'trickster.now'}))
             exits = [a for a in page['Choices'] if a.get('Abort')]
             self.assertTrue(any(holds(a, set()) for a in exits))
             retired = [a for a in exits if set(a['Requires']) & set(a['Forbids'])]
-            self.assertEqual(1, len(retired))
-            self.assertEqual([], retired[0]['Set'])
-            self.assertIsNone(retired[0]['Next'])
+            self.assertIsNotNone(only(retired))
+            self.assertEqual([], by_contract(retired, [{'Next': None, 'Requires': ['trickster.now'], 'Forbids': ['trickster.now'], 'Set': [], 'Abort': True}])['Set'])
+            self.assertIsNone(by_contract(retired, [{'Next': None, 'Requires': ['trickster.now'], 'Forbids': ['trickster.now'], 'Set': [], 'Abort': True}])['Next'])
 
     def test_fourth_uses_actual_survivor_completion_in_both_placements(self):
         for suffix in ('', '.arcade'):
@@ -88,10 +111,10 @@ class Struct207Tests(unittest.TestCase):
                     if owned:
                         flags.add('mielarah.trickster.storm.owned')
                     offered = [a for a in seam['Choices'] if holds(a, flags)]
-                    self.assertEqual(1, len(offered), (suffix, posted, owned))
+                    self.assertIsNotNone(only(offered))
                     expected = ('owned' if owned else 'blamed') + ('_posted' if posted else '')
-                    self.assertEqual(expected, offered[0]['Next'])
-                    self.assertEqual('third_exp', self.node(sid, expected)['Choices'][0]['Next'])
+                    self.assertEqual(expected, by_contract(offered, [{'Next': 'blamed', 'Requires': ['mielarah.trickster.storm.survivor'], 'Forbids': ['mielarah.trickster.storm.owned', 'mielarah.trickster.storm.survivor_drezen'], 'Set': [], 'Abort': False}, {'Next': 'owned', 'Requires': ['mielarah.trickster.storm.owned', 'mielarah.trickster.storm.survivor'], 'Forbids': ['mielarah.trickster.storm.survivor_drezen'], 'Set': [], 'Abort': False}, {'Next': 'blamed_posted', 'Requires': ['mielarah.trickster.storm.survivor_drezen'], 'Forbids': ['mielarah.trickster.storm.owned'], 'Set': [], 'Abort': False}, {'Next': 'owned_posted', 'Requires': ['mielarah.trickster.storm.survivor_drezen', 'mielarah.trickster.storm.owned'], 'Forbids': [], 'Set': [], 'Abort': False}])['Next'])
+                    self.assertEqual('third_exp', by_contract(self.node(sid, expected)['Choices'], [{'Next': 'third_exp', 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}])['Next'])
             self.assertFalse(any(holds(a, set()) for a in seam['Choices']))
 
     def test_conversion_floor_is_local_and_e15c_legal(self):

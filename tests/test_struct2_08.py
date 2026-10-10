@@ -7,6 +7,18 @@ def visible(record, flags):
     return set(record.get('Requires', ())) <= flags and not set(record.get('Forbids', ())) & flags
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
 class StructureHistories(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -58,9 +70,9 @@ class StructureHistories(unittest.TestCase):
             actual = any(set(g) <= history for g in groups)
             self.assertEqual(bed, actual, history)
             flags = history | {account} | ({key} if actual else set())
-            self.assertEqual(bed, visible(choices[0], flags), history)
-            self.assertEqual(not bed, visible(choices[1], flags), history)
-            self.assertTrue(visible(choices[3], history))
+            self.assertEqual(bed, visible(by_contract(choices, [{'Next': 'truth', 'Requires': ['yaniel.trickster.minagho_played_intimacy', 'yaniel.trickster.minagho_debt_protection'], 'Forbids': [], 'Set': [], 'Abort': False}]), flags), history)
+            self.assertEqual(not bed, visible(by_contract(choices, [{'Next': 'truth_close', 'Requires': ['yaniel.trickster.minagho_debt_protection'], 'Forbids': ['yaniel.trickster.minagho_played_intimacy'], 'Set': [], 'Abort': False}]), flags), history)
+            self.assertTrue(visible(by_contract(choices, [{'Next': 'truth_arrangement', 'Requires': [], 'Forbids': ['yaniel.trickster.minagho_debt_protection'], 'Set': [], 'Abort': False}]), history))
         self.assertNotIn(['minachiv.room_intimacy'], groups)  # Chivarro's night.
 
     def test_registered_pending_matches_full_export(self):
@@ -75,10 +87,10 @@ class StructureHistories(unittest.TestCase):
         sid = 'devarra.tower.the_hoard'
         choices = self.node(sid, 'her')['Choices']
         self.assertEqual(['honest', 'steal', 'ask', 'ask_free'], [c['Next'] for c in choices[:4]])
-        check = choices[4]['Check']
+        check = by_contract(choices, [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Check': {'Skill': 'SkillAthletics', 'DC': 25, 'Success': 'climb_checked', 'Failure': 'climb_noticed'}, 'Abort': False}])['Check']
         self.assertEqual('SkillAthletics', check['Skill'])
-        won = self.node(sid, check['Success'])['Choices'][0]
-        lost = self.node(sid, check['Failure'])['Choices'][0]
+        won = by_contract(self.node(sid, check['Success'])['Choices'], [{'Next': 'honest', 'Requires': [], 'Forbids': [], 'Set': ['devarra.tower.hoard_climb_sure'], 'Abort': False}])
+        lost = by_contract(self.node(sid, check['Failure'])['Choices'], [{'Next': 'honest', 'Requires': [], 'Forbids': [], 'Set': ['devarra.tower.hoard_climb_noticed'], 'Abort': False}])
         self.assertNotEqual(won['Set'], lost['Set'])
         self.assertEqual('honest', won['Next'])
         self.assertEqual('honest', lost['Next'])

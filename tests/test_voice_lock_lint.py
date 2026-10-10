@@ -1,4 +1,5 @@
 """Text ownership enforcement must ignore all gameplay metadata."""
+from tools.voice_lock_lint import text_sha as check_text_digest
 import copy
 import hashlib
 import json
@@ -15,22 +16,33 @@ def sample():
         {"Id": "end", "Text": "Goodbye", "Choices": []}]}]}
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
 class VoiceLockTests(unittest.TestCase):
     def test_hash_serialization_is_stable_utf8(self):
-        expected = [["Anevia's café — {n}wait.{/n}", ["Conditional prose"], ["Stay", "Leave"]],
-                    ["Goodbye", [], []]]
-        payload = json.dumps(expected, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
-        self.assertEqual(hashlib.sha256(payload).hexdigest(), lint.text_sha(sample()["Scenes"][0]))
+        fixture = {'Nodes': [{'Text': 'café—α', 'Choices': [], 'Paragraphs': []}]}
+        payload = json.dumps([['café—α', [], []]], ensure_ascii=False, separators=(',', ':')).encode('utf-8')
+        self.assertEqual(hashlib.sha256(payload).hexdigest(), check_text_digest(fixture))
 
     def test_boundaries_and_order_are_hashed(self):
-        original = sample()["Scenes"][0]
+        original = by_contract(sample()['Scenes'], [{'Id': 'route.scene'}])
         changed = copy.deepcopy(original)
-        changed["Nodes"][0]["Choices"].reverse()
-        self.assertNotEqual(lint.text_sha(original), lint.text_sha(changed))
+        by_contract(changed['Nodes'], [{'Id': 'start'}])["Choices"].reverse()
+        self.assertNotEqual(check_text_digest(original), check_text_digest(changed))
         # Joining raw strings would fail to distinguish these two texts.
         a = {"Nodes": [{"Text": "ab", "Choices": [{"Text": "c"}]}]}
         b = {"Nodes": [{"Text": "a", "Choices": [{"Text": "bc"}]}]}
-        self.assertNotEqual(lint.text_sha(a), lint.text_sha(b))
+        self.assertNotEqual(check_text_digest(a), check_text_digest(b))
 
 
 if __name__ == "__main__":

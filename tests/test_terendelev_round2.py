@@ -4,6 +4,27 @@ import unittest
 from storylines import terendelev_trickster as route, terendelev_watch as watch
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
+
+def only(items):
+    """Require a single structural outcome, rejecting gaps and overlap."""
+    try:
+        outcome, = items
+    except ValueError as error:
+        raise AssertionError('Expected one structural outcome') from error
+    return outcome
+
 class TerendelevRound2Tests(unittest.TestCase):
     def scene(self, scenes, name):
         return next(s for s in scenes if s["Id"] == route.P + name)
@@ -15,14 +36,14 @@ class TerendelevRound2Tests(unittest.TestCase):
         for suffix in ("", "_awning"):
             s = self.scene(watch.SCENES, "night.watch" + suffix)
             slot = s["Id"] + ".explicit.1"
-            self.assertEqual(self.node(s, "cut")["Choices"][0]["Next"], slot)
-            self.assertEqual(self.node(s, slot)["Choices"][0]["Next"], "grey")
-            self.assertFalse(self.node(s, slot)["Choices"][0]["Set"])
-            self.assertEqual(self.node(s, "end")["Choices"][0]["Set"], [watch.NIGHT])
+            self.assertEqual(by_contract(self.node(s, 'cut')['Choices'], [{'Next': 'terendelev.trickster.night.watch.explicit.1', 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}, {'Next': 'terendelev.trickster.night.watch_awning.explicit.1', 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}])["Next"], slot)
+            self.assertEqual(by_contract(self.node(s, slot)['Choices'], [{'Next': 'grey', 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}])["Next"], "grey")
+            self.assertFalse(by_contract(self.node(s, slot)['Choices'], [{'Next': 'grey', 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}])["Set"])
+            self.assertEqual(by_contract(self.node(s, 'end')['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['terendelev.trickster.night.seen'], 'Abort': False}])["Set"], [watch.NIGHT])
             # Choosing company does not complete the consummation or close the route.
-            choice = self.node(s, "want")["Choices"][-1]
+            choice = by_contract(self.node(s, 'want')['Choices'], [{'Next': 'company', 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}])
             self.assertEqual(choice["Next"], "company")
-            terminal = self.node(s, "company")["Choices"][0]
+            terminal = by_contract(self.node(s, 'company')['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': True}])
             self.assertTrue(terminal["Abort"])
             self.assertFalse(terminal["Set"])
 
@@ -30,27 +51,27 @@ class TerendelevRound2Tests(unittest.TestCase):
         for suffix in ("", "_awning"):
             s = self.scene(watch.SCENES, "watch.deskari" + suffix)
             answers = self.node(s, "ask")["Choices"]
-            self.assertEqual(answers[0]["Next"], "vow")
-            self.assertEqual(answers[0]["Set"], [watch.DESKARI_VOW])
-            self.assertEqual(answers[2]["Next"], "notice")
-            self.assertEqual(answers[2]["Set"], [watch.DESKARI_VOW, route.DESKARI_NOTICE])
+            self.assertEqual(by_contract(answers, [{'Next': 'vow', 'Requires': [], 'Forbids': [], 'Set': ['terendelev.trickster.watch.deskari_vow'], 'Abort': False}])["Next"], "vow")
+            self.assertEqual(by_contract(answers, [{'Next': 'vow', 'Requires': [], 'Forbids': [], 'Set': ['terendelev.trickster.watch.deskari_vow'], 'Abort': False}])["Set"], [watch.DESKARI_VOW])
+            self.assertEqual(by_contract(answers, [{'Next': 'notice', 'Requires': [], 'Forbids': [], 'Set': ['terendelev.trickster.watch.deskari_vow', 'terendelev.trickster.watch.deskari_notice'], 'Abort': False}])["Next"], "notice")
+            self.assertEqual(by_contract(answers, [{'Next': 'notice', 'Requires': [], 'Forbids': [], 'Set': ['terendelev.trickster.watch.deskari_vow', 'terendelev.trickster.watch.deskari_notice'], 'Abort': False}])["Set"], [watch.DESKARI_VOW, route.DESKARI_NOTICE])
             release = self.scene(watch.SCENES, "watch.war_table" + suffix)
             for node in ("blood", "no"):
-                self.assertIn(route.DESKARI_NOTICE, self.node(release, node)["Choices"][-1]["Forbids"])
-                self.assertIsNone(self.node(release, node)["Choices"][0]["Next"])
-            self.assertEqual(self.node(release, "departure_stay")["Choices"][0]["Set"], [route.DESKARI_SETTLED])
+                self.assertIn(route.DESKARI_NOTICE, by_contract(self.node(release, node)['Choices'], [{'Next': 'departure', 'Requires': ['terendelev.trickster.watch.deskari_vow'], 'Forbids': ['terendelev.trickster.watch.deskari_notice', 'terendelev.trickster.watch.deskari_settled'], 'Set': [], 'Abort': False}])["Forbids"])
+                self.assertIsNone(by_contract(self.node(release, node)['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}])["Next"])
+            self.assertEqual(by_contract(self.node(release, 'departure_stay')['Choices'], [{'Next': 'departure_end', 'Requires': [], 'Forbids': [], 'Set': ['terendelev.trickster.watch.deskari_settled'], 'Abort': False}])["Set"], [route.DESKARI_SETTLED])
 
     def test_known_hal_appends_destination_without_granting_an_arrival(self):
         for suffix in ("", "_awning"):
             s = self.scene(watch.SCENES, "watch.letter" + suffix)
             answers = self.node(s, "start")["Choices"]
-            self.assertEqual(answers[0]["Next"], "tell")
-            self.assertEqual(answers[-1]["Requires"], [route.HAL_MET])
-            self.assertEqual(self.node(s, "hal")["Choices"][0]["Set"], [route.HAL_LETTER])
+            self.assertEqual(by_contract(answers, [{'Next': 'tell', 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}])["Next"], "tell")
+            self.assertEqual(by_contract(answers, [{'Next': 'hal', 'Requires': ['terendelev.trickster.hal_met'], 'Forbids': [], 'Set': [], 'Abort': False}])["Requires"], [route.HAL_MET])
+            self.assertEqual(by_contract(self.node(s, 'hal')['Choices'], [{'Next': 'tell', 'Requires': [], 'Forbids': [], 'Set': ['terendelev.trickster.watch.hal_refuge_delivery'], 'Abort': False}])["Set"], [route.HAL_LETTER])
             seal = self.node(s, "seal")["Choices"]
-            self.assertIn(route.HAL_LETTER, seal[0]["Forbids"])
-            self.assertEqual(seal[-1]["Requires"], [route.HAL_LETTER])
-            self.assertFalse(self.node(s, "refuge")["Choices"][0]["Set"])
+            self.assertIn(route.HAL_LETTER, by_contract(seal, [{'Next': 'pass', 'Requires': [], 'Forbids': ['terendelev.trickster.watch.hal_refuge_delivery'], 'Set': [], 'Abort': False}])["Forbids"])
+            self.assertEqual(by_contract(seal, [{'Next': 'refuge', 'Requires': ['terendelev.trickster.watch.hal_refuge_delivery'], 'Forbids': [], 'Set': [], 'Abort': False}])["Requires"], [route.HAL_LETTER])
+            self.assertFalse(by_contract(self.node(s, 'refuge')['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}])["Set"])
         self.assertEqual(route.BINDINGS["SeenCues"][route.HAL_MET], ["195ef1a822c1c144f80f3cd6d5669d63"])
 
     def test_reactors_use_existing_earned_return_receipts(self):
@@ -74,11 +95,11 @@ class TerendelevRound2Tests(unittest.TestCase):
         for name in ("watch", "late", "debt", "guardian"):
             s = self.scene(route.SCENES, "epilogue." + name)
             paragraphs = self.node(s, "page")["Paragraphs"]
-            self.assertIn(route.HAL_LETTER, paragraphs[9]["Forbids"])
-            self.assertIn(route.DESKARI_SETTLED, paragraphs[24]["Requires"])
+            self.assertIn(route.HAL_LETTER, by_contract(paragraphs, [{'Requires': ['terendelev.trickster.watch.letter_written'], 'Forbids': ['terendelev.trickster.watch.hal_refuge_delivery', 'terendelev.trickster.watch.hal_refuge_delivery', 'terendelev.trickster.watch.hal_refuge_delivery'], 'AnyGroups': []}, {'Requires': ['terendelev.trickster.watch.letter_written'], 'Forbids': ['terendelev.trickster.watch.hal_refuge_delivery'], 'AnyGroups': []}])["Forbids"])
+            self.assertIn(route.DESKARI_SETTLED, by_contract(paragraphs, [{'Requires': ['terendelev.trickster.watch.deskari_vow', 'terendelev.trickster.watch.deskari_settled', 'terendelev.trickster.watch.deskari_settled', 'terendelev.trickster.watch.deskari_settled'], 'Forbids': ['terendelev.trickster.watch.deskari_notice', 'terendelev.trickster.watch.deskari_notice', 'terendelev.trickster.watch.deskari_notice'], 'AnyGroups': []}, {'Requires': ['terendelev.trickster.watch.deskari_vow', 'terendelev.trickster.watch.deskari_settled'], 'Forbids': ['terendelev.trickster.watch.deskari_notice'], 'AnyGroups': []}])["Requires"])
             known = [p for p in paragraphs if route.HAL_LETTER in p["Requires"]]
-            self.assertEqual(len(known), 1)
-            self.assertIn(watch.LETTER, known[0]["Requires"])
+            self.assertIsNotNone(only(known))
+            self.assertIn(watch.LETTER, by_contract(known, [{'Requires': ['terendelev.trickster.watch.letter_written', 'terendelev.trickster.watch.hal_refuge_delivery'], 'Forbids': [], 'AnyGroups': []}])["Requires"])
         # Late love retains the existing release/proof/personal gates.
         for arm in route.DERIVED[route.P + "late_committed"]:
             self.assertIn(watch.DEBT_FREE, arm)

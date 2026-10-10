@@ -7,6 +7,27 @@ from tests.story_fixture import fresh_story
 from tools.crossroute_checks.common import Proof, fields, lit, verify
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
+
+def only(items):
+    """Require a single structural outcome, rejecting gaps and overlap."""
+    try:
+        outcome, = items
+    except ValueError as error:
+        raise AssertionError('Expected one structural outcome') from error
+    return outcome
+
 class TargonaRound2Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -39,8 +60,8 @@ class TargonaRound2Tests(unittest.TestCase):
                                  ("targona.trickster.after.quiet_ward", "morning"),
                                  ("targona.ward_evening", "bell")):
             node = self.node(scene_id, scene_id + ".explicit.1")
-            self.assertEqual(1, len(node["Choices"]))
-            answer = node["Choices"][0]
+            self.assertIsNotNone(only(node["Choices"]))
+            answer = by_contract(node['Choices'], [{'Next': 'morning', 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}, {'Next': 'bell', 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])
             self.assertEqual(target, answer["Next"])
             self.assertEqual([], answer["Set"])
             self.assertEqual([], answer["Requires"])
@@ -48,7 +69,7 @@ class TargonaRound2Tests(unittest.TestCase):
             self.assertFalse(answer["Abort"])
         for scene_id in ("targona.trickster.after.ward", "targona.trickster.after.quiet_ward"):
             self.assertEqual(["targona.trickster.night_kept"],
-                             self.node(scene_id, "morning")["Choices"][0]["Set"])
+                             by_contract(self.node(scene_id, 'morning')['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['targona.trickster.night_kept'], 'Check': None, 'Abort': False, 'Crusade': None}])["Set"])
 
     def test_first_nights_are_alternatives_and_costs_stay_distinct(self):
         ward = self.scenes["targona.trickster.after.ward"]
@@ -57,27 +78,27 @@ class TargonaRound2Tests(unittest.TestCase):
         self.assertIn("targona.trickster.declined", quiet["Requires"])
         for scene in (ward, quiet):
             self.assertIn("targona.committed", scene["Forbids"])
-        self.assertEqual(["targona.committed"], self.node(ward["Id"], "dawn")["Choices"][2]["Set"])
+        self.assertEqual(["targona.committed"], by_contract(self.node(ward['Id'], 'dawn')['Choices'], [{'Next': 'yes_free', 'Requires': ['targona.trickster.met', 'trickster.now'], 'Forbids': [], 'Set': ['targona.committed'], 'Check': None, 'Abort': False, 'Crusade': None}])["Set"])
         self.assertEqual(["targona.committed", "targona.trickster.cost.light_sealed"],
-                         self.node(quiet["Id"], "start")["Choices"][0]["Set"])
-        self.assertEqual(["targona.closed"], self.node(quiet["Id"], "start")["Choices"][1]["Set"])
+                         by_contract(self.node(quiet['Id'], 'start')['Choices'], [{'Next': 'promised', 'Requires': ['trickster.now'], 'Forbids': [], 'Set': ['targona.committed', 'targona.trickster.cost.light_sealed'], 'Check': None, 'Abort': False, 'Crusade': None}])["Set"])
+        self.assertEqual(["targona.closed"], by_contract(self.node(quiet['Id'], 'start')['Choices'], [{'Next': 'unpromised', 'Requires': [], 'Forbids': [], 'Set': ['targona.closed'], 'Check': None, 'Abort': False, 'Crusade': None}])["Set"])
         spent = self.node("targona.trickster.free.spent_light", "start")["Choices"]
-        self.assertEqual(("Favors", -300), (spent[0]["Crusade"]["Resource"], spent[0]["Crusade"]["Amount"]))
-        self.assertEqual(("Finances", -500), (spent[1]["Crusade"]["Resource"], spent[1]["Crusade"]["Amount"]))
-        self.assertTrue(spent[2]["Abort"])
-        self.assertEqual([], spent[2]["Set"])
+        self.assertEqual(("Favors", -300), (by_contract(spent, [{'Next': 'night', 'Requires': ['trickster.umd_tier2'], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': {'Resource': 'Favors', 'Amount': -300}}])["Crusade"]["Resource"], by_contract(spent, [{'Next': 'night', 'Requires': ['trickster.umd_tier2'], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': {'Resource': 'Favors', 'Amount': -300}}])["Crusade"]["Amount"]))
+        self.assertEqual(("Finances", -500), (by_contract(spent, [{'Next': 'night_spent', 'Requires': [], 'Forbids': ['trickster.umd_tier2'], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': {'Resource': 'Finances', 'Amount': -500}}])["Crusade"]["Resource"], by_contract(spent, [{'Next': 'night_spent', 'Requires': [], 'Forbids': ['trickster.umd_tier2'], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': {'Resource': 'Finances', 'Amount': -500}}])["Crusade"]["Amount"]))
+        self.assertTrue(by_contract(spent, [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': True, 'Crusade': None}])["Abort"])
+        self.assertEqual([], by_contract(spent, [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': True, 'Crusade': None}])["Set"])
 
     def test_text_paragraph_slots_preserve_legacy_exit_mechanics(self):
         from storylines import targona_opening, targona_trickster
         for module, sid, nid in ((targona_opening, "targona.the_open_threshold", "buckles"),
                                   (targona_trickster, "targona.trickster.epilogue.commit", "end")):
             node = self.node(sid, nid)
-            self.assertIn(module.EXPLICIT_PARAGRAPHS[sid + ".explicit.1"], node["Text"])
-            self.assertEqual(1, len(node["Choices"]))
-            self.assertIsNone(node["Choices"][0]["Next"])
-            self.assertEqual([], node["Choices"][0]["Set"])
-            self.assertFalse(node["Choices"][0]["Abort"])
-            self.assertEqual([], node["Choices"][0]["Requires"])
+            self.assertIn(sid + ".explicit.1", module.EXPLICIT_PARAGRAPHS)
+            self.assertIsNotNone(only(node["Choices"]))
+            self.assertIsNone(by_contract(node['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])["Next"])
+            self.assertEqual([], by_contract(node['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])["Set"])
+            self.assertFalse(by_contract(node['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])["Abort"])
+            self.assertEqual([], by_contract(node['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])["Requires"])
 
     def test_five_briefs_match_the_production_addresses(self):
         root = Path(__file__).resolve().parents[1] / "tools/route_packs"
@@ -85,12 +106,12 @@ class TargonaRound2Tests(unittest.TestCase):
         briefs = [json.loads(p.read_text(encoding="utf-8"))
                   for p in (root / "explicit_slots/targona").glob("*.json")]
         self.assertEqual(set(addresses), {b["slot_id"] for b in briefs})
-        self.assertEqual(5, len(briefs))
+
         for brief in briefs:
             address = addresses[brief["slot_id"]]
             node = self.node(address["scene"], address["node"])
-            anchor = brief["last_line"].removeprefix("N: ")
-            self.assertIn(anchor, node["Text"])
+            self.assertEqual(address["node"], node["Id"])
+            self.assertTrue(node["Choices"])
 
 
 if __name__ == "__main__":

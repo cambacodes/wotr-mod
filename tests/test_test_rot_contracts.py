@@ -30,10 +30,10 @@ class TestRotContractTests(unittest.TestCase):
 
                 # The separate acceptance graph is omitted here. Inspect the
                 # reward verdict at the repaired scene/node address.
-                self.assertFalse(any(row["subject"] == route for row in findings(payload)))
+                self.assertFalse(any(diagnostics["subject"] == route for diagnostics in findings(payload)))
                 mutant = copy.deepcopy(payload)
                 mutant["Scenes"][0]["Nodes"][0]["Choices"][0]["Set"] = [route + ".committed"]
-                self.assertTrue(any(row["subject"] == route for row in findings(mutant)))
+                self.assertTrue(any(diagnostics["subject"] == route for diagnostics in findings(mutant)))
 
     def test_collecting_a_wager_cannot_settle_the_separate_luck_loan(self):
         contracts = json.loads(CONTRACTS.read_text(encoding="utf-8"))

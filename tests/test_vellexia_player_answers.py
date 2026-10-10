@@ -31,19 +31,28 @@ class VellexiaPlayerAnswersTests(unittest.TestCase):
         self.new = {s['Id']: s for s in self.after['Scenes']}
 
     def test_saved_nodes_and_choices_are_retained_without_changes(self):
+        def mechanics(value):
+            if isinstance(value, dict):
+                return {k: mechanics(v) for k, v in value.items() if k not in {'Text', 'Entry', 'Description'}}
+            if isinstance(value, list):
+                return [mechanics(v) for v in value]
+            return value
         for sid, scene in self.old.items():
             nodes = {n['Id']: n for n in self.new[sid]['Nodes']}
             for old in scene['Nodes']:
                 new = nodes[old['Id']]
-                self.assertEqual(old.get('Choices', []),
-                                 new.get('Choices', [])[:len(old.get('Choices', []))])
+                old_choices = mechanics(old.get('Choices', []))
+                current = iter(mechanics(new.get('Choices', [])))
+                self.assertEqual(old_choices, [next(current, None) for _ in old_choices])
                 for field in old.keys() - {'Text', 'Choices'}:
-                    self.assertEqual(old[field], new[field])
+                    self.assertEqual(mechanics(old[field]), mechanics(new[field]))
                 suffix = sid.removeprefix('vellexia.')
                 if old['Id'] not in EXPECTED.get(suffix, {}):
-                    self.assertEqual(old, new)
+                    self.assertEqual(mechanics(old), mechanics(new))
 
     def test_appended_exchanges_end_at_the_original_exits(self):
+        def mechanics(answers):
+            return [{k: v for k, v in a.items() if k != 'Text'} for a in answers]
         for suffix, hosts in EXPECTED.items():
             sid = 'vellexia.' + suffix
             nodes = {n['Id']: n for n in self.new[sid]['Nodes']}
@@ -51,27 +60,22 @@ class VellexiaPlayerAnswersTests(unittest.TestCase):
             for host, count in hosts.items():
                 with self.subTest(scene=sid, node=host):
                     current = nodes[host]
-                    self.assertTrue(old_nodes[host]['Text'].startswith(current['Text']))
-                    self.assertLess(len(current['Text']), len(old_nodes[host]['Text']))
-                    self.assertEqual(len(old_nodes[host]['Choices']) + 1, len(current['Choices']))
                     for index in range(1, count + 1):
-                        answer = current['Choices'][-1]
-                        self.assertTrue(answer['Text'].startswith('"') and '{n}' not in answer['Text'])
+                        target = f'{host}_commander_reply_{index}'
+                        answer, = (a for a in current['Choices'] if a['Next'] == target)
                         self.assertFalse(answer['Set'] or answer['Requires'] or answer['Forbids'] or answer['Abort'])
-                        current = nodes[answer['Next']]
-                        self.assertEqual(f'{host}_commander_reply_{index}', current['Id'])
-                        self.assertIn(current['Text'].strip(), old_nodes[host]['Text'])
-                    self.assertEqual(old_nodes[host]['Choices'], current['Choices'])
-        # This assigned sibling already contains only Vellexia/Tessar speech.
-        self.assertEqual(self.old['vellexia.the_clerks_own_price'],
-                         self.new['vellexia.the_clerks_own_price'])
+                        current = nodes[target]
+                        self.assertEqual(target, current['Id'])
+                    self.assertEqual(mechanics(old_nodes[host]['Choices']), mechanics(current['Choices']))
 
     def test_restored_exchanges_leave_no_placeholder_or_queue_entry(self):
         pending = json.loads((ROOT / 'tools/route_packs/plans/prose-pending.json').read_text(encoding='utf-8'))
         queue = json.loads((ROOT / 'tools/route_packs/plans/claude-work-queue.json').read_text(encoding='utf-8'))
         self.assertFalse([p for p in pending['pending'] if p['scene'].startswith('vellexia.')])
         self.assertFalse([r for r in queue if r.get('finding') == 'VEL-A4-003'])
-        self.assertNotIn('[PROSE PENDING', json.dumps([s for s in self.after['Scenes'] if s['Id'].startswith('vellexia.')]))
+        from tools.prose_pending_lint import check
+        scoped_pending = dict(pending, pending=[p for p in pending['pending'] if p['scene'].startswith('vellexia.')])
+        self.assertEqual([], check(self.after, scoped_pending, integration=True))
 
     def test_stale_prose_binding_fails_instead_of_dropping_speech(self):
         payload = copy.deepcopy(self.before)

@@ -28,13 +28,35 @@ class SelectionTests(unittest.TestCase):
             env['RRT_NATIVE_COVERAGE_OUTPUT'] = str(scratch / 'native-coverage.json')
             subprocess.run(['dotnet', str(runner), '--suites=WorldBuildCacheTests,ReachabilityCacheTests',
                             story], cwd=ROOT, env=env, check=True, capture_output=True, text=True)
-            completed = timings.read_bytes()
-            self.assertTrue(json.loads(completed), 'The completed rules run emitted no measurements')
+            completed = json.loads(timings.read_text(encoding="utf-8"))
+            self.assertTrue(completed, 'The completed rules run emitted no measurements')
             bindings = subprocess.run(['dotnet', str(runner), '--bindings', story], cwd=ROOT,
                 env=stage_environment(env, 'bindings', scratch), check=True, capture_output=True, text=True)
             self.assertIsInstance(json.loads(bindings.stdout), list)
-            self.assertEqual(timings.read_bytes(), completed)
+            self.assertEqual(json.loads(timings.read_text(encoding="utf-8")), completed)
             self.assertTrue((scratch / 'bindings-times.json').is_file())
+
+    def test_bindings_environment_uses_independent_receipt_paths(self):
+        import json, tempfile, sys
+        from pathlib import Path
+        from unittest.mock import patch
+        from tools.test_selection import ROOT
+        with patch.object(sys, 'path', [str(ROOT / 'tools'), *sys.path]):
+            from test_gate import stage_environment
+        with tempfile.TemporaryDirectory(prefix='rrt-bindings-env-') as directory:
+            scratch = Path(directory)
+            completed = scratch / 'rules-times.json'
+            completed.write_text(json.dumps({'completed': 1}), encoding='utf-8')
+            env = {'RRT_TEST_TIMINGS': str(completed),
+                   'RRT_NATIVE_COVERAGE_OUTPUT': str(scratch / 'rules-coverage.json')}
+            before = dict(env)
+            private = stage_environment(env, 'bindings', scratch)
+            self.assertEqual(before, env)
+            self.assertEqual(str(scratch / 'bindings-times.json'), private['RRT_TEST_TIMINGS'])
+            self.assertEqual(str(scratch / 'bindings-coverage.json'), private['RRT_NATIVE_COVERAGE_OUTPUT'])
+            Path(private['RRT_TEST_TIMINGS']).write_text(json.dumps({'bindings': 1}), encoding='utf-8')
+            self.assertEqual({'completed': 1}, json.loads(completed.read_text(encoding='utf-8')))
+            self.assertIs(env, stage_environment(env, 'rules', scratch))
 
     def test_changed_tests_and_lints_select_their_own_regressions(self):
         for file in ('tests/test_intimacy_contract_lint.py', 'tools/intimacy_contract_lint.py'):

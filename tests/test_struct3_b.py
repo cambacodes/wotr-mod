@@ -7,6 +7,18 @@ from tools import rrt_verify as verify
 from storylines import areelu_trickster as areelu, areelu_afterlogue as afterlogue
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
 class StructuralRoundThreeTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -25,17 +37,22 @@ class StructuralRoundThreeTests(unittest.TestCase):
 
     def play(self, sid, state, selected):
         scene = self.scenes[sid]
-        node = scene["Nodes"][0]
+        node = by_contract(scene['Nodes'], [{'Id': 'start'}])
         path = []
         scratch = copy.deepcopy(state)
         for _ in range(50):
             scratch.flags.update(node.get("EnterSet", []))
-            available = [i for i, answer in enumerate(node["Choices"])
+            available = [answer for answer in node["Choices"]
                          if verify.sim_choice_available(answer, scratch)]
             self.assertTrue(available, (sid, node["Id"]))
-            index = selected.get(node["Id"], available[0])
-            choice = node["Choices"][index]
-            self.assertTrue(verify.sim_choice_available(choice, scratch), (sid, node["Id"], index))
+            target = selected.get(node["Id"])
+            if target == '@abort':
+                choice, = (a for a in available if a['Abort'])
+            elif target:
+                choice, = (a for a in available if a['Next'] == target)
+            else:
+                choice = next(iter(available))
+            self.assertTrue(verify.sim_choice_available(choice, scratch), (sid, node["Id"], target))
             # Build the explicit traversal with a scratch state. The public
             # simulator applies each debit and durable receipt to the real state.
             path.append(choice)
@@ -69,10 +86,8 @@ class StructuralRoundThreeTests(unittest.TestCase):
                 with self.subTest(suffix=suffix, woman=woman):
                     state = self.state(5, {"trickster", *history})
                     root = self.model.nodes[p + "kills_answered.oath" + suffix]["start"]
-                    index = next(i for i, c in enumerate(root["Choices"])
-                                 if c["Next"] == woman and verify.sim_choice_available(c, state))
                     self.assertTrue(self.play(p + "kills_answered.oath" + suffix, state,
-                                              {"start": index, "ask": 0}))
+                                              {"start": woman, "ask": "loophole"}))
                     self.assertIn(p + "oath_loophole", state.flags)
                     self.assertEqual({p + "oath_victim." + woman},
                                      state.flags & {p + "oath_victim." + w for w in histories})
@@ -93,7 +108,8 @@ class StructuralRoundThreeTests(unittest.TestCase):
                         self.assertIn(next(iter(history)), lost.flags)
                         lost_readers = [x for x in paras if p + "oath_victim." + woman in x["Requires"]
                                         and woman + ".present_now" in x["Forbids"]]
-                        self.assertEqual(1, sum(self.visible(x, lost) for x in lost_readers))
+                        selected, = (x for x in lost_readers if self.visible(x, lost))
+                        self.assertIn(p + "oath_victim." + woman, selected["Requires"])
 
     def test_legacy_anonymous_oath_does_not_infer_any_living_victim(self):
         p = "camellia.trickster."
@@ -104,7 +120,8 @@ class StructuralRoundThreeTests(unittest.TestCase):
             living = next(x for x in paras if p + "oath_victim.available" in x["Requires"])
             self.assertFalse(self.visible(living, state))
             historical = [x for x in paras if p + "oath_victim.recorded" in x["Forbids"]]
-            self.assertEqual(1, sum(self.visible(x, state) for x in historical))
+            selected, = (x for x in historical if self.visible(x, state))
+            self.assertIn(p + "oath_victim.recorded", selected["Forbids"])
 
     def test_burned_kept_and_filed_accounts_after_cloud(self):
         sid = areelu.P + "report.promise"
@@ -112,14 +129,14 @@ class StructuralRoundThreeTests(unittest.TestCase):
         def matches(groups, flags):
             return any(all((f[1:] not in flags) if f.startswith("!") else f in flags for f in g)
                        for g in groups)
-        for choice, departure in ((1, True), (2, False), (3, False), (4, True)):
+        for choice, departure in (("burn_witch", True), ("join", False), ("keep", False), ("why", True)):
             state = self.state(6, {"trickster", areelu.STRUCK, areelu.WAGERED,
                                    areelu.BET, "sacrifice", "ending.trickster", areelu.COMMITTED})
-            self.assertTrue(self.play(sid, state, {"start": 0, "confront": choice, "why": 1}))
+            self.assertTrue(self.play(sid, state, {"start": "confront", "confront": choice, "why": "burn_witch"}))
             self.assertEqual(departure, areelu.REPORT_DEPARTED in state.flags)
-            afterword = self.scenes[areelu.P + "report.afterword"]["Nodes"][0]["Choices"]
-            self.assertEqual(not departure, verify.sim_choice_available(afterword[0], state))
-            self.assertTrue(verify.sim_choice_available(afterword[1], state))
+            afterword = by_contract(self.scenes[areelu.P + 'report.afterword']['Nodes'], [{'Id': 'start'}])["Choices"]
+            self.assertEqual(not departure, verify.sim_choice_available(by_contract(afterword, [{'Next': 'line', 'Requires': [], 'Forbids': ['areelu.trickster.report.departed'], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}]), state))
+            self.assertTrue(verify.sim_choice_available(by_contract(afterword, [{'Next': 'leave', 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}]), state))
             candidates = [variants, *variants.get("Variants", [])]
             selected = [v["Replacement"] for v in candidates if matches(v["When"], state.flags)]
             self.assertEqual([afterlogue.LINE_DEPARTED if departure else afterlogue.LINE_SPARED], selected)
@@ -131,10 +148,10 @@ class StructuralRoundThreeTests(unittest.TestCase):
             self.assertIn(areelu.CELL_LIST, scene["AnswerLists"])
             self.assertEqual(areelu.CELL_RETURN, scene["NativeReturnCue"])
             poor = self.state(5, {"trickster"}, price - 1)
-            self.assertFalse(verify.sim_choice_available(scene["Nodes"][0]["Choices"][0], poor))
+            self.assertFalse(verify.sim_choice_available(by_contract(by_contract(scene['Nodes'], [{'Id': 'start'}])['Choices'], [{'Next': 'paid', 'Requires': [], 'Forbids': [], 'Set': ['areelu.trickster.experiment.convicts.paid'], 'Check': None, 'Abort': False, 'Crusade': {'Resource': 'Finances', 'Amount': -500}}, {'Next': 'paid', 'Requires': [], 'Forbids': [], 'Set': ['areelu.trickster.experiment.graft.paid'], 'Check': None, 'Abort': False, 'Crusade': {'Resource': 'Finances', 'Amount': -300}}]), poor))
             for choice, receipt, paid in ((0, "paid", price), (1, "refused", 0)):
                 state = self.state(5, {"trickster"})
-                self.assertTrue(self.play(key, state, {"start": choice}))
+                self.assertTrue(self.play(key, state, {"start": receipt}))
                 self.assertEqual(2000 - paid, state.crusade_resources["Finances"])
                 self.assertIn(key + "." + receipt, state.flags)
                 self.assertIn(key + ".witnessed", state.flags)
@@ -144,22 +161,23 @@ class StructuralRoundThreeTests(unittest.TestCase):
                 verify.sim_complete(self.model, state)
                 self.assertTrue(verify.sim_available(self.model, later, state))
                 funded = copy.deepcopy(state)
-                self.assertTrue(self.play(key + ".outcome", funded, {"account": 0}))
+                self.assertTrue(self.play(key + ".outcome", funded, {"account": "funded"}))
                 self.assertIn(key + ".batch_funded", funded.flags)
                 self.assertEqual(2000 - paid - price, funded.crusade_resources["Finances"])
-                self.assertTrue(self.play(key + ".outcome", state, {"account": 1}))
+                self.assertTrue(self.play(key + ".outcome", state, {"account": "unfunded"}))
                 self.assertIn(key + ".outcome_read", state.flags)
                 self.assertIn(key + ".batch_refused", state.flags)
                 report = areelu.P + "report." + ("commission" if kind == "graft" else kind)
                 report_choices = self.model.nodes[report]["start"]["Choices"]
-                self.assertEqual(choice == 0, verify.sim_choice_available(report_choices[0], state))
-                refusal_index = 3 if kind == "convicts" else 2
-                self.assertEqual(choice == 1, verify.sim_choice_available(report_choices[refusal_index], state))
+                self.assertEqual(choice == 0, verify.sim_choice_available(by_contract(report_choices, [{'Next': 'sign', 'Requires': ['areelu.trickster.experiment.convicts.paid'], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}, {'Next': 'fund', 'Requires': ['areelu.trickster.experiment.graft.paid'], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}]), state))
+                refusal_target = "refuse" if kind == "convicts" else "away"
+                refusal, = (c for c in report_choices if c["Next"] == refusal_target)
+                self.assertEqual(choice == 1, verify.sim_choice_available(refusal, state))
                 paras = self.model.nodes[report]["start"]["Paragraphs"]
                 self.assertTrue(any(self.visible(x, state) and key + "." + receipt in x["Requires"]
                                     for x in paras))
             abandoned = self.state(5, {"trickster"})
-            self.assertFalse(self.play(key, abandoned, {"start": 2}))
+            self.assertFalse(self.play(key, abandoned, {"start": "@abort"}))
             self.assertNotIn(key + ".witnessed", abandoned.flags)
             self.assertEqual(2000, abandoned.crusade_resources["Finances"])
 

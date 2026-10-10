@@ -15,6 +15,18 @@ from tools.claude_work_queue_lint import check as queue_check
 from tools.prose_pending_lint import check as pending_check
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
 class DelayedHistoryTests(unittest.TestCase):
     def test_confrontation_partitions_native_history_without_losing_primer(self):
         for late in ('', '_late'):
@@ -55,7 +67,7 @@ class ClosingTests(unittest.TestCase):
         story = dict(Relationships={'herrax': relationship('herrax'), 'chivarro': relationship('chivarro')},
                      Scenes=[scene], Derived={})
         crossroute_presence.integrate(story)
-        return story['Scenes'][0]
+        return by_contract(story['Scenes'], [{'Id': 'herrax.trickster.madam.reachable'}, {'Id': 'herrax.trickster.madam.reachable_restored'}])
 
     def test_private_closing_finishes_with_foreign_actor_present_or_absent(self):
         for restored in (False, True):
@@ -65,15 +77,16 @@ class ClosingTests(unittest.TestCase):
                 flags = {'trickster.ever'}
                 flags.add('crossroute.chivarro.unavailable' if absent else 'crossroute.chivarro.available')
                 with self.subTest(restored=restored, absent=absent):
-                    offer = nodes['offer']['Choices'][0]
+                    offer = by_contract(nodes['offer']['Choices'], [{'Next': 'desire', 'Requires': [], 'Forbids': [], 'Set': ['herrax.committed'], 'Abort': False}])
                     accepted = flags | set(offer['Set'])
                     self.assertIn(herrax.COMMITTED, accepted)
                     self.assertNotIn(herrax.MORNING, accepted)
-                    self.assertEqual(2, len([c for c in nodes['threshold2']['Choices'] if allowed(c, accepted)]))
+                    self.assertEqual(['cut', 'cut'],
+                                     [c['Next'] for c in nodes['threshold2']['Choices'] if allowed(c, accepted)])
                     _, ends = walk(scene, accepted, start='desire')
                     self.assertTrue(ends)
                     self.assertTrue(all(herrax.MORNING in state for state in ends))
-                    self.assertNotIn(herrax.MORNING, flags | set(nodes['offer']['Choices'][1]['Set']))
+                    self.assertNotIn(herrax.MORNING, flags | set(by_contract(nodes['offer']['Choices'], [{'Next': 'no', 'Requires': [], 'Forbids': [], 'Set': ['herrax.closed'], 'Abort': False}])['Set']))
 
     def test_actual_foreign_participation_still_requires_presence(self):
         for restored in (False, True):
@@ -102,7 +115,7 @@ class AssembledTests(unittest.TestCase):
                     rules.sim_complete(self.model, state)
                     sid = 'aranka.trickster.verse.her_letter' + late + ('_yard' if yard else '')
                     self.assertTrue(rules.sim_available(self.model, self.model.by_id[sid], state), (sid, history))
-                    start = self.model.by_id[sid]['Nodes'][0]
+                    start = by_contract(self.model.by_id[sid]['Nodes'], [{'Id': 'start'}])
                     expected = 'struct3_a.unknown.departed' if aranka.KING_GONE in history else 'struct3_a.unknown.crown_refused'
                     self.assertEqual([expected], [c['Next'] for c in start['Choices'] if allowed(c, state.flags)])
 

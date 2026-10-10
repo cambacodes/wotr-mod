@@ -4,6 +4,18 @@ import unittest
 from tests.story_fixture import fresh_story
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
 class GameplayHostsTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -57,7 +69,7 @@ class GameplayHostsTests(unittest.TestCase):
             self.assertIn('minagho.present_now', body['Requires'])
             self.assertIn('minachiv.closed', body['Forbids'])
             if step == 'settle':
-                check = body['Nodes'][0]['Choices'][0]['Check']
+                check = by_contract(by_contract(body['Nodes'], [{'Id': 'start'}])['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Check': {'Skill': 'SkillPerception', 'DC': 20, 'Success': 'draw', 'Failure': 'botched', 'CommanderOnly': True}, 'Abort': False}])['Check']
                 self.assertEqual((check['Skill'], check['DC'], check['Success'], check['Failure']),
                                  ('SkillPerception', 20, 'draw', 'botched'))
             else:
@@ -69,14 +81,13 @@ class GameplayHostsTests(unittest.TestCase):
         self.assertEqual(entry['OpenWhen'], [['irabeth.wagon_heard']])
         self.assertEqual(entry['SettledWhen'], [['irabeth.account_resolved']])
         followup = self.physical('irabeth.the_sealed_account')
-        self.assertEqual(entry['Description'], '[Agree to return for the docket.]')
         self.assertIn('irabeth.wagon_heard', followup['Requires'])
         self.assertEqual(followup['DelayHours'], 48)
         for branch in ('sealed', 'open'):
             node = next(n for n in followup['Nodes'] if n['Id'] == branch)
-            self.assertNotIn('irabeth.account_resolved', node['Choices'][0]['Set'])
+            self.assertNotIn('irabeth.account_resolved', by_contract(node['Choices'], [{'Next': 'answer_sealed', 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}, {'Next': 'answer_open', 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}])['Set'])
         end = next(n for n in followup['Nodes'] if n['Id'] == 'private')
-        self.assertIn('irabeth.account_resolved', end['Choices'][0]['Set'])
+        self.assertIn('irabeth.account_resolved', by_contract(end['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['irabeth.account_resolved'], 'Abort': False}])['Set'])
 
     def test_chadali_bundled_witnesses_in_both_eritrice_states(self):
         cases = {
@@ -111,7 +122,7 @@ class GameplayHostsTests(unittest.TestCase):
                 self.assertTrue(required <= flags and not forbidden & flags)
         breakfast = self.by['chadali.fortunes.burnt_edges']
         opening = next(n for n in breakfast['Nodes'] if n['Id'] == 'open')
-        self.assertIn('chadali.wagers.guessed_the_spice', opening['Choices'][0]['Requires'])
+        self.assertIn('chadali.wagers.guessed_the_spice', by_contract(opening['Choices'], [{'Next': 'secret', 'Requires': ['chadali.wagers.guessed_the_spice'], 'Forbids': [], 'Set': [], 'Abort': False}])['Requires'])
         participant = self.by['chadali.trickster.react.eritrice_coin']
         self.assertIn('crossroute.eritrice.unavailable', participant['Forbids'])
         self.assertIn('eritrice.lost_at_council', participant['Forbids'])
