@@ -122,7 +122,7 @@ def spine(scenes):
         forbids=(ANSWERED, 'devarra.closed'), last=6, Relationship='devarra'))
 
     scenes.append(scene(P + 'epilogue.claimed_unjudged', '', 'DevarraEpilogue', 6, '', [
-        n('page', 'Narrator', "[PROSE PENDING: devarra.trickster.epilogue.claimed_unjudged/page - Express the unanswered conqueror judgment through in-world history; preserve the unresolved ending without describing whether a scene ran]")],
+        n('page', 'Narrator', "{n}The Commander had told Devarra the conqueror's ending: the thief takes the leash from the stone and the dragon fights where the thief points. She had never given her judgment of it. No one corrected the ending, and no one carried it down the mountain as a refusal. Devarra hunted beyond the north ridge and kept the matter as she kept her counts, open, and the Commander's name stayed on it.{/n}")],
         requires=('trickster.ever', P + 'returned', CLAIMED, 'devarra.present_now'),
         forbids=(REFUSED, ANSWERED, 'devarra.closed'), last=6, Relationship='devarra'))
 

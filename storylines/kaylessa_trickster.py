@@ -622,9 +622,11 @@ meet(BEAST_SCENE, "The lamp-holder", '"You look like you\'ve heard something."',
     nar("too_late", '''{n}She isn't listening. She's looking at Tessariel's hands on the chain, and whatever looks out through her eyes has already decided. There is no more time for clever words. There is only the key in your hand, and the doorway.{/n}''',
         c('[Give her the key and walk away] "Take your hour."', "fed", flags=(BEAST_MET, BEAST_FED), alignment=("Evil", 1)),
         c('[Stand in the doorway] "No."', "stopped", flags=(BEAST_MET, BEAST_STOPPED))),
-    nar("fed", "[PROSE PENDING: kaylessa.trickster.after.the_beast/fed - Stage the key handoff in the cell for the beast-fed history; keep the Commander at the doorway to witness the selected cruelty before any departure. Preserve Tessariel, Kaylessa's appetite and resistance, the Evil cost and guilt. Do not jump to the washed aftermath.]",
-        c("Continue", "fed_after", requires=(P + "beast_cruelty_shown",)),
-        c("Continue", "fed_shown", forbids=(P + "beast_cruelty_shown",))),
+    nar("fed", '''{n}You put the key in her palm. Her fingers close on it before yours have left. You take three steps toward the passage and stop in the doorway, with your shoulder against the frame, because you will not be the one who leaves her alone with it and call that mercy. She does not tell you to go. She does not turn around. The gaoler's lantern swings on its hook and the shadows run up the wall and back.{/n}
+{n}The lock turns. The chain on Tessariel's wrist rattles once, the way a chain does when the person on it has stopped pretending she can get free.{/n}
+"Kay." {n}Tessariel says it very quietly.{/n} "Kay, it's me. We shared a bunk."''',
+        c("Continue", "fed_shown", forbids=(P + "beast_cruelty_shown",)),
+        c("Continue", "fed_after", requires=(P + "beast_cruelty_shown",))),
     kay("fed_after", '''"It's quiet now. For tonight." {n}She looks at her hands in her lap.{/n}
 "She held the lamp for nobody, soldier. I didn't need one. I see perfectly well in the dark." {n}The words are light. Her voice isn't.{/n} "Don't ever give me that key again. Or do. I can't tell any more which of us is asking."''',
         c("[Sit with her until the market closes.]")),
@@ -642,7 +644,20 @@ meet(BEAST_SCENE, "The lamp-holder", '"You look like you\'ve heard something."',
 {n}Tessariel stares at her. Then, very slowly, she nods.{/n}
 {n}Kaylessa stands, and hands you the key, and doesn't let go of it straight away.{/n} "That was a good trick, soldier. Don't do it to me."''',
         c("[Unlock the chain.]", flags=(BEAST_MET, WASP_SENT))),
-    nar("fed_shown", '[PROSE PENDING: kaylessa.trickster.after.the_beast/fed_shown - For the selected beast-fed history, show Kaylessa acting on Tessariel in the cell with the Commander witnessing and authorizing the selected act; stage it, do not summarize. Anchor violent appetite in native Cue_0065 and resistance in Cue_0022. Retain cruelty, guilt, threats and downstream dagger consequences; do not redeem or soften. End before the existing fed_after aftermath.]',
+    nar("fed_shown", '''{n}Kaylessa crouches in front of her. She does it slowly, the way she crouched at the bowl of milk a stray was too frightened to touch. Then she takes Tessariel's chained hand in both of hers, turns it palm up, and looks at it as if reading a letter.{/n}
+"You held the lamp." {n}Her voice is perfectly even.{/n} "Every night. So I could see my work. I want you to see this one."
+{n}She bends the smallest finger back until it is flat against the wrist. Tessariel's mouth opens and nothing comes out for a heartbeat, and then something does. Kaylessa does not hurry. The sound of the bone is small and wet. She lets go of that hand and takes the next finger.{/n}
+{n}You can see her face from the doorway. The fangs are bare. Her lips are parted as if she were tasting the air, and the tension has gone out of her shoulders, all of it, as if she had set down a pack she has carried for two years.{/n}
+"There. That's the sound." {n}She breathes it in.{/n} "I told you I knew it. I told you I dreamed it."
+{n}Tessariel begs. She begs by name, and by the loft, and by Anemora's temple, and then, when that does nothing, she spits blood in Kaylessa's face. Kaylessa laughs, a real laugh, high and delighted, wipes it off with her thumb and puts the thumb in her mouth.{/n}
+{n}Then her hand goes still on Tessariel's throat.{/n}
+{n}It is the only time she looks at you. Her eyes are black from lid to lid and wet at the corners, and she is not asking whether it is allowed. She is asking whether you are going to say stop, and which of them wants you to.{/n}
+"Tell me to," {n}she whispers.{/n} "I was the only one who refused, once. I held out until they broke me. Tell me, soldier. Say it now, and I'll hear it."
+{n}You say nothing. You gave her the key. You stay where you are in the doorway, and you let her see that you are staying.{/n}
+{n}Her eyes close. When they open, the last of whatever held her back has gone out of them like a candle from a draught.{/n}
+"Then watch." 
+{n}She digs her thumbs into Tessariel's eyes. The chain thrashes against the stone and Tessariel screams until the screaming has no breath behind it. Kaylessa rakes her nails down the face, once, twice, and laughs, and does not stop laughing when the chain finally hangs slack. She keeps going a while after that. Your gaoler, at the end of the passage, has turned to face the wall.{/n}
+{n}At last she sits back on her heels with her hands open on her knees, red to the wrist, shaking. The lantern shows a woman who looks like she has run a long way. She does not look at the body. She looks at her hands.{/n}''',
         c("Continue", "fed_after", flags=(P + "beast_cruelty_shown",))),
 ], requires=(CLOCK,), forbids=(BEAST_MET,), delay=48, optional=False)
 

@@ -450,12 +450,26 @@ def keeper_history(page, scene_id):
             else:
                 _add(paragraph, 'Requires', 'nidalynn.present_now')
                 _add(paragraph, 'Forbids', *gone)
-    def pending(brief, requires=(), forbids=()):
+    def pending(text, requires=(), forbids=()):
         page.setdefault('Paragraphs', []).append(p(
-            '[PROSE PENDING: ' + scene_id + '/page - ' + brief + ']',
-            requires=(EGG_BILL, *requires), forbids=forbids))
+            text, requires=(EGG_BILL, *requires), forbids=forbids))
         page['Paragraphs'][-1]['Id'] = 'fix14.keeper.' + str(sum('fix14.keeper.' in x.get('Id', '') for x in page['Paragraphs']))
+    DEBT = ' "Eleven. I laid twelve." {n}She did not let it lapse; the debt stayed the Commander\'s.{/n}'
     # Specific departures take precedence over the general closed ending.
+    kept = {
+        ni.GIVEN_UP: (
+            '{n}Devarra had the story of the chaplain\'s fire from the lower town: the kiln roof gone in one night, something silver rising out of the smoke with the %s held against it. The keeper was not in Drezen afterwards, and no one at the east wall had her.{/n}',
+            'small shell', 'small shape'),
+        ni.LIE_KEPT: (
+            '{n}The silver left Drezen at the first thaw, carrying %s and keeping the Commander\'s lie behind her. Devarra found no one at the east wall to put the question to.{/n}',
+            'the shell', 'the young dragon'),
+        ni.GOAT_STANDS: (
+            '{n}The wolves story stood, and at the thaw the silver went north, taking %s with her. Devarra looked for her at the east wall and found a cold step.{/n}',
+            'the shell', 'the young dragon'),
+        ni.CLOSED: (
+            '{n}After the Commander refused her, the silver went north apart from Drezen, and %s went with her. Devarra found no keeper at the east wall to question.{/n}',
+            'the shell', 'the young dragon'),
+    }
     for key, label, higher in (
         (ni.GIVEN_UP, 'chaplain fire escape', ()),
         (ni.LIE_KEPT, 'retained kiln lie and first thaw departure', (ni.GIVEN_UP,)),
@@ -463,13 +477,17 @@ def keeper_history(page, scene_id):
         (ni.CLOSED, 'first-flight refusal and apart north departure', (ni.GIVEN_UP, ni.LIE_KEPT, ni.GOAT_STANDS)),
     ):
         for hatched in (False, True):
-            pending('Recall ' + label + '; the transferred ' + ('child' if hatched else 'shell')
-                    + ' left Drezen with its keeper, never at the east wall; debt remains the Commander\'s',
+            text = kept[key][0]
+            if key == ni.GIVEN_UP:
+                text = text % ('shell' if not hatched else 'young one')
+            else:
+                text = text % (kept[key][1] if not hatched else kept[key][2])
+            pending(text + DEBT,
                     (ni.KILN, key, *((HATCHED,) if hatched else ())),
                     (NORTH, *higher, *((HATCHED,) if not hatched else ())))
-    pending('Earned kiln custody but keeper currently unavailable; no staged east-wall keeper or invented death; debt persists',
+    pending('{n}The keeper of the kiln could not be put before Devarra now, and no one could say where she was. The Commander had carried the twelfth egg there; Devarra asked after it anyway.{/n}' + DEBT,
             (ni.KILN,), ('nidalynn.present_now', *gone))
-    pending('The egg was never transferred to Nidalynn; do not award silver custody or a kiln childhood; missing-egg debt remains independent',
+    pending('{n}The twelfth egg had never reached the kiln under the east wall, and no silver kept it. Devarra counted eleven and asked where the last had gone.{/n}' + DEBT,
             (), (ni.KILN,))
-    pending('Earned kiln transfer and explicit north departure before hatching; recall the shell with its departed keeper, not a grown child; debt persists',
+    pending('{n}The Commander had carried the shell to the kiln, and the keeper took it north before it hatched. Devarra was told the shell had left with her, and no grown child came to the ridge.{/n}' + DEBT,
             (ni.KILN, NORTH), (HATCHED,))

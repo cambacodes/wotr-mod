@@ -152,19 +152,29 @@ def integrate(payload):
         # A dispatched decision cannot be restarted through the twin host.
         host["Forbids"].extend((share_sent, breakup_sent))
         if early:
-            def pending(nid, brief):
-                return '[PROSE PENDING: ' + sid + '/' + nid + ' - ' + brief + ']'
-            shared['Nodes'][0]['Text'] = pending('partner_elan_terms',
-                'Stage the delayed Elan reply at a later visit; retain his existing terms and motives')
-            for nid, brief in (
-                ('partner_share', 'Send the request now; Elan has not answered; commitment waits for the delayed reply'),
-                ('partner_breakup', 'Announce her earned decision and send the breakup letter now; no reply or physical delivery yet'),
-                ('partner_answer', 'Preserve Kiana choosing only on the existing earned histories; the letter and later delivery are still pending'),
-            ):
-                nodes[nid]['Text'] = pending(nid, brief)
-            # New exits are held text; their existing Set/Next/Abort fields carry the staging.
-            for record in (nodes['partner_share'], nodes['partner_breakup'], breakup['Nodes'][1]):
-                record['Choices'][-1]['Text'] = pending(record['Id'], 'End this interaction and wait for the correspondence or delivery already requested')
+            shared['Nodes'][0]['Text'] = (
+                "{n}When you next find Kiana, Elan's answer lies beside the unsigned page. It took days to reach her and his ink has pressed through the paper.{/n}\n"
+                + nodes["partner_elan_terms"]["Text"].split("\n", 1)[1]
+            )
+            nodes['partner_share']['Text'] = (
+                '"Then he gets a letter without a princess in it. Desna help me, that will be the difficult part."\n'
+                '{n}Kiana writes beside you. She tells Elan what she wants, what she has done and the promise you have not yet made. She crosses out an excuse and leaves the ugly space visible, then seals the letter and puts it into the courier\'s hand. It will be days before it reaches him, and days again before anything comes back. Your page stays unsigned between you.{/n}'
+            )
+            nodes['partner_breakup']['Text'] = (
+                '{n}Kiana draws a fresh sheet toward her and writes to Elan. She crosses out the first sentence and starts again. Your promise is still unsigned.{/n}\n'
+                '"Elan, I am not coming home as your wife. Or waiting to become one."\n'
+                '{n}Below it, she writes:{/n}\n'
+                '"I wanted to make you laugh before telling you. What a rotten little coward I can be. I want the Commander. I am ending this."\n'
+                '{n}She seals it and gives it to the courier without reading it over. Nothing has come back from him. Nothing will for days.{/n}'
+            )
+            nodes['partner_answer']['Text'] = (
+                '{n}Kiana looks at the script, then at the case by her chair.{/n}\n'
+                '"Wait for my answer, then. No speech for me to repeat. Whatever I choose, Elan reads it in my hand before you read it on any page, and you will not hear a word of his until it has travelled."'
+            )
+            # New exits carry the staging through their existing Set/Next/Abort fields.
+            nodes['partner_share']['Choices'][-1]['Text'] = '[Let her send the letter. Wait for Elan\'s answer.]'
+            nodes['partner_breakup']['Choices'][-1]['Text'] = '[Let her send the letter. Wait for Elan\'s reply.]'
+            breakup['Nodes'][1]['Choices'][-1]['Text'] = '[Leave their meeting to them. Wait for her next invitation.]'
             # Morning never shipped the late-host generated exit at index 2.
             for nid in ('partner_share_yes', 'partner_exclusive_yes'):
                 nodes[nid]['Choices'].pop()

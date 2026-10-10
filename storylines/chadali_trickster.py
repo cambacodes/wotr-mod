@@ -265,7 +265,7 @@ SCENES.append(scene(P + "epilogue.declined", "", "ChadaliEpilogue", 6, "", [
     nar("page", "", paragraphs=(
         p("{n}Chadali never did get her proper question. On the anniversary of the Council's first session, cookies arrived in Drezen. A sun was drawn on the wrapping. Her collected coin stayed flat in her keeping.{/n}",
           requires=("chadali.wagers.coin_lost",), forbids=("chadali.wagers.luck_lost",)),
-        p("[PROSE PENDING: chadali.trickster.epilogue.declined/page - Retain refusal and anniversary cookie delivery; private-wager luck went to her worshippers, no collected coin]",
+        p("{n}Chadali never did get her proper question. On the anniversary of the Council's first session, cookies arrived in Drezen, a sun drawn on the wrapping. No coin came with them. The luck she had staked on the private wager had gone to her worshippers, and she did not mention it in the note.{/n}",
           requires=("chadali.wagers.luck_lost",)),
     ))],
     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, "council.fought", "council.fought_nocta_allied", HALL_SEALED),

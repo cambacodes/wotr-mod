@@ -727,7 +727,7 @@ meet(P + "circle_night", "Inside the chalk", '[Go to the practice yard tonight, 
 {n}She walks you backwards across the circle a step at a time until your heels are at the chalk, and holds you there on its edge with her mouth at your throat and her hands learning you the way she'd learn a new blade: the weight, the balance, the places it wants to move.{/n}
 "Seven years I only wanted to win," {n}she says against your skin.{/n} "Tonight I want this more."''',
         c("Continue", "down")),
-    jan("down", '''"This is where I'd take your sword," {n}she says, breathing hard, her forehead against yours,{/n} "if you'd brought it into measure." {n}She works at your belt with one hand and doesn't let go of you with the other.{/n}
+    jan("down", '''"This is where I'd take your sword," {n}she says, breathing hard, her forehead against yours,{/n} "if you'd brought it into measure." {n}She works at the last of your fastenings with one hand and doesn't let go of you with the other.{/n}
 "You did. So I will."''',
         c("[Let her.]", "cut"),
         c("[Take hers first.]", "cut")),

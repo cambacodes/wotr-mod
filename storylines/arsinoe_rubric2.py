@@ -16,6 +16,33 @@ RETURN = """{n}Arsinoe did not stop to remark on the room. She shut the door wit
 {n}Her hands found theirs, and she held them against her waist.{/n}"""
 
 
+# Spoken inside the quotation the retained fragments open and close. Each line states only what its gate guarantees.
+ACCOUNT_LINES = {
+    "rubric2_cauldron_night": (
+        "The cauldron was handed back at the rift, and I entered the return before anything else. The lease is closed.",
+        "The stone burst at Threshold. The loss account is open, your name stands beside the sum, and I have not entered one crown of it as paid.",
+        "The stone came through Last Call whole, and I did not call it in. The collateral is released, and the rent has a page of its own.",
+        "The lease stands as written and the account stands with it. I have entered nothing there that was not done.",
+        "The Fool King's still is entered as security, and the account, not my mood, decides what becomes of it.",
+        "Your word is in the ledger as security. It leaves by the account, not by my mood.",
+        "The lien is in my own hand, and the lease governs it.",
+        "The three renewals waived at the counter stay waived, struck out in the same ink. I have never falsified an account in my life.",
+        "I waived no renewal and entered no kindness the lease did not allow. I have never falsified an account in my life.",
+    ),
+    "rubric2_cauldron_return": (
+        "The cauldron was handed back at the rift, and the account closed on the return.",
+        "The stone burst at Threshold, and the loss account remains open under your name.",
+        "The stone came through Last Call whole and I did not call it in. The collateral is released, and the rent keeps its own page.",
+        "The lease stands as written, and I have kept to it.",
+        "The Fool King's still is entered as security. Whatever becomes of it, the account decides, and not I.",
+        "Your word is entered as security. Whatever becomes of it, the account decides, and not I.",
+        "The lien is in my hand and answers to the lease alone.",
+        "The three renewals waived at the counter are still struck out, and the entry has not changed.",
+        "I waived no renewal, and the terms have not changed.",
+    ),
+}
+
+
 def integrate(payload):
     from storylines import arsinoe_trickster as route
     late = next(s for s in payload["Scenes"] if s["Id"] == "arsinoe.trickster.late.commit")
@@ -60,22 +87,23 @@ def account_callbacks(node, route):
         parts.append(before)
     node['Text'] = parts[0]
     node['Paragraphs'] = []
-    def pending(brief, requires=(), forbids=()):
-        node['Paragraphs'].append(p(
-            '[PROSE PENDING: arsinoe.trickster.late.commit/' + node['Id'] + ' - ' + brief + ']',
-            requires=requires, forbids=forbids))
+    texts = ACCOUNT_LINES[node['Id']]
+    # (requires, forbids) per line, in order. Lines 0-3 are exclusive and exhaustive;
+    # 4-6 read the recorded collateral; 7 and 8 split on the earned grace.
+    gates = (
+        ((route.CALLED,), ()),
+        (('arsinoe.siphon_burst',), (route.CALLED,)),
+        ((route.LC,), (route.CALLED, 'arsinoe.siphon_burst')),
+        ((), (route.CALLED, route.LC, 'arsinoe.siphon_burst')),
+        ((route.STILL,), ()),
+        ((route.WORD,), ()),
+        ((route.LIEN,), ()),
+        ((route.GRACE,), ()),
+        ((), (route.GRACE,)),
+    )
+    for text, (requires, forbids) in zip(texts, gates):
+        node['Paragraphs'].append(p(text, requires=requires, forbids=forbids))
         node['Paragraphs'][-1]['Id'] = 'fix14.account.' + str(len(node['Paragraphs']) - 1)
-    pending('Last Call returned the property and closed the lease account; recall settlement, never an outstanding lien or invented payments', (route.CALLED,))
-    pending('Property burst without Last Call settlement; the loss account remains outstanding, with only actually pledged collateral',
-            ('arsinoe.siphon_burst',), (route.CALLED,))
-    pending('Last Call ended with property returned intact without her call; collateral released, rent accounted separately',
-            (route.LC,), (route.CALLED, 'arsinoe.siphon_burst'))
-    pending('Before settlement or recorded return, recall the existing lease and only its earned collateral; do not invent renewal payments',
-            (), (route.CALLED, route.LC, 'arsinoe.siphon_burst'))
-    for key, label in ((route.STILL, 'still'), (route.WORD, 'pledged word'), (route.LIEN, 'Worldwound lien')):
-        pending('Recall ' + label + ' as the recorded collateral, with release or liability matching the preceding account history', (key,))
-    pending('Recall the three waived renewals, without claiming paid late renewals', (route.GRACE,))
-    pending('No rent grace was earned; do not claim waived or recorded paid renewals', (), (route.GRACE,))
     # Remaining original fragments keep their wording and relative order.
     for part in parts[1:]:
         node['Paragraphs'].append(dict(p(part), Text=part))

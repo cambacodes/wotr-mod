@@ -365,7 +365,11 @@ def integrate(payload):
 
 # fix14-a: the earlier earring scene always completes its recovery.
 _number = next(s for s in SCENES if s['Id'] == NUMBER)
+_NUMBER_TEXT = {
+    'zero': '"Because I sent it to you!" {n}She holds the list where you can see it, tapping the nought beside her name. The white-gold earring clinks against her jaw.{/n} "My share, not the Council\'s. You\'re going out against demons. I wanted you lucky. Nobody asked me to, and nobody gets to tell me to stop."\n{n}She touches the earring, and her mouth goes sour.{/n} "And yes, before you say it, that\'s why the tray went over, and the cup, and why I was under that table in the first place. You got down on the floor and found it. It was very sweet. I\'m still cross, and I\'m still not taking it back. Don\'t look pleased about this."',
+    'half': '{n}She scratches out the nought and writes a firm one beside her name, pressing so hard the quill spits.{/n} "Half for me. There! Half is a decent morning and a tray that stays on its feet, and the other half is yours whether you like it or not." {n}She folds the list into her sleeve, and the earring clinks as she shakes her head.{/n} "I\'m not doing it for gratitude. I\'m doing it because the alternative is you dead, and then I\'d have to bake for the funeral."',
+    'keep': '{n}Chadali waits for an answer, then folds the list sharply.{/n} "Oh, you like this arrangement! Of course you do." {n}She flicks the earring as though it had insulted her.{/n} "Fine. The nought stays. Every morning, all of it, to you. You\'ll have a charmed life and I\'ll have a clumsy one, and when I drop the next tray you can pick up the pieces." {n}Her voice drops.{/n} "Come back from the front. That is the whole of the bet."',
+}
 for _node in _number['Nodes']:
-    if _node['Id'] in ('zero', 'half', 'keep'):
-        _node['Text'] = ('[PROSE PENDING: ' + NUMBER + '/' + _node['Id']
-                         + ' - Acknowledge the recovered earring; preserve unilateral generosity, irritation and this luck allocation; do not invent another loss]')
+    if _node['Id'] in _NUMBER_TEXT:
+        _node['Text'] = _NUMBER_TEXT[_node['Id']]
