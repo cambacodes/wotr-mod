@@ -208,8 +208,7 @@ def _arueshalae(payload):
 
     # Bell tower (redeemed): the ward-limited slot and the released one.
     sid = "arueshalae.treatment.night"
-    swap(payload, [(sid, "undress")], "and settles over you, one hand braced beside your head.{/n}",
-         "and leans close, her hair a curtain round your face.{/n}")
+    # Source text owns "undress" now (heat sweep); no swap needed.
     tail(payload, sid, "undress", "{n}She peels the rest of her own clothes away", '''
 {n}She peels the rest of her own clothes away without ceremony, with the old expertise of a woman who once did this to ruin people, and lets you see her under the stars, bare and unhurried, her wings half unfurled behind her like a canopy. She watches your face take her in. The corner of her mouth lifts, hungry and a little frightening. Then she strips you to the skin with those quick, certain hands, and the wind off the Worldwound raises gooseflesh along your arms until her wings come round to cover it.{/n}
 "Hold still." {n}Her palms slide down your chest, and she takes her time, discovering you the way she once discovered a mark, with her fingertips and her eyes. A low, shaky laugh escapes her.{/n} "Oh. You want me too. Good. Say it with your hands."
@@ -245,8 +244,7 @@ She was lean and pale and entirely without apology; she put the Commander's hand
     for sid in ("eliandra.trickster.visit.star_heart", "eliandra.trickster.visit.star_heart_mark"):
         swap(payload, [(sid, "learn")], "Her thigh presses between yours; the loosened white robes gather at her hips.",
              "The loosened white robes gather at her hips.")
-        swap(payload, [(sid, "charts")], "then draws you between her knees at the edge of the bare table.{/n}",
-             "then draws you against the edge of the bare table.{/n}")
+        # Source text owns "charts" now (heat sweep); no swap needed.
         tail(payload, sid, "charts", "{n}Her hands go to your belt before you have finished obeying", '''
 {n}Her hands go to your belt before you have finished obeying, exact and unembarrassed, the way she handles every difficult task. The white robes slip lower at her waist, and the starlight finds her bare shoulders and the pale skin above her collar. She takes your hand from her waist and draws it along her ribs, and watches your face while you learn her.{/n}
 "Not so careful," {n}she says, a little breathless, and bites at your lower lip.{/n} "I have spent a hundred years being careful. Harder. There."
