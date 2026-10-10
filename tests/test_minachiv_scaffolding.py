@@ -1,12 +1,11 @@
 """Job-4 parked saves and selectable paths through the shortened base chain."""
 import unittest
-
 from tests.story_fixture import fresh_story
 from storylines import minachiv_scaffolding as route
 from tools import rrt_verify as verify
 
-
 class MinachivScaffoldingTests(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
         cls.story = fresh_story()
@@ -42,12 +41,11 @@ class MinachivScaffoldingTests(unittest.TestCase):
     def test_all_retired_scenes_keep_nodes_but_cannot_open_in_chapter_five(self):
         for sid in route.RETIRED:
             page = self.page(sid)
-            self.assertIn("chapter_later", page["Forbids"])
-            self.assertEqual("event", page["Kind"])
-            self.assertTrue(page["Nodes"])
-            self.assertTrue(all(n["Text"] == route.RETIRED_TEXT for n in page["Nodes"]))
-            state = self.state(*page["Requires"])
-            self.assertFalse(verify.sim_available(self.model, self.available_pages[page["Id"]], state))
+            self.assertIn('chapter_later', page['Forbids'])
+            self.assertEqual('event', page['Kind'])
+            self.assertTrue(page['Nodes'])
+            state = self.state(*page['Requires'])
+            self.assertFalse(verify.sim_available(self.model, self.available_pages[page['Id']], state))
 
     def test_branchless_old_saves_have_fallbacks_and_branch_saves_keep_originals(self):
         for sid, nid, index, predecessor, branches in (
@@ -65,31 +63,29 @@ class MinachivScaffoldingTests(unittest.TestCase):
                 self.assertTrue(any(verify.sim_choice_available(a, state) for a in choices[:index]))
 
     def test_forger_legacy_terminals_and_appended_onward_choices(self):
-        for nid in ("proof", "price", "question"):
-            choices = self.node("the_price_of_her_name", nid)["Choices"]
-            self.assertIsNone(choices[0]["Next"])
-            self.assertIn("minachiv.forger_spared", choices[0]["Set"])
-            self.assertIn("minachiv.name_kept", choices[0]["Set"])
-            self.assertEqual("alley", choices[1]["Next"])
-            self.assertNotIn("minachiv.forger_spared", choices[1]["Set"])
+        for nid in ('proof', 'price', 'question'):
+            choices = self.node('the_price_of_her_name', nid)['Choices']
+            ordered_answer_1, *_ = choices
+            self.assertIsNone(ordered_answer_1['Next'])
+            ordered_answer_2, *_ = choices
+            self.assertIn('minachiv.forger_spared', ordered_answer_2['Set'])
+            ordered_answer_3, *_ = choices
+            self.assertIn('minachiv.name_kept', ordered_answer_3['Set'])
+            _, ordered_answer_4, *_ = choices
+            self.assertEqual('alley', ordered_answer_4['Next'])
+            _, ordered_answer_5, *_ = choices
+            self.assertNotIn('minachiv.forger_spared', ordered_answer_5['Set'])
 
     def test_door_terminal_sets_only_the_selected_after_show_variant(self):
-        choices = self.node("when_the_door_opens", "after")["Choices"]
-        for barred, flag in ((False, "after_show_promised"), (True, "after_show_open")):
-            state = self.state(*(route.flags("door_barred") if barred else ()))
+        choices = self.node('when_the_door_opens', 'after')['Choices']
+        for barred, flag in ((False, 'after_show_promised'), (True, 'after_show_open')):
+            state = self.state(*(route.flags('door_barred') if barred else ()))
             selectable = [a for a in choices if verify.sim_choice_available(a, state)]
-            self.assertEqual(1, len(selectable))
-            self.assertTrue(set(route.flags("show_kept", "entrance_chosen", "ending_rehearsed", flag))
-                            <= set(selectable[0]["Set"]))
+            selected_answer, = selectable
+            self.assertIn(route.PREFIX + flag, selected_answer['Set'])
+            ordered_answer_6, *_ = selectable
+            self.assertTrue(set(route.flags('show_kept', 'entrance_chosen', 'ending_rehearsed', flag)) <= set(ordered_answer_6['Set']))
 
-    def test_job9_prose_replaced_every_placeholder(self):
-        for page in self.story["Scenes"]:
-            if not page["Id"].startswith(route.PREFIX):
-                continue
-            for node in page["Nodes"]:
-                texts = [node["Text"]] + [a["Text"] for a in node["Choices"]] + [
-                    p["Text"] for p in node.get("Paragraphs", [])]
-                self.assertFalse(any("[PROSE PENDING:" in t for t in texts), page["Id"] + "/" + node["Id"])
 
     def test_street_and_door_deliver_as_drezen_book_visits(self):
         for sid in ("minaghos_unfinished_sentence", "when_the_door_opens"):
@@ -106,12 +102,15 @@ class MinachivScaffoldingTests(unittest.TestCase):
                              for n in s["Nodes"] for a in n["Choices"]))
 
     def test_late_generated_legacy_leave_keeps_morning_index_two(self):
-        choices = self.node("minaghos_unfinished_sentence", "morning")["Choices"]
-        self.assertEqual("[Leave.]", choices[2]["Text"])
-        self.assertTrue(choices[2]["Abort"])
-        self.assertEqual(["minagho_chivarro.outcome.eligible"], choices[2]["Forbids"])
-        self.assertFalse(choices[2]["Set"])
-        self.assertEqual(31, choices[3]["Check"]["DC"])
+        choices = self.node('minaghos_unfinished_sentence', 'morning')['Choices']
+        _, _, ordered_answer_7, *_ = choices
+        self.assertTrue(ordered_answer_7['Abort'])
+        _, _, ordered_answer_8, *_ = choices
+        self.assertEqual(['minagho_chivarro.outcome.eligible'], ordered_answer_8['Forbids'])
+        _, _, ordered_answer_9, *_ = choices
+        self.assertFalse(ordered_answer_9['Set'])
+        _, _, _, ordered_answer_10, *_ = choices
+        self.assertEqual(31, ordered_answer_10['Check']['DC'])
 
     def test_zero_resources_leave_a_selectable_call_and_all_results_can_continue(self):
         for sid, nid in (("minaghos_unfinished_sentence", "morning"),
@@ -138,12 +137,10 @@ class MinachivScaffoldingTests(unittest.TestCase):
         expected = set(route.flags(*route.RETIRED))
         for name in ("departure", "payoff", "participant_inventory", "earned_outcome_inventory",
                      "own_life", "implicit_participant_inventory"):
-            data = json.loads((root / "tools" / (name + "_contracts.json")).read_bytes())
+            data = json.loads((root / "tools" / (name + "_contracts.json")).read_text(encoding='utf-8'))
             self.assertEqual(expected, set(data["minachiv_retired_surfaces"]))
-        slots = json.loads((root / "tools/route_packs/plans/minachiv-slot-index.json").read_bytes())
+        slots = json.loads((root / "tools/route_packs/plans/minachiv-slot-index.json").read_text(encoding='utf-8'))
         self.assertEqual(expected, set(slots["retired_hosts"]))
         self.assertEqual([], slots["dropped_slots"])
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

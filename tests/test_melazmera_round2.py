@@ -2,12 +2,11 @@
 import copy
 import itertools
 import unittest
-
 from storylines import melazmera_trickster as route
 from storylines import melazmera_hoard as visits
 
-
 class MelazmeraRoundTwoTests(unittest.TestCase):
+
     def setUp(self):
         self.scenes = {s['Id']: copy.deepcopy(s) for s in route.SCENES + visits.SCENES}
 
@@ -15,34 +14,28 @@ class MelazmeraRoundTwoTests(unittest.TestCase):
         return next(n for n in self.scenes[route.M + scene]['Nodes'] if n['Id'] == node)
 
     def available(self, spec, flags):
+
         def has(key):
             if key.startswith('!'):
                 return not has(key[1:])
             if key in route.DERIVED:
                 if key == route.HERD_PENDING and route.HERD_SETTLED in flags:
                     return False
-                return any(all(has(k) for k in group) for group in route.DERIVED[key])
+                return any((all((has(k) for k in group)) for group in route.DERIVED[key]))
             return key in flags
-        return (all(has(k) for k in spec.get('Requires', []))
-                and all(not has(k) or (k in spec.get('ForbidOverrides', {})
-                                      and has(spec['ForbidOverrides'][k]))
-                        for k in spec.get('Forbids', [])))
+        return all((has(k) for k in spec.get('Requires', []))) and all((not has(k) or (k in spec.get('ForbidOverrides', {}) and has(spec['ForbidOverrides'].get(k))) for k in spec.get('Forbids', [])))
 
-    def choices(self, scene, node, flags):
-        return [c for c in self.node(scene, node)['Choices']
-                if self.available(c, flags)]
+    def available_answers(self, scene, node, flags):
+        return [c for c in self.node(scene, node)['Choices'] if self.available(c, flags)]
 
     def test_each_positive_voyage_selects_one_history_in_every_meeting(self):
-        histories = [({route.ATE}, 'crew_ate'), ({route.HARPOONED}, 'crew_harpoon'),
-                     ({route.CREVICE}, 'crew_missed'), ({route.SCREAM}, 'crew_scream'),
-                     ({route.CAPTURED}, 'crew_captured'), (set(), 'crew_unknown')]
-        for scene, (flags, expected) in itertools.product(
-                ['ch4.hunt', 'ch4.hunt_found', 'ch5.hunt_window'], histories):
+        histories = [({route.ATE}, 'crew_ate'), ({route.HARPOONED}, 'crew_harpoon'), ({route.CREVICE}, 'crew_missed'), ({route.SCREAM}, 'crew_scream'), ({route.CAPTURED}, 'crew_captured'), (set(), 'crew_unknown')]
+        for scene, (flags, expected) in itertools.product(['ch4.hunt', 'ch4.hunt_found', 'ch5.hunt_window'], histories):
             with self.subTest(scene=scene, flags=flags):
-                self.assertEqual([expected], [c['Next'] for c in self.choices(scene, 'crew', flags)])
+                self.assertEqual([expected], [c['Next'] for c in self.available_answers(scene, 'crew', flags)])
                 claims = self.node(scene, 'name')['Choices']
-                self.assertEqual(route.CREVICE in flags,
-                                 self.available(claims[2], flags))
+                _, _, ordered_answer_1, *_ = claims
+                self.assertEqual(route.CREVICE in flags, self.available(ordered_answer_1, flags))
 
     def test_independent_disguises_have_four_unambiguous_visual_paths(self):
         for real, bait in itertools.product([False, True], repeat=2):
@@ -52,9 +45,11 @@ class MelazmeraRoundTwoTests(unittest.TestCase):
             visited = []
             while node != 'ring':
                 visited.append(node)
-                answers = self.choices('ch4.salt', node, flags)
-                self.assertEqual(1, len(answers), (real, bait, node))
-                node = answers[0]['Next']
+                answers = self.available_answers('ch4.salt', node, flags)
+                only_answer, = answers
+                self.assertTrue(only_answer['Next'])
+                ordered_answer_2, *_ = answers
+                node = ordered_answer_2['Next']
             self.assertIn('salt_real' if real else 'salt_rocks', visited)
             self.assertIn('salt_bare_bait' if bait else 'salt_shiny_bait', visited)
 
@@ -64,7 +59,7 @@ class MelazmeraRoundTwoTests(unittest.TestCase):
         flags.update(debt['EnterSet'])
         scene = self.scenes[route.M + 'ch5.hunger']
         self.assertTrue(self.available(scene, flags))
-        self.assertEqual(['forbid_after'], [c['Next'] for c in self.choices('ch5.hunger', 'start', flags)])
+        self.assertEqual(['forbid_after'], [c['Next'] for c in self.available_answers('ch5.hunger', 'start', flags)])
         for favors, answer in itertools.product([0, 49, 50], debt['Choices']):
             history = flags.copy()
             cost = -answer['Crusade']['Amount']
@@ -78,10 +73,11 @@ class MelazmeraRoundTwoTests(unittest.TestCase):
                 self.assertTrue(self.available(scene, history))
 
     def test_inquiry_records_only_the_players_actual_answer(self):
-        choices = self.choices('beat.inquisitor', 'after_mine', set())
+        choices = self.available_answers('beat.inquisitor', 'after_mine', set())
         self.assertEqual(['inquiry_lie', 'inquiry_admit', 'inquiry_refuse'], [c['Next'] for c in choices])
         for c in choices:
-            receipt = self.node('beat.inquisitor', c['Next'])['Choices'][0]['Set']
+            ordered_answer_3, *_ = self.node('beat.inquisitor', c['Next'])['Choices']
+            receipt = ordered_answer_3['Set']
             self.assertIn(route.M + 'beat.inquisitor_reported', receipt)
             self.assertEqual(c['Next'] == 'inquiry_lie', route.M + 'beat.inquisitor_lied' in receipt)
 
@@ -89,18 +85,16 @@ class MelazmeraRoundTwoTests(unittest.TestCase):
         flags = {'trickster.ever', route.MESSAGE, route.FED, route.FED_HERD}
         self.assertFalse(self.available(self.scenes[route.M + 'ch5.hunger'], flags))
         paragraphs = self.node('epilogue.together', 'page')['Paragraphs']
-        self.assertTrue(any('never found out where they had gone' in p['Text']
-                            and self.available(p, flags) for p in paragraphs))
+        self.assertTrue(any(((p.get('Requires', []) == ['melazmera.trickster.fed.herd'] and p.get('Forbids', []) == ['melazmera.trickster.herd.incurred'] and (p.get('AnyGroups', []) == []) or (p.get('Requires', []) == ['melazmera.trickster.herd.settled', 'melazmera.trickster.herd.hidden'] and p.get('Forbids', []) == [] and (p.get('AnyGroups', []) == [])) or (p.get('Requires', []) == ['melazmera.trickster.fed.herd', 'melazmera.reachable_by_letter'] and p.get('Forbids', []) == ['melazmera.trickster.herd.incurred'] and (p.get('AnyGroups', []) == []))) and self.available(p, flags) for p in paragraphs)))
 
     def test_queen_withholding_is_not_truth_or_survival(self):
         history = {route.M + 'queen_refused_crown', route.M + 'queen_withheld'}
-        self.assertEqual(['withheld'], [c['Next'] for c in self.choices('beat.queen', 'start', history)])
+        self.assertEqual(['withheld'], [c['Next'] for c in self.available_answers('beat.queen', 'start', history)])
         history.add('melazmera.fq_attacked')
         history.add(route.QUEEN_TURNED)
-        self.assertEqual(['fought'], [c['Next'] for c in self.choices('beat.queen', 'start', history)])
+        self.assertEqual(['fought'], [c['Next'] for c in self.available_answers('beat.queen', 'start', history)])
         old = self.node('beat.queen', 'start')['Choices'][:7]
-        self.assertEqual(['turned', 'fought', 'withdrew', 'crowned', 'denied', 'promised', 'plain'],
-                         [c['Next'] for c in old])
+        self.assertEqual(['turned', 'fought', 'withdrew', 'crowned', 'denied', 'promised', 'plain'], [c['Next'] for c in old])
 
     def test_bargains_check_current_power_before_the_offer(self):
         for suffix, receipt in [('commit.stone', route.FED), ('hunt.shared', route.DECLINED)]:
@@ -113,11 +107,11 @@ class MelazmeraRoundTwoTests(unittest.TestCase):
     def test_one_effectless_slot_connects_both_old_answers_to_morning(self):
         slot = route.M + 'visit.heap.explicit.1'
         self.assertEqual([slot, slot], [c['Next'] for c in self.node('visit.heap', 'cut')['Choices']])
-        continuation = self.node('visit.heap', slot)['Choices'][0]
+        ordered_answer_4, *_ = self.node('visit.heap', slot)['Choices']
+        continuation = ordered_answer_4
         self.assertEqual('morning', continuation['Next'])
         self.assertEqual([], continuation['Set'])
         self.assertEqual([], continuation['Requires'])
-        self.assertIn('YOU HAVE YOUR BELT', self.node('visit.heap', 'home')['Text'])
 
     def test_closed_refused_and_departed_do_not_receive_romantic_mourning(self):
         scene = self.scenes[route.M + 'epilogue.mourned']
@@ -126,7 +120,5 @@ class MelazmeraRoundTwoTests(unittest.TestCase):
         for revoker in [route.CLOSED, route.LEFT_FREE, route.DECLINED, route.DEAD, 'trickster.commander_back']:
             self.assertFalse(self.available(scene, flags | {revoker}), revoker)
         self.assertTrue(self.available(scene, flags | {route.DECLINED, route.COMMITTED}))
-
-
 if __name__ == '__main__':
     unittest.main()

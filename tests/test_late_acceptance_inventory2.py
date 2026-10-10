@@ -1,20 +1,20 @@
 """eng8-q8h: false-acceptance and infeasible-consumer mutations are hard L4 findings."""
+from tests.story_fixture import fresh_story
+
 import copy
 import json
 from pathlib import Path
 import unittest
-
 from tools import rrt_verify as V
 from tools.crossroute_checks import late_commitment
 from tools.crossroute_checks.common import Proof, blocks
-
 ROOT = Path(__file__).resolve().parents[1]
 
-
 class LateAcceptanceInventory2Tests(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads((ROOT / 'development/Story.json').read_text(encoding="utf-8"))
+        cls.story = fresh_story()
         cls.inventory = json.loads((ROOT / 'tools/late_acceptance_inventory2_contracts.json').read_text(encoding="utf-8"))
 
     def errors(self, story):
@@ -28,11 +28,13 @@ class LateAcceptanceInventory2Tests(unittest.TestCase):
         self.assertEqual(self.errors(self.story), [])
 
     def test_refusal_keeps_saved_generic_continue_identity(self):
-        scene = next(s for s in self.story['Scenes'] if s['Id'] == 'kiana.trickster.epilogue.commit')
-        blank = next(n for n in scene['Nodes'] if n['Id'] == 'blank')
+        scene = next((s for s in self.story['Scenes'] if s['Id'] == 'kiana.trickster.epilogue.commit'))
+        blank = next((n for n in scene['Nodes'] if n['Id'] == 'blank'))
         self.assertIn('kiana.trickster.late_no', blank['EnterSet'])
-        self.assertEqual(len(blank['Choices']), 1)
-        answer = blank['Choices'][0]
+        legacy_answer, = blank['Choices']
+        self.assertIsNone(legacy_answer['Next'])
+        ordered_answer_1, *_ = blank['Choices']
+        answer = ordered_answer_1
         self.assertIsNone(answer['Next'])
         self.assertEqual(answer['Set'], [])
         self.assertEqual(answer['Requires'], [])

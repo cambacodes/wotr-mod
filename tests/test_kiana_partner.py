@@ -1,16 +1,13 @@
 """Route-local stance outcomes, native discovery attachment and state partitions."""
 import copy
 import unittest
-
 from storylines import kiana, kiana_partner as partner, kiana_trickster, kiana_progression
 from story_format import c, n, scene
-
 
 def holds(block, flags):
     return (all(key in flags for key in block.get("Requires", []))
             and not any(key in flags for key in block.get("Forbids", []))
             and all(any(key in flags for key in group) for group in block.get("AnyGroups", [])))
-
 
 def walk(nodes, start, flags):
     by_id = {node["Id"]: node for node in nodes}
@@ -31,8 +28,8 @@ def walk(nodes, start, flags):
     visit(start, set(flags), set())
     return outcomes
 
-
 class KianaPartnerTests(unittest.TestCase):
+
     def payload(self):
         scenes = copy.deepcopy(kiana.SCENES + kiana_progression.SCENES + kiana_trickster.SCENES)
         ep = next(s for s in scenes if s["Id"] == "kiana.trickster.epilogue.commit")
@@ -48,48 +45,44 @@ class KianaPartnerTests(unittest.TestCase):
     def test_every_commitment_host_offers_each_stance_with_earned_outcomes(self):
         from storylines import kiana_round4 as r4
         data = self.payload()
-        books = {s["Id"]: s for s in data["Scenes"]}
-        for sid in ("kiana.morning", "kiana.trickster.late_question", "kiana.trickster.late_question_letter", "kiana.trickster.epilogue.commit"):
-            host = next(s for s in data["Scenes"] if s["Id"] == sid)
-            outcomes = walk(host["Nodes"], "partner_terms", {partner.OPEN, "kiana.company", "kiana.rehearsed"})
-            # Late living-partner talks now dispatch rather than manufacture
-            # Elan's reply immediately. Continue each history at its later
-            # delivery; the separate D29/D30 tests assert elapsed-time gates.
+        books = {s['Id']: s for s in data['Scenes']}
+        for sid in ('kiana.morning', 'kiana.trickster.late_question', 'kiana.trickster.late_question_letter', 'kiana.trickster.epilogue.commit'):
+            host = next((s for s in data['Scenes'] if s['Id'] == sid))
+            outcomes = walk(host['Nodes'], 'partner_terms', {partner.OPEN, 'kiana.company', 'kiana.rehearsed'})
             if sid in r4.ALL_HOSTS:
-                early = sid == "kiana.morning"
-                share_sent, breakup_sent = ((r4.EARLY_SHARE_SENT, r4.EARLY_BREAKUP_SENT)
-                                             if early else (r4.SHARE_SENT, r4.BREAKUP_SENT))
+                early = sid == 'kiana.morning'
+                share_sent, breakup_sent = (r4.EARLY_SHARE_SENT, r4.EARLY_BREAKUP_SENT) if early else (r4.SHARE_SENT, r4.BREAKUP_SENT)
                 resumed = []
                 for state in outcomes:
                     if state & {share_sent, breakup_sent}:
-                        self.assertFalse(state & {partner.SHARE, partner.EXCLUSIVE, "kiana.committed", "kiana.separated"})
-                    state |= {"trickster.now", "trickster.ever"}
+                        self.assertFalse(state & {partner.SHARE, partner.EXCLUSIVE, 'kiana.committed', 'kiana.separated'})
+                    state |= {'trickster.now', 'trickster.ever'}
                     if share_sent in state:
-                        resumed.extend(walk(books[sid + ".elan_reply"]["Nodes"], "partner_elan_terms", state))
+                        resumed.extend(walk(books[sid + '.elan_reply']['Nodes'], 'partner_elan_terms', state))
                     elif breakup_sent in state:
-                        waiting = walk(books[sid + ".elan_parting"]["Nodes"], "partner_breakup", state)
+                        waiting = walk(books[sid + '.elan_parting']['Nodes'], 'partner_breakup', state)
                         for delivered in waiting:
-                            resumed.extend(walk(books[sid + ".after_delivery"]["Nodes"], "partner_exclusive_yes", delivered))
+                            resumed.extend(walk(books[sid + '.after_delivery']['Nodes'], 'partner_exclusive_yes', delivered))
                     else:
                         resumed.append(state)
                 outcomes = resumed
             for stance in (partner.SHARE, partner.EXCLUSIVE, partner.SECRET):
-                accepted = [s for s in outcomes if stance in s and "kiana.closed" not in s]
-                self.assertTrue(accepted, sid + ": " + stance)
+                accepted = [s for s in outcomes if stance in s and 'kiana.closed' not in s]
+                self.assertTrue(accepted, sid + ': ' + stance)
                 for state in accepted:
-                    self.assertEqual(len(state & {partner.SHARE, partner.EXCLUSIVE, partner.SECRET}), 1)
+                    self.assertIn(state & {partner.SHARE, partner.EXCLUSIVE, partner.SECRET}, ({partner.SHARE}, {partner.EXCLUSIVE}, {partner.SECRET}))
                     if stance == partner.SHARE:
-                        self.assertIn("kiana.partner_elan_terms_kept", state)
-                        self.assertNotIn("kiana.separated", state)
+                        self.assertIn('kiana.partner_elan_terms_kept', state)
+                        self.assertNotIn('kiana.separated', state)
                     elif stance == partner.EXCLUSIVE:
-                        self.assertIn("kiana.separated", state)
-                        self.assertIn("kiana.partner_breakup_spoken", state)
+                        self.assertIn('kiana.separated', state)
+                        self.assertIn('kiana.partner_breakup_spoken', state)
                     else:
-                        self.assertIn("kiana.affair", state)
-                        self.assertNotIn("kiana.separated", state)
-            refused = [s for s in outcomes if partner.EXCLUSIVE in s and "kiana.closed" in s]
+                        self.assertIn('kiana.affair', state)
+                        self.assertNotIn('kiana.separated', state)
+            refused = [s for s in outcomes if partner.EXCLUSIVE in s and 'kiana.closed' in s]
             self.assertTrue(refused)
-            self.assertTrue(all("kiana.committed" not in s for s in refused))
+            self.assertTrue(all(('kiana.committed' not in s for s in refused)))
 
     def test_dead_partner_has_no_live_terms_or_stance_switch(self):
         outcomes = walk(partner.stance_nodes(("kiana.committed",)), "partner_terms", {partner.DEAD})
@@ -160,7 +153,5 @@ class KianaPartnerTests(unittest.TestCase):
         self.assertEqual(payload["Etudes"][partner.LIVE], "e5e3765b11eec1244a2137c2999f00d1")
         # A Drezen-only Playing etude cannot supply a global death observer.
         self.assertEqual(payload["Derived"][partner.DEAD], [["kiana.elan.death_seen"]])
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

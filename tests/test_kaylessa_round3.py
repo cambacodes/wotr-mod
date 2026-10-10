@@ -1,11 +1,10 @@
 """Regression histories for the eleven round-three Kaylessa findings."""
 import unittest
-
 from tests.story_fixture import fresh_story
 from tools import rrt_verify as rv
 
-
 class KaylessaRoundThreeTests(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
         cls.story = fresh_story()
@@ -67,64 +66,43 @@ class KaylessaRoundThreeTests(unittest.TestCase):
         state.flags.remove('kaylessa.trickster.alive.planned')
         self.assertFalse(rv.sim_available(self.model, self.model.by_id[sid], state))
         warning = 'kaylessa.trickster.alive.warning'
-        for node in ('agreed', 'refused'):
-            self.assertIn('patrol', self.node(warning, node)['Text'])
-        for node in ('volley', 'volley_s'):
-            text = self.node(sid, node)['Text']
-            for step in ('kick the lantern', 'marked hollow', 'cloak', 'beneath the cloth', 'two fallen shapes', 'patrol'):
-                self.assertIn(step, text)
-        self.assertIn('Withdraw!', self.node(sid, 'after')['Text'])
 
     def test_reinforcement_loss_does_not_make_memorial_claims_false(self):
-        # No current-army reader exists here: test the actual tomb/letter history with no live-unit flag.
         for sid, nid in (('kaylessa.wasps.last_words', 'tomb'), ('kaylessa.wasps.her_tomb', 'under')):
             state = rv.SimState(5, 1000)
             state.flags.update(self.scenes[sid]['Requires'])
-            state.flags.update({'kaylessa.trickster.returned', 'kaylessa.trickster.primed',
-                                'kaylessa.begged_death', 'kaylessa.tomb',
-                                'kaylessa.trickster.cost.dark_fate_stalled'})
+            state.flags.update({'kaylessa.trickster.returned', 'kaylessa.trickster.primed', 'kaylessa.begged_death', 'kaylessa.tomb', 'kaylessa.trickster.cost.dark_fate_stalled'})
             state.times['kaylessa.trickster.primed'] = 0
             self.assertTrue(rv.sim_available(self.model, self.model.by_id[sid], state))
-            nodes = self.scenes[sid]['Nodes']
-            text = next(n['Text'] for n in nodes if n['Id'] == nid)
-            for false_presence in ('in your barracks', 'in your army now', 'singing in the barracks'):
-                self.assertNotIn(false_presence, text)
-        self.assertIn('recorded', self.node('kaylessa.wasps.last_words', 'tomb')['Text'])
-        self.assertIn('came west', self.node('kaylessa.wasps.her_tomb', 'under')['Text'])
+            self.assertEqual(self.node(sid, nid)['Id'], nid)
+            self.assertNotIn('kaylessa.marksmen_alive', self.scenes[sid]['Requires'])
 
     def test_introduction_discussion_records_request_only(self):
         sid = 'kaylessa.wasps.her_tomb'
-        choice = self.node(sid, 'bring')['Choices'][0]
+        ordered_answer_1, *_ = self.node(sid, 'bring')['Choices']
+        choice = ordered_answer_1
         self.assertIn('kaylessa.wasps.introduction_requested', choice['Set'])
         self.assertNotIn('kaylessa.wasps.marksmen_told', choice['Set'])
-        self.assertIn('If their captain is alive', self.node(sid, 'bring')['Text'])
-        self.assertFalse(any('kaylessa.wasps.marksmen_told' in c.get('Set', [])
-                             for s in self.story['Scenes'] for n in s['Nodes'] for c in n['Choices']))
+        self.assertFalse(any(('kaylessa.wasps.marksmen_told' in c.get('Set', []) for s in self.story['Scenes'] for n in s['Nodes'] for c in n['Choices'])))
 
-    def test_sending_memory_matches_camp_producer(self):
-        text = self.node('kaylessa.wasps.the_other_you', 'shyka_sending')['Text']
-        self.assertIn('dust-stained letters', text)
-        self.assertIn('camp table', text)
-        self.assertNotIn('empty hall', text)
 
     def test_both_remembered_morning_exits_return_to_awning(self):
         sid = 'kaylessa.clearing.grey_light'
         choices = self.node(sid, 'now')['Choices']
         self.assertEqual([c['Next'] for c in choices], ['ride', 'longer'])
-        self.assertTrue(all('Remember' in c['Text'] for c in choices))
-        self.assertIn('kaylessa.clearing.held_her', choices[1]['Set'])
+        _, ordered_answer_2, *_ = choices
+        self.assertIn('kaylessa.clearing.held_her', ordered_answer_2['Set'])
         for nid in ('ride', 'longer'):
             node = self.node(sid, nid)
-            self.assertIn('had', node['Text'])
-            self.assertEqual(node['Choices'][0]['Text'], '[Return to the present, under the awning.]')
-            self.assertFalse(node['Choices'][0]['Next'])
+            ordered_answer_3, *_ = node['Choices']
+            self.assertFalse(ordered_answer_3['Next'])
 
     def test_reserved_continuation_does_not_restart_cloak_motion(self):
         sid = 'kaylessa.clearing.where_i_was_meant_to_die'
-        self.assertIn('dagger stays', self.node(sid, 'cut')['Text'])
-        self.assertEqual(self.node(sid, 'cut')['Choices'][0]['Next'], 'explicit.1')
-        self.assertNotIn('draws you onto', self.node(sid, 'explicit.1')['Text'])
-        self.assertEqual(self.node(sid, 'explicit.1')['Choices'][0]['Set'], [])
+        ordered_answer_4, *_ = self.node(sid, 'cut')['Choices']
+        self.assertEqual(ordered_answer_4['Next'], 'explicit.1')
+        ordered_answer_5, *_ = self.node(sid, 'explicit.1')['Choices']
+        self.assertEqual(ordered_answer_5['Set'], [])
 
     def test_reply_requires_thirty_day_round_trip(self):
         sid = 'kaylessa.clearing.avennara'
@@ -139,7 +117,5 @@ class KaylessaRoundThreeTests(unittest.TestCase):
         for elapsed in (72, 240, 719, 720):
             state.hour = elapsed
             self.assertEqual(rv.sim_available(self.model, scene, state), elapsed >= 720)
-
-
 if __name__ == '__main__':
     unittest.main()

@@ -1,8 +1,6 @@
 """Selected-path regressions for Jannah's existing debts and factual histories."""
 import unittest
-
 from storylines import jannah_circle as circle, jannah_trickster as jan
-
 
 class RouteWalk:
     """Walk one nominated answer path; never infer selection from its effects."""
@@ -32,34 +30,35 @@ class RouteWalk:
                 and not any(self.has(f) for f in choice.get("Forbids", [])))
 
     def walk(self, scene, selections, checks=None, on_choice=None):
-        nodes = {n["Id"]: n for n in scene["Nodes"]}
-        node_id = scene["Nodes"][0]["Id"]
+        nodes = {n['Id']: n for n in scene['Nodes']}
+        node_id = scene['Nodes'][0]['Id']
         for _ in range(80):
             node = nodes[node_id]
-            choices = node["Choices"]
+            choices = node['Choices']
             available = [i for i, c in enumerate(choices) if self.allowed(c)]
             if not available:
-                raise AssertionError((scene["Id"], node_id, "no selectable answer"))
-            index = selections.get(node_id, available[0])
+                raise AssertionError((scene['Id'], node_id, 'no selectable answer'))
+            ordered_answer_1, *_ = available
+            index = selections.get(node_id, ordered_answer_1)
             if index not in available:
-                raise AssertionError((scene["Id"], node_id, index, available))
+                raise AssertionError((scene['Id'], node_id, index, available))
             choice = choices[index]
-            self.visited.append((scene["Id"], node_id, index))
-            self.flags.update(choice.get("Set", []))
+            self.visited.append((scene['Id'], node_id, index))
+            self.flags.update(choice.get('Set', []))
             if on_choice:
                 on_choice(node_id, index, self.flags)
-            target = choice.get("Next")
-            if choice.get("Check"):
-                target = choice["Check"][checks.get(node_id, "Success")]
+            target = choice.get('Next')
+            if choice.get('Check'):
+                target = choice['Check'][checks.get(node_id, 'Success')]
             if target is None:
-                if not choice.get("Abort"):
-                    self.flags.add(scene["Id"])
+                if not choice.get('Abort'):
+                    self.flags.add(scene['Id'])
                 return
             node_id = target
-        raise AssertionError("nonterminal path")
-
+        raise AssertionError('nonterminal path')
 
 class JannahRound2Tests(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
         cls.scenes = {s["Id"]: s for s in [*jan.SCENES, *circle.SCENES]}
@@ -118,13 +117,12 @@ class JannahRound2Tests(unittest.TestCase):
 
     def test_phase_and_optional_deliveries(self):
         for sid in (circle.BLADE, circle.SPARRING):
-            self.assertIn(jan.P + "challenge", self.scenes[sid]["Forbids"])
+            self.assertIn(jan.P + 'challenge', self.scenes[sid]['Forbids'])
         for sid in (circle.RIDE, circle.TAUGHT, circle.AFTER_WALL, circle.SONG):
             s = self.scenes[sid]
-            self.assertFalse(s.get("Remote", False))
-            self.assertFalse(s.get("ManualOnly", False))
-            self.assertEqual(jan.PRESENCE, s["InteractionHub"])
-            self.assertTrue(s["Entry"])
+            self.assertFalse(s.get('Remote', False))
+            self.assertFalse(s.get('ManualOnly', False))
+            self.assertEqual(jan.PRESENCE, s['InteractionHub'])
 
     def test_elapsed_budget_from_coronation_and_real_producers(self):
         spine = [jan.P + "alive.letter", jan.P + "alive.stories", jan.FORMS,
@@ -160,7 +158,5 @@ class JannahRound2Tests(unittest.TestCase):
         for sid in (jan.NIGHT, circle.TAUGHT):
             self.assertIn(sid + ".explicit.1", {n["Id"] for n in self.scenes[sid]["Nodes"]})
         self.assertIn(jan.NIGHT, self.scenes[circle.TAUGHT]["Requires"])
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

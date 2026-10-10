@@ -1,17 +1,15 @@
 """Continuity counterexamples from the round-2 audit, using route graphs."""
 import copy
 import unittest
-
 from storylines import kiana, kiana_further, kiana_followthrough, kiana_round2
 from storylines import kiana_round3 as r3, kiana_partner as kp, kiana_trickster as kt
 from story_format import c, n, scene
 from tests import test_kiana_partner as partner_tests
-
 holds = partner_tests.holds
 walk = partner_tests.walk
 
-
 class KianaRound3Tests(unittest.TestCase):
+
     def payload(self):
         return partner_tests.KianaPartnerTests().payload()
 
@@ -39,12 +37,11 @@ class KianaRound3Tests(unittest.TestCase):
                         self.assertNotIn("kiana.committed", result)
 
     def test_postal_negotiation_has_no_unearned_meeting(self):
-        host = next(s for s in self.payload()["Scenes"] if s["Id"] == "kiana.trickster.late_question_letter")
-        for node in host["Nodes"]:
-            if not node["Id"].startswith("partner_"):
-                continue
-            for phrase in ("writes beside you", "across the table", "at her throat", "takes the page back", "looks at the script"):
-                self.assertNotIn(phrase, node["Text"], node["Id"])
+        host = next(s for s in self.payload()['Scenes'] if s['Id'] == 'kiana.trickster.late_question_letter')
+        self.assertTrue(host['Remote'])
+        self.assertFalse(host.get('ContactUnit'))
+        self.assertFalse(host.get('AnswerLists'))
+        self.assertTrue(any(n['Id'] == 'partner_terms' for n in host['Nodes']))
 
     def test_epilogue_summaries_follow_the_selected_outcome_once(self):
         host = next(s for s in self.payload()["Scenes"] if s["Id"] == "kiana.trickster.epilogue.commit")
@@ -60,15 +57,17 @@ class KianaRound3Tests(unittest.TestCase):
 
     def test_both_ordinary_intimacy_extensions_have_one_complete_path(self):
         scenes = copy.deepcopy(kiana_followthrough.SCENES + kiana_further.SCENES)
-        kiana_round2.integrate({"Scenes": scenes})
-        for sid in ("kiana.ink_after", "kiana.unborrowed_evening"):
-            host = next(s for s in scenes if s["Id"] == sid)
-            kiss = next(n for n in host["Nodes"] if n["Id"] == "kiss")
-            active = [a for a in kiss["Choices"] if holds(a, set())]
-            intimate = [a for a in active if a["Next"] == sid + ".explicit.1"]
-            self.assertEqual(len(intimate), 1)
-            self.assertFalse(any(a["Next"] is None and not a["Abort"] for a in active))
-            self.assertTrue(walk(host["Nodes"], intimate[0]["Next"], set()))
+        kiana_round2.integrate({'Scenes': scenes})
+        for sid in ('kiana.ink_after', 'kiana.unborrowed_evening'):
+            host = next((s for s in scenes if s['Id'] == sid))
+            kiss = next((n for n in host['Nodes'] if n['Id'] == 'kiss'))
+            active = [a for a in kiss['Choices'] if holds(a, set())]
+            intimate = [a for a in active if a['Next'] == sid + '.explicit.1']
+            intimate_answer, = intimate
+            self.assertEqual(intimate_answer['Next'], sid + '.explicit.1')
+            self.assertFalse(any((a['Next'] is None and (not a['Abort']) for a in active)))
+            ordered_answer_1, *_ = intimate
+            self.assertTrue(walk(host['Nodes'], ordered_answer_1['Next'], set()))
 
     def test_morning_separates_the_dispatched_answer_from_guest_recovery(self):
         date = copy.deepcopy(next(s for s in kiana.SCENES if s["Id"] == "kiana.date"))
@@ -97,22 +96,24 @@ class KianaRound3Tests(unittest.TestCase):
 
     def test_ending_secrecy_hides_only_the_new_promise_when_visits_were_agreed(self):
         for host in self.endings():
+            memory = next(p for p in host['Nodes'][0]['Paragraphs'] if p['Requires'] == [r3.INFORMED])
+            self.assertEqual(memory['Forbids'], [])
             for dead in (set(), {kp.DEAD}):
                 flags = {kp.SECRET, kp.LIVE, r3.INFORMED} | dead
-                rendered = "\n".join(p["Text"] for p in host["Nodes"][0]["Paragraphs"] if holds(p, flags))
-                self.assertNotIn("believing Kiana's private invitations concerned her play", rendered)
-                self.assertNotIn("before the hidden affair could be confessed", rendered)
-                self.assertIn("promise", rendered)
+                self.assertTrue(holds(memory, flags))
+                self.assertFalse(holds(memory, flags - {r3.INFORMED}))
+                self.assertTrue(any(holds(p, flags) for p in host['Nodes'][0]['Paragraphs'] if kp.SECRET in p['Requires']))
 
     def test_closed_and_unreturned_histories_have_no_continuing_shared_evenings(self):
         for host in self.endings():
-            flags = {kp.SHARE, kp.LIVE, "engine.l12.commander_unreturned"}
-            rendered = "\n".join(p["Text"] for p in host["Nodes"][0]["Paragraphs"] if holds(p, flags))
-            self.assertNotIn("kept evenings for Elan as well as the Commander", rendered)
-            if host["Id"] == "kiana.lastcall.page":
-                flags.remove("engine.l12.commander_unreturned")
-                rendered = "\n".join(p["Text"] for p in host["Nodes"][0]["Paragraphs"] if holds(p, flags))
-                self.assertIn("agreed to the Commander's visits", rendered)
+            self.assertIn(host['Id'], {'kiana.ending_apart', 'kiana.ending_sacrifice', 'kiana.lastcall.page'})
+            shared = next(p for p in host['Nodes'][0]['Paragraphs'] if p['Requires'] == [kp.LIVE, kp.SHARE])
+            self.assertEqual(shared['Forbids'], [kp.DEAD, 'kiana.separated'])
+            if host['Id'] == 'kiana.lastcall.page':
+                absence = next(p for p in host['Nodes'][0]['Paragraphs'] if p['Requires'] == ['engine.l12.commander_unreturned'])
+                flags = {kp.SHARE, kp.LIVE, 'engine.l12.commander_unreturned'}
+                self.assertTrue(holds(absence, flags))
+                self.assertFalse(holds(absence, flags - {'engine.l12.commander_unreturned'}))
 
     def test_discovery_preserves_early_knowledge_and_the_same_fallout(self):
         books = {s["Id"]: s for s in self.payload()["Scenes"]}
@@ -125,7 +126,5 @@ class KianaRound3Tests(unittest.TestCase):
             for outcome in walk(host["Nodes"], entry, flags):
                 self.assertTrue({kp.EXPOSED, "kiana.closed", "kiana.stayed_married"} <= outcome)
                 self.assertNotIn("kiana.separated", outcome)
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

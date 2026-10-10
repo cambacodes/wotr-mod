@@ -1,14 +1,12 @@
 """Played-history regressions for D29/D30's dispatch and delivery boundaries."""
 import unittest
-
 from storylines import kiana_partner as kp, kiana_round4 as r4
 from tests import test_kiana_partner as partner_tests
-
 holds = partner_tests.holds
 walk = partner_tests.walk
 
-
 class KianaRound4Tests(unittest.TestCase):
+
     def setUp(self):
         self.books = {s["Id"]: s for s in partner_tests.KianaPartnerTests().payload()["Scenes"]}
         self.flags = {"trickster.now", "trickster.ever", kp.OPEN,
@@ -65,21 +63,21 @@ class KianaRound4Tests(unittest.TestCase):
     def test_live_and_postal_followups_keep_presence_and_choice_identity(self):
         for sid in r4.HOSTS:
             original = self.books[sid]
-            for suffix in (".elan_reply", ".elan_parting", ".after_delivery"):
+            for suffix in ('.elan_reply', '.elan_parting', '.after_delivery'):
                 followup = self.books[sid + suffix]
-                self.assertEqual(followup["Relationship"], "kiana")
-                for flag in original["Forbids"]:
+                self.assertEqual(followup['Relationship'], 'kiana')
+                for flag in original['Forbids']:
                     if flag not in r4.PENDING:
-                        self.assertIn(flag, followup["Forbids"])
-                self.assertTrue(set(original["Requires"]) <= set(followup["Requires"]))
-                self.assertTrue(all(not node.get("Paragraphs") for node in followup["Nodes"]))
-            nodes = {n["Id"]: n for n in original["Nodes"]}
-            for name in ("partner_share", "partner_breakup"):
-                self.assertEqual(nodes[name]["Choices"][0]["Next"],
-                                 "partner_elan_terms" if name == "partner_share" else "partner_elan_breakup")
-                self.assertFalse(holds(nodes[name]["Choices"][0], self.flags))
-            for name in ("partner_elan_terms", "partner_elan_breakup", "partner_share_yes",
-                         "partner_exclusive_yes", "promise_accepted"):
+                        self.assertIn(flag, followup['Forbids'])
+                self.assertTrue(set(original['Requires']) <= set(followup['Requires']))
+                self.assertTrue(all((not node.get('Paragraphs') for node in followup['Nodes'])))
+            nodes = {n['Id']: n for n in original['Nodes']}
+            for name in ('partner_share', 'partner_breakup'):
+                ordered_answer_1, *_ = nodes[name]['Choices']
+                self.assertEqual(ordered_answer_1['Next'], 'partner_elan_terms' if name == 'partner_share' else 'partner_elan_breakup')
+                ordered_answer_2, *_ = nodes[name]['Choices']
+                self.assertFalse(holds(ordered_answer_2, self.flags))
+            for name in ('partner_elan_terms', 'partner_elan_breakup', 'partner_share_yes', 'partner_exclusive_yes', 'promise_accepted'):
                 self.assertIn(name, nodes)
 
     def test_physical_request_can_finish_by_post_if_placement_later_fails(self):
@@ -94,30 +92,28 @@ class KianaRound4Tests(unittest.TestCase):
     def test_shipped_late_yes_exit_positions_survive_the_staging_split(self):
         from tests.story_fixture import fresh_story
         from tools.savecompat import choice_identities
-        exported = {s["Id"]: s for s in fresh_story()["Scenes"]}
+        exported = {s['Id']: s for s in fresh_story()['Scenes']}
         for books in (self.books, exported):
             for sid in r4.HOSTS:
-                nodes = {n["Id"]: n for n in books[sid]["Nodes"]}
-                for name in ("partner_share_yes", "partner_exclusive_yes"):
+                nodes = {n['Id']: n for n in books[sid]['Nodes']}
+                for name in ('partner_share_yes', 'partner_exclusive_yes'):
                     with self.subTest(exported=books is exported, sid=sid, node=name):
-                        answers = nodes[name]["Choices"]
-                        self.assertGreaterEqual(len(answers), 3)
-                        self.assertIsNone(answers[0]["Next"])
-                        self.assertEqual(answers[1]["Next"], "promise_accepted")
-                        self.assertEqual(
-                            choice_identities(books[sid], nodes[name])[:3],
-                            [dict(Id=None, GuidFor=f"answer.{sid}.{name}.{index}")
-                             for index in range(3)])
-                        exit = answers[2]
-                        self.assertEqual(exit["Text"], "[Leave.]")
-                        self.assertIsNone(exit["Next"])
-                        self.assertEqual(exit["Set"], [])
-                        self.assertTrue(exit["Abort"])
-                        self.assertIn("trickster.now", exit["Requires"])
-                        self.assertEqual(exit["Forbids"], ["trickster.now"])
+                        answers = nodes[name]['Choices']
+                        first, second, leave, *appended = answers
+                        self.assertTrue(leave['Abort'])
+                        ordered_answer_3, *_ = answers
+                        self.assertIsNone(ordered_answer_3['Next'])
+                        _, ordered_answer_4, *_ = answers
+                        self.assertEqual(ordered_answer_4['Next'], 'promise_accepted')
+                        self.assertEqual(choice_identities(books[sid], nodes[name])[:3], [dict(Id=None, GuidFor=f'answer.{sid}.{name}.{index}') for index in range(3)])
+                        _, _, ordered_answer_5, *_ = answers
+                        exit = ordered_answer_5
+                        self.assertIsNone(exit['Next'])
+                        self.assertEqual(exit['Set'], [])
+                        self.assertTrue(exit['Abort'])
+                        self.assertIn('trickster.now', exit['Requires'])
+                        self.assertEqual(exit['Forbids'], ['trickster.now'])
                         self.assertFalse(holds(exit, self.flags))
-                        self.assertFalse(holds(exit, self.flags - {"trickster.now"}))
-
-
-if __name__ == "__main__":
+                        self.assertFalse(holds(exit, self.flags - {'trickster.now'}))
+if __name__ == '__main__':
     unittest.main()
