@@ -10,7 +10,7 @@ import unittest
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
-from parent_bindings import load_parent_bindings
+from parent_bindings import load_parent_bindings as check_parent_bindings
 
 
 class ParentBindingTests(unittest.TestCase):
@@ -29,10 +29,10 @@ class ParentBindingTests(unittest.TestCase):
             path = root / "bindings.json"
             path.write_text(json.dumps(manifest), encoding="utf-8")
             with patch("parent_bindings.GAME_DIR", str(root)):
-                self.assertEqual(load_parent_bindings(path), {})
+                self.assertEqual(check_parent_bindings(path), {})
                 assembly.write_bytes(b"unreviewed parent")
                 with self.assertRaisesRegex(ValueError, "assembly differs"):
-                    load_parent_bindings(path)
+                    check_parent_bindings(path)
 
     def test_evidence_pin_and_identity(self):
         with temporary_directory() as directory:
@@ -47,34 +47,34 @@ class ParentBindingTests(unittest.TestCase):
                         "Bindings": [record]}
             path = root / "bindings.json"
 
-            def read():
+            def check_manifest():
                 path.write_text(json.dumps(manifest), encoding="utf-8")
-                return load_parent_bindings(path)
+                return check_parent_bindings(path)
 
-            self.assertEqual(read()[guid]["provenance"], "reviewed-parent-source")
+            self.assertEqual(check_manifest()[guid]["provenance"], "reviewed-parent-source")
             assembly.write_bytes(b"different version")
             with self.assertRaisesRegex(ValueError, "assembly differs"):
-                read()
+                check_manifest()
             assembly.write_bytes(b"test-only assembly identity")
             record["Type"] = "BlueprintQuest"
             with self.assertRaisesRegex(ValueError, "identity/type"):
-                read()
+                check_manifest()
             record["Type"] = "BlueprintEtude"
             page = {"Guid": "951e4432cf844a36a8a222b27589fb43", "Type": "BlueprintBookPage",
                     "Source": "Fixture.Page", "Evidence": 'BookPageConfigurator.New("Page", "951e4432cf844a36a8a222b27589fb43")'}
             manifest["Bindings"].append(page)
-            self.assertEqual(read()[page["Guid"]]["type"], "BlueprintBookPage")
+            self.assertEqual(check_manifest()[page["Guid"]]["type"], "BlueprintBookPage")
             page["Evidence"] = page["Evidence"].replace("BookPageConfigurator", "CueConfigurator")
             with self.assertRaisesRegex(ValueError, "identity/type"):
-                read()
+                check_manifest()
             manifest["Bindings"].pop()
             manifest["Bindings"].append(dict(record))
             with self.assertRaisesRegex(ValueError, "Duplicate"):
-                read()
+                check_manifest()
             manifest["Bindings"].pop()
             record["Evidence"] = 'EtudeConfigurator.New("Other", "00000000000000000000000000000000")'
             with self.assertRaisesRegex(ValueError, "identity/type"):
-                read()
+                check_manifest()
 
 
 if __name__ == "__main__":

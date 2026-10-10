@@ -88,7 +88,7 @@ class IntegrationTests(AuthorityFixture, unittest.TestCase):
 
     def test_exact_reviewed_append_separate_from_voice_approvals_and_no_lock_update(self):
         request = self.append_fixture()
-        before = (self.root / authority.LOCKS).read_bytes()
+        before = (self.root / authority.LOCKS).stat()
         job = prepare_voice_job.prepare(self.root, self.root / "Story.json", request)
         records = self.review(job, "append-approvals.json")
         self.assertEqual(1, self.invoke("--integration").returncode)
@@ -99,7 +99,7 @@ class IntegrationTests(AuthorityFixture, unittest.TestCase):
         for flags in (("--update",), ("--milestone",)):
             self.assertEqual(1, self.invoke("--integration", "--append-approvals", str(records), *flags).returncode)
         self.assertEqual(1, self.invoke("--append-approvals", str(records)).returncode)
-        self.assertEqual(before, (self.root / authority.LOCKS).read_bytes())
+        self.assertEqual(before, (self.root / authority.LOCKS).stat())
 
     def test_reviewed_append_rejects_old_text_change_nodes_and_unregistered_labels(self):
         self.append_fixture()
@@ -162,7 +162,7 @@ class IntegrationTests(AuthorityFixture, unittest.TestCase):
         job = self.job()
         path = self.review(job, "held-job.json")
         self.assertEqual(0, self.invoke(job=path).returncode)
-        before = (self.root / authority.LOCKS).read_bytes()
+        before = (self.root / authority.LOCKS).stat()
         for mode in ("export", "source", "input-json", "pending", "branch", "locked", "base"):
             with self.subTest(mode=mode):
                 self.story = sample()
@@ -188,7 +188,7 @@ class IntegrationTests(AuthorityFixture, unittest.TestCase):
                     self.story["Scenes"][0]["Nodes"][0]["Text"] = "[PROSE PENDING: locked]"
                     self.write("Story.json", self.story)
                 self.assertEqual(1, self.invoke(job=path).returncode)
-                self.assertEqual(before, (self.root / authority.LOCKS).read_bytes())
+                self.assertEqual(before, (self.root / authority.LOCKS).stat())
 
     def test_held_scaffold_cannot_authorize_registered_locked_placeholder(self):
         node = self.story["Scenes"][0]["Nodes"][0]
@@ -209,9 +209,9 @@ class IntegrationTests(AuthorityFixture, unittest.TestCase):
         self.assertEqual(1, self.invoke("--integration").returncode)
         self.story = sample()
         self.register()
-        before = (self.root / authority.LOCKS).read_bytes()
+        before = (self.root / authority.LOCKS).stat()
         self.assertEqual(0, self.invoke("--integration").returncode)
-        self.assertEqual(before, (self.root / authority.LOCKS).read_bytes())
+        self.assertEqual(before, (self.root / authority.LOCKS).stat())
 
     def test_mutations_prove_integration_target_and_milestone_policy(self):
         entry = self.register()

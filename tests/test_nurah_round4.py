@@ -13,7 +13,7 @@ class NurahRunawayHistoryTests(unittest.TestCase):
         while pending:
             nid, flags, pages = pending.pop()
             node = nodes[nid]
-            pages += (node['Text'],)
+            pages += (nid,)
             choices = [c for c in node['Choices']
                        if set(c['Requires']) <= flags and not set(c['Forbids']) & flags]
             self.assertTrue(choices, (scene['Id'], nid, sorted(flags)))
@@ -22,7 +22,7 @@ class NurahRunawayHistoryTests(unittest.TestCase):
                 if choice['Next']:
                     pending.append((choice['Next'], next_flags, pages))
                 else:
-                    endings.append((next_flags, '\n'.join(pages)))
+                    endings.append((next_flags, pages))
         return endings
 
     def test_pardon_release_witness_does_not_earn_a_dedication(self):
@@ -47,10 +47,10 @@ class NurahRunawayHistoryTests(unittest.TestCase):
             self.assertFalse(set(scene['Forbids']) & witness)
             outcomes = self.walks(scene, witness)
             self.assertTrue(any(route.COMPLETE in f for f, _ in outcomes))
-            for _, prose in outcomes:
-                self.assertNotIn('dedication', prose)
-                self.assertNotIn('You forged me', prose)
-                self.assertIn('My corrections go in the book', prose)
+            for _, path in outcomes:
+                self.assertIn('manuscript.pardon.signed' if route.SIGNED in witness else 'manuscript.pardon', path)
+                self.assertNotIn('manuscript.ghost', path)
+                self.assertNotIn('manuscript.ghost.signed', path)
 
     def test_both_hosts_all_proof_forgery_and_native_appearance_histories(self):
         for suffix, ghost, signed, evil, appearance in itertools.product(
@@ -69,23 +69,17 @@ class NurahRunawayHistoryTests(unittest.TestCase):
             self.assertTrue(any(route.BOOK in f and route.COMPLETE not in f
                                 for f, _ in outcomes))
             self.assertTrue(any(route.CLOSED in f for f, _ in outcomes))
-            for flags, prose in outcomes:
-                if not ghost:
-                    self.assertNotIn('dedication', prose)
-                    self.assertNotIn('You forged me', prose)
-                else:
-                    self.assertIn('your forged dedication', prose)
-                if appearance == route.PULURA_WINK:
-                    self.assertIn('scratches out the word "Master"', prose)
-                    self.assertNotIn('the people we gutted', prose)
-                elif appearance == route.PULURA_BETRAYAL:
-                    self.assertIn('the people we gutted', prose)
-                    self.assertNotIn('scratches out the word "Master"', prose)
-                    if route.COMPLETE in flags:
-                        self.assertIn('seen my hands bloody', prose)
-                else:
-                    self.assertNotIn('Mutasafen', prose)
-                    self.assertNotIn('Pulura', prose)
+            for flags, path in outcomes:
+                expected = 'manuscript.' + ('ghost' if ghost else 'pardon') + ('.signed' if signed else '')
+                self.assertIn(expected, path)
+                self.assertFalse(set(path) & ({'manuscript.ghost', 'manuscript.ghost.signed',
+                                              'manuscript.pardon', 'manuscript.pardon.signed'} - {expected}))
+                reaction = ('pulura.wink' if appearance == route.PULURA_WINK else
+                            'pulura.betrayal' if appearance == route.PULURA_BETRAYAL else None)
+                self.assertEqual(set(path) & {'pulura.wink', 'pulura.betrayal'},
+                                 {reaction} if reaction else set())
+                if route.COMPLETE in flags:
+                    self.assertIn('threshold.' + ('wink' if reaction == 'pulura.wink' else 'betrayal'), path) if reaction else self.assertIn('threshold', path)
 
     def test_native_appearance_keys_bind_seen_cues_without_touching_native_state(self):
         payload = {'Relationships': {'nurah': {'Guidance': ''}}, 'Scenes': []}

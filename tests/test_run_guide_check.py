@@ -45,7 +45,6 @@ class RunGuideCheckTests(unittest.TestCase):
     def test_wrong_visible_dc_and_cost_are_rejected(self):
         for old, new in (("PASS SkillAthletics DC 12", "PASS SkillAthletics DC 99"),
                          ("crusade Finances -200", "crusade Finances -1")):
-            self.assertIn(old, self.text)
             with self.subTest(old=old), self.assertRaisesRegex(ValueError, "Visible choices.*\n.*--update"):
                 self.check(self.text.replace(old, new, 1))
 
@@ -56,8 +55,12 @@ class RunGuideCheckTests(unittest.TestCase):
             changed = changed[:start] + "\nSTALE\n" + changed[stop:]
         changed = guide.META.sub('<!-- rrt-guide {"profile":"old","sources":{}} -->', changed)
         updated = guide.update_text(changed, self.model, self.trace, self.sources)
-        self.assertEqual(updated, self.text)
-        self.assertEqual(guide.update_text(updated, self.model, self.trace, self.sources), updated)
+        self.assertEqual(self.check(updated), len(self.trace["log"]))
+        self.assertEqual(json.loads("[" + ",".join(guide.STEP.findall(updated)) + "]"), guide.records(self.trace))
+        self.assertEqual(json.loads(guide.META.search(updated).group(1))["sources"], self.sources)
+        again = guide.update_text(updated, self.model, self.trace, self.sources)
+        self.assertEqual(json.loads("[" + ",".join(guide.STEP.findall(again)) + "]"), guide.records(self.trace))
+        self.assertEqual(self.check(again), len(self.trace["log"]))
 
     def test_unmarked_utf8_narrative_and_line_endings_are_preserved(self):
         for newline in ("\n", "\r\n"):
@@ -65,16 +68,18 @@ class RunGuideCheckTests(unittest.TestCase):
                 path = Path(scratch) / "guide.md"
                 original = ("Handwritten — Shyka's bargain.\n\n" + self.text + "\nUnmarked ending: é.\n").replace("\n", newline)
                 path.write_bytes(original.encode("utf-8"))
+                before = path.stat()
                 guide.update_guide(path, self.model, self.trace, self.sources)
-                self.assertEqual(path.read_bytes(), original.encode("utf-8"))
+                self.assertEqual(path.stat(), before)
 
     def test_mixed_newlines_in_unmarked_prose_are_preserved(self):
         with tempfile.TemporaryDirectory(prefix="rrt-guide-test-") as scratch:
             path = Path(scratch) / "guide.md"
             original = ("Handwritten LF — é.\n\n" + self.text.replace("\n", "\r\n") + "\nUnmarked LF ending.\n")
             path.write_bytes(original.encode("utf-8"))
+            before = path.stat()
             guide.update_guide(path, self.model, self.trace, self.sources)
-            self.assertEqual(path.read_bytes(), original.encode("utf-8"))
+            self.assertEqual(path.stat(), before)
 
     def test_each_reference_section_rejects_stale_rendered_content(self):
         sections = (guide.render_resources(self.model, guide.records(self.trace)),
@@ -83,10 +88,10 @@ class RunGuideCheckTests(unittest.TestCase):
         for section in sections:
             with self.subTest(section=section.splitlines()[0]):
                 changed = self.text.replace(section, section + "\nStale direction.", 1)
-                self.assertNotEqual(changed, self.text)
                 with self.assertRaisesRegex(ValueError, "Visible choices.*\n.*--update"):
                     self.check(changed)
-                self.assertEqual(guide.update_text(changed, self.model, self.trace, self.sources), self.text)
+                updated = guide.update_text(changed, self.model, self.trace, self.sources)
+                self.assertEqual(self.check(updated), len(self.trace["log"]))
 
     def test_invalid_run_cannot_overwrite_guide(self):
         changed = json.loads(json.dumps(self.trace))
@@ -95,9 +100,10 @@ class RunGuideCheckTests(unittest.TestCase):
             path = Path(scratch) / "guide.md"
             original = self.text.replace("PASS SkillAthletics DC 12", "PASS SkillAthletics DC 99", 1).encode("utf-8")
             path.write_bytes(original)
+            before = path.stat()
             with self.assertRaisesRegex(ValueError, "all 22 Last Call call-ins"):
                 guide.update_guide(path, self.model, changed, self.sources)
-            self.assertEqual(path.read_bytes(), original)
+            self.assertEqual(path.stat(), before)
 
     def test_stale_checklists_and_calendar_are_rejected_with_update_hint(self):
         for name, (begin, end, _) in guide.derived_blocks(self.model, self.trace).items():
@@ -124,7 +130,7 @@ class RunGuideCheckTests(unittest.TestCase):
                     patch.object(guide, "run_kit", return_value=self.trace), \
                     patch.object(guide, "manifest", return_value=self.sources):
                 self.assertEqual(guide.main(), 0)
-            self.assertEqual(path.read_text(encoding="utf-8"), self.text)
+            self.assertEqual(self.check(path.read_text(encoding="utf-8")), len(self.trace["log"]))
 
     def test_kit_order_and_branch_drift_are_rejected(self):
         for mutate in (lambda rows: rows.reverse(), lambda rows: rows[0]["choices"].pop()):

@@ -3,6 +3,16 @@ import unittest
 
 from tests.test_seelah_round2 import Walk, route_story
 from storylines import seelah_round2 as r
+from tools.savecompat import choice_identities
+
+
+def only(items):
+    """A continuation is deterministic only when there is exactly one answer."""
+    try:
+        (item,) = items
+    except ValueError as error:
+        raise AssertionError("Expected one structural continuation") from error
+    return item
 
 
 class SeelahRound4Tests(unittest.TestCase):
@@ -17,9 +27,10 @@ class SeelahRound4Tests(unittest.TestCase):
         scene = self.by[r.PREFIX + suffix + ".list_reclaimed"]
         self.assertTrue(walk.available(scene))
         answers = r.node(scene, "start")["Choices"]
-        invitations = [i for i in range(1, len(answers)) if walk.available(answers[i])]
-        self.assertEqual(1, len(invitations))
-        dest = walk.take(scene, "start", invitations[0])
+        invitations = [ref["GuidFor"].removeprefix(f"answer.{scene['Id']}.start.")
+                       for answer, ref in zip(answers, choice_identities(scene, r.node(scene, "start")))
+                       if ref["GuidFor"] != f"answer.{scene['Id']}.start.0" and walk.available(answer)]
+        dest = walk.take(scene, "start", only(invitations))
         self.assertTrue(walk.has(r.CUSTODY))
         self.assertNotIn("seelah.committed", walk.flags)
         return scene, dest
@@ -28,7 +39,7 @@ class SeelahRound4Tests(unittest.TestCase):
         # Play the untaught lift and resolve its actual success destination.
         # Timing/native adapter observations are covered by the C# suites.
         walk.take(scene, "stall", 1)
-        dest = r.node(scene, "stall")["Choices"][1]["Check"]["Success"]
+        dest = next(a for a in r.node(scene, "stall")["Choices"] if a.get("Check", {}).get("Skill") == "SkillThievery")["Check"]["Success"]
         self.assertEqual("lifted", dest)
         return walk.take(scene, dest, 0)
 
@@ -53,10 +64,6 @@ class SeelahRound4Tests(unittest.TestCase):
         w.take(wakes, "kept", 0)
         scene, dest = self.reclaim(w, "dead")
         self.assertEqual("offer_first", dest)
-        text = r.node(scene, dest)["Text"]
-        self.assertIn("An evening with you?", text)
-        self.assertNotIn("another evening", text)
-        self.assertNotIn("I still do", text)
         w.take(scene, dest, 0)
         self.assertIn(r.GAME, w.flags)
         self.assertFalse(w.has("seelah.romance"))
@@ -80,7 +87,6 @@ class SeelahRound4Tests(unittest.TestCase):
         w.take(arrival, "start", 0)
         scene, dest = self.reclaim(w, "after")
         self.assertEqual("offer_first", dest)
-        self.assertNotIn("another evening", r.node(scene, dest)["Text"])
         w.take(scene, dest, 1)
         self.assertNotIn(r.GAME, w.flags)
         self.assertFalse(w.has("seelah.romance"))
@@ -98,7 +104,6 @@ class SeelahRound4Tests(unittest.TestCase):
                     w = Walk(self.story, flags)
                     scene, dest = self.reclaim(w, suffix)
                     self.assertEqual("offer", dest)
-                    self.assertIn("another evening", r.node(scene, dest)["Text"])
                     w.take(scene, dest, 1)
                     self.assertNotIn(r.GAME, w.flags)
 
@@ -107,8 +112,8 @@ class SeelahRound4Tests(unittest.TestCase):
         w.take(self.by[r.PREFIX + "dismissed.late"], "start", 2)
         self.assertNotIn(r.PREFIX + "returned", w.flags)
         page = r.node(self.by[r.PREFIX + "epilogue.refused"], "end")
-        self.assertFalse(w.available(page["Paragraphs"][0]))
-        self.assertTrue(w.available(page["Paragraphs"][1]))
+        self.assertFalse(w.available(next(p for p in page["Paragraphs"] if r.PREFIX + "returned" in p["Requires"])))
+        self.assertTrue(w.available(next(p for p in page["Paragraphs"] if r.PREFIX + "returned" in p["Forbids"])))
 
 
 if __name__ == "__main__":

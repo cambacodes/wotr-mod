@@ -211,8 +211,9 @@ class SlotBriefLintTests(unittest.TestCase):
             self.assertEqual(0, lint.main(args))
             self.assertEqual(1, lint.main(args + ["--strict"]))
             self.assertEqual(0, lint.main(args + ["--strict", "--known-rebuilds"]))
-        self.assertIn("1 briefs", output.getvalue())
-        self.assertIn("known rebuild", output.getvalue())
+        diagnostics = output.getvalue()
+        self.assertIn("1 briefs", diagnostics)
+        self.assertIn("known rebuild", diagnostics)
 
 
 if __name__ == "__main__":

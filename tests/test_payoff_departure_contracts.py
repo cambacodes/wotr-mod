@@ -58,7 +58,8 @@ class ContractTests(unittest.TestCase):
     def test_mixed_ordinary_late_paragraph_keeps_earned_alternatives(self):
         story = copy.deepcopy(self.story)
         scene = next(s for s in story["Scenes"] if s["Id"] == "areelu.trickster.finale.prior_lien")
-        paragraph = scene["Nodes"][0]["Paragraphs"][0]
+        paragraph = next(p for n in scene["Nodes"] for p in n["Paragraphs"]
+                         if ["areelu.payoff.ordinary", "areelu.trickster.late_committed"] in p.get("AnyGroups", []))
         group = ["areelu.payoff.ordinary", "areelu.trickster.late_committed"]
         self.assertIn(group, paragraph["AnyGroups"])
         paragraph["AnyGroups"].remove(group)
@@ -77,9 +78,11 @@ class ContractTests(unittest.TestCase):
         scene = next(s for s in story["Scenes"] if s["Id"] == "arsinoe.trickster.late.commit")
         self.assertNotIn("arsinoe.trickster.late_committed", scene["Requires"])
         choices = scene["Nodes"][0]["Choices"]
-        self.assertIn("arsinoe.trickster.late_committed", choices[0]["Requires"])
-        self.assertIn("arsinoe.trickster.late_committed", choices[1]["Requires"])
-        self.assertEqual(["arsinoe.trickster.late_declined"], choices[2]["Requires"])
+        for target in ("night", "deferred_evening"):
+            answer = next(c for c in choices if c["Next"] == target)
+            self.assertIn("arsinoe.trickster.late_committed", answer["Requires"])
+        business = next(c for c in choices if c["Next"] == "business")
+        self.assertEqual(["arsinoe.trickster.late_declined"], business["Requires"])
         choices[0]["Requires"].remove("arsinoe.trickster.late_committed")
         self.assertTrue(any(scene["Id"] in error for error in payoff_lint.check(story)))
 

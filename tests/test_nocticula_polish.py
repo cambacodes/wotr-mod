@@ -4,7 +4,26 @@ import unittest
 
 from storylines import nocticula_continuation as route
 from storylines import nocticula_acquired_harbor as acquired
+from tools.savecompat import choice_identities
 from storylines.nocticula_trickster_acquisition import allowed
+
+
+def only(items):
+    """A continuation is deterministic only when there is exactly one answer."""
+    try:
+        (item,) = items
+    except ValueError as error:
+        raise AssertionError("Expected one structural continuation") from error
+    return item
+
+
+def structural(value):
+    """Project the frozen node contract without its display strings."""
+    if isinstance(value, dict):
+        return {key: structural(item) for key, item in value.items() if key != "Text"}
+    if isinstance(value, list):
+        return [structural(item) for item in value]
+    return value
 
 
 class LodgeReportTests(unittest.TestCase):
@@ -14,7 +33,8 @@ class LodgeReportTests(unittest.TestCase):
 
     def pick(self, scene, node, index, state, success=True):
         nodes = {n["Id"]: n for n in scene["Nodes"]}
-        answer = nodes[node]["Choices"][index]
+        answer = next(a for a, ref in zip(nodes[node]["Choices"], choice_identities(scene, nodes[node]))
+                      if ref["GuidFor"] == f"answer.{scene['Id']}.{node}.{index}")
         self.assertTrue(allowed(answer, state))
         state.update(answer["Set"])
         check = answer.get("Check")
@@ -28,10 +48,11 @@ class LodgeReportTests(unittest.TestCase):
         if node:
             self.pick(scene, node, 0, state)
         operation = self.scenes["noct.uninvited_guest"]
-        options = [(i, c) for i, c in enumerate(operation["Nodes"][0]["Choices"])
+        start = next(n for n in operation["Nodes"] if n["Id"] == "start")
+        options = [ref["GuidFor"].removeprefix("answer.noct.uninvited_guest.start.")
+                   for c, ref in zip(start["Choices"], choice_identities(operation, start))
                    if c["Next"] != "withdraw_undertaking" and allowed(c, state)]
-        self.assertEqual(len(options), 1)
-        node = self.pick(operation, "start", options[0][0], state)
+        node = self.pick(operation, "start", only(options), state)
         self.assertEqual(self.pick(operation, node, 0, state), "gallery")
         node = self.pick(operation, "gallery", 0, state)
         self.assertEqual(node, "bell")
@@ -58,12 +79,14 @@ class LodgeReportTests(unittest.TestCase):
                 node = self.pick(report, "start", int(house == "kept_house"), state)
                 node = self.pick(report, node, 0, state)
                 node = self.pick(report, node, int(debt == "purchased"), state)
-                options = [(i, c) for i, c in enumerate(nodes[node]["Choices"]) if allowed(c, state)]
-                self.assertEqual(len(options), 1)
+                options = [(ref["GuidFor"].removeprefix(f"answer.{report['Id']}.{node}."), c)
+                           for c, ref in zip(nodes[node]["Choices"], choice_identities(report, nodes[node]))
+                           if allowed(c, state)]
+                saved_id, answer = only(options)
                 expected = {"silent": "agent", "announcement": "agent_announcement"}.get(method, "wound")
-                self.assertEqual(options[0][1]["Next"], expected)
-                self.assertEqual(options[0][1]["Set"], [])
-                node = self.pick(report, node, options[0][0], state)
+                self.assertEqual(answer["Next"], expected)
+                self.assertEqual(answer["Set"], [])
+                node = self.pick(report, node, saved_id, state)
                 self.assertEqual(node, expected)
                 self.assertNotIn(node, {"agent", "agent_announcement", "wound"} - {expected})
                 self.assertEqual(self.pick(report, node, 0, state), "wager")
@@ -100,8 +123,8 @@ class LodgeReportTests(unittest.TestCase):
             self.assertEqual([n["Id"] for n in clone["Nodes"]], [n["Id"] for n in donor["Nodes"]])
             for original, copied in zip(donor["Nodes"], clone["Nodes"]):
                 if original["Id"] in ("agent", "agent_announcement", "wound", "debt_refused", "debt_bought"):
-                    self.assertEqual(copied, original)
-            answer = next(n for n in clone["Nodes"] if n["Id"] == "answer")["Choices"][0]
+                    self.assertEqual(structural(copied), structural(original))
+            answer = only(next(n for n in clone["Nodes"] if n["Id"] == "answer")["Choices"])
             self.assertEqual(answer["Set"], ["noct.lodge_consequences_finished", "noct.no_applause"])
 
 

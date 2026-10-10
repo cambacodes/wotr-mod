@@ -5,6 +5,7 @@ from pathlib import Path
 import unittest
 
 from storylines import shamira_dream, shamira_trickster, shamira_partner as partner
+from tools import savecompat
 
 
 def visible(choice, flags):
@@ -31,6 +32,15 @@ def walk(scene, flags=(), start="start"):
     return results
 
 
+def only(items):
+    """A continuation is deterministic only when there is exactly one answer."""
+    try:
+        (item,) = items
+    except ValueError as error:
+        raise AssertionError("Expected one structural continuation") from error
+    return item
+
+
 class ShamiraPartnerStanceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -48,15 +58,14 @@ class ShamiraPartnerStanceTests(unittest.TestCase):
         for before in self.base:
             after = self.scenes[before["Id"]]
             old_ids = [node["Id"] for node in before["Nodes"]]
-            self.assertEqual([node["Id"] for node in after["Nodes"][:len(old_ids)]], old_ids)
-            for old, new in zip(before["Nodes"], after["Nodes"]):
-                self.assertGreaterEqual(len(new["Choices"]), len(old["Choices"]))
+            self.assertEqual([node["Id"] for _, node in zip(before["Nodes"], after["Nodes"])], old_ids)
+            self.assertEqual(savecompat.check({"Scenes": [after]}, savecompat.inventory({"Scenes": [before]})), [])
             if before["Id"] in (partner.P + "harem", partner.P + "harem_awning"):
                 search = next(node for node in after["Nodes"] if node["Id"] == "search")
                 self.assertEqual([c.get("Next") for c in search["Choices"][:3]], ["lost", "won", "thrown"])
-                for index, flag in enumerate((partner.P + "lost_on_purpose", partner.ALLY, partner.CLOSED)):
-                    self.assertIn(flag, search["Choices"][index]["Set"])
-                self.assertNotIn(partner.COMMITTED, search["Choices"][0]["Set"])
+                for target, flag in (("lost", partner.P + "lost_on_purpose"), ("won", partner.ALLY), ("thrown", partner.CLOSED)):
+                    self.assertIn(flag, next(a for a in search["Choices"] if a["Next"] == target)["Set"])
+                self.assertNotIn(partner.COMMITTED, next(a for a in search["Choices"] if a["Next"] == "lost")["Set"])
             for field in ("Requires", "Forbids", "MinChapter", "MaxChapter"):
                 self.assertEqual(before[field], after[field])
 
@@ -67,7 +76,7 @@ class ShamiraPartnerStanceTests(unittest.TestCase):
                 for flags, trace in results:
                     if partner.COMMITTED in flags:
                         self.assertIn("partner_start", trace)
-                        self.assertEqual(sum(flag in flags for flag in (partner.SHARE, partner.SECRET)), 1)
+                        self.assertIn(flags & {partner.SHARE, partner.SECRET}, [{partner.SHARE}, {partner.SECRET}])
                         self.assertNotIn(partner.EXCLUSIVE, flags)
                     if partner.EXCLUSIVE in flags:
                         self.assertIn(partner.CLOSED, flags)
@@ -116,7 +125,8 @@ class ShamiraPartnerStanceTests(unittest.TestCase):
                 if trace == ["page"]:
                     self.assertEqual(flags, set(state))
                     continue
-                self.assertEqual(sum(flag in flags for flag in (partner.SHARE, partner.EXCLUSIVE, partner.SECRET)), 1)
+                self.assertIn(flags & {partner.SHARE, partner.EXCLUSIVE, partner.SECRET},
+                              [{partner.SHARE}, {partner.EXCLUSIVE}, {partner.SECRET}])
                 self.assertNotIn(partner.COMMITTED, flags)
                 self.assertNotIn(partner.RETURNED, flags - set(state))
                 if "partner_late_private" in trace:
@@ -140,7 +150,7 @@ class ShamiraPartnerStanceTests(unittest.TestCase):
                         and partner.RETURNED in (*p.get("Requires", ()), *p.get("Forbids", ())))
                        or partner.RETURNED in p.get("Requires", ())]
             for state in self.states:
-                self.assertEqual(sum(visible(p, set(state)) for p in current), 1)
+                self.assertTrue(visible(only(p for p in current if visible(p, set(state))), set(state)))
             if node["Id"] in ("page", "partner_late_end", "partner_late_no"):
                 for stance in (partner.SHARE, partner.EXCLUSIVE, partner.SECRET):
                     self.assertTrue(any(stance in p.get("Requires", ()) for p in paragraphs))
@@ -160,15 +170,15 @@ class ShamiraPartnerStanceTests(unittest.TestCase):
                 search = next(node for node in scene["Nodes"] if node["Id"] == "search")
                 # The generator originally appended this answer after the
                 # three authored game answers; its serialized index is saved.
-                self.assertGreaterEqual(len(search["Choices"]), 4)
-                leave = search["Choices"][3]
+                self.assertEqual([a["Next"] for a in search["Choices"]], ["lost", "won", "thrown", None])
+                leave = only(a for a in search["Choices"] if a["Abort"])
                 self.assertTrue(leave["Abort"])
                 self.assertIsNone(leave.get("Next"))
                 self.assertEqual(leave["Set"], [])
                 self.assertEqual(leave["Requires"], [])
                 self.assertEqual(leave["Forbids"], ["trickster.now"])
                 self.assertFalse(any("crossroute.nocticula" in flag for flag in
-                                     search["Choices"][0]["Requires"] + search["Choices"][0]["Forbids"]))
+                                     next(a for a in search["Choices"] if a["Next"] == "lost")["Requires"] + next(a for a in search["Choices"] if a["Next"] == "lost")["Forbids"]))
             if not (scene["Id"].startswith(partner.P + "epilogue.") or scene["Id"] == "shamira.lastcall.page"):
                 continue
             current = [p for p in scene["Nodes"][0].get("Paragraphs", ()) if
@@ -177,8 +187,8 @@ class ShamiraPartnerStanceTests(unittest.TestCase):
                        or (partner.HIDING in p.get("Requires", ()) and partner.RETURNED in p.get("Forbids", ()))
                        or partner.RETURNED in p.get("Requires", ())]
             for state in self.states:
-                self.assertEqual(sum(visible(p, set(state) | {"noct.closed"}) for p in current), 1,
-                                 scene["Id"] + ": partner status lost behind another romance's gate")
+                self.assertTrue(visible(only(p for p in current if visible(p, set(state) | {"noct.closed"})),
+                                        set(state) | {"noct.closed"}), scene["Id"])
 
 
 if __name__ == "__main__":

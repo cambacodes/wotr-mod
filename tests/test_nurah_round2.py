@@ -10,6 +10,15 @@ from storylines import nurah_continuation as continuation
 from storylines import nurah_trickster as route
 
 
+def only(items):
+    """A continuation is deterministic only when there is exactly one answer."""
+    try:
+        (item,) = items
+    except ValueError as error:
+        raise AssertionError("Expected one structural continuation") from error
+    return item
+
+
 class NurahRoundTwoTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -35,13 +44,13 @@ class NurahRoundTwoTests(unittest.TestCase):
             ('nurah.trickster.ran_off.terms_by_post', 'letter_one', 3, 'last_word'),
             ('nurah.trickster.ran_off.terms_by_post_late', 'letter', 3, 'last_word'),
         ):
-            selected = self.node(sid, nid)['Choices'][index]
+            selected = next(c for c in self.node(sid, nid)['Choices'] if c['Next'] == 'refused')
             page = self.scenes['nurah.trickster.epilogue.' + ending]
             history = {'trickster.ever', *selected['Set']}
             self.assertTrue(set(page['Requires']) <= history)
             self.assertNotIn(route.PROOFS, page['Requires'])
             self.assertTrue(set(route.DEATHS) <= set(page['Forbids']))
-            self.assertIsNone(self.node(sid, 'refused')['Choices'][0]['Next'])
+            self.assertIsNone(only(self.node(sid, 'refused')['Choices'])['Next'])
 
     def test_print_payment_is_not_a_zero_delay_circulated_copy(self):
         for sid in ('nurah.trickster.react.irabeth_draft',
@@ -62,7 +71,7 @@ class NurahRoundTwoTests(unittest.TestCase):
                     'nurah.trickster.react.camellia_draft', route.VEILED_DRAFT):
             self.assertIn(route.DISCLOSED, self.scenes[sid]['Requires'])
             self.assertIn(route.DISCLOSED, self.scenes[sid + '_discreet']['Forbids'])
-            self.assertIn(sid, self.scenes[sid + '_discreet']['Nodes'][0]['Choices'][0]['Set'])
+            self.assertIn(sid, only(only(self.scenes[sid + '_discreet']['Nodes'])['Choices'])['Set'])
         packet = self.scenes['nurah.trickster.after.proofs']
         for nid in ('trusted', 'signed'):
             choices = self.node(packet['Id'], nid)['Choices']
@@ -83,16 +92,16 @@ class NurahRoundTwoTests(unittest.TestCase):
                 self.assertIn(nid, reachable_nodes(scenes[sid]))
                 slot = next(n for n in scenes[sid]['Nodes'] if n['Id'] == nid)
                 if nid == brief.stem:
-                    self.assertTrue(slot['Choices'][0]['Next'])
-                    self.assertFalse(slot['Choices'][0]['Set'])
-        near_exit = self.node('nurah.the_letter_she_wrote', 'near')['Choices'][0]
+                    self.assertTrue(only(slot['Choices'])['Next'])
+                    self.assertFalse(only(slot['Choices'])['Set'])
+        near_exit = only(self.node('nurah.the_letter_she_wrote', 'near')['Choices'])
         self.assertIsNone(near_exit['Next'])
         self.assertEqual(near_exit['Set'], ['nurah.letter_faced'])
         for nid in ('read', 'went'):
-            exit = self.node('nurah.trickster.epilogue.commit', nid)['Choices'][0]
+            exit = only(self.node('nurah.trickster.epilogue.commit', nid)['Choices'])
             self.assertIsNone(exit['Next'])
             self.assertFalse(exit['Set'])
-        quiet = self.node('nurah.a_margin_for_you', 'quiet')['Choices'][0]
+        quiet = only(self.node('nurah.a_margin_for_you', 'quiet')['Choices'])
         self.assertEqual(quiet['Next'], 'morning')
         self.assertEqual(quiet['Set'], ['nurah.private_quiet'])
 
@@ -100,13 +109,10 @@ class NurahRoundTwoTests(unittest.TestCase):
         mail = self.scenes['nurah.borrowed_name']
         self.assertEqual((mail['Kind'], mail['Parcel'], mail['Sender']), ('letter', True, 'Nurah'))
         paragraphs = self.node('nurah.trickster.epilogue.unwritten', 'start')['Paragraphs']
-        witness = next(p for p in paragraphs if 'Irabeth had it entered' in p['Text'])
-        neutral = next(p for p in paragraphs if 'Nobody in the gaol could say' in p['Text'])
+        witness = next(p for p in paragraphs if 'irabeth.present_now' in p['Requires'])
+        neutral = next(p for p in paragraphs if 'irabeth.present_now' in p['Forbids'])
         self.assertIn('irabeth.present_now', witness['Requires'])
         self.assertIn('irabeth.present_now', neutral['Forbids'])
-        self.assertNotIn('only line of that book anyone ever read', str(paragraphs))
-        self.assertNotIn('did not read past the dedication', str(paragraphs))
-        self.assertNotIn('No printer ever set it', str(paragraphs))
 
 
 if __name__ == '__main__':

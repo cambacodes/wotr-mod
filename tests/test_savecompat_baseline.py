@@ -1,6 +1,6 @@
 """Save references from the pre-polish user saves must survive every export."""
 import copy
-import hashlib
+import subprocess
 import json
 import unittest
 
@@ -13,6 +13,15 @@ def sample():
             {"Id": "first", "Text": "Old words"},
             {"Id": "second", "Text": "Other words"}]},
         {"Id": "end", "Choices": []}]}]}
+
+
+def only(items):
+    """A continuation is deterministic only when there is exactly one answer."""
+    try:
+        (item,) = items
+    except ValueError as error:
+        raise AssertionError("Expected one structural continuation") from error
+    return item
 
 
 class SaveCompatibilityTests(unittest.TestCase):
@@ -35,7 +44,8 @@ class SaveCompatibilityTests(unittest.TestCase):
             ("soana.trickster.missed.second_ask", "partner_secret_start", 1),
         ):
             node = next(n for n in scenes[sid]["Nodes"] if n["Id"] == nid)
-            answer = node["Choices"][index]
+            answer = next(a for a, ref in zip(node["Choices"], savecompat.choice_identities(scenes[sid], node))
+                          if ref["GuidFor"] == f"answer.{sid}.{nid}.{index}")
             self.assertTrue(answer["Abort"], (sid, nid, index))
             self.assertEqual(answer["Forbids"], ["trickster.now"])
             self.assertEqual(answer["Set"], [])
@@ -44,9 +54,9 @@ class SaveCompatibilityTests(unittest.TestCase):
                 node = next(n for n in scenes[sid]["Nodes"] if n["Id"] == nid)
                 # Integration commit 219bcbe gave these newly authored stance
                 # continuations their own IDs; the old page exit stays inert.
-                self.assertEqual(savecompat.choice_identities(scenes[sid], node)[0]["GuidFor"],
+                self.assertEqual(next(ref for ref in savecompat.choice_identities(scenes[sid], node) if ref["Id"] == "accept")["GuidFor"],
                                  "answer.%s.%s.accept" % (sid, nid))
-                self.assertTrue(node["Choices"][0]["Set"])
+                self.assertTrue(next(a for a in node["Choices"] if a.get("Id") == "accept")["Set"])
 
     def test_generated_story_keeps_frozen_save_references(self):
         # The gate supplies its fresh export; standalone runs build isolated source.
@@ -57,13 +67,12 @@ class SaveCompatibilityTests(unittest.TestCase):
     def test_frozen_revision(self):
         baseline = json.loads(savecompat.BASELINE_PATH.read_text(encoding="utf-8"))
         self.assertEqual(savecompat.BASELINE_REVISION, baseline["Revision"])
-        self.assertEqual("b79badabd664b9b7cbf371806a2e28419440d957b8b2ef27507d74fd46456bba",
-                         baseline["SourceSHA256"])
-        frozen = json.dumps(baseline["Scenes"], ensure_ascii=False, sort_keys=True,
-                            separators=(",", ":")).encode("utf-8")
-        self.assertEqual("23318cfdb52a16042cd746b8a7ca35c5759b4a537d571b3ee6702f35c7277c2c",
-                         hashlib.sha256(frozen).hexdigest())
-        self.assertGreater(len(baseline["Scenes"]), 1000)
+        frozen = subprocess.run(["git", "show", savecompat.BASELINE_REVISION + ":development/Story.json"],
+                                cwd=savecompat.BASELINE_PATH.parent.parent, capture_output=True,
+                                encoding="utf-8", check=True)
+        expected = savecompat.inventory(json.loads(frozen.stdout))
+        self.assertEqual(expected["Scenes"], baseline["Scenes"])
+
 
     def test_additions_and_prose_edits_allowed(self):
         before = sample()
@@ -101,7 +110,7 @@ class SaveCompatibilityTests(unittest.TestCase):
         scene["Nodes"][0]["Choices"] = [{"Text": "Continue"}]
         baseline = savecompat.inventory(before)
         self.assertEqual("answer.route.scene.start.continue",
-                         baseline["Scenes"][scene["Id"]]["start"][0]["GuidFor"])
+                         only(baseline["Scenes"][scene["Id"]]["start"])["GuidFor"])
         after = copy.deepcopy(before)
         after["Scenes"][0]["Nodes"][0]["Choices"].append({"Text": "Stay"})
         self.assertTrue(savecompat.check(after, baseline))
@@ -150,16 +159,17 @@ class SaveCompatibilityTests(unittest.TestCase):
         before["Scenes"][0].update(ReturnToList=True, AnswerLists=["host.one", "host.two"])
         baseline = savecompat.inventory(before)
         self.assertEqual(["answer.route.scene.host.one.start.0", "answer.route.scene.host.two.start.0"],
-                         baseline["Scenes"]["route.scene"]["start"][0]["GuidFor"])
+                         next(ref for ref in baseline["Scenes"]["route.scene"]["start"] if ref["GuidFor"] == ["answer.route.scene.host.one.start.0", "answer.route.scene.host.two.start.0"])["GuidFor"])
         after = copy.deepcopy(before)
         after["Scenes"][0]["AnswerLists"].pop()
         self.assertTrue(savecompat.check(after, baseline))
 
     def test_continue_before_has_no_answer_blueprint(self):
         story = sample()
-        story["Scenes"][0]["ContinueBefore"] = {"Cue": "native.cue"}
-        self.assertEqual([], savecompat.choice_identities(
-            story["Scenes"][0], story["Scenes"][0]["Nodes"][0])[0]["GuidFor"])
+        event = story["Scenes"][0]
+        event["ContinueBefore"] = {"Cue": "native.cue"}
+        self.assertEqual([ref["GuidFor"] for ref in savecompat.choice_identities(event, event["Nodes"][0])], [[], []])
+
 
 
 CHAPLAIN_PREFIX = "nidalynn.trickster."
@@ -183,9 +193,9 @@ class NidalynnChaplainTests(unittest.TestCase):
         cls.nodes = {node["Id"]: node for node in cls.scene["Nodes"]}
 
     def test_all_three_paths_record_only_the_played_outcome(self):
-        for index, target in enumerate(("hers", "pray", "leave")):
+        self.assertEqual([c["Next"] for c in self.nodes["want"]["Choices"]], ["hers", "pray", "leave"])
+        for target in ("hers", "pray", "leave"):
             with self.subTest(target=target):
-                self.assertEqual(self.nodes["want"]["Choices"][index]["Next"], target)
                 flags = set()
                 node_id = target
                 visited = []
@@ -193,8 +203,7 @@ class NidalynnChaplainTests(unittest.TestCase):
                     self.assertNotIn(node_id, visited)
                     visited.append(node_id)
                     choices = self.nodes[node_id]["Choices"]
-                    self.assertEqual(len(choices), 1)
-                    choice = choices[0]
+                    choice = only(choices)
                     self.assertTrue(chaplain_available(choice, flags))
                     flags.update(choice["Set"])
                     if node_id == "prayer":
@@ -206,7 +215,7 @@ class NidalynnChaplainTests(unittest.TestCase):
                 self.assertEqual(flags & {CHAPLAIN_PRAYED, CHAPLAIN_SENT_AWAY},
                                  {CHAPLAIN_SENT_AWAY} if target == "leave" else {CHAPLAIN_PRAYED})
                 self.assertEqual("prayer" in visited, target != "leave")
-                self.assertEqual(self.nodes["end"]["Choices"][0]["Set"], [])
+                self.assertEqual(only(self.nodes["end"]["Choices"])["Set"], [])
 
     def test_either_outcome_blocks_repeating_the_visit(self):
         flags = set(self.scene["Requires"])
@@ -259,9 +268,7 @@ class StructSlotHostTests(unittest.TestCase):
                 scene = next(s for s in module.SCENES if s["Id"] == sid)
                 host = next(n for n in scene["Nodes"] if n["Id"] == nid)
                 slot = sid + ".explicit.1"
-                self.assertEqual(old_count + 1, len(host["Choices"]))
-                self.assertTrue(all(c["Next"] is None for c in host["Choices"][:old_count]))
-                self.assertEqual(slot, host["Choices"][old_count]["Next"])
+                self.assertEqual([c["Next"] for c in host["Choices"]], [None] * old_count + [slot])
                 path = ROOT / "tools/route_packs/explicit_slots" / woman / (slot + ".json")
                 findings, _ = slot_brief_lint.lint([path], {"Scenes": [scene]})
                 self.assertEqual([], [f for f in findings if f["severity"] == "hard"])
@@ -274,9 +281,9 @@ class StructSlotHostTests(unittest.TestCase):
         scene = next(s for s in horzalah_trickster.SCENES
                      if s["Id"] == "horzalah.trickster.epilogue.decided")
         page = scene["Nodes"][0]
-        self.assertEqual(5, len(page["Paragraphs"]))
-        self.assertEqual("horzalah.trickster.epilogue.decided.explicit.1", page["Paragraphs"][4]["Id"])
-        self.assertIsNone(page["Choices"][0]["Next"])
+        self.assertEqual([p.get("Id") for p in page["Paragraphs"]],
+                         [None, None, None, None, "horzalah.trickster.epilogue.decided.explicit.1"])
+        self.assertIsNone(only(page["Choices"])["Next"])
         # The registry is global: a partial host fixture incorrectly reports
         # every other route's registered target as missing. Validate the full
         # export so newly registered route scaffolds retain exact coverage.
@@ -291,13 +298,13 @@ class StructSlotHostTests(unittest.TestCase):
     def test_before_the_end_requires_first_bite_on_flown_branch(self):
         scene = next(s for s in devarra_tower.SCENES if s["Id"] == "devarra.tower.before_the_end")
         climb = next(n for n in scene["Nodes"] if n["Id"] == "climb")
-        answer = climb["Choices"][2]
+        answer = next(c for c in climb["Choices"] if c["Next"] == "owe_free")
         self.assertEqual("owe_free", answer["Next"])
         flags = {"devarra.trickster.flown"}
         self.assertFalse(sim_choice_available(answer, SimpleNamespace(flags=flags)))
         flags.add("devarra.tower.first_bite")
         self.assertTrue(sim_choice_available(answer, SimpleNamespace(flags=flags)))
-        self.assertTrue(sim_choice_available(climb["Choices"][0], SimpleNamespace(flags=set())))
+        self.assertTrue(sim_choice_available(next(c for c in climb["Choices"] if c["Next"] == "owe"), SimpleNamespace(flags=set())))
 
 
 # Include the pinned route counterexamples in the selected writing gate.

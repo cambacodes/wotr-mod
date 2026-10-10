@@ -14,6 +14,8 @@ sys.path.insert(0, str(ROOT / "tools"))
 import return_safety  # noqa: E402
 
 FIXTURES = Path(__file__).resolve().parent / "return-safety-fixtures"
+check_scene = return_safety.scene_problems
+
 CUE, LIST = "c" * 32, "a" * 32
 
 
@@ -31,10 +33,10 @@ def scene(cue=CUE, lists=(LIST,), sid="x.inline"):
 
 class ReturnSafetyRuleTests(unittest.TestCase):
     def test_pass_fixture(self):
-        self.assertEqual(return_safety.scene_problems(scene(), reader(load("pass.json"))), [])
+        self.assertEqual(check_scene(scene(), reader(load("pass.json"))), [])
 
     def test_fail_fixture_reports_every_rule(self):
-        bad = return_safety.scene_problems(scene(), reader(load("fail.json")))
+        bad = check_scene(scene(), reader(load("fail.json")))
         self.assertEqual(sorted(bad), sorted([
             "cue.ShowOnce", "cue.ShowOnceCurrentDialog", "cue.Conditions", "cue.OnShow", "cue.OnStop", "cue.Continue",
             "cue.Experience=Normal", "cue.AlignmentShift", "cue.Answers=2", "list.ShowOnce", "list.Conditions",
@@ -54,18 +56,18 @@ class ReturnSafetyRuleTests(unittest.TestCase):
             with self.subTest(reason=reason):
                 bps = copy.deepcopy(base)
                 bps[guid][key] = value
-                self.assertEqual(return_safety.scene_problems(scene(), reader(bps)), [reason])
+                self.assertEqual(check_scene(scene(), reader(bps)), [reason])
 
     def test_resolution_failures(self):
         bps = load("pass.json")
-        self.assertEqual(return_safety.scene_problems(scene(cue="f" * 32), reader(bps)), ["cue not found in blueprints.zip"])
-        self.assertEqual(return_safety.scene_problems(scene(cue=LIST), reader(bps)), ["cue is a BlueprintAnswersList, not a BlueprintCue"])
-        self.assertEqual(return_safety.scene_problems(scene(lists=(LIST, CUE)), reader(bps)),
+        self.assertEqual(check_scene(scene(cue="f" * 32), reader(bps)), ["cue not found in blueprints.zip"])
+        self.assertEqual(check_scene(scene(cue=LIST), reader(bps)), ["cue is a BlueprintAnswersList, not a BlueprintCue"])
+        self.assertEqual(check_scene(scene(lists=(LIST, CUE)), reader(bps)),
                          ["scene has 2 AnswerLists (Main.cs:229 calls AnswerLists.Single())"])
 
     def test_scenes_without_a_return_are_ignored(self):
-        failures, allowed = return_safety.check([{"Id": "plain", "NativeReturnCue": None}], reader({}), {})
-        self.assertEqual((failures, allowed), ([], []))
+        diagnostics, allowed = return_safety.check([{"Id": "plain", "NativeReturnCue": None}], reader({}), {})
+        self.assertEqual((diagnostics, allowed), ([], []))
 
 
 class ReturnSafetyAllowlistTests(unittest.TestCase):
@@ -80,15 +82,15 @@ class ReturnSafetyAllowlistTests(unittest.TestCase):
         return reader(bps)
 
     def test_unlisted_violation_is_hard(self):
-        failures, allowed = return_safety.check([scene()], self.bps(), {})
-        self.assertEqual(len(failures), 1)
-        self.assertEqual((failures[0]["scene"], failures[0]["cue"], failures[0]["reasons"]), ("x.inline", CUE, ["cue.ShowOnce"]))
+        diagnostics, allowed = return_safety.check([scene()], self.bps(), {})
+        self.assertEqual(len(diagnostics), 1)
+        self.assertEqual((diagnostics[0]["scene"], diagnostics[0]["cue"], diagnostics[0]["reasons"]), ("x.inline", CUE, ["cue.ShowOnce"]))
         self.assertEqual(allowed, [])
 
     def test_exact_entry_is_known_not_hard(self):
-        failures, allowed = return_safety.check([scene()], self.bps(), {"x.inline": self.entry()})
-        self.assertEqual(failures, [])
-        self.assertEqual(allowed[0]["todo"], "decide the return")
+        diagnostics, allowed = return_safety.check([scene()], self.bps(), {"x.inline": self.entry()})
+        self.assertEqual(diagnostics, [])
+        self.assertEqual(next(iter(allowed))["todo"], "decide the return")
 
     def test_stale_or_widened_entries_are_hard(self):
         for name, allow, bps in [("fixed", {"x.inline": self.entry()}, reader(load("pass.json"))),
@@ -96,8 +98,8 @@ class ReturnSafetyAllowlistTests(unittest.TestCase):
                                  ("other cue", {"x.inline": self.entry(cue="f" * 32)}, self.bps()),
                                  ("missing scene", {"x.inline": self.entry(), "gone": self.entry()}, self.bps())]:
             with self.subTest(name=name):
-                failures, _ = return_safety.check([scene()], bps, allow)
-                self.assertEqual(len(failures), 1, failures)
+                diagnostics, _ = return_safety.check([scene()], bps, allow)
+                self.assertEqual(len(diagnostics), 1, diagnostics)
 
     def test_allowlist_entries_need_reason_and_todo(self):
         with temporary_directory() as tmp:
@@ -124,7 +126,7 @@ class ReturnSafetyGameTests(unittest.TestCase):
         cls.read = return_safety.ZipReader(GAME)
 
     def test_areelu_reveal_cue_0006_fails_on_its_conditions(self):
-        bad = return_safety.scene_problems(scene(cue="b618fff15d921894e84b9b2fe9efaa39", lists=(self.REVEAL_LIST,)), self.read)
+        bad = check_scene(scene(cue="b618fff15d921894e84b9b2fe9efaa39", lists=(self.REVEAL_LIST,)), self.read)
         self.assertIn("cue.Conditions", bad)
 
     def test_story_fixture_through_the_cli(self):
@@ -139,7 +141,8 @@ class ReturnSafetyGameTests(unittest.TestCase):
             finally:
                 sys.stdout = saved
             self.assertEqual(code, 1, out.getvalue())
-            self.assertIn("HARD areelu.reveal cue b618fff15d921894e84b9b2fe9efaa39: cue.Conditions", out.getvalue())
+            diagnostics = out.getvalue()
+            self.assertIn("HARD areelu.reveal cue b618fff15d921894e84b9b2fe9efaa39: cue.Conditions", diagnostics)
 
 
 if __name__ == "__main__":

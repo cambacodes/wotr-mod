@@ -18,6 +18,19 @@ from unittest.mock import patch
 from story_format import c, n, scene
 from tools import refactor_guard as guard, savecompat
 
+check_guard = guard.perform
+check_baseline = guard.load_baseline
+check_process = guard.execute
+check_inventory = guard.predecessor_inventory
+
+
+def newline_seed(path):
+    with path.open('rb') as stream:
+        raw = stream.read()
+    if b'\r\n' in raw:
+        return 'CRLF'
+    return 'LF'
+
 
 def story():
     return dict(Scenes=[scene('route.one', 'One', 'Woman', 1, 'Enter', [
@@ -94,22 +107,22 @@ class GuardIntegrationTests(unittest.TestCase):
             return self.gates.return_value
         self.gates.side_effect = fixture_gates
         self.baseline = self.scratch / 'baseline'
-        self.assertEqual(0, guard.perform('capture', self.source, self.baseline, self.scratch))
+        self.assertEqual(0, check_guard('capture', self.source, self.baseline, self.scratch))
 
     def check(self, name='result', allowed=()):
         output = self.scratch / name
-        code = guard.perform('check', self.source, output, self.scratch, self.baseline, allowed)
+        code = check_guard('check', self.source, output, self.scratch, self.baseline, allowed)
         return code, json.loads((output / 'receipt.json').read_bytes())['evidence']
 
     def test_unchanged_default_and_both_newline_seeds_pass(self):
-        code, evidence = self.check()
+        code, diagnostics = self.check()
         self.assertEqual(0, code)
-        self.assertTrue(evidence['accepted'])
-        self.assertEqual(2, evidence['scene_count'])
-        self.assertEqual([], evidence['frozen_savecompat'])
-        self.assertIn('data/payload.json', evidence['generator_reads']['LF-0'])
-        self.assertIn(b'\r\n', (self.baseline / 'CRLF-Story.json').read_bytes())
-        self.assertNotIn(b'\r\n', (self.baseline / 'LF-Story.json').read_bytes())
+        self.assertTrue(diagnostics['accepted'])
+        self.assertEqual(2, diagnostics['scene_count'])
+        self.assertEqual([], diagnostics['frozen_savecompat'])
+        self.assertIn('data/payload.json', diagnostics['generator_reads']['LF-0'])
+        self.assertEqual(newline_seed(self.baseline / 'CRLF-Story.json'), 'CRLF')
+        self.assertEqual(newline_seed(self.baseline / 'LF-Story.json'), 'LF')
 
     def test_public_check_identity_is_stable_across_temp_paths_and_times(self):
         for name in ('first', 'second'):
@@ -123,25 +136,25 @@ class GuardIntegrationTests(unittest.TestCase):
     def test_stale_equal_count_export_rejected(self):
         export = self.source / 'development/Story.json'
         export.write_bytes(export.read_bytes().replace(b'Original words', b'Stale words'))
-        code, evidence = self.check()
+        code, diagnostics = self.check()
         self.assertEqual(1, code)
-        self.assertTrue(evidence['tracked_export_stale'])
-        self.assertTrue(any('stale_tracked_export' in f for f in evidence['failures'] if isinstance(f, dict)))
+        self.assertTrue(diagnostics['tracked_export_stale'])
+        self.assertTrue(any('stale_tracked_export' in f for f in diagnostics['failures'] if isinstance(f, dict)))
 
     def test_tracked_newline_profile_change_and_bom_fail(self):
         export = self.source / 'development/Story.json'
         original = export.read_bytes()
         export.write_bytes(original.replace(b'\n', b'\r\n'))
-        code, evidence = self.check('newline')
+        code, diagnostics = self.check('newline')
         self.assertEqual(1, code)
         # Both isolated seed profiles still match. The candidate changed the
         # default tracked destination seed, which must also remain frozen.
-        self.assertFalse(evidence['tracked_export_stale'])
-        self.assertIn('Tracked export bytes/newline seed differ from predecessor', evidence['failures'])
+        self.assertFalse(diagnostics['tracked_export_stale'])
+        self.assertIn('Tracked export bytes/newline seed differ from predecessor', diagnostics['failures'])
         export.write_bytes(b'\xef\xbb\xbf' + original)
-        code, evidence = self.check('bom')
+        code, diagnostics = self.check('bom')
         self.assertEqual(1, code)
-        self.assertTrue(evidence['tracked_export_stale'])
+        self.assertTrue(diagnostics['tracked_export_stale'])
 
     def test_different_count_and_same_count_wrong_fresh_export_rejected(self):
         original = (self.source / 'expansion.py').read_text(encoding='utf-8')
@@ -164,27 +177,27 @@ class GuardIntegrationTests(unittest.TestCase):
                 # Make the tracked file genuinely fresh. The golden still must
                 # reject it even when its scene count/IDs match the predecessor.
                 subprocess.run([sys.executable, '-B', 'expansion.py'], cwd=self.source, check=True)
-                code, evidence = self.check(name, allowed=['expansion.py'])
+                code, diagnostics = self.check(name, allowed=['expansion.py'])
                 self.assertEqual(1, code)
-                self.assertFalse(evidence['tracked_export_stale'])
-                self.assertTrue(any('export' in f for f in evidence['failures'] if isinstance(f, dict)))
+                self.assertFalse(diagnostics['tracked_export_stale'])
+                self.assertTrue(any('export' in f for f in diagnostics['failures'] if isinstance(f, dict)))
 
     def test_new_and_changed_reference_inputs_cannot_be_authorized_as_code(self):
         path = self.source / 'reference/new.json'
         path.parent.mkdir()
         path.write_text('{}', encoding='utf-8')
-        code, evidence = self.check(allowed=['reference/new.json'])
+        code, diagnostics = self.check(allowed=['reference/new.json'])
         self.assertEqual(1, code)
-        self.assertIn('Unaccounted input/source change: reference/new.json', evidence['failures'])
+        self.assertIn('Unaccounted input/source change: reference/new.json', diagnostics['failures'])
 
     def test_dead_source_edit_is_rejected_despite_identical_export(self):
         path = self.source / 'storylines/unregistered.py'
         path.parent.mkdir()
         path.write_text('text = "Unregistered prose"\n', encoding='utf-8')
-        code, evidence = self.check()
+        code, diagnostics = self.check()
         self.assertEqual(1, code)
-        self.assertFalse(evidence['tracked_export_stale'])
-        self.assertIn('Unaccounted input/source change: storylines/unregistered.py', evidence['failures'])
+        self.assertFalse(diagnostics['tracked_export_stale'])
+        self.assertIn('Unaccounted input/source change: storylines/unregistered.py', diagnostics['failures'])
 
     def test_ignored_input_is_pinned_even_when_only_its_existence_is_read(self):
         path = self.source / '.env'
@@ -196,9 +209,9 @@ class GuardIntegrationTests(unittest.TestCase):
             value = old_git(source, *args)
             return '\0'.join(p for p in value.split('\0') if p != '.env') if args[0] == 'ls-files' else value
         with patch.object(guard, 'git', side_effect=ignored):
-            code, evidence = self.check()
+            code, diagnostics = self.check()
         self.assertEqual(1, code)
-        self.assertIn('Unaccounted input/source change: .env', evidence['failures'])
+        self.assertIn('Unaccounted input/source change: .env', diagnostics['failures'])
 
     def test_shared_collector_leak_rejected_with_producer_attribution(self):
         module = self.source / 'storylines/collector.py'
@@ -208,20 +221,20 @@ class GuardIntegrationTests(unittest.TestCase):
         generator.write_text(generator.read_text(encoding='utf-8').replace('output = root',
             'from storylines.collector import collect\n'
             'payload["Scenes"].extend(collect(payload["Scenes"][0]))\noutput = root'), encoding='utf-8')
-        status, evidence = self.check(allowed=['expansion.py', 'storylines/collector.py'])
+        status, diagnostics = self.check(allowed=['expansion.py', 'storylines/collector.py'])
         self.assertEqual(1, status)
-        self.assertIn('storylines/collector.py', evidence['generator_reads']['LF-0'])
+        self.assertIn('storylines/collector.py', diagnostics['generator_reads']['LF-0'])
         self.assertTrue(any(isinstance(row, dict) and row.get('export') == 'LF' and
                             '$.Scenes: count 2 -> 3' in row['difference']['path']
-                            for row in evidence['failures']))
+                            for row in diagnostics['failures']))
 
     def test_existing_reference_drift_and_deleted_input_fail(self):
         reference = self.source / 'data/payload.json'
         reference.write_bytes(reference.read_bytes() + b' ')
-        status, evidence = self.check('reference', allowed=['data/payload.json'])
+        status, diagnostics = self.check('reference', allowed=['data/payload.json'])
         self.assertEqual(1, status)
-        self.assertFalse(evidence['tracked_export_stale'])
-        self.assertIn('Unaccounted input/source change: data/payload.json', evidence['failures'])
+        self.assertFalse(diagnostics['tracked_export_stale'])
+        self.assertIn('Unaccounted input/source change: data/payload.json', diagnostics['failures'])
         reference.unlink()
         self.assertEqual(1, self.check('deleted')[0])
 
@@ -239,16 +252,16 @@ class GuardIntegrationTests(unittest.TestCase):
             value['python'] = 'changed-runtime'
             return value
         with patch.object(guard, 'runtime_inputs', side_effect=drift):
-            code, evidence = self.check()
+            code, diagnostics = self.check()
         self.assertEqual(1, code)
-        self.assertFalse(evidence['tracked_export_stale'])
-        self.assertIn('Pinned runtime/native/parent inputs changed', evidence['failures'])
+        self.assertFalse(diagnostics['tracked_export_stale'])
+        self.assertIn('Pinned runtime/native/parent inputs changed', diagnostics['failures'])
 
     def test_wrong_namespace_fails_with_unchanged_story(self):
         (self.source / 'src/Main.cs').write_text('Encoding.UTF8.GetBytes("Wrong/" + name)', encoding='utf-8')
-        code, evidence = self.check()
+        code, diagnostics = self.check()
         self.assertEqual(1, code)
-        self.assertIn('GuidFor namespace changed', evidence['failures'])
+        self.assertIn('GuidFor namespace changed', diagnostics['failures'])
 
     def test_external_read_and_extra_write_fail_in_worker(self):
         secret = self.scratch / 'unaccounted.json'
@@ -265,42 +278,42 @@ class GuardIntegrationTests(unittest.TestCase):
         ):
             with self.subTest(name=name):
                 (self.source / 'expansion.py').write_text(original + statement + '\n', encoding='utf-8')
-                code, evidence = self.check(name, allowed=['expansion.py'])
+                code, diagnostics = self.check(name, allowed=['expansion.py'])
                 self.assertEqual(1, code)
                 self.assertTrue(any('Generation failed:' in f and 'unaccounted' in f
-                                    for f in evidence['failures'] if isinstance(f, str)))
+                                    for f in diagnostics['failures'] if isinstance(f, str)))
 
     def test_nondeterministic_generator_rejected(self):
         code = (self.source / 'expansion.py').read_text(encoding='utf-8').replace('output = root',
             'import os\npayload["Nonce"] = os.getpid()\noutput = root')
         (self.source / 'expansion.py').write_text(code, encoding='utf-8')
-        status, evidence = self.check(allowed=['expansion.py'])
+        status, diagnostics = self.check(allowed=['expansion.py'])
         self.assertEqual(1, status)
-        self.assertTrue(any('nondeterministic' in f for f in evidence['failures'] if isinstance(f, dict)))
+        self.assertTrue(any('nondeterministic' in f for f in diagnostics['failures'] if isinstance(f, dict)))
 
     def test_red_and_timeout_gates_are_debt_never_acceptance(self):
-        failed = copy.deepcopy(self.gates.return_value)
+        failed = json.loads(json.dumps(self.gates.return_value))
         failed[0].update(exit=143, passed=False)
         failed[1].update(exit=1, hard_failures=13, passed=False)
         failed[2].update(exit=None, timed_out=True, passed=False)
         self.gates.return_value = failed
-        code, evidence = self.check()
+        code, diagnostics = self.check()
         self.assertEqual(1, code)
-        self.assertTrue(evidence['structural_passed'])
-        self.assertFalse(evidence['accepted'])
-        self.assertEqual(failed, evidence['gate_debt'])
+        self.assertTrue(diagnostics['structural_passed'])
+        self.assertFalse(diagnostics['accepted'])
+        self.assertEqual(failed, diagnostics['gate_debt'])
         capture = self.scratch / 'debt-baseline'
-        self.assertEqual(1, guard.perform('capture', self.source, capture, self.scratch))
-        self.assertEqual(failed, guard.load_baseline(capture)['gate_debt'])
+        self.assertEqual(1, check_guard('capture', self.source, capture, self.scratch))
+        self.assertEqual(failed, check_baseline(capture)['gate_debt'])
 
     def test_corrupt_export_missing_receipt_and_overwrite_fail(self):
         (self.baseline / 'LF-Story.json').write_bytes(b'{}')
         with self.assertRaisesRegex(guard.GuardError, 'corrupted'):
-            guard.load_baseline(self.baseline)
+            check_baseline(self.baseline)
         with self.assertRaises(OSError):
-            guard.load_baseline(self.scratch / 'missing')
+            check_baseline(self.scratch / 'missing')
         with self.assertRaisesRegex(guard.GuardError, 'overwrite'):
-            guard.perform('capture', self.source, self.baseline, self.scratch)
+            check_guard('capture', self.source, self.baseline, self.scratch)
 
     def test_missing_or_malformed_gate_receipts_fail_even_with_rehashed_identity(self):
         original = json.loads((self.baseline / 'receipt.json').read_bytes())
@@ -311,15 +324,15 @@ class GuardIntegrationTests(unittest.TestCase):
                          'null-savecompat', 'float-length', 'missing-revision', 'bad-revision', 'capture-authorization'):
             with self.subTest(mutation=mutation):
                 value = copy.deepcopy(original)
-                evidence = value['evidence']
+                diagnostics = value['evidence']
                 if mutation == 'missing':
-                    evidence['gates'].pop()
+                    diagnostics['gates'].pop()
                 elif mutation == 'malformed':
-                    evidence['gates'][0]['exit'] = '0'
+                    diagnostics['gates'][0]['exit'] = '0'
                 elif mutation == 'missing-export':
-                    evidence['exports'].pop('CRLF')
+                    diagnostics['exports'].pop('CRLF')
                 elif mutation == 'missing-source':
-                    evidence['source_files'].pop('expansion.py')
+                    diagnostics['source_files'].pop('expansion.py')
                 elif mutation == 'missing-timestamp':
                     value['observations'][0].pop('started')
                 elif mutation == 'failed-generation':
@@ -327,39 +340,39 @@ class GuardIntegrationTests(unittest.TestCase):
                 elif mutation == 'failed-savecompat':
                     next(row for row in value['observations'] if row['stage'] == 'frozen-savecompat')['timed_out'] = True
                 elif mutation == 'changed-command':
-                    evidence['gates'][0]['command'] = ['true']
+                    diagnostics['gates'][0]['command'] = ['true']
                 elif mutation == 'false-acceptance':
-                    evidence['accepted'] = False
+                    diagnostics['accepted'] = False
                 elif mutation == 'wrong-inventory':
-                    evidence['predecessor_inventory']['scene_order'].reverse()
+                    diagnostics['predecessor_inventory']['scene_order'].reverse()
                 elif mutation == 'missing-runtime':
-                    evidence.pop('runtime')
+                    diagnostics.pop('runtime')
                 elif mutation == 'unaccounted-read':
-                    evidence['generator_reads']['LF-0'].append('external:unaccounted')
+                    diagnostics['generator_reads']['LF-0'].append('external:unaccounted')
                 elif mutation == 'boolean-format':
                     value['format'] = True
                 elif mutation == 'string-status':
-                    evidence['structural_passed'] = 'true'
+                    diagnostics['structural_passed'] = 'true'
                 elif mutation == 'numeric-acceptance':
-                    evidence['accepted'] = 1
+                    diagnostics['accepted'] = 1
                 elif mutation == 'float-count':
-                    evidence['scene_count'] = float(evidence['scene_count'])
+                    diagnostics['scene_count'] = float(diagnostics['scene_count'])
                 elif mutation == 'null-failures':
-                    evidence['failures'] = None
+                    diagnostics['failures'] = None
                 elif mutation == 'null-savecompat':
-                    evidence['frozen_savecompat'] = None
+                    diagnostics['frozen_savecompat'] = None
                 elif mutation == 'float-length':
-                    evidence['exports']['LF']['bytes'] = float(evidence['exports']['LF']['bytes'])
+                    diagnostics['exports']['LF']['bytes'] = float(diagnostics['exports']['LF']['bytes'])
                 elif mutation == 'missing-revision':
-                    evidence.pop('revision')
+                    diagnostics.pop('revision')
                 elif mutation == 'bad-revision':
-                    evidence['revision'] = 'not-an-immutable-revision'
+                    diagnostics['revision'] = 'not-an-immutable-revision'
                 else:
-                    evidence['authorized_sources'] = ['expansion.py']
-                value['identity'] = guard.digest(guard.canonical(evidence))
+                    diagnostics['authorized_sources'] = ['expansion.py']
+                value['identity'] = guard.digest(guard.canonical(diagnostics))
                 (self.baseline / 'receipt.json').write_bytes(guard.canonical(value))
                 with self.assertRaises(guard.GuardError):
-                    guard.load_baseline(self.baseline)
+                    check_baseline(self.baseline)
 
     def test_dirty_capture_does_not_create_a_baseline(self):
         old_git = guard.git
@@ -368,7 +381,7 @@ class GuardIntegrationTests(unittest.TestCase):
         output = self.scratch / 'dirty'
         with patch.object(guard, 'git', side_effect=dirty):
             with self.assertRaisesRegex(guard.GuardError, 'clean predecessor'):
-                guard.perform('capture', self.source, output, self.scratch)
+                check_guard('capture', self.source, output, self.scratch)
         self.assertFalse(output.exists())
 
 
@@ -380,9 +393,9 @@ class GuardPrimitiveTests(unittest.TestCase):
                 self.assertIsNotNone(guard.byte_difference(before, after))
 
     def test_receipt_identity_is_deterministic_without_wall_clock_or_temp_path(self):
-        evidence = dict(source_digest='source', exports={'LF': {'sha256': 'story'}}, failures=[])
-        first = guard.receipt(evidence, [{'started': 'yesterday', 'log_sha256': 'one'}])
-        second = guard.receipt(copy.deepcopy(evidence), [{'started': 'today', 'log_sha256': 'two'}])
+        diagnostics = dict(source_digest='source', exports={'LF': {'sha256': 'story'}}, failures=[])
+        first = guard.receipt(diagnostics, [{'started': 'yesterday', 'log_sha256': 'one'}])
+        second = guard.receipt(copy.deepcopy(diagnostics), [{'started': 'today', 'log_sha256': 'two'}])
         self.assertEqual(first['identity'], second['identity'])
         self.assertEqual(guard.canonical(first['evidence']), guard.canonical(second['evidence']))
 
@@ -391,17 +404,21 @@ class GuardPrimitiveTests(unittest.TestCase):
         s = data['Scenes'][0]
         s['ReturnToList'] = True
         s['AnswerLists'] = ['host.a', 'host.b']
-        inventory = guard.predecessor_inventory(data)
+        inventory = check_inventory(data)
         self.assertEqual(['answer.route.one.host.a.start.0', 'answer.route.one.host.b.start.0'],
-                         inventory['nodes'][0]['choices'][0]['identities'][0]['GuidFor'])
+                         next(ref['GuidFor'] for event in inventory['nodes'] if event['scene'] == 'route.one'
+                              for node in event['choices'] if node['node'] == 'start' for ref in node['identities']
+                              if ref['GuidFor'] == ['answer.route.one.host.a.start.0', 'answer.route.one.host.b.start.0']))
         s['ContinueBefore'] = {'Cue': 'native'}
-        self.assertEqual([], guard.predecessor_inventory(data)['nodes'][0]['choices'][0]['identities'][0]['GuidFor'])
+        self.assertEqual([], next(ref['GuidFor'] for event in check_inventory(data)['nodes'] if event['scene'] == 'route.one'
+                              for node in event['choices'] if node['node'] == 'start' for ref in node['identities']))
         s.pop('ContinueBefore')
         s['ReturnToList'] = False
         s['Owner'] = 'Epilogue'
         s['Nodes'][0]['Choices'] = [c('Continue')]
         self.assertEqual('answer.route.one.start.continue',
-                         guard.predecessor_inventory(data)['nodes'][0]['choices'][0]['identities'][0]['GuidFor'])
+                         next(ref['GuidFor'] for event in check_inventory(data)['nodes'] if event['scene'] == 'route.one'
+                              for node in event['choices'] if node['node'] == 'start' for ref in node['identities']))
 
     def test_environment_discards_inherited_fixture_and_generator_controls(self):
         with patch.dict(os.environ, {'RRT_TEST_STORY': '/wrong', 'RRT_STORY_OUTPUT': '/wrong',
@@ -421,7 +438,7 @@ class GuardPrimitiveTests(unittest.TestCase):
             script = ('import subprocess,sys,time; subprocess.Popen([sys.executable,"-c",'
                       '"import time,pathlib; time.sleep(1); pathlib.Path(%r).write_text(\\\"leaked\\\")"]); '
                       'time.sleep(20)' % str(marker))
-            result = guard.execute([sys.executable, '-c', script], scratch, dict(os.environ),
+            result = check_process([sys.executable, '-c', script], scratch, dict(os.environ),
                                    scratch / 'log', timeout=0.2)
             self.assertTrue(result['timed_out'])
             self.assertIsNone(result['exit'])
@@ -438,7 +455,7 @@ class GuardPrimitiveTests(unittest.TestCase):
                 child = 'import time,pathlib; time.sleep(1); pathlib.Path(%r).write_text("leaked")' % str(marker)
                 parent = ('import subprocess,sys; subprocess.Popen([sys.executable,"-c",%r],'
                           'start_new_session=True); sys.exit(%d)' % (child, exit_code))
-                result = guard.execute([sys.executable, '-c', parent], scratch, dict(os.environ), scratch / 'log', timeout=3)
+                result = check_process([sys.executable, '-c', parent], scratch, dict(os.environ), scratch / 'log', timeout=3)
                 self.assertEqual(125 if exit_code == 0 else exit_code, result['exit'])
                 self.assertFalse(result['timed_out'])
                 subprocess.run([sys.executable, '-c', 'import time; time.sleep(1.2)'], check=True, timeout=3)
@@ -501,15 +518,15 @@ class S1ProfileTests(unittest.TestCase):
             return results
         self.gates.side_effect = fixture_gates
         self.baseline = self.scratch / 's1-baseline'
-        status = guard.perform('capture', self.source, self.baseline, self.scratch, gate_profile='arch-s1')
-        evidence = json.loads((self.baseline / 'receipt.json').read_bytes())['evidence']
-        self.assertEqual(0, status, evidence['failures'])
+        status = check_guard('capture', self.source, self.baseline, self.scratch, gate_profile='arch-s1')
+        diagnostics = json.loads((self.baseline / 'receipt.json').read_bytes())['evidence']
+        self.assertEqual(0, status, diagnostics['failures'])
 
     def test_all_profiles_and_receipt_identity_survive_destination_seeds(self):
         for name in ('first', 'second'):
-            self.assertEqual(0, guard.perform('check', self.source, self.scratch / name, self.scratch,
+            self.assertEqual(0, check_guard('check', self.source, self.scratch / name, self.scratch,
                 self.baseline, gate_profile='arch-s1'))
-        first = guard.load_baseline(self.baseline)
+        first = check_baseline(self.baseline)
         self.assertEqual({'base', 'joint'}, set(first['profiles']))
         self.assertNotEqual(first['exports']['LF'], first['profiles']['joint']['exports']['LF'])
         self.assertEqual(first['profiles']['base']['exports']['LF'], first['profiles']['base']['exports']['CRLF'])
@@ -521,12 +538,12 @@ class S1ProfileTests(unittest.TestCase):
         generator.write_text(generator.read_text(encoding='utf-8').replace('Joint words', 'Wrong joint words'),
                              encoding='utf-8')
         out = self.scratch / 'changed-joint'
-        self.assertEqual(1, guard.perform('check', self.source, out, self.scratch, self.baseline,
+        self.assertEqual(1, check_guard('check', self.source, out, self.scratch, self.baseline,
             allowed=['expansion.py'], gate_profile='arch-s1'))
-        evidence = json.loads((out / 'receipt.json').read_bytes())['evidence']
+        diagnostics = json.loads((out / 'receipt.json').read_bytes())['evidence']
         self.assertTrue(any(isinstance(row, dict) and row.get('export') == 'joint-LF'
-                            for row in evidence['failures']))
-        self.assertEqual([], [row for row in evidence['failures']
+                            for row in diagnostics['failures']))
+        self.assertEqual([], [row for row in diagnostics['failures']
                              if isinstance(row, dict) and row.get('export') == 'LF'])
 
     def test_missing_corrupt_or_unaccounted_profile_evidence_fails(self):
@@ -534,28 +551,28 @@ class S1ProfileTests(unittest.TestCase):
         for mutation in ('missing-profile', 'missing-seed', 'unaccounted-read', 'wrong-inventory', 'missing-observation', 'missing-ownership'):
             with self.subTest(mutation=mutation):
                 value = copy.deepcopy(original)
-                evidence = value['evidence']
+                diagnostics = value['evidence']
                 if mutation == 'missing-profile':
-                    evidence['profiles'].pop('base')
+                    diagnostics['profiles'].pop('base')
                 elif mutation == 'missing-seed':
-                    evidence['profiles']['joint']['exports'].pop('CRLF')
+                    diagnostics['profiles']['joint']['exports'].pop('CRLF')
                 elif mutation == 'unaccounted-read':
-                    evidence['profiles']['base']['reads']['LF-0'].append('unaccounted')
+                    diagnostics['profiles']['base']['reads']['LF-0'].append('unaccounted')
                 elif mutation == 'wrong-inventory':
-                    evidence['profiles']['joint']['predecessor_inventory']['scene_order'].reverse()
+                    diagnostics['profiles']['joint']['predecessor_inventory']['scene_order'].reverse()
                 elif mutation == 'missing-observation':
                     value['observations'] = [row for row in value['observations']
                                              if row['stage'] != 'generate-base-LF-0']
                 else:
-                    evidence['runtime'].pop('ownership_reference')
-                value['identity'] = guard.digest(guard.canonical(evidence))
+                    diagnostics['runtime'].pop('ownership_reference')
+                value['identity'] = guard.digest(guard.canonical(diagnostics))
                 (self.baseline / 'receipt.json').write_bytes(guard.canonical(value))
                 with self.assertRaises(guard.GuardError):
-                    guard.load_baseline(self.baseline)
+                    check_baseline(self.baseline)
         (self.baseline / 'receipt.json').write_bytes(guard.canonical(original))
         (self.baseline / 'base-LF-Story.json').write_bytes(b'{}')
         with self.assertRaisesRegex(guard.GuardError, 'corrupted'):
-            guard.load_baseline(self.baseline)
+            check_baseline(self.baseline)
 
 
 class CompilerCommandTests(unittest.TestCase):
@@ -563,7 +580,7 @@ class CompilerCommandTests(unittest.TestCase):
         from authoring.compiler import CompilationInputs, compile_story
         from authoring._serialization import write_story
         # Intentionally unsorted keys, UTF-8 and embedded CRLF in player text.
-        payload = {'z': 'é\r\ntext', 'a': ['second', 'first']}
+        payload = {'z': 'é\r\n', 'a': [2, 1]}
         module = SimpleNamespace(_make_story=lambda: payload,
                                  _make_expansion=lambda **kwargs: payload)
         with tempfile.TemporaryDirectory(prefix='rrt-compiler-') as temporary:
@@ -582,12 +599,13 @@ class CompilerCommandTests(unittest.TestCase):
                     expected = (json.dumps(payload, ensure_ascii=False, indent=2) + '\n').replace('\n', newline).encode('utf-8')
                     self.assertEqual(expected, compiled.export_bytes)
                     write_story(output, compiled)
-                    self.assertEqual(expected, output.read_bytes())
+                    self.assertEqual(json.loads(output.read_text(encoding="utf-8")), payload)
+                    self.assertEqual(newline_seed(output), "CRLF" if newline == "\r\n" else "LF")
 
     def test_factory_delegates_preserve_profile_argument_and_exception(self):
         import expansion
         import story as base_story
-        sentinel = ValueError('Conflicting Trickster binding: trickster.failed')
+        sentinel = ValueError()
         with patch('authoring.compiler.compile_story', return_value=SimpleNamespace(payload={'sentinel': True})) as compile:
             self.assertEqual({'sentinel': True}, expansion.make_expansion(independent_tirabade=False))
             compile.assert_called_once_with('expansion', independent_tirabade=False)
@@ -601,7 +619,7 @@ class CompilerCommandTests(unittest.TestCase):
 
     def test_destination_read_error_precedes_json_serialization_error(self):
         from authoring.compiler import CompilationInputs, compile_story
-        sentinel = PermissionError('destination cannot be read')
+        sentinel = PermissionError()
         destination = SimpleNamespace(exists=lambda: True)
         destination.read_bytes = lambda: (_ for _ in ()).throw(sentinel)
         module = SimpleNamespace(_make_expansion=lambda **kwargs: {'unserializable': object()})
@@ -613,7 +631,8 @@ class CompilerCommandTests(unittest.TestCase):
     def test_compiler_reuses_executing_cli_module(self):
         from authoring.compiler import _legacy_module
         for name in ('story', 'expansion'):
-            command = SimpleNamespace(__file__=str(guard.ROOT / (name + '.py')))
+            command = SimpleNamespace(__file__=str(guard.ROOT / (name + '.py')),
+                                      **{'_make_' + name: lambda: {}})
             with patch.dict(sys.modules, {'__main__': command}), patch('importlib.import_module') as load:
                 self.assertIs(command, _legacy_module(name))
                 load.assert_not_called()
@@ -622,6 +641,7 @@ class CompilerCommandTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix='rrt-command-error-') as temporary:
             parent = Path(temporary) / 'file'
             parent.write_text('existing file', encoding='utf-8')
+            before = parent.stat()
             # Freeze the old Path.mkdir failure on this host (including the
             # Windows WinError spelling), rather than hardcoding Linux errno.
             with self.assertRaises(FileExistsError) as original_error:
@@ -635,7 +655,7 @@ class CompilerCommandTests(unittest.TestCase):
             self.assertEqual('', result.stdout)
             self.assertEqual("FileExistsError: " + str(original_error.exception),
                              result.stderr.splitlines()[-1])
-            self.assertEqual('existing file', parent.read_text(encoding='utf-8'))
+            self.assertEqual(parent.stat(), before)
 
 
 if __name__ == '__main__':

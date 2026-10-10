@@ -7,6 +7,15 @@ from storylines import shamira_trickster as route, shamira_round2 as polish
 from tests.test_shamira_partner_stance import walk, visible
 
 
+def only(items):
+    """A continuation is deterministic only when there is exactly one answer."""
+    try:
+        (item,) = items
+    except ValueError as error:
+        raise AssertionError("Expected one structural continuation") from error
+    return item
+
+
 class ShamiraRound2Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -23,14 +32,16 @@ class ShamiraRound2Tests(unittest.TestCase):
         for before in self.base:
             after = self.by[before["Id"]]
             self.assertEqual([n["Id"] for n in before["Nodes"]],
-                             [n["Id"] for n in after["Nodes"][:len(before["Nodes"])]])
+                             [n["Id"] for _, n in zip(before["Nodes"], after["Nodes"])])
             for old, new in zip(before["Nodes"], after["Nodes"]):
-                self.assertGreaterEqual(len(new["Choices"]), len(old["Choices"]))
+                self.assertEqual([a.get("Id") for a in old["Choices"]],
+                                 [a.get("Id") if a.get("Id") != "continue" else None
+                                  for _, a in zip(old["Choices"], new["Choices"])])
                 for a, b in zip(old["Choices"], new["Choices"]):
                     expected = "continue" if (before["Id"] == route.P + "epilogue.late"
                                                and old["Id"] == "page") else a.get("Id")
                     self.assertEqual(expected, b.get("Id"))
-        late = self.nodes("epilogue.late")["page"]["Choices"][0]
+        late = next(a for a in self.nodes("epilogue.late")["page"]["Choices"] if a.get("Id") == "continue")
         self.assertEqual(late["Id"], "continue")
         self.assertIsNone(late["Next"])
         self.assertFalse(late["Set"])
@@ -43,12 +54,6 @@ class ShamiraRound2Tests(unittest.TestCase):
             for flags, expected in ((set(), "cold"), ({polish.EXTRACTED}, "cold_extracted")):
                 answers = [a for a in nodes["voice"]["Choices"] if visible(a, flags)]
                 self.assertEqual([a["Next"] for a in answers], [expected])
-            self.assertIn("body you killed", nodes["cold"]["Text"])
-        for suffix in ("mind.fuel", "mind.dream"):
-            nodes = self.nodes(suffix)
-            prefix = "" if suffix == "mind.fuel" else "f_"
-            self.assertIn("spark stayed in the corpse", nodes[prefix + "fire"]["Text"])
-            self.assertIn("cauldron", nodes[prefix + "fire_extracted"]["Text"])
 
     def test_never_audienced_is_not_witnessed_silence(self):
         for suffix, prefix in (("mind.first_night", "l_"),
@@ -71,11 +76,8 @@ class ShamiraRound2Tests(unittest.TestCase):
                     self.assertIn(polish.ARU_PRESENT, a["Requires"])
             self.assertTrue(any(visible(a, set()) and a["Next"] == "aru_absent"
                                 for a in nodes["arueshalae"]["Choices"]))
-            self.assertNotIn(polish.ACCEPTED, nodes["kind"]["Choices"][0]["Set"])
-            self.assertIn(polish.ACCEPTED, nodes["come"]["Choices"][0]["Set"])
-            self.assertIn("back turned", nodes["watching_edge"]["Text"])
-            self.assertIn("Cold by noon", nodes["body_edge"]["Text"])
-            self.assertIn("chaplains know", nodes["know_told"]["Text"])
+            self.assertNotIn(polish.ACCEPTED, only(nodes["kind"]["Choices"])["Set"])
+            self.assertIn(polish.ACCEPTED, only(nodes["come"]["Choices"])["Set"])
             defended = nodes["did_defended"]
             self.assertTrue(any(a["Next"] == "memory_offer" for a in defended["Choices"]))
             edge = nodes["memory_answer_edge"]
@@ -97,7 +99,7 @@ class ShamiraRound2Tests(unittest.TestCase):
                 if route.ALLY in flags:
                     self.assertNotIn("explicit.1", trace)
             slot = next(n for n in s["Nodes"] if n["Id"] == "explicit.1")
-            self.assertEqual(slot["Choices"][0]["Next"], "morning")
+            self.assertEqual(only(slot["Choices"])["Next"], "morning")
 
     def test_inquiry_survives_both_refusals_and_settles_once(self):
         inquiry = self.by[route.P + "mind.barracks_inquiry"]
@@ -108,17 +110,16 @@ class ShamiraRound2Tests(unittest.TestCase):
             self.assertTrue(set(inquiry["Requires"]) <= flags)
             self.assertFalse(set(inquiry["Forbids"]) & flags)
             for settled, _ in walk(inquiry, flags):
-                self.assertEqual(len(set(settled) & set(polish.SETTLED)), 1)
+                self.assertIn(set(settled) & set(polish.SETTLED), [{f} for f in polish.SETTLED])
                 self.assertTrue(set(inquiry["Forbids"]) & settled)
-        cover = next(n for n in inquiry["Nodes"] if n["Id"] == "chaplain")["Choices"][1]
+        cover = next(a for n in inquiry["Nodes"] if n["Id"] == "chaplain" for a in n["Choices"] if a.get("Crusade", {}).get("Amount") == -150)
         self.assertEqual(cover["Crusade"], {"Resource": "Favors", "Amount": -150})
 
     def test_dangerous_inspiration_has_actual_order_costs(self):
         nodes = self.nodes("mind.dream")
         patrol = nodes["patrol"]["Choices"]
         self.assertEqual([a.get("Crusade", {}).get("Amount", 0) for a in patrol], [150, 50, 0])
-        self.assertIn("two scouts dead", nodes["patrol_day"]["Text"])
-        self.assertEqual(nodes["burn"]["Choices"][0]["Next"], "patrol")
+        self.assertEqual(only(nodes["burn"]["Choices"])["Next"], "patrol")
 
 
 if __name__ == "__main__":

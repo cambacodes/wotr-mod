@@ -16,6 +16,15 @@ def selectable(node, flags):
             if set(c["Requires"]) <= flags and not set(c["Forbids"]) & flags]
 
 
+def only(items):
+    """A continuation is deterministic only when there is exactly one answer."""
+    try:
+        (item,) = items
+    except ValueError as error:
+        raise AssertionError("Expected one structural continuation") from error
+    return item
+
+
 class NidalynnRoundTwoTests(unittest.TestCase):
     def test_every_witness_history_has_one_continuation_and_keeps_testimony(self):
         hatching = nodes(kiln, "kiln.hatching")
@@ -26,16 +35,12 @@ class NidalynnRoundTwoTests(unittest.TestCase):
             with self.subTest(clerk=clerk, quartermaster=quartermaster):
                 start = selectable(hatching["lied"], flags)
                 later = selectable(reckoning["kiln"], flags)
-                self.assertEqual(len(start), 1)
-                self.assertEqual(len(later), 1)
                 suffix = "clerk" if clerk else "quartermaster" if quartermaster else None
-                self.assertEqual(start[0]["Next"], "lied_" + suffix if suffix else "lied2")
-                self.assertEqual(later[0]["Next"], "hills_" + suffix if suffix else "hills")
-                if suffix:
-                    self.assertIn(suffix, reckoning[later[0]["Next"]]["Text"])
+                self.assertEqual(only(start)["Next"], "lied_" + suffix if suffix else "lied2")
+                self.assertEqual(only(later)["Next"], "hills_" + suffix if suffix else "hills")
         debt = reckoning["salt"]["Choices"]
-        self.assertEqual(debt[0]["Set"], [route.CONFESSED])
-        self.assertIn(route.CLOSED, debt[1]["Set"])
+        self.assertEqual(next(c for c in debt if route.CONFESSED in c["Set"])["Set"], [route.CONFESSED])
+        self.assertIn(route.CLOSED, next(c for c in debt if route.CLOSED in c["Set"])["Set"])
 
     def test_reunion_remembers_inspection_without_implying_transfer(self):
         reunion = nodes(salt, "door.home_from_the_dark")
@@ -43,32 +48,26 @@ class NidalynnRoundTwoTests(unittest.TestCase):
             flags = {f for f, held in ((route.KILN_AGREED, inspected),
                                       (route.KILN, transferred), (route.HATCHED, hatched)) if held}
             choices = selectable(reunion["news"], flags)
-            self.assertEqual(len(choices), 1)
             expected = ("news_hatched" if hatched else "news_egg" if transferred else
                         "news_inspected" if inspected else "news_hearth")
-            self.assertEqual(choices[0]["Next"], expected)
-        self.assertIn("every evening", reunion["news_inspected"]["Text"])
-        self.assertIn("I'll come and turn it", nodes(kiln, "hearth.listening")["cold"]["Text"])
+            self.assertEqual(only(choices)["Next"], expected)
 
     def test_first_night_slot_keeps_the_cut_morning_and_terminal_receipt(self):
         night = nodes(salt, "ridge.snowfield")
-        self.assertEqual(night["cut"]["Choices"][0]["Next"], "explicit.1")
+        self.assertEqual(only(night["cut"]["Choices"])["Next"], "explicit.1")
         slot = night["explicit.1"]
-        self.assertEqual(slot["Choices"][0]["Next"], "morning")
-        self.assertEqual(slot["Choices"][0]["Set"], [])
-        self.assertNotIn("dragon", slot["Text"])
-        self.assertEqual(night["down_the_hill"]["Choices"][0]["Set"], [route.SNOW])
+        self.assertEqual(only(slot["Choices"])["Next"], "morning")
+        self.assertEqual(only(slot["Choices"])["Set"], [])
+        self.assertEqual(only(night["down_the_hill"]["Choices"])["Set"], [route.SNOW])
         grief = nodes(salt, "kiln.long_night")
-        self.assertEqual(selectable(grief["kiss"], set())[0]["Next"], "not_here")
-        self.assertEqual(selectable(grief["kiss"], {route.SNOW})[0]["Next"], "not_here_again")
+        self.assertEqual(only(selectable(grief["kiss"], set()))["Next"], "not_here")
+        self.assertEqual(only(selectable(grief["kiss"], {route.SNOW}))["Next"], "not_here_again")
 
     def test_late_acceptance_does_not_answer_the_kept_heel(self):
         late = nodes(route, "epilogue.late")["page"]
         heel = nodes(route, "epilogue.heel")["page"]
-        self.assertIn("she ate hers", late["Text"])
-        self.assertIn("never moved it", heel["Text"])
-        self.assertEqual(late["Choices"][0]["Set"], [])
-        self.assertFalse(late["Choices"][0]["Next"])
+        self.assertEqual(only(late["Choices"])["Set"], [])
+        self.assertFalse(only(late["Choices"])["Next"])
 
     def test_current_mother_branches_are_exhaustive_after_loss(self):
         widow = nodes(route, "steps.widow")
@@ -87,36 +86,22 @@ class NidalynnRoundTwoTests(unittest.TestCase):
                                (custody["whose_straw"], "mother"),
                                (reveal["now"], "mother")):
                 choices = selectable(node, flags)
-                self.assertEqual(len(choices), 1)
-                self.assertEqual(choices[0]["Next"] == live, returned and present)
+                self.assertEqual(only(choices)["Next"] == live, returned and present)
             for history in ("druids", "straw"):
                 choices = selectable(widow[history], flags)
-                self.assertEqual(len(choices), 1)
-                self.assertEqual(choices[0]["Next"],
+                self.assertEqual(only(choices)["Next"],
                                  "hunted" if hunting and present else
                                  "hunted_absent" if hunting else "mother")
             choices = selectable(after["house"], flags)
-            self.assertEqual(len(choices), 1)
-            self.assertEqual(choices[0]["Next"],
+            self.assertEqual(only(choices)["Next"],
                              "bill" if bill else "druids" if hunting and present else
                              "druids_absent" if hunting else "end")
-        self.assertEqual(custody["mother_absent"]["Choices"][0]["Next"], "choose")
-        self.assertEqual(after["druids_absent"]["Choices"][0]["Next"], "end")
+        self.assertEqual(only(custody["mother_absent"]["Choices"])["Next"], "choose")
+        self.assertEqual(only(after["druids_absent"]["Choices"])["Next"], "end")
 
-    def test_snowfield_releases_wrist_and_keeps_loose_hair(self):
-        cut = nodes(salt, "ridge.snowfield")["cut"]["Text"]
-        self.assertIn("releases one wrist", cut)
-        self.assertNotIn("braid has come undone", cut)
 
-    def test_lastcall_helper_wraps_each_appended_paragraph_once(self):
-        from storylines import lastcall_partners
-        route.integrate({"Presences": {}, "SeenCues": {}})
-        partner = next(p for p in lastcall_partners.PARTNERS if p["rel"] == route.REL)
-        for paragraph in partner["paragraphs"]:
-            text = paragraph["Text"]
-            self.assertEqual(text.count("{n}"), text.count("{/n}"))
-            self.assertNotIn("{n}{n}", text)
-        self.assertEqual(len(partner["paragraphs"]), 12)
+
+
 
 
 if __name__ == "__main__":

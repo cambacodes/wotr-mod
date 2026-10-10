@@ -14,6 +14,10 @@ def payload(text, scene="fixture", location="start", **extra):
     return {"Scenes": [{"Id": scene, "Nodes": [{"Id": location, "Text": text, **extra}]}]}
 
 
+check_new_findings = baseline.new_findings
+check_spans = structure.spans
+
+
 class PlayerTextInventory2Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -22,7 +26,7 @@ class PlayerTextInventory2Tests(unittest.TestCase):
         cls.surfaces = {(s, n): t for s, n, t, _, _ in player.surfaces(cls.story)}
 
     def test_all_four_mapped_age_labels_are_removed_with_diagnostic_controls(self):
-        rows = player.check(self.story)["review"]
+        diagnostics = player.check(self.story)["review"]
         mapped = (("arsinoe_borrowed_court", "start"),
                   ("arsinoe_courtyard_company", "public"),
                   ("arsinoe_courtyard_company", "private"),
@@ -30,21 +34,21 @@ class PlayerTextInventory2Tests(unittest.TestCase):
         for sid, loc in mapped:
             with self.subTest(scene=sid, location=loc):
                 text = self.surfaces[sid, loc]
-                found = [r for r in rows if (r["scene"], r["location"], r["code"]) == (sid, loc, "age-certification")]
+                found = [r for r in diagnostics if (r["scene"], r["location"], r["code"]) == (sid, loc, "age-certification")]
                 self.assertEqual(found, [])
                 # Removing a mapped label cannot permit a changed or extra label.
                 changed = payload(text + " {n}An adult courier arrives.{/n}", sid, loc)
-                self.assertTrue([r for r in baseline.new_findings(changed, player.check(changed)["review"])
+                self.assertTrue([r for r in check_new_findings(changed, player.check(changed)["review"])
                                  if r["code"] == "age-certification"])
 
     def test_missing_collection_closer_and_valid_controls(self):
         sid = "arsinoe.trickster.cauldron.collection"
         text = self.surfaces[sid, "start"]
-        self.assertEqual(structure.spans(text), ([], []))
+        self.assertEqual(check_spans(text), ([], []))
         broken = '"A spoken paragraph.\n{n}An action.{/n}\n"A second spoken paragraph."'
-        rows = structure.check(payload(broken, sid), draft=True)["review"]
-        self.assertEqual(len(rows), 1)
-        row = rows[0]
+        diagnostics = structure.check(payload(broken, sid), draft=True)["review"]
+        self.assertEqual(len(diagnostics), 1)
+        row = diagnostics[0]
         self.assertEqual(row["code"], "speech-boundary-review")
         self.assertTrue(row["draft"])
         self.assertEqual(row["match"], broken[row["start"]:row["end"]])
@@ -53,10 +57,10 @@ class PlayerTextInventory2Tests(unittest.TestCase):
                      '"Stay," {n}she says.{/n} "Here."',
                      '{n}A sign says "Road closed."{/n}\n"Keep walking."',
                      '“Stay.”\n{n}She waits.{/n}\n“Here.”'):
-            self.assertEqual(structure.spans(text), ([], []), text)
+            self.assertEqual(check_spans(text), ([], []), text)
         for text in ('"Stay.\n{n}She waits.{/n}\n"Here."',
                      '“Stay.\n{n}She waits.{/n}\n“Here.”'):
-            self.assertTrue(structure.spans(text)[1], text)
+            self.assertTrue(check_spans(text)[1], text)
 
     def test_reviewed_continuation_preserves_markup_shape(self):
         sid = "targona.the_unscheduled_door"
@@ -87,7 +91,7 @@ class PlayerTextInventory2Tests(unittest.TestCase):
         key = "351dcde6-b3d3-436d-b599-f7129acad809"
         path = game_dir() / "Wrath_Data/StreamingAssets/Localization/enGB.json"
         text = json.loads(path.read_text(encoding="utf-8"))["strings"][key]
-        self.assertTrue(text.strip())
+        self.assertTrue(player.check(payload(text, "native/Greybor/" + key), {})["review"])
         reviewed = {"exceptions": [dict(scene="native/Greybor/" + key, location="start", code="age-certification",
             match="adult", max_occurrences=1, reason="An adult dragon, distinct from a young dragon, is a different paid quarry.")]}
         story = payload(text, "native/Greybor/" + key)
@@ -95,23 +99,23 @@ class PlayerTextInventory2Tests(unittest.TestCase):
         self.assertTrue(player.check(story, {})["review"])
 
     def test_native_romance_residue_remains_reported_on_every_surface_and_draft(self):
-        rows = player.check(self.story)["review"]
+        diagnostics = player.check(self.story)["review"]
         self.assertFalse(any(r["scene"] == "wenduag.lastcall.page" and r["location"] == "page/paragraph/3"
-                            and r["code"] == "tooling-residue" for r in rows))
+                            and r["code"] == "tooling-residue" for r in diagnostics))
         text = "The native romance continues."
         story = payload(text, Choices=[{"Text": text}], Paragraphs=[{"Text": text}])
         story["Books"] = {"test": {"Text": text}}
         story["Journals"] = {"test": {"Text": text}}
-        rows = [r for r in player.check(story, draft=True)["review"] if r["code"] == "tooling-residue"]
-        self.assertEqual(len(rows), 5)
-        self.assertEqual({r["location"] for r in rows}, {"start", "start/choice/0", "start/paragraph/0", "Text"})
-        self.assertTrue(all(r["draft"] for r in rows))
+        diagnostics = [r for r in player.check(story, draft=True)["review"] if r["code"] == "tooling-residue"]
+        self.assertEqual(len(diagnostics), 5)
+        self.assertEqual({r["location"] for r in diagnostics}, {"start", "start/choice/0", "start/paragraph/0", "Text"})
+        self.assertTrue(all(r["draft"] for r in diagnostics))
 
     def test_age_diagnostics_cover_choices_paragraphs_books_journals_and_drafts(self):
         text = "An adult courier waits."
         story = payload(text, Choices=[{"Text": text}], Paragraphs=[{"Text": text}])
         story["Books"] = {"test": {"Text": text}}
         story["Journals"] = {"test": {"Text": text}}
-        rows = [r for r in player.check(story, draft=True)["review"] if r["code"] == "age-certification"]
-        self.assertEqual(len(rows), 5)
-        self.assertTrue(all(r["draft"] and r["match"] == "adult" for r in rows))
+        diagnostics = [r for r in player.check(story, draft=True)["review"] if r["code"] == "age-certification"]
+        self.assertEqual(len(diagnostics), 5)
+        self.assertTrue(all(r["draft"] and r["match"] == "adult" for r in diagnostics))

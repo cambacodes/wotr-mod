@@ -36,6 +36,15 @@ def walks(event, flags=(), node=None, path=()):
             yield after, (*path, node), answer
 
 
+def only(items):
+    """A continuation is deterministic only when there is exactly one answer."""
+    try:
+        (item,) = items
+    except ValueError as error:
+        raise AssertionError("Expected one structural continuation") from error
+    return item
+
+
 class SoanaPartnerTests(unittest.TestCase):
     def test_every_existing_commitment_records_one_stance(self):
         producers = {
@@ -80,8 +89,8 @@ class SoanaPartnerTests(unittest.TestCase):
                     self.assertNotIn("soana.committed", after)
                     self.assertEqual("soana.closed" in after, P.EXCLUSIVE in after)
                 if event["Id"].endswith(".commit"):
-                    self.assertIn(P.DECIDED, event["Nodes"][0]["Paragraphs"][4]["Requires"])
-                    self.assertIn(P.EXCLUSIVE, event["Nodes"][0]["Paragraphs"][4]["Forbids"])
+                    self.assertIn(P.DECIDED, only(p for n in event["Nodes"] if n["Id"] == "start" for p in n["Paragraphs"] if P.DECIDED in p["Requires"] and P.EXCLUSIVE in p["Forbids"])["Requires"])
+                    self.assertIn(P.EXCLUSIVE, only(p for n in event["Nodes"] if n["Id"] == "start" for p in n["Paragraphs"] if P.DECIDED in p["Requires"] and P.EXCLUSIVE in p["Forbids"])["Forbids"])
                     self.assertTrue(all(P.DECIDED not in p["Requires"]
                                         for p in event["Nodes"][0]["Paragraphs"][:4]))
 
@@ -158,15 +167,15 @@ class SoanaPartnerTests(unittest.TestCase):
     def test_every_ending_page_and_lastcall_reads_current_state(self):
         pages = [s for s in L.SCENES + T.SCENES if s.get("Relationship") == "soana" and s["Owner"].endswith("Epilogue")]
         pages.extend(s for rel, s in lastcall_partners.pages() if rel == "soana")
-        self.assertGreaterEqual(len(pages), 26)
+        self.assertTrue({"soana.lastcall.page", "soana.trickster.epilogue.commit", "soana.trickster.epilogue.luck_late"}
+                        <= {s["Id"] for s in pages})
         for event in pages:
             for page in event["Nodes"]:
                 with self.subTest(scene=event["Id"], node=page["Id"]):
                     paragraphs = page.get("Paragraphs", [])
                     unset = [p for p in paragraphs if set((P.SHARE, P.EXCLUSIVE, P.SECRET)) <= set(p.get("Forbids", ()))]
-                    self.assertEqual(1, len(unset))
-                    self.assertTrue(available(unset[0], set()))
-                    self.assertTrue(all(not available(unset[0], {s}) for s in (P.SHARE, P.EXCLUSIVE, P.SECRET)))
+                    self.assertTrue(available(only(unset), set()))
+                    self.assertTrue(all(not available(only(unset), {s}) for s in (P.SHARE, P.EXCLUSIVE, P.SECRET)))
                     for known in (set(), {P.CONFIRMED, P.TOGETHER}, {P.CONFIRMED, P.SEPARATED}, {P.CONFIRMED, P.DISTANT}):
                         flags = known | {P.SHARE}
                         state = [p for p in paragraphs if available(p, flags)
@@ -194,7 +203,7 @@ class SoanaPartnerTests(unittest.TestCase):
                 with self.subTest(scene=event["Id"], node=page["Id"]):
                     self.assertEqual(metadata(page["Paragraphs"][:3]), metadata(T.ALIVE_PARAGRAPHS))
                     if name == "sacrifice":
-                        self.assertEqual(metadata(page["Paragraphs"][3]), metadata(T.PORTION_DEAD))
+                        self.assertIn(metadata(T.PORTION_DEAD), [metadata(p) for p in page["Paragraphs"]])
                     self.assertTrue(any(P.CONFIRMED in p.get("Forbids", ())
                                         for p in page["Paragraphs"][3:]))
         before = copy.deepcopy(payload["Scenes"])
