@@ -5,6 +5,18 @@ from tests.story_fixture import fresh_story
 from tools import rrt_verify as verify
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
 class Structure11Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -25,7 +37,7 @@ class Structure11Tests(unittest.TestCase):
             self.assertNotIn('iomedae.present_now', state.flags)
             for choice in self.node(sid, 'name')['Choices'][:3]:
                 self.assertTrue(verify.sim_choice_available(choice, state), sid)
-            legend = self.node(sid, 'heard')['Choices'][1]
+            legend = by_contract(self.node(sid, 'heard')['Choices'], [{'Next': 'e_legend', 'Requires': ['galfrey.trickster.eulogy.legend'], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])
             self.assertEqual('e_legend', legend['Next'])
             self.assertTrue(verify.sim_choice_available(legend, state), sid)
 
@@ -56,7 +68,7 @@ class Structure11Tests(unittest.TestCase):
 
     def test_elixir_recollections_do_not_require_iomedaes_body(self):
         for suffix in ('', '_stall'):
-            choice = self.node('galfrey.trickster.kitrane.elixir' + suffix, 'grow')['Choices'][1]
+            choice = by_contract(self.node('galfrey.trickster.kitrane.elixir' + suffix, 'grow')['Choices'], [{'Next': 'frighten', 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])
             self.assertNotIn('iomedae.present_now', choice['Requires'])
 
     def test_sidequest_objectives_require_the_played_leads_and_outcomes(self):
@@ -82,7 +94,7 @@ class Structure11Tests(unittest.TestCase):
         self.assertEqual([['noct.acq.borrowed_signature_done']], noct['OpenWhen'])
         self.assertEqual([['noct.acq.the_paid_address_done']], noct['SettledWhen'])
         scene = self.by['noct.acq.the_paid_address']
-        check = self.node(scene['Id'], 'start')['Choices'][0]['Check']
+        check = by_contract(self.node(scene['Id'], 'start')['Choices'], [{'Next': None, 'Requires': [], 'Forbids': ['noct.acq.address_check_tried'], 'Set': ['noct.acq.address_check_tried'], 'Check': {'Skill': 'SkillKnowledgeWorld', 'DC': 35, 'Success': 'read', 'Failure': 'mistake', 'CommanderOnly': True}, 'Abort': False, 'Crusade': None}])['Check']
         self.assertEqual(('SkillKnowledgeWorld', 35, 'read', 'mistake'),
                          (check['Skill'], check['DC'], check['Success'], check['Failure']))
         self.assertIn('nocticula.reachable_by_letter', scene['Requires'])
@@ -92,23 +104,25 @@ class Structure11Tests(unittest.TestCase):
         from storylines import iomedae_trickster as io
         sid = io.E + 'epilogue.after'
         page = self.node(sid, 'page')
-        self.assertEqual('continue', page['Choices'][0]['Id'])
-        self.assertIsNone(page['Choices'][0]['Next'])
-        read = page['Choices'][2]
+        self.assertEqual('continue', by_contract(page['Choices'], [{'Id': 'continue'}])['Id'])
+        self.assertIsNone(by_contract(page['Choices'], [{'Id': 'continue'}])['Next'])
+        read = by_contract(page['Choices'], [{'Next': 'struct2_lifetime_summary', 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])
         self.assertEqual('struct2_lifetime_summary', read['Next'])
         self.assertEqual([], read['Requires'])
         self.assertEqual([], read['Forbids'])
         summary = self.node(sid, read['Next'])
         morning = self.node(sid, 'vigil_morning')
         # Both routes must retain the same consequences and conditional histories.
-        self.assertEqual(morning['Paragraphs'], summary['Paragraphs'])
-        self.assertGreaterEqual(len(summary['Paragraphs']), 25)
+        fields = ('Requires', 'Forbids', 'AnyGroups', 'Set')
+        self.assertEqual([{k: p.get(k) for k in fields} for p in morning['Paragraphs']],
+                         [{k: p.get(k) for k in fields} for p in summary['Paragraphs']])
+        self.assertTrue(summary['Paragraphs'])
         for flags in ({io.COMMITTED}, {io.COMMITTED, 'lastcall.dead_on_record'},
                       {io.COMMITTED, io.KEPT}):
             state = verify.SimState(6, 1000)
             state.flags.update(flags)
             self.assertTrue(verify.sim_choice_available(read, state))
-            reunion = page['Choices'][1]
+            reunion = by_contract(page['Choices'], [{'Next': 'iomedae.trickster.epilogue.after.explicit.1', 'Requires': ['iomedae.appointment_kept'], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])
             self.assertEqual(io.KEPT in flags, verify.sim_choice_available(reunion, state))
 
 

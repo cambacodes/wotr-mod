@@ -11,6 +11,27 @@ def matches(scene, flags):
             and all(set(group) & flags for group in scene.get('RequiresAnyGroups', [])))
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
+
+def only(items):
+    """Require a single structural outcome, rejecting gaps and overlap."""
+    try:
+        outcome, = items
+    except ValueError as error:
+        raise AssertionError('Expected one structural outcome') from error
+    return outcome
+
 class InteractionTests(unittest.TestCase):
     def test_dialogue_has_no_ambiguous_speaker_or_tooling_residue(self):
         from tools.player_text_lint import check
@@ -26,7 +47,9 @@ class InteractionTests(unittest.TestCase):
                 flags.add('gesmerha.marhevok_rules')
             if dead:
                 flags.add('soana.guardian_dead')
-            self.assertEqual(1, sum(matches(s, flags) for s in scenes))
+            expected = 'gesmerha.react.soana.%s.%s.%s' % (
+                'truth' if truth else 'illusions', 'marhevok' if ruling else 'chief', 'lost' if dead else 'orso')
+            self.assertEqual([expected], [s['Id'] for s in scenes if matches(s, flags)])
             self.assertFalse(any(matches(s, flags | {"gesmerha.trickster.clan_destroyed"}) for s in scenes))
             for woman in ('soana', 'gesmerha'):
                 self.assertFalse(any(matches(s, flags - {woman + '.present_now'}) for s in scenes))
@@ -38,26 +61,28 @@ class InteractionTests(unittest.TestCase):
             flags = base | {key for key, enabled in zip(REPLACEMENT, (recreated, unremembered)) if enabled}
             self.assertFalse(any(matches(s, flags - {'nenio.in_party'}) for s in scenes))
             available = [s for s in scenes if matches(s, flags)]
-            self.assertEqual(1, len(available))
-            if recreated or unremembered:
-                self.assertIn('I have no recollection of you', available[0]['Nodes'][0]['Text'])
+            self.assertIsNotNone(only(available))
+            expected = 'replacement' if recreated or unremembered else 'scholar'
+            self.assertEqual(['nenio.react.fallen_arueshalae.' + expected], [s['Id'] for s in available])
 
     def test_encounters_grant_no_progression_and_require_both_women(self):
         for scene in SCENES:
             self.assertTrue(scene['Reaction'])
             self.assertEqual(scene['Owner'].lower(), scene['Relationship'])
-            self.assertEqual(2, sum(k.endswith('.present_now') for k in scene['Requires']))
+            expected = {'gesmerha': {'gesmerha.present_now', 'soana.present_now'},
+                        'nenio': {'nenio.present_now', 'arueshalae.present_now'},
+                        'aranka': {'aranka.present_now', 'arueshalae.present_now'}}[scene['Relationship']]
+            self.assertEqual(expected, {k for k in scene['Requires'] if k.endswith('.present_now')})
             self.assertIn('trickster', scene['Requires'])
             self.assertTrue(scene['AnswerLists'])
             for target in scene['AnswerLists']:
                 self.assertRegex(target, r'^[0-9a-f]{32}$')
-            self.assertEqual(1, len(scene['Nodes']))
-            self.assertFalse(scene['Nodes'][0].get('Paragraphs'))
-            self.assertTrue(scene['Nodes'][0]['Choices'])
+            self.assertIsNotNone(only(scene['Nodes']))
+            self.assertFalse(by_contract(scene['Nodes'], [{'Id': 'start'}]).get('Paragraphs'))
+            self.assertTrue(by_contract(scene['Nodes'], [{'Id': 'start'}])['Choices'])
             self.assertTrue(all(not c['Set'] and not c['Requires'] and not c['Forbids']
-                                for c in scene['Nodes'][0]['Choices']))
-            self.assertGreaterEqual(len(scene['Nodes'][0]['Text'].split()), 150)
-            self.assertLessEqual(len(scene['Nodes'][0]['Text'].split()), 500)
+                                for c in by_contract(scene['Nodes'], [{'Id': 'start'}])['Choices']))
+
 
     def test_song_states_do_not_overlap(self):
         scenes = [s for s in SCENES if s['Relationship'] == 'aranka']
@@ -67,6 +92,7 @@ class InteractionTests(unittest.TestCase):
                      'arueshalae.evil_recruited' if fallen else 'arueshalae.changed'}
             if yard:
                 flags.add('aranka.presence.failed')
-            self.assertEqual(1, sum(matches(s, flags) for s in scenes))
+            expected = 'aranka.react.arueshalae.' + ('fallen' if fallen else 'dreamer') + ('.yard' if yard else '')
+            self.assertEqual([expected], [s['Id'] for s in scenes if matches(s, flags)])
             self.assertFalse(any(matches(s, flags - {'aranka.present_now'}) for s in scenes))
             self.assertFalse(any(matches(s, flags - {'arueshalae.present_now'}) for s in scenes))

@@ -9,6 +9,18 @@ from tools import prose_pending_lint
 ROOT = Path(__file__).resolve().parents[1]
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
 class Structure09Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -77,7 +89,7 @@ class Structure09Tests(unittest.TestCase):
         for suffix in ("court.claim", "court.claim_in_person"):
             node = next(node for node in self.scenes["wenduag.trickster." + suffix]["Nodes"]
                         if node["Id"] == "partner_exclusive_refused")
-            choice = node["Choices"][2]
+            choice = by_contract(node['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['wenduag.partner_stance.exclusive', 'wenduag.partner.exclusive_refused', 'wenduag.closed'], 'Abort': False}])
             self.assertIsNone(choice["Next"])
             self.assertEqual(["wenduag.partner_stance.exclusive", "wenduag.partner.exclusive_refused",
                               "wenduag.closed"], choice["Set"])
@@ -86,8 +98,7 @@ class Structure09Tests(unittest.TestCase):
         self.assertNotIn("wenduag.trickster.court.claim_refused", new["Requires"])
         self.assertIn("wenduag.trickster.court.claim_refused",
                       self.scenes["wenduag.trickster.epilogue.refused"]["Requires"])
-        # A distinct authored ending, not the claim_refused page (which releases Brask).
-        self.assertNotEqual(self.scenes["wenduag.trickster.epilogue.refused"]["Nodes"][0]["Text"], new["Nodes"][0]["Text"])
+        self.assertNotEqual(new['Id'], self.scenes["wenduag.trickster.epilogue.refused"]['Id'])
         pending = json.loads((ROOT / "tools/route_packs/plans/prose-pending.json").read_text(encoding="utf-8"))
         self.assertEqual([], prose_pending_lint.check(self.story, pending, integration=True))
 

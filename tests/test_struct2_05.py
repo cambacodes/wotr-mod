@@ -14,6 +14,18 @@ def available(block, flags):
             and not any(flag in flags for flag in block.get('Forbids', [])))
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
 class Structure05Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -53,7 +65,7 @@ class Structure05Tests(unittest.TestCase):
             self.assertIn(legend, scene['Requires'])
             self.assertIn('longcon.kc_appointed', scene['Requires'])
             self.assertIn('longcon.prisoner_seen', scene['Forbids'])
-            self.assertEqual(self.node(sid, 'plural' if sid.endswith('loud') else 'quiet')['Choices'][0]['Next'],
+            self.assertEqual(by_contract(self.node(sid, 'plural' if sid.endswith('loud') else 'quiet')['Choices'], [{'Next': 'hanged', 'Requires': [], 'Forbids': [], 'Set': ['longcon.prisoner_seen', 'longcon.rumour_confirmed', 'longcon.prisoner_hanged'], 'Abort': False}])['Next'],
                              'hanged')
 
     def test_seelah_letter_and_followups_are_local_companion_interactions(self):
@@ -88,14 +100,14 @@ class Structure05Tests(unittest.TestCase):
         prefix = 'hepzamirah.trickster.'
         market = prefix + 'flesh.the_market'
         room = prefix + 'bond.her_room'
-        attack = set(self.node(market, 'hep')['Choices'][0]['Set'])
+        attack = set(by_contract(self.node(market, 'hep')['Choices'], [{'Next': 'swing', 'Requires': [], 'Forbids': [], 'Set': ['hepzamirah.trickster.market_struck'], 'Abort': False}])['Set'])
         self.assertIn(prefix + 'market_struck', attack)
-        repair = self.node(market, 'swing_say')['Choices'][1]['Check']
+        repair = by_contract(self.node(market, 'swing_say')['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Check': {'Skill': 'CheckDiplomacy', 'DC': 24, 'Success': 'mended', 'Failure': 'strike', 'CommanderOnly': True}, 'Abort': False}])['Check']
         self.assertEqual((repair['Success'], repair['Failure']), ('mended', 'strike'))
         histories = [
-            (attack | set(self.node(market, 'mended')['Choices'][0]['Set']), 'room_paddle_mended'),
-            (attack | set(self.node(market, 'strike')['Choices'][0]['Set']), 'room_paddle'),
-            (attack | set(self.node(market, 'swing_say')['Choices'][0]['Set']), 'room_paddle'),
+            (attack | set(by_contract(self.node(market, 'mended')['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['hepzamirah.trickster.market_mended'], 'Abort': False, 'Crusade': {'Resource': 'Finances', 'Amount': -100}}])['Set']), 'room_paddle_mended'),
+            (attack | set(by_contract(self.node(market, 'strike')['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['hepzamirah.trickster.market_strike'], 'Abort': False, 'Crusade': {'Resource': 'Finances', 'Amount': -150}}])['Set']), 'room_paddle'),
+            (attack | set(by_contract(self.node(market, 'swing_say')['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['hepzamirah.trickster.market_strike'], 'Abort': False, 'Crusade': {'Resource': 'Finances', 'Amount': -150}}])['Set']), 'room_paddle'),
             (attack, 'room_paddle_unresolved'),
             (set(), None),
         ]
@@ -108,7 +120,7 @@ class Structure05Tests(unittest.TestCase):
         # Mixed old-save flags give the repaired account precedence.
         both = attack | {prefix + 'market_strike', prefix + 'market_mended'}
         self.assertEqual([a['Next'] for a in incoming if available(a, both)], ['room_paddle_mended'])
-        self.assertEqual(self.node(room, 'room')['Choices'][0]['Next'], 'room_paddle')
+        self.assertEqual(by_contract(self.node(room, 'room')['Choices'], [{'Next': 'room_paddle', 'Requires': ['hepzamirah.trickster.market_struck', 'hepzamirah.trickster.market_strike'], 'Forbids': ['hepzamirah.trickster.market_mended'], 'Set': [], 'Abort': False}])['Next'], 'room_paddle')
 
 if __name__ == '__main__':
     unittest.main()

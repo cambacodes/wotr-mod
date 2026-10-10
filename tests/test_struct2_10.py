@@ -5,6 +5,18 @@ import unittest
 from tests.story_fixture import fresh_story
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
 class Structure210Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -35,7 +47,7 @@ class Structure210Tests(unittest.TestCase):
 
     def test_deliberate_drowning_reaches_loss_at_chapter_six(self):
         flags = {'trickster.ever', 'shamira.killed', 'availability.observed'}
-        choice = self.nodes('shamira.trickster.killed.drowning')['choose']['Choices'][1]
+        choice = by_contract(self.nodes('shamira.trickster.killed.drowning')['choose']['Choices'], [{'Next': 'gone', 'Requires': [], 'Forbids': [], 'Set': ['shamira.trickster.declined', 'shamira.closed'], 'Abort': False}])
         self.assertEqual(choice['Next'], 'gone')
         flags.update(choice['Set'])
         self.assertIn('shamira.closed', flags)
@@ -67,7 +79,7 @@ class Structure210Tests(unittest.TestCase):
                 for suffix in ('', '_awning'):
                     nodes = self.nodes('shamira.trickster.harem' + suffix)
                     for nid in ('bell_silence', 'partner_public_court'):
-                        choice = nodes[nid]['Choices'][2]
+                        choice = by_contract(nodes[nid]['Choices'], [{'Next': 'equal', 'Requires': [], 'Forbids': [], 'Set': ['shamira.trickster.court.equal'], 'Abort': False}])
                         self.assertEqual(choice['Next'], 'equal')
                         self.assertTrue(self.enabled(choice, state), choice)
                 self.assertFalse(self.enabled(page, state | {'shamira.returned_actor_lost'}))
@@ -79,8 +91,8 @@ class Structure210Tests(unittest.TestCase):
         nodes = self.nodes('nidalynn.trickster.kiln.the_chaplain')
         for branch, expected in (('after_prayer', 'nidalynn.trickster.chaplain_prayed'),
                                  ('leave', 'nidalynn.trickster.chaplain_sent_away')):
-            flags = set(nodes[branch]['Choices'][0]['Set'])
-            flags.update(nodes['end']['Choices'][0]['Set'])
+            flags = set(by_contract(nodes[branch]['Choices'], [{'Next': 'end', 'Requires': [], 'Forbids': [], 'Set': ['nidalynn.trickster.chaplain_prayed'], 'Abort': False}, {'Next': 'end', 'Requires': [], 'Forbids': [], 'Set': ['nidalynn.trickster.chaplain_sent_away'], 'Abort': False}])['Set'])
+            flags.update(by_contract(nodes['end']['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}])['Set'])
             self.assertEqual(flags, {expected})
 
     def test_kiln_is_already_local_with_paid_delay_and_tending_choice(self):
@@ -93,5 +105,5 @@ class Structure210Tests(unittest.TestCase):
         self.assertIn('nidalynn.trickster.kiln_agreed', scene['Requires'])
         self.assertIn('nidalynn.trickster.kiln', scene['Forbids'])
         nodes = self.nodes(scene['Id'])
-        self.assertEqual(nodes['remember']['Choices'][1]['Next'], 'feed')
-        self.assertIn('nidalynn.trickster.kiln', nodes['knocking']['Choices'][0]['Set'])
+        self.assertEqual(by_contract(nodes['remember']['Choices'], [{'Next': 'feed', 'Requires': [], 'Forbids': [], 'Set': [], 'Abort': False}])['Next'], 'feed')
+        self.assertIn('nidalynn.trickster.kiln', by_contract(nodes['knocking']['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['nidalynn.trickster.kiln'], 'Abort': False}])['Set'])

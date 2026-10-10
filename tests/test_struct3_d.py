@@ -24,6 +24,18 @@ def enabled(item, flags):
                     for group in item.get(key, ())))
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
 class Structure3DTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -49,12 +61,12 @@ class Structure3DTests(unittest.TestCase):
         sid = E + 'beat.master'
         self.assertEqual(['kill', 'escort', 'hers'],
                          [c['Next'] for c in self.node(sid, 'choice')['Choices']])
-        self.assertEqual('kill2', self.node(sid, 'kill')['Choices'][0]['Next'])
+        self.assertEqual('kill2', by_contract(self.node(sid, 'kill')['Choices'], [{'Next': 'kill2', 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])['Next'])
         outcomes = {'kill2': E + 'master.killed', 'escort': E + 'master.escorted',
                     'hers': E + 'master.hers'}
         for nid, flag in outcomes.items():
             with self.subTest(nid=nid):
-                choice = self.node(sid, nid)['Choices'][0]
+                choice = by_contract(self.node(sid, nid)['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['elyanka.trickster.master.killed'], 'Check': None, 'Abort': False, 'Crusade': None}, {'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['elyanka.trickster.master.escorted'], 'Check': None, 'Abort': False, 'Crusade': None}, {'Next': None, 'Requires': [], 'Forbids': [], 'Set': ['elyanka.trickster.master.hers'], 'Check': None, 'Abort': False, 'Crusade': None}])
                 self.assertIsNone(choice['Next'])
                 self.assertEqual([flag], choice['Set'])
                 paras = self.node(E + 'epilogue.claim', 'page')['Paragraphs']
@@ -66,26 +78,26 @@ class Structure3DTests(unittest.TestCase):
 
     def test_chadali_cut_preserves_intimacy_receipt_and_aftermath(self):
         sid = 'chadali.fortunes.honey'
-        approach = self.node(sid, 'look')['Choices'][0]
+        approach = by_contract(self.node(sid, 'look')['Choices'], [{'Next': 'chadali.fortunes.honey.explicit.1', 'Requires': [], 'Forbids': [], 'Set': ['chadali.fortunes.night'], 'Check': None, 'Abort': False, 'Crusade': None}])
         self.assertEqual(sid + '.explicit.1', approach['Next'])
         self.assertEqual(['chadali.fortunes.night'], approach['Set'])
-        self.assertEqual('cut', self.node(sid, sid + '.explicit.1')['Choices'][0]['Next'])
-        self.assertIsNone(self.node(sid, 'cut')['Choices'][0]['Next'])
+        self.assertEqual('cut', by_contract(self.node(sid, sid + '.explicit.1')['Choices'], [{'Next': 'cut', 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])['Next'])
+        self.assertIsNone(by_contract(self.node(sid, 'cut')['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])['Next'])
 
     def test_chadali_sibling_reservation_keeps_existing_exit(self):
         sid = 'chadali.sessions.what_chance_wishes'
-        self.assertEqual(sid + '.explicit.1', self.node(sid, 'stay')['Choices'][0]['Next'])
-        self.assertIsNone(self.node(sid, sid + '.explicit.1')['Choices'][0]['Next'])
+        self.assertEqual(sid + '.explicit.1', by_contract(self.node(sid, 'stay')['Choices'], [{'Next': 'chadali.sessions.what_chance_wishes.explicit.1', 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])['Next'])
+        self.assertIsNone(by_contract(self.node(sid, sid + '.explicit.1')['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])['Next'])
 
     def test_second_ask_retains_paid_settlement_and_acceptance(self):
         sid = D + 'after.second_ask'
-        price = self.node(sid, 'price')['Choices'][0]
+        price = by_contract(self.node(sid, 'price')['Choices'], [{'Next': 'told', 'Requires': [], 'Forbids': [], 'Set': ['dorgelinda.trickster.cost.told_all'], 'Check': None, 'Abort': False, 'Crusade': {'Resource': 'Materials', 'Amount': -100}}])
         self.assertEqual('told', price['Next'])
         self.assertEqual([D + 'cost.told_all'], price['Set'])
         self.assertEqual({'Resource': 'Materials', 'Amount': -100}, price['Crusade'])
-        self.assertEqual('accepted', self.node(sid, 'told')['Choices'][0]['Next'])
+        self.assertEqual('accepted', by_contract(self.node(sid, 'told')['Choices'], [{'Next': 'accepted', 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])['Next'])
         self.assertEqual(['dorgelinda.committed', D + 'cost.told_all'],
-                         self.node(sid, 'accepted')['Choices'][0]['Set'])
+                         by_contract(self.node(sid, 'accepted')['Choices'], [{'Next': None, 'Requires': ['trickster.now'], 'Forbids': [], 'Set': ['dorgelinda.committed', 'dorgelinda.trickster.cost.told_all'], 'Check': None, 'Abort': False, 'Crusade': None}])['Set'])
 
     def test_ordinary_settlement_readers_are_mutually_exclusive(self):
         paras = self.node(D + 'epilogue.committed', 'page')['Paragraphs']
@@ -113,7 +125,7 @@ class Structure3DTests(unittest.TestCase):
     def test_lastcall_called_disclosure_does_not_replay_a_completed_disclosure(self):
         paras = self.node('dorgelinda.lastcall.page', 'page')['Paragraphs']
         flags = self.flags('dorgelinda.lastcall.called', D + 'cost.told_all')
-        self.assertFalse(enabled(paras[0], flags),
+        self.assertFalse(enabled(by_contract(paras, [{'Requires': ['dorgelinda.lastcall.called'], 'Forbids': ['dorgelinda.trickster.cost.told_all', 'dorgelinda.lastcall.account_settled'], 'AnyGroups': []}]), flags),
                          'LC-HISTORY-01: called paragraph replays completed disclosure')
         variants = [p for p in paras if {'dorgelinda.lastcall.called', D + 'cost.told_all'}
                     <= set(p.get('Requires', ()))]
@@ -136,7 +148,7 @@ class Structure3DTests(unittest.TestCase):
             with self.subTest(history=history):
                 flags = self.flags('dorgelinda.committed', D + 'cost.audit_hostile', D + 'cost.twice_weekly', *history)
                 # Existing supper paragraph index 2 retains its identity.
-                self.assertEqual(want_supper, enabled(paras[2], flags),
+                self.assertEqual(want_supper, enabled(by_contract(paras, [{'Requires': ['dorgelinda.trickster.cost.audit_hostile', 'dorgelinda.trickster.cost.twice_weekly'], 'Forbids': ['dorgelinda.ledger.cold_unmended', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.lastcall.account_settled'], 'AnyGroups': []}]), flags),
                                  'LC-HISTORY-01: private supper contradicts current seal history')
 
 

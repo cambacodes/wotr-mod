@@ -15,6 +15,18 @@ def visible(answer, flags):
             and all(set(group) & flags for group in answer.get("AnyGroups", ())))
 
 
+
+def by_contract(items, contracts):
+    """Find a structural outcome; gaps and overlaps violate the contract."""
+    matches = [item for item in items
+               if any(all(item.get(field) == value for field, value in contract.items())
+                      for contract in contracts)]
+    try:
+        result, = matches
+    except ValueError as error:
+        raise AssertionError('Expected one matching structural outcome') from error
+    return result
+
 class StanceAgencyTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -168,7 +180,7 @@ class StanceAgencyTests(unittest.TestCase):
         quiet = self.scenes[w.W + "react.lann_secret_quiet"]
         self.assertIn(w.CAREFUL, quiet["Requires"])
         self.assertFalse(quiet["Reaction"])
-        self.assertNotIn(w.DISCOVERED, quiet["Nodes"][0]["Choices"][0]["Set"])
+        self.assertNotIn(w.DISCOVERED, by_contract(by_contract(quiet['Nodes'], [{'Id': 'start'}])['Choices'], [{'Next': None, 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])["Set"])
 
     def test_queen_absence_is_not_an_irabeth_survival_or_return_receipt(self):
         quiet = next(c for node in self.scenes["anevia.a_key_that_is_hers"]["Nodes"]
@@ -207,7 +219,7 @@ class StanceAgencyTests(unittest.TestCase):
         late = self.scenes["jerribeth.trickster.epilogue.commit"]
         for node in late["Nodes"]:
             if node["Id"].startswith("partner_private_"):
-                self.assertEqual(node["Choices"][0]["Next"], "collected")
+                self.assertEqual(by_contract(node['Choices'], [{'Next': 'collected', 'Requires': [], 'Forbids': [], 'Set': [], 'Check': None, 'Abort': False, 'Crusade': None}])["Next"], "collected")
         results = self.walk(sh.P + "harem", "go", {"trickster", sh.SECRET, sh.CAREFUL})
         self.assertTrue(any(sh.EXPOSED not in flags and "partner_private_exit" in trace for flags, trace in results))
         self.assertTrue(any(sh.EXPOSED in flags for flags, _ in results))
