@@ -444,4 +444,4 @@ _letter["Nodes"].extend([
 ])
 
 
-_spine[P + "epilogue.declined"]["Nodes"][0]["Paragraphs"].append(p('{n}She went on sending the cookies, year after year, and never put a question in the note. They came a little burned at the edges, as if she had pulled the tray early to be rid of it. The Commander ate them at the table in Drezen. "No is an answer," she had said once, and licked sugar from her thumb. "I simply do not have to like it."{/n}'))
+_spine[P + "epilogue.declined"]["Nodes"][0]["Paragraphs"].append(p('{n}Chadali had wanted to be asked properly, and she had not been, and she told her worshippers she was not at all sulking. Then she sulked through a whole evening of petitions.{/n} "It\'s fine! It\'s a perfectly good friendship!" {n}she informed the shrine candles, quite loudly.{/n} "Some people just don\'t know luck when it finds them!" {n}She blew out the nearest candle, thought better of it, and lit it again.{/n}'))
