@@ -4221,6 +4221,42 @@
       "source_branch": "claude/cand-14",
       "source_commit": "3fcafa7a9ee1ddea147229c796b07bf4aa8ccbf5",
       "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "areelu.trickster.report.crossroads",
+      "before_sha": "ebbaf0d2981eec9d102153b335ed08dbbfebd08fccc02aea4934c691e450d669",
+      "after_sha": "f476a6130c8854de0859808c74ec88f7a76b945738c8686fa3a302fe6ea4ecf4",
+      "owner": "claude",
+      "source_branch": "claude/cand-14",
+      "source_commit": "272836533ec9d565491d44d028f2eeca9a65a32f",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "areelu.trickster.report.dagger",
+      "before_sha": "35abe9991856b4f4ef06ac41e228be17c0818fef406a1cdf83c1dc3f61216626",
+      "after_sha": "d23211723cc5f9d565ef87a7d4fd6cc10a3e03078f0f95dcfcb9ec775ebd3e52",
+      "owner": "claude",
+      "source_branch": "claude/cand-14",
+      "source_commit": "272836533ec9d565491d44d028f2eeca9a65a32f",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "areelu.trickster.report.graft",
+      "before_sha": "e1f0dd8bc2a961702f7759b6b3773fdffc4b0f753a1640c7742e989ea8c1bb5d",
+      "after_sha": "19fd73735c479d07bff7f3b0d6fcd1df4d0ddd74c19492deb203196b7f6de803",
+      "owner": "claude",
+      "source_branch": "claude/cand-14",
+      "source_commit": "272836533ec9d565491d44d028f2eeca9a65a32f",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "areelu.trickster.report.visitors",
+      "before_sha": "7eeed1eda576f0822a2e2ad8c4eed113ac0ce4abf45f42830fbcca3b41d6c0b8",
+      "after_sha": "a60b2b2aaef1c263326fa2c0bb4808f2984c371d0ea45c1c2f5add0044b8840c",
+      "owner": "claude",
+      "source_branch": "claude/cand-14",
+      "source_commit": "272836533ec9d565491d44d028f2eeca9a65a32f",
+      "reason": "Claude-lane prose, coordinator-reviewed"
     }
   ]
 }
