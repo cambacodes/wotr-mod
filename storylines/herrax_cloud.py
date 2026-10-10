@@ -3,6 +3,7 @@
 Approved text is authored in herrax_trickster, herrax_house, and S48. Readers
 append after existing paragraphs, keeping their registered indices.
 """
+from authoring.generation_errors import OverlayMismatch, overlay_item, overlay_node, record
 import copy
 
 from story_format import p
@@ -79,26 +80,25 @@ APPEND = [
 
 
 def _node(scenes, sid, nid):
-    scene = scenes.get(sid)
-    if scene is None:
-        raise KeyError("herrax cloud: missing scene " + sid)
-    matches = [n for n in scene["Nodes"] if n["Id"] == nid]
-    if len(matches) != 1:
-        raise KeyError("herrax cloud: %s/%s matched %d nodes" % (sid, nid, len(matches)))
-    return matches[0]
+    return overlay_node(scenes, sid, nid)
 
 
 def integrate(payload):
     scenes = {s["Id"]: s for s in payload["Scenes"]}
     for sid, nid, paras in APPEND:
-        node = _node(scenes, sid, nid)
-        node["Paragraphs"] = node.get("Paragraphs", []) + [copy.deepcopy(x) for x in paras]
+        with overlay_item():
+            node = _node(scenes, sid, nid)
+            node["Paragraphs"] = node.get("Paragraphs", []) + [copy.deepcopy(x) for x in paras]
     for sid in set(REVIEWED_SCENES) | {row[0] for row in APPEND}:
+        if sid not in scenes:
+            record("overlay.scene_resolution", scene=sid)
+            continue
         for node in scenes[sid]["Nodes"]:
-            texts = [node["Text"]] + [a["Text"] for a in node["Choices"]] + [
-                para["Text"] for para in node.get("Paragraphs", [])]
-            if any(PENDING in t for t in texts):
-                raise ValueError("herrax cloud: prose still pending at %s/%s" % (sid, node["Id"]))
-            if any("Morevet" in para["Text"] and MOREVET_DEAD not in para.get("Forbids", [])
-                   for para in node.get("Paragraphs", [])):
-                raise ValueError("herrax cloud: unguarded Morevet paragraph at %s/%s" % (sid, node["Id"]))
+            with overlay_item():
+                texts = [node["Text"]] + [a["Text"] for a in node["Choices"]] + [
+                    para["Text"] for para in node.get("Paragraphs", [])]
+                if any(PENDING in t for t in texts):
+                    record('overlay.text_mismatch', scene=sid, node=node.get("Id"), detail="herrax cloud: prose still pending at %s/%s" % (sid, node["Id"]))
+                if any("Morevet" in para["Text"] and MOREVET_DEAD not in para.get("Forbids", [])
+                       for para in node.get("Paragraphs", [])):
+                    record('overlay.text_mismatch', scene=sid, node=node.get("Id"), detail="herrax cloud: unguarded Morevet paragraph at %s/%s" % (sid, node["Id"]))

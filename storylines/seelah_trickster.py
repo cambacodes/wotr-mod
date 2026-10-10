@@ -556,7 +556,8 @@ def visit_twin(src_id, new_id, title, swaps):
                 node["Text"] = node["Text"].replace(old, new.strip())
                 hits += 1
         if not hits:
-            raise ValueError("visit twin %s: swap text not found: %r" % (new_id, old[:60]))
+            from authoring.generation_errors import record
+            record("overlay.swap_snippet", scene=new_id, detail=old[:70])
     SCENES.append(twin)
 
 

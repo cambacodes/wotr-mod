@@ -7,6 +7,7 @@ z_j03_contracts and the contract controller: no node, choice, flag or gate
 changes, and no paragraphs (J03 rows carry none). Every beat below is the
 approved claude-work-queue beat for that node.
 """
+from authoring.generation_errors import record, overlay_item, overlay_node
 
 HEP = "household.pair.hepzamirah_minagho."
 TURF = "household.pair.herrax_chivarro."
@@ -82,9 +83,9 @@ TEXTS.update({(TURF + "retry", node): body for node, body in TURF_BROKEN.items()
 def register(payload, scenes, refs):
     by_id = {body["Id"]: body for body in payload["Scenes"]}
     for (sid, nid), body in TEXTS.items():
-        matches = [node for node in by_id[sid]["Nodes"] if node["Id"] == nid]
-        if len(matches) != 1:
-            raise KeyError("minachiv pairs: %s/%s matched %d nodes" % (sid, nid, len(matches)))
-        if not matches[0]["Text"].startswith("[PROSE PENDING:"):
-            raise ValueError("minachiv pairs: %s/%s is no longer a placeholder" % (sid, nid))
-        matches[0]["Text"] = body.strip()
+        with overlay_item():
+            node = overlay_node(by_id, sid, nid)
+            if not node["Text"].startswith("[PROSE PENDING:"):
+                record("overlay.text_mismatch", scene=sid, node=nid)
+                continue
+            node["Text"] = body.strip()

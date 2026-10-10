@@ -25,6 +25,7 @@ Canon used (enGB): 2c48146b, d409d925, 339f715c, a05b45a9, 8fededb1 (the
 court of false justice), 6a624195 (throne and head), 63e099a8, 4ca2466a.
 Authored, no canon claim: the Harem's rooms, the crate's fate is withheld.
 """
+from authoring.generation_errors import OverlayMismatch, overlay_item, record
 import copy
 
 from story_format import p
@@ -286,7 +287,7 @@ def _retext_partner_lastcall():
     part = next(part for part in lastcall_partners.PARTNERS if part["key"] == "shamira")
     hits = _revoice_page({"Paragraphs": part["paragraphs"]}, "body")
     if hits == 0 and not any(STANCE_TEXT["none"]["body"] in para.get("Text", "") for para in part["paragraphs"]):
-        raise ValueError("shamira_cloud: Last Call partner paragraphs not found")
+        record('overlay.text_mismatch', detail="shamira_cloud: Last Call partner paragraphs not found")
 
 
 def integrate(payload):
@@ -294,33 +295,35 @@ def integrate(payload):
     own = [s for s in payload["Scenes"] if s["Id"].startswith("shamira.")]
 
     for prefix, old, new, minimum in SUBS:
-        hits = 0
-        for s in own:
-            if not s["Id"].startswith(prefix):
-                continue
-            for node in s["Nodes"]:
-                if old in node["Text"]:
-                    node["Text"] = node["Text"].replace(old, new)
-                    hits += 1
-                for para in node.get("Paragraphs", ()):
-                    if old in para.get("Text", ""):
-                        para["Text"] = para["Text"].replace(old, new)
+        with overlay_item():
+            hits = 0
+            for s in own:
+                if not s["Id"].startswith(prefix):
+                    continue
+                for node in s["Nodes"]:
+                    if old in node["Text"]:
+                        node["Text"] = node["Text"].replace(old, new)
                         hits += 1
-        if hits < minimum:
-            raise ValueError(f"shamira_cloud: {prefix}: expected {minimum} hits, got {hits}: {old[:60]!r}")
+                    for para in node.get("Paragraphs", ()):
+                        if old in para.get("Text", ""):
+                            para["Text"] = para["Text"].replace(old, new)
+                            hits += 1
+            if hits < minimum:
+                raise OverlayMismatch('overlay.text_mismatch', detail=str(old)[:70])
 
     for ids, node_id, paras in READERS:
         for sid in ids:
-            if sid not in scenes:
-                raise ValueError("shamira_cloud: missing scene " + sid)
-            node = next((n for n in scenes[sid]["Nodes"] if n["Id"] == node_id), None)
-            if node is None:
-                raise ValueError(f"shamira_cloud: missing node {sid}:{node_id}")
-            node.setdefault("Paragraphs", []).extend(copy.deepcopy(list(paras)))
+            with overlay_item():
+                if sid not in scenes:
+                    raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=node_id, detail="shamira_cloud: missing scene " + sid)
+                node = next((n for n in scenes[sid]["Nodes"] if n["Id"] == node_id), None)
+                if node is None:
+                    raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=node_id, detail=f"shamira_cloud: missing node {sid}:{node_id}")
+                node.setdefault("Paragraphs", []).extend(copy.deepcopy(list(paras)))
 
     waking = [n for s in own for n in s["Nodes"] if n["Text"].startswith(WAKING_TEXT_START)]
     if len(waking) != 3:
-        raise ValueError(f"shamira_cloud: expected 3 waking nodes, got {len(waking)}")
+        record('overlay.text_mismatch', detail=f"shamira_cloud: expected 3 waking nodes, got {len(waking)}")
     for node in waking:
         node.setdefault("Paragraphs", []).extend(copy.deepcopy(WAKING))
 
@@ -335,7 +338,10 @@ def integrate(payload):
         for node in targets:
             pages += bool(_revoice_page(node, condition))
     if pages < 12:
-        raise ValueError(f"shamira_cloud: partner pages re-voiced: {pages}")
-    if _rotate_late(scenes[P + "epilogue.late"]) < 60:
-        raise ValueError("shamira_cloud: late status lines not found")
+        record('overlay.text_mismatch', detail=f"shamira_cloud: partner pages re-voiced: {pages}")
+    late = scenes.get(P + "epilogue.late")
+    if late is None:
+        record("overlay.scene_resolution", scene=P + "epilogue.late")
+    elif _rotate_late(late) < 60:
+        record('overlay.text_mismatch', scene=P + "epilogue.late", detail="shamira_cloud: late status lines not found")
     _retext_partner_lastcall()

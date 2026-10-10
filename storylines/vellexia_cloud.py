@@ -39,6 +39,7 @@ guest who claimed him). Authored, no canon claim: Ilveris, Tessar, the blue
 room, the coat-stand, the lamp with a wrist (furniture is canon: Velexia_Third_Date
 Cue_0075 per writer handoffs/trickster/vellexia.md).
 """
+from authoring.generation_errors import OverlayMismatch, overlay_item, overlay_node, record
 from story_format import p
 
 V = "vellexia."
@@ -478,43 +479,42 @@ def _scenes(payload):
 
 
 def _node(by_id, sid, node_id):
-    scene = by_id.get(sid)
-    if scene is None:
-        raise ValueError("vellexia_cloud: missing scene " + sid)
-    for node in scene["Nodes"]:
-        if node["Id"] == node_id:
-            return node
-    raise ValueError(f"vellexia_cloud: missing node {sid}:{node_id}")
+    return overlay_node(by_id, sid, node_id)
 
 
 def integrate(payload):
     by_id = _scenes(payload)
     for sids, old, new, minimum in SUBS:
-        hits = 0
-        for sid in sids:
-            if sid not in by_id:
-                raise ValueError("vellexia_cloud: missing scene " + sid)
-            for node in by_id[sid]["Nodes"]:
-                if old in node.get("Text", "") and new not in node["Text"]:
-                    node["Text"] = node["Text"].replace(old, new)
-                    hits += 1
-        if hits < minimum:
-            raise ValueError(f"vellexia_cloud: {sids[0]}: expected {minimum} hits, got {hits}: {old[:60]!r}")
+        with overlay_item():
+            hits = 0
+            for sid in sids:
+                with overlay_item():
+                    if sid not in by_id:
+                        raise OverlayMismatch('overlay.text_mismatch', scene=sid, detail=str(old)[:70])
+                    for node in by_id[sid]["Nodes"]:
+                        if old in node.get("Text", "") and new not in node["Text"]:
+                            node["Text"] = node["Text"].replace(old, new)
+                            hits += 1
+            if hits < minimum:
+                raise OverlayMismatch('overlay.text_mismatch', detail=str(old)[:70])
     for sids, node_id, guard, new in NODES:
         for sid in sids:
-            node = _node(by_id, sid, node_id)
-            if guard not in node["Text"]:
-                raise ValueError(f"vellexia_cloud: {sid}:{node_id} no longer holds {guard!r}")
-            node["Text"] = new.strip()
+            with overlay_item():
+                node = _node(by_id, sid, node_id)
+                if guard not in node["Text"]:
+                    raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=node_id, detail=str(guard)[:70])
+                node["Text"] = new.strip()
     for sids, node_id, index, old, new in CHOICES:
         for sid in sids:
-            choices = _node(by_id, sid, node_id).get("Choices", [])
-            if index >= len(choices) or choices[index].get("Text") != old:
-                raise ValueError(f"vellexia_cloud: {sid}:{node_id}>{index} label changed: {old[:50]!r}")
-            choices[index]["Text"] = new
+            with overlay_item():
+                choices = _node(by_id, sid, node_id).get("Choices", [])
+                if index >= len(choices) or choices[index].get("Text") != old:
+                    raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=node_id, detail=str(old)[:70])
+                choices[index]["Text"] = new
     for sids, node_id, paragraph in PARAGRAPHS:
         for sid in sids:
-            _node(by_id, sid, node_id).setdefault("Paragraphs", []).append(dict(paragraph))
+            with overlay_item():
+                _node(by_id, sid, node_id).setdefault("Paragraphs", []).append(dict(paragraph))
 
     _player_answer_exchanges(by_id)
 
@@ -724,38 +724,43 @@ def _player_answer_exchanges(by_id):
     from copy import deepcopy
 
     for suffix, node_id, lines in PLAYER_ANSWER_EXCHANGES:
-        sid = V + suffix
-        scene = by_id[sid]
-        node = _node(by_id, sid, node_id)
-        text = node["Text"]
-        offsets = []
-        cursor = 0
-        for line in lines:
-            needle = "\n" + line + "\n"
-            offset = text.find(needle, cursor)
-            if offset < 0:
-                raise ValueError(f"VEL-A4-003: missing embedded answer {sid}:{node_id}")
-            offsets.append(offset)
-            cursor = offset + len(needle)
-        original_choices = deepcopy(node["Choices"])
-        node["Text"] = text[:offsets[0]]
-        current = node
-        for index, _ in enumerate(lines, 1):
-            reply_id = f"{node_id}_commander_reply_{index}"
-            if any(item["Id"] == reply_id for item in scene["Nodes"]):
-                raise ValueError(f"VEL-A4-003: duplicate reply {sid}:{reply_id}")
-            beat = f"VEL-A4-003 {suffix}/{node_id} exchange {index}"
-            current["Choices"].append({
-                "Text": PLAYER_ANSWER_TEXT[beat][0],
-                "Next": reply_id, "Set": [], "Requires": [],
-                "Forbids": [], "Abort": False,
-            })
-            reply = {
-                "Id": reply_id, "Speaker": node["Speaker"],
-                "Text": PLAYER_ANSWER_TEXT[beat][1],
-                "Choices": deepcopy(original_choices) if index == len(lines) else [],
-            }
-            if "Portrait" in node:
-                reply["Portrait"] = node["Portrait"]
-            scene["Nodes"].append(reply)
-            current = reply
+        with overlay_item():
+            sid = V + suffix
+            node = _node(by_id, sid, node_id)
+            scene = by_id[sid]
+            text = node["Text"]
+            offsets = []
+            cursor = 0
+            for line in lines:
+                with overlay_item():
+                    needle = "\n" + line + "\n"
+                    offset = text.find(needle, cursor)
+                    if offset < 0:
+                        raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=node_id, detail=f"VEL-A4-003: missing embedded answer {sid}:{node_id}")
+                    offsets.append(offset)
+                    cursor = offset + len(needle)
+            if len(offsets) != len(lines):
+                continue
+            original_choices = deepcopy(node["Choices"])
+            node["Text"] = text[:offsets[0]]
+            current = node
+            for index, _ in enumerate(lines, 1):
+                with overlay_item():
+                    reply_id = f"{node_id}_commander_reply_{index}"
+                    if any(item["Id"] == reply_id for item in scene["Nodes"]):
+                        raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=node_id, detail=f"VEL-A4-003: duplicate reply {sid}:{reply_id}")
+                    beat = f"VEL-A4-003 {suffix}/{node_id} exchange {index}"
+                    current["Choices"].append({
+                        "Text": PLAYER_ANSWER_TEXT[beat][0],
+                        "Next": reply_id, "Set": [], "Requires": [],
+                        "Forbids": [], "Abort": False,
+                    })
+                    reply = {
+                        "Id": reply_id, "Speaker": node["Speaker"],
+                        "Text": PLAYER_ANSWER_TEXT[beat][1],
+                        "Choices": deepcopy(original_choices) if index == len(lines) else [],
+                    }
+                    if "Portrait" in node:
+                        reply["Portrait"] = node["Portrait"]
+                    scene["Nodes"].append(reply)
+                    current = reply

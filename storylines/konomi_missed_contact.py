@@ -2,6 +2,7 @@
 
 Unreleased authoring candidate. No native appointment, dismissal or death is changed.
 """
+from authoring.generation_errors import record
 from copy import deepcopy
 from story_format import c, n, scene
 
@@ -224,7 +225,8 @@ def _variant(book, node_id, replacements):
     variant["Id"] = "missed_" + node_id
     for old, new in replacements:
         if variant["Text"].count(old) != 1:
-            raise ValueError(f"Missed-contact prose anchor changed: {book['Id']}/{node_id}: {old}")
+            record("overlay.swap_snippet", scene=book["Id"], node=node_id, detail=old[:70])
+            continue
         variant["Text"] = variant["Text"].replace(old, new)
     if book["Nodes"][0] is original:
         # Blueprint identity uses scene/page ID and answer index, never list position.

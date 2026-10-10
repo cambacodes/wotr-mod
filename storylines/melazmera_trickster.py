@@ -34,6 +34,7 @@ contracts, and pays first) or a stone at the window. melazmera_hoard holds the l
 Path fit (ROUTE-BRIEF-R, v1): every scene is T (the build sheet: v1 all T; v2 N-fit on Demon, Lich and Swarm-That-Walks).
 Canon fate stands everywhere: she lives unless the player kills her. No non-Trickster commit or ending is written yet.
 """
+from authoring.generation_errors import record
 import copy
 
 from story_format import c, n, p, reaction, scene
@@ -389,7 +390,7 @@ tag(M + "ch4.hunt")
 
 # The salted Commander left Colyphyr before resting there again: she follows the scent of the hand, anywhere in the Abyss
 # (Chapter 4 goes on after Colyphyr: the Ivory Labyrinth, Alushinyrra). The same meeting; only the place changes.
-def _found_body():
+def _found_body(*, scene_id=M + "ch4.hunt_found"):
     """Off Colyphyr the island's etudes do not read (ColyphyrHepzamirahDead plays only in its area), so the truce is told
     without saying whether the horned one still lives."""
     body = [x for x in copy.deepcopy(HUNT_BODY) if x["Id"] not in ("truce_dead", "truce_alive")]
@@ -401,7 +402,8 @@ def _found_body():
                               ("name", "Nobody on this island has ever needed it.", "Nobody on my island has ever needed it.")):
         node = next(x for x in body if x["Id"] == node_id)
         if node["Text"].count(old) != 1:
-            raise ValueError("Off-island restaging must hit exactly once: " + old)
+            record("overlay.swap_snippet", scene=scene_id, node=node_id, detail=old[:70])
+            continue
         node["Text"] = node["Text"].replace(old, new)
     return body
 
@@ -423,7 +425,7 @@ tag(M + "ch4.hunt_found")
 
 def _drezen_body():
     """The hunt restaged at the Commander's window in Drezen (Chapter 5): the same meeting, the room instead of the camp."""
-    body = _found_body()
+    body = _found_body(scene_id=M + "ch5.hunt_window")
     subs = [
         ("arrive", "She sits down by your fire without being asked, folding herself onto a rock the way a heron folds onto one leg, and the fire leans away from her.",
          "She climbs down off the sill without being asked and sits on the stone of your hearth, folding herself onto it the way a heron folds onto one leg, and the fire leans away from her."),
@@ -444,7 +446,8 @@ def _drezen_body():
     for node_id, old, new in subs:
         node = next(x for x in body if x["Id"] == node_id)
         if node["Text"].count(old) != 1:
-            raise ValueError("Drezen restaging must hit exactly once: " + old)
+            record("overlay.swap_snippet", scene=M + "ch5.hunt_window", node=node_id, detail=old[:70])
+            continue
         node["Text"] = node["Text"].replace(old, new)
     leaves = next(x for x in body if x["Id"] == "leaves")
     leaves["Text"] = '''{n}She goes out over the sill the way she came, and something enormous drops past the window and does not hit the ground. A moment later every dog in the citadel starts barking at once, and goes on barking until the second bell.{/n}

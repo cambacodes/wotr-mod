@@ -12,6 +12,7 @@ billing, tours the camps every night and chooses whether to come back, and she c
 Authored R4 D05-D06: a visiting Nerosyan troupe-master hears the duet while her players perform for the garrison;
 she delivers the invitation locally. No journey to Nerosyan and back is needed for the Chapter 5 offer.
 """
+from authoring.generation_errors import record
 import copy
 
 from story_format import c, n, p, reaction, scene
@@ -634,7 +635,8 @@ def late_twin(source_id):
             old, new = change
             old = fit(old, place)
             if old not in node["Text"]:
-                raise ValueError("late twin %s: the travel line moved in node %s" % (twin["Id"], node["Id"]))
+                record("overlay.swap_snippet", scene=twin["Id"], node=node["Id"], detail=old[:70])
+                continue
             node["Text"] = node["Text"].replace(old, fit(new, place))
     SCENES.append(twin)
 

@@ -10,6 +10,7 @@ Each moved visit keeps its id, nodes and choices. It stops being a remote delive
 the scene to where it happens (the kiln, the wall, the Commander's rooms). A visit that can fall on either side of her
 reveal keeps the widow's step and gets a twin on her chosen form's step (`<id>.chosen`); each forbids the other.
 """
+from authoring.generation_errors import record
 import copy
 
 P = "nidalynn.trickster."
@@ -79,7 +80,8 @@ def _chosen_edits(twin, key):
     for node_id, old, new in CHOSEN_EDITS.get(key, ()):
         node = next(n for n in twin["Nodes"] if n["Id"] == node_id)
         if node["Text"].count(old) != 1:
-            raise ValueError("nm1_nidalynn: %s/%s changed (%s)" % (twin["Id"], node_id, old))
+            record("overlay.swap_snippet", scene=twin["Id"], node=node_id, detail=old[:70])
+            continue
         node["Text"] = node["Text"].replace(old, new)
 
 
@@ -95,7 +97,8 @@ def _place(scene, hub, unit, entry, prefix, edits):
     start = scene["Nodes"][0]
     for old, new in edits:
         if start["Text"].count(old) != 1:
-            raise ValueError("nm1_nidalynn: %s opening changed (%s)" % (scene["Id"], old))
+            record("overlay.swap_snippet", scene=scene["Id"], node=start["Id"], detail=old[:70])
+            continue
         start["Text"] = start["Text"].replace(old, new)
     if prefix:
         start["Text"] = prefix + "\n" + start["Text"]

@@ -6,15 +6,18 @@ they are. No scene, node or choice id, choice position, Next, Set, gate or check
 and every replaced snippet must occur exactly once, or the build fails.
 """
 from story_format import p
+from authoring.generation_errors import record
 
 
 def _node(payload, scene_id, node_id):
     scenes = [s for s in payload["Scenes"] if s["Id"] == scene_id]
     if len(scenes) != 1:
-        raise KeyError("heat layer: scene %s resolves to %d scenes" % (scene_id, len(scenes)))
+        record("heat.scene_resolution", scene=scene_id, node=node_id, detail=str(len(scenes)))
+        return None
     nodes = [x for x in scenes[0]["Nodes"] if x["Id"] == node_id]
     if len(nodes) != 1:
-        raise KeyError("heat layer: node %s/%s resolves to %d nodes" % (scene_id, node_id, len(nodes)))
+        record("heat.node_resolution", scene=scene_id, node=node_id, detail=str(len(nodes)))
+        return None
     return nodes[0]
 
 
@@ -22,8 +25,11 @@ def swap(payload, targets, old, new):
     """Replace one snippet (exactly once) in each target node's text."""
     for scene_id, node_id in targets:
         node = _node(payload, scene_id, node_id)
+        if node is None:
+            continue
         if node["Text"].count(old) != 1:
-            raise ValueError("heat layer: snippet not found exactly once in %s/%s: %r" % (scene_id, node_id, old[:70]))
+            record("heat.swap_snippet", scene=scene_id, node=node_id, detail=old[:70])
+            continue
         node["Text"] = node["Text"].replace(old, new)
 
 
@@ -31,11 +37,16 @@ def extend(payload, targets, last, addition):
     """Keep the node text up to and including `last` (which must end the text) and append `addition`."""
     for scene_id, node_id in targets:
         node = _node(payload, scene_id, node_id)
+        if node is None:
+            continue
         if node["Text"].count(last) != 1 or not node["Text"].rstrip().endswith(last):
-            raise ValueError("heat layer: %s/%s does not end with %r" % (scene_id, node_id, last[:70]))
+            record("heat.extend_tail", scene=scene_id, node=node_id, detail=last[:70])
+            continue
         node["Text"] = node["Text"].rstrip() + "\n" + addition.strip()
 
 
 def paragraph(payload, scene_id, node_id, text, requires=(), forbids=()):
     """Append one flag-gated paragraph after the node's existing paragraphs."""
-    _node(payload, scene_id, node_id).setdefault("Paragraphs", []).append(p(text, requires=requires, forbids=forbids))
+    node = _node(payload, scene_id, node_id)
+    if node is not None:
+        node.setdefault("Paragraphs", []).append(p(text, requires=requires, forbids=forbids))
