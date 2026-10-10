@@ -315,6 +315,7 @@ s("the_room_she_chose", "After the last knock", '"It is me. May I come in?"', [
 "This thing again. Take it off before I take it off with my teeth."
 {n}You unclasp it and drop it on the chest. When you turn back she already has a hand at your cheek, and she pulls you down into a kiss that begins gently and does not stay that way. She takes your hand and sets it at her waist, and holds it there.{/n}
 "There. A better use for a door than keeping out clansmen."
+{n}Her hand finds the hem of your shirt and goes under it, rough palm flat against your stomach, reading you the way she reads stone, and what she learns makes her breath catch. Her thumb crosses your hip bone and stays there, a plain statement that needs no words.{/n}
 {n}Her mouth is still close to yours.{/n}
 "Now. Do you want me tonight, or do you want to sit and talk and kiss me like two youngsters at a harvest dance? I can bear either. One I would like better."''',
       c('"I want you tonight."', "night"),
@@ -327,13 +328,15 @@ s("the_room_she_chose", "After the last knock", '"It is me. May I come in?"', [
     n("first_kiss", "Gesmerha", '''"Come here."
 {n}She draws your hand to her shoulder and finds your face with the other. You lean close; she kisses you, then smiles against your mouth when you return it.{/n}
 "I had a clever remark ready. I cannot remember a word."
-{n}She draws you beside her, tucking the blanket around your knees. Then she asks for another kiss.{/n}''',
+{n}She draws you beside her, tucking the blanket around your knees. Then she asks for another kiss.{/n}
+{n}It is a longer kiss than the first. Her palms go over your face, your throat, your shoulders, learning the shape of you with all the slow patience of her trade, and where they pass your pulse jumps and she feels it and smiles into your mouth. When she draws back she is breathing hard.{/n}
+"I have spent weeks wanting the shape of you. Tell me you want me to learn the rest."''',
       c('[Keep the new relationship and an unhurried first evening.]', flags=("gesmerha.private_evening_kept", "gesmerha.late_lovers", "gesmerha.committed")),
       c('"Don\'t send me back to the chair. Let me stay the night."', "first_night")),
     n("night", "Gesmerha", '''"Then stay."
 {n}She frees her braid and pulls off her shift. Her chin lifts toward your breath.{/n}
 "Come here. I have been wanting you all day."
-{n}Her rough palms pass over your shoulders. She undoes your belt herself, then draws you into bed. A board creaks; she laughs against your mouth and shifts until you both fit, close and warm beneath the blanket.{/n}''',
+{n}Her rough palms pass over your shoulders and down your back, and her mouth finds yours in the lamplight. She undoes your belt herself, then draws you into bed. A board creaks; she laughs against your lips, and the blanket comes up over you both, skin warm against skin, her heartbeat going hard beneath your hand.{/n}''',
       c('[Continue]', "after_night")),
     n("gentle", "Gesmerha", '''"Then sit close enough that I need not keep finding the distance."
 {n}You settle beside her with your arm where she asks for it. She leans against you and begins describing the first sculpture she ever made without someone standing over her shoulder. It had an unfortunate resemblance to an irritated goat, although she had intended a dignified person.{/n}
@@ -381,7 +384,7 @@ s("the_room_she_chose", "After the last knock", '"It is me. May I come in?"', [
     n("first_night", "Gesmerha", '''{n}She laughs softly and keeps your hand.{/n}
 "Yes. Stay the night. I was hoping you would ask."
 {n}She pulls her shift over her head. Your shirt takes longer: her fingers pause at your shoulders, learning their shape before she lets the cloth go. The bed creaks when she draws you down, and she tells it to be quiet.{/n}
-{n}She kisses you again and pulls the blanket around you both. Her hand rests at your waist as she draws closer.{/n}''',
+{n}She kisses you again and pulls the blanket around you both. Her hand rests at your waist as she draws closer, and then there is only the blanket, the creaking bed and the sound of her breath catching in the dark.{/n}''',
       c('[Continue]', "after_first_night")),
 ], "gesmerha.work_settled")
 

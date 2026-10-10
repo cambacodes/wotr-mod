@@ -191,7 +191,8 @@ drezen_pre(E + "ch5.evening", "Two people on a wall", '"You look as if you haven
        c('"It is to me."', "close")),
     el("reasons", '"So did I. I nearly sent a warden with a question about the road." {n}She moves closer.{/n} "You saved him a cold walk. Sit here."',
        c("Continue", "close")),
-    nar("close", '{n}She rests against your shoulder and keeps your hand beneath her cloak. When the last street lamp goes dark she turns towards you; her mouth brushes your cheek. She stays there until the watch changes.{/n}\n{n}At the first grey light she straightens. A carter is already checking the wheels.{/n} "The morning after this one. Walk with me from the north gate. I have something to ask you before we take the carts out."',
+    nar("close", '''{n}She rests against your shoulder and keeps your hand beneath her cloak. When the last street lamp goes dark she turns towards you; her mouth brushes your cheek. She stays there until the watch changes.{/n}
+{n}At the first grey light she straightens. A carter is already checking the wheels.{/n} "The morning after this one. Walk with me from the north gate. I have something to ask you before we take the carts out."''',
         c("[Promise to walk with her.]", flags=(E + "drezen.evening",))),
 ], requires=(LEAVE,), forbids=(COMMITTED, DECLINED, E + "drezen.evening"), delay=6)
 
@@ -273,15 +274,20 @@ drezen_pre(E + "visit.star_heart", "The shrine's last night", '"Is the heart sti
        c("[Kiss her.]", "robes"),
        c('[Flirt] "I\'ll show you. Slowly. We have all night."', "robes"),
        c('[Flirt] "The stars can wait."', "robes", requires=(FLIRTED,))),
-    nar("robes", '{n}Her first kiss misses the corner of your mouth. She catches your face between her hands and tries again, firmly enough to leave you breathless. Your fingers catch on the pin at her throat.{/n}\n{n}She pushes them aside, unpins her cloak herself, and loosens the ties of her white robes while looking straight at you. When you reach for her again, she pulls you in.{/n}',
+    nar("robes", '''{n}Her first kiss misses the corner of your mouth. She catches your face between her hands and tries again, firmly enough to leave you breathless. Your fingers catch on the pin at her throat.{/n}
+{n}She pushes them aside, unpins her cloak herself, and loosens the ties of her white robes while looking straight at you. When you reach for her again, she pulls you in.{/n}''',
         c("Continue", "wrist")),
     nar("wrist", '{n}The loosened robes slip from her shoulder. You kiss the exposed skin; her fingers tighten in your hair. When your mouth reaches her wrist, she turns her hand to hold your cheek.{/n} "Closer." {n}She says your name against your mouth and pulls you to her.{/n}',
         c("Continue", "learn")),
-    nar("learn", '''{n}She pulls your shirt free and lays both hands against your ribs. Her fingers pause over a scar; her breath catches against your throat. She takes your hand and presses it to her bare waist.{/n} "Here. I want your hands here." {n}Her teeth close lightly on your shoulder. Her thigh presses between yours; the loosened white robes gather at her hips. She pulls you closer, then backs against the table without letting go.{/n}''',
+    nar("learn", '{n}She pulls your shirt free and lays both hands against your ribs. Her fingers pause over a scar; her breath catches against your throat. She takes your hand and presses it to her bare waist.{/n} "Here. I want your hands here." {n}Her teeth close lightly on your shoulder. The loosened white robes gather at her hips. She pulls you closer, then backs against the table without letting go.{/n}',
         c("Continue", "charts")),
-    nar("charts", '{n}She catches a chart beneath her elbow and pushes it clear. The river stones clatter to the floor. The remaining rolls slide after them, still tied; she watches them fall, then draws you in against her at the edge of the bare table.{/n} "They can be picked up. Come here."\n{n}Her hands go to your belt before you have finished obeying, exact and unembarrassed, the way she handles every difficult task. The white robes are bunched at her hips; she hauls them higher, and the lamp finds her bare skin, pale against the dark wood. She takes your hand from her waist and lays it flat against her ribs, over the hammering of her heart, and watches your face while you feel it.{/n}\n"Not so careful," {n}she says, a little breathless, and bites at your lower lip.{/n} "I have spent a hundred years being careful. Harder. There."\n{n}She arches with her head tipped back and the lights of the dead shrine going over her throat. When she cannot stand any more of it she drags your clothes open and pulls you in against her until nothing is left between you but the next breath, and she says your name like a woman reading a star she has finally found.{/n}',
+    nar("charts", '''{n}She catches a chart beneath her elbow and pushes it clear. The river stones clatter to the floor. The remaining rolls slide after them, still tied; she watches them fall, then draws you in against her at the edge of the bare table.{/n} "They can be picked up. Come here."
+{n}Her hands go to your belt before you have finished obeying, exact and unembarrassed, the way she handles every difficult task. The white robes slip lower at her waist, and the starlight finds her bare shoulders and the pale skin above her collar. She takes your hand from her waist and draws it along her ribs, and watches your face while you learn her.{/n}
+"Not so careful," {n}she says, a little breathless, and bites at your lower lip.{/n} "I have spent a hundred years being careful. Harder. There."
+{n}She arches against your hands with her head tipped back and the lights of the dead shrine going over her throat. When she cannot stand any more of it she drags your clothes open and pulls you in against her until nothing is left between you but the next breath.{/n}''',
         c("Continue", "morning")),
-    nar("morning", '{n}You wake beneath her cloak with a star chart stuck to your back. Eliandra is pressed along your side, her hair caught under your shoulder. She frees it with an irritated tug and kisses you before getting up.{/n}\n{n}By the time boots sound in the corridor she is dressed and kneeling among the charts. A scarred man with a bow stops in the doorway. Katair looks from the empty shrine to the cloak and your bare shoulder, then to Eliandra. She keeps hold of the roll she has tied wrong.{/n}',
+    nar("morning", '''{n}You wake beneath her cloak with a star chart stuck to your back. Eliandra is pressed along your side, her hair caught under your shoulder. She frees it with an irritated tug and kisses you before getting up.{/n}
+{n}By the time boots sound in the corridor she is dressed and kneeling among the charts. A scarred man with a bow stops in the doorway. Katair looks from the empty shrine to the cloak and your bare shoulder, then to Eliandra. She keeps hold of the roll she has tied wrong.{/n}''',
         c("Continue", "katair")),
     kt("katair", '''"I was beyond the walls," {n}says Katair.{/n} "Days. I came back to a sacked shrine and an empty valley, and found the carts' tracks going to Drezen, and Odden in Drezen, who told me you had come back here and would not tell me why." {n}His voice is perfectly level. His hands are not, quite.{/n} "Regnard. Taeriell. The lovers."
 {n}It is not a question. Eliandra nods.{/n}
@@ -295,7 +301,9 @@ drezen_pre(E + "visit.star_heart", "The shrine's last night", '"Is the heart sti
        c("Continue", "wrong")),
     el("answer_self", '''"I gave my Lady back her gift, Katair. Myself, at the basin, with nobody's hand but mine. She let me go. And then I made my choice." {n}She lifts her chin.{/n} "I am not the strongest of her servants any more, and I am not going to be ashamed of any of it in front of you."''',
        c("Continue", "wrong")),
-    kt("wrong", '{n}Katair takes the charts from her arms and examines their ties.{/n} "The north is on the outside. Every one." {n}He looks towards the discarded cloak, then back at her.{/n} "The column leaves soon. Who is tending the wounded?"\n"I am," {n}Eliandra answers.{/n} "As I was yesterday. I will be at the carts when they leave."\n{n}Katair loosens one tie and checks the observations. His hand stops at Taeriell\'s name in the margin.{/n} "I should have been here."',
+    kt("wrong", '''{n}Katair takes the charts from her arms and examines their ties.{/n} "The north is on the outside. Every one." {n}He looks towards the discarded cloak, then back at her.{/n} "The column leaves soon. Who is tending the wounded?"
+"I am," {n}Eliandra answers.{/n} "As I was yesterday. I will be at the carts when they leave."
+{n}Katair loosens one tie and checks the observations. His hand stops at Taeriell's name in the margin.{/n} "I should have been here."''',
        c('"The column still has its priestess."', "end"),
        c('"Ask her. I am staying out of this."', "end")),
     nar("end", '{n}Katair goes to see to the horses. Eliandra watches him leave, then puts the charts in your arms and retrieves her cloak.{/n} "He will have questions for the column. I will answer those too." {n}She catches your mouth in a brief kiss before pinning the cloak.{/n} "I wanted you here. I still do. Now help me carry these out before he brings the horses through the door."',
@@ -333,7 +341,8 @@ drezen(E + "drezen.city", "A city with walls", '"How are you finding Drezen?"', 
 # --- 2. The stone (the King's tavern only) ----------------------------------------------------------------------------
 
 drezen(E + "drezen.stone", "The stone under the cloth", '"You\'ve been looking at the King\'s stone."', [
-    el("start", '"Come. I want to look at it again." {n}Eliandra rolls her chart and leads you from the tailor\'s frontage to Thaberdine\'s tavern. The King waves you past his drinkers. Behind the bar, his stone tablet sits beneath a cloth between a keg and a jar of pickled eggs.{/n}\n"I watched you carry it away from behind my Lady\'s veil. I wondered what a crusader wanted with a chief\'s stone. He asked whether his ancestors were buried under it. I said probably."',
+    el("start", '''"Come. I want to look at it again." {n}Eliandra rolls her chart and leads you from the tailor's frontage to Thaberdine's tavern. The King waves you past his drinkers. Behind the bar, his stone tablet sits beneath a cloth between a keg and a jar of pickled eggs.{/n}
+"I watched you carry it away from behind my Lady's veil. I wondered what a crusader wanted with a chief's stone. He asked whether his ancestors were buried under it. I said probably."''',
        c('"What is the truth?"', "truth"),
        c('"He needed it more than the dead did."', "needed")),
     el("truth", '''"I read it. He lifted the cloth for me, and I read it twice." {n}She looks at the cloth.{/n} "The letters are older than the fall of Sarkoris. The moss is older than that. It says what he says it says, word for word, and it bears his crest. I do not know how, and I will not pretend it is a forgery. It is not."
@@ -645,7 +654,7 @@ for _scene in SCENES:
         _by["charts"]["Choices"][0]["Next"] = _slot
         # Explicit brief: first chosen night at the bare chart table; no interruption.
         _scene["Nodes"].append(nar(_slot,
-            '{n}Eliandra holds you there with both legs locked behind you, her breath hard against your mouth. The last chart slips from the table.{/n}',
+            '{n}Her breath breaks hard against your mouth, and the starlight comes down over the two of you. When the peak takes her she says your name, and then, startled, laughs at herself, a priestess with her whole sky looking on. The last chart slips from the table.{/n}',
             c("Continue", "morning")))
     if _scene["Id"] in (E + "drezen.city", E + "drezen.city_mark"):
         _by["ask"]["Text"] = _by["ask"]["Text"].replace("since the road", "until we could sit together")

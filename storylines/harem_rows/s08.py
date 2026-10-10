@@ -67,6 +67,13 @@ def _terminal_flags(step, held=False, failed=False):
     return flags
 
 
+NOCT_HELD = {'settle': '{n}The half-seal warms through its wrapping before anyone touches it. The answering mark crawls out across the sheet, under Arueshalae\'s name, in a hand the whole Table can read.{/n} "Arueshalae. So the girl has a name now, and says it to my face in front of soldiers. How brave. How very mortal of her." {n}The mark stops, the way a cat stops with one paw still on the mouse.{/n} "I am the Lady in Shadow, girl, and I do not need you on your knees to remain so. Keep your little life among the crusaders. I shall not summon you, and I shall not send for you. But every succubus in my city will know that you walked out of my service and that I let you, and they will wonder what you paid for it. Let them wonder. It will cost you more than kneeling would have."', 'retry': '{n}This time the half-seal is warm before the sheet is even unfolded, as if it had been waiting. The mark writes under Arueshalae\'s name without hurrying.{/n} "Again, and louder. Very well, girl: Arueshalae. There, I have said it, in my own hand, where the whole Table can read it." {n}A pause, long enough to be insulting.{/n} "I am the Lady in Shadow, and I do not need you on your knees to remain so. Keep your little life among the crusaders. I shall not summon you, and I shall not send for you. But every succubus in my city will know that you walked out of my service and that I let you, and they will wonder what you paid. Let them wonder. It will cost you more than kneeling would have."'}
+NOCT_FAILED = '{n}The half-seal stays cold for an hour. Then the sheet comes back folded, sealed with her mark pressed so hard the wax has split, and inside, under Arueshalae\'s renunciation, one stroke through the whole of it.{/n} "Mine. Come home on your knees, girl, or do not come home at all; but do not send me paper telling me what you are."'
+ARUE_START = {'settle': '{n}Arueshalae unrolls the crusade map across the Table with both hands and puts one claw through the black blot that is Alushinyrra.{/n} "Say it for her, darling, out loud, since she has a seal on your table now. \'Arueshalae. Of nobody\'s house.\' Not hers. Not Vellexia\'s. Not yours, either, before you get ideas." {n}She smiles at the seal as if it could see her, and her wings are pressed flat against her back.{/n} "I bowed to her my whole life, because that is what one does. I worship one god now. She is standing here, and she is hungry, and she does not kneel."', 'retry': '"Again, darling? You are stubborn." {n}She flattens the map with the heel of her hand, over the old claw-mark.{/n} "Louder, then. \'Arueshalae. Of nobody\'s house.\' Let the seal hear it twice."'}
+ARUE_ANSWER = '"She said my name." {n}She laughs, low and delighted, and does not quite stop her hands from shaking.{/n} "Our Lady in Shadow said my name, and not \'my succubus\'. Do you know how few of her creatures have heard that and lived to sulk about it?" {n}She signs under the queen\'s line with one claw, through the paper and into the wood of the Table.{/n} "Arueshalae. Mine. She can keep the rest of the city. I\'ve had all of it I want."'
+ARUE_REFUSED = '"Then leave it." {n}She rolls the map up, quick and neat, before anyone can see where her claw went in.{/n} "Let her think she owns me. Let her come and collect, if she likes. I\'d rather be hunted by a queen than pardoned by one; at least the hunt is interesting." {n}She drops the map on the Table.{/n} "Now feed me something. Defiance makes me hungry."'
+
+
 def draft_scenes():
     """Review-only templates. Null DC and unpaid favour make them NON-EXPORTABLE.
 
@@ -78,12 +85,9 @@ def draft_scenes():
         for branch in ("redeemed", "corrupted"):
             fallen = branch == "corrupted"
             renunciation = (
-                '"Write this down. Arueshalae. Not her pet, not her escaped property. '
-                'If she wants me kneeling, she can come and try."' if fallen else
                 '"I want her to hear my name without an order attached to it. '
                 'Arueshalae. I will speak to her. I will not kneel."')
             reaction = (
-                '"Lady in Shadow. I can say it without crawling."' if fallen else
                 '"Lady in Shadow, then. She has no claim on the life I choose here."')
             start = (
                 '{n}A scout sets a bloodstained map beside the cups. Arueshalae moves it '
@@ -105,30 +109,21 @@ def draft_scenes():
                             c('"Then leave the claim disputed."', "refused"),
                             c('[Later.]', abort=True)])
             nodes = [
-                n("start", "Arueshalae", start, *choices, portrait="Arueshalae"),
+                n("start", "Arueshalae", (ARUE_START[step] if fallen else start), *choices, portrait="Arueshalae"),
                 n("held", "Narrator",
-                  '{n}Nocticula’s answering stroke completes the broken seal. You read the '
-                  'reply aloud over the map.{/n}\n'
-                  '"Arueshalae. Your little audience may keep its soldier. Do not mistake '
-                  'that for permission to spit on my throne. You will address me as Lady in Shadow."\n'
-                  '{n}The signature bites through the paper. No summons follows it.{/n}',
+                  NOCT_HELD[step],
                   c('Continue', "answer"), portrait="Nocticula"),
-                n("answer", "Arueshalae", reaction + '\n'
-                  '{n}She signs beneath her own name and slides the scout’s map back into the light.{/n}',
+                n("answer", "Arueshalae", (ARUE_ANSWER if fallen else reaction + '\n'
+                  '{n}She signs beneath her own name and slides the scout’s map back into the light.{/n}'),
                   c('Continue', flags=_terminal_flags(step, held=True)), portrait="Arueshalae"),
                 n("refused", "Arueshalae",
-                  ('"Then she can choke on the claim. I have fighting to do."' if fallen else
-                   '"It can remain disputed. I am staying with the crusade."') + '\n'
-                  '{n}She takes her sheet away. The half-seal remains wrapped; no answer has been requested.{/n}',
+                  (ARUE_REFUSED if fallen else '''"It can remain disputed. I am staying with the crusade."
+{n}She takes her sheet away. The half-seal remains wrapped; no answer has been requested.{/n}'''),
                   c('Continue', flags=_terminal_flags(step)), portrait="Arueshalae"),
             ]
             if step == "settle":
                 nodes.append(n("failed", "Narrator",
-                               '{n}The answering stroke completes the seal. Beneath the copied '
-                               'renunciation, Nocticula has written a single line.{/n}\n'
-                               '"My subject has learned to dictate. You have learned to repeat her. '
-                               'Neither has given me a reason to accept this insolence."\n'
-                               '{n}Arueshalae snatches the sheet back. Her name remains above the reply.{/n}',
+                               NOCT_FAILED,
                                c('Continue', flags=_terminal_flags(step, failed=True)), portrait="Nocticula"))
             requires = COMMON_REQUIRES + ("arueshalae." + branch,)
             forbids = COMMON_FORBIDS + (P(step + ".seen"),)

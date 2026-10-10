@@ -138,7 +138,8 @@ def eliandra(payload, scenes):
             block['Text'] = block['Text'].replace('because she had chosen a lover', 'because the war had ended')
         offer(event,
             '{n}After Threshold, Eliandra\'s letter from the Sarkorian fords reached the Commander. Her question remained: Drezen, or the road? The stargazers would need an answer before they packed the carts.{/n}' if kind == 'late' else
-            '{n}After Threshold, Eliandra reached the Commander\'s door in Drezen, her travelling pack still on her shoulder.{/n}\n"Drezen, or the road? I have wanted to ask you since the basin. Now there is time to hear you."',
+            '''{n}After Threshold, Eliandra reached the Commander's door in Drezen, her travelling pack still on her shoulder.{/n}
+"Drezen, or the road? I have wanted to ask you since the basin. Now there is time to hear you."''',
             ('"Either. Both. Bring them all. As my lover, Eliandra."',
              '{n}Eliandra set down her pack.{/n} "Both, then. I shall make you say it again tomorrow."\n'
              '{n}When her people had beds for the night, she returned and took the Commander\'s hand. Her travelling cloak fell across the unused chair; she kissed them and drew them past it.{/n}'),
@@ -160,7 +161,10 @@ def eliandra(payload, scenes):
             'Before she asked', 'Then she asked', 'The day after', 'A month later'))]
         node(event, 'late_accepted')['Paragraphs'] = night
         if kind == 'late':
-            node(event, 'late_accepted')['Text'] = '{n}The Commander sent the answer to the fords. Eliandra replied before the next convoy left; a month later she reached Drezen with her people and put her pack in the Commander\'s rooms.{/n}\n"Both. I have brought them all. Tonight I want you."'
+            node(event, 'late_accepted')['Text'] = '''{n}The Commander sent the answer to the fords. Eliandra replied before the next convoy left; a month later she reached Drezen with her people and put her pack in the Commander's rooms.{/n}
+"Both. I have brought them all. Tonight I want you."
+{n}She bars the door, hangs her damp cloak by the fire and stands a moment looking at you the way she once looked at a chart she meant to get right. Then her hands go to the clasp at her throat, and the white robes loosen from her shoulders.{/n}
+"A hundred years of duty, and I find my list of wants is very short. You are on it twice." {n}She draws you to the bed by your belt.{/n}'''
         for key, text in (
             ('late_accepted', '{n}The war ended before they had answered each other. Afterwards Eliandra kept the road to Sarkoris and the place she had now accepted beside the Commander.{/n}'),
             ('late_refused', '{n}Eliandra remembered the help given her people before Threshold. It bought no place in the Commander\'s rooms after her invitation was refused.{/n}'),

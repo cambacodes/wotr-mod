@@ -124,10 +124,10 @@ physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
     n("threshold", "Arsinoe", '''{n}Arsinoe turns the sign to CLOSED and locks the till. Her eyes stay on you.{/n}
 "The lien stands. This is outside the lease. Close the curtains."
 {n}While you do, she undoes her collar, then the clasps of her robe. The silk falls around her feet. She steps out of it, pauses in the lamplight, and lifts her chin.{/n}
-"Well? I have had enough of watching you admire the stone."
-{n}She takes your hand and pulls you close. Her mouth is warm and deliberate; the second kiss leaves her breathing harder. She pushes the ledger aside and the pen rolls off the counter, unmourned. You sit on the cleared edge of the counter, and she settles astride your lap, bare skin beneath your hands. Her breasts are hot against your shirt. She works your buttons open one-handed, and when your palms close on them she makes a short, unladylike sound and rocks against you to hear it again.{/n}
-"I keep an exact account of what I want, Commander. Lower."
-{n}You obey, and she is already wet and moving, hips rolling over your thigh, her teeth at your lower lip while the counter complains under both of you. She drags your clothes aside, impatient where she is always exact, lifts herself over you, and slides her hand down between you to bring you where she wants you.{/n}''',
+"I have had enough of watching you admire the stone. Look at me."
+{n}She takes your hand and pulls you close. Her mouth is warm and deliberate; the second kiss leaves her breathing harder. She pushes the ledger aside and the pen rolls off the counter, unmourned. She backs you against the cleared edge, works your buttons open one-handed, and when your hands find her bare waist she makes a short, unladylike sound and kisses you again to hear it twice.{/n}
+"I keep an exact account of what I want, Commander. Do not round it down."
+{n}She drags your clothes aside, impatient where she is always exact, her teeth at your lower lip while the counter complains under both of you, and the shop's one candle gutters and nobody trims it.{/n}''',
       c("Continue", "morning")),
     n("morning", "Arsinoe", '''{n}The sign still says CLOSED when you wake. Outside, customers are already arguing over whose turn it is. Arsinoe sits at the counter in her shift, hair unbound, a cold cup of tea beside the ledger.{/n}
 "The lease has not changed. Nor has the price of a scroll, whatever they are shouting out there."
@@ -340,9 +340,9 @@ SCENES.append(scene("arsinoe.trickster.late.commit", "Interest on late payments"
          )),
     late("night", '''{n}Arsinoe stood close while the Commander opened her collar, gold eyes fixed on theirs. At the next clasp she caught their hands and kissed them hard.{/n}
 "I waited for the campaign to end. These fastenings have had quite enough of my patience."
-{n}She undid the rest herself and let the robes fall. Her hair came loose as she pushed the Commander back toward the bed. She drew them down beside her, put their hands on her bare waist, and held them there until their fingers tightened. Then she bent to their mouth, and her composure broke on a breath.{/n}
+{n}She undid the rest herself and let the robes fall. Her hair came loose as she pushed the Commander back toward the bed. She put their hands on her bare waist and held them there until their fingers tightened, then bent to their mouth, and her composure broke on a breath.{/n}
 "Higher. I have wanted your hands there since the roof above Tovin's shop."
-{n}The Commander cupped her breasts and she arched into them, nipples hard against their palms, a low curse in a priestess's mouth. She stripped them with the exactness she gave a ledger and none of the patience, kissed down their chest while their hands knotted in her loosened hair, and came back up with her thighs spread wide over them. She was wet against their skin and shaking with the effort of not hurrying. Her hand slid down between them, and her gold eyes did not leave theirs.{/n}''',
+{n}She stripped them with the exactness she gave a ledger and none of the patience, kissing down their throat while their hands knotted in her loosened hair, flushed and shaking with the effort of not hurrying, her gold eyes never leaving theirs.{/n}''',
          c("Continue", "morning")),
     late("morning", '''{n}In the morning she sat at the Commander's table in her shift, hair loose, drinking from the better cup. The other stood within reach of the bed.{/n}
 "Go back to sleep. I mean to open late, and I want company."
@@ -440,7 +440,9 @@ for _flag, _target, _text in (
 
 # --- eng8-q8c / E-Q8-04: close the collection opener before its next turn ---
 _collection["Nodes"][0]["Text"] = _collection["Nodes"][0]["Text"].replace(
-    'I do not do that. So.\n', 'I do not do that. So."\n')
+    '''I do not do that. So.
+''', '''I do not do that. So."
+''')
 # end eng8-q8c
 
 
@@ -484,7 +486,10 @@ DERIVED["arsinoe.trickster.konomi_not_dismissed"] = [["trickster.ever"]]
 
 SCENES.append(reaction("Konomi", "arsinoe.trickster.after_hours.react_konomi",
     ("trickster.ever", INTIMACY, "konomi.in_office"),
-    '{n}Lady Konomi slides a folded complaint beneath another letter. Her smile makes no attempt at innocence.{/n}\n"A merchant waited an hour for a scroll and demanded that I inform the capital. I shall. Immediately after the dispatch about the demon armies."\n{n}She taps the buried letter.{/n}\n"He also included an account of your whereabouts. Such enterprise. I advised him to pay more attention to his own customers. An audience with the Commander must be requested through the proper office. Arsinoe\'s counter is not a second diplomatic council."',
+    '''{n}Lady Konomi slides a folded complaint beneath another letter. Her smile makes no attempt at innocence.{/n}
+"A merchant waited an hour for a scroll and demanded that I inform the capital. I shall. Immediately after the dispatch about the demon armies."
+{n}She taps the buried letter.{/n}
+"He also included an account of your whereabouts. Such enterprise. I advised him to pay more attention to his own customers. An audience with the Commander must be requested through the proper office. Arsinoe's counter is not a second diplomatic council."''',
     answer_list=KONOMI_OFFICER, relationship="arsinoe",
     entry='"Has someone complained about Arsinoe\'s opening hours?"',
     forbids=("konomi.dismissed", "konomi.retained_dead", "konomi.dead.unreturned"),
@@ -499,7 +504,12 @@ _ask_start = _ask["Nodes"][0]
 _ask_start["Choices"][0]["Forbids"].append(KONOMI_POST)
 _ask_start["Choices"].append(c(_ask_start["Choices"][0]["Text"], "yes_known",
     flags=(LATE_ACCEPTED,), requires=(KONOMI_POST,)))
-_ask["Nodes"].append(n("yes_known", "Arsinoe", '{n}Arsinoe walks with you as far as the citadel. At Lady Konomi\'s open office door she stops.{/n}\n"If your clerks want me after the campaign, send them before closing. I have made other arrangements for my evenings."\n{n}Konomi\'s glance travels from her to you. She smiles.{/n}\n"How prudent. I shall put temple business first. The Royal Council\'s requests can be discussed during your profitable hours."\n{n}Arsinoe gives her a folded account.{/n}\n"My rates for the Council\'s next order. That business will keep its usual hours."',
+_ask["Nodes"].append(n("yes_known", "Arsinoe", '''{n}Arsinoe walks with you as far as the citadel. At Lady Konomi's open office door she stops.{/n}
+"If your clerks want me after the campaign, send them before closing. I have made other arrangements for my evenings."
+{n}Konomi's glance travels from her to you. She smiles.{/n}
+"How prudent. I shall put temple business first. The Royal Council's requests can be discussed during your profitable hours."
+{n}Arsinoe gives her a folded account.{/n}
+"My rates for the Council's next order. That business will keep its usual hours."''',
     c(flags=(KONOMI_KNOWN,))))
 
 # Read the recorded answer, never readiness as an acceptance. A refusal
@@ -508,7 +518,8 @@ _late["Requires"] = [LATE_READY]
 _late["RequiresAnyGroups"] = [[LATE_ACCEPTED, LATE_DECLINED]]
 for _paragraph in _late["Nodes"][0]["Paragraphs"]:
     _paragraph["Requires"].append(LATE_ACCEPTED)
-_late["Nodes"][0]["Paragraphs"].append(p('{n}The spring after Threshold, she came to the Commander\'s door in her good robes, hair pinned up, gold eyes steady.{/n}\n"I kept the evening you asked for. I intend to keep rather more of them."', requires=(LATE_ACCEPTED,)))
+_late["Nodes"][0]["Paragraphs"].append(p('''{n}The spring after Threshold, she came to the Commander's door in her good robes, hair pinned up, gold eyes steady.{/n}
+"I kept the evening you asked for. I intend to keep rather more of them."''', requires=(LATE_ACCEPTED,)))
 for _node in _late["Nodes"]:
     if _node["Id"] in ("morning", "table"):
         _node.setdefault("Paragraphs", []).append(p('{n}Lady Konomi\'s next letter to Arsinoe requested letters of credit for Mendevian merchants. Below the figures she asked that the Council\'s orders be filled before Arsinoe\'s private appointments. Arsinoe answered with her rates. Konomi\'s reply arrived promptly: "Let us talk price."{/n}',
@@ -533,16 +544,15 @@ _collection["Nodes"].append(n("personal_offer", "Arsinoe", '''{n}Arsinoe taps th
 "The payments will be punctual. Another evening with you is a different offer. I should like it."
 {n}She folds the lease and puts it away.{/n}
 "Ask me after closing. I am tired of being interrupted at the interesting part."''', c()))
-_col["threshold"]["Text"] = _col["threshold"]["Text"].replace('Well? I have had enough of watching you admire the stone.',
-    'I have had enough of watching you admire the stone. Look at me.')
 _col["threshold"]["Choices"][0]["Next"] = "arsinoe.trickster.cauldron.collection.explicit.1"
 # Explicit slot C: secured till, cleared counter, personal invitation; lien unchanged.
-_collection["Nodes"].append(n("arsinoe.trickster.cauldron.collection.explicit.1", "Arsinoe", '''{n}Still astride your lap, Arsinoe catches your hand against her waist. The ledger lies where she pushed it; she gives it no further attention.{/n}
+_collection["Nodes"].append(n("arsinoe.trickster.cauldron.collection.explicit.1", "Arsinoe", '''{n}The candle burns down unattended. When the peak takes her she bites back a cry against your shoulder, a priestess of Abadar swearing in a language no temple taught her, and afterwards she keeps your hand pressed to her waist and gives the ledger no further attention.{/n}
 "The ledger stays shut tonight."''', c("Continue", "morning")))
 
 # Arrival is established in the existing accepted paragraphs, before any recall.
 _offer = _late["Nodes"][0]
-_arrival = '{n}The spring after Threshold, Arsinoe came to the Commander\'s door in her good robes, hair pinned up, gold eyes steady. When the door opened, she stepped inside and laid her gloves on the table.{/n}\n'
+_arrival = '''{n}The spring after Threshold, Arsinoe came to the Commander's door in her good robes, hair pinned up, gold eyes steady. When the door opened, she stepped inside and laid her gloves on the table.{/n}
+'''
 _offer["Paragraphs"][0]["Text"] = _arrival + _offer["Paragraphs"][0]["Text"]
 _offer["Paragraphs"][1]["Text"] = _arrival + '"There was a roof above Tovin\'s shop. Separate chairs, bread, cheese, and far too many buildings to point at. Then I took your hand, and kept it until he brought the lamp. I wanted another evening even then."'
 _offer["Paragraphs"][7]["Text"] = '"Tonight is the evening we kept. I intend to keep rather more of them."'
@@ -559,17 +569,17 @@ _ln["table"]["Text"] = '''{n}The next morning Arsinoe returned from opening the 
 _offer["Choices"][1]["Next"] = "deferred_evening"
 _late["Nodes"].extend([
     # Explicit slot L: impatience with fastenings after an accepted physical arrival.
-    late("arsinoe.trickster.late.commit.explicit.1", '''{n}Arsinoe remained over the Commander, her fingers closing around theirs against her waist. The discarded robes lay beside the bed.{/n}
+    late("arsinoe.trickster.late.commit.explicit.1", '''{n}The robes lay where they fell. Arsinoe's fingers closed around theirs against her waist, and when the peak took her she said the Commander's name like a verdict, low and unguarded, with every ledger in Drezen forgotten.{/n}
 "Tomorrow, you may tell me how patient I was."''', c("Continue", "morning")),
     late("deferred_evening", '''{n}At supper she took the Commander's hand across the table and kissed them firmly before sitting back.{/n}
 "Tonight we eat. The rest in a month. I can afford four weeks, and I intend to enjoy looking forward to them."
 {n}Four weeks later she came back after closing, carrying the bottle she had promised. She set it beside the supper dishes and began undoing her collar before either cup was filled.{/n}
 "I kept the date. Now put that down and come to me."
-{n}She caught the Commander's sleeve, kissed them and led them toward the bed. Halfway there she stopped to kiss them again against the wall, her robes already open, her bare breast filling the Commander's palm. She had been composed all day and was composed no longer. She ground against their thigh and bit their lip.{/n}
+{n}She caught the Commander's sleeve, kissed them and led them toward the bed. Halfway there she stopped to kiss them again against the wall, her robes already open, her breath ragged against their mouth. She had been composed all day and was composed no longer.{/n}
 "Four weeks. I have been insufferable all day. Take your clothes off."
-{n}The Commander did, and she watched every inch of it with open appetite. She pushed them down onto the bed, straddled them and let the robes slide off her shoulders, hair falling around both their faces. Her hand went between them to take hold, and she stayed there, poised and flushed and smiling, savouring the moment she had waited a month for.{/n}''', c("Continue", "arsinoe.trickster.late.commit.explicit.2")),
+{n}The Commander did, and she watched every inch of it with open appetite. She drew them down onto the bed and let the robes slide off her shoulders, hair falling around both their faces, flushed and smiling, savouring the moment she had waited a month for.{/n}''', c("Continue", "arsinoe.trickster.late.commit.explicit.2")),
     # Explicit slot D: kept four-week appointment, distinct from immediate arrival.
-    late("arsinoe.trickster.late.commit.explicit.2", '''{n}Arsinoe stayed poised over the Commander, flushed and smiling, the unopened bottle beyond either of their reach.{/n}
+    late("arsinoe.trickster.late.commit.explicit.2", '''{n}The bottle stayed unopened. Arsinoe's laugh broke against the Commander's throat, and the wait of a month ended in one long, unguarded moan, the best-kept books in Drezen forgotten.{/n}
 "You have kept me waiting long enough."''', c("Continue", "table")),
 ])
 
@@ -579,13 +589,20 @@ _col["stay"]["Choices"][0]["Forbids"].append(INTIMACY)
 _col["stay"]["Choices"].append(c(_col["stay"]["Choices"][0]["Text"], "threshold_return",
     requires=("arsinoe.campaign_lover", INTIMACY), flags=(STAYS, "arsinoe.started")))
 _collection["Nodes"].append(n("threshold_return", "Arsinoe",
-    _col["threshold"]["Text"].replace('This is outside the lease. Close the curtains.',
-    'I want you here again. Outside the lease, as before. Close the curtains.'),
+    '''{n}Arsinoe turns the sign to CLOSED and locks the till. Her eyes stay on you.{/n}
+"The lien stands. I want you here again. Outside the lease, as before. Close the curtains."
+{n}While you do, she undoes her collar, then the clasps of her robe. The silk falls around her feet. She steps out of it, pauses in the lamplight, and lifts her chin.{/n}
+"I have had enough of watching you admire the stone. Look at me."
+{n}She takes your hand and pulls you close. Her mouth is warm and deliberate; the second kiss leaves her breathing harder. She pushes the ledger aside and the pen rolls off the counter, unmourned. She backs you against the cleared edge, works your buttons open one-handed, and when your hands find her bare waist she makes a short, unladylike sound and kisses you again to hear it twice.{/n}
+"I keep an exact account of what I want, Commander. Do not round it down."
+{n}She drags your clothes aside, impatient where she is always exact, her teeth at your lower lip while the counter complains under both of you, and the shop's one candle gutters and nobody trims it.{/n}''',
     c("Continue", "arsinoe.trickster.cauldron.collection.explicit.1")))
 _offer["Choices"][0]["Forbids"].append(INTIMACY)
 _offer["Choices"].append(c(_offer["Choices"][0]["Text"], "late_return",
     requires=(LATE_ACCEPTED, INTIMACY)))
-_late["Nodes"].append(late("late_return", _ln["night"]["Text"].replace(
-    'I waited for the campaign to end. These fastenings have had quite enough of my patience.',
-    'I remember waking beside you. I have had quite enough patience during the campaign.'),
+_late["Nodes"].append(late("late_return", '''{n}Arsinoe stood close while the Commander opened her collar, gold eyes fixed on theirs. At the next clasp she caught their hands and kissed them hard.{/n}
+"I remember waking beside you. I have had quite enough patience during the campaign."
+{n}She undid the rest herself and let the robes fall. Her hair came loose as she pushed the Commander back toward the bed. She put their hands on her bare waist and held them there until their fingers tightened, then bent to their mouth, and her composure broke on a breath.{/n}
+"Higher. I have wanted your hands there since the roof above Tovin's shop."
+{n}She stripped them with the exactness she gave a ledger and none of the patience, kissing down their throat while their hands knotted in her loosened hair, flushed and shaking with the effort of not hurrying, her gold eyes never leaving theirs.{/n}''',
     c("Continue", "arsinoe.trickster.late.commit.explicit.1")))

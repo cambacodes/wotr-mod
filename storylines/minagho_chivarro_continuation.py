@@ -627,7 +627,9 @@ When they turn toward you, both are plainly waiting to see what you will bid.{/n
 "A witness. Dispose of it."
 {n}You put it aside. She shoves the tray off the couch, slips her dress from her shoulders and pulls you down along the couch. Her bare back arches beneath your hands. She bites your lower lip, then smiles against it.{/n}
 "One hour. Do not waste it being gentle."
-{n}Her fingers close on your belt.{/n}
+{n}A step sounds on the stair. Minagho catches your collar and holds you still, listening. The step passes; she pulls you close again.{/n}
+{n}Her fingers close on your belt, and her dress is round her hips, and then it is gone. She sinks her teeth into your shoulder, bare against your hands, her breath breaking hot against your ear.{/n}
+"One hour, Golarian. She will be counting the minutes from the stair and hating every one. Hands. All of them."
 
 {n}Later she steals your cushion while you reach for the wine, then complains when you insist on sharing it. Her head settles against you halfway through.{/n}
 "Two hours next time. Chivarro negotiated poorly."''', c('"Two hours, next time. I\'ll bring the plums."', flags=done("evening_kept", "minagho_chosen"))),
@@ -650,8 +652,12 @@ When they turn toward you, both are plainly waiting to see what you will bid.{/n
       c('"Take my hand. Tell me something you have never needed a guest to like."', "chivarro_close")),
     n("chivarro_kiss", "Chivarro", '''"Yes. Come here."
 {n}Chivarro catches the back of your neck. She kisses slowly, then presses you along the couch with a palm on your chest. Her other hand unlaces her bodice. She lets you watch it fall before leaning down, loosened hair brushing your face.{/n}
-"I have arranged enough evenings for guests. This one is mine."
+"I have arranged enough evenings for guests. Tonight is mine."
 {n}You draw her close. She reaches for the fastening at your waist.{/n}
+
+{n}A step sounds on the stair. Chivarro catches your collar and holds you still, listening. The step passes; she pulls you close again.{/n}
+{n}She peels the bodice off, bare to the waist, takes your hand and lays it over her breast, and shows you exactly how slowly she wants it. She breathes like a woman who has stopped counting.{/n}
+"Slowly, honey. I have been hurried by experts."
 
 {n}Later Minagho announces through the door that the wine is appalling. Chivarro laughs against your shoulder.{/n}
 "Leave it outside. I would like to preserve my opinion of the evening."''', c('[Ask Chivarro for another evening together.]', flags=done("evening_kept", "chivarro_chosen"))),
@@ -680,6 +686,8 @@ When they turn toward you, both are plainly waiting to see what you will bid.{/n
 {n}She makes you forget the first kiss. Chivarro pulls her close and spoils the triumphant smile with another. Minagho reaches back for you before they part.{/n}
 "Keep up. She charges spectators."
 {n}Chivarro puts the game stones on the floor. Minagho unhooks your collar with her teeth. Chivarro's gown falls; Minagho tears a fastening from hers. They pull you onto the cushions between them, bare skin against your hands, and Chivarro bends to kiss the hollow beneath Minagho's throat.{/n}
+{n}Minagho's mouth is at your ear; Chivarro's hand finds the buckle at your waist and finds Minagho's fingers already there. For a moment they fight over it in the lamplight, laughing, breathless, all teeth, and then they stop fighting and open it together.{/n}
+"Share, Minagho," {n}Chivarro says.{/n} "I am told it is good for the complexion."
 
 {n}Later, beside the remaining lamp, Chivarro discovers the sugared plum Minagho kept hidden. The argument over its division interrupts the next kiss.{/n}''', c('[Stay through the quiet end of the evening.]', flags=done("evening_kept", "minagho_chosen", "chivarro_chosen", "together_chosen"))),
     n("together_close", "Narrator", '''{n}Chivarro arranges the cushions with more authority than the task requires. Minagho objects until she discovers that the result gives her a place against both of you. Then she becomes suspiciously cooperative.

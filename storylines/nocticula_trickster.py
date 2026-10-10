@@ -181,8 +181,11 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
         c("Continue", "threshold", flags=("noct.complete", SAID_YES))),
     nar("threshold", '''{n}The dark around her widens and closes over the two of you like a drawn curtain. Beyond it Threshold goes on, muffled, as though in another room.{/n}
 {n}Her fingers find the buckles of your armour before you feel them move: cold at first, then not cold at all. She strips you the way she prices things, piece by piece, watching your face to learn what each piece costs you. You reach for her and close your hands on nothing; she laughs against your throat. "Hands where I can see them. I said so."{/n}
-{n}So you keep them where she can see them. She pushes you back onto a throne that was not there a moment ago, settles astride your hips with a weight that is very real indeed, and leans down until her hair falls around you both like a second darkness.{/n}
-"I have wanted to do this since the Council," {n}she murmurs against your mouth, amused at herself for saying it.{/n} "I want you undone, and I want to watch every step of it, and I want you to remember whose shadow did it." {n}The last fire in Threshold gutters and goes out.{/n}''',
+{n}So you keep them where she can see them. She pushes you back onto a throne that was not there a moment ago, follows with a weight that is very real indeed, and leans down until her hair falls around you both like a second darkness.{/n}
+"I have wanted to do this since the Council," {n}she murmurs against your mouth, amused at herself for saying it.{/n} "I want you undone, and I want to watch every step of it, and I want you to remember whose shadow did it." {n}The last fire in Threshold gutters and goes out.{/n}
+{n}Her cold hands work beneath what is left of your clothes and find you hot and trembling; the contrast draws a low, delighted sound from her. Your reaching hands close on shadow, and she leans into the nothing of them as if your failing to hold her were the best part of it.{/n}
+"Cold," {n}she murmurs,{/n} "and you shake anyway. Good. Do not try to touch me, darling. Let me do all of it. Let me be unforgivably thorough."
+{n}Her mouth leaves yours and descends the line of your throat. The throne holds you where she put you, and your breath stutters.{/n}''',
         c('"...Flawless."', forbids=(LATE,)),
         c('"...Flawless."', "morning_late_paid", requires=(LATE, PAID)),
         c('"...Flawless."', "morning_late", requires=(LATE,), forbids=(PAID,))),
@@ -330,8 +333,11 @@ page("nocticula.trickster.epilogue.commit", "The chair nobody else sat in", "", 
         c("[Kiss her.]", "kissed"),
         c("[Kneel.]", "knelt"),
         c("[Step back from the chair.]", "refused_page")),
-    nar("kissed", '''{n}Her mouth was warm, which the Commander had not expected; the projection at Threshold had been cold. She pulled the Commander down into the chair and rose over them, astride, one hand flat on the Commander's chest to keep them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}''', *AFTER_PAGE),
-    nar("knelt", '''{n}"Better," said the Queen of Shadows, and let her robe fall open over the Commander's head like a tent. Her fingers closed in the Commander's hair, holding them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}''', *AFTER_PAGE),
+    nar("kissed", '''{n}Her mouth was warm, which the Commander had not expected; the projection at Threshold had been cold. She pulled the Commander down into the chair and bent over them, one hand flat on the Commander's chest to keep them exactly where she wanted them, while the lamps of her palace burned on, because she wished to be seen.{/n}
+{n}Her robe fell open. The Commander's coat went wherever she flicked it, and her mouth followed her hands down the Commander's throat and chest, hungry and entirely unapologetic. She took the Commander's hands and set them on her hips and held them there, her eyes half closed.{/n}
+"Years of shadow," {n}she said,{/n} "and you are warm. Let me find out how warm."''', *AFTER_PAGE),
+    nar("knelt", '''{n}"Better," said the Queen of Shadows, and let her robe fall open as she stood over the kneeling Commander. Her fingers closed in the Commander's hair, holding them exactly where she wanted them, at her feet, while the lamps of her palace burned on, because she wished to be seen.{/n}
+{n}The Commander's hands found her bare hips unforbidden, and she let them, with a long breath through her teeth. Whatever authority she wore, she wore it for the pleasure of being met; when the Commander pulled her mouth down to theirs, the sound she made was nothing like a command.{/n}''', *AFTER_PAGE),
     nar("after_paid", '''{n}In the morning her chair stood at the Commander's right hand at the palace's long table. No servant admitted moving it. She had left her glass there, its rim marked with lipstick. The steward who tried to move it back found his fingers would not close on it. On the mirror, in lipstick, in a hand the Commander knew: "My favour. The chair at your right hand, at every table you will ever sit at. I have just collected the first night of it."{/n}
 {n}The Commander's own household, when the Commander came home to Drezen, found a place already laid at the right hand of the Commander's chair, and did not ask for whom. They had learned.{/n}''', c()),
     nar("after_refused", '''{n}In the morning she was gone, and so was every other chair in the room but two. On the mirror, in lipstick: "You refused my price. You did not refuse me. Do not confuse them again."{/n}
@@ -340,7 +346,9 @@ page("nocticula.trickster.epilogue.commit", "The chair nobody else sat in", "", 
 {n}Then, very softly, so that nobody in her city would ever be able to swear to it: "Yes." She rose from the chair, took the Commander's wrists in her cool hands and set them on her hips. "There. Where I can see them. Now walk me to the bed, or go back to your inn and dream about it."{/n}''',
         c("[Walk her to the bed.]", "walked"),
         c("[Go back to the inn.]", "inn")),
-    nar("walked", '''{n}The Commander walked her backwards, step by step, while she watched. At the bed she turned them both, pushed, and followed the Commander down, and settled astride, and the last lamp went out while she was still smiling.{/n}''', *AFTER_PAGE),
+    nar("walked", '''{n}The Commander walked her backwards, step by step, while she watched. At the bed she turned them both, pushed, and followed the Commander down, smiling.{/n}
+{n}Her gown parted at the Commander's hands and fell. She dragged the Commander's shirt up and off, pressed bare skin to bare skin, and bent to bite the Commander's lower lip.{/n}
+"Say it again," {n}she whispered,{/n} "that you wanted to hear it twice. I will say it as often as you like. Yes."''', *AFTER_PAGE),
     nar("inn", '''{n}The Commander went back to the inn, and slept, and dreamed of nothing in particular. She kept her word to the letter: the Queen of Shadows did not set one foot in that dream, and made sure the Commander noticed the absence. At breakfast a note waited beside the bread, in a hand the Commander had never seen and knew at once: "Twice. Do not get used to it."{/n}''', c()),
 ])
 page("nocticula.trickster.epilogue.declined", "Eleven years",
@@ -465,7 +473,8 @@ def integrate(payload):
     _node(morning, "start")["Choices"].append(c("[Read the rest of the dust.]", "note_paid_alone", requires=(PAID,),
         forbids=("nocticula.daeran_present", "daeran.dead", "daeran.kicked_out")))
     for host in ("note_paid", "note_paid_alone"):
-        _node(morning, host)["Text"] += '\n{n}Above the note, a chair stands at the right hand of your own, drawn with one firm stroke.{/n}'
+        _node(morning, host)["Text"] += '''
+{n}Above the note, a chair stands at the right hand of your own, drawn with one firm stroke.{/n}'''
     nocticula_partners.integrate(payload)
 
 # --- Court scenes (ledger row 11: Nocticula owns all four; optional; never Forbid, close or set another route's flags) ---

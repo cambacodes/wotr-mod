@@ -43,9 +43,9 @@ START = '''{n}A dispatch bearer waits beside the tavern door, mud drying on her 
 FLOOR = '''{n}You put the dispatch on the King's table and hold back the next toast. Vellexia inclines her head, accepting the first turn.{/n}
 "Our Lady in Shadow trusted me with her nobility. Shamira was given the mess they leave behind. An excellent arrangement — until the cleaner mistook the broom for a scepter."
 {n}Shamira catches a laugh from the back of the room and waits for it to finish.{/n}
-"Your nobles came through my doors when they wanted the queen's attention. You kept them amused. I decided which requests reached her."
+"Your nobles crawled through my doors whenever they wanted my lady's ear. You kept them amused. I decided which of them she heard, and which of them went home without a tongue."
 "And such dreary requests!" {n}Vellexia smiles, but Shamira keeps her feet.{/n}
-"You have had your turn. I have not finished."'''
+"Sit down, cow. You have had your turn. I have not finished."'''
 
 FLOOR_END = '''{n}Vellexia opens her mouth. You bow extravagantly between them, drawing the court's laughter onto yourself. She closes it and gestures for Shamira to continue.{/n}
 "I did not come here to serve your friend." {n}Shamira points at the waiting dispatch bearer.{/n} "Or to have her decide when I am done speaking."
@@ -125,7 +125,7 @@ SCENES = [build_scene("settle", [
     n("failed", "Shamira", '''"For me?"
 {n}Shamira looks from you to Vellexia. Vellexia settles comfortably into her chair.{/n}
 "A tiresome office, darling, but someone must do it."
-"Keep your little audience." {n}Shamira pushes her cup away.{/n} "You will not speak for me again."
+"Keep your little audience." {n}Shamira pushes her cup away.{/n} "You will not speak for me again. The next mouth in this city that tries it, I keep in a jar."
 {n}The court's laughter falters. The soldiers outside call for a healer.{/n}''',
       terminal("retry", "failed", P + "stage.answer_cut_off"), portrait="Shamira"),
     n("declined", "Vellexia", '''"What a waste of a perfectly good fool."

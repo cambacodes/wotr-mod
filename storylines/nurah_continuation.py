@@ -244,7 +244,7 @@ Nurah has already asked the woman to stay long enough to discuss the printing. C
 
 
 visit("a_page_with_teeth", "A page with teeth", [
-    n("start", "Narrator", '''{n}Nurah has a visitor waiting with her: a broad-shouldered human woman with ink ground into the creases of her hands. A covered bundle rests against her boot. When you arrive, the woman straightens without bowing.
+    n("start", "Narrator", '''{n}Nurah comes up the back stair with a visitor on her heels, and shuts your door on both of them before the wine-clerks below can count heads: a broad-shouldered human woman with ink ground into the creases of her hands. She sets a covered bundle against her boot and straightens without bowing.
 "Sava Lorn," she says. "I set the lines. I do not choose them."
 Nurah tilts her head.{/n}
 "What a useful sentence. Have you considered putting it on the cover?"
@@ -354,7 +354,7 @@ visit("the_borrowed_audience", "An audience in borrowed clothes", [
 "You look like the Commander," {n}she says.{/n}
 "A difficult habit to break."
 "We are not trying to convince Carrow you are somebody else. We are trying to convince him you are a particular kind of fool. There is a difference."
-{n}For the rehearsal she has borrowed a small room near the tavern. She leads you there from the appointment, shuts the door, and sets two chairs on opposite sides of a narrow table. A third stands against the wall with a coat hanging over it.
+{n}For the rehearsal she takes over your chambers. She bolts the door, sweeps your dispatches off the writing table onto the floor, sets two chairs on opposite sides of it, and hangs a coat over a third against the wall.
 She pushes the better chair toward you, then pulls it back when you reach for it.{/n}
 "Too eager. Let him offer. People who pay for importance expect to be kept waiting just long enough to notice how expensive the wait is."
 "Have you been practicing my entrance?"
@@ -477,8 +477,8 @@ The title will get you a guarded editor and an audience in which he cannot prete
 
 
 visit("the_editor_opens", "The earliest surviving proof", [
-    n("start", "Narrator", '''{n}Carrow has hired the back room of a wine merchant for the interview. Nurah meets you at the agreed appointment and takes you there by a side street. She has pinned her hair differently. When she catches you looking, she asks whether you expect a woman to be recognized by her crimes rather than her hairstyle.
-The editor rises when you enter. His case is on the chair beside him. A little brass hook secures the lid; his hand rests on it until Nurah chooses the chair nearest the window.
+    n("start", "Narrator", '''{n}Carrow wanted the back room of a wine merchant for the interview. Nurah wrote back that editors climb stairs for Commanders and not the other way about, so Carrow has climbed yours, up the kitchen-yard stair she uses herself, with his case in his arms. She has pinned her hair differently. When she catches you looking, she asks whether you expect a woman to be recognized by her crimes rather than her hairstyle.
+The editor rises when you come in from the inner room. His case is on the chair beside him. A little brass hook secures the lid; his hand rests on it until Nurah chooses the chair nearest the window.
 "Madam Dendiwhar. Commander. I hope we may settle the unfortunate misunderstanding before it spoils an enterprise intended to honor you both."
 "I have brought a pencil," Nurah says. "We should be able to spoil it very precisely."
 She lays the clean proof on the table. Carrow looks at it, then at you. He has polished his boots but missed a spot of ink on the cuff of his coat.{/n}''',
@@ -573,7 +573,7 @@ You ask who first mentioned the correspondence. He says Vhal. When you ask where
 "I prepared the final wording."
 "Then you inferred it."
 {n}He explains the demands of readable history. A footnote about an insignificant servant would distract from the larger account; a brief statement about the household's loyalty conveys the appropriate spirit. Nurah listens to the whole explanation. By the end you can hear him wishing she would interrupt.
-She folds the older proof along its existing crease.{/n}
+She folds the older proof along its existing crease. Then she sets the point of her pencil on the back of his hand, between two knuckles, and leans on it until he stops talking.{/n}
 "I used to write appropriate spirits for a man who hit me when his soup cooled. You are better paid. Have you considered being more imaginative?"
 {n}Carrow starts to answer, then decides against it. He cannot take back the admission that he supplied Bressa's gratitude himself. Nurah has stopped asking about the date, but she has obtained a different lie in his own voice.{/n}''', c('[Keep his admission about the invented testimony.]', flags=f("interview_finished", "false_witness_admitted"))),
 ], "audience_ready")
@@ -582,8 +582,8 @@ She folds the older proof along its existing crease.{/n}
 visit("the_case_goes_missing", "What leaves with the editor", [
     n("start", "Narrator", '''{n}At the next appointment Nurah is carrying a parcel tied with ordinary string. Inside it are a blank notebook, two lengths of thread, and a cheap lock.
 "Carrow is leaving Drezen before the subscribers' evening," she says. "He means to return with Vhal's secretary and a better set of answers. I would rather meet the papers before they do."
-She leads you to the room she has borrowed and puts the parcel on the bed. The lock clicks when she turns it over.
-"He has rooms above the wine merchant. He has also acquired the habit of taking supper where people can see how much business he has. There is a stair at the back. We have time to decide what happens at the top."
+She puts the parcel on your bed. The lock clicks when she turns it over.
+"He has rooms above the wine merchant. He has also acquired the habit of taking supper where people can see how much business he has, and of leaving the case upstairs, because a man who carries a case to supper looks like a man with something in it. I can have it out of his room and up your stair inside a quarter of an hour. What happens to it on your table is the part I want to decide with you."
 She lays the notebook beside the lock. Its pages have been cut to the size of the older proof.{/n}''',
       c('"We can copy what matters and leave him wondering what we know."', "copy_plan"),
       c('"Take the originals. Let him try to explain why he no longer has them."', "take_plan"),
@@ -598,7 +598,7 @@ She lays the notebook beside the lock. Its pages have been cut to the size of th
 "An exit?"
 "A bad one. I prefer to draw those before I need them."
 {n}She watches you fold the page rather than burn it. A quick smile appears and goes.{/n}
-"Keep it. If we have to leave through the window, you may complain about my handwriting on the way down."''', c('[Prepare to copy selected papers without announcing the intrusion.]', "access", flags=f("operation_copy"))),
+"Keep it. If I have to leave through his window, you may complain about my handwriting when I climb back up yours."''', c('[Prepare to copy selected papers without announcing the intrusion.]', "access", flags=f("operation_copy"))),
     n("take_plan", "Nurah", '''{n}Nurah puts the notebook aside and tests the string around the parcel.{/n}
 "The whole case is heavier than it looks. He has padded the useful papers with prospectuses and an astonishing number of accounts for wine."
 "We only need what he cannot replace."
@@ -623,24 +623,22 @@ She lays the notebook beside the lock. Its pages have been cut to the size of th
 "I want to hear him price his own innocence. People become wonderfully exact when they believe they are selling the last of it."
 {n}You send a short summons. Carrow arrives before supper, carrying the case against his chest. He begins with an objection to the word forged. Nurah places the false signature beside a fresh example of her own writing.
 The discussion becomes shorter after that. He will surrender the originals in return for your undertaking not to pursue his unauthorized use of your name. Nurah insists that he say aloud which offense the undertaking covers. His voice shakes when he does.{/n}''', c('[Accept that narrow settlement and take the papers he surrenders.]', "papers", flags=f("operation_bargain", "case_surrendered"))),
-    n("access", "Nurah", '''{n}At dusk you take the back stair above the wine merchant. Nurah goes first. Halfway up, she stops to listen to someone laughing in the kitchen below. When the laughter passes into an argument about onions, she continues.
-Carrow's door is locked. The window beside it opens onto a narrow roof. Nurah peers through the glass and points to the case on the desk.
-"He has left it," she whispers. "Either he trusts the door, or he is becoming more interesting."
-The room beyond is empty. A coat hangs from a peg, its waistcoat folded underneath. The candle on the desk is cold.
-Nurah gives you the little knife. Its handle is warm from her sleeve.{/n}''',
+    n("access", "Nurah", '''{n}At dusk the fourth step squeals. Nurah comes in breathing hard, with Carrow's case hugged against her chest like a stolen cat, and kicks your door shut behind her.
+"He left it on his desk," she says. "Either he trusts the door, or he is becoming more interesting. Supper, then pudding, then brandy. We have until the brandy."
+She sets the case on your table under the lamp and gives you the little knife. Its handle is warm from her sleeve.{/n}''',
       c('[Use the construction details Sava supplied to prepare the approach.]', "informed", requires=f("sava_paid")),
       c('[Use Sava\'s account of the case and preserve her signed evidence.]', "informed", requires=f("sava_evidence")),
       c('[Inspect the room and case without inside help.]', "unaided", requires=f("sava_uninvolved"))),
-    n("informed", "Nurah", '''{n}Sava's description tells you which part of the case to inspect before opening it. Nurah works the door with a narrow strip of metal while you watch the stair. The lock yields on her third attempt.
-Inside, the brass clasp faces the room. She stops your hand before you lift it. There is a fresh thread looped beneath the hinge, thin enough to pass for a loose fiber in the lining. Opening the lid carelessly would pull it free.
+    n("informed", "Nurah", '''{n}Sava's description tells you which part of the case to inspect before opening it. Nurah works the clasp with a narrow strip of metal while you watch the door. It yields on her third attempt.
+She stops your hand before you lift the lid. There is a fresh thread looped beneath the hinge, thin enough to pass for a loose fiber in the lining. Opening the lid carelessly would pull it free.
 "He has become interesting," she whispers.
 You hold the case steady while she loosens the thread with the tip of her knife. Her shoulder is pressed against your arm. Neither of you has room to move without moving the other.
 At last the thread slips clear. She hooks it over the knife and nods toward the false bottom. It fits exactly where Sava said it would.
 Under it are the folded proof, two letters, and a list divided into paid and promised. Nurah's own name appears in the promised column.
 She touches it with a fingernail and looks up at you. Even in the dim room you can see the anger in her face.{/n}''', c('[Secure the papers without disturbing the warning thread.]', "papers", flags=f("entry_unnoticed"))),
-    n("unaided", "Narrator", '''{n}Nurah opens the door with a narrow strip of metal and stands aside. The case looks ordinary from the passage. Up close, one hinge sits higher than the other and the lining seems too thick for the depth of the lid.
-You cannot tell which irregularity matters without handling it. Nurah watches the stair while you kneel beside the desk. Somewhere below, the argument about onions has become an argument about a missing spoon.
-"If you find the spoon," she whispers, "leave it. I do not want the cook pursuing us as well."{/n}''',
+    n("unaided", "Narrator", '''{n}Nurah stands at your door with her ear to the wood while you bend over the case. It looks ordinary from across the room. Up close, one hinge sits higher than the other and the lining seems too thick for the depth of the lid.
+You cannot tell which irregularity matters without handling it. Down in the kitchen yard somebody is arguing about a missing spoon.
+"If he comes up your stair after me," she whispers, "it will be about the spoon. Nobody in Drezen notices a halfling. Everybody notices a spoon."{/n}''',
       c('[Examine the concealed fittings before opening the case. Trickery, DC 31.]', check=dict(Skill="SkillThievery", DC=31, Success="clean_entry", Failure="marked_entry", CommanderOnly=True)),
       c('[Open it and accept that Carrow may discover the intrusion.]', "marked_entry")),
     n("clean_entry", "Nurah", '''{n}You find the warning thread tucked into the hinge and lift it free before it can tear. The raised lining conceals a false bottom. Nurah exhales through her nose, impressed despite her effort to look merely impatient.{/n}
@@ -657,7 +655,7 @@ She reads the entry twice. Then she reaches past you for the letters, her sleeve
 {n}She joins you at the desk and lifts the lining with the knife. The hidden papers slide out together: a folded proof, two letters, and a subscriber list. Nurah's name appears under promised contributions.
 She takes the list first. Her eyes move over it rapidly, then return to the line about her.{/n}
 "We finish before he comes back. And when he changes his plans, we do not pretend he did it by chance."
-{n}Footsteps cross the passage outside. Nurah catches your wrist, pulls you down behind the desk, and waits until they pass. Her grip remains hard for several seconds afterward.{/n}''', c('[Work quickly, knowing the broken thread will warn Carrow.]', "papers", flags=f("entry_detected"))),
+{n}Footsteps come up the stair outside. Nurah throws your cloak over the case, sits on it, and catches your wrist until they pass on to the clerks' door. Her grip remains hard for several seconds afterward.{/n}''', c('[Work quickly, knowing the broken thread will warn Carrow.]', "papers", flags=f("entry_detected"))),
     n("papers", "Narrator", '''{n}The subscriber list is unpleasantly clear. Several families have paid to improve their ancestors' conduct. Beside those payments Carrow has recorded what their representatives expect to hear Nurah confirm. One wants an execution called discipline. Another wants an unpaid debt described as a gift.
 Vhal's first letter names the account carrier Bressa. The collector has obtained a later record of her sale to a household outside Isger, dated after the retreat in which she disappeared. She intends to keep that record out of the new edition. It would complicate the claim that Bressa remained voluntarily in Trezbot's service.
 The second letter is addressed to Nurah. Carrow has not delivered it. Vhal offers the original sale record in exchange for a signed account praising the household. The last paragraph is written in a different ink.
@@ -670,15 +668,15 @@ Nurah reads the threat without moving. Then she folds it along a fresh crease, h
 You copy the subscriber names while she works through Vhal's letters. She does not copy the old praise quoted in the threat. When you reach for that letter, she lays it flat and points to the closing instructions instead.{/n}
 "Those. The date, the place, and the price. We can discuss her taste in literature afterward."
 {n}The originals go back beneath the lining. Nurah reties the red thread around the proof and checks its knot against the small impression it left in the paper. She has copied enough of the correspondence to expose the bargain. Vhal and Carrow will still possess the sheets themselves.
-Outside, the stair seems louder under your feet than it did on the way up. Nurah waits until you have reached the street before she takes your arm. Her hand remains cold through your sleeve.{/n}''', c('[Leave with the copies and the reference to Bressa\'s later sale.]', flags=f("papers_recovered", "papers_copied"))),
+Nurah carries the case back down your stair before the brandy, and comes up again a quarter of an hour later with nothing in her hands. They are cold when she puts them on your arm. She does not say whether Carrow had finished his pudding.{/n}''', c('[Leave with the copies and the reference to Bressa\'s later sale.]', flags=f("papers_recovered", "papers_copied"))),
     n("taken", "Nurah", '''{n}Nurah wraps the originals in the blank sheets she prepared. When she reaches the threatening letter, she stops, reads the quoted praise once more, and folds it with the rest.
 The case looks absurdly empty. Prospectuses and wine accounts slide into the space where the hidden papers had been.{/n}
 "He will miss them," {n}she says.{/n}
 "That was the plan."
 "Yes. I am reminding myself that I like it."
-{n}She gives you the parcel because it fits beneath your coat more easily than hers. At the door she turns back and takes the case's little brass key as well. You raise an eyebrow.{/n}
+{n}She leaves the parcel with you, because nobody searches a Commander's chest. The empty case she carries back down your stair to Carrow's desk, and comes back up with its little brass key in her palm. You raise an eyebrow.{/n}
 "For his next case," {n}she says.{/n} "He should learn to change his habits."
-{n}You leave by the stair. In the street she checks the parcel once, touching it through your coat, then walks ahead before you can ask what part of the letter has made her so quiet.{/n}''', c('[Leave with the originals and expect their owners to notice.]', flags=f("papers_recovered", "papers_taken"))),
+{n}She checks the parcel once, touching it through the cloth, then takes the chair on the far side of the room before you can ask what part of the letter has made her so quiet.{/n}''', c('[Leave with the originals and expect their owners to notice.]', flags=f("papers_recovered", "papers_taken"))),
     n("settled", "Nurah", '''{n}Carrow attempts to exclude Vhal's private correspondence from the settlement. Nurah reads his entry describing her promised appearance and asks which part of his promise he actually owns.
 He gives up the letters.
 You put the narrow undertaking in writing: the Commander's unauthorized endorsement will not be pursued further against him in exchange for these identified materials. Carrow reads it twice. Nurah stands behind his chair, close enough that he cannot look at her without turning his whole body.
@@ -796,7 +794,7 @@ visit("the_price_of_a_warning", "The invitation changes", [
     n("start", "Narrator", '''{n}Nurah is waiting in your chambers with a new invitation and a boot resting on the lowest rung of a chair. There is mud on the sole. She has apparently decided the chair can afford it.
 "Vhal has arrived. Her secretary came to find out whether I had learned to be sensible. I told him I was considering it. He looked relieved, so I charged him for the consultation."
 She flicks a small coin across the table. It spins, falls, and rolls into the folded invitation.
-"The evening is still going ahead. Our host has changed the arrangement."{/n}''',
+"The evening is still going ahead, and it is coming to you. Her subscribers paid to be seen with the Commander, so she has asked to hold the reading in your receiving room. I said yes for you. Our host has changed the arrangement."{/n}''',
       c('[Hear how the unnoticed copying has left the original plan intact.]', "quiet", requires=f("papers_copied", "entry_unnoticed")),
       c('[Hear what Carrow changed after finding the broken warning thread.]', "warned", requires=f("papers_copied", "entry_detected")),
       c('[Hear the response to the missing originals.]', "theft", requires=f("papers_taken")),
@@ -872,7 +870,7 @@ She moves the invitation into the empty space. Its false signature will have to 
 
 visit("the_subscribers_evening", "A reading before friends", [
     n("start", "Narrator", '''{n}Nurah comes to your chambers dressed for the subscribers' evening. Her sleeves are fine enough to draw attention and loose enough to conceal a surprising number of objects. She lets you admire them, then asks which part of the evening you intend to survive by looking at her arms.
-You leave together after she has checked the passage. At the hired room, the wine is already being poured.
+Downstairs, in your own receiving room, Vhal's people have already moved your table, hung somebody else's lamps and started pouring somebody else's wine.
 Istrene Vhal receives you beside a display of books. She is a spare woman with an expensive ring and the habit of leaving other people to finish approaching her. When Nurah stops a pace short, Vhal has to take the final step herself.
 "At last," she says. "I have read so much of your work."
 "I hear you have been adding to it."
@@ -1061,7 +1059,7 @@ She has already written a demand concerning the sale record. She leaves space be
 {n}Nurah adds the sale record and its source to her own share of the settlement. Then she underlines the sentence permitting subscribers to compare the documents they receive.{/n}
 "She will lose control of the collection. Pieces of it will turn up in family arguments for decades."
 "And people outside those families?"
-"Some names will become public. Some should have been public years ago. I cannot promise every beneficiary will be charming."
+"Some names will become public. A few of the people under them will lose a post, or a marriage, or a hand, depending on the family. I find I can bear it."
 {n}She looks at you without apology. This is the part she enjoys: private pride made vulnerable to other people's malice, with herself deciding which door to open.{/n}
 "We can make it smaller," {n}she says.{/n} "I will be less entertained, but I am willing to hear an interesting objection."''',
       c('[Release the rival source packets and let the subscribers choose their quarrels.]', "settle", flags=f("demand_rivals")),
@@ -1097,7 +1095,7 @@ The profitable supplier list is gone from the terms. Nurah has copied its title 
 "I did not ask you to pretend."
 "Good. You would dislike how well I could do it."
 {n}She lets the silence last. Then she adds the date of the meeting. She is still coming. She is no longer sharing every intention she has concerning the collection.{/n}''', c('[Accept the narrower joint operation and her continuing disagreement.]', "settle")),
-    n("settle", "Narrator", '''{n}You accompany Nurah to Vhal's hired rooms. The collector has packed her books but left the traveling chest open. Edran stands beside it with a list.
+    n("settle", "Narrator", '''{n}Vhal comes to the settlement, because Nurah will not go to her. Two porters carry the traveling chest up to your receiving room and set it down open, and Edran stands beside it with a list.
 Nurah puts the terms on the table. Vhal reads the first line and pushes the sheet back.{/n}
 "The sale record is mine. I paid for it. Nothing said at that gathering transferred ownership to either of you."
 "You offered it to me," {n}Nurah says.{/n}
@@ -1296,7 +1294,7 @@ There is no answer yet. While waiting, she has begun a short account of the subs
     n("collection", "Nurah", '''{n}Nurah has arranged the transferred papers by usefulness. The largest stack concerns households that paid Vhal to conceal information while publicly praising the accuracy of her histories.
 She has already written to two former clients outside the protected list. The letters offer private research services at prices calculated from what the recipients previously paid for silence.{/n}
 "You have not wasted time."
-"Neither have they. One former client tried to purchase his own file before Edran finished packing it. The present clients must wait until Vhal delivers their contracts. I have marked the dates."
+"Neither have they. One former client tried to purchase his own file before Edran finished packing it. When he came up your stair this morning to plead, I let him get halfway through, then read him the first paragraph of his grandmother's confession, slowly, until he cried. He paid the higher price. The present clients must wait until Vhal delivers their contracts. I have marked the dates."
 {n}She shows you the offer, then the answer she sent. Her price is higher. She has no intention of transferring the only copy.
 Bressa's record sits in a smaller folder with the acquisition note. Nurah has sent a query about the purchaser, partly to follow the woman's disappearance and partly to test a source named in the collection. She has kept the expense against the new business.{/n}
 "Does everything become useful?" {n}you ask.{/n}
@@ -1412,7 +1410,7 @@ Later you read a page of her unfinished account aloud. She interrupts to change 
 She stays there after the laughter is over. The conversation wanders into less polished things, and neither of you reaches for a pen.{/n}''', c('[Keep the quiet night she chose to share.]', "morning", flags=f("private_quiet"))),
     n("morning", "Narrator", '''{n}Near morning, Nurah opens the drawer with the finished pages. She takes out the old letter and places it inside her own copy of the book. The rest remains where you left it.
 "That one travels with me," she says. "You can keep the improved edition."
-Vhal's book is finished, and so is Vhal. There is no proof left to fight over and no courier waiting on the stair. Nurah has other schemes, and you have a crusade that has never had much respect for anybody's private plans.
+Vhal's book is finished, and whatever is left of Vhal is somebody else's problem. There is no proof left to fight over and no courier waiting on the stair. Nurah has other schemes, and you have a crusade that has never had much respect for anybody's private plans.
 She stands beside the drawer with her own book under her arm, watching you, with the candle-wax from the fourth step still under one thumbnail.
 "Well, Commander. The book is done. Say something I can quote."{/n}''',
       c('"Bring me the next scheme before you sell the interesting part to someone else."', "partners"),

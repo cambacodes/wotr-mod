@@ -231,7 +231,7 @@ text(S, "together", '''"Yes," {n}Chivarro says.{/n} "And I'm buying a better cou
 "I'll try to keep it up."
 {n}Minagho takes your hand and presses her thumbnail into the palm until it stings.{/n}
 "The three of us. I want more evenings where she forgets which of us she's shouting at."
-{n}Chivarro takes your other hand and drags both of you toward her. The first kiss turns into an argument about who moved which chair. The second settles it. The third knocks the case off the table, and nobody picks it up.
+{n}Chivarro takes your other hand and drags both of you toward her. The first kiss turns into an argument about who moved which chair. The second settles it: Minagho's hand is inside Chivarro's gown and Chivarro's is under your shirt, and the couch is shrieking under three people's weight. The third knocks the case off the table, and nobody picks it up.
 When you sit back, their hands are still on you. Chivarro starts describing the new couch with such precision that Minagho asks how long she has been planning to break it. She doesn't get an answer.{/n}''')
 
 text(S, "friendship", '''"Then bring a better excuse the next time you lose at stones. I hate beating someone who spends the evening apologising."

@@ -116,14 +116,14 @@ def intimacy():
                requires=("arueshalae.ward_held",) + LIVE, remove_item=SCROLL,
                flags=flags("cost.ward_scroll", "ward.applied_wenduag")),
              c('"Keep the map; leave the rest tonight."', "no_contact")),
-        page("threshold", "Wenduag", '{n}Wenduag returns with the ward cold on her skin. Arueshalae holds the map above her head, wings spreading. Wenduag steps inside their sweep and catches her by the belt. The succubus folds her wings around them and presses her mouth to Wenduag\'s.{/n} "Seven minutes. You spend one talking, I\'ll make you regret it." {n}Arueshalae laughs against her lips, then draws her toward the back stair. Wenduag pulls her through the door.{/n}',
+        page("threshold", "Wenduag", '{n}Wenduag returns with the ward cold on her skin. Arueshalae holds the map above her head, wings spreading. Wenduag steps inside their sweep and catches her by the belt. The succubus folds her wings around them and presses her mouth to Wenduag\'s.{/n} "Seven minutes. You spend one talking, I\'ll make you regret it." {n}Arueshalae laughs against her lips, then draws her toward the back stair. Wenduag pulls her through the door and slams it with her heel. Arueshalae\'s wings fold round them both; a hand pushes under Wenduag\'s leathers, and Wenduag bites the succubus\'s lip hard enough to taste blood and growls her approval into the kiss.{/n}',
              c("Continue", p("choice.explicit.1"))),
         page("after", "Arueshalae", '{n}They separate while the ward still holds. Arueshalae smooths her belt; Wenduag retrieves the map before the succubus can take it.{/n} "With my correction." {n}Wenduag bares her teeth and rolls up the map with both lines intact. They leave for separate sleeping places.{/n}',
              c("Continue", flags=flags("choice.seen", "choice.both_yes", "deed.wenduag_desire_answer", "deed.arueshalae_desire_answer"))),
         terminal("refused", "Wenduag", '"The map stays. The rest can wait." {n}She slides it out from under Arueshalae\'s hand.{/n}', ("choice.seen", "choice.declined", "arc.declined")),
         terminal("no_contact", "Arueshalae", '"A pity. I had something much better than a map to show her." {n}She straightens without touching Wenduag.{/n}', ("choice.seen", "choice.declined", "arc.declined")),
         # Appended slot: empty and filled forms both return to the same state producer.
-        page(p("choice.explicit.1"), "Narrator", '{n}The lower-town map stays open while they take their argument elsewhere.{/n}', c("Continue", "after"))],
+        page(p("choice.explicit.1"), "Narrator", '{n}The lower-town map stays open on the table while they take their argument elsewhere. Through the door come seven minutes of it: a growl, a laugh in two voices, something heavy knocked against a wall, and Wenduag, hoarse, asking if that is all the Abyss taught her.{/n}', c("Continue", "after"))],
         "friend_arueshalae.done", requires=flags(*FRIEND_W, *FRIEND_A) + (
             "wenduag.harem.attitude.arueshalae.friend", "arueshalae.harem.attitude.wenduag.friend"),
         forbids=flags("choice.seen", "arc.declined"), delay=48, evil=True)

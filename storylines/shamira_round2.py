@@ -175,7 +175,8 @@ def integrate(payload):
         nodes["come"]["Text"] = '"Good." {n}Her thumb presses your lower lip before she lets you go.{/n} "Come awake. I want the thought you choose to show me."'
         nodes["come"]["Choices"][0]["Set"].append(ACCEPTED)
         # SHA-04: only a demonstrated defence earns the closed-memory callback.
-        nodes["did"]["Text"] += '\n"Offer me one memory tonight. I shall see what you choose to leave open."'
+        nodes["did"]["Text"] += '''
+"Offer me one memory tonight. I shall see what you choose to leave open."'''
         defended = variant(visit, nodes["did"], HID, '"You kept a thought behind those recipes in my Harem." {n}Her finger presses, meets the old resistance, then withdraws.{/n} "Still shut. Offer me another, then. I can take warmth without taking that."', "defended")
         defended["Choices"].append(c('[Offer the memory you shared on the wardrobe floor. Keep the other thought shut.]', "memory_offer"))
         visit["Nodes"].extend([
@@ -222,8 +223,14 @@ def integrate(payload):
 
         alone = by[P + "after.night_alone" + suffix]
         a = {x["Id"]: x for x in alone["Nodes"]}
-        a["offered"]["Text"] = '"You made my whole court watch you ask, only to give the night back." {n}She pulls you down onto the step beside her.{/n} "I shall use it. Tonight, the memory you offered on the wardrobe floor. I remember it."'
-        a["read"]["Text"] = '"My fingers will stay white at the tips." {n}She flexes them slowly.{/n} "Every fool who kisses them will see it. You asked for one night. You took it. Tonight I come back for the coal we agreed. You may look at me while I warm these hands."'
+        a["offered"]["Text"] = ('''"You came the whole length of my Harem to ask me for a night alone, in front of my court, and then you gave it back." {n}She pulls you down onto the step beside her, hard enough to bruise.{/n} "Half of them think I refused you. The other half think you are mine. Both halves are right."
+{n}Her cold fingers close round the back of your neck.{/n} "I shall take the coal tonight, and the memory you showed me on the wardrobe floor with it. You offered. I never give anything back."''' if suffix else '''"You came the whole length of my Harem to ask me for a night alone, in front of my court, and then you gave it back." {n}She pulls you down onto the step beside her, hard enough to bruise.{/n} "Half of them think I refused you. The other half think you are mine. Both halves are right."
+{n}Her cold fingers close round the back of your neck.{/n} "I shall take the coal tonight, and the memory you showed me on the wardrobe floor with it. You offered. I never give anything back."
+{n}Her mouth finds the corner of yours, cold, then not cold. She draws your hand under the red silk and flat against her ribs, and holds it there until you feel her shiver and her breath catch.{/n}
+"Now, Commander. Warm me. It is the least you can do for a queen you have robbed."''')
+        a["read"]["Text"] = ('"My fingers will stay white at the tips." {n}She flexes them slowly.{/n} "Every fool who kisses them will see it. You asked for one night. You took it. Tonight I come back for the coal we agreed. You may look at me while I warm these hands."' if suffix else '''"My fingers will stay white at the tips." {n}She flexes them slowly.{/n} "Every fool who kisses them will see it. You asked for one night. You took it. Tonight I come back for the coal we agreed. You may look at me while I warm these hands."
+{n}She tilts her head toward the blanket you hold up, and the grey lips curve. Her hands, when she holds them out for you to see, shake very slightly.{/n}
+"Cold to the bone, mortal. The coal was a gift and a leash both. Tonight I do not want to be clever. I want skin on skin, and your heat in every place that went coldest."''')
         variant(alone, a["read"], EDGE, '"My fingertips will stay white. Tonight I come back to the edge, with my back turned. The same poor coal." {n}She lets you see the slow movement of her fingers.{/n} "One night alone has not bought you the rest, Golarian. Nor has it bought them for me."', "edge")
 
     _patrols(by)
@@ -238,7 +245,8 @@ def integrate(payload):
             if node["Id"] == "voice":
                 variant(s, node, P + "warned_before", '"You warned me. I tested the thread, and you held it open." {n}Her voice shakes with anger.{/n} "I took that way out. I have not forgotten whose hand killed the body I left. You offered me a refuge. Now make it worth having."', "warned")
             if node["Id"].endswith("mine") and 'Every night, for as long as this body lasts' in node["Text"]:
-                node["Text"] += '\n"One missed night chills the flesh. It does not cut the thread. If your soul is held out of death and brought back, I can wait cold while it holds. No sleep, no warmth. If the soul is lost for good, the thread dies with it. Then this flesh empties. Do not test the difference for my amusement."'
+                node["Text"] += '''
+"One missed night chills the flesh. It does not cut the thread. If your soul is held out of death and brought back, I can wait cold while it holds. No sleep, no warmth. If the soul is lost for good, the thread dies with it. Then this flesh empties. Do not test the difference for my amusement."'''
             # The existing registered exclusive receipt supplies the current
             # bed decision. Generic whereabouts recount the prior claim,
             # rather than contradicting that receipt with a new present claim.
@@ -348,7 +356,9 @@ def _endings(by):
         for answer in node["Choices"]:
             if answer.get("Next") == "partner_late_won":
                 answer["Next"] = "late_initiation"
-    late["Nodes"].append(n("late_initiation", "Narrator", '{n}The Commander offered the thought. Shamira withdrew from it, rose from her throne and caught the Commander\'s mouth. She slipped the pins from her hair and pulled the travelling coat open, then drew her lover down onto the warm steps.{/n}', c("Continue", "explicit.1"), portrait="Shamira"))
+    late["Nodes"].append(n("late_initiation", "Narrator", '''{n}The Commander offered the thought. Shamira withdrew from it, rose from her throne and caught the Commander's mouth. She slipped the pins from her hair and pulled the travelling coat open, then drew her lover down onto the warm steps.{/n}
+{n}Her cold hands worked under the Commander's shirt and found the heat there, and she made a low sound of pure hunger against the Commander's throat.{/n}
+"Still warm," {n}she said.{/n} "How rude, to be so warm. I mean to take all of it."''', c("Continue", "explicit.1"), portrait="Shamira"))
     slot = n("explicit.1", "Narrator", '{n}She pulls the loosened coat away and draws you down beside her. The fountains fill the empty Harem; the court has not yet returned.{/n}', c("Continue", "partner_late_won"), portrait="Shamira")
     late["Nodes"].append(slot)
     # Read-only unfinished invitation: asking about a game is never commitment.

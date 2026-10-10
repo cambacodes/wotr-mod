@@ -77,8 +77,10 @@ def graph(step, unfinished=False, debt=False):
 {n}She rolls the unsent recall tight and tucks it into her sleeve.{/n}''',
                   c("Continue", flags=flags("reply.seen", "reply.refused")))]
     if step == "retry":
-        debt_line = ('"You already owe me for the last trip. This time I want the escort before I leave."\n'
-                     if debt else '"Another trip costs more," {n}he says, looking towards the sentries.{/n}\n')
+        debt_line = ('''"You already owe me for the last trip. This time I want the escort before I leave."
+'''
+                     if debt else '''"Another trip costs more," {n}he says, looking towards the sentries.{/n}
+''')
         return [n("start", "Narrator", '''{n}The courier has waited two days. His cloak is stiff with Worldwound ash. Herrax's sealed withdrawal remains in his hand; Minagho's hunters still have their orders.{/n}
 ''' + debt_line + '''
 {n}Minagho lays her recall beside the withdrawal, keeping a claw on it.{/n}
@@ -194,7 +196,7 @@ def register(payload, scenes, refs):
     # Historical cost readers on existing destinations; no new Ch6 scenes.
     by_id = {body["Id"]: body for body in scenes}
     for host, text, cost in (
-        ("herrax.lastcall.page", "Herrax withdrew every inducement she controlled against Chivarro's life. She kept the Delights' chair and lost the pleasure of promising Chivarro's head.", "cost.herrax_contract_yielded"),
+        ("herrax.lastcall.page", "The knives Herrax had hired for Chivarro were long cancelled, a ring, a bootlace and a tooth at a time, and she hired no new ones while she waited for the news. She kept the Delights' chair and lost only the pleasure of promising Chivarro's head.", "cost.herrax_contract_yielded"),
         ("minachiv.lastcall.page", "Minagho recalled the hunters she had sent against Herrax and her messengers. She had obtained the withdrawal of the order against Chivarro; she had offered Herrax neither affection nor pardon.", "cost.minagho_revenge_yielded"),
     ):
         if host in by_id:

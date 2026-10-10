@@ -288,14 +288,18 @@ visit(W + "court.cairn", "In the dark, the strong one decides", [
         c('[Take her wrists instead, and turn her against the stones.]', "roll")),
     nar("decide", '''{n}You take your hand off the knife.{/n}
 {n}She makes a sound in her throat that is not a word. Then the buckle is open and your belt is gone, somewhere into the dark, and her hands are everywhere, rough and quick and certain, and not in the least gentle: she undresses you the way she skins a hare, with no wasted movement and no hesitation at all, and the cold of the catacomb comes onto your skin all at once and then her heat after it.{/n}
-{n}She shrugs off her leathers and pushes you back against the cairn. The stones are cold and uneven against your spine. Her tail comes round your thigh, and tightens, and holds.{/n}''',
+{n}She shrugs off her leathers and pushes you back against the cairn. The stones are cold and uneven against your spine. Her tail comes round your thigh, and tightens, and holds.{/n}
+"No talking," {n}she says, and her teeth close on your shoulder, deep enough to mark, and her breath hisses out against your neck, pleased and rough.{/n}
+"Good. I hate waiting."''',
         c("Continue", "cut")),
     nar("knife", '''{n}You pick it up and turn, and there is nothing there. Only dark, and cold stone, and the smell of her somewhere very close.{/n}
 {n}Then her hand closes over yours on the grip, and guides the point, unhurried, until it rests in the hollow of her own throat, and she presses forward into it until you feel her pulse through the blade. You cannot see her. You can hear that she is smiling.{/n}
 "Good," {n}she says, against the edge.{/n} "Keep it there." {n}And with her other hand, one-handed, without looking, she begins to unlace her own leathers.{/n}''',
         c("Continue", "cut", flags=(W + "cairn.knife_held",))),
     nar("roll", '''{n}You find her wrists in the dark, both of them, and she lets you, for exactly as long as it takes you to turn her against the cairn, and then she laughs and twists and it is you against the stones again, with her forearm across your collarbones and her whole weight leaning on it.{/n}
-"Nice try." {n}Her teeth close on the side of your throat, hard enough to mark, and let go.{/n} "Again." {n}You try again. This time it takes her longer. By the third time your clothes lie in a heap beside the lamp, and you are not sure any longer who is winning, and neither, from the sound of her, is she.{/n}''',
+"Nice try." {n}Her teeth close on the side of your throat, hard enough to mark, and let go.{/n} "Again." {n}You try again. This time it takes her longer. By the third time your clothes lie in a heap beside the lamp, and you are not sure any longer who is winning, and neither, from the sound of her, is she.{/n}
+{n}Then she stops fighting. She hooks a foot behind yours and takes you down onto the cold stone, bare and furious with wanting, her hair across your face and her hands pinning yours.{/n}
+"That's three," {n}she says against your mouth.{/n} "I win. The prize is you."''',
         c("Continue", "cut", flags=(W + "cairn.rolled",))),
     wd("cut", '''{n}Her bare skin is hot against yours. She kisses you hard, one hand gripping the back of your neck. When she pulls away, her teeth drag over your lower lip.{/n} "Still want to see?" {n}You catch her hips and draw her closer. Her knee presses between your thighs; she laughs against your mouth, breathless.{/n} "Now, uplander. Put those hands to work." {n}High above the catacombs, a bell begins to strike.{/n}''',
         c("Continue", flags=(CAIRN_SEEN,))),
@@ -460,7 +464,7 @@ visit(W + "court.hunt", "Outside the south postern", [
         c('[Eat.]', "ate"),
         c('"Not raw."', "not_raw")),
     wd("ate", '''{n}It is hot and slick and tastes of iron and something wild, and it is not like anything you have eaten before. She watches you eat it with an expression you have never seen on her: not triumph, not mockery. Something closer to peace.{/n}
-"There." {n}She sits back on her heels in the thorn with the deer between you and the red smear of the Wound behind her.{/n} "Now you've eaten with a neather. In the tunnels, that means something. Up here it just means you've got blood on your face." {n}She reaches over and wipes it off your chin with her thumb, and licks the thumb.{/n} "I like it better in the tunnels."''',
+"There." {n}She sits back on her heels in the thorn with the deer between you and the red smear of the Wound behind her.{/n} "Now you've eaten with a neather. In the tunnels, that means something. Up here it just means you've got blood on your face." {n}She shoves the deer aside with her knee and comes closer across the thorn, her leathers open at the throat and her breath coming quick. She takes your hand and presses it flat against her ribs, her skin hot with the chase, and holds it there while she watches you understand. Then she reaches up with her other hand and wipes the blood off your chin with her thumb, and licks the thumb.{/n} "I like it better in the tunnels."''',
         c("Continue", flags=(W + "hunt.ate",))),
     wd("not_raw", '''"Uplanders." {n}She rolls her eyes and eats the rest herself, in four bites, and wipes her mouth on her sleeve.{/n} "All right. We'll cook the rest. There's a stupid little fire you can make that the demons won't see; I'll show you. You'll burn it, and I'll laugh." {n}She looks at you across the carcass, and her grin is very white.{/n} "You came, though. Barefoot, in the dark, without your sword. That's more than any of the others would have done."''',
         c("Continue", flags=(W + "hunt.cooked",))),
@@ -480,10 +484,14 @@ visit(W + "court.gongs", "Counted in gongs", [
     wd("maze_lann", '''"In the Maze, the first time, you had to choose between me and Lann." {n}She turns her head.{/n} "You chose Lann. Of course you did. Everyone chooses Lann. Lann is nice." {n}No bitterness in it; she says it the way she might say that water is wet.{/n} "And then, later, when you had the choice again, with my life in your hand, you chose me. Not the way anyone would think." {n}She looks at you for a long while.{/n} "I think that's the only choice that counted. The first one was just manners."''',
         c('"It was the only one that counted."', "saw"),
         c('"I chose the stronger one, the second time."', "stronger")),
-    wd("saw", '''"Hosilla found a use for my teeth. Savamelekh found one for my blood." {n}She looks down toward the cellar stair.{/n} "Your sergeant found a word for all of me. He doesn\'t say it where I can hear him now." {n}She stands and catches your hand.{/n} "Come down. I want that mouth of yours busy before another bell starts."''',
+    wd("saw", '''"Hosilla found a use for my teeth. Savamelekh found one for my blood." {n}She looks down toward the cellar stair.{/n} "Your sergeant found a word for all of me. He doesn't say it where I can hear him now." {n}She stands and catches your hand.{/n} "Come down. I want that mouth of yours busy before another bell starts."
+{n}Her thumb drags across your lower lip, and she watches your face to see what it does. Her tail has wound itself round your wrist without asking.{/n}
+"I have been thinking about it all night, up here with the bows. Every breath you took. I was not made for patience."''',
         c("Continue", flags=(W + "gongs.saw",))),
     wd("stronger", '''{n}That pleases her. It pleases her enough that she laughs out loud, and a sentry further along the wall looks round and then pretends he hasn't.{/n}
-"The stronger one. Yes. That's an honest answer. You chose the one who'd be useful to you, and you were right." {n}Her eyes narrow.{/n} "Are you still? Or am I only strong while I'm pointed at your enemies?" {n}She gets up.{/n} {n}She pulls you up by the hand and keeps hold of it.{/n} "Come down. You\'ve had enough watchmen listening to you tonight."''',
+"The stronger one. Yes. That's an honest answer. You chose the one who'd be useful to you, and you were right." {n}Her eyes narrow.{/n} "Are you still? Or am I only strong while I'm pointed at your enemies?" {n}She gets up.{/n} {n}She pulls you up by the hand and keeps hold of it.{/n} "Come down. You've had enough watchmen listening to you tonight."
+{n}Her thumb drags across your lower lip. Her tail has wound itself round your wrist without asking, and she does not unwind it.{/n}
+"And I want to hear you say things you would never say with a sentry listening. Walk."''',
         c("Continue", flags=(W + "gongs.stronger",))),
 ], requires=(COMMITTED,), optional=True)
 
@@ -552,7 +560,7 @@ COMMITTED_PARAS = (
     p("{n}Old Tuhk went down the oldest stair one night with his cracked spear in his hands, and did not come back up, and his share fed the cellars through the winter. The chaplain came looking for Tuhk the next day. Wenduag told him where she had left him; he went down with a lamp and returned without him. She never spoke of it again, but she never again asked the Commander for anything she could decide herself, either.{/n}", requires=(W + "neathers.culled",)),
     p("{n}The first prayer failed to lift Tuhk's sickness. Wenduag carried his cracked spear to the infirmary the next morning and stood beside the bed until the chaplain tried again. The cough broke. By spring he was setting snares in the citadel yard. She took half his catch and told him his bed had been expensive.{/n}", requires=(W + "neathers.infirmary",)),
     p("{n}Wenduag moved the children away from Tuhk's straw. The visiting chaplain drove out his sickness, but hunger had left him too weak to rise. The Commander came down with broth; Wenduag made sure of it. By spring he could sit beside a snare. She complained about every hare he failed to catch.{/n}", requires=(W + "neathers.forbidden",)),
-    p("{n}Wenduag left a hare's head on Vellexia's pillow and a knife in her door. Vellexia returned both, pinning the head to Wenduag's bed. The next time the huntress followed her into a dark corridor, the succubus caught her wrist and pulled her close. \"You brought the knife. Must I do everything else?\" Wenduag laughed, drew the blade with her free hand and cut the clasp from Vellexia's gown. Vellexia caught that hand too. \"Better. Now put it away.\" Wenduag put the blade away and caught Vellexia by the waist. The succubus pulled her into the alcove, her open gown brushing the huntress's hands. Wenduag answered her kiss and drew her closer. Before dawn, the huntress returned to her den with the red ribbon between her teeth.{/n}", requires=(W + "vellexia.hunted", "participant.vellexia.available"), forbids=("vellexia.dead",)),
+    p('{n}Wenduag left a hare\'s head on Vellexia\'s pillow and a knife in her door. Vellexia returned both, pinning the head to Wenduag\'s bed. The next time the huntress followed her into a dark corridor, the succubus caught her wrist and pulled her close. "You brought the knife. Must I do everything else?" Wenduag laughed, drew the blade with her free hand and cut the clasp from Vellexia\'s gown. Vellexia caught that hand too. "Better. Now put it away." Wenduag put the blade away and caught Vellexia by the waist. The succubus pulled her into the alcove, her open gown brushing the huntress\'s hands, and pinned her to the wall by the throat, lightly, to see what the huntress would do about it. Wenduag showed her teeth, hooked a leg behind Vellexia\'s knee and turned her against the stones. "Predictable," Vellexia breathed, and unfastened the huntress\'s leathers herself. Wenduag answered her kiss and drew her closer. Before dawn, the huntress returned to her den with the red ribbon between her teeth.{/n}', requires=(W + "vellexia.hunted", "participant.vellexia.available"), forbids=("vellexia.dead",)),
     p("{n}Under the Commander's roof, Wenduag kept her knife away from Vellexia. The succubus made a point of asking whether she had grown tame. Wenduag showed her the knife whenever the Commander was out of earshot.{/n}", requires=(W + "vellexia.left", "participant.vellexia.available"), forbids=("vellexia.dead",)),
     p("{n}Some nights, when the war let them, she took the Commander out through the south postern barefoot with a spear and no light, and they came back before dawn with blood on their chins and nothing to say to anyone.{/n}", any_groups=((W + "hunt.ate", W + "hunt.cooked"),)),
     p("{n}She never once used the Commander's name where anyone could hear, and she stopped saying *master* altogether. When she needed to call the Commander she whistled, her own whistle, one note up and one down, and the Commander came, and everybody who saw it pretended not to have.{/n}"),
@@ -638,7 +646,8 @@ _trial["Nodes"].extend([
 
 _cairn = _polish_scene("court.cairn")
 _polish_node(_cairn, "knife")["Choices"][0]["Next"] = "knife_down"
-_cairn["Nodes"].append(nar("knife_down", '{n}You lay the knife on the top stone. Her hands close over yours and pull them against her bare waist. Together you strip off the remaining clothes, dropping them beside the lamp. She catches your lower lip between her teeth as you draw her closer.{/n}', c("Continue", "cut")))
+_cairn["Nodes"].append(nar("knife_down", '''{n}You lay the knife on the top stone. Her hands close over yours and pull them against her bare waist. Together you strip off the remaining clothes, dropping them beside the lamp. She catches your lower lip between her teeth as you draw her closer.{/n}
+"Good," {n}she breathes.{/n} "I wanted the knife away. Not because I'm afraid of it." {n}Her hand slides over your ribs and flattens against your heart, firm and warm, and she smiles at how it pounds.{/n} "I wanted both your hands free."''', c("Continue", "cut")))
 
 _regill = _polish_scene("react.regill_watch")
 # E6 reactions are one-node only. This existing host uses the standard native dialogue contract.
@@ -771,6 +780,9 @@ for _delivery_source in list(SCENES):
     if _delivery_source["Id"] not in _delivery_visits:
         continue
     _native_visit = copy.deepcopy(_delivery_source)
+    if _delivery_source["Id"] == W + "court.hunt":
+        next(node for node in _native_visit["Nodes"] if node["Id"] == "ate")["Text"] = '''{n}It is hot and slick and tastes of iron and something wild, and it is not like anything you have eaten before. She watches you eat it with an expression you have never seen on her: not triumph, not mockery. Something closer to peace.{/n}
+"There." {n}She sits back on her heels in the thorn with the deer between you and the red smear of the Wound behind her.{/n} "Now you've eaten with a neather. In the tunnels, that means something. Up here it just means you've got blood on your face." {n}She reaches over and wipes it off your chin with her thumb, and licks the thumb.{/n} "I like it better in the tunnels."'''
     _native_visit["Id"] = _delivery_source["Id"] + ".native_visit"
     _native_visit.pop("ContactUnit", None)
     _native_visit.pop("InteractionHub", None)

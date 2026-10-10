@@ -24,7 +24,7 @@
   "example": "N: Her claws close on your wrists and press them into the blanket.\nJ: Hold still. No. Stiller than that. I want to see how long you last.\nN: Her laughter buzzes behind your left eye, very pleased.",
   "min_lines": 12,
   "max_lines": 20,
-  "default_text": "{n}The sliver of chitin stays in your hand. She laughs against your throat, and her folded wings hide the lamp.{/n}",
+  "default_text": "{n}The sliver of chitin stays in your hand. She laughs against your throat, the sound running through you like a struck string, and her folded wings hide the lamp.{/n}",
   "placement": {
     "scene": "jerribeth.trickster.visit",
     "after_node": "threshold_free",

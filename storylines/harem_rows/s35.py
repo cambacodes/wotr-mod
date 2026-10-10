@@ -27,10 +27,10 @@ def held(step, method):
 def result_nodes(step):
     return [
         n("audit_held", "Arsinoe", '''{n}You lay the freight calculation beside the demand. The same wagon has been charged twice. Arsinoe presses her seal across the false total before the waiting teamster can take it away.{/n}
-"That demand will not reach the stores. The hand is yours, Nurah. The sum does not follow."
+"That demand will not reach the stores, and the syrup stays on the ward. The hand is yours, Nurah. The sum does not follow."
 "At least you noticed the hand," {n}Nurah says. She takes the pen from beside Arsinoe's wrist and signs the correction with an extravagant flourish.{/n} "Don't credit some quartermaster with my work. He couldn't forge his own mother's blessing."
 "Your name stays on the forgery as well as the correction," {n}Arsinoe says.{/n}
-"Good. Put yours beside it. I want to know who caught me," {n}Nurah says.{/n}''',
+"Good. Put yours beside it. I want to know who caught me," {n}Nurah says.{/n} "Let them sleep, then. I'll think of something else to keep them awake."''',
           c("Continue", flags=held(step, "audit"))),
         n("lien_held", "Arsinoe", '''{n}Arsinoe unfolds the existing cauldron lease beside the demand, keeping her palm on its gold seal.{/n}
 "I already hold your lien. Very well: I will withdraw this demand, rather than pursue both claims. The lease remains enforceable."
@@ -43,22 +43,23 @@ def result_nodes(step):
 "I saw that. You have made the demand harmless. You have not made it honest."
 "Oh, do let me watch next time," {n}Nurah says, leaning over the sheet.{/n} "I spend hours matching ink."
 {n}Arsinoe puts a stroke through the false charge and turns the pen toward her.{/n} "Your name. On your work. I will limit the claim to this bill; I will not certify your good character."
-"Then we understand each other." {n}Nurah signs. Arsinoe keeps the altered bill beside the original calculation.{/n}''',
+"Harmless. How dull. They'll sleep like babies." {n}Nurah signs. Arsinoe keeps the altered bill beside the original calculation.{/n}''',
           c("Continue", flags=held(step, "word"))),
         n("refused", "Arsinoe", '''"Then the demand stays disputed. I will not put Abadar's seal on it."
 {n}Nurah snatches up the pen before Arsinoe can put it away.{/n} "And I will not have my name changed to 'the Commander's grateful servant.' You can leave that disputed too."
-{n}Outside, the teamster shouts for a decision about the crusade's stores. Arsinoe takes the unsigned bill back to her counter.{/n}''',
+{n}Outside, the teamster shouts for a decision about the crusade's stores. Arsinoe takes the unsigned bill back to her counter, and the stores stay locked while it is disputed. The east ward gets no syrup tonight either. Nurah laughs all the way to the door.{/n}''',
           c("Continue", flags=flags(step + ".seen", "permanent_refusal", "unsettled"))),
     ]
 
 
 def audit_nodes():
     return [
-        n("start", "Arsinoe", '''{n}A teamster waits at the tavern door, his whip tucked under one arm. Arsinoe has spread a demand for the crusade's stores across the Table. Nurah is holding its corner down with her empty cup.{/n}
+        n("start", "Arsinoe", '''{n}A teamster waits at the tavern door, his whip tucked under one arm. Arsinoe has spread a demand for the crusade's stores across the Table: forty jars of poppy syrup and a bale of clean linen, to come off the infirmary's allotment and go south before dawn. Nurah is holding its corner down with her empty cup.{/n}
 "The temple is being asked to honor this before the wagons leave. It bears a convincing seal. It also bears Nurah's hand."
 "Convincing? I was hoping for impeccable," {n}Nurah says.{/n}
-{n}Arsinoe moves the cup and sets the loading tally beside the demand.{/n} "Drezen needs those supplies. I want the charge proved before anyone opens the stores."
-"And I want my name on my work," {n}Nurah says.{/n} "Not yours, Commander. Not some fat fool who thinks holding the purse makes him the author."''',
+{n}Arsinoe moves the cup and sets the loading tally beside the demand.{/n} "That syrup belongs to the east ward. I want the charge proved before anyone opens the stores."
+"The east ward." {n}Nurah smiles past her at the teamster, who is plainly hers.{/n} "Eleven men in that ward were under the wall at Bottleneck Gate when I pointed the demons at them, and lived, and spat on me when they tied my hands after the siege. Let them find out what a night without poppy sounds like. I'll sell the syrup in the lower city and drink to their health."
+"And I want my name on my work," {n}she adds.{/n} "Not yours, Commander. Not some fat fool who thinks holding the purse makes him the author."''',
           c('[Knowledge (World)] "Compare the freight charges before the wagons leave."',
             check=dict(Skill="SkillKnowledgeWorld", DC=WORLD_DC, Success="audit_held",
                        Failure="missed", CommanderOnly=True)),
@@ -70,7 +71,8 @@ def audit_nodes():
         n("missed", "Arsinoe", '''{n}The teamster takes his loading tally back. You have found no discrepancy you can prove. Arsinoe folds the demand without sealing it.{/n}
 "I will keep my copy. Bring the figures back in order, if you want me to act on them."
 "Perhaps the wagons are carrying arithmetic," {n}Nurah says.{/n} "It seems to have escaped you."
-{n}She reaches for the demand. Arsinoe puts it beneath her hand.{/n} "This stays with me. Drezen has lost enough stores to clever people."''',
+{n}She reaches for the demand. Arsinoe puts it beneath her hand.{/n} "This stays with me. Drezen has lost enough stores to clever people."
+{n}The teamster leaves with an empty cart. Nurah watches him go with the face of a woman who has already chosen the night she will try again.{/n}''',
           c("Continue", flags=flags("audit.seen", "audit.failed"))),
         *result_nodes("audit"),
     ]
@@ -79,8 +81,8 @@ def audit_nodes():
 def retry_nodes():
     return [
         n("start", "Arsinoe", '''{n}The loading tally has returned. Arsinoe puts it beside the disputed bill; Nurah swings her feet beneath the bench, watching the priestess rather than the paper.{/n}
-"One wagon. Two freight charges. Now there is time to compare them."
-"I wondered how long you would take," {n}Nurah says.{/n}
+"One wagon. Two freight charges. And forty jars of the east ward's poppy. Now there is time to compare them."
+"I wondered how long you would take," {n}Nurah says.{/n} "They've had two nights to practise screaming. I'd hate for it to go to waste."
 "Long enough to prove it. Take the pen. This correction needs its author's name," {n}Arsinoe says.{/n}
 {n}Nurah catches the pen between two fingers.{/n} "Only the correction to this bill. You can find another woman to write a confession of wickedness."''',
           c('"Strike the duplicate charge and name its author."', "audit_held"),

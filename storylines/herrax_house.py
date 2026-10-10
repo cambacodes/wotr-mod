@@ -596,7 +596,7 @@ H."''',
        c('[Write back warmly] "I miss your stairs."', "b_healers", flags=(REPLY_WARM,)),
        c('[Write back briefly] "The war goes on. So do I."', "b_healers", flags=(REPLY_COOL,)),
        c('[Write back something filthy about the dais.]', "b_healers", flags=(REPLY_CRUDE,))),
-    rl("reply", '''{n}Rokhorn takes your answers between two claws and tucks them away without looking at them. At the door he stops, and turns his ruined face toward you, and for the first time speaks.{/n}
+    rl("reply", '''{n}Rokhorn takes your answers between two claws and tucks them away without looking at them. At the door he stops, and turns his ruined face toward you, and speaks to you instead of about the letters.{/n}
 "Hello, hot stuff." {n}The raw scar pulls. He does not smile.{/n} "Every word of it was true, you know. That's what I can't stop thinking about."''',
        c("[Let him go.]", "b_offer"), *discovery_entry("b_")),
     # --- The rest of the packet: the healers, the Lady's people, the house, the parcel, the last letter. ---

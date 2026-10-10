@@ -22,7 +22,7 @@
     "Only the Commander and Jerribeth take part; the things in the cases watch and are never touched.",
     "No exits, permission rituals or reassurances in her mouth."
   ],
-  "default_text": "{n}The lamp burns down. She keeps you exactly where she put you, and you hold still for her, for a very long time.{/n}",
+  "default_text": "{n}The lamp burns down. She keeps you exactly where she put you, and you hold still for her, for a very long time: her claws on your skin, the buzzing in your teeth, and at the last a sound out of her that is not clinical in the least.{/n}",
   "placement": {
     "scene": "jerribeth.room_measure",
     "after_node": "desire",

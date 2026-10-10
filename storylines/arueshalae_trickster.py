@@ -386,7 +386,8 @@ REUNION_ENDS = [
 "Don't wait up."''', c()),
 ]
 presence_scene(P + "evil.reunion", "She sits up", '"You look well, for a corpse."', [
-    a("start", REUNION_OPEN + "\n" + "\"But first: I'm starving, and you're the one who killed me hungry.\"",
+    a("start", REUNION_OPEN + '''
+''' + "\"But first: I'm starving, and you're the one who killed me hungry.\"",
       c("Continue", "hiding", requires=(QUEEN_HIDING,)),
       c("Continue", "price", forbids=(QUEEN_HIDING,))),
     a("hiding", '''"She's hiding, you know. Our Lady. First time in a thousand years nobody's watching me eat." {n}She says it lightly, and her eyes go to the dark corners of the lair anyway, as if the dark might be listening. In the Midnight Isles, it usually is.{/n}''',
@@ -416,7 +417,8 @@ letter(P + "evil.reunion_letter", "A note in lipstick", 5, [
 # under the tailor's awning when the jeweller is gone. The lipstick note is left only for a world where all three anchors
 # fail, so the late-referral branch (late_referral, second_opinion) stays at two deliveries when the lair fails.
 CITY_REUNION = [
-    a("start", REUNION_OPEN + "\n" + "\"But first: I'm starving, and you're the one who killed me hungry.\"",
+    a("start", REUNION_OPEN + '''
+''' + "\"But first: I'm starving, and you're the one who killed me hungry.\"",
       c("Continue", "hiding", requires=(QUEEN_HIDING,)),
       c("Continue", "price", forbids=(QUEEN_HIDING,))),
     a("hiding", '''"She's hiding, you know. Our Lady. For once nobody's watching me eat." {n}She says it lightly, and her eyes go to the dark under the shutters anyway, as if the dark might be listening. In the Midnight Isles, it usually is.{/n}''',
@@ -561,9 +563,9 @@ NIGHT_NODES = [
     nar("paid", '''{n}Her mouth finds yours and the cold goes through you like a key turning, and you let it. There is no ward on you tonight. There is only the choice to stay on the roof in the rain and take it. She feels that too, and something in her goes still and sharp and very interested.{/n}
 "You're letting me." {n}Her wings open behind her and cut the rain off both of you.{/n} "You know what it costs, and you're still here. You're just letting me."''',
         c("[Let her.]", "cut")),
-    nar("cut", '''{n}She pushes you back against the wet slates with one hand flat on your chest, unhurried, the gargoyles leering over her shoulders, and kneels over you with her hair falling round both your faces like a curtain against the rain. Far below, a watchman calls the hour. She reaches back and unhooks the last clasp of her own dress, and lets it go, and the rain runs down her bare skin and onto yours. She tears your shirt open the rest of the way with two fingers, settles her weight astride your hips as if she owned the roof, and bends down until her mouth is against your throat.{/n}
-{n}Her teeth close on the tendon there, just short of drawing blood, and a shudder goes through her that you feel in your own bones. Her hands strip you with a courtier's contempt for buttons; the rain drums on your bare skin and then her mouth is on it, going down, hot against the cold, taking her time, her wings spread over you both like a tent against the rain. She comes up with her lips wet and her eyes black with appetite, takes your hand and puts it between her thighs, where the rain is not the only thing running, and rocks against it, slowly, making you feel every inch of how hungry she is.{/n}
-"You've no idea," {n}she says, in the sweet, mocking hostess's voice,{/n} "how long it has been since I took something that wanted to be taken. Now. Don't you dare lose count." {n}She rises on her knees above you, her whole body poised on the edge of it, the gargoyles grinning over her shoulder, and waits for you to beg.{/n}''',
+    nar("cut", '''{n}She pushes you back against the wet slates with one hand flat on your chest, unhurried, the gargoyles leering over her shoulders, and her hair falls round both your faces like a curtain against the rain. Far below, a watchman calls the hour. She reaches back and unhooks the last clasp of her own dress, and lets it go, and the rain runs down her bare skin and onto yours. She tears your shirt open the rest of the way with two fingers and bends down until her mouth is against your throat.{/n}
+{n}Her teeth close on the tendon there, just short of drawing blood, and a shudder goes through her that you feel in your own bones. Her hands strip you with a courtier's contempt for buttons, the rain drums on your bare skin, and her wings spread over you both like a tent against the rain.{/n}
+"You've no idea," {n}she says, in the sweet, mocking hostess's voice,{/n} "how long it has been since I took something that wanted to be taken. Now. Don't you dare lose count." {n}Her mouth comes down on yours, the gargoyles grinning over her shoulder, and the cold begins to come looking for you.{/n}''',
         c("Continue", "after")),
     nar("after", '''{n}You wake in your own bed with the first bell ringing, colder than you went to sleep and warmer than you have any right to be, and with no memory of how you got down off the basilica roof. The window is open. There is a black feather on the pillow, and under it, in lipstick, on a pressed moth wing:{/n}
 "Still sweet. Same time next month. Don't lock it. A."''', c(flags=(NIGHT_DONE,))),
@@ -772,7 +774,7 @@ SCENES.append(scene(P + "epilogue.fallen", "", "ArueshalaeEpilogue", 6, "", [
               requires=(WARD_FEE,)),
             p('''{n}The cells under the citadel emptied faster than the assizes could fill them. Nobody wrote down where the condemned went. Everybody knew.{/n}''',
               requires=(FED_ON_PRISONER,)),
-            p('''{n}A red-bearded sergeant of the third company went to sleep at the back of Fye's one night and did not wake. She told the Commander about it herself, at breakfast, as if reporting the weather.{/n}''',
+            p("{n}The red-bearded sergeant of the third company went back to the bench at Fye's again and again, on his own feet, until one night he went to sleep there and did not wake. She came to the Commander's table the next morning with his sweetheart's name still in her mouth, and asked {mf|him|her} to pass the bread.{/n}",
               requires=(HUNGRY,)),
         ))],
     requires=("trickster.ever", COMMITTED, RECRUITED, OPEN_DOOR), forbids=(CLOSED, EVIL_DEAD), **EP))

@@ -654,7 +654,7 @@ text("room_measure", "private.reply.1", '''"Like that. Oh, like that."
      (1, '"Not tonight. Sit with me instead."'))
 
 text("room_measure", "desire", '''{n}She does not ask again. She puts you in her chair, the one that faces the door and the shelves, and stands over you and arranges you: your wrists on its arms, your chin lifted with one claw, your head turned a little toward the lamp, as if she were setting a specimen.{/n}
-{n}Then she bends to you.{/n}
+{n}Then she bends to you. Her claws open your collar and the front of your clothes one fastening at a time, watching to see what each one costs, until the air of the room is on your skin and her mouth is a hand's breadth from it. The buzzing starts low in her chest. She bends over the chair, wings half open to shut out the shelves, and her cool weight leans into you with a slow, deliberate pressure, her breath not quite as even as she would like it to be.{/n}
 "Do not move. If you move, I stop. I want to see how long you can bear it."''',
      paras=(p('''{n}On the sill, Marhevok's eyes are open.{/n}''', **PLANT),))
 

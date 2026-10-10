@@ -114,13 +114,17 @@ def _invitation(page):
 "The money stays there." {n}She puts the purse on a shelf and drops your sword belt beside the bed.{/n} "Come here."
 {n}Minagho opens your collar. Chivarro takes your hand from the fastening and puts it at her waist; she undoes her gown herself. Minagho draws her close, kisses her bare shoulder, then reaches for you.{/n}
 "I am staying," {n}Minagho says.{/n} "Put the lamp down, Chivarro."
-{n}Chivarro draws both of you toward her bed.{/n}''')
+{n}Chivarro draws both of you toward her bed, undoing the last of her gown as she goes. Minagho drags your shirt over your head and bites the muscle of your shoulder; Chivarro strips the belt out of your breeches and drops it on the floor. Then there are two mouths and four hands on you, and the lamp stands crooked on the shelf, throwing their shadows huge across the ceiling.{/n}
+"Mine first," {n}Minagho says, and pushes you down onto the mattress with a palm flat on your breastbone, her bare shoulder hot against your arm.{/n}
+"Nothing of yours is first, darling," {n}Chivarro says, pulling Minagho's head back by the hair to kiss her over your chest.{/n} "You simply arrive early."''')
     elif page["Id"] == P + "after.before_the_last_road_letter":
         _text(nodes, "came", '''{n}The answer comes back with Chivarro's address and an hour. At the chandler's stair she opens the door herself. Minagho has the lamp.{/n}
 "You found the front door, honey. I owe her a copper."
 {n}Chivarro takes the answered letter from you, reads it, and drops it into the grate.{/n} "The house stays ours. This evening, too."
 {n}She puts the purse aside and catches your collar. Minagho kisses Chivarro over your shoulder, then turns your face toward hers. Chivarro drops your belt beside the bed and opens her own gown.{/n}
-"I did not bring you here to watch me count." {n}She takes your hand and draws you down with them.{/n}''')
+"I did not bring you here to watch me count." {n}She takes your hand and draws you down with them. Chivarro's gown is open before you reach the mattress; Minagho tears yours down the front and kisses along the seam as it parts. Between them you are stripped, pinned and handled with equal impatience, two sets of hands finding every place that matters and neither willing to wait for the other.{/n}
+"Mine first," {n}Minagho says, and pushes you down onto the mattress with a palm flat on your breastbone.{/n}
+"Nothing of yours is first, darling," {n}Chivarro says, and draws Minagho's head back by the hair to kiss her.{/n} "You simply arrive early."''')
         _text(nodes, "morning", '''{n}A cart rattles beneath the chandler's window. Chivarro drags the cover over all three of you; Minagho pulls it back to bind your hand.{/n}
 "You told her you meant to come back?" {n}Chivarro asks you.{/n} "Before you told me?"
 "I answered for myself," {n}Minagho says. Chivarro catches your chin.{/n}
@@ -146,7 +150,9 @@ def _invitation(page):
         _text(nodes, "came", '''{n}You go to the address she sent. Chivarro opens the door above the chandler herself. The lease lies folded on the shelf; she sets your purse beside it.{/n}
 "That pays for the room. Now look at me."
 {n}She takes your collar, loosens it, and draws you close. Her gown slides from her shoulders; she catches your mouth before you can look down. You pull her against you. Chivarro laughs into the kiss and takes you back toward her bed.{/n}
-"This evening is mine, honey. I am tired of hearing about everyone else's."''')
+"This evening is mine, honey. I am tired of hearing about everyone else's."
+{n}She pushes you onto the mattress and unlaces you herself, brisk as a woman closing a shop, then stands over you in the lamplight with the gown at her feet and lets you look. When she bends over you her skin is warm and her hair brushes your chest, and her fingers are already at the fastening of your breeches.{/n}
+"Now, honey. Not a word about the rent."''')
         _text(nodes, "morning", '''{n}The watch passes beneath the window. Chivarro has your shirt under her head and no intention of giving it back.{/n}
 "Tell them you have been robbed. It will save an explanation."
 {n}Beside the bed she has left a receipt for the room's rent. You put the hundred coins down. She reaches past them, catches your wrist, and pulls you back for a kiss.{/n}
@@ -154,11 +160,14 @@ def _invitation(page):
         nodes["morning"]["Choices"][0]["Crusade"] = {"Resource": "Finances", "Amount": -100}
     elif page["Id"] == P + "alone.chivarro_when_it_scars":
         _text(nodes, "start", '''{n}Five days have passed without a letter or a knock. A runner waits beside a purse on your desk: the year's rent, counted out. Chivarro's address above the chandler lies beneath it. The purse has not left your hand.{/n}''')
-        nodes["chv"]["Text"] = '{n}You send the runner. He returns with the purse intact and a message he has learned by heart.{/n}\n' + nodes["chv"]["Text"].split('{/n}', 1)[1].strip()
+        nodes["chv"]["Text"] = '''{n}You send the runner. He returns with the purse intact and a message he has learned by heart.{/n}
+''' + nodes["chv"]["Text"].split('{/n}', 1)[1].strip()
         nodes["chv"]["Choices"][1]["Crusade"] = {"Resource": "Finances", "Amount": 200}
         _text(nodes, "night", '''{n}Chivarro hears your question before taking the purse. She names the house, her own keys, and Minagho's place, and waits for your reply. Only then does she count the rent and set it aside.{/n}
 "Now come here. I sent the runner away so I could have you to myself."
-{n}She pulls you down by the collar, kisses you, and lets her gown slip from her shoulders. Your hands catch her waist. She pushes you back onto her bed and follows.{/n}''')
+{n}She pulls you down by the collar, kisses you, and lets her gown slip from her shoulders. Your hands catch her waist. She pushes you back onto her bed and follows.{/n}
+{n}Over you she is all warm skin and a collector's patience. She strips your shirt away, and her mouth finds the hollow of your throat, your chest, the scarred hand, in no hurry at all. When she lifts her head her lips are dark from kissing, and her mouth is daring you to complain.{/n}
+"Interest, honey. Compounding by the hour."''')
 
 
 def _mornings(page):
@@ -172,7 +181,8 @@ def _mornings(page):
         nodes["minagho"]["Text"] = nodes["minagho"]["Text"].replace(
             "I will hear it every dawn now, lying next to you, because of me.",
             "When we spend a night together, I will hear it at dawn. Because of me.")
-        nodes["terms"]["Text"] += '\n"Try the wardrobe and I shall charge you for the door as well," {n}Chivarro adds.{/n}'
+        nodes["terms"]["Text"] += '''
+"Try the wardrobe and I shall charge you for the door as well," {n}Chivarro adds.{/n}'''
     elif page["Id"] == P + "alone.chivarro_morning":
         _text(nodes, "start", '''{n}At watch change Chivarro catches you outside Wilcer's stores. She is wearing yesterday's gown; its missing pin is in your pocket. She takes it back and fastens it without haste.{/n}
 "You left this beside the bed. I nearly had to come out wearing your shirt."
@@ -194,11 +204,18 @@ def _secret(page):
             continue
         if "_night_chivarro" in key or key in {"late_secret_chivarro", "late_waiting_secret"}:
             # Keep existing branch exits, effects and actual arrival guards.
-            node["Text"] = '''{n}Chivarro puts your purse on the shelf and writes a line in her private account. She folds its copy and slips it inside your belt. When you lean to read the book she closes it against your fingers.{/n}
+            node["Text"] = ('''{n}Chivarro puts your purse on the shelf and writes a line in her private account. She folds its copy and slips it inside your belt. When you lean to read the book she closes it against your fingers.{/n}
 "A consultation, honey. You may tell Minagho how long it took if you feel brave."
 {n}She loosens your collar and draws you into a kiss. A footstep creaks on the stair. Chivarro stills, one hand on your mouth, until the watch passes.{/n}
 "That pause goes on your bill."
-{n}She laughs, opens her gown and catches your hands at her bare waist. You pull her close. She draws you back toward the bed, leaving the closed account on the shelf.{/n}'''
+{n}She laughs, opens her gown and catches your hands at her bare waist. You pull her close. She lets the gown fall and lets you look for as long as you like, because she likes it more than you do, then walks you back to the bed and pushes you down onto it, loose hair across your chest. The closed account stays on the shelf. Her fingers find the fastening at your waist and take their time with it.{/n}
+"I know what you want, honey. I sold the idea of it to better men. Say it, and I may let you have it."
+{n}She catches your hand at her hip and holds it there, and you feel her smile against your mouth.{/n}
+"Quietly. She hears everything."''' if key.startswith("stance_") else '''{n}Chivarro puts your purse on the shelf and writes a line in her private account. She folds its copy and slips it inside your belt. When you lean to read the book she closes it against your fingers.{/n}
+"A consultation, honey. You may tell Minagho how long it took if you feel brave."
+{n}She loosens your collar and draws you into a kiss. A footstep creaks on the stair. Chivarro stills, one hand on your mouth, until the watch passes.{/n}
+"That pause goes on your bill."
+{n}She laughs, opens her gown and catches your hands at her bare waist. You pull her close. She draws you back toward the bed, leaving the closed account on the shelf.{/n}''')
         elif key.startswith("stance_discovery") and "letter" not in key and any(
                 a["Next"] == key + "_minagho" for a in node["Choices"]):
             # Either lover's secret can reach this entry. Specific evidence is
@@ -380,7 +397,11 @@ def _slots(page):
             # terminal mechanics. Epilogue paragraphs support inline inserts.
             for node in present:
                 aftermath = ""
-                for marker in ("\n\n{n}At dawn", "\n\n{n}In the morning"):
+                for marker in ('''
+
+{n}At dawn''', '''
+
+{n}In the morning'''):
                     if marker in node["Text"]:
                         node["Text"], tail = node["Text"].split(marker, 1)
                         aftermath = marker + tail
@@ -410,7 +431,15 @@ def _slots(page):
             slot_id = brief["slot_id"]
             aftermath = ""
             node = members[0]
-            for marker in ("\n\n{n}Later", "\n\n{n}Near dawn", "\n\n{n}At dawn", "\n\n{n}In the morning"):
+            for marker in ('''
+
+{n}Later''', '''
+
+{n}Near dawn''', '''
+
+{n}At dawn''', '''
+
+{n}In the morning'''):
                 if marker in node["Text"]:
                     before, tail = node["Text"].split(marker, 1)
                     node["Text"] = before

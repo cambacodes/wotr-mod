@@ -677,10 +677,6 @@ for _page in _stone["Nodes"]:
 # The window night keeps its old terminal node/answer/effects; staging precedes it.
 _window = next(s for s in SCENES if s["Id"] == "arsinoe_the_window_opens")
 _w = {page["Id"]: page for page in _window["Nodes"]}
-_stage = _w["night"]["Text"].split('{n}In the morning,')[0].strip()
-# The patrol passes before the approach; the slot continues their position.
-_stage = '{n}Beyond the open window a patrol calls the hour. Arsinoe listens until the boots pass, then turns back to you.{/n}\n' + _stage
-_stage = _stage.replace("and reaches between you.", "and holds you close.")
 _w["night"]["Text"] = '''{n}In the morning, the shop is still shuttered an hour after opening. Arsinoe's robes hang over the chair; she is trying to find a fastening beneath them. She gives up long enough to kiss you, then smooths your collar without making it much more respectable.{/n}
 "They will talk. Let them. I have a customer who will insist that the price of a scroll has offended him personally."
 {n}She sets a second cup beside her own. The knocking comes again. She finishes her drink before turning the sign.{/n}
@@ -690,13 +686,28 @@ _w["start"]["Choices"][3]["Forbids"].append("arsinoe.trickster.intimacy_seen")
 _w["start"]["Choices"].append(c(_w["start"]["Choices"][3]["Text"], "window_return",
     requires=("arsinoe.campaign_lover", "arsinoe.trickster.intimacy_seen")))
 _window["Nodes"].extend([
-    n("window_invitation", "Arsinoe", _stage, c("Continue", "arsinoe_the_window_opens.explicit.1")),
-    n("window_return", "Arsinoe", _stage.replace('Stay. I have wanted to ask. I kept finding something wrong with the room.',
-      'Stay again. This time I have fixed the window instead of complaining about it.'),
+    n("window_invitation", "Arsinoe", '''{n}Beyond the open window a patrol calls the hour. Arsinoe listens until the boots pass, then turns back to you.{/n}
+"Stay. I have wanted to ask. I kept finding something wrong with the room."
+{n}Arsinoe turns the little stone face toward the wall and puts your hand on her collar clasp.{/n}
+"Slowly. I chose these robes with considerable care. You may give taking them off the same attention."
+{n}She watches you undo the fastenings. At the last one she catches your wrist, kisses the inside of it, and lets the cloth fall. She stands in the lamplight with her hair loose, making no move to cover herself.{/n}
+"Leave the lamp. I want to see you looking."
+{n}Her kiss is slow until your hands close on her waist. Then she draws you to the bed by your belt, and the slowness goes. She strips you with the same exacting attention she gave her robes and far less patience, her mouth at your throat, your collarbone. Her skin is warm beneath your palms, and when you kiss her neck she says your name like a correction.{/n}
+"Not slowly now. I have been watching you all evening."
+{n}She pulls you down with her by a fist in your shirt, holds your gaze in the lamplight, and the room narrows to heat and breath and the sound of her laughing against your mouth.{/n}''', c("Continue", "arsinoe_the_window_opens.explicit.1")),
+    n("window_return", "Arsinoe", '''{n}Beyond the open window a patrol calls the hour. Arsinoe listens until the boots pass, then turns back to you.{/n}
+"Stay again. This time I have fixed the window instead of complaining about it."
+{n}Arsinoe turns the little stone face toward the wall and puts your hand on her collar clasp.{/n}
+"Slowly. I chose these robes with considerable care. You may give taking them off the same attention."
+{n}She watches you undo the fastenings. At the last one she catches your wrist, kisses the inside of it, and lets the cloth fall. She stands in the lamplight with her hair loose, making no move to cover herself.{/n}
+"Leave the lamp. I want to see you looking."
+{n}Her kiss is slow until your hands close on her waist. Then she draws you to the bed by your belt, and the slowness goes. She strips you with the same exacting attention she gave her robes and far less patience, her mouth at your throat, your collarbone. Her skin is warm beneath your palms, and when you kiss her neck she says your name like a correction.{/n}
+"Not slowly now. I have been watching you all evening."
+{n}She pulls you down with her by a fist in your shirt, holds your gaze in the lamplight, and the room narrows to heat and breath and the sound of her laughing against your mouth.{/n}''',
       c("Continue", "arsinoe_the_window_opens.explicit.1")),
     # Explicit slot W: her chosen display; the repaired room is a return, not a reward.
-    n("arsinoe_the_window_opens.explicit.1", "Arsinoe", '''{n}Arsinoe keeps her hand against your back, her eyes on yours. The lamp lights the bed and the robes she left beside it.{/n}
-"Leave the lamp burning."''', c("Continue", "night")),
+    n("arsinoe_the_window_opens.explicit.1", "Arsinoe", '''{n}The lamp stays lit. Her nails trail down your back, her eyes never leave yours, and when the peak takes her she says your name once, low and unguarded, with none of the clerk left in it.{/n}
+"Leave the lamp burning. Let the street wonder."''', c("Continue", "night")),
 ])
 
 # Her future question concerns the company already shared, not payment for a repair.
@@ -709,8 +720,10 @@ _t["promise_kiss"]["Text"] = _t["promise_kiss"]["Text"].replace('A very satisfac
 
 # Endings collect a return, without promoting a promised visit into a played night.
 _ends = {s["Id"]: s["Nodes"][0] for s in SCENES if s["Id"].startswith('arsinoe_ending_')}
-_ends["arsinoe_ending_kept"]["Text"] += '\n{n}After one journey Arsinoe returned dusty and cross about an inn. She left her bags by the door and kissed the Commander before reporting the full extent of its failures. The following morning she opened her shop herself; by closing time she had more to tell.{/n}'
-_ends["arsinoe_ending_open"]["Text"] += '\n{n}After a visit elsewhere she came back with a book she wanted to dispute. The Commander arrived before she had unpacked it. She cleared the chair herself and pulled them down beside her.{/n}'
+_ends["arsinoe_ending_kept"]["Text"] += '''
+{n}After one journey Arsinoe returned dusty and cross about an inn. She left her bags by the door and kissed the Commander before reporting the full extent of its failures. The following morning she opened her shop herself; by closing time she had more to tell.{/n}'''
+_ends["arsinoe_ending_open"]["Text"] += '''
+{n}After a visit elsewhere she came back with a book she wanted to dispute. The Commander arrived before she had unpacked it. She cleared the chair herself and pulled them down beside her.{/n}'''
 _ends["arsinoe_ending_unfinished"]["Text"] = _ends["arsinoe_ending_unfinished"]["Text"].replace(
     'She hoped the answer would include a day when they could sit together.',
     'The reply named a day. She met the Commander at the stair, the letter still tucked into her sleeve, and led the way up to supper. They had an evening to spend, and no settled future to announce.')

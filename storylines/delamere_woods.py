@@ -495,11 +495,11 @@ def second_hunt(opening, scene_id):
             c('"Good."', "cut"),
             c("[Pull her down.]", "cut")),
         nar("cut", '''{n}She makes a sound that is almost a growl, and her hands are at your belt, and the embers flare in a gust of wind off the water, and the whole blind smells of smoke and blood and frost and her.{/n}
-{n}She has you out of your coat and your shirt before you have finished answering, and the cold on your skin lasts as long as it takes her to lie down on you. Her mouth finds your throat and bites. Her hands go everywhere a hunter's hands go when she has run the quarry to ground: ribs, hip, the old wound in your leg, which she grips once, hard, as if to remember whose arrow it was, and then the inside of your thigh, and nothing gentle about it.{/n}
+{n}She has you out of your coat and your shirt before you have finished answering, and the cold on your skin lasts as long as it takes her to lie down against you. Her mouth finds your throat and bites. Her hands go everywhere a hunter's hands go when she has run the quarry to ground: ribs, shoulders, the old wound in your leg, which she grips once, hard, as if to remember whose arrow it was.{/n}
 "You are shaking, stag." {n}She is not laughing now.{/n} "So am I. Look at me. Look. I want you looking."
-{n}Her breasts are hot and heavy in your hands and she shoves into them, hard, her nipples tight in the cold air. She takes your wrist and drags your hand down her belly, over the long white scar, between her thighs, and holds it there while she moves against it, wet and slow and cursing under her breath in Kellid. Then she sits back and strips you the rest of the way, impatient and sure, and her eyes go over what she has caught with a hunter's plain greed.{/n}
+{n}She takes your wrist and lays your hand along the long white scar at her side, and holds it there while her breath comes harder, cursing under it in Kellid. Her eyes go over what she has caught with a hunter's plain greed.{/n}
 "Mine, for tonight. I do not say forever. I say tonight."
-{n}Her hair comes down around both your faces and shuts out the fire. She braces one hand on your chest and takes hold of you with the other, fierce and alive and wanting, with not one thing in her face that belongs to the dead, and lowers herself.{/n}''',
+{n}Her hair comes down around both your faces and shuts out the fire, and she is fierce and alive and wanting, with not one thing in her face that belongs to the dead.{/n}''',
             c("Continue", "morning")),
         nar("morning", '''{n}Grey light through the boughs. Frost on the bracken outside, white as salt. The embers are ash. You are under the stag's hide now, not on it, and she is not beside you.{/n}
 {n}She is at the stream's edge, bare-armed in the cold, washing her hands and her face and the back of her neck in water that must be close to ice. On a flat stone by the dead fire lies a strip of fat from the stag's spine, burned black: the first of everything, for Old Deadeye. She has not forgotten him, even last night.{/n}''',
@@ -529,9 +529,10 @@ def second_hunt(opening, scene_id):
     slot_id = scene_id + ".explicit.1"
     by_id["cut"]["Choices"][0]["Next"] = slot_id
     nodes.append(nar(slot_id,
-        '{n}She draws you against her on the warm hide, her mouth still hungry on yours. The fire sinks. By dawn the fire is ash.{/n}',
+        "{n}Time goes the way the fire does. Her teeth, her hands, her breath hot and ragged against your throat, the hide rough beneath you and her skin burning above the frost; when the peak takes her she shouts into the dark, a hunter's cry, long and unashamed, and the blind has no wall left to hold it. She draws you against her on the warm hide, her mouth still hungry on yours. By dawn the fire is ash.{/n}",
         c("Continue", "morning")))
-    by_id["morning"]["Text"] += '\n{n}Your shoulders are stiff. The loose gut laces lie where she flung them; she picks one off your sleeve, grins and tucks it into her belt.{/n}'
+    by_id["morning"]["Text"] += '''
+{n}Your shoulders are stiff. The loose gut laces lie where she flung them; she picks one off your sleeve, grins and tucks it into her belt.{/n}'''
     by_id["said"]["Choices"][0]["Next"] = "breakfast"
     by_id["count"]["Choices"][1]["Next"] = "breakfast"
     nodes.append(nar("breakfast", '{n}She feeds the embers with dry twigs and divides the bread she brought from the temple. Before you have finished chewing, her eyes turn toward the clearings.{/n}',

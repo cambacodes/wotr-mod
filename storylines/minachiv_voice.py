@@ -481,7 +481,8 @@ text(S, "hand", '''{n}She lets you take her hand. Then she turns it, so that it'
 {n}She leans in. Her breath smells of cheap beer and blood. When you turn your head she is already there, and she kisses you, not gently: she bites, and keeps biting, and laughs into your mouth when you flinch.
 She pulls back just far enough to speak.{/n}
 "Don't make this sensible. I've had enough sense tonight to last me a century."
-{n}She stands, without letting go of your wrist, and tilts her head toward the room at the top of the stair.{/n}
+{n}She stands, without letting go of your wrist, and drags your hand down over her hip, slowly, so that you feel the heat through her skirt and the muscle shift under it. Her mouth is at your ear, her breath sour with beer and blood. She tilts her head toward the room at the top of the stair.{/n}
+"Every nerve I own is awake, darling, and you are the only thing in reach. Do not tell me the rain is more interesting."
 "Well? The rain, or me?"''',
      (1, '[Let her drag you up the stair.]'))
 
@@ -495,7 +496,7 @@ text(S, "roof", '''{n}Minagho accuses the absent roofer of theft, then sabotage,
 {n}Chivarro comes back up the street with a lamp in one hand and her account book in the other, smelling of cellar damp. Minagho lays out the theory as if it concerned the siege of Drezen. Chivarro sits on the step above to hear the evidence, and charges you for the lamp oil.{/n}''')
 
 
-SLOT_TEXT[(S, P + S + ".explicit.1")] = ("minachiv", "")
+SLOT_TEXT[(S, P + S + ".explicit.1")] = 'minachiv'
 
 # ---------------------------------------------------------------------------
 # the_performer_and_the_key (REBUILD: "The house under the market")
@@ -663,7 +664,9 @@ She catches your wrist and pulls it tighter.{/n}
 {n}You kiss her. The couch groans under the change in weight, and she glares at it with tremendous contempt.{/n}
 "If you laugh, honey, I'll charge you for the couch."
 {n}She drags you up, through the curtain, to the bed. She lights the red lamp and leaves the other dark. Her green silk goes over the chest; she stands over you in nothing but the red light and lets you look as long as you like, because she likes that more than you do.
-Then she pushes you down, climbs over you, and finds your laces faster than you can find hers.{/n}''',
+Then she pushes you down and finds your laces faster than you can find hers.{/n}
+{n}She does not hurry. She unlaces you, pushes the cloth aside, and leans down over you, bare and warm in the red light, her hair swinging across your face.{/n}
+"A thousand men paid for this, honey. You are getting it at cost. Say thank you."''',
      (0, '[Stay until you are both ready to part.]'))
 
 text(S, "friends", '''"Badly on purpose? Honey, half my career."
@@ -674,8 +677,7 @@ The house below quiets as the night goes on. When you get up to go, she catches 
 "Come up again. I like having someone up here who isn't trying to buy anything. It's so rare I don't know what to charge."''',
      (0, '[Leave her to the noise of her house.]'))
 
-SLOT_TEXT[(S, P + S + ".explicit.1")] = ("minagho", '''{n}Later, the red lamp has burned down to a smear of light. The house has gone quiet below; somebody downstairs is sweeping. Chivarro lies across you with one leg hooked over yours, listening to the broom.{/n}
-"That's the last of them. Sivane made eleven tonight. I made more." {n}She turns her head.{/n} "You were free, honey. Don't let it go to your head. I'll find a way to charge you for it later."''')
+SLOT_TEXT[(S, P + S + ".explicit.1")] = 'minagho'
 
 # ---------------------------------------------------------------------------
 # the_price_of_her_name (REBUILD: "The forger")
@@ -1046,7 +1048,8 @@ The ledger stays shut. At the trapdoor, much later, she tells you to remember th
 
 text(S, "night", '''"Take that pin out before it puts a hole in one of us."
 {n}She turns her shoulder to you. The pin at her robe resists; she guides your fingers to the catch and lets you finish. The robe slides off one shoulder as she takes your mouth.{/n}
-"There. I knew I kept you for something."''',
+"There. I knew I kept you for something."
+{n}Behind the curtain she shoves the robe down her arms and lets it pool, puts your hands on her hips and walks you back until the bed catches your knees. She pushes you down onto it and drags your shirt up over your head, bare in the lamplight, and bends until her mouth is at your ear.{/n}''',
      (0, '[Go with her behind the curtain.]'),
      paras=(
          when(P + "door_paid", '''{n}She goes to the chest first and comes back with a little cloth bag, and empties it onto the pillow: a hundred, in your own coin, the same coins you paid at the door. She can tell them apart.{/n}
@@ -1065,8 +1068,7 @@ text(S, "empty", '''"Empty? My house?" {n}She thinks about it seriously, which i
 {n}You build her imaginary empty house between you until it has a terrible staircase and a room nobody's allowed in and a door that Minagho would kick down out of spite before discovering she liked what was behind it. Chivarro sees you down the ladder still laughing.{/n}''',
      (0, '[Leave the empty house to her.]'))
 
-SLOT_TEXT[(S, P + S + ".explicit.1")] = ("minagho", '''{n}Near dawn a cart rattles across the market square overhead. Chivarro lifts her head from your chest as if considering having it arrested, then drops it again and hooks her arm over you.{/n}
-"If you're leaving, lie well. I want another hour before I believe it."''')
+SLOT_TEXT[(S, P + S + ".explicit.1")] = 'minagho'
 
 # ---------------------------------------------------------------------------
 # what_she_will_take (RE-VOICE)
@@ -1207,9 +1209,9 @@ def integrate(payload):
     for (sid, nid), paras in PARAS.items():
         node = _node(pages, sid, nid)
         node["Paragraphs"] = node.get("Paragraphs", []) + paras
-    for (sid, nid), (directory, aftermath) in SLOT_TEXT.items():
+    for (sid, nid), directory in SLOT_TEXT.items():
         body = _slot_default(directory, nid)
-        _node(pages, sid, nid)["Text"] = body + ("\n" + aftermath.strip() if aftermath else "")
+        _node(pages, sid, nid)["Text"] = body
     for sid, body in ENDINGS.items():
         for twin in (sid, sid + "_completed"):
             _node(pages, twin, "end")["Text"] = body.strip()

@@ -637,11 +637,15 @@ ALONE_CHIV_NODES = [
        c('"Then wait. I\'ll ask again."', flags=(DECLINED,))),
     nar("threshold", '''{n}She does not take you to your quarters. She takes you to hers, a rented room above a chandler's shop below the citadel, and bars the door with a chair, and turns.{/n}
 "Rent," {n}she says, holding out her hand. When you put yours in it she does not take it; she inspects it, turns it palm up, runs one nail along the old cut until you draw breath, and smiles at the sound as if she has just been quoted a price she likes. Then she undresses you the way she once dressed the Delights' best rooms: without hurry, piece by piece, setting each thing exactly where she wants it. Her own gown she leaves for last and lets fall without ceremony, because she knows precisely what it costs you to watch.{/n}
-"Ten thousand nights I sold," {n}she murmurs, walking you backwards to the bed.{/n} "This one is mine, and I am going to collect every copper of it." {n}She pushes you down with two fingers, climbs astride you in one practiced motion, and leans down until her breath is on your mouth, and there, holding you exactly where she wants you, she stops talking.{/n}''',
+"Ten thousand nights I sold," {n}she murmurs, walking you backwards to the bed.{/n} "This one is mine, and I am going to collect every copper of it." {n}She pushes you down with two fingers, follows in one practiced motion, and leans down until her breath is on your mouth, and there, holding you exactly where she wants you, she stops talking.{/n}
+{n}Her mouth comes down on yours, slow and thorough, her hair falling round your face. One hand takes yours and sets it at her waist; the other works your laces loose without looking. She lifts her head an inch to let you hear her breathe.{/n}
+"I have faked every sound a body can make, honey. Be careful. Let me find out which ones I do not need to."''',
         c("Continue", flags=(NIGHT_CHIV,))),
     nar("threshold_clean", '''{n}She does not take you to your quarters. She takes you to hers, a rented room above a chandler's shop below the citadel, and bars the door with a chair, and turns.{/n}
 "Rent," {n}she says, holding out her hand. When you put a purse in it she weighs it without looking, drops it on the floor, and takes your hand instead. She undresses you the way she once dressed the Delights' best rooms: without hurry, piece by piece, setting each thing exactly where she wants it, and lets her own gown fall last, because she knows precisely what it costs you to watch.{/n}
-"A room of my own, in a crusader's city, and a tenant who pays," {n}she murmurs, walking you backwards to the bed.{/n} "I have come down in the world. Let us see how far." {n}She pushes you down with two fingers, climbs astride you in one practised motion, and leans down until her breath is on your mouth, and there, holding you exactly where she wants you, she stops talking.{/n}''',
+"A room of my own, in a crusader's city, and a tenant who pays," {n}she murmurs, walking you backwards to the bed.{/n} "I have come down in the world. Let us see how far." {n}She pushes you down with two fingers, follows in one practised motion, and leans down until her breath is on your mouth, and there, holding you exactly where she wants you, she stops talking.{/n}
+{n}Her mouth comes down on yours, slow and thorough, her hair falling round your face. One hand takes yours and sets it at her waist; the other works your laces loose without looking. She lifts her head an inch to let you hear her breathe.{/n}
+"I have faked every sound a body can make, honey. Be careful. Let me find out which ones I do not need to."''',
         c("Continue", flags=(NIGHT_CHIV,))),
 ]
 physical(P + "alone.chivarro", "The house she keeps now", "Chivarro", PRES_CHIV, CHIV_UNIT, ALONE_CHIV_NODES,
@@ -684,7 +688,9 @@ ALONE_MIN_NODES = [
 "Mine tonight. His in the morning."
 {n}She pins you against the door and kisses along your jaw. Her body presses against yours as she strips off your shirt, then loosens her own dress without stepping back. You catch her bare waist. She smiles and takes both your wrists.{/n}
 "On the bed, Golarian. I want to see your face."
-{n}She pushes you onto the mattress and follows, hair spilling across your cheek as she catches your mouth again.{/n}''',
+{n}She pushes you onto the mattress and follows, hair spilling across your cheek. The dress is gone; you did not see where. She pins your wrists above your head with one hand while the other spreads flat on your chest, and her mouth curls against yours.{/n}
+"Good. Mine tonight, Golarian, and I intend to use every minute of it."
+{n}She settles close, hot-skinned and unhurried, and catches your mouth again.{/n}''',
         c("Continue", flags=(NIGHT_MIN,))),
 ]
 ALONE_MIN_GATE = [[DECL_C, SENT_BACK, "chivarro.dead_confirmed"]]
@@ -706,7 +712,9 @@ letter(P + "alone.minagho_letter", "One lilitu, dry", [
        c('"Your price."', "came", flags=(COMPLETE, "minachiv.future_minagho", HALF, CHAIN)),
        c('"Then I\'ll ask again when it scars."', flags=(DECLINED,))),
     nar("came", '''{n}She does not answer the letter. She answers the door, the same night: you open it and she is already on the other side of it, as if she had been standing there since she sent it.{/n}
-"Your price," {n}she says.{/n} "Paid." {n}She comes in without waiting to be asked, and kicks the door shut behind her. She takes your bleeding hand, opens it, and presses her mouth to the cut until you feel her teeth; then she shoves you back against the bar of the door and strips your shirt over your head, and when you reach for her she catches both your wrists and walks you backwards to the bed, and pushes you down onto it, and climbs astride you with your wrists pinned in one of her hands.{/n}''',
+"Your price," {n}she says.{/n} "Paid." {n}She comes in without waiting to be asked, and kicks the door shut behind her. She takes your bleeding hand, opens it, and presses her mouth to the cut until you feel her teeth; then she shoves you back against the bar of the door and strips your shirt over your head, and when you reach for her she catches both your wrists and walks you backwards to the bed, and pushes you down onto it, and follows you down with your wrists pinned in one of her hands.{/n}
+{n}Her free hand drags your belt open. Her dress is round her waist, then it is not on her at all, and her bare skin is hot against yours, her breath hissing between her teeth.{/n}
+"Paid, Golarian. Now I collect."''',
         c("Continue", "morning", flags=(NIGHT_MIN,))),
     nar("morning", '''{n}At dawn your palm opens, as it does every dawn now. She is awake before it does, watching, and binds it with a strip of your own sheet, too tightly, without a word. When she goes, she takes the rest of the sheet with her.{/n}''',
         c("[Let her.]", flags=(MORNING,)))],
@@ -731,7 +739,10 @@ letter(P + "after.when_it_scars", "When it scars", [
        c('[Close the hand] "Forget I asked."', flags=(CLOSED,))),
     nar("night", '''{n}They do not take you to your quarters this time. They take you to theirs, the rooms below the citadel with the thick door, and Minagho bars it with her own back. Chivarro strips your gloves off first, one finger at a time, and kisses the burned palm as if she were sealing a contract with it; Minagho has your belt and shirt off before Chivarro has finished, and walks you backwards to the bed with her teeth at your ear. {/n}
 "On your back," {n}Chivarro says, already unlacing.{/n} "And keep that hand where we can both see it."
-{n}They come down onto the bed on either side of you, and then Minagho is astride you and Chivarro's mouth is on yours, and the lamp goes out under somebody's elbow.{/n}''',
+{n}They come down onto the bed on either side of you. Chivarro's gown hangs open to the waist and she lets you see all of it. Minagho tears hers off over her head and flings it at the lamp, and then her bare skin is hot against your side and Chivarro's mouth is on yours, tasting of wine, one hand pressed flat to your chest.{/n}
+"Share, Minagho," {n}Chivarro murmurs against your lips.{/n} "There are two hands, and I mean to have one."
+"Then let it be this one," {n}Minagho says. She takes your wrist and pulls your hand to her hip, and Chivarro lays her own over it, claiming the rest.{/n}
+{n}The lamp goes out under somebody's elbow.{/n}''',
         c("Continue", "morning", flags=(NIGHT_PAIR,))),
     nar("morning", '''{n}At dawn the palm opens along its new scar, and two hands reach for it at once. Minagho gets there first and binds it. Chivarro writes the night on your bill, itemised, and adds a line at the foot in her sharp hand: "Scar: paid in advance."{/n}''',
         c("[Keep the bill.]", flags=(MORNING,))),
@@ -750,13 +761,15 @@ letter(P + "alone.minagho_when_it_scars", "When it scars", [
 "And do not bring me that hand as payment for Chivarro. I have not forgotten her. Ask, Golarian."''',
        c('"Stay."', "night", flags=(COMPLETE, "minachiv.future_minagho", HALF, CHAIN)),
        c('[Close the hand] "Forget I asked."', flags=(CLOSED,))),
-    nar("night", '''{n}She does not go back to her crate. She follows you up to your quarters, and inside the door she takes the scarred hand and bites the ridge of it, gently, and then not gently. Then she has you against the wall with her knee between yours and your shirt in her fist, and walks you to the bed, and pushes you down, and climbs astride you with the burned palm pressed flat over the dry brand on her own brow. {/n}
-"Mine," {n}she says.{/n} "On top of his."''',
+    nar("night", '''{n}She does not go back to her crate. She follows you up to your quarters, and inside the door she takes the scarred hand and bites the ridge of it, gently, and then not gently. Then she has you against the wall with her forearm across your chest and your shirt in her fist, and walks you to the bed, and pushes you down, and follows you down with the burned palm pressed flat over the dry brand on her own brow. {/n}
+"Mine," {n}she says.{/n} "On top of his."
+{n}She tears your shirt up over your head and strips her dress off with the other hand, and her bare skin is hot against yours. Slowly she lets your wrist go and puts your hand on her hip, and kisses you hard enough that her breath catches on a sound she will deny later.{/n}
+"Hands on me. I will not say it twice."''',
         c("Continue", "morning", flags=(NIGHT_MIN,))),
     nar("morning", '''{n}At dawn the scar opens, as it will every dawn. She is awake for it, and binds it with a strip of your sheet, too tightly, without a word, and does not leave.{/n}''',
         c("[Let her.]", flags=(MORNING,))),
 ], requires=("trickster.ever", DECLINED, MIN_IN), RequiresAnyGroups=ALONE_MIN_GATE,
-   forbids=(REUNITED, RET_C, CH_IN, CLOSED, COMPLETE), delay=120, TricksterDevice=True, TricksterState="chivarro_dead")
+   forbids=(REUNITED, RET_C, CH_IN, CLOSED, COMPLETE), delay=120, TricksterDevice=True, TricksterState="chivarro_dead", Kind="letter")
 
 letter(P + "alone.chivarro_when_it_scars", "Paid in advance", [
     nar("start", '''{n}You wait, as she told you to. Five days, without a letter, a wardrobe or a knock, which for you is a very long time. On the fifth you send a runner to the room above the chandler's shop with a purse: a year's rent, in advance, and no note at all.{/n}''',
@@ -1007,14 +1020,17 @@ _confirmed_kill_answers(_kill_letter["Nodes"][0], (0, 1), (
     ("killer_start", '"Chivarro is dead by my hand. Your price."'),
     ("killer_decline", '"Chivarro is dead by my hand. I\'ll ask again when it scars."')))
 _kill_letter["Nodes"].extend([
-    mg("killer_start", '{n}The letter is cut across the fold, as though its writer tested a blade there.{/n}\n"Chivarro is dead. You killed her. If you expect me to write something pleasant over that, wipe your arse with this and save us both the trouble."\n"I am still here. You have named my price: never bargain for me again. Not with him, not with anyone. Do not disappoint me."', c("Continue", "came")),
+    mg("killer_start", '''{n}The letter is cut across the fold, as though its writer tested a blade there.{/n}
+"Chivarro is dead. You killed her. If you expect me to write something pleasant over that, wipe your arse with this and save us both the trouble."
+"I am still here. You have named my price: never bargain for me again. Not with him, not with anyone. Do not disappoint me."''', c("Continue", "came")),
     mg("killer_decline", '"Then wait for the scar. Chivarro will still be dead when you show it to me. Do not come expecting forgiveness."', c("Continue"))])
 
 _kill_scar = next(s for s in SCENES if s["Id"] == P + "alone.minagho_when_it_scars")
 _confirmed_kill_answers(next(n for n in _kill_scar["Nodes"] if n["Id"] == "burn"), (0,), (("killer_min", None),))
 _killer_min = copy.deepcopy(next(n for n in _kill_scar["Nodes"] if n["Id"] == "min"))
 _killer_min["Id"] = "killer_min"
-_killer_min["Text"] = _killer_min["Text"].replace('"Ask, Golarian."', '"And Chivarro is still dead. Five mornings at a brazier do not buy forgiveness. You have my attention. That is all."' + '\n"Ask, Golarian."')
+_killer_min["Text"] = _killer_min["Text"].replace('"Ask, Golarian."', '"And Chivarro is still dead. Five mornings at a brazier do not buy forgiveness. You have my attention. That is all."' + '''
+"Ask, Golarian."''')
 _kill_scar["Nodes"].append(_killer_min)
 
 # Pacing (PP8): Minagho is present from Ch1 (Grey Garrison) as a captor; no Minagho early beat (13 §7 caveat: a Ch1 host

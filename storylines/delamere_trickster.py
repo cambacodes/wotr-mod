@@ -573,9 +573,9 @@ epilogue("caught", '''{n}Delamere the Blessed hunted the woods below her temple 
 
 epilogue("late", '''{n}The war ended before the second hunt was run to its end, and she did not hold that against the war. In the first spring after Threshold she walked into the Commander's hall with her bow unstrung on her back and a haunch of venison over her shoulder, and sent the venison to the camp fires before taking the Commander by the sleeve.{/n}
 "My woods," {n}she said.{/n} "Tonight. I will not make it easy." {n}She did not. The Commander caught her all the same, under the new moon, in a blind below her temple where the embers were still warm, and she let herself be caught. She drew the Commander down onto the warm hide and pulled loose the lacing of her own leathers. "You kept me waiting through a war. Come here."{/n}
-{n}The Commander came. She hauled the Commander's shirt over their head, tore the rest away with the rough speed of a woman who had skinned stags in the dark, and rolled them both until she sat astride them in the glow of the embers, bare to the waist, scarred and broad-shouldered, her breasts swinging as she bent to bite along their collarbone. Her hands closed on the Commander's wrists and pinned them flat against the fur.{/n}
+{n}The Commander came. She hauled the Commander's shirt over their head and tore the rest away with the rough speed of a woman who had skinned stags in the dark, bare to the waist in the glow of the embers, scarred and broad-shouldered. She pinned the Commander's wrists flat against the fur and bit along their collarbone.{/n}
 "I was dead, and then I waited out a war for you. Lie still and let me have what I hunted."
-{n}She ground down against their hip until she was slick and gasping, took the Commander's hand and set it between her thighs without a word, and rode it a while with her head thrown back and her teeth bared at the roof of the blind. Then she shoved the hand aside, shifted her weight, and took hold to take what she had come for.{/n}''',
+{n}Her breath came in gasps against their throat, her teeth bared at the roof of the blind, and she let go of the wrists only to take the Commander's hands and set them hard on her hips.{/n}''',
          requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, "sacrifice"), **SURVIVED, paragraphs=(
              # Polish r4 (Sol BEL): the Commander who reached her blind and let her run.
              p('''{n}She had stood in that blind once already, in the war, with the embers between them, and been told to run. "Another new moon," she had said. It came after Threshold, and she ran faster, as she had promised, and it did her no good at all.{/n}''', requires=(HUNT_POSTPONED,)),
@@ -642,7 +642,7 @@ for _scene in SCENES:
         _scene["Areas"] = [DREZEN]
     if _scene["Id"] == P + "epilogue.late":
         # Explicit slot: first chosen encounter on the hide; anatomy variants in brief.
-        _slot = p('{n}She draws the hide over you both, her mouth still on yours as the fire sinks. At dawn she takes up her bow and leads you home.{/n}')
+        _slot = p('{n}The fire sinks. Her cry goes up through the roof of the blind and out over the new-moon woods, unashamed, and somewhere a night bird falls silent. She draws the hide over you both, her mouth still on yours; at dawn she takes up her bow and leads you home.{/n}')
         _slot["Id"] = P + "epilogue.late.explicit.1"
         _scene["Nodes"][0]["Paragraphs"].insert(0, _slot)
         _scene["Nodes"][0]["Paragraphs"].insert(1, p(

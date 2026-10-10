@@ -533,7 +533,7 @@ yard(EVE, "Before the Threshold", '"When we march."', [
     nar("face", '''{n}She lets you. The scarred side is hot under your palm, and the milk-white eye does not close, and the good one does. The stump of her horn rests against your wrist. She breathes against your mouth without kissing you, three breaths, four, the way the forge breathes when the bellows stop.{/n}''',
         c("Continue", "face_say")),
     hz("face_say", '''"Both sides," {n}she says, against your mouth.{/n} "Not the pretty one. Both."
-"Remember this face. Both sides. If he tears it apart again, I want you to know exactly what you are avenging." {n}The good eye opens.{/n} "And you will come for me. Say it."''',
+"Remember this face. Both sides. If he tears it apart again, I want you to know exactly what you are avenging." {n}The good eye opens. Her hand fists in your shirt and drags you down until the heat of her is against you through the cloth, a demand, and the pick slides off her lap and rings on the stones. She does not look at it.{/n} "And you will come for me. Say it."''',
        c('"I\'ll come."', "last", flags=(EVE_PROMISE,))),
     hz("last", '''{n}She stands, and takes up the pick, and puts her free hand on the back of your neck, hard, the way she held your wrist the day she stayed.{/n}
 "First," {n}she says.{/n} "I go first. Into Deskari's mouth, into Areelu's laboratory, into whatever the Worldwound has left. You come behind me with your jokes, and when it is over you will find me standing on something large and dead, and you will make a joke about it, and I will pretend to hate it."
@@ -1021,7 +1021,9 @@ yard(ROOM, "What she keeps", '"Can I come in?"', [
     nar("sit", '''{n}The cot complains again. She does not move over. Her shoulder is against yours, heavy and hot, and after a while she takes your hand, not your wrist this time, and turns it over, and studies it in the lamplight the way she studied the things on her shelf.{/n}''',
         c("Continue", "sit_say")),
     hz("sit_say", '''"This too," {n}she says.{/n} "I keep this. I have decided."
-"Do not argue. You have seen what I do to people who take my things."''',
+"Do not argue. You have seen what I do to people who take my things."
+{n}Her hand is still round yours. She drags it up inside her coat, over her ribs and the old scars, and holds it flat against her pounding heart. Her mouth is at your ear, her voice a low hot rasp.{/n}
+"You are mine, so I will have the use of you tonight. All of it. Do not talk to me about gentleness."''',
        c("[Don't argue.]")),
 ], requires=("trickster.ever", COMMITTED, MORNING), delay=24)
 
@@ -1047,7 +1049,8 @@ yard(GIFT, "A debt, in advance", '"You wanted to see me?"', [
     hz("owe", '''"*That is the point.*" {n}She repeats it with a great deal of scorn.{/n} "Crusaders. You would give everything and ask nothing and call it love, and then wonder why nobody knows what you are worth."
 "I owe you. I have decided. You will take it, and you will wear it, and you will stop arguing with a gift from the daughter of Baphomet." {n}She ties it round your neck herself, too tight, and then loosens it.{/n}''',
        c("[Wear it.]", flags=(P + "gift_worn",))),
-    nar("kiss", '''{n}She catches your collar and keeps you in the kiss until your hand tightens on her shoulder. Only then does she let you breathe. Then she takes the gift out of your hands and ties it round your neck herself, against your collarbone, too tight, and loosens it, and steps back.{/n}''',
+    nar("kiss", '''{n}She catches your collar and keeps you in the kiss until your hand tightens on her shoulder. Only then does she let you breathe. Then she takes the gift out of your hands and ties it round your neck herself, against your collarbone, too tight, and loosens it, and steps back.{/n}
+{n}The thong lies against your throat, warm from her hands. She breathes through her teeth, and the scarred side of her face and the stump of the horn are both flushed dark, and she does not take her one good eye off your mouth.{/n}''',
         c("Continue", "kiss_say")),
     hz("kiss_say", '''"That is not how you thank someone for a debt," {n}she says.{/n} "But I will allow it. This once. Do not tell the smith."''',
        c("[Wear it.]")),

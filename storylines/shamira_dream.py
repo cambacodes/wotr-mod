@@ -98,7 +98,8 @@ def hub(id, title, entry, nodes, requires, forbids=(), delay=0):
     for key, suffix, any_groups in PLACES:
         twin = id + ("_awning" if not suffix else "")
         extra = dict(RequiresAnyGroups=[list(g) for g in any_groups]) if any_groups else {}
-        SCENES.append(scene(id + suffix, title, "Shamira", 5, entry, _awning(nodes) if suffix else copy.deepcopy(nodes),
+        variant_nodes = _awning(nodes) if suffix else copy.deepcopy(nodes)
+        SCENES.append(scene(id + suffix, title, "Shamira", 5, entry, variant_nodes,
                             requires=tuple(dict.fromkeys(("trickster.ever", EMBODIED, *requires))),
                             forbids=tuple(dict.fromkeys((twin, *forbids))), delay=delay, last=5, Relationship=REL,
                             Chapters=[5], Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=key, **extra))
@@ -336,6 +337,7 @@ hub(P + "harem", "Think of anything but me", '"You said you had a game."', [
         c("Continue", "cut")),
     nar("cut", '''{n}The heat behind your forehead becomes want. She tastes it and smiles. Her hands undo your coat, fastening by fastening, and drop it among the black glass pins. She pulls your shirt over your head. Her mouth is hot and demanding against yours; when she draws back, you follow it.{/n}
 {n}She pushes you onto the steps of her throne. The stone is warm against your bare back. She follows you down, long and pale and burning cold, skin against your skin. Her hair falls around your faces, and her palm presses against your hammering heart.{/n}
+"Warm, and trembling, and mine for the length of one bell," {n}she says against your mouth, slow, to feel it land.{/n}
 {n}You reach for her. Her hand slides down your chest. The fountains drown the sound of your next breath.{/n}''',
         c("Continue", "morning")),
     nar("morning", '''{n}There is no morning in the Abyss. There is only the purple light through the high windows changing its mind about how bright to be.{/n}
