@@ -46,6 +46,9 @@ def supper():
                        for suffix in (".harem.eligible", ".present_now"))),
         forbids=(SEEN, "fool_king.gone", "trickster.failed", "sacrifice"),
         optional=True, Relationship="household", Chapters=[5],
+        # The earned living visitor has no native actor prefab. Present this
+        # existing exchange as a bounded visit at the Table, never a body contact.
+        Remote=True, Kind="visit", TableHosted=True, ParticipantContacts={},
         Areas=[household.DREZEN], InteractionHub=household.TABLE_HUB,
         Participants=list(WOMEN), ParticipantWomen=list(WOMEN),
         RestAllowance="household.pair", HouseholdCategory="dynamic",

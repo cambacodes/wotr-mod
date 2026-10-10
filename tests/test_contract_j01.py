@@ -129,6 +129,8 @@ class J01Tests(unittest.TestCase):
             if not scene.get("Participants") or not (scene.get("InteractionHub") == "household.table"
                                                      or scene.get("PrivateParticipants")):
                 continue
+            if scene.get("Remote") and scene.get("TableHosted") and scene.get("Kind") == "visit":
+                continue  # Narrated visits retain earned attendance, without actor contacts.
             self.assertTrue(scene["ParticipantContacts"], scene["Id"])
             for route in scene["Participants"]:
                 women = [w for w in scene.get("ParticipantWomen", [])

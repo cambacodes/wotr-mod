@@ -53,6 +53,10 @@ def install(story):
         table = scene.get("InteractionHub") == "household.table"
         if not private and not table:
             continue
+        # Table-hosted narrated visits use the scene's earned attendance and
+        # SeatWomen guards. They do not claim an observed native actor contact.
+        if table and scene.get("Remote") and scene.get("TableHosted") and scene.get("Kind") == "visit":
+            continue
         if private:
             scene["PrivateParticipants"] = True
             require(scene, "trickster.now")

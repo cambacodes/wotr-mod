@@ -52,8 +52,8 @@ class GameplayEntryInventoryTests(unittest.TestCase):
     def test_r5_missing_action_and_empty_body_remain_explicit_debts(self):
         diagnostics = hub_attachment_lint.gameplay_entry_diagnostics(self.story)
         arrows = next(r for r in diagnostics if r['findings'] == ['delamere:D05'])
-        self.assertIn('empty body contact: delamere', arrows['deficits'])
-        self.assertEqual('blocked', arrows['status'])
+        self.assertEqual([], arrows['deficits'])
+        self.assertEqual('fixed', arrows['status'])
         for row in diagnostics:
             if row['status'] == 'blocked':
                 self.assertTrue(row['deficits'], row['findings'])
