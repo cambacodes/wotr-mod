@@ -30,10 +30,10 @@ def run(*args):
 
 class PacingSchemaTests(unittest.TestCase):
     def test_ok_fixture_passes(self):
-        code, text = run("--story", str(FIXTURES / "story.json"), "--availability", str(FIXTURES / "availability-ok.json"),
+        code, stdout = run("--story", str(FIXTURES / "story.json"), "--availability", str(FIXTURES / "availability-ok.json"),
                          "--matrix", str(FIXTURES / "matrix.json"))
-        self.assertEqual(code, 0, text)
-        self.assertIn("pacing: 0 hard", text)
+        self.assertEqual(code, 0, stdout)
+        self.assertIn("pacing: 0 hard", stdout)
 
     def test_schema_fixtures_fail(self):
         for name, message in [("availability-missing.json", "missing entry for roster character 'Gamma'"),
@@ -41,10 +41,10 @@ class PacingSchemaTests(unittest.TestCase):
                               ("availability-bad-chapter.json", "bad chapter key '0'"),
                               ("availability-bad-mode.json", "bad mode 'letter'")]:
             with self.subTest(name=name):
-                code, text = run("--story", str(FIXTURES / "story.json"), "--availability", str(FIXTURES / name),
+                code, stdout = run("--story", str(FIXTURES / "story.json"), "--availability", str(FIXTURES / name),
                                  "--matrix", str(FIXTURES / "matrix.json"))
-                self.assertEqual(code, 2, text)
-                self.assertIn(message, text)
+                self.assertEqual(code, 2, stdout)
+                self.assertIn(message, stdout)
 
     def test_duplicate_entry_exception_evidence_and_verify(self):
         roster = fixture("matrix.json")["characters"]
@@ -98,7 +98,7 @@ class PacingCountTests(unittest.TestCase):
         # Chapter 2 and 5: nothing starts, although an earlier beat is still open; exceptions silence Beta's Ch5.
         self.assertEqual(set(review), {("Alpha", "2"), ("Alpha", "5")})
         self.assertEqual(review[("Alpha", "2")]["open_from_earlier"], 1)
-        self.assertEqual(len(report["warn"]), 2)
+        self.assertEqual(set(report["warn"]), {"Alpha: Chapter 4 in person, but all 1 Ch4 beats are remote", "Beta: Chapter 4 in person, but all 1 Ch4 beats are remote"})
         self.assertTrue(any("Alpha: Chapter 4 in person" in w for w in report["warn"]))
         self.assertIn("Gamma: no route in Story.json yet", report["info"])
         self.assertEqual(report["hard"], [])
@@ -112,10 +112,10 @@ class PacingCountTests(unittest.TestCase):
         with temporary_directory() as directory:
             story = Path(directory) / "story.json"
             story.write_text(json.dumps(self.story), encoding="utf-8")
-            code, text = run("--story", str(story), "--availability", str(FIXTURES / "availability-ok.json"),
+            code, stdout = run("--story", str(story), "--availability", str(FIXTURES / "availability-ok.json"),
                              "--matrix", str(FIXTURES / "matrix.json"))
-        self.assertEqual(code, 0, text)
-        self.assertIn("REVIEW Alpha Ch2", text)
+        self.assertEqual(code, 0, stdout)
+        self.assertIn("REVIEW Alpha Ch2", stdout)
 
     def test_owner_filter_splits_a_shared_relationship(self):
         self.availability["alpha"]["routes"] = [{"relationship": "alpha", "owners": ["Memory"]}]
@@ -198,10 +198,10 @@ class PacingHardRuleTests(unittest.TestCase):
         with temporary_directory() as directory:
             story = Path(directory) / "story.json"
             story.write_text(json.dumps(self.story), encoding="utf-8")
-            code, text = run("--story", str(story), "--availability", str(FIXTURES / "availability-ok.json"),
+            code, stdout = run("--story", str(story), "--availability", str(FIXTURES / "availability-ok.json"),
                              "--matrix", str(FIXTURES / "matrix.json"))
         self.assertEqual(code, 1)
-        self.assertIn("HARD H2 alpha.early", text)
+        self.assertIn("HARD H2 alpha.early", stdout)
 
 
 class PacingRepositoryTests(unittest.TestCase):
@@ -210,9 +210,11 @@ class PacingRepositoryTests(unittest.TestCase):
         if not story.is_file():
             self.skipTest("development/Story.json not generated")
         availability = pacing_lint.load_json(pacing_lint.DEFAULT_AVAILABILITY)
-        self.assertEqual(len([k for k in availability if not k.startswith("_")]), 43)
+        self.assertEqual({v["character"] for k, v in availability.items() if not k.startswith("_")},
+                         {r["character"] for r in availability["_roster"]})
         roster = pacing_lint.resolve_roster(availability, str(pacing_lint.DEFAULT_MATRIX), [])
-        self.assertEqual(len(roster), 43)
+        self.assertEqual({r["character"] for r in roster},
+                         {v["character"] for k, v in availability.items() if not k.startswith("_")})
         report = pacing_lint.lint(pacing_lint.load_json(story), availability, roster)
         self.assertEqual(report["hard"], [])
 

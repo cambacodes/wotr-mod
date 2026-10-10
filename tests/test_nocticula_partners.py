@@ -36,6 +36,15 @@ def walk(scene, flags, start=None):
     return results
 
 
+def only(items):
+    """A continuation is deterministic only when there is exactly one answer."""
+    try:
+        (item,) = items
+    except ValueError as error:
+        raise AssertionError("Expected one structural continuation") from error
+    return item
+
+
 class NocticulaPartnerTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -47,11 +56,11 @@ class NocticulaPartnerTests(unittest.TestCase):
         cls.scenes = {s["Id"]: s for s in cls.payload["Scenes"]}
 
     def test_save_id_order_and_original_answer_slots(self):
-        self.assertEqual([s["Id"] for s in self.payload["Scenes"][:len(self.before)]],
+        self.assertEqual([new["Id"] for _, new in zip(self.before, self.payload["Scenes"])],
                          [s["Id"] for s in self.before])
         for old in self.before:
             new = self.scenes[old["Id"]]
-            self.assertEqual([n["Id"] for n in new["Nodes"][:len(old["Nodes"])]],
+            self.assertEqual([current["Id"] for _, current in zip(old["Nodes"], new["Nodes"])],
                              [n["Id"] for n in old["Nodes"]])
             for a, b in zip(old["Nodes"], new["Nodes"]):
                 for previous, current in zip(a["Choices"], b["Choices"]):
@@ -60,9 +69,10 @@ class NocticulaPartnerTests(unittest.TestCase):
                     # and old destination remain on the matching continuation.
                     if ".explicit." in (current.get("Next") or "") and previous.get("Next") != current.get("Next"):
                         fill = next(n for n in new["Nodes"] if n["Id"] == current["Next"])
-                        if len(fill["Choices"]) == 1 and ".aftermath." in (fill["Choices"][0].get("Next") or ""):
-                            fill = next(n for n in new["Nodes"] if n["Id"] == fill["Choices"][0]["Next"])
-                        current = fill["Choices"][a["Choices"].index(previous)]
+                        if all(".aftermath." in (c.get("Next") or "") for c in fill["Choices"]):
+                            fill = next(n for n in new["Nodes"] if n["Id"] == only(fill["Choices"])["Next"])
+                        current = next(candidate for legacy, candidate in zip(a["Choices"], fill["Choices"])
+                                       if legacy is previous)
                     # N1 splices the marked aftermath before the old morning.
                     if old["Id"] == "noct.her_own_face" and a["Id"] == "night":
                         self.assertEqual(current["Next"], "mark")
@@ -85,8 +95,7 @@ class NocticulaPartnerTests(unittest.TestCase):
             with self.subTest(flags=flags):
                 matches = [name for name, req, bad in partner.STATES
                            if allowed(dict(Requires=req, Forbids=bad), flags)]
-                self.assertEqual(len(matches), 1)
-                self.assertEqual(matches[0] == "body", partner.BODY in flags)
+                self.assertEqual(only(matches) == "body", partner.BODY in flags)
 
     def test_every_commit_records_one_stance_and_rejection_closes(self):
         histories = [set(), {partner.KILLED}, {partner.KILLED, partner.RETURNED},
@@ -155,10 +164,11 @@ class NocticulaPartnerTests(unittest.TestCase):
             paragraphs = partner.ending_paragraphs(nocticula_dead=dead)
             living = [p for p in paragraphs if set(partner.STATES[0][2]) <= set(p["Forbids"])
                       and partner.P + "secret" not in p["Requires"]]
-            self.assertEqual(len(living), 3)
-            self.assertEqual(sum(allowed(p, {partner.CHOSEN}) for p in living), 1)
-            self.assertEqual(sum(allowed(p, set()) for p in living), 1)
-            self.assertEqual(sum(allowed(p, {partner.EXPOSED}) for p in living), 1)
+            self.assertEqual({tuple(p["Requires"]) for p in living},
+                             {(), (partner.CHOSEN,), (partner.EXPOSED,)})
+            self.assertTrue(allowed(only(p for p in living if allowed(p, {partner.CHOSEN})), {partner.CHOSEN}))
+            self.assertTrue(allowed(only(p for p in living if allowed(p, set())), set()))
+            self.assertTrue(allowed(only(p for p in living if allowed(p, {partner.EXPOSED})), {partner.EXPOSED}))
             self.assertTrue(any(partner.EXPOSED in p["Requires"] for p in living))
 
     def test_compiled_terms_never_require_shamiras_physical_availability(self):

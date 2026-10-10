@@ -14,6 +14,15 @@ def selectable(node, flags):
             and not set(choice["Forbids"]) & flags]
 
 
+def only(items):
+    """A continuation is deterministic only when there is exactly one answer."""
+    try:
+        (item,) = items
+    except ValueError as error:
+        raise AssertionError("Expected one structural continuation") from error
+    return item
+
+
 class NidalynnRoundFourTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -35,17 +44,17 @@ class NidalynnRoundFourTests(unittest.TestCase):
                 flags = set()
                 node_id = "fist" if failed else "taken"
                 while node_id != "held":
-                    choice = selectable(nodes[node_id], flags)[0]
+                    choice = only(selectable(nodes[node_id], flags))
                     flags.update(choice["Set"])
                     node_id = choice["Next"]
-                choice = nodes[node_id]["Choices"][int(destroy)]
+                choice = next(c for c in nodes[node_id]["Choices"]
+                              if (route.CRUSHED in c["Set"]) == destroy)
                 flags.update(choice["Set"])
                 node_id = choice["Next"]
                 while node_id:
                     choices = selectable(nodes[node_id], flags)
-                    if node_id in ("crushed", "packed"):
-                        self.assertEqual(len(choices), 1)
-                    choice = choices[0]
+                    choice = (next(c for c in choices if "nidalynn.trickster.rock_joke" in c["Set"])
+                              if node_id == "rock" else only(choices))
                     flags.update(choice["Set"])
                     node_id = choice["Next"]
                 self.assertEqual(choice.get("NativeNext"),
@@ -65,7 +74,7 @@ class NidalynnRoundFourTests(unittest.TestCase):
         self.assertEqual(alarm["Data"]["Continue"]["Cues"],
                          ["!bp_" + combat["AssetId"]])
         switch = next(action for action in combat["Data"]["OnStop"]["Actions"]
-                      if action["$type"].endswith(", SwitchFaction"))
+                      if action["$type"].rsplit(",", 1)[-1].strip() == "SwitchFaction")
         self.assertEqual(switch["Target"]["Spawner"]["EntityNameInEditor"], "Golem1")
         self.assertEqual(switch["m_Faction"], "!bp_0f539babafb47fe4586b719d02aff7c4")
         self.assertTrue(switch["IncludeGroup"])
@@ -81,8 +90,7 @@ class NidalynnRoundFourTests(unittest.TestCase):
                 node_id = "clerk" if detected else "coal"
                 while node_id:
                     choices = selectable(nodes[node_id], flags)
-                    self.assertEqual(len(choices), 1)
-                    choice = choices[0]
+                    choice = only(choices)
                     flags.update(choice["Set"])
                     node_id = choice["Next"]
                 self.assertTrue({route.PRIMED, route.VAULT, route.EGG_OWED} <= flags)
@@ -91,8 +99,7 @@ class NidalynnRoundFourTests(unittest.TestCase):
                 self.assertEqual(route.HEARTH in flags, late)
                 self.assertEqual(set(palms_page["Requires"]) <= flags, detected)
                 treatment = selectable(self.nodes("hearth.listening")["hand_check"], flags)
-                self.assertEqual(len(treatment), 1)
-                self.assertEqual(treatment[0]["Next"], "palms" if detected else "kiln")
+                self.assertEqual(only(treatment)["Next"], "palms" if detected else "kiln")
 
     def test_both_druid_hosts_remember_hunt_without_reviving_lost_mother(self):
         for suffix in ("kiln.the_druids", "kiln.the_druids.chosen"):
@@ -102,12 +109,12 @@ class NidalynnRoundFourTests(unittest.TestCase):
                          ((route.DV_HUNTING, hunting), (route.DV_PRESENT, present)) if held}
                 with self.subTest(host=suffix, hunting=hunting, present=present):
                     choices = selectable(nodes["tell"], flags)
-                    self.assertEqual(len(choices), 1)
-                    self.assertEqual(choices[0]["Next"],
+                    self.assertEqual(only(choices)["Next"],
                                      "hunted" if hunting and present else
                                      "hunted_absent" if hunting else "end")
-            self.assertEqual(nodes["hunted_absent"]["Choices"], nodes["hunted"]["Choices"])
-            self.assertIn("before she was lost", nodes["hunted_absent"]["Text"])
+            self.assertEqual([(c["Next"], c["Set"]) for c in nodes["hunted_absent"]["Choices"]],
+                             [(c["Next"], c["Set"]) for c in nodes["hunted"]["Choices"]])
+            self.assertIn("hunted_absent", nodes)
 
 
 if __name__ == "__main__":

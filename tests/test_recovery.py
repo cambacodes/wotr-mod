@@ -7,6 +7,15 @@ from tools import savecompat
 from tools.player_text_lint import check as check_player_text
 
 
+def only(items):
+    """A continuation is deterministic only when there is exactly one answer."""
+    try:
+        (item,) = items
+    except ValueError as error:
+        raise AssertionError("Expected one structural continuation") from error
+    return item
+
+
 class RecoveryTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -50,7 +59,7 @@ class RecoveryTests(unittest.TestCase):
         receipt = "herrax.trickster.palace_dismissed"
         self.assertEqual(["30469883ce1583743a6b4228d24778bc"],
                          self.story["SeenCues"][receipt])
-        self.assertEqual("end", nodes["joke"]["Choices"][0]["Next"])
+        self.assertEqual("end", next(c for c in nodes["joke"]["Choices"] if "trickster.ever" in c["Forbids"])["Next"])
         for seen in (False, True):
             flags = {"trickster", "trickster.ever"}
             if seen:
@@ -58,14 +67,13 @@ class RecoveryTests(unittest.TestCase):
             shown = [answer for answer in nodes["joke"]["Choices"]
                      if set(answer["Requires"]) <= flags
                      and not flags.intersection(answer["Forbids"])]
-            self.assertEqual(1, len(shown), seen)
-            text = nodes[shown[0]["Next"]]["Text"]
-            self.assertEqual(seen, "walk out of her palace" in text)
-            self.assertEqual("end", nodes[shown[0]["Next"]]["Choices"][0]["Next"])
+            destination = only(shown)["Next"]
+            self.assertEqual(destination, "joke_after_audience" if seen else "joke_before_audience")
+            self.assertEqual("end", only(nodes[destination]["Choices"])["Next"])
 
     def test_wenduag_wound_polish_keeps_the_original_check_and_no_new_fee(self):
         scene = self.scenes["wenduag.trickster.killed.stage"]
-        choice = next(node for node in scene["Nodes"] if node["Id"] == "start")["Choices"][0]
+        choice = next(c for node in scene["Nodes"] if node["Id"] == "start" for c in node["Choices"] if c.get("Check", {}).get("Skill") == "SkillMobility")
         self.assertEqual({"Skill": "SkillMobility", "DC": 24,
                           "Success": "clean", "Failure": "deep"}, choice["Check"])
         self.assertIsNone(choice.get("Crusade"))

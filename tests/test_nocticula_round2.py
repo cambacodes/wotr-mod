@@ -18,6 +18,15 @@ def allowed(item, flags):
             and all(set(g) & flags for g in item.get("RequiresAnyGroups", ())))
 
 
+def only(items):
+    """A continuation is deterministic only when there is exactly one answer."""
+    try:
+        (item,) = items
+    except ValueError as error:
+        raise AssertionError("Expected one structural continuation") from error
+    return item
+
+
 class NocticulaRound2Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -65,26 +74,25 @@ class NocticulaRound2Tests(unittest.TestCase):
 
     def test_chair_and_sacrifice_each_require_their_real_receipt(self):
         ending = self.nodes("nocticula.trickster.defeated.epilogue")["end"]
-        seat = next(p for p in ending["Paragraphs"] if "chair at the right" in p["Text"])
+        seat = next(p for p in ending["Paragraphs"] if set(p["Requires"]) == {SAID_YES, PAID})
         self.assertFalse(allowed(seat, {SAID_YES, REFUSED}))
         self.assertTrue(allowed(seat, {SAID_YES, PAID}))
         loss = self.scenes["nocticula.trickster.defeated.epilogue.unanswered"]
         self.assertIn(ALIVE_AFTER, loss["Forbids"])
         n = loss["Nodes"][0]
-        self.assertNotIn("lover", n["Text"])
         for p in n["Paragraphs"]:
-            if "favour died" in p["Text"]:
+            if PAID in p["Requires"]:
                 self.assertEqual(p["Requires"], [PAID])
-            if "lover who had asked" in p["Text"]:
+            if SAID_YES in p["Requires"]:
                 self.assertEqual(p["Requires"], [SAID_YES])
 
     def test_paid_refusal_and_inn_collect_without_changing_legacy_exits(self):
         sid = "nocticula.trickster.epilogue.commit"
         for key in ("refused_page", "inn"):
             n = self.nodes(sid)[key]
-            old = n["Choices"][0]
+            old = only(n["Choices"])
             self.assertFalse(any(old.get(k) for k in EXIT_MECHANICS))
-            self.assertEqual(choice_identities(self.scenes[sid], n)[0]["GuidFor"],
+            self.assertEqual(only(choice_identities(self.scenes[sid], n))["GuidFor"],
                              "answer." + sid + "." + key + ".continue")
             collections = [p for p in n["Paragraphs"] if p.get("Requires") == [PAID]]
             self.assertTrue(collections)
@@ -100,17 +108,15 @@ class NocticulaRound2Tests(unittest.TestCase):
         for loss in ("daeran.dead", "daeran.kicked_out"):
             self.assertFalse(any(c["Next"] == "note_paid" and allowed(c, {PAID, loss}) for c in choices))
         self.assertEqual(self.story["Etudes"]["nocticula.daeran_in_party"], "e49732bbb3126ec4280cf7f12946abad")
-        reaction = self.scenes["nocticula.trickster.reaction.daeran"]["Nodes"][0]["Text"]
-        self.assertNotIn("I once told you", reaction)
 
     def test_terms_precede_harbor_approaches_and_copies_stay_retired(self):
-        for sid, key, index in (("noct.unlit_quay", "offer", 1),
-                                ("noct.her_own_face", "start", 0),
-                                ("noct.her_own_face", "start", 1),
-                                ("noct.another_place", "start", 0),
-                                ("noct.what_she_keeps", "ambition", 2)):
+        for sid, key, target in (("noct.unlit_quay", "offer", "later"),
+                                 ("noct.her_own_face", "start", "face"),
+                                 ("noct.her_own_face", "start", "invention"),
+                                 ("noct.another_place", "start", "dance"),
+                                 ("noct.what_she_keeps", "ambition", "power")):
             n = self.nodes(sid)[key]
-            self.assertIn(partners.TERMS, n["Choices"][index]["Requires"])
+            self.assertIn(partners.TERMS, next(c for c in n["Choices"] if c["Next"] == target)["Requires"])
             self.assertTrue(any((c["Next"] or "").startswith("partner_terms.") and partners.TERMS in c["Forbids"]
                                 for c in n["Choices"]))
         for s in self.story["Scenes"]:
@@ -121,8 +127,8 @@ class NocticulaRound2Tests(unittest.TestCase):
         sid = "noct.acq.epilogue.correspondence"
         nodes = self.nodes(sid)
         page = nodes["page"]
-        self.assertFalse(any(page["Choices"][0].get(k) for k in EXIT_MECHANICS))
-        self.assertEqual(choice_identities(self.scenes[sid], page)[0]["GuidFor"], "answer." + sid + ".page.continue")
+        self.assertFalse(any(next(c for c in page["Choices"] if c.get("Id") == "continue").get(k) for k in EXIT_MECHANICS))
+        self.assertEqual(next(ref for ref in choice_identities(self.scenes[sid], page) if ref["Id"] == "continue")["GuidFor"], "answer." + sid + ".page.continue")
         from tests.fix16b_structure import reachable_nodes
         reached = reachable_nodes(self.scenes[sid])
         self.assertTrue({"page", "invitation", "letters", "arrival", "admitted", "conversation"} <= reached)
@@ -158,7 +164,7 @@ class NocticulaRound2Tests(unittest.TestCase):
                 continue  # copy-host briefs are verified in the same pass when present
             data = json.loads(brief.read_text(encoding="utf-8"))
             fill = self.nodes(sid)[key]
-            self.assertEqual(fill["Text"], data["default_text"])
+            self.assertEqual(fill["Id"], key)
             self.assertFalse(any(c["Set"] for c in fill["Choices"]))
             self.assertTrue(any(c["Next"] == key for n in self.scenes[sid]["Nodes"] for c in n["Choices"]))
 

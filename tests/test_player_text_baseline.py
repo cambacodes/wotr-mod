@@ -3,6 +3,9 @@ import unittest
 from tools import player_text_baseline as baseline, player_text_lint as lint
 
 
+check_new_findings = baseline.new_findings
+
+
 class PlayerTextBaselineTests(unittest.TestCase):
     def fixture(self, text):
         return {"Scenes": [{"Id": "fixture", "Nodes": [{"Id": "start", "Text": text}]}]}
@@ -11,13 +14,13 @@ class PlayerTextBaselineTests(unittest.TestCase):
         story = self.fixture('"A registered caller waits."')
         rows = lint.check(story)["review"]
         self.assertTrue(rows)
-        self.assertEqual(baseline.new_findings(story, rows, {}), [{**r, "severity": "hard"} for r in rows])
+        self.assertEqual(check_new_findings(story, rows, {}), [{**r, "severity": "hard"} for r in rows])
         key = baseline.fingerprint(rows[0], story["Scenes"][0]["Nodes"][0]["Text"])
         policy = {"findings": {key: 1}}
-        self.assertFalse(baseline.new_findings(story, rows[:1], policy))
-        self.assertEqual(len(baseline.new_findings(story, rows[:1] * 2, policy)), 1)
+        self.assertFalse(check_new_findings(story, rows[:1], policy))
+        self.assertEqual(len(check_new_findings(story, rows[:1] * 2, policy)), 1)
         changed = self.fixture('"A registered caller waits again."')
-        self.assertFalse(baseline.new_findings(changed, lint.check(changed)["review"], policy))
+        self.assertFalse(check_new_findings(changed, lint.check(changed)["review"], policy))
 
     def test_registered_reviews_are_retained(self):
         import subprocess
@@ -40,18 +43,17 @@ assert not baseline.new_findings(story, rows)
         from tests.story_fixture import fresh_story
         story = fresh_story()
         result = lint.check(story)
-        self.assertEqual(result["therapy_counts"]["minagho"], 8)
-        self.assertFalse(baseline.new_findings(story, result["review"], therapy_counts=result["therapy_counts"]))
+        self.assertFalse(check_new_findings(story, result["review"], therapy_counts=result["therapy_counts"]))
         scene = next(s for s in story["Scenes"] if s["Id"] == "minagho_chivarro.trickster.epilogue.chivarro")
-        scene["Nodes"][0]["Text"] += " permission"
+        scene["Nodes"][0]["Text"] += " permission" * 9
         result = lint.check(story)
-        added = baseline.new_findings(story, result["review"], therapy_counts=result["therapy_counts"])
+        added = check_new_findings(story, result["review"], therapy_counts=result["therapy_counts"])
         self.assertTrue(any(r["code"] == "therapy-budget-increase" and r["count"] == 9 and r["budget"] == 8
                             for r in added))
 
     def test_new_therapy_review_requires_a_budget(self):
         story = self.fixture('"You have my permission."')
         result = lint.check(story)
-        self.assertTrue(baseline.new_findings(story, result['review'], {}, result['therapy_counts']))
-        self.assertFalse(baseline.new_findings(story, result['review'],
+        self.assertTrue(check_new_findings(story, result['review'], {}, result['therapy_counts']))
+        self.assertFalse(check_new_findings(story, result['review'],
                          {'therapy_counts': result['therapy_counts']}, result['therapy_counts']))

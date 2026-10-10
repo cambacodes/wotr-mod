@@ -17,13 +17,13 @@ class RemoteAllocationTests(unittest.TestCase):
         return dict(Id=sid, Owner=owner or who, Relationship=relationship or who.lower(),
                     MinChapter=chapter, MaxChapter=chapter, Chapters=[chapter], Remote=remote)
 
-    def count(self, scenes, deliveries, who="Wenduag", chapter=5):
+    def check_history(self, scenes, deliveries, who="Wenduag", chapter=5):
         return lint.count_history({"Scenes": scenes}, self.allocations[who], chapter, deliveries)
 
     def test_chapter_three_third_page_and_zero_allocation(self):
         for chapter, count in [(3, 3), (4, 1), (5, 2), (6, 1)]:
             scenes = [self.scene("page" + str(i), chapter=chapter) for i in range(count)]
-            result = self.count(scenes, [s["Id"] for s in scenes], chapter=chapter)
+            result = self.check_history(scenes, [s["Id"] for s in scenes], chapter=chapter)
             self.assertTrue(result["failure"], result)
             self.assertIn("§4.2", result["ledger_row"])
             self.assertIn("R2-5", result["ledger_row"])
@@ -31,31 +31,31 @@ class RemoteAllocationTests(unittest.TestCase):
     def test_alias_and_refusal_after_closure_do_not_hide_third_page(self):
         scenes = [self.scene("first", who="Shamira"), self.scene("dream", who="Shamira"),
                   self.scene("inquiry", who="Shamira", relationship="shamira_barracks", owner="Surgeon")]
-        result = self.count(scenes, ["first", "dream", "inquiry"], who="Shamira")
+        result = self.check_history(scenes, ["first", "dream", "inquiry"], who="Shamira")
         self.assertEqual(result["count"], 3)
         self.assertTrue(result["failure"])
         mutated = copy.deepcopy(scenes)
         mutated[-1]["Relationship"] = "unrelated"
         mutated[-1]["Owner"] = "Shamira"
-        self.assertTrue(self.count(mutated, ["first", "dream", "inquiry"], who="Shamira")["failure"])
+        self.assertTrue(self.check_history(mutated, ["first", "dream", "inquiry"], who="Shamira")["failure"])
 
     def test_alternative_twins_count_per_run(self):
         scenes = [self.scene("letter"), self.scene("letter-fallback")]
         for ids in [["letter"], ["letter-fallback"]]:
-            self.assertFalse(self.count(scenes, ids)["failure"])
-        self.assertTrue(self.count(scenes, ["letter", "letter-fallback"])["failure"])
+            self.assertFalse(self.check_history(scenes, ids)["failure"])
+        self.assertTrue(self.check_history(scenes, ["letter", "letter-fallback"])["failure"])
 
     def test_physical_folded_and_framework_pages(self):
         scenes = [self.scene("return"), self.scene("folded", remote=False),
                   self.scene("memory", who="Memory", relationship="memory", chapter=4),
                   self.scene("table", who="Table", relationship="household", chapter=5)]
-        result = self.count(scenes, ["return", "folded", "table"])
+        result = self.check_history(scenes, ["return", "folded", "table"])
         self.assertFalse(result["failure"])
         self.assertEqual(result["pages"], ["return"])
-        self.assertFalse(self.count(scenes, ["memory"], chapter=4)["failure"])
+        self.assertFalse(self.check_history(scenes, ["memory"], chapter=4)["failure"])
         # A woman's page called Memory still belongs to her allocation.
         scenes[-2]["Relationship"] = "wenduag"
-        self.assertTrue(self.count(scenes, ["memory"], chapter=4)["failure"])
+        self.assertTrue(self.check_history(scenes, ["memory"], chapter=4)["failure"])
 
     def test_mutations_fail_executed_acceptance_trace(self):
         story = {"Scenes": [self.scene("return"), self.scene("trial", remote=False)]}
@@ -67,7 +67,7 @@ class RemoteAllocationTests(unittest.TestCase):
         story["Scenes"][1]["Remote"] = False
         trace[0]["deliveries"].append("missing")
         self.assertTrue(lint.lint(story, self.contracts, trace)["hard"])
-        self.assertTrue(self.count(story["Scenes"], ["return", "return"])["failure"])
+        self.assertTrue(self.check_history(story["Scenes"], ["return", "return"])["failure"])
 
     def test_mapped_findings_and_every_audited_road_registered(self):
         root = Path(__file__).resolve().parents[1]
@@ -75,8 +75,12 @@ class RemoteAllocationTests(unittest.TestCase):
         expected = next(i["finding_ids"] for i in backlog["items"] if i["id"] == "E-Q7-17")
         self.assertCountEqual(expected, [c["finding"] for c in self.contracts["findings"]])
         sequences = self.contracts["audit_sequences"]
-        self.assertEqual(sum(h["character"] == "Shamira" for h in sequences), 16)
-        self.assertEqual(sum(h["character"] == "Wenduag" for h in sequences), 9)
+        self.assertEqual({h["name"] for h in sequences if h["character"] == "Shamira"},
+                         {f"{entry}-{host}-{outcome}" for entry in ("primed", "letter", "late", "unextracted")
+                          for host in ("harem", "harem_fallback") for outcome in ("ally", "hard-refusal")})
+        self.assertEqual({h["name"] for h in sequences if h["character"] == "Wenduag"},
+                         {"killed", "abyss", "stone", "champion", "late-bid", "street-courtship",
+                          "orchard-courtship", "abyss-return-courtship", "killed-return-courtship"})
         self.assertTrue(any(h["name"] == "departure" for h in sequences))
 
     def test_cannot_raise_limits_or_rename_auxiliary_relationship_to_pass(self):
@@ -93,7 +97,9 @@ class RemoteAllocationTests(unittest.TestCase):
             self.assertFalse(lint.remote(scenes[sid]), sid)
             self.assertEqual(scenes[sid]["InteractionHub"], "wenduag.presence")
             self.assertFalse(lint.remote(scenes[sid + ".native_visit"]), sid)
-            self.assertEqual(len(scenes[sid + ".native_visit"]["AnswerLists"]), 3)
+            self.assertEqual(scenes[sid + ".native_visit"]["AnswerLists"],
+                             ["ced27e744d2dded40bbb5adf17816dbb", "9bad7ea452d30254997b153473954cc1",
+                              "b14654863485b734aa0fb5ec16d2846a"])
         self.assertFalse(lint.remote(scenes["wenduag.trickster.killed.cellar"]))
         report = lint.lint(story)
         # Remaining failures are retained, never silently given a new allocation.

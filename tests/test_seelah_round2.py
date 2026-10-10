@@ -5,6 +5,7 @@ from pathlib import Path
 import unittest
 
 from storylines import seelah, seelah_trickster, seelah_round2 as r
+from tools.savecompat import choice_identities
 
 
 def route_story():
@@ -18,6 +19,15 @@ def route_story():
     # install the shared epoch contract; its registry is a coordinator escalation.
     story["Derived"]["seelah.present_now"] = [["availability.observed"]]
     return story
+
+
+def only(items):
+    """A continuation is deterministic only when there is exactly one answer."""
+    try:
+        (item,) = items
+    except ValueError as error:
+        raise AssertionError("Expected one structural continuation") from error
+    return item
 
 
 class Walk:
@@ -41,7 +51,9 @@ class Walk:
             for k in target.get("Forbids", []))
 
     def take(self, s, nid, index):
-        answer = r.node(s, nid)["Choices"][index]
+        node = r.node(s, nid)
+        answer = next(a for a, ref in zip(node["Choices"], choice_identities(s, node))
+                      if ref["GuidFor"] == f"answer.{s['Id']}.{nid}.{index}")
         if not self.available(answer):
             raise AssertionError((s["Id"], nid, index, "not selectable"))
         debit = answer.get("Crusade")
@@ -85,7 +97,7 @@ class SeelahRound2Tests(unittest.TestCase):
             w = Walk(self.story, (r.HOLDS, "seelah.kissed"))
             self.assertEqual("list_back", w.take(s, "answer", 6))
             self.assertTrue(w.has(r.CUSTODY))
-            self.assertTrue(w.available(r.node(s, "list_back")["Choices"][3]))
+            self.assertTrue(w.available(next(a for a in r.node(s, "list_back")["Choices"] if a["Abort"])))
             self.assertEqual("no_stones", w.take(s, "list_back", 2))
             w.take(s, "no_stones", 0)
             self.assertIn(r.COIN_NO, w.flags)
@@ -103,16 +115,16 @@ class SeelahRound2Tests(unittest.TestCase):
         self.assertIn(r.COIN_PAID, w.flags)
         self.assertNotIn("seelah.committed", w.flags)
         self.assertTrue(w.available(ask))
-        self.assertFalse(w.available(r.node(ask, "price")["Choices"][0]))
+        self.assertFalse(w.available(next(a for a in r.node(ask, "price")["Choices"] if a["Next"] == "robbed")))
         w.take(ask, "coin_answer", 0)
-        self.assertTrue(w.available(r.node(ask, "price")["Choices"][0]))
+        self.assertTrue(w.available(next(a for a in r.node(ask, "price")["Choices"] if a["Next"] == "robbed")))
 
     def test_papers_refusal_gets_a_free_return_not_a_coin_receipt(self):
         w = Walk(self.story, (r.FREEDOM_NO,))
         ask = self.by[r.PREFIX + "dismissed.second_ask"]
-        self.assertFalse(w.available(r.node(ask, "price")["Choices"][0]))
+        self.assertFalse(w.available(next(a for a in r.node(ask, "price")["Choices"] if a["Next"] == "robbed")))
         w.take(ask, "free_return", 0)
-        self.assertTrue(w.available(r.node(ask, "price")["Choices"][1]))
+        self.assertTrue(w.available(next(a for a in r.node(ask, "price")["Choices"] if a["Next"] == "closed")))
         self.assertNotIn(r.COIN_PAID, w.flags)
 
     def test_abort_after_seller_arrest_resumes_without_second_charge(self):
@@ -130,9 +142,10 @@ class SeelahRound2Tests(unittest.TestCase):
             w.flags.add("seelah.diamond_held")
             entry = "start" if suffix.endswith("effects") else "bier"
             choices = r.node(s, entry)["Choices"]
-            selectable = [i for i, a in enumerate(choices) if w.available(a)]
-            self.assertEqual([len(choices) - 1], selectable)
-            self.assertEqual("payment_resume", w.take(s, entry, selectable[0]))
+            selectable = [ref["GuidFor"].removeprefix(f"answer.{s['Id']}.{entry}.")
+                          for a, ref in zip(choices, choice_identities(s, r.node(s, entry))) if w.available(a)]
+            self.assertEqual([a["Next"] for a in choices if w.available(a)], ["payment_resume"])
+            self.assertEqual("payment_resume", w.take(s, entry, only(selectable)))
             w.take(s, "payment_resume", 0)
             w.take(s, "rider" if suffix.endswith("effects") else "pocketed", 0)
             self.assertEqual(0, w.resources["Favors"])
@@ -166,13 +179,14 @@ class SeelahRound2Tests(unittest.TestCase):
             s = self.by[slot_id.rsplit(".explicit.", 1)[0]]
             blocks = s["Nodes"] + [p for n in s["Nodes"] for p in n.get("Paragraphs", [])]
             slots = [b for b in blocks if b.get("Id") == slot_id]
-            self.assertEqual(1, len(slots), slot_id)
-            for answer in slots[0].get("Choices", []):
+            slot = only(slots)
+            self.assertEqual(slot["Id"], slot_id)
+            for answer in slot.get("Choices", []):
                 self.assertEqual([], answer["Set"], slot_id)
                 self.assertFalse(answer["Abort"], slot_id)
         door = self.by["seelah.door"]
-        self.assertEqual("quiet", r.node(door, "honest")["Choices"][2]["Next"])
-        self.assertEqual("different", r.node(door, "honest")["Choices"][3]["Next"])
+        self.assertEqual([a["Next"] for a in r.node(door, "honest")["Choices"]],
+                         ["kiss", "seelah.door.explicit.1.approach", "quiet", "different"])
         for s in self.by.values():
             ids = {n["Id"] for n in s["Nodes"]}
             for n in s["Nodes"]:
