@@ -106,6 +106,15 @@ def integrate(story):
             if "arsinoe.trickster.late_committed" in paragraph.get("Requires", []):
                 paragraph["Forbids"] = list(dict.fromkeys([*paragraph.get("Forbids", []), "arsinoe.future_spoken"]))
     departures = json.loads((ROOT / "departure_contracts.json").read_text(encoding="utf-8"))
+    # fix14-c: these two sparring edges reference Iomedae in an oath;
+    # Yaniel is the participant. Preserve her own epoch and route guards.
+    # The shared registry owner must remove the stale participant entries.
+    reference_edges = {("yaniel.trickster.beat.bout", "fight", 1),
+                       ("yaniel.trickster.beat.bout", "dirty", 0)}
+    goddess = departures["women"]["iomedae"]
+    goddess["surfaces"] = [surface for surface in goddess["surfaces"]
+        if (surface["scene"], surface.get("node"), surface.get("choice"))
+        not in reference_edges]
     install(story, departures)
     for surface in departures.get("choice_rewrites", []):
         if surface["scene"] not in by:

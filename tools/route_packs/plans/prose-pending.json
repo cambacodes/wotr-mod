@@ -1,4 +1,33 @@
 {
   "version": 1,
-  "pending": []
+  "pending": [
+    {
+      "scene": "kaylessa.trickster.after.the_beast",
+      "node": "fed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "1d239d5db42613c99a0427d020482986a31c06f04be49ee82e6214b30268cb80"
+    },
+    {
+      "scene": "kaylessa.trickster.after.the_beast",
+      "node": "fed_shown",
+      "surface": "node",
+      "index": null,
+      "text_sha": "fbd3cee4db30467114a8216d1a1d60740094d9d3c0e2425d9619fdd175157540"
+    },
+    {
+      "scene": "kaylessa.clearing.the_next_hunter",
+      "node": "turned_shown",
+      "surface": "node",
+      "index": null,
+      "text_sha": "33b681d56edcfb8253717f536ba15d7bd32e0d1eed1cb18c47d672e0823230c7"
+    },
+    {
+      "scene": "kaylessa.clearing.the_next_hunter",
+      "node": "hers_shown",
+      "surface": "node",
+      "index": null,
+      "text_sha": "7bcab7aa49f3295b5760040ad956eeefb023be380d462a46c2ea60795cbdc796"
+    }
+  ]
 }
