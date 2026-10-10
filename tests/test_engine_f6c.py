@@ -4,6 +4,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 
 from storylines import engine_f6c
 from storylines.native_overrides import _delivery, inventory
@@ -11,6 +12,16 @@ from tools.remote_allocation_lint import lint
 
 ROOT = Path(__file__).resolve().parents[1]
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class EngineF6cTests(unittest.TestCase):
     @classmethod
@@ -107,7 +118,7 @@ class EngineF6cTests(unittest.TestCase):
                 self.assertFalse(original["Data"]["ShowOnce"])
                 scene = self.scenes[edit["Replacement"]]
                 self.assertTrue(scene["Owner"].endswith("Epilogue"))
-                self.assertFalse(scene["Nodes"][0]["Choices"][0]["Set"])
+                self.assertFalse(saved_answer(scene["Nodes"][0]["Choices"], 0)["Set"])
                 self.assertEqual(scene["Nodes"][0].get("Paragraphs", []), [])
                 self.assertTrue(all({"trickster.now", "trickster.ever"} & set(g) for g in edit["When"]))
 
@@ -123,6 +134,14 @@ class EngineF6cTests(unittest.TestCase):
             sample["Scenes"][0]["Nodes"][0]["Text"] += " {n}You stand beside her after the war.{/n}"
             model = rrt_verify.Model(sample)
             self.assertTrue(commander_alive.check(model, list(blocks(model)), Proof(model)))
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        cue = engine_f6c.EDITS[0][0]
+        scene = self.scenes[self.story['NativeEpilogueEdits'][cue]['Replacement']]
+        choice = scene['Nodes'][0]['Choices'][0]
+        with patch.dict(choice, Set=['unexpected.commitment']):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_every_added_replacement_has_no_authored_outcome_effect()
 
 
 if __name__ == "__main__":

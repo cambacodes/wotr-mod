@@ -1,5 +1,6 @@
 """Coordinator history regressions over the fully integrated story."""
 import unittest
+from unittest.mock import patch
 from tests.story_fixture import fresh_story
 
 
@@ -9,6 +10,16 @@ def visible(block, flags):
             and not any(k in flags and overrides.get(k) not in flags for k in block.get('Forbids', ()))
             and all(set(g) & flags for g in block.get('AnyGroups', block.get('RequiresAnyGroups', ()))))
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class Fix15Tests(unittest.TestCase):
     @classmethod
@@ -30,8 +41,8 @@ class Fix15Tests(unittest.TestCase):
             self.assertEqual(targets({'yaniel.killed.latched'}), ['killed'], sid)
             self.assertEqual(targets(set()), [], sid)
             self.assertIn('yaniel.trickster.returned', self.scenes[sid]['RequiresAnyGroups'][0])
-            self.assertEqual(self.node(sid, 'arrived_yaniel')['Choices'][0]['Next'], 'arrived_answer')
-            self.assertIn('wenduag.trickster.yaniel.watched', self.node(sid, 'arrived_answer')['Choices'][0]['Set'])
+            self.assertEqual(saved_answer(self.node(sid, 'arrived_yaniel')['Choices'], 0)['Next'], 'arrived_answer')
+            self.assertIn('wenduag.trickster.yaniel.watched', saved_answer(self.node(sid, 'arrived_answer')['Choices'], 0)['Set'])
 
     def test_areelu_death_page_reads_history_and_never_living_entitlement(self):
         sid = 'areelu.trickster.finale.unnamed'
@@ -55,7 +66,7 @@ class Fix15Tests(unittest.TestCase):
         for sid, nid, idx in (('hepzamirah.trickster.body.hounds', 'joke', 2),
                               ('hepzamirah.trickster.bond.the_call', 'if', 0),
                               ('hepzamirah.trickster.body.terms', 'price', 2)):
-            choice = self.node(sid, nid)['Choices'][idx]
+            choice = saved_answer(self.node(sid, nid)['Choices'], idx)
             flags = set(choice['Requires'])
             self.assertTrue(visible(choice, flags | {'areelu.closed', 'areelu.epoch_unavailable',
                                                      'horzalah.closed', 'horzalah.epoch_unavailable'}))
@@ -64,7 +75,7 @@ class Fix15Tests(unittest.TestCase):
         eve = self.scenes['hepzamirah.trickster.bond.eve']
         self.assertIn('hepzamirah.present_now', eve['Requires'])
         self.assertNotIn('areelu.present_now', eve['Requires'])
-        sister = self.node('hepzamirah.trickster.body.hounds', 'sister_at_gate')['Choices'][0]
+        sister = saved_answer(self.node('hepzamirah.trickster.body.hounds', 'sister_at_gate')['Choices'], 0)
         self.assertIn('hepzamirah.trickster.sister_here', sister['Requires'])
         self.assertIn('horzalah.present_now', self.story['Derived']['hepzamirah.trickster.sister_here'][0])
 
@@ -72,12 +83,12 @@ class Fix15Tests(unittest.TestCase):
         for sid in ('areelu.trickster.rivalry.lens', 'areelu.trickster.lens.watched'):
             node = self.node(sid, 'accounts')
             for index in (0, 5):
-                choice = node['Choices'][index]
+                choice = saved_answer(node['Choices'], index)
                 flags = set(choice['Requires']) | {'yaniel.closed', 'yaniel.killed.latched', 'yaniel.trickster.left_free'}
                 self.assertTrue(visible(choice, flags), (sid, index))
                 self.assertNotIn('yaniel.present_now', choice['Requires'])
-            self.assertIn('areelu.early.mask_counted', node['Choices'][5]['Requires'])
-        choice = self.node('areelu.trickster.wager.raised', 'start')['Choices'][6]
+            self.assertIn('areelu.early.mask_counted', saved_answer(node['Choices'], 5)['Requires'])
+        choice = saved_answer(self.node('areelu.trickster.wager.raised', 'start')['Choices'], 6)
         self.assertIn('household.pair.yaniel_areelu.cost.areelu_specific_guise', choice['Requires'])
         self.assertTrue(visible(choice, set(choice['Requires']) | {'yaniel.closed', 'yaniel.killed.latched'}))
 
@@ -127,7 +138,7 @@ class Fix15Tests(unittest.TestCase):
             for flags, target in cases:
                 choices = [c for c in node['Choices'] if visible(c, flags)]
                 self.assertEqual([c['Next'] for c in choices], [target], (rel, flags))
-                return_choice = self.node(sid, target)['Choices'][0]
+                return_choice = saved_answer(self.node(sid, target)['Choices'], 0)
                 self.assertEqual(return_choice['Next'], 'call')
                 self.assertIn(receipt, return_choice['Set'])
                 choices = [c for c in node['Choices'] if visible(c, flags | {receipt})]
@@ -138,23 +149,28 @@ class Fix15Tests(unittest.TestCase):
     def test_delamere_and_terendelev_recovery_paragraphs_read_their_histories(self):
         bridge = 'iomedae.trickster.buried_alive'
         d = self.node('delamere.lastcall.page', 'page')['Paragraphs']
-        self.assertTrue(visible(d[0], {'delamere.lastcall.called'}))
-        self.assertFalse(visible(d[0], {'delamere.lastcall.called', bridge}))
-        self.assertTrue(visible(d[6], {'delamere.lastcall.called', bridge, 'crossroute.delamere.available'}))
-        self.assertFalse(visible(d[6], {'delamere.lastcall.called', 'crossroute.delamere.available'}))
+        called, = [p for p in d if p['Requires'] == ['delamere.lastcall.called']]
+        recovered, = [p for p in d if p['Requires'] == ['delamere.lastcall.called', bridge]]
+        self.assertTrue(visible(called, {'delamere.lastcall.called'}))
+        self.assertFalse(visible(called, {'delamere.lastcall.called', bridge}))
+        self.assertTrue(visible(recovered, {'delamere.lastcall.called', bridge, 'crossroute.delamere.available'}))
+        self.assertFalse(visible(recovered, {'delamere.lastcall.called', 'crossroute.delamere.available'}))
         t = self.node('terendelev.lastcall.page', 'page')['Paragraphs']
-        self.assertFalse(visible(t[2], {'lastcall.recovered_corked'}))
-        self.assertTrue(visible(t[2], {'lastcall.recovered_corked', 'terendelev.trickster.dressing', 'crossroute.terendelev.available'}))
-        self.assertTrue(visible(t[6], {'lastcall.h2', bridge, 'crossroute.terendelev.available'}))
-        self.assertFalse(visible(t[6], {'lastcall.h2', bridge, 'terendelev.trickster.dressing', 'crossroute.terendelev.available'}))
+        dressed, = [p for p in t if p['Requires'] == ['lastcall.recovered_corked', 'terendelev.trickster.dressing', 'crossroute.terendelev.available']]
+        undressed, = [p for p in t if p['Requires'] == ['lastcall.h2', bridge, 'crossroute.terendelev.available']]
+        self.assertFalse(visible(dressed, {'lastcall.recovered_corked'}))
+        self.assertTrue(visible(dressed, {'lastcall.recovered_corked', 'terendelev.trickster.dressing', 'crossroute.terendelev.available'}))
+        self.assertTrue(visible(undressed, {'lastcall.h2', bridge, 'crossroute.terendelev.available'}))
+        self.assertFalse(visible(undressed, {'lastcall.h2', bridge, 'terendelev.trickster.dressing', 'crossroute.terendelev.available'}))
 
     def test_dorgelinda_audit_reads_schedule_and_current_settlement(self):
-        p = self.node('dorgelinda.lastcall.page', 'page')['Paragraphs']
+        p, = [p for p in self.node('dorgelinda.lastcall.page', 'page')['Paragraphs']
+              if p['Requires'] == ['dorgelinda.trickster.cost.audit_hostile', 'dorgelinda.trickster.cost.twice_weekly']]
         hostile = {'dorgelinda.trickster.cost.audit_hostile'}
         scheduled = hostile | {'dorgelinda.trickster.cost.twice_weekly'}
-        self.assertFalse(visible(p[2], hostile))
-        self.assertTrue(visible(p[2], scheduled))
-        self.assertFalse(visible(p[2], scheduled | {'dorgelinda.lastcall.account_settled'}))
+        self.assertFalse(visible(p, hostile))
+        self.assertTrue(visible(p, scheduled))
+        self.assertFalse(visible(p, scheduled | {'dorgelinda.lastcall.account_settled'}))
         self.assertEqual(self.story['Derived']['dorgelinda.lastcall.account_settled'],
                          [['dorgelinda.trickster.cost.told_all'], ['dorgelinda.lastcall.called']])
 
@@ -163,10 +179,14 @@ class Fix15Tests(unittest.TestCase):
             sid = 'nidalynn.trickster.epilogue.' + ending
             self.assertNotIn('nidalynn.present_now', self.scenes[sid]['Requires'], sid)
         for ending in ('apart', 'unreturned', 'wolves'):
-            parts = self.node('nidalynn.trickster.epilogue.' + ending, 'page')['Paragraphs'][-3:]
+            parts = [p for p in self.node('nidalynn.trickster.epilogue.' + ending, 'page')['Paragraphs']
+                     if p['Requires'] in (['nidalynn.trickster.kiln', 'nidalynn.trickster.hatched'], ['nidalynn.trickster.kiln'], [])
+                     and ('nidalynn.trickster.kiln' in p['Requires'] or 'nidalynn.trickster.kiln' in p['Forbids'])]
             for flags, expected in ((set(), 2), ({'nidalynn.trickster.kiln'}, 1),
                                     ({'nidalynn.trickster.kiln', 'nidalynn.trickster.hatched'}, 0)):
-                self.assertEqual([i for i,p in enumerate(parts) if visible(p, flags)], [expected])
+                self.assertEqual([p['Requires'] for p in parts if visible(p, flags)],
+                                 [[]] if expected == 2 else [['nidalynn.trickster.kiln']] if expected == 1
+                                 else [['nidalynn.trickster.kiln', 'nidalynn.trickster.hatched']])
 
     def test_unavailable_eritrice_debt_cannot_hold_the_last_joke(self):
         key = 'eritrice.lastcall.callable'
@@ -181,15 +201,21 @@ class Fix15Tests(unittest.TestCase):
         prefix = 'household.pair.kaylessa_camellia.'
         sealed = self.node(sid, 'sealed')
         shown = prefix + 'carrier_cruelty_shown'
-        self.assertFalse(visible(sealed['Choices'][0], set()))
-        self.assertTrue(visible(sealed['Choices'][0], {shown}))
-        self.assertIsNone(sealed['Choices'][0]['Next'])
-        self.assertIn(prefix + 'retry.done', sealed['Choices'][0]['Set'])
-        self.assertTrue(sealed['Choices'][1]['Abort'])
-        self.assertEqual(sealed['Choices'][2]['Next'], 'carrier_shown')
-        self.assertFalse(visible(sealed['Choices'][2], {shown}))
-        witness = self.node(sid, 'carrier_shown')['Choices'][0]
+        self.assertFalse(visible(saved_answer(sealed['Choices'], 0), set()))
+        self.assertTrue(visible(saved_answer(sealed['Choices'], 0), {shown}))
+        self.assertIsNone(saved_answer(sealed['Choices'], 0)['Next'])
+        self.assertIn(prefix + 'retry.done', saved_answer(sealed['Choices'], 0)['Set'])
+        self.assertTrue(saved_answer(sealed['Choices'], 1)['Abort'])
+        self.assertEqual(saved_answer(sealed['Choices'], 2)['Next'], 'carrier_shown')
+        self.assertFalse(visible(saved_answer(sealed['Choices'], 2), {shown}))
+        witness = saved_answer(self.node(sid, 'carrier_shown')['Choices'], 0)
         self.assertEqual(witness['Next'], 'sealed')
         self.assertTrue({shown, prefix + 'carrier_burned', prefix + 'cost.commander_evening'} <= set(witness['Set']))
         self.assertIn('kaylessa.present_now', self.scenes[sid]['Requires'])
         self.assertIn('camellia.present_now', self.scenes[sid]['Requires'])
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        choice = next(c for c in self.node('wenduag.trickster.early.yaniel', 'start')['Choices'] if c['Next'] == 'arrived_yaniel')
+        with patch.dict(choice, Next='returned_yaniel'):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_yaniel_arrival_and_resurrection_are_distinct_in_all_deliveries()

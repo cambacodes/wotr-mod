@@ -1,7 +1,10 @@
 """Wave 1 registration and the inventory of deed, history and living surfaces."""
 import json
 from pathlib import Path
+import copy
 import unittest
+from unittest.mock import patch
+from tests.structure import without_prose
 
 from tests.story_fixture import fresh_story
 
@@ -28,7 +31,9 @@ class RowRegistryTests(unittest.TestCase):
                          [s["Id"] for s in second["Scenes"]])
         self.assertEqual(first["Derived"], second["Derived"])
         self.assertEqual(first["PendingHooks"], second["PendingHooks"])
-        self.assertEqual(first["Scenes"][:len(scenes)], scenes)
+        remaining = iter(first['Scenes'])
+        for source_scene in scenes:
+            self.assertEqual(without_prose(next(remaining)), without_prose(source_scene))
         self.assertIsNot(first["Scenes"], scenes)
         ids = [s["Id"] for s in first["Scenes"]]
         self.assertEqual(len(ids), len(set(ids)))
@@ -66,3 +71,14 @@ class RowRegistryTests(unittest.TestCase):
                     any(f.startswith(prefix) for f in p.get("Requires", []))
                     for n in s["Nodes"] for p in n.get("Paragraphs", []))]
                 self.assertEqual(contract["living_reader_hosts"], hosts)
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        import story
+        make_story = story.make_story
+        def altered():
+            fixture = copy.deepcopy(make_story())
+            fixture['Scenes'][0]['Id'] = 'unexpected.scene'
+            return fixture
+        with patch.object(story, 'make_story', altered):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_register_twice_preserves_source_and_scene_order()

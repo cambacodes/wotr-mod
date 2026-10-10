@@ -5,11 +5,22 @@ import io
 import json
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 from tests.story_fixture import fresh_story
 from tools import harem_rest_sim as sim, rrt_verify as e9, harem_schedule_lint as schedule_lint
 
 ROOT = Path(__file__).resolve().parents[1]
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class HaremInventory(unittest.TestCase):
     @classmethod
@@ -20,15 +31,16 @@ class HaremInventory(unittest.TestCase):
         cls.route_run = e9.simulate_rest_budget(e9.Model(cls.story))
 
     def test_missing_build_sheets_and_native_walk_block_certification(self):
-        result = sim.inventory_acceptance(self.story, self.schedule, self.scenarios)
+        diagnostics = sim.inventory_acceptance(self.story, self.schedule, self.scenarios)
+        result = diagnostics
         # ceiling-ruling.md records the 18-step conditional rest proof;
         # reservations still cannot certify native delivery.
         self.assertEqual(result['errors'], [])
         self.assertEqual(result['status'], 'data_blocked')
         self.assertFalse(result['certified'])
-        self.assertTrue(any('native eligibility/gate-hour' in b for b in result['blockers']))
-        self.assertTrue(any('build-sheet scene missing' in b for b in result['blockers']))
-        self.assertTrue(any('enmity producers' in b for b in result['blockers']))
+        self.assertTrue(any('native eligibility/gate-hour' in b for b in diagnostics['blockers']))
+        self.assertTrue(any('build-sheet scene missing' in b for b in diagnostics['blockers']))
+        self.assertTrue(any('enmity producers' in b for b in diagnostics['blockers']))
         with contextlib.redirect_stdout(io.StringIO()):
             self.assertEqual(sim.main(['--inventory']), 1)
 
@@ -72,7 +84,8 @@ class HaremInventory(unittest.TestCase):
 
     # eng7-f3
     def test_data_inventory_names_every_missing_scene_and_enmity_reader(self):
-        result = sim.inventory_acceptance(self.story, self.schedule, self.scenarios)
+        diagnostics = sim.inventory_acceptance(self.story, self.schedule, self.scenarios)
+        result = diagnostics
         missing = result['missing_data']
         active = [r['ref'] for r in self.schedule['schedule'] if r.get('count') and r.get('status') != 'retired']
         self.assertEqual(missing['schedule_scene_refs'], active)
@@ -94,7 +107,7 @@ class HaremInventory(unittest.TestCase):
         story = copy.deepcopy(self.story)
         flag = expected['missing_data']['enmity_producer_flags'][0]
         producer = story['Scenes'][0]
-        producer['Nodes'][0]['Choices'][0]['Set'].append(flag)
+        saved_answer(producer['Nodes'][0]['Choices'], 0)['Set'].append(flag)
         result = sim.inventory_acceptance(story, self.schedule, self.scenarios)
         self.assertIn(flag, result['enmity_producers'])
         self.assertNotIn(flag, result['missing_data']['enmity_producer_flags'])
@@ -104,13 +117,13 @@ class HaremInventory(unittest.TestCase):
         self.assertFalse(result['certified'])
 
     def test_conditional_cli_runs_every_available_profile_and_passes(self):
-        output = io.StringIO()
-        with contextlib.redirect_stdout(output):
+        stdout = io.StringIO()
+        with contextlib.redirect_stdout(stdout):
             self.assertEqual(sim.main(['--conditional']), 0)
         for profile in self.scenarios['scenarios']:
             if profile['conditional']:
-                self.assertIn('Scenario: ' + profile['id'], output.getvalue())
-        self.assertIn('does not certify native reachability', output.getvalue())
+                self.assertIn('Scenario: ' + profile['id'], stdout.getvalue())
+        self.assertIn('does not certify native reachability', stdout.getvalue())
 
     def test_unkeyed_flavour_never_consumes_protected_slots_or_hides_a_miss(self):
         for rematch in (False, True):
@@ -164,3 +177,10 @@ class HaremInventory(unittest.TestCase):
         self.assertEqual(schedule_lint.delayed_clock_errors(delayed, fixture), [])
         delayed['RequiresAnyGroups'][0][1] = 'untimed.derived'
         self.assertTrue(schedule_lint.delayed_clock_errors(delayed, fixture))
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        schedule = copy.deepcopy(self.schedule)
+        schedule['schedule'][0]['ref'] = 'not-an-approved-row'
+        with patch.object(self, 'schedule', schedule):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_missing_build_sheets_and_native_walk_block_certification()

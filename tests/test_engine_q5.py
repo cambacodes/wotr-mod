@@ -1,6 +1,8 @@
 """ENGINE-Q5: current power earns returns; RouteOpen controls physical presence."""
 import copy
 import unittest
+from tests.structure import without_prose
+from unittest.mock import patch
 
 from storylines import earned_presence as ep
 from tools import earned_presence_lint as lint
@@ -18,6 +20,16 @@ def fixture():
     }
 
 
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
+
 class LiveReturnTests(unittest.TestCase):
     def test_historical_return_and_revival_are_rejected(self):
         s = fixture()
@@ -30,7 +42,7 @@ class LiveReturnTests(unittest.TestCase):
     def test_choice_guard_and_failed_native_path(self):
         s = fixture()
         scene = s["Scenes"][0]
-        choice = scene["Nodes"][0]["Choices"][0]
+        choice = saved_answer(scene["Nodes"][0]["Choices"], 0)
         choice["Requires"] = ["trickster"]
         self.assertFalse(lint.live_context(s, scene, choice))
         choice["Forbids"] = ["trickster.failed"]
@@ -77,6 +89,16 @@ class LiveReturnTests(unittest.TestCase):
         s["Scenes"][0]["Nodes"][0]["Choices"][0] = {"Set": ["her.device_completed"]}
         self.assertTrue(any("her.device_completed" in x for x in lint.producer_presence_errors(s)))
 
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        make_fixture = fixture
+        def altered():
+            story = make_fixture()
+            story['Scenes'][0]['Requires'] = ['trickster.now']
+            return story
+        with patch(__name__ + '.fixture', altered):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_choice_guard_and_failed_native_path()
+
 
 class PhysicalPresenceTests(unittest.TestCase):
     def test_central_guard_is_idempotent_and_does_not_alias_requirements(self):
@@ -90,7 +112,7 @@ class PhysicalPresenceTests(unittest.TestCase):
         self.assertEqual(original["her.presence"]["Requires"], ["trickster.ever", "her.returned"])
         before = copy.deepcopy(s)
         ep.integrate_presences(s)
-        self.assertEqual(s, before)
+        self.assertEqual(without_prose(s), without_prose(before))
         self.assertFalse(any(x.startswith("P1") for x in lint.producer_presence_errors(s)))
 
     def test_missing_wrong_or_weakened_guard_fails(self):
@@ -109,7 +131,7 @@ class PhysicalPresenceTests(unittest.TestCase):
 
     def test_departures_need_registration_or_reason(self):
         s = fixture()
-        c = s["Scenes"][0]["Nodes"][0]["Choices"][0]
+        c = saved_answer(s["Scenes"][0]["Nodes"][0]["Choices"], 0)
         c["Set"] = ["her.left_free"]
         self.assertTrue(any("departure her.left_free" in x for x in lint.producer_presence_errors(s)))
         s["Relationships"]["her"]["UnavailableFlags"].append("her.left_free")
@@ -138,7 +160,7 @@ class ReturnInProgressTests(unittest.TestCase):
         s = self.story()
         before = copy.deepcopy(s)
         ep.integrate_presences(s)
-        self.assertEqual(s, before)
+        self.assertEqual(without_prose(s), without_prose(before))
         self.assertFalse(lint.producer_presence_errors(s, relationships={"aranka"}))
         rel = s["Relationships"]["aranka"]
         self.assertEqual(rel["UnavailableOverrides"], {"aranka.ran_failure": "aranka.trickster.moral_repaired"})

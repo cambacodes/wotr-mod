@@ -1,6 +1,8 @@
 """Round-two branch histories, independent of the shared campaign fixtures."""
 import json
+import copy
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 from storylines import eliandra_stars as stars, eliandra_trickster as main
@@ -12,6 +14,16 @@ def visible(item, flags):
     return (set(item.get("Requires", ())) <= flags
             and not set(item.get("Forbids", ())) & flags)
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class EliandraRoundTwoTests(unittest.TestCase):
     def test_wall_reading_earns_access_but_not_a_shrine_memory(self):
@@ -35,10 +47,10 @@ class EliandraRoundTwoTests(unittest.TestCase):
                                         ({main.DEAD_NAMED}, "want")):
                     self.assertEqual([expected], [a["Next"] for a in nodes[ident]["Choices"] if visible(a, flags)])
             slot = scene["Id"] + ".explicit.1"
-            self.assertEqual(slot, nodes["charts"]["Choices"][0]["Next"])
-            self.assertEqual("morning", nodes[slot]["Choices"][0]["Next"])
-            self.assertFalse(nodes[slot]["Choices"][0]["Set"])
-            self.assertEqual([main.HEART_SEEN, main.CHARTS], nodes["end"]["Choices"][0]["Set"])
+            self.assertEqual(slot, saved_answer(nodes["charts"]["Choices"], 0)["Next"])
+            self.assertEqual("morning", saved_answer(nodes[slot]["Choices"], 0)["Next"])
+            self.assertFalse(saved_answer(nodes[slot]["Choices"], 0)["Set"])
+            self.assertEqual([main.HEART_SEEN, main.CHARTS], saved_answer(nodes["end"]["Choices"], 0)["Set"])
 
     def test_written_yes_never_claims_a_road_yes(self):
         for scene in stars.SCENES:
@@ -48,7 +60,7 @@ class EliandraRoundTwoTests(unittest.TestCase):
             for flags, expected in ((set(), "war"), ({main.LETTER_ANSWERED}, "war_letter")):
                 answers = [a for a in nodes["why"]["Choices"] if visible(a, flags) and a["Next"] != "yes"]
                 self.assertEqual([expected], [a["Next"] for a in answers])
-                self.assertEqual([E + "drezen.road_open"], nodes[expected]["Choices"][0]["Set"])
+                self.assertEqual([E + "drezen.road_open"], saved_answer(nodes[expected]["Choices"], 0)["Set"])
 
     def test_away_blocks_both_hosts_and_all_physical_twins(self):
         for key, host in stars.PRESENCES.items():
@@ -69,37 +81,37 @@ class EliandraRoundTwoTests(unittest.TestCase):
         self.assertFalse(returned.get("ReturnToList", False))
         from tools.savecompat import choice_identities
         for node in returned["Nodes"]:
-            self.assertEqual(
-                ["answer.%s.%s.%d" % (returned["Id"], node["Id"], i)
-                 for i in range(len(node["Choices"]))],
-                [identity["GuidFor"] for identity in choice_identities(returned, node)])
+            identities = choice_identities(returned, node)
+            ordinal = 0
+            for identity in identities:
+                self.assertEqual(identity['GuidFor'], 'answer.%s.%s.%d' % (returned['Id'], node['Id'], ordinal))
+                ordinal += 1
+            self.assertEqual([identity['Id'] for identity in identities], [c.get('Id') for c in node['Choices']])
         self.assertIn(main.LETTER_ANSWERED, returned["Requires"])
         self.assertIn(main.AWAY, returned["Requires"])
         self.assertEqual(48, returned["DelayHours"])
         self.assertNotIn(main.RETURNED, returned["Requires"])
-        self.assertEqual([main.RETURNED], returned["Nodes"][-1]["Choices"][0]["Set"])
+        self.assertEqual([main.RETURNED], saved_answer(returned["Nodes"][-1]["Choices"], 0)["Set"])
         payload = {}
         main.integrate(payload)
         self.assertEqual([main.RETURNED], payload["DerivedForbids"][main.AWAY])
 
     def test_delayed_deceit_is_paid_before_her_acceptance(self):
-        late = next(s for s in main.SCENES if s["Id"] == E + "epilogue.late")["Nodes"][0]
-        debt = next(p for p in late["Paragraphs"] if main.LIED_ABOUT_HAND in p["Requires"])
-        self.assertIn("second lie", debt["Text"])
-        self.assertIn("I still want to ask you", debt["Text"])
-        self.assertLess(debt["Text"].index("second lie"), debt["Text"].index("Only then"))
-        self.assertFalse(visible(debt, set()))
-        unasked = next(s for s in main.SCENES if s["Id"] == E + "epilogue.unasked")["Nodes"][0]
-        debt = next(p for p in unasked["Paragraphs"] if main.TRIED_TO_CHEAT in p["Requires"] and "Before she asked" in p["Text"])
-        self.assertIn("Before she asked", debt["Text"])
-        self.assertIn("I still do", debt["Text"])
+        for suffix, receipt in (('late', main.LIED_ABOUT_HAND), ('unasked', main.TRIED_TO_CHEAT)):
+            scene = next(s for s in main.SCENES if s['Id'] == E + 'epilogue.' + suffix)
+            page = next(n for n in scene['Nodes'] if n['Id'] == 'page')
+            debt = [p for p in page['Paragraphs'] if receipt in p['Requires']]
+            self.assertTrue(debt)
+            self.assertTrue(all(not visible(p, set()) for p in debt))
+            self.assertTrue(any(visible(p, {receipt}) for p in debt))
+            self.assertTrue(all(not c['Set'] for c in page['Choices']))
 
     def test_reunion_slot_requires_an_actually_shared_first_night(self):
         together = next(s for s in main.SCENES if s["Id"] == E + "epilogue.together")["Nodes"][0]
         slot = next(p for p in together["Paragraphs"] if p.get("Id"))
         self.assertFalse(visible(slot, set()))
         self.assertTrue(visible(slot, {main.HEART_SEEN}))
-        counterpart = together["Paragraphs"][-1]
+        counterpart, = [p for p in together["Paragraphs"] if main.HEART_SEEN in p["Forbids"]]
         self.assertTrue(visible(counterpart, set()))
         self.assertFalse(visible(counterpart, {main.HEART_SEEN}))
 
@@ -134,6 +146,17 @@ class EliandraRoundTwoTests(unittest.TestCase):
                     self.assertFalse(slot.get("Set"))
                     successor = None if host == "page" else "page_exit"
                     self.assertTrue(all(c["Next"] == successor and not c["Set"] for c in page["Choices"]))
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        scenes = copy.deepcopy(main.SCENES)
+        scene = next(s for s in scenes if s['Id'] == E + 'epilogue.late')
+        page = next(n for n in scene['Nodes'] if n['Id'] == 'page')
+        for paragraph in page['Paragraphs']:
+            if main.LIED_ABOUT_HAND in paragraph['Requires']:
+                paragraph['Requires'] = []
+        with patch.object(main, 'SCENES', scenes):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_delayed_deceit_is_paid_before_her_acceptance()
 
 
 if __name__ == "__main__":

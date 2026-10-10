@@ -4,11 +4,22 @@ Engine-seam coverage for the shared clock and atomic payment contract.
 """
 import copy
 import unittest
+from unittest.mock import patch
 
 from tests.story_fixture import fresh_story
 from storylines.harem_rows import s47, s50, s51
 from tools import rrt_verify as rules
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class J06Histories(unittest.TestCase):
     @classmethod
@@ -40,7 +51,7 @@ class J06Histories(unittest.TestCase):
                     state = self.paid_state(scene, price)
                     state.flags.add('household.started')
                     self.assertTrue(rules.sim_available(self.model, scene, state))
-                    self.assertTrue(rules.sim_choice_available(node['Choices'][0], state))
+                    self.assertTrue(rules.sim_choice_available(saved_answer(node['Choices'], 0), state))
                     abort = next(c for c in node['Choices'] if c['Abort'])
                     before = copy.deepcopy(state.__dict__)
                     self.assertFalse(rules.sim_play(self.model, scene, state, (), plan=(0, [abort])))
@@ -50,7 +61,7 @@ class J06Histories(unittest.TestCase):
         for body in s50.BODIES:
             for step, node_id, price in (('custody', 'hire', 100), ('repair', 'start', 150)):
                 scene = self.rows[s50.P + step + '.' + body]
-                choice = next(n for n in scene['Nodes'] if n['Id'] == node_id)['Choices'][0]
+                choice = saved_answer(next(n for n in scene['Nodes'] if n['Id'] == node_id)['Choices'], 0)
                 for fault in ('exception', 'incomplete', 'allowance'):
                     with self.subTest(body=body, step=step, fault=fault):
                         state = self.paid_state(scene, price + 73)
@@ -73,7 +84,7 @@ class J06Histories(unittest.TestCase):
     def test_paid_reload_exhausts_the_other_body_without_another_debit(self):
         for step, node_id, price in (('custody', 'hire', 100), ('repair', 'start', 150)):
             scene = self.rows[s50.P + step + '.widow']
-            choice = next(n for n in scene['Nodes'] if n['Id'] == node_id)['Choices'][0]
+            choice = saved_answer(next(n for n in scene['Nodes'] if n['Id'] == node_id)['Choices'], 0)
             state = self.paid_state(scene, price + 73)
             self.assertTrue(rules.sim_play(self.model, scene, state, (), plan=(0, [choice])))
             self.assertEqual(state.rest_spent['household.protected'], 1)
@@ -109,7 +120,7 @@ class J06Histories(unittest.TestCase):
                                         'yaniel.trickster.returned', 'yaniel.areelu_unmasked', history))
                     rules.sim_complete(self.model, state)
                     self.assertTrue(rules.sim_available(self.model, commission, state))
-                    choice = commission['Nodes'][0]['Choices'][index]
+                    choice = saved_answer(commission['Nodes'][0]['Choices'], index)
                     self.assertTrue(rules.sim_play(self.model, commission, state, (), plan=(0, [choice])))
                     loaded = copy.deepcopy(state)
                     self.assertFalse(rules.sim_available(self.model, commission, loaded))
@@ -125,7 +136,7 @@ class J06Histories(unittest.TestCase):
 
     def test_s50_departure_during_debit_cancels_publication(self):
         scene = self.rows[s50.P + 'custody.widow']
-        choice = next(n for n in scene['Nodes'] if n['Id'] == 'hire')['Choices'][0]
+        choice = saved_answer(next(n for n in scene['Nodes'] if n['Id'] == 'hire')['Choices'], 0)
         state = self.paid_state(scene, 100)
 
         def publish():
@@ -181,7 +192,7 @@ class J06Histories(unittest.TestCase):
             for step, node_id, price in (('custody', 'hire', 100), ('repair', 'start', 150)):
                 with self.subTest(body=body, step=step):
                     scene = self.rows[s50.P + step + '.' + body]
-                    choice = next(n for n in scene['Nodes'] if n['Id'] == node_id)['Choices'][0]
+                    choice = saved_answer(next(n for n in scene['Nodes'] if n['Id'] == node_id)['Choices'], 0)
                     self.assertIn(choice.get('PostPayment'), self.model.nodes[scene['Id']])
                     state = self.paid_state(scene, price)
                     self.assertFalse(rules.sim_post_payment_available(self.model, scene, choice, state))
@@ -197,7 +208,7 @@ class J06Histories(unittest.TestCase):
             for step, node_id, price in (('custody', 'hire', 100), ('repair', 'start', 150)):
                 with self.subTest(body=body, step=step):
                     scene = self.rows[s50.P + step + '.' + body]
-                    choice = next(n for n in scene['Nodes'] if n['Id'] == node_id)['Choices'][0]
+                    choice = saved_answer(next(n for n in scene['Nodes'] if n['Id'] == node_id)['Choices'], 0)
                     state = self.paid_state(scene, price)
                     before = copy.deepcopy(state)
 
@@ -218,8 +229,8 @@ class J06Histories(unittest.TestCase):
         from storylines.delamere_trickster import HUNT_POSTPONED, SECOND_HUNT
         for suffix in ('second_hunt', 'second_hunt_page', 'second_hunt_late'):
             scene = self.rows['delamere.trickster.woods.' + suffix]
-            choice = next(n for n in scene['Nodes'] if n['Id'] == 'choice')['Choices'][1]
-            leave = next(n for n in scene['Nodes'] if n['Id'] == 'not_tonight')['Choices'][0]
+            choice = saved_answer(next(n for n in scene['Nodes'] if n['Id'] == 'choice')['Choices'], 1)
+            leave = saved_answer(next(n for n in scene['Nodes'] if n['Id'] == 'not_tonight')['Choices'], 0)
             state = self.paid_state(scene, 0)
             state.flags.add(HUNT_POSTPONED)
             state.times[HUNT_POSTPONED] = 24
@@ -233,3 +244,10 @@ class J06Histories(unittest.TestCase):
                 self.assertNotIn(scene['Id'], state.flags)
                 self.assertTrue(all(state.times[key] == at for key, at in before.items() if key != HUNT_POSTPONED))
                 state = copy.deepcopy(state)
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        scene = self.rows[s50.P + 'custody.widow']
+        choice = next(n for n in scene['Nodes'] if n['Id'] == 'hire')['Choices'][0]
+        with patch.dict(choice, PostPayment='missing'):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_paid_aftermath_requires_committed_receipt_and_current_body()

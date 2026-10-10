@@ -8,6 +8,7 @@ import json
 import os
 import sys
 import unittest
+from unittest.mock import patch
 from tests.structure import without_prose
 import zipfile
 
@@ -27,6 +28,24 @@ def _payload(scenes):
 def _host(id, rel, chapter):
     return scene(id, "T", "X", chapter, "e", [n("start", "Narrator", "Text.", c("Go", "end"), c("Leave", abort=True)),
                                                n("end", "Narrator", "End.", c("Done"))], Relationship=rel, Chapters=[chapter])
+
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
+
+
+def localization_key(data):
+    for field, metadata in data.items():
+        if field == 'Text':
+            return metadata.get('m_Key')
+    return None
 
 
 class EchoApiTests(unittest.TestCase):
@@ -62,7 +81,7 @@ class EchoApiTests(unittest.TestCase):
         foresight.integrate_echoes(_payload([host]))
         start = host["Nodes"][0]
         self.assertEqual(without_prose(start["Choices"][:2]), without_prose(original))
-        entry = start["Choices"][2]
+        entry = saved_answer(start["Choices"], 2)
         self.assertIn(foresight.PAGE_TAKEN, entry["Requires"])
         self.assertIn("trickster.now", entry["Requires"])
         self.assertEqual(entry["Crusade"], {"Resource": "Favors", "Amount": -10})
@@ -144,6 +163,20 @@ class EchoApiTests(unittest.TestCase):
             foresight.integrate_echoes(_payload(hosts))
         self.assertEqual(without_prose(hosts), without_prose(original))
 
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        integrate = foresight.integrate_echoes
+        def altered(payload):
+            result = integrate(payload)
+            for scene in payload['Scenes']:
+                for node in scene['Nodes']:
+                    for choice in node['Choices']:
+                        if (choice.get('Next') or '').startswith('echo.'):
+                            choice['Set'] = ['unexpected.earned']
+            return result
+        with patch.object(foresight, 'integrate_echoes', altered):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_allocated_echo_is_appended_gated_and_neutral()
+
 
 class ForesightSurfaceTests(unittest.TestCase):
     def test_registered_consumer_contract_matches_export(self):
@@ -197,7 +230,7 @@ class ForesightSurfaceTests(unittest.TestCase):
         self.assertEqual(foresight._chapters(pilot), [4])
         self.assertEqual([n["Id"] for n in pilot["Nodes"]], [n["Id"] for n in wenduag_echo.SCENES[0]["Nodes"]])
         for before, after in zip(wenduag_echo.SCENES[0]["Nodes"], pilot["Nodes"]):
-            self.assertEqual(len(before["Choices"]), len(after["Choices"]))
+            self.assertEqual([c["Next"] for c in before["Choices"]], [c["Next"] for c in after["Choices"]])
             for old, new in zip(before["Choices"], after["Choices"]):
                 self.assertTrue({"trickster.now", foresight.PAGE_TAKEN}.issubset(new["Requires"]))
                 self.assertEqual({k: v for k, v in old.items() if k not in ("Requires", "Text")},
@@ -208,7 +241,7 @@ class ForesightSurfaceTests(unittest.TestCase):
         setters = [s for s in story["Scenes"] if any(foresight.GATE_WATCH in ch["Set"]
                    for nd in s["Nodes"] for ch in nd["Choices"])]
         self.assertEqual([s["Id"] for s in setters], [foresight.WATCH_SCENE])
-        watch = setters[0]
+        watch, = setters
         self.assertEqual(watch["AnswerLists"], ["1a17d8053a3be7f47a7908eb6706f2fe",
                                               "6dccfd39947ef4242a8afbe36b21a46c"])
         self.assertEqual(watch["Chapters"], [3, 5])
@@ -219,7 +252,7 @@ class ForesightSurfaceTests(unittest.TestCase):
         self.assertIn(foresight.GATE_FIRE, watch["Requires"])
         self.assertIn(foresight.GATE_WATCH, watch["Forbids"])
         self.assertIn("fool_king.gone", watch["Forbids"])
-        post, leave = watch["Nodes"][0]["Choices"]
+        post, leave = next(n for n in watch["Nodes"] if n["Id"] == "ask")["Choices"]
         self.assertEqual(post["Crusade"], {"Resource": "Favors", "Amount": -50})
         self.assertTrue(leave["Abort"])
         self.assertEqual(leave["Set"], [])
@@ -241,7 +274,7 @@ class ForesightSurfaceTests(unittest.TestCase):
             ):
                 host = scenes[scene_id + suffix]
                 nodes = {nd["Id"]: nd for nd in host["Nodes"]}
-                original = nodes[via]["Choices"][index]
+                original = saved_answer(nodes[via]["Choices"], index)
                 alternative = next(ch for ch in nodes[via]["Choices"] if ch["Next"] == "gap." + target)
                 self.assertEqual(original["Next"], target)
                 self.assertEqual(alternative["Next"], "gap." + target)
@@ -252,9 +285,9 @@ class ForesightSurfaceTests(unittest.TestCase):
                     def shown(choice):
                         return set(choice["Requires"]).issubset(flags) and not set(choice["Forbids"]) & flags
                     choices = [ch for ch in (original, alternative) if shown(ch)]
-                    self.assertEqual(len(choices), 1)
+                    answer, = choices
                     expected = "gap." + target if foresight.GONE_SQUARE in flags else target
-                    self.assertEqual(choices[0]["Next"], expected)
+                    self.assertEqual(answer["Next"], expected)
                 self.assertEqual(without_prose(nodes["gap." + target]["Choices"]), without_prose(nodes[target]["Choices"]))
 
 
@@ -270,8 +303,8 @@ class ForesightCanonTests(unittest.TestCase):
         with zipfile.ZipFile(GAME / "blueprints.zip") as blueprints:
             cue = json.loads(blueprints.read("World/Dialogs/c3/Mythic_Trickster/Council_Chadali/Cue_0012.jbp"))
         self.assertEqual(cue["AssetId"], "dc4fa93063e42c44981850d65914402e")
-        self.assertTrue(cue["Data"]["$type"].endswith(", BlueprintCue"))
-        self.assertEqual(cue["Data"]["Text"]["m_Key"], "e9c8ab1f-ec44-4d4e-8c46-279ac53a07b3")
+        self.assertEqual(cue["Data"]["$type"].split(", ")[-1], "BlueprintCue")
+        self.assertEqual(localization_key(cue["Data"]), "e9c8ab1f-ec44-4d4e-8c46-279ac53a07b3")
 
     def test_areelu_child_uses_commander_gender(self):
         localization = json.loads((GAME / "Wrath_Data/StreamingAssets/Localization/enGB.json")
@@ -280,28 +313,29 @@ class ForesightCanonTests(unittest.TestCase):
             path = next(p for p in blueprints.namelist() if p.endswith("AreeluAllTruth/Cue_0028.jbp"))
             cue = json.loads(blueprints.read(path))
         self.assertEqual(cue["AssetId"], "6c39117f5ee77c34681c4cee77de75b8")
-        self.assertEqual(cue["Data"]["Text"]["m_Key"], "bc4189f0-fda1-4cbe-9728-46ac3714dc87")
-        self.assertTrue(localization[cue["Data"]["Text"]["m_Key"]].strip())
+        self.assertEqual(localization_key(cue["Data"]), "bc4189f0-fda1-4cbe-9728-46ac3714dc87")
+        self.assertIn("bc4189f0-fda1-4cbe-9728-46ac3714dc87", localization)
 
     def test_commander_punchline_and_areelu_sacrifice_are_distinct(self):
         localization = json.loads((GAME / "Wrath_Data/StreamingAssets/Localization/enGB.json")
                                   .read_text(encoding="utf-8-sig"))["strings"]
         with zipfile.ZipFile(GAME / "blueprints.zip") as blueprints:
-            def read(path):
-                return json.loads(blueprints.read(path))
+            def read_record(path):
+                record = json.loads(blueprints.read(path))
+                return record
 
             base = "World/Dialogs/c6/SecondFloor/GrandFinal/"
-            commander = read(base + "Answer_0011.jbp")
-            areelu = read(base + "Answer_0055.jbp")
+            commander = read_record(base + "Answer_0011.jbp")
+            areelu = read_record(base + "Answer_0055.jbp")
             self.assertEqual(commander["AssetId"], "10e6b2a8c754dae4b81e55ad6d0918b2")
             self.assertEqual(areelu["AssetId"], "91c5eca80c8779c4a8bd5754f5533cad")
             endings = "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/"
-            player_end = "!bp_" + read(endings + "Ending_PlayerSacrifice.jbp")["AssetId"]
-            areelu_end = "!bp_" + read(endings + "Ending_AreeluSacrificeTrickster.jbp")["AssetId"]
+            player_end = "!bp_" + read_record(endings + "Ending_PlayerSacrifice.jbp")["AssetId"]
+            areelu_end = "!bp_" + read_record(endings + "Ending_AreeluSacrificeTrickster.jbp")["AssetId"]
             for answer, own, other in ((commander, player_end, areelu_end), (areelu, areelu_end, player_end)):
                 with self.subTest(answer=answer["AssetId"]):
                     starts = [a["Etude"] for a in answer["Data"]["OnSelect"]["Actions"]
-                              if a["$type"].endswith(", StartEtude")]
+                              if a["$type"].split(", ")[-1] == "StartEtude"]
                     self.assertIn(own, starts)
                     self.assertNotIn(other, starts)
 

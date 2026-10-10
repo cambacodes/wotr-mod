@@ -1,6 +1,7 @@
 """Execute both approved personal-deed orders and negative S02 histories."""
 import copy
 import unittest
+from unittest.mock import patch
 
 from story import make_story
 from storylines import household as hh, household_pair_seelah_wenduag as sw, harem_s02
@@ -8,6 +9,16 @@ from tools import rrt_verify as v, harem_schedule_lint as schedule
 
 P = sw.P
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class S02(unittest.TestCase):
     @classmethod
@@ -43,7 +54,7 @@ class S02(unittest.TestCase):
         scene = self.scene(name)
         self.assertTrue(v.sim_available(self.model, scene, st), name)
         node = scene['Nodes'][0]
-        answer = node['Choices'][index]
+        answer = saved_answer(node['Choices'], index)
         while True:
             if answer['Abort']:
                 return
@@ -51,7 +62,7 @@ class S02(unittest.TestCase):
             if target:
                 node = next(n for n in scene['Nodes'] if n['Id'] == target)
                 self.assertTrue(node['Choices'], target)
-                answer = node['Choices'][0]
+                answer = saved_answer(node['Choices'], 0)
             else:
                 for flag in answer['Set'] + [scene['Id']]:
                     st.flags.add(flag)
@@ -158,8 +169,9 @@ class S02(unittest.TestCase):
                 self.assertFalse(node.get('Paragraphs'))
                 for choice in node['Choices']:
                     self.assertTrue(all(flag.startswith(sw.PREFIX) for flag in choice['Set']))
-        self.assertEqual(sum(s.get('HouseholdArcStart', False) for s in self.scenes), 1)
-        self.assertEqual(sum(s.get('HouseholdCategory') == 'pair' for s in self.scenes), 8)
+        self.assertEqual({s['Id'] for s in self.scenes if s.get('HouseholdArcStart')}, {P('watch')})
+        self.assertEqual({s['Id'] for s in self.scenes if s.get('HouseholdCategory') == 'pair'},
+                         {P(s) for s in ('watch', 'restraint', 'restraint.after_stood', 'stood', 'stood.after_restraint', 'debt_repayment', 'choice', 'morning')})
 
     def test_claim_recall_keeps_an_answer_in_every_knowledge_history(self):
         import itertools
@@ -169,7 +181,8 @@ class S02(unittest.TestCase):
             held = {flag for flag, yes in zip(flags, bits) if yes}
             available = [c for c in node['Choices'] if set(c['Requires']) <= held
                          and not set(c['Forbids']) & held]
-            self.assertEqual(len(available), 1, held)
+            answer, = available
+            self.assertEqual(answer["Next"], next(("brask_" + str(i) for i, flag in enumerate(flags) if flag in held), None))
 
     def test_every_exchange_identifies_its_speakers(self):
         from tools import player_text_lint
@@ -207,6 +220,12 @@ class S02(unittest.TestCase):
                     self.assertFalse(v.sim_available(model, self.scene('choice'), st))
                 finally:
                     self.model = previous
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        scene = self.scene('watch')
+        with patch.dict(scene, HouseholdArcStart=False):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_clocks_caps_and_witness_ownership()
 
 
 if __name__ == '__main__':

@@ -2,6 +2,7 @@
 import copy
 import itertools
 import unittest
+from unittest.mock import patch
 
 from storylines import eritrice_council as council
 from storylines import eritrice_minutes as minutes
@@ -9,6 +10,16 @@ from storylines import eritrice_trickster as route
 from tools import rrt_verify as verify
 from tools import text_structure_lint
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class EritricePolishTests(unittest.TestCase):
     def setUp(self):
@@ -66,7 +77,8 @@ class EritricePolishTests(unittest.TestCase):
             with self.subTest(approach=approach):
                 state = self.world("trickster", "trickster.ever", council.K + "a_lie_for_the_chair", approach)
                 self.assertTrue(verify.sim_available(self.model, self.scene, state))
-                self.assertEqual(len(self.choices(self.nodes["start"], state)), 1)
+                entry, = self.choices(self.nodes["start"], state)
+                self.assertIn(entry["Next"], {"promise", "protect", "truth"})
                 observed = set()
                 for path in self.paths(state):
                     result = copy.deepcopy(state)
@@ -90,9 +102,8 @@ class EritricePolishTests(unittest.TestCase):
             for selected in itertools.combinations(approaches, count):
                 with self.subTest(selected=selected):
                     answers = self.choices(self.nodes["start"], self.world(*selected))
-                    self.assertEqual(len(answers), 1)
-                    self.assertEqual(answers[0]["Next"], "promise" if approaches[0] in selected
-                                     else "protect" if approaches[1] in selected else "truth")
+                    self.assertEqual([a["Next"] for a in answers], ["promise" if council.LIED_FOR_HER in selected
+                                     else "protect" if council.PROTECTION_REQUESTED in selected else "truth"])
         self.assertEqual(self.choices(self.nodes["start"], self.world()), [])
 
     def test_missed_native_opportunity_does_not_reopen_on_return(self):
@@ -114,27 +125,29 @@ class EritricePolishTests(unittest.TestCase):
             self.assertFalse(state.flags & self.receipts)
 
     def test_pending_and_performed_records_are_distinct(self):
-        # Positions in this draft-only fixture, before the engine's paragraph injections.
-        cases = ((council.LIED_FOR_HER, council.LIE_SPOKEN, 15, 21),
-                 (council.LIED_FOR_HER, council.LIE_WITHDRAWN, 15, 22),
-                 (council.TRUTH_FOR_CHADALI, council.TRUTH_SPOKEN, 18, 23),
-                 (council.PROTECTION_REQUESTED, council.PROTECTION_SPOKEN, 19, 24))
-        for approach, receipt, pending, performed in cases:
-            with self.subTest(receipt=receipt):
-                before = self.paragraphs({approach, "crossroute.chadali.available"})
-                after = self.paragraphs({approach, receipt, "crossroute.chadali.available"})
-                self.assertIn(pending, before)
-                self.assertNotIn(performed, before)
-                self.assertNotIn(pending, after)
-                self.assertIn(performed, after)
+        page = next(s for s in self.payload['Scenes'] if s['Id'] == 'eritrice.trickster.epilogue.we_did_meet')['Nodes'][0]
+        for approach, receipt in ((council.LIED_FOR_HER, council.LIE_SPOKEN),
+                                  (council.LIED_FOR_HER, council.LIE_WITHDRAWN),
+                                  (council.TRUTH_FOR_CHADALI, council.TRUTH_SPOKEN),
+                                  (council.PROTECTION_REQUESTED, council.PROTECTION_SPOKEN)):
+            pending = [p for p in page['Paragraphs'] if approach in p['Requires'] and receipt in p['Forbids']]
+            performed = [p for p in page['Paragraphs'] if receipt in p['Requires']]
+            self.assertTrue(pending, approach)
+            self.assertTrue(performed, receipt)
+            for flags, done in (({approach, 'crossroute.chadali.available'}, False),
+                                ({approach, receipt, 'crossroute.chadali.available'}, True)):
+                def enabled(p):
+                    return set(p['Requires']) <= flags and not set(p['Forbids']) & flags
+                self.assertTrue(all(enabled(p) != done for p in pending))
+                self.assertTrue(all(enabled(p) == done for p in performed))
 
     def test_receipts_follow_the_selected_or_rendered_action(self):
         self.assertFalse(self.nodes["start"].get("EnterSet"))
         self.assertTrue(all(not c["Set"] for c in self.nodes["start"]["Choices"]))
-        self.assertEqual(self.nodes["promise"]["Choices"][0]["Set"], [council.LIE_SPOKEN])
-        self.assertEqual(self.nodes["promise"]["Choices"][1]["Set"], [council.LIE_WITHDRAWN])
-        self.assertEqual(self.nodes["protect"]["Choices"][0]["Set"], [council.PROTECTION_SPOKEN])
-        self.assertEqual(self.nodes["truth"]["Choices"][0]["Set"], [council.TRUTH_SPOKEN])
+        self.assertEqual(saved_answer(self.nodes["promise"]["Choices"], 0)["Set"], [council.LIE_SPOKEN])
+        self.assertEqual(saved_answer(self.nodes["promise"]["Choices"], 1)["Set"], [council.LIE_WITHDRAWN])
+        self.assertEqual(saved_answer(self.nodes["protect"]["Choices"], 0)["Set"], [council.PROTECTION_SPOKEN])
+        self.assertEqual(saved_answer(self.nodes["truth"]["Choices"], 0)["Set"], [council.TRUTH_SPOKEN])
         request = next(s for s in council.SCENES if s["Id"] == council.K + "a_lie_for_the_chair")
         approaches = next(n for n in request["Nodes"] if n["Id"] == "want")["Choices"]
         self.assertEqual([c["Set"] for c in approaches], [[council.LIED_FOR_HER], [council.PROTECTION_REQUESTED], [council.TRUTH_FOR_CHADALI]])
@@ -154,13 +167,18 @@ class EritricePolishTests(unittest.TestCase):
                 self.assertEqual(node["SpeakerUnit"], "4a47d14a45ce264408a1c6a33345dd89")
             self.assertFalse(node.get("Paragraphs"))
         self.assertEqual(text_structure_lint.check({"Scenes": council.PUBLIC_SCENES}), {"hard": [], "review": []})
-        self.assertEqual(self.nodes["lie_response"]["Choices"][0]["Next"], "lie_ruling")
-        self.assertIsNone(self.nodes["truth_record"]["Choices"][0]["Next"])
+        self.assertEqual(saved_answer(self.nodes["lie_response"]["Choices"], 0)["Next"], "lie_ruling")
+        self.assertIsNone(saved_answer(self.nodes["truth_record"]["Choices"], 0)["Next"])
 
     def test_hook_appends_without_moving_existing_scenes(self):
         baseline = copy.deepcopy(route.SCENES + minutes.SCENES + council.SCENES)
         self.assertEqual([s["Id"] for s in self.payload["Scenes"][:-1]], [s["Id"] for s in baseline])
         self.assertEqual(self.payload["Scenes"][-1]["Id"], council.PUBLIC)
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        with patch.dict(self.nodes['promise']['Choices'][0], Set=[]):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_receipts_follow_the_selected_or_rendered_action()
 
 
 if __name__ == "__main__":

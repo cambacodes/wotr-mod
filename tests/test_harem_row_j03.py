@@ -7,6 +7,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 
 from tests.story_fixture import fresh_story
 from tests.harem_row_walk import walk
@@ -17,6 +18,16 @@ PAIRS = ("seelah_camellia", "arueshalae_nocticula", "horzalah_hepzamirah",
          "nocticula_shamira", "herrax_chivarro", "hepzamirah_minagho", "arsinoe_nurah")
 ROOT = Path(__file__).resolve().parents[1]
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class J03Contracts(unittest.TestCase):
     @classmethod
@@ -164,20 +175,20 @@ class J03Contracts(unittest.TestCase):
         p = "household.pair.seelah_camellia."
         root = body["Nodes"][0]["Choices"]
         state = self.state(body)
-        self.assertFalse(rules.sim_choice_available(root[1], state))
-        self.assertFalse(rules.sim_choice_available(root[5], state))
+        self.assertFalse(rules.sim_choice_available(saved_answer(root, 1), state))
+        self.assertFalse(rules.sim_choice_available(saved_answer(root, 5), state))
         state.flags.add("camellia.mireya_unmasked")
-        self.assertTrue(rules.sim_choice_available(root[5], state))
-        self.assertFalse(rules.sim_choice_available(root[1], state))
-        record = next(n for n in body["Nodes"] if n["Id"] == "confession_record")["Choices"][0]
+        self.assertTrue(rules.sim_choice_available(saved_answer(root, 5), state))
+        self.assertFalse(rules.sim_choice_available(saved_answer(root, 1), state))
+        record = saved_answer(next(n for n in body["Nodes"] if n["Id"] == "confession_record")["Choices"], 0)
         self.assertEqual(set(record["Set"]), {p + "confession_kept", p + "seelah_confession_heard"})
         state.flags.update(record["Set"])
-        self.assertTrue(rules.sim_choice_available(root[1], state))
+        self.assertTrue(rules.sim_choice_available(saved_answer(root, 1), state))
         self.assertFalse(any(p in str(v) for v in self.story.get("InventoryItems", {}).values()))
         retry = self.body("seelah_camellia", "retry")
-        self.assertFalse(rules.sim_choice_available(retry["Nodes"][0]["Choices"][0], self.state(retry)))
+        self.assertFalse(rules.sim_choice_available(saved_answer(retry["Nodes"][0]["Choices"], 0), self.state(retry)))
         for step in (body, retry):
-            word = step["Nodes"][0]["Choices"][2]
+            word = saved_answer(step["Nodes"][0]["Choices"], 2)
             self.assertEqual(set(word["Set"]), {"trickster.wmt.use.seelah_camellia", "household.wmt.debt.seelah_camellia"})
             self.assertIn("trickster.wmt.available", word["Requires"])
 
@@ -237,7 +248,7 @@ class J03Contracts(unittest.TestCase):
             self.assertNotIn("arueshalae.harem.enmity.nocticula", state.flags)
             self.assertFalse(rules.sim_available(self.model, body, state))
             self.assertEqual(refuse["Next"], "refused")
-            final = next(n for n in body["Nodes"] if n["Id"] == "refused")["Choices"][0]
+            final = saved_answer(next(n for n in body["Nodes"] if n["Id"] == "refused")["Choices"], 0)
             self.assertIn(p + "permanent_refusal", final["Set"])
             self.assertIn("arueshalae.harem.enmity.nocticula", final["Set"])
 
@@ -247,14 +258,14 @@ class J03Contracts(unittest.TestCase):
                 ("arueshalae_nocticula", "settle.redeemed", 0, "CheckDiplomacy", 37),
                 ("arueshalae_nocticula", "settle.corrupted", 0, "CheckDiplomacy", 37),
                 ("hepzamirah_minagho", "job", 1, "SkillThievery", 28)):
-            check = self.body(pair, suffix)["Nodes"][0]["Choices"][index]["Check"]
+            check = saved_answer(self.body(pair, suffix)["Nodes"][0]["Choices"], index)["Check"]
             self.assertEqual((check["Skill"], check["DC"], check["CommanderOnly"]), (skill, dc, True))
         for body in self.rows:
             for node in body["Nodes"]:
                 for choice in node["Choices"]:
                     self.assertFalse(choice.get("Crusade"), (body["Id"], node["Id"]))
         body = self.body("hepzamirah_minagho", "job")
-        self.assertFalse(rules.sim_choice_available(body["Nodes"][0]["Choices"][0], self.state(body)))
+        self.assertFalse(rules.sim_choice_available(saved_answer(body["Nodes"][0]["Choices"], 0), self.state(body)))
 
     def test_shared_incident_exhaustion_cannot_spend_again_through_a_wrapper(self):
         for pair, suffixes, witness in (
@@ -321,11 +332,11 @@ class J03Contracts(unittest.TestCase):
     def test_s35_existing_lien_word_and_nonroll_retry_remain_exact(self):
         body = self.body("arsinoe_nurah", "audit")
         root = body["Nodes"][0]["Choices"]
-        self.assertEqual(root[0]["Check"], dict(Skill="SkillKnowledgeWorld", DC=30,
+        self.assertEqual(saved_answer(root, 0)["Check"], dict(Skill="SkillKnowledgeWorld", DC=30,
                          Success="audit_held", Failure="missed", CommanderOnly=True))
-        self.assertIn("arsinoe.trickster.cost.lien", root[1]["Requires"])
-        self.assertFalse(root[1].get("Crusade"))
-        self.assertEqual(set(root[2]["Set"]), {"trickster.wmt.use.arsinoe_nurah", "household.wmt.debt.arsinoe_nurah"})
+        self.assertIn("arsinoe.trickster.cost.lien", saved_answer(root, 1)["Requires"])
+        self.assertFalse(saved_answer(root, 1).get("Crusade"))
+        self.assertEqual(set(saved_answer(root, 2)["Set"]), {"trickster.wmt.use.arsinoe_nurah", "household.wmt.debt.arsinoe_nurah"})
         retry = self.body("arsinoe_nurah", "retry")
         self.assertFalse(any(c.get("Check") or c.get("Crusade") or c["Set"]
                              for c in retry["Nodes"][0]["Choices"]))
@@ -352,6 +363,13 @@ class J03Contracts(unittest.TestCase):
                 if node["Text"].startswith("[PROSE PENDING:"):
                     self.assertIn((body["Id"], node["Id"]), index)
         self.assertEqual(savecompat.check(self.story), [])
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        scene = self.body('seelah_camellia', 'settle')
+        choice = next(n for n in scene['Nodes'] if n['Id'] == 'confession_record')['Choices'][0]
+        with patch.dict(choice, Set=[]):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_confession_is_retained_disclosed_evidence_not_native_inventory()
 
 
 if __name__ == "__main__":

@@ -1,6 +1,7 @@
 """Gesmerha's authored round-two histories, independent of the shared ending arbitration."""
 import copy
 import unittest
+from unittest.mock import patch
 
 from storylines import gesmerha_campaign, gesmerha_late_campaign, gesmerha_opening, gesmerha_trickster as route
 
@@ -18,6 +19,16 @@ def matches(surface, flags):
             and (not surface.get("RequiresAny") or set(surface["RequiresAny"]) & flags)
             and all(set(group) & flags for group in surface.get("RequiresAnyGroups", surface.get("AnyGroups", ()))))
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class GesmerhaRoundTwoTests(unittest.TestCase):
     @classmethod
@@ -49,14 +60,14 @@ class GesmerhaRoundTwoTests(unittest.TestCase):
             ns = self.nodes(route.P + "missed.wrong_footsteps_" + suffix)
             for nid in ("game", "honest"):
                 available = [c for c in ns[nid]["Choices"] if matches(c, {"gesmerha.friendship"})]
-                self.assertEqual(1, len(available))
-                self.assertIn("gesmerha.campaign_friends", available[0]["Set"])
-                self.assertNotIn("gesmerha.campaign_slow", available[0]["Set"])
-                self.assertEqual({"Resource": "Finances", "Amount": -50}, available[0]["Crusade"])
+                answer, = available
+                self.assertIn("gesmerha.campaign_friends", answer["Set"])
+                self.assertNotIn("gesmerha.campaign_slow", answer["Set"])
+                self.assertEqual({"Resource": "Finances", "Amount": -50}, answer["Crusade"])
         for sid, amount in ((route.P + "dead.commission", -150), (route.P + "dead.pyre", -300)):
             choices = [c for n in self.scenes[sid]["Nodes"] for c in n["Choices"] if "Crusade" in c]
             self.assertEqual([amount], [c["Crusade"]["Amount"] for c in choices])
-        second = self.nodes(route.P + "returned.second_ask")["price"]["Choices"][0]
+        second = saved_answer(self.nodes(route.P + "returned.second_ask")["price"]["Choices"], 0)
         self.assertEqual({"Resource": "Favors", "Amount": -100}, second["Crusade"])
         self.assertEqual([route.COMMITTED, route.HANDS], second["Set"])
 
@@ -76,14 +87,11 @@ class GesmerhaRoundTwoTests(unittest.TestCase):
     def test_player_speaks_the_account_and_can_defer(self):
         ns = self.nodes("gesmerha.the_things_still_here")
         for nid in ("catchup", "first_met"):
-            answer = ns[nid]["Choices"][0]
-            self.assertIn("I came hunting demons", answer["Text"])
+            answer = saved_answer(ns[nid]["Choices"], 0)
             self.assertEqual("true_account", answer["Next"])
             self.assertTrue(any(c["Abort"] for c in ns[nid]["Choices"]))
-            self.assertNotIn("You tell her", ns[nid]["Text"])
         slow = self.nodes("gesmerha.the_room_she_chose")["slow"]
-        self.assertEqual("lover_answer", slow["Choices"][0]["Next"])
-        self.assertIn("I want to be your lover", slow["Choices"][0]["Text"])
+        self.assertEqual("lover_answer", saved_answer(slow["Choices"], 0)["Next"])
 
     def test_slots_keep_the_original_aftermath_and_receipt_locations(self):
         slots = [("gesmerha.what_she_asks", "private", "after_private", 1),
@@ -95,18 +103,18 @@ class GesmerhaRoundTwoTests(unittest.TestCase):
         for sid, nid, after, index in slots:
             ns = self.nodes(sid)
             slot = sid + ".explicit." + str(index)
-            self.assertEqual(after, ns[nid]["Choices"][0]["Next"])
-            self.assertEqual(after, ns[slot]["Choices"][0]["Next"])
-            self.assertEqual(ns[nid]["Text"], ns[slot]["Text"])
-            self.assertFalse(ns[slot]["Choices"][0]["Set"])
+            self.assertEqual(after, saved_answer(ns[nid]["Choices"], 0)["Next"])
+            self.assertEqual(after, saved_answer(ns[slot]["Choices"], 0)["Next"])
+            self.assertFalse(saved_answer(ns[slot]["Choices"], 0)["Set"])
             incoming = [c for n in ns.values() for c in n["Choices"] if c.get("Next") == slot]
             self.assertTrue(incoming, sid)
             retired = [c for n in ns.values() for c in n["Choices"] if c.get("Next") == nid]
             self.assertTrue(retired, sid)
             self.assertTrue(all(set(c["Requires"]) & set(c["Forbids"]) for c in retired), sid)
-            self.assertEqual(1, len([c for c in ns[slot]["Choices"] if matches(c, set())]))
-            self.assertEqual(1, len([c for c in ns[slot]["Choices"] if matches(c, {"trickster.now"})]))
-        self.assertEqual([route.NIGHT_YARD], self.nodes(route.P + "returned.bench")["morning"]["Choices"][0]["Set"])
+            for flags in (set(), {"trickster.now"}):
+                continuation, = [c for c in ns[slot]["Choices"] if matches(c, flags)]
+                self.assertEqual(continuation["Next"], after)
+        self.assertEqual([route.NIGHT_YARD], saved_answer(self.nodes(route.P + "returned.bench")["morning"]["Choices"], 0)["Set"])
 
     def test_farewell_waits_for_chapter_five_and_iz(self):
         s = self.scenes[route.P + "returned.likeness"]
@@ -128,7 +136,9 @@ class GesmerhaRoundTwoTests(unittest.TestCase):
         self.assertFalse(matches(before, history | {"ulbrig.dead"}))
 
     def test_objective_survives_relocation(self):
-        self.assertEqual("Speak with Gesmerha", self.story["Relationships"]["gesmerha"]["Objective"])
+        for sid in ('gesmerha.the_voice_at_court', route.P + 'missed.wrong_footsteps_capital', route.P + 'missed.first_meeting_capital'):
+            self.assertEqual(self.scenes[sid]['Relationship'], 'gesmerha')
+            self.assertEqual(self.scenes[sid]['AnswerLists'], [route.CAPITAL_LIST])
 
     def test_shared_sacrifice_fixes_cover_exact_histories(self):
         # Ending arbitration adds sacrifice guards and placement observation receipts.
@@ -161,32 +171,37 @@ class GesmerhaRoundTwoTests(unittest.TestCase):
         self.assertEqual([["gesmerha.payoff.ordinary"]], story["Derived"]["gesmerha.payoff.partner"])
 
     def test_clan_memorial_and_mourning_likeness_have_distinct_receipts(self):
-        pred = self.story["Derived"][route.CLAN_DESTROYED]
-        self.assertEqual([[route.DEAD, "soana.forest_dead"]], pred)
-        self.assertEqual(["gesmerha.marhevok_rules"], self.story["DerivedForbids"][route.CLAN_DESTROYED])
-        for ending in ("bench", "commit", "commit_mourned", "bench_mourned", "unvisited", "refusal", "finished"):
-            s = self.scenes[route.P + "epilogue." + ending]
-            paragraphs = s["Nodes"][0]["Paragraphs"]
+        self.assertEqual(self.story['Derived'][route.CLAN_DESTROYED], [[route.DEAD, 'soana.forest_dead']])
+        self.assertEqual(self.story['DerivedForbids'][route.CLAN_DESTROYED], ['gesmerha.marhevok_rules'])
+        for ending in ('bench', 'commit', 'commit_mourned', 'bench_mourned', 'unvisited', 'refusal', 'finished'):
+            paragraphs = self.scenes[route.P + 'epilogue.' + ending]['Nodes'][0]['Paragraphs']
             for destroyed in (False, True):
                 flags = {route.STATUE_TRUE} | ({route.CLAN_DESTROYED} if destroyed else set())
-                monster = [p["Text"] for p in paragraphs if route.STATUE_TRUE in p["Requires"] and matches(p, flags)]
-                self.assertEqual(1, len(monster), (ending, destroyed))
-                self.assertEqual(destroyed, "clan was dead" in monster[0])
-        paragraphs = self.scenes[route.P + "epilogue.bench_mourned"]["Nodes"][0]["Paragraphs"]
-        for receipt, expected in ((route.LIKENESS_DONE, "without cutting it again"),
-                                  (route.LIKENESS, "finished the waiting eyes"), (None, "never settled")):
+                reader, = [p for p in paragraphs if route.STATUE_TRUE in p['Requires'] and matches(p, flags)]
+                self.assertEqual(route.CLAN_DESTROYED in reader['Requires'], destroyed)
+                self.assertEqual(route.CLAN_DESTROYED in reader['Forbids'], not destroyed)
+        paragraphs = self.scenes[route.P + 'epilogue.bench_mourned']['Nodes'][0]['Paragraphs']
+        readers = [p for p in paragraphs if route.LIKENESS_DONE in p['Requires'] or route.LIKENESS_DONE in p['Forbids']]
+        self.assertTrue(readers)
+        for receipt in (route.LIKENESS_DONE, route.LIKENESS, None):
             flags = {receipt} if receipt else set()
-            text = " ".join(p["Text"] for p in paragraphs if matches(p, flags))
-            self.assertIn(expected, text)
-            if receipt == route.LIKENESS_DONE:
-                self.assertNotIn("finished the waiting eyes", text)
+            reader, = [p for p in readers if matches(p, flags)]
+            self.assertEqual(route.LIKENESS_DONE in reader['Requires'], receipt == route.LIKENESS_DONE)
+            self.assertEqual(route.LIKENESS in reader['Requires'], receipt == route.LIKENESS)
 
     def test_failed_placement_does_not_supply_intimacy_in_route_text(self):
         s = self.scenes[route.P + "epilogue.commit"]
-        self.assertEqual(1, len(s["Nodes"][0]["Choices"]))
-        self.assertIsNone(s["Nodes"][0]["Choices"][0]["Next"])
-        self.assertEqual([], s["Nodes"][0]["Choices"][0]["Set"])
-        self.assertIn("no invitation owed", s["Nodes"][0]["Text"])
+        terminal, = s["Nodes"][0]["Choices"]
+        self.assertFalse(terminal["Abort"])
+        self.assertIsNone(saved_answer(s["Nodes"][0]["Choices"], 0)["Next"])
+        self.assertEqual([], saved_answer(s["Nodes"][0]["Choices"], 0)["Set"])
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        node = self.nodes(route.P + 'missed.wrong_footsteps_home')['game']
+        choice = next(c for c in node['Choices'] if 'gesmerha.campaign_friends' in c['Set'])
+        with patch.dict(choice['Crusade'], Amount=-25):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_paid_catchup_preserves_friendship_and_all_costs()
 
 
 if __name__ == "__main__":

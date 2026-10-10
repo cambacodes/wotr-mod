@@ -1,6 +1,7 @@
 """Round-3 structure acceptance against generated gates and played flags."""
 import itertools
 import unittest
+from unittest.mock import patch
 
 from tests.story_fixture import fresh_story
 from tests.test_kiana_partner import walk
@@ -32,11 +33,11 @@ class Fix14ATests(unittest.TestCase):
                     ('arsinoe.lastcall.called', called), ('arsinoe.siphon_burst', burst),
                     ('lastcall.active', lastcall), ('arsinoe.trickster.cost.rent_grace', grace)) if on}
                 expected = 0 if called else 1 if burst else 2 if lastcall else 3
-                self.assertEqual([i for i in range(4) if visible(parts['fix14.account.' + str(i)], flags)], [expected])
-                self.assertEqual([i for i in (7, 8) if visible(parts['fix14.account.' + str(i)], flags)], [7 if grace else 8])
-                for i, collateral in enumerate(('collateral_still', 'collateral_word', 'lien'), 4):
-                    self.assertFalse(visible(parts['fix14.account.' + str(i)], flags))
-                    self.assertTrue(visible(parts['fix14.account.' + str(i)], flags | {'arsinoe.trickster.cost.' + collateral}))
+                self.assertEqual([i for i in range(4) if visible(parts.get('fix14.account.' + str(i)), flags)], [expected])
+                self.assertEqual([i for i in (7, 8) if visible(parts.get('fix14.account.' + str(i)), flags)], [7 if grace else 8])
+                for i, collateral in zip((4, 5, 6), ('collateral_still', 'collateral_word', 'lien')):
+                    self.assertFalse(visible(parts.get('fix14.account.' + str(i)), flags))
+                    self.assertTrue(visible(parts.get('fix14.account.' + str(i)), flags | {'arsinoe.trickster.cost.' + collateral}))
 
     def test_declined_cookie_ending_selects_the_played_stake(self):
         scene = self.scenes['chadali.trickster.epilogue.declined']
@@ -46,7 +47,7 @@ class Fix14ATests(unittest.TestCase):
             self.assertTrue(visible(scene, flags))
             stakes = [p for p in scene['Nodes'][0]['Paragraphs']
                       if any(f.startswith('chadali.wagers.') for f in p['Requires'])]
-            self.assertEqual([i for i, p in enumerate(stakes) if visible(p, flags)], [index])
+            self.assertEqual([p['Requires'] for p in stakes if visible(p, flags)], [[flag]])
             self.assertFalse(visible(scene, flags | {'chadali.trickster.hall_sealed'}))
 
     def test_recovered_earring_keeps_all_allocation_outcomes(self):
@@ -66,19 +67,22 @@ class Fix14ATests(unittest.TestCase):
             ('devarra.trickster.epilogue.commit', 17, 22),
         ):
             parts = self.node(sid, 'page')['Paragraphs']
-            for hatched_flag, index in ((True, grown_index), (False, shell_index)):
+            for hatched_flag in (True, False):
+                paragraph, = [p for p in parts if p.get('Requires') ==
+                              [bill, hatched, kiln, present] if hatched_flag] if hatched_flag else [p for p in parts if p.get('Requires') == [bill, kiln, present]]
                 flags = {bill, kiln, present} | ({hatched} if hatched_flag else set())
-                self.assertTrue(visible(parts[index], flags))
+                self.assertTrue(visible(paragraph, flags))
                 for loss in ('nidalynn.closed', 'nidalynn.trickster.lie_kept', 'nidalynn.trickster.goat.lie_kept', 'nidalynn.trickster.given_to_the_crowd', north):
-                    self.assertFalse(visible(parts[index], flags | {loss}), (sid, loss))
-                self.assertFalse(visible(parts[index], flags - {present}))
-                self.assertFalse(visible(parts[index], flags - {kiln}))
+                    self.assertFalse(visible(paragraph, flags | {loss}), (sid, loss))
+                self.assertFalse(visible(paragraph, flags - {present}))
+                self.assertFalse(visible(paragraph, flags - {kiln}))
             variants = [p for p in parts if p.get('Id', '').startswith('fix14.keeper.')]
             for flags in ({bill}, {bill, 'nidalynn.trickster.egg_owed'}, {bill, kiln},
                           {bill, kiln, hatched, 'nidalynn.closed'},
                           {bill, kiln, hatched, 'nidalynn.closed', 'nidalynn.trickster.lie_kept'},
                           {bill, kiln, north}):
-                self.assertEqual(sum(visible(p, flags) for p in variants), 1, (sid, flags))
+                selected, = [p for p in variants if visible(p, flags)]
+                self.assertTrue(selected['Id'].startswith('fix14.keeper.'))
 
     def test_morning_dispatch_does_not_earn_a_commitment(self):
         sid = 'kiana.morning'
@@ -115,6 +119,13 @@ class Fix14ATests(unittest.TestCase):
             self.assertFalse(visible(followup, earned - {'kiana.present_now'}))
             for loss in (kp.DEAD, 'kiana.closed', 'kiana.committed'):
                 self.assertFalse(visible(followup, earned | {loss}))
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        paragraph = next(p for p in self.node('arsinoe.trickster.late.commit', 'rubric2_cauldron_night')['Paragraphs']
+                         if p.get('Id') == 'fix14.account.0')
+        with patch.dict(paragraph, Requires=[]):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_no_roof_accounts_partition_settlement_return_loss_and_grace()
 
 
 if __name__ == '__main__':

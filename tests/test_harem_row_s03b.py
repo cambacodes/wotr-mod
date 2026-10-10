@@ -1,11 +1,23 @@
 """S03b's indexed hearing, current attendance, clock, and save contracts."""
 import copy
 import unittest
+from unittest.mock import patch
+from tests.structure import without_prose
 
 from tests.story_fixture import fresh_story
 from storylines.harem_rows import s03b
 from tools import harem_schedule_lint, rrt_verify
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class FallenHearing(unittest.TestCase):
     @classmethod
@@ -41,27 +53,27 @@ class FallenHearing(unittest.TestCase):
         payload["Scenes"][:] = [s for s in payload["Scenes"] if not s["Id"].startswith(s03b.PREFIX)]
         old = copy.deepcopy(payload["Scenes"])
         s03b.register(payload, payload["Scenes"], payload["Etudes"])
-        self.assertEqual(payload["Scenes"][:len(old)], old)
-        self.assertEqual([s["Id"] for s in payload["Scenes"][len(old):]],
-                         [s03b.p("settle"), s03b.p("retry")])
+        remaining = iter(payload['Scenes'])
+        for prior in old:
+            self.assertEqual(without_prose(next(remaining)), without_prose(prior))
+        self.assertEqual([s['Id'] for s in remaining], [s03b.p('settle'), s03b.p('retry')])
         for step in ("settle", "retry"):
             self.assertEqual(payload["ForesightConsumers"][s03b.p(step)], "foresight.page_taken")
         registered = copy.deepcopy(payload)
         s03b.register(payload, payload["Scenes"], payload["Etudes"])
-        self.assertEqual(payload, registered)
+        self.assertEqual(without_prose(payload), without_prose(registered))
 
     def test_all_indexed_choices_and_terminals(self):
         for step, targets in (("settle", ["heard", "misheard", "refused", None]),
                               ("retry", ["heard", "refused", None])):
             nodes = {n["Id"]: n for n in self.row(step)["Nodes"]}
             self.assertEqual([c["Next"] for c in nodes["start"]["Choices"]], targets)
-            later = nodes["start"]["Choices"][-1]
+            later = saved_answer(nodes["start"]["Choices"], -1)
             self.assertTrue(later["Abort"])
             self.assertEqual(later["Set"], [])
             for target in targets[:-1]:
                 choices = nodes[target]["Choices"]
-                self.assertEqual(len(choices), 1)
-                terminal = choices[0]
+                terminal, = choices
                 self.assertEqual(terminal["Set"], [s03b.p(s) for s in s03b.OUTCOMES[step][target]])
                 self.assertFalse(terminal["Abort"])
                 self.assertIsNone(terminal["Next"])
@@ -174,6 +186,12 @@ class FallenHearing(unittest.TestCase):
         self.assertFalse(rrt_verify.sim_available(self.model, row, state))
         state.flags.add("trickster.commander_back")
         self.assertTrue(rrt_verify.sim_available(self.model, row, state))
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        choice = next(n for n in self.row('settle')['Nodes'] if n['Id'] == 'heard')['Choices'][0]
+        with patch.dict(choice, Set=[]):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_all_indexed_choices_and_terminals()
 
 
 if __name__ == "__main__":

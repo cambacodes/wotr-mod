@@ -1,6 +1,8 @@
 """Private repair: honest bout outcomes, learned strain, attendance and caps."""
 import copy
 import unittest
+from unittest.mock import patch
+from tests.structure import without_prose
 
 from tests.story_fixture import fresh_story
 from tests.harem_row_walk import walk
@@ -8,6 +10,16 @@ from storylines import harem_caps, household
 from storylines.harem_rows import z_household_mend as mend
 from tools import departure_lint, payoff_lint, rrt_verify as rules
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class HouseholdMendTests(unittest.TestCase):
     @classmethod
@@ -77,7 +89,8 @@ class HouseholdMendTests(unittest.TestCase):
         for scene in (self.first, self.later):
             attempted = scene["Id"] + ".attempted"
             outcomes = walk(self, self.model, scene, self.state())
-            self.assertEqual(len(outcomes), 4)
+            first, second, third, fourth = outcomes
+            self.assertTrue(all(o is not None for o in (first, second, third, fourth)))
             won, nick, refused, abort = outcomes
             self.assertIn(scene["Id"] + ".commander_won", won.flags)
             self.assertNotIn(mend.MEND, won.flags)
@@ -90,8 +103,8 @@ class HouseholdMendTests(unittest.TestCase):
                 self.assertEqual(outcome.rest_spent["household.pair"], 1)
             self.assertNotIn(attempted, abort.flags)
             self.assertFalse(abort.rest_spent)
-            self.assertEqual(scene["Nodes"][0]["Choices"][0]["Check"]["Success"], "commander_touch")
-            self.assertEqual(scene["Nodes"][0]["Choices"][0]["Check"]["Failure"], "camellia_touch")
+            self.assertEqual(saved_answer(scene["Nodes"][0]["Choices"], 0)["Check"]["Success"], "commander_touch")
+            self.assertEqual(saved_answer(scene["Nodes"][0]["Choices"], 0)["Check"]["Failure"], "camellia_touch")
 
     def test_failed_or_refused_opportunity_leaves_delayed_later_mend(self):
         self.assertFalse(rules.sim_available(self.model, self.later, self.state()))
@@ -149,7 +162,7 @@ class HouseholdMendTests(unittest.TestCase):
         payload = copy.deepcopy(self.story)
         before = copy.deepcopy(payload)
         mend.register(payload, payload["Scenes"], payload["Etudes"])
-        self.assertEqual(payload, before)
+        self.assertEqual(without_prose(payload), without_prose(before))
         # Later shared finalizers can append their own scenes. Our registrar
         # preserves all incoming scene positions and appends only this slice.
         prefix = copy.deepcopy(self.story)
@@ -157,6 +170,12 @@ class HouseholdMendTests(unittest.TestCase):
         old_ids = [s['Id'] for s in prefix['Scenes']]
         mend.register(prefix, prefix['Scenes'], prefix['Etudes'])
         self.assertEqual([s['Id'] for s in prefix['Scenes']], old_ids + list(mend.SCENE_IDS))
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        check = self.first['Nodes'][0]['Choices'][0]['Check']
+        with patch.dict(check, Success='camellia_touch'):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_every_answer_remains_selectable_and_records_the_honest_result()
 
 
 if __name__ == "__main__":

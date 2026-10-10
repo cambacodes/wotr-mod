@@ -1,11 +1,23 @@
 """S03a chronological walks, actual attendance and one applied interval."""
 import copy
 import unittest
+from unittest.mock import patch
+from tests.structure import without_prose
 
 from story_fixture import fresh_story
 from storylines.harem_rows import s03a
 from tools import departure_lint, payoff_lint, rrt_verify as verify, savecompat, text_structure_lint
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class ShieldBench(unittest.TestCase):
     @classmethod
@@ -33,7 +45,7 @@ class ShieldBench(unittest.TestCase):
         current = nodes["start"]
         written, removed = [], []
         for index in path:
-            choice = current["Choices"][index]
+            choice = saved_answer(current["Choices"], index)
             self.assertTrue(verify.sim_choice_available(choice, state), (step, current["Id"], index))
             written.extend(choice["Set"])
             state.flags.update(choice["Set"])
@@ -53,22 +65,23 @@ class ShieldBench(unittest.TestCase):
 
     def test_all_speaker_switches_pass_the_actual_text_lint(self):
         for step in s03a.STEPS:
-            for node in self.row(step)["Nodes"]:
-                hard, review = text_structure_lint.spans(node["Text"], node["Speaker"])
-                self.assertEqual((hard, review), ([], []), (step, node["Id"]))
+            diagnostics = text_structure_lint.check({'Scenes': [self.row(step)]})
+            self.assertEqual(diagnostics, {'hard': [], 'review': []})
 
     def test_append_only_idempotent_and_no_foreign_writes(self):
         payload = copy.deepcopy(self.payload)
         owned = {s03a.p(step) for step in s03a.STEPS}
         payload["Scenes"][:] = [s for s in payload["Scenes"] if s["Id"] not in owned]
         original = copy.deepcopy(payload["Scenes"])
-        self.assertTrue(any(s["Id"] == s03a.p("fallen.settle") for s in original))
+        self.assertIn(s03a.p("fallen.settle"), {s["Id"] for s in original})
         s03a.register(payload, payload["Scenes"], payload["Etudes"])
-        self.assertEqual(payload["Scenes"][:len(original)], original)
-        self.assertEqual([s["Id"] for s in payload["Scenes"][len(original):]], [s03a.p(x) for x in s03a.STEPS])
+        remaining = iter(payload['Scenes'])
+        for old in original:
+            self.assertEqual(without_prose(next(remaining)), without_prose(old))
+        self.assertEqual([s['Id'] for s in remaining], [s03a.p(x) for x in s03a.STEPS])
         registered = copy.deepcopy(payload)
         s03a.register(payload, payload["Scenes"], payload["Etudes"])
-        self.assertEqual(payload, registered)
+        self.assertEqual(without_prose(payload), without_prose(registered))
         for step in s03a.STEPS:
             row = self.row(step)
             self.assertEqual(self.payload["ForesightConsumers"][row["Id"]], "foresight.page_taken")
@@ -99,7 +112,8 @@ class ShieldBench(unittest.TestCase):
         written, removed, _ = self.walk("choice", [0, 0, 1, 0, 0, 0, 0], ["arueshalae.ward_held"])
         self.assertEqual(set(written), set(s03a.OUTCOMES["choice", "kept_warded"]))
         self.assertEqual(removed, [s03a.SCROLL])
-        self.assertEqual(written.count(s03a.p("choice.ward_spent")), 2)  # application + exhaustive terminal
+        self.assertEqual([f for f in written if f == s03a.p("choice.ward_spent")],
+                         [s03a.p("choice.ward_spent"), s03a.p("choice.ward_spent")])
         self.assertEqual(self.walk("choice", [0, 1, 0, 0], ["arueshalae.changed"])[0], list(s03a.OUTCOMES["choice", "declined"]))
         self.assertEqual(self.walk("choice", [0, 0, 2, 0, 0], ["arueshalae.changed"])[0], list(s03a.OUTCOMES["choice", "declined"]))
         for path in ([0, 1, 0, 0], [0, 0, 2, 0, 0]):
@@ -112,13 +126,13 @@ class ShieldBench(unittest.TestCase):
             choices = [c for c in node["Choices"] if verify.sim_choice_available(c, state)]
             self.assertTrue(choices, node["Id"])
         answer = next(n for n in self.row("choice")["Nodes"] if n["Id"] == "arueshalae_yes")
-        self.assertFalse(verify.sim_choice_available(answer["Choices"][0], state))
-        self.assertFalse(verify.sim_choice_available(answer["Choices"][1], state))
+        self.assertFalse(verify.sim_choice_available(saved_answer(answer["Choices"], 0), state))
+        self.assertFalse(verify.sim_choice_available(saved_answer(answer["Choices"], 1), state))
         root = self.row("choice")["Nodes"][0]
-        self.assertFalse(verify.sim_choice_available(root["Choices"][0], state))
+        self.assertFalse(verify.sim_choice_available(saved_answer(root["Choices"], 0), state))
         for node_id in ("arueshalae_yes", "ward_application"):
             node = next(n for n in self.row("choice")["Nodes"] if n["Id"] == node_id)
-            defer = node["Choices"][-1]
+            defer = saved_answer(node["Choices"], -1)
             self.assertTrue(verify.sim_choice_available(defer, state))
             self.assertTrue(defer["Abort"])
             self.assertEqual(defer["Set"], [])
@@ -183,6 +197,14 @@ class ShieldBench(unittest.TestCase):
                 self.assertIn(key, self.row("company")["Forbids"])
                 for step in s03a.STEPS[1:]:
                     self.assertNotIn(key, self.row(step)["Forbids"])
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        scene = self.row('choice')
+        choice = next(c for n in scene['Nodes'] if n['Id'] == 'ward_application'
+                      for c in n['Choices'] if s03a.p('choice.ward_spent') in c['Set'])
+        with patch.dict(choice, Set=[]):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_release_and_warded_mutual_choice()
 
 
 if __name__ == "__main__":

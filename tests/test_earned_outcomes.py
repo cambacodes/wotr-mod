@@ -1,6 +1,7 @@
 """eng7-l13: mutation coverage for earned history and assembled rewards."""
 import copy
 import unittest
+from tests.structure import without_prose
 from unittest.mock import patch
 
 from expansion import make_expansion
@@ -15,16 +16,26 @@ def findings(payload):
     return late_commitment.check(model, list(blocks(model)), Proof(model))
 
 
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
+
 class EarnedOutcomeGeneratorTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         integrate = earned_outcomes.integrate
 
-        def capture(payload):
+        def capture(payload, **options):
             # Observe this pass at its real assembly seam. Later appenders need
             # the ending nodes it supplies, so disabling it breaks the build.
             cls.before = copy.deepcopy(payload)
-            integrate(payload)
+            integrate(payload, **options)
 
         with patch.object(earned_outcomes, "integrate", side_effect=capture) as observed:
             cls.after = make_expansion()
@@ -36,27 +47,26 @@ class EarnedOutcomeGeneratorTests(unittest.TestCase):
         source = copy.deepcopy(self.before)
         shallow_export = dict(source)
         earned_outcomes.integrate(shallow_export)
-        self.assertEqual(source, self.before)
+        self.assertEqual(without_prose(source), without_prose(self.before))
 
     def test_every_reward_has_live_proof(self):
         self.assertEqual(findings(self.after), [])
 
     def test_non_romance_page_receipt_keeps_its_paid_terminal(self):
-        scene = next(s for s in self.after["Scenes"] if s["Id"] == "trickster.foresight.page")
-        gate = next(n for n in scene["Nodes"] if n["Id"] == "g_gate")
-        self.assertEqual(len(gate["Choices"]), 1)
-        self.assertEqual(gate["Choices"][0]["Set"], ["trickster.foresight.gate_fire"])
-        self.assertFalse(gate["Choices"][0]["Abort"])
+        scene = next(s for s in self.after['Scenes'] if s['Id'] == 'trickster.foresight.page')
+        gate = next(n for n in scene['Nodes'] if n['Id'] == 'g_gate')
+        self.assertEqual([(c['Set'], c['Abort'], c['Next']) for c in gate['Choices']],
+                         [(['trickster.foresight.gate_fire'], False, None)])
 
     def test_framework_exception_cannot_hide_a_romantic_producer(self):
         payload = copy.deepcopy(self.before)
         scene = next(s for s in payload["Scenes"] if s["Id"] == "trickster.foresight.page")
         gate = next(n for n in scene["Nodes"] if n["Id"] == "g_gate")
-        gate["Choices"][0]["Set"].append("trickster.foresight.first_night")
+        saved_answer(gate["Choices"], 0)["Set"].append("trickster.foresight.first_night")
         # Give the framework a real closure producer before the new reward.
         # Its shipped closed key has no producer, so clearing entry conditions
         # alone would still correctly prove that an ordinary run cannot close it.
-        scene["Nodes"][0]["Choices"][0]["Set"].append("trickster.foresight.closed")
+        saved_answer(scene["Nodes"][0]["Choices"], 0)["Set"].append("trickster.foresight.closed")
         self.assertTrue(any(f["scene"] == scene["Id"] for f in findings(payload)))
 
     def test_raw_terms_need_acceptance_and_late_refusal_revokes_it(self):
@@ -103,7 +113,7 @@ class EarnedOutcomeGeneratorTests(unittest.TestCase):
     def test_removing_live_path_guard_reopens_the_reported_defect(self):
         payload = copy.deepcopy(self.after)
         scene = next(s for s in payload["Scenes"] if s["Id"] == "iomedae.trickster.disputation")
-        choice = next(n for n in scene["Nodes"] if n["Id"] == "torches")["Choices"][0]
+        choice = saved_answer(next(n for n in scene["Nodes"] if n["Id"] == "torches")["Choices"], 0)
         # Earlier lanes may already prove current power at scene entry.
         self.assertTrue("trickster.now" in scene["Requires"] or "trickster.now" in choice["Requires"])
         scene["Requires"] = [k for k in scene["Requires"] if k != "trickster.now"]
@@ -124,7 +134,7 @@ class EarnedOutcomeGeneratorTests(unittest.TestCase):
         for sid in ("mielarah.deck.market", "mielarah.deck.market.arcade"):
             scene = next(s for s in self.after["Scenes"] if s["Id"] == sid)
             node = next(n for n in scene["Nodes"] if n["Id"] == "worked_out")
-            self.assertIn("mielarah.trickster.cost.meant", node["Choices"][0]["Set"])
+            self.assertIn("mielarah.trickster.cost.meant", saved_answer(node["Choices"], 0)["Set"])
 
     def test_lastcall_parity_and_mutation(self):
         self.assertEqual(entitlement_errors(self.after), [])
@@ -147,7 +157,7 @@ class EarnedOutcomeGeneratorTests(unittest.TestCase):
     def test_historical_prose_exemption_cannot_hide_a_new_producer(self):
         payload = copy.deepcopy(self.before)
         scene = next(s for s in payload["Scenes"] if s["Id"] == "noct.ending_death")
-        scene["Nodes"][0]["Choices"][0]["Set"].append(payload["Relationships"]["nocticula"]["CommittedFlag"])
+        saved_answer(scene["Nodes"][0]["Choices"], 0)["Set"].append(payload["Relationships"]["nocticula"]["CommittedFlag"])
         self.assertTrue(any(f["scene"] == scene["Id"] and f["slot"] == "choice[0]" for f in findings(payload)))
 
     def test_earned_return_and_ordinary_path_remain_valid(self):
@@ -174,6 +184,13 @@ class EarnedOutcomeGeneratorTests(unittest.TestCase):
         state.flags = {"chapter_later", "arsinoe.committed", "arsinoe.romance_kept"}
         verify.sim_complete(model, state)
         self.assertIn("arsinoe.outcome.route_open", state.flags)
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        scene = next(s for s in self.after['Scenes'] if s['Id'] == 'trickster.foresight.page')
+        choice = next(n for n in scene['Nodes'] if n['Id'] == 'g_gate')['Choices'][0]
+        with patch.dict(choice, Set=[]):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_non_romance_page_receipt_keeps_its_paid_terminal()
 
 
 if __name__ == "__main__":

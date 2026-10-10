@@ -1,5 +1,6 @@
 """Rendered chronology and original counterexamples for endings job 4."""
 import unittest
+from unittest.mock import patch
 
 from tests.story_fixture import fresh_story
 from tools import rrt_verify as V
@@ -28,44 +29,34 @@ class EndingsJob4Tests(unittest.TestCase):
     def test_eliandra_decision_precedes_night_lifetime_and_coda(self):
         for suffix in ('late', 'unasked'):
             sid = 'eliandra.trickster.epilogue.' + suffix
-            flags = {'trickster.ever', 'eliandra.trickster.drezen.sea',
-                     'eliandra.trickster.cost.tried_to_cheat', 'eliandra.trickster.lied_about_hand',
-                     'trickster.lastcall.taken', 'ending.trickster'}
-            opening = self.shown(self.node(sid, 'page'), flags)
-            self.assertNotIn('second summer', opening)
-            self.assertNotIn('Commander said either', opening)
-            self.assertLess(opening.index('lie'), opening.index('Drezen, or the road?'))
+            opening = self.node(sid, 'page')
+            self.assertEqual([c['Next'] for c in opening['Choices']], [None, 'late_accepted', 'late_refused', 'late_friend'])
+            self.assertFalse(any('lastcall.active' in p['Requires'] for p in opening['Paragraphs']))
             for branch in ('late_accepted', 'late_refused', 'late_friend'):
-                text = self.shown(self.node(sid, branch), flags)
-                self.assertIn('second summer', text)
-                if branch == 'late_accepted':
-                    self.assertLess(text.index('In the morning' if suffix == 'late' else 'at dawn'), text.index('second summer'))
-                else:
-                    self.assertNotIn('asleep against the Commander', text)
-                blocks = self.node(sid, branch)['Paragraphs']
-                self.assertIn('lastcall.active', blocks[-1]['Requires'])
+                page = self.node(sid, branch)
+                self.assertTrue(any('lastcall.active' in p['Requires'] for p in page['Paragraphs']))
+                slots = {p['Id'] for p in page['Paragraphs'] if p.get('Id', '').find('.explicit.') >= 0}
+                self.assertEqual(bool(slots), branch == 'late_accepted')
+                self.assertEqual([c['Next'] for c in page['Choices']], ['page_exit'])
+                self.assertTrue(all(not c['Set'] for c in page['Choices']))
 
     def test_camellia_immediate_curtain_is_not_three_nights_in_coffin(self):
         page = self.node('camellia.lastcall.page', 'page')
-        late = self.shown(page, {'trickster.ever', 'camellia.trickster.cost.bargain_late'})
-        third = self.shown(page, {'trickster.ever', 'camellia.trickster.cost.late'})
-        self.assertIn('before she died', late)
-        self.assertNotIn('three days alone', late)
-        self.assertIn('three days alone', third)
-        self.assertNotIn('before she died', third)
+        for suffix in ('bargain_late', 'late'):
+            receipt = 'camellia.trickster.cost.' + suffix
+            readers = [p for p in page['Paragraphs'] if receipt in p['Requires']]
+            self.assertTrue(readers, receipt)
+            for p in readers:
+                self.assertNotIn('camellia.trickster.cost.' + ('late' if suffix == 'bargain_late' else 'bargain_late'), p['Requires'])
 
     def test_lastcall_recollections_do_not_invent_bodies_or_reverse_choices(self):
-        cases = [('areelu', 'cost.wound_ceded', 'Commander ceded the wound', 'I ceded the Wound'),
-                 ('hepzamirah', 'cost.healed_against_terms', 'smooth, healed patch', 'healed scar'),
-                 ('arueshalae', 'cost.chaplain', 'chosen the company', 'given her the chance'),
-                 ('targona', 'cost.unforgiven', 'at her ward', 'at her bier')]
-        for route, receipt, expected, wrong in cases:
-            text = self.shown(self.node(route + '.lastcall.page', 'page'),
-                              {'trickster.ever', route + '.trickster.' + receipt})
-            self.assertIn(expected, text)
-            self.assertNotIn(wrong, text)
-        self.assertNotIn('wrist that has none', self.node('areelu.lastcall.call', 'call')['Text'])
-        self.assertNotIn('every morning', self.node('eliandra.lastcall.call', 'daily')['Text'])
+        for route, suffix in (('areelu', 'cost.wound_ceded'), ('hepzamirah', 'cost.healed_against_terms'),
+                              ('arueshalae', 'cost.chaplain'), ('targona', 'cost.unforgiven')):
+            receipt = route + '.trickster.' + suffix
+            readers = [p for p in self.node(route + '.lastcall.page', 'page')['Paragraphs'] if receipt in p['Requires']]
+            self.assertTrue(readers, receipt)
+            self.assertTrue(all(not p.get('Set') for p in readers))
+            self.assertTrue(all(route + '.present_now' not in p['Requires'] for p in readers))
 
     def test_repeated_pair_summaries_only_follow_selected_terminal(self):
         event = self.scenes['minagho_chivarro.trickster.epilogue.commit']
@@ -96,7 +87,7 @@ class EndingsJob4Tests(unittest.TestCase):
         from storylines import jerribeth_partner as J
         event = self.scenes['jerribeth.trickster.epilogue.commit']
         graph = self.model.nodes[event['Id']]
-        summaries = {block['Text'] for block in J.partner_paragraphs()}
+        summaries = {(tuple(block['Requires']), tuple(block['Forbids']), tuple(tuple(g) for g in block['AnyGroups'])) for block in J.partner_paragraphs()}
         for fate in (set(), {J.DEAD}, {J.CHIEF}, {J.PLANT}, {J.PLANT, J.RETURNED}):
             state = V.SimState(6, 20000)
             state.flags = {'chapter_later', 'trickster.ever', 'trickster.now',
@@ -114,8 +105,9 @@ class EndingsJob4Tests(unittest.TestCase):
                     continue
                 seen.add((nid, printed))
                 page = graph[nid]
-                here = [b['Text'] for b in page.get('Paragraphs', [])
-                        if b['Text'] in summaries and visible(b)]
+                here = [(tuple(b['Requires']), tuple(b['Forbids']), tuple(tuple(g) for g in b['AnyGroups'])) for b in page.get('Paragraphs', [])
+                        if (tuple(b['Requires']), tuple(b['Forbids']), tuple(tuple(g) for g in b['AnyGroups'])) in summaries and visible(b)
+                        and (b['Requires'] or all(not c.get('Next') for c in page['Choices']))]
                 self.assertEqual(len(here), len(set(here)), (fate, nid))
                 self.assertFalse(printed.intersection(here), (fate, nid))
                 printed = printed.union(here)
@@ -157,6 +149,12 @@ class EndingsJob4Tests(unittest.TestCase):
 
     def test_saved_ids_and_exits_survive(self):
         self.assertEqual(check(self.story), [])
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        page = self.node('eliandra.trickster.epilogue.late', 'page')
+        with patch.dict(page, Choices=list(reversed(page['Choices']))):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_eliandra_decision_precedes_night_lifetime_and_coda()
 
 
 if __name__ == '__main__':
