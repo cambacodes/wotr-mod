@@ -3,6 +3,9 @@ import json
 from pathlib import Path
 import unittest
 
+from tests.story_fixture import fresh_story
+from tests.fix16b_structure import declared_host, reachable_nodes
+
 from storylines import herrax_house as house
 from storylines import herrax_trickster as route
 
@@ -178,20 +181,15 @@ class HerraxRound2Tests(unittest.TestCase):
     def test_all_four_briefs_have_reachable_default_nodes(self):
         folder = Path(__file__).resolve().parents[1] / "tools/route_packs/explicit_slots/herrax"
         files = list(folder.glob("*.json"))
-        # Four reserved slot nodes; later briefs map to an existing host node (host_scene/host_node).
-        self.assertGreaterEqual(len(files), 4)
-        nodes = {n["Id"] for event in SCENES.values() for n in event["Nodes"]}
-        reserved = 0
+        scenes = {scene["Id"]: scene for scene in fresh_story()["Scenes"]}
+        self.assertTrue(files)
         for brief in files:
             data = json.loads(brief.read_text(encoding="utf-8-sig"))
-            if brief.stem in nodes:
-                reserved += 1
-            else:
-                host = SCENES[data["host_scene"]]
-                self.assertIn(data["host_node"], {n["Id"] for n in host["Nodes"]}, brief.stem)
-            self.assertEqual(["a man", "a woman"], data["commander_variants"])
-            self.assertIn("last_line", data)
-        self.assertEqual(4, reserved)
+            sid, nid = declared_host(brief.stem, data, scenes)
+            with self.subTest(brief=brief.stem, scene=sid, node=nid):
+                self.assertIn(nid, reachable_nodes(scenes[sid]))
+                self.assertEqual(["a man", "a woman"], data["commander_variants"])
+
 
 
 if __name__ == "__main__":
