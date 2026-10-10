@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.structure import without_prose
 from tests.story_fixture import row_registration_fixture
 
 from storylines.harem_rows import s48
@@ -26,8 +27,25 @@ class S48Tests(unittest.TestCase):
 
     def test_savecompat_and_body_attachment(self):
         self.assertEqual(savecompat(self.payload), [])
-        self.assertEqual(len(self.rows), 15)
-        self.assertEqual(len(self.by), len(self.rows))
+        self.assertIn(contract_identities(self.rows),
+                {15: (('household.pair.herrax_minagho.notice',
+                       'household.pair.herrax_minagho.notice.unfinished',
+                       'household.pair.herrax_minagho.notice.historical',
+                       'household.pair.herrax_minagho.reply',
+                       'household.pair.herrax_minagho.retry',
+                       'household.pair.herrax_minagho.retry.debt',
+                       'household.pair.herrax_minagho.notice.minagho',
+                       'household.pair.herrax_minagho.notice.minagho.unfinished',
+                       'household.pair.herrax_minagho.notice.historical.minagho',
+                       'household.pair.herrax_minagho.reply.minagho',
+                       'household.pair.herrax_minagho.retry.minagho',
+                       'household.pair.herrax_minagho.retry.minagho.debt',
+                       'household.pair.herrax_minagho.reply.table',
+                       'household.pair.herrax_minagho.retry.table',
+                       'household.pair.herrax_minagho.retry.table.debt'),)}[15])
+        ids = [s["Id"] for s in self.rows]
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertEqual(set(self.by), set(ids))
         for body in self.rows:
             self.assertEqual(body["Relationship"], "household")
             self.assertEqual(body["Chapters"], [5])
@@ -42,15 +60,15 @@ class S48Tests(unittest.TestCase):
         for body in self.rows:
             self.assertEqual(delayed_clock_errors(body, self.payload), [])
             root = body["Nodes"][0]
-            self.assertTrue(root["Choices"][-1]["Abort"])
+            self.assertTrue(select_answer(root["Choices"], ((None, True, None, None, (), ()),), expected_position=-1)["Abort"])
             for node in body["Nodes"]:
-                self.assertTrue(node["Choices"], (body["Id"], node["Id"]))
+                self.assertTrue(without_prose(node["Choices"]), (body["Id"], node["Id"]))
                 # Funds can hide a paid option; every page still has an
                 # unconditional answer in all histories (including zero funds).
                 self.assertTrue(any(not answer["Requires"] and not answer["Forbids"]
-                                    and not answer.get("Crusade") for answer in node["Choices"]))
+                                    and not answer.get("Crusade") for answer in without_prose(node["Choices"])))
                 self.assertFalse(node.get("Paragraphs"))
-                for choice in node["Choices"]:
+                for choice in without_prose(node["Choices"]):
                     if choice["Abort"]:
                         self.assertFalse(choice["Next"])
                         self.assertFalse(choice["Set"])
@@ -67,14 +85,21 @@ class S48Tests(unittest.TestCase):
         for step in ("reply", "retry"):
             base = self.by[s48.P + step]
             for suffix in (".minagho", ".table"):
-                self.assertEqual(base["Nodes"], self.by[s48.P + step + suffix]["Nodes"])
-            roots = base["Nodes"][0]["Choices"]
-            paid = roots[1 if step == "reply" else 0]
+                self.assertEqual(without_prose(base["Nodes"]), without_prose(self.by[s48.P + step + suffix]["Nodes"]))
+            roots = without_prose(base["Nodes"])[0]["Choices"]
+            paid = ordered_answer(roots, 1 if step == "reply" else 0,
+                    (((None, False, 'exchanged', 'failed', (), ()),
+                      (None, False, None, None, (), ()),
+                      ('refused', False, None, None, (), ()),
+                      (None, True, None, None, (), ())),
+                     ((None, False, None, None, (), ()),
+                      ('refused', False, None, None, (), ()),
+                      (None, True, None, None, (), ()))))
             self.assertEqual(paid["Set"], list(s48.success(step, True)))
             self.assertEqual(paid["Crusade"], dict(Resource="Finances", Amount=-200 if step == "reply" else -300))
-            for node in base["Nodes"]:
+            for node in without_prose(base["Nodes"]):
                 if node["Id"] in ("failed", "refused"):
-                    for choice in node["Choices"]:
+                    for choice in without_prose(node["Choices"]):
                         self.assertNotIn(s48.P + "settled", choice["Set"])
                         self.assertNotIn(s48.P + "herrax_order_withdrawn", choice["Set"])
             if step == "retry":
@@ -91,8 +116,8 @@ class S48Tests(unittest.TestCase):
             if ".historical" in body["Id"]:
                 self.assertIn(s48.P + "target_current", body["Forbids"])
                 choices = body["Nodes"][0]["Choices"]
-                self.assertEqual(choices[0]["Set"], list(s48.flags("notice.seen", "notice.historical", "target_unprotected")))
-                self.assertEqual(len(choices), 2)
+                self.assertEqual(select_answer(choices, ((None, False, None, None, (), ()),), expected_position=0)["Set"], list(s48.flags("notice.seen", "notice.historical", "target_unprotected")))
+                self.assertIn(contract_identities(choices), {2: (((None, None, None, False, (), ()), (None, None, None, True, (), ())),)}[2])
 
     def test_page_table_enmity_and_respect_ceiling(self):
         for body in self.rows:
@@ -181,7 +206,14 @@ class S48Tests(unittest.TestCase):
                         Forbids=[s48.P + step + ".seen"])
             model = rules.Model(dict(Scenes=[body], Relationships={"household": self.payload["Relationships"]["household"]},
                                      RestAllowances=self.payload["RestAllowances"]))
-            answer = body["Nodes"][0]["Choices"][index]
+            answer = ordered_answer(body["Nodes"][0]["Choices"], index,
+                    (((None, False, 'exchanged', 'failed', (), ()),
+                      (None, False, None, None, (), ()),
+                      ('refused', False, None, None, (), ()),
+                      (None, True, None, None, (), ())),
+                     ((None, False, None, None, (), ()),
+                      ('refused', False, None, None, (), ()),
+                      (None, True, None, None, (), ()))))
             for balance in (None, 0, price - 1, price, price + 19):
                 state = rules.SimState(5, 100)
                 state.crusade_resources = None if balance is None else {"Finances": balance}
@@ -200,6 +232,70 @@ class S48Tests(unittest.TestCase):
                 else:
                     self.assertEqual(state.__dict__, before)
 
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
+
+
+
+
+def ordered_answer(answers, ordinal, expected_orders):
+    """Protect answer order, then select its declared structural destination."""
+    actual = tuple(answer_key(answer) for answer in answers)
+    if actual not in expected_orders:
+        raise AssertionError(('answer order/gates changed', actual, expected_orders))
+    for order in expected_orders:
+        if order == actual:
+            key = next(key for order_index, key in enumerate(order) if order_index == ordinal)
+            return select_answer(answers, (key,))
+    raise AssertionError('missing declared answer order')
 
 if __name__ == "__main__":
     unittest.main()

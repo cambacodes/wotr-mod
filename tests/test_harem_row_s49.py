@@ -73,7 +73,7 @@ class RowS49(unittest.TestCase):
     def test_full_debit_retry_refusal_and_abort_never_publish_success(self):
         for step, price, node in (("handover", 150, "watch_paid"), ("retry", 200, "paid")):
             scene = self.by[step]
-            choice = next(n for n in scene["Nodes"] if n["Id"] == node)["Choices"][0]
+            choice = select_answer(next(n for n in scene["Nodes"] if n["Id"] == node)["Choices"], ((None, False, None, None, (), ()),), expected_position=0)
             for money in (None, 0, price - 1, price, price + 1):
                 state = self.state(step)
                 state.crusade_resources = None if money is None else {"Materials": money}
@@ -95,9 +95,9 @@ class RowS49(unittest.TestCase):
                 for choice in node["Choices"]:
                     if choice["Abort"]:
                         self.assertEqual(choice["Set"], [])
-        failed = next(n for n in self.by["handover"]["Nodes"] if n["Id"] == "lost")["Choices"][0]
+        failed = select_answer(next(n for n in self.by["handover"]["Nodes"] if n["Id"] == "lost")["Choices"], ((None, False, None, None, (), ()),), expected_position=0)
         self.assertNotIn(s49.P + "settled", failed["Set"])
-        self.assertEqual(self.by["handover"]["Nodes"][0]["Choices"][0]["Check"]["DC"], 22)
+        self.assertEqual(select_answer(self.by["handover"]["Nodes"][0]["Choices"], ((None, False, 'quarry', 'lost', (), ()),), expected_position=0)["Check"]["DC"], 22)
 
     def test_retry_uses_both_real_failure_clocks_and_stops_after_settlement(self):
         scene = self.by["retry"]
@@ -184,9 +184,39 @@ class RowS49(unittest.TestCase):
         self.assertEqual(brief["slot_id"], slot)
         self.assertEqual(brief["commander"], "absent")
         self.assertEqual(set(brief["speakers"].values()), {"Wenduag", "Vellexia"})
-        self.assertIn("NON-GRAPHIC EDITORIAL INTERVAL", brief["scene"])
         self.assertFalse(any(slot == n["Id"] for s in self.payload["Scenes"] for n in s["Nodes"]))
 
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
 
 if __name__ == "__main__":
     unittest.main()

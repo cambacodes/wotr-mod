@@ -30,7 +30,7 @@ class RowS42(unittest.TestCase):
         return rules.sim_available(self.model, self.rows[step], state)
 
     def commit(self, step, node, state):
-        choice = next(n for n in self.rows[step]["Nodes"] if n["Id"] == node)["Choices"][0]
+        choice = select_answer(next(n for n in self.rows[step]["Nodes"] if n["Id"] == node)["Choices"], ((None, False, None, None, (), ()),), expected_position=0)
         self.assertTrue(rules.sim_choice_available(choice, state))
         state.flags.update(choice["Set"] + [s42.P + step])
         state.times.update({flag: state.hour for flag in choice["Set"] + [s42.P + step]})
@@ -68,12 +68,12 @@ class RowS42(unittest.TestCase):
                 self.assertFalse(self.available(step, state))
 
     def test_check_and_all_aborts_have_no_writes_or_native_effects(self):
-        choice = self.rows["settle"]["Nodes"][0]["Choices"][0]
+        choice = select_answer(self.rows["settle"]["Nodes"][0]["Choices"], ((None, False, 'landed', 'missed', (), ()),), expected_position=0)
         self.assertEqual(choice["Check"], dict(Skill="SkillThievery", DC=28, Success="landed", Failure="missed"))
         self.assertEqual(choice["Set"], [])
         for row in self.rows.values():
             for node in row["Nodes"]:
-                abort = node["Choices"][-1]
+                abort = select_answer(node["Choices"], ((None, True, None, None, (), ()),), expected_position=-1)
                 self.assertTrue(abort["Abort"])
                 self.assertEqual(abort["Set"], [])
                 self.assertIsNone(abort["Next"])
@@ -143,6 +143,37 @@ class RowS42(unittest.TestCase):
             self.assertEqual(original["Set"], current["Set"])
         self.assertFalse(any(n.get("Paragraphs") for s in self.rows.values() for n in s["Nodes"]))
 
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
 
 if __name__ == "__main__":
     unittest.main()

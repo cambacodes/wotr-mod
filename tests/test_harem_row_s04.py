@@ -85,9 +85,28 @@ class S04Tests(unittest.TestCase):
         state.flags.update(["camellia.mireya_unmasked", "trickster.wmt.available",
                             "camellia.trickster.returned"])
         choices = self.scene["Nodes"][0]["Choices"]
-        self.assertEqual(len(choices), 7)
-        self.assertEqual([i for i, c in enumerate(choices)
-                          if verify.sim_choice_available(c, state)], [0, 2, 3, 4, 5])
+        self.assertIn(contract_identities(choices),
+                {7: (((None, 'reasoned', 'missed', False, (), ()),
+                      ('evidence',
+                       None,
+                       None,
+                       False,
+                       ('household.pair.seelah_camellia.confession_kept',
+                        'household.pair.seelah_camellia.seelah_confession_heard'),
+                       ()),
+                      ('word', None, None, False, ('trickster.wmt.available',), ()),
+                      ('refused', None, None, False, (), ()),
+                      (None, None, None, True, (), ()),
+                      ('confession_record',
+                       None,
+                       None,
+                       False,
+                       ('camellia.mireya_unmasked',),
+                       ('household.pair.seelah_camellia.confession_kept',)),
+                      ('awaiting', None, None, False, (), ('trickster.now',))),)}[7])
+        self.assertEqual([(c['Next'], c['Abort']) for c in choices
+                          if verify.sim_choice_available(c, state)],
+                         [(None, False), ('word', False), ('refused', False), (None, True), ('confession_record', False)])
         producers = {flag for scene in self.story["Scenes"] for node in scene["Nodes"]
                      for choice in node["Choices"] for flag in choice["Set"]}
         self.assertFalse(set(s04.BLOCKERS) & producers)
@@ -96,12 +115,12 @@ class S04Tests(unittest.TestCase):
 
     def test_abort_does_not_spend_and_refusal_exhausts_only_this_incident(self):
         state = self.state()
-        abort = self.scene["Nodes"][0]["Choices"][4]
+        abort = select_answer(self.scene["Nodes"][0]["Choices"], ((None, True, None, None, (), ()),), expected_position=4)
         self.assertTrue(abort["Abort"])
         self.assertFalse(abort["Set"])
         self.assertIsNone(abort["Next"])
         self.assertEqual(state.rest_spent, {})
-        refusal = next(n for n in self.scene["Nodes"] if n["Id"] == "refused")["Choices"][0]
+        refusal = select_answer(next(n for n in self.scene["Nodes"] if n["Id"] == "refused")["Choices"], ((None, False, None, None, (), ('seelah.harem.enmity_any',)),), expected_position=0)
         self.assertEqual(set(refusal["Set"]), {s04.P + "settle.seen",
                                               s04.P + "permanent_refusal", s04.P + "unsettled",
                                               "seelah.harem.enmity.camellia",
@@ -114,7 +133,7 @@ class S04Tests(unittest.TestCase):
         self.assertFalse(verify.sim_available(self.model, self.scene, state))
 
     def test_word_reservation_retains_use_limit_and_debt(self):
-        choice = self.scene["Nodes"][0]["Choices"][2]
+        choice = select_answer(self.scene["Nodes"][0]["Choices"], (('word', False, None, None, ('trickster.wmt.available',), ()),), expected_position=2)
         self.assertIn("trickster.wmt.available", choice["Requires"])
         self.assertEqual(set(choice["Set"]), {"trickster.wmt.use.seelah_camellia",
                                              "household.wmt.debt.seelah_camellia"})
@@ -129,6 +148,57 @@ class S04Tests(unittest.TestCase):
         s04.register(payload, originals, {})
         self.assertEqual(payload, once)
         self.assertEqual(originals, [])
+
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
 
 
 if __name__ == "__main__":

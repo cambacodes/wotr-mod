@@ -71,10 +71,17 @@ class HaremRowS08(unittest.TestCase):
         for scene in s08.draft_scenes():
             nodes = {node["Id"]: node for node in scene["Nodes"]}
             root = nodes["start"]["Choices"]
-            self.assertEqual(len(root), 3 if ".retry." in scene["Id"] else 4)
-            self.assertTrue(root[-1]["Abort"])
-            self.assertFalse(root[-1]["Set"])
-            self.assertIsNone(root[-1]["Next"])
+            self.assertIn(contract_identities(root),
+                    {4: (((None, 'held', 'failed', False, (), ()),
+                          ('held', None, None, False, (), ()),
+                          ('refused', None, None, False, (), ()),
+                          (None, None, None, True, (), ())),),
+                     3: ((('held', None, None, False, (), ()),
+                          ('refused', None, None, False, (), ()),
+                          (None, None, None, True, (), ())),)}[3 if '.retry.' in scene['Id'] else 4])
+            self.assertTrue(select_answer(root, ((None, True, None, None, (), ()),), expected_position=-1)["Abort"])
+            self.assertFalse(select_answer(root, ((None, True, None, None, (), ()),), expected_position=-1)["Set"])
+            self.assertIsNone(select_answer(root, ((None, True, None, None, (), ()),), expected_position=-1)["Next"])
             for node in nodes.values():
                 for choice in node["Choices"]:
                     if choice["Next"]:
@@ -96,6 +103,57 @@ class HaremRowS08(unittest.TestCase):
             for node in scene["Nodes"]:
                 self.assertNotIn("Paragraphs", node)
                 self.assertNotIn("explicit", node["Id"])
+
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
 
 
 if __name__ == "__main__":

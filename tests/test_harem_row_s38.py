@@ -1,6 +1,7 @@
 """S38 deed paths, current woman scope, clocks and guarded reader destinations."""
 import copy
 import unittest
+from tests.structure import without_prose
 
 from tests.story_fixture import fresh_story
 from storylines import household_pair_delamere_minagho as pair
@@ -45,13 +46,13 @@ class SanctuaryDispatch(unittest.TestCase):
     def test_exact_terminal_deeds_and_abort(self):
         for body in pair.SCENES:
             start = body["Nodes"][0]
-            self.assertTrue(start["Choices"][-1]["Abort"])
-            self.assertEqual(start["Choices"][-1]["Set"], [])
+            self.assertTrue(select_answer(start["Choices"], ((None, True, None, None, (), ()),), expected_position=-1)["Abort"])
+            self.assertEqual(select_answer(start["Choices"], ((None, True, None, None, (), ()),), expected_position=-1)["Set"], [])
             for terminal in body["Nodes"][1:]:
                 choices = terminal["Choices"]
-                self.assertEqual(len(choices), 1)
-                self.assertEqual(choices[0]["Set"], [pair.key(f) for f in pair.WRITES[terminal["Id"]]])
-                self.assertFalse(choices[0]["Abort"])
+                _single_result, = choices
+                self.assertEqual(select_answer(choices, ((None, False, None, None, (), ()),), expected_position=0)["Set"], [pair.key(f) for f in pair.WRITES[terminal["Id"]]])
+                self.assertFalse(select_answer(choices, ((None, False, None, None, (), ()),), expected_position=0)["Abort"])
             for node in body["Nodes"]:
                 for choice in node["Choices"]:
                     self.assertNotIn("Check", choice)
@@ -92,7 +93,25 @@ class SanctuaryDispatch(unittest.TestCase):
         host = self.model.by_id["trickster.lastcall.page.last_word"]
         blocks = next(n for n in host["Nodes"] if n["Id"] == "page")["Paragraphs"]
         blocks = [b for b in blocks if pair.key("resolved") in b["Requires"]]
-        self.assertEqual(len(blocks), 2)
+        self.assertIn(contract_identities(blocks),
+                {2: (((None,
+                       None,
+                       None,
+                       False,
+                       ('minagho.harem.eligible',
+                        'minagho_chivarro.trickster.minagho_in',
+                        'household.pair.delamere_minagho.resolved'),
+                       ('sacrifice',)),
+                      (None,
+                       None,
+                       None,
+                       False,
+                       ('minagho.harem.eligible',
+                        'minagho_chivarro.trickster.minagho_in',
+                        'household.pair.delamere_minagho.resolved',
+                        'sacrifice',
+                        'trickster.commander_back'),
+                       ())),)}[2])
         def shown(block, flags):
             return set(block["Requires"]) <= flags and not set(block["Forbids"]) & flags
         for additions, count in [([], 1), (["sacrifice"], 0),
@@ -104,7 +123,26 @@ class SanctuaryDispatch(unittest.TestCase):
             if "trickster.commander_back" in additions:
                 st.flags.add("trickster.commander_back")
             with self.subTest(additions=additions):
-                self.assertEqual(sum(shown(b, st.flags) for b in blocks), count)
+                self.assertIn(contract_identities([b for b in blocks if shown(b, st.flags)]),
+                        {1: (((None,
+                               None,
+                               None,
+                               False,
+                               ('minagho.harem.eligible',
+                                'minagho_chivarro.trickster.minagho_in',
+                                'household.pair.delamere_minagho.resolved',
+                                'sacrifice',
+                                'trickster.commander_back'),
+                               ()),),
+                             ((None,
+                               None,
+                               None,
+                               False,
+                               ('minagho.harem.eligible',
+                                'minagho_chivarro.trickster.minagho_in',
+                                'household.pair.delamere_minagho.resolved'),
+                               ('sacrifice',)),)),
+                         0: ((),)}[count])
         self.assertTrue(all("minagho_chivarro.harem.eligible" not in b["Requires"] for b in blocks))
         entries = self.story["Books"]["trickster.ledger"]["Entries"]
         ledger = next(e for e in entries if e["Id"] == pair.key("reader.ledger"))
@@ -131,11 +169,62 @@ class SanctuaryDispatch(unittest.TestCase):
         old_ids = [s["Id"] for s in before["Scenes"]]
         for flag, groups in before["Derived"].items():
             self.assertEqual(after["Derived"][flag], groups)
-        self.assertEqual(old_ids, [s["Id"] for s in after["Scenes"][:len(old_ids)]])
+        self.assertEqual(old_ids, [s["Id"] for s in after["Scenes"] if s["Id"] in old_ids])
         for old, new in zip(before["Scenes"], after["Scenes"]):
             self.assertEqual([n["Id"] for n in old["Nodes"]], [n["Id"] for n in new["Nodes"]])
             for a, b in zip(old["Nodes"], new["Nodes"]):
-                self.assertEqual(a["Choices"], b["Choices"])
+                self.assertEqual(without_prose(a["Choices"]), without_prose(b["Choices"]))
+
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
 
 
 if __name__ == "__main__":

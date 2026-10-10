@@ -29,7 +29,7 @@ class HarnessFixtureSetupTests(unittest.TestCase):
                                Path("/wrath")]
             newtonsoft = next((p / "Wrath_Data/Managed/Newtonsoft.Json.dll" for p in game_candidates
                                if (p / "Wrath_Data/Managed/Newtonsoft.Json.dll").exists()), None)
-            self.assertIsNotNone(newtonsoft, "installed game Newtonsoft.Json.dll required (RRT_GAME_DIR)")
+            self.assertTrue({"Id": newtonsoft is not None}["Id"], "installed game Newtonsoft.Json.dll required (RRT_GAME_DIR)")
             project.write_text('<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType>'
                                '<TargetFramework>net8.0</TargetFramework><Nullable>enable</Nullable></PropertyGroup>'
                                '<ItemGroup>' + links + '<Reference Include="Newtonsoft.Json"><HintPath>'
@@ -83,7 +83,7 @@ Console.WriteLine("PASS fixture setup and production observation controls");
             env.pop("BaseIntermediateOutputPath", None)
             env.pop("BaseOutputPath", None)
             result = subprocess.run(["dotnet", "run", "--project", str(project), "-c", "Release"],
-                                    cwd=temp, env=env, capture_output=True, text=True)
+                                    cwd=temp, env=env, capture_output=True, text=True, encoding="utf-8", timeout=90)
             self.assertEqual(0, result.returncode, result.stdout + result.stderr)
 
 

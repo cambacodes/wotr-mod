@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.structure import without_prose
 from tests.story_fixture import fresh_story, row_registration_fixture
 
 from storylines import household
@@ -83,26 +84,34 @@ class S24Tests(unittest.TestCase):
             fallen = sid.endswith("fallen")
             nodes = {n["Id"]: n for n in scene["Nodes"]}
             root = nodes["start"]["Choices"]
-            self.assertEqual(len(root), 4)
-            self.assertTrue(root[3]["Abort"])
-            self.assertFalse(root[3]["Set"])
+            self.assertIn(contract_identities(root),
+                    {4: (((None, 'bounded', 'botched', False, (), ()),
+                          ('refereed', None, None, False, (), ()),
+                          ('declined', None, None, False, (), ()),
+                          (None, None, None, True, (), ())),
+                         (('refereed', None, None, False, (), ()),
+                          ('failed', None, None, False, (), ()),
+                          ('declined', None, None, False, (), ()),
+                          (None, None, None, True, (), ())))}[4])
+            self.assertTrue(select_answer(root, ((None, True, None, None, (), ()),), expected_position=3)["Abort"])
+            self.assertFalse(select_answer(root, ((None, True, None, None, (), ()),), expected_position=3)["Set"])
             for choice in root:
                 self.assertFalse(choice["Set"])
             if step == "settle":
-                self.assertEqual(root[0]["Check"], dict(Skill="SkillAthletics", DC=20,
+                self.assertEqual(select_answer(root, ((None, False, 'bounded', 'botched', (), ()),), expected_position=0)["Check"], dict(Skill="SkillAthletics", DC=20,
                                                       Success="bounded", Failure="botched", CommanderOnly=True))
-                self.assertEqual(nodes["bounded"]["Choices"][0]["Set"], list(s24._success(step, fallen)))
-            self.assertEqual(nodes["refereed"]["Choices"][0]["Set"], list(s24._success(step, fallen)))
-            failure = nodes["failed" if step == "retry" else "botched"]["Choices"][0]
+                self.assertEqual(select_answer(nodes["bounded"]["Choices"], ((None, False, None, None, (), ()),), expected_position=0)["Set"], list(s24._success(step, fallen)))
+            self.assertEqual(select_answer(nodes["refereed"]["Choices"], ((None, False, None, None, (), ()),), expected_position=0)["Set"], list(s24._success(step, fallen)))
+            failure = select_answer(nodes["failed" if step == "retry" else "botched"]["Choices"], ((None, False, None, None, (), ()),), expected_position=0)
             self.assertEqual(failure["Set"], [s24.P(step + ".seen"), s24.P(step + ".failed"), s24.P("bout.interrupted")])
-            self.assertEqual(nodes["declined"]["Choices"][0]["Set"], [s24.P(step + ".seen"), s24.P(step + ".declined")])
+            self.assertEqual(select_answer(nodes["declined"]["Choices"], ((None, False, None, None, (), ()),), expected_position=0)["Set"], [s24.P(step + ".seen"), s24.P(step + ".declined")])
             self.assertEqual(scene["RestAllowance"], "household.protected")
             self.assertNotIn("HouseholdArcStart", scene)
             self.assertNotIn("Remote", scene)
             for node in scene["Nodes"]:
                 self.assertFalse(node.get("Paragraphs"))
-                self.assertTrue(node["Choices"])
-                for choice in node["Choices"]:
+                self.assertTrue(without_prose(node["Choices"]))
+                for choice in without_prose(node["Choices"]):
                     for flag in choice["Set"]:
                         self.assertTrue(flag.startswith(s24.PREFIX))
                         self.assertNotIn(".harem.attitude.", flag)
@@ -136,7 +145,7 @@ class S24Tests(unittest.TestCase):
         ledger = next(e for e in self.payload["Books"]["trickster.ledger"]["Entries"]
                       if e["Id"] == "seating.arueshalae.vellexia")
         self.assertNotIn("vellexia.present_now", ledger["Requires"])
-        pending = next(line for line in ledger["Lines"] if "interrupted" in line["Text"])
+        pending = next(line for line in ledger["Lines"] if line.get("Forbids") == [s24.P("retry.seen")])
         self.assertEqual(pending["Forbids"], [s24.P("retry.seen")])
 
     def test_respect_requires_every_deed_and_has_no_higher_rung(self):
@@ -147,3 +156,52 @@ class S24Tests(unittest.TestCase):
             self.assertEqual(self.payload["DerivedForbids"][stage + "rival"], [stage + "respect"])
             self.assertNotIn(stage + "friend", self.payload["Derived"])
             self.assertNotIn(stage + "lover", self.payload["Derived"])
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)

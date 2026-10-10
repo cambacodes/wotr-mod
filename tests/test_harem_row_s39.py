@@ -16,7 +16,12 @@ class GalfreyNocticulaUndertaking(unittest.TestCase):
 
     def choice(self, step, node, index=0, kitrane=False):
         body = self.by[pair.PREFIX + step + ('.kitrane' if kitrane else '')]
-        return next(n for n in body['Nodes'] if n['Id'] == node)['Choices'][index]
+        return ordered_answer(next(n for n in body['Nodes'] if n['Id'] == node)['Choices'], index,
+                (((None, False, None, None, (), ()),),
+                 ((None, False, 'kept', 'mistranslated', (), ()),
+                  ('interpreted', False, None, None, (), ()),
+                  ('exposed', False, None, None, (), ()),
+                  (None, True, None, None, (), ()))))
 
     def state(self, step='open', kitrane=False):
         state = verify.SimState(5, 1000)
@@ -104,9 +109,19 @@ class GalfreyNocticulaUndertaking(unittest.TestCase):
         for body in self.scenes:
             step = body['Id'][len(pair.PREFIX):].split('.')[0]
             choices = body['Nodes'][0]['Choices']
-            self.assertEqual(len(choices), 4 if step == 'undertaking' else 3)
-            self.assertTrue(choices[-1]['Abort'])
-            self.assertEqual(choices[-1]['Set'], [])
+            self.assertIn(contract_identities(choices),
+                    {3: ((('sent', None, None, False, (), ()),
+                          ('insult', None, None, False, (), ()),
+                          (None, None, None, True, (), ())),
+                         (('home', None, None, False, (), ()),
+                          ('declined', None, None, False, (), ()),
+                          (None, None, None, True, (), ()))),
+                     4: (((None, 'kept', 'mistranslated', False, (), ()),
+                          ('interpreted', None, None, False, (), ()),
+                          ('exposed', None, None, False, (), ()),
+                          (None, None, None, True, (), ())),)}[4 if step == 'undertaking' else 3])
+            self.assertTrue(select_answer(choices, ((None, True, None, None, (), ()),), expected_position=-1)['Abort'])
+            self.assertEqual(select_answer(choices, ((None, True, None, None, (), ()),), expected_position=-1)['Set'], [])
             self.assertEqual(body['RestAllowance'], 'household.protected')
             self.assertTrue(body['ManualOnly'])
             self.assertEqual(body['Participants'], list(pair.PAIR))
@@ -125,7 +140,10 @@ class GalfreyNocticulaUndertaking(unittest.TestCase):
             page = self.by[woman + '.lastcall.page']['Nodes'][0]
             paragraphs = [p for p in page['Paragraphs']
                           if any(flag.startswith(pair.PREFIX) for flag in p['Requires'])]
-            self.assertEqual(len(paragraphs), 2 * (len(pair.RECORDS) + len(pair.COSTS) + 1))
+            keys = ('resolved', 'failed', 'repaired', 'insult', 'scout', 'declined', 'cost.courier_fares', 'cost.commander_guarantor_promised', 'cost.galfrey_sponsorship_withdrawn', 'cost.nocticula_factor_overruled', 'cost.commander_guarantor_kept', 'cost.reconnaissance_forgone', 'cost.commander_delay', 'cost.commander_cover_lost', 'cost.interpreter_paid', 'cost.corrected_demand_carried', 'reaction')
+            self.assertEqual([p["Id"] for p in paragraphs],
+                             [pair.PREFIX + "reader.lastcall." + woman + "." + key + "." + channel
+                              for key in keys for channel in ("living", "returned")])
             for i in range(0, len(paragraphs), 2):
                 normal, returned = paragraphs[i:i + 2]
                 self.assertIn('sacrifice', normal['Forbids'])
@@ -135,9 +153,10 @@ class GalfreyNocticulaUndertaking(unittest.TestCase):
         before = pair.PREFIX + 'reader.nocticula.before_council'
         self.assertIn('noct.acq.council_fight', self.story['DerivedForbids'][before])
         entries = [e for e in self.story['Books']['trickster.ledger']['Entries'] if e['Id'].startswith(pair.PREFIX)]
-        self.assertEqual(len(entries), 2)
+        self.assertIn(contract_identities(entries), {2: (('household.pair.galfrey_nocticula.reader.ledger', 'household.pair.galfrey_nocticula.reader.seating'),)}[2])
         for entry in entries:
-            self.assertEqual(len(entry['Lines']), len(pair.RECORDS) + len(pair.COSTS))
+            self.assertEqual([line["Id"] for line in entry["Lines"]],
+                             [pair.PREFIX + "reader." + key for key in ('resolved', 'failed', 'repaired', 'insult', 'scout', 'declined', 'cost.courier_fares', 'cost.commander_guarantor_promised', 'cost.galfrey_sponsorship_withdrawn', 'cost.nocticula_factor_overruled', 'cost.commander_guarantor_kept', 'cost.reconnaissance_forgone', 'cost.commander_delay', 'cost.commander_cover_lost', 'cost.interpreter_paid', 'cost.corrected_demand_carried')])
             self.assertFalse(any('sacrifice' in line['Forbids'] for line in entry['Lines']))
 
     def test_every_answer_check_and_terminal_debit(self):
@@ -152,9 +171,181 @@ class GalfreyNocticulaUndertaking(unittest.TestCase):
             state.crusade_resources = {"Finances": 2000}
             histories = walk(self, model, body, state)
             step = body["Id"][len(pair.PREFIX):].split('.')[0]
-            self.assertEqual(len(histories), 5 if step == "undertaking" else 3)
+            self.assertIn(contract_identities(histories),
+                    {3: ((('household.pair.galfrey_nocticula.cost.commander_guarantor_kept',
+                           'household.pair.galfrey_nocticula.cost.corrected_demand_carried',
+                           'household.pair.galfrey_nocticula.cost.galfrey_sponsorship_withdrawn',
+                           'household.pair.galfrey_nocticula.cost.nocticula_factor_overruled',
+                           'household.pair.galfrey_nocticula.cost.reconnaissance_forgone',
+                           'household.pair.galfrey_nocticula.last_litter',
+                           'household.pair.galfrey_nocticula.last_litter.held',
+                           'household.pair.galfrey_nocticula.last_litter.seen',
+                           'household.pair.galfrey_nocticula.resolved',
+                           'household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.pair.galfrey_nocticula.undertaking.failed',
+                           'household.table.kept'),
+                          ('household.pair.galfrey_nocticula.last_litter',
+                           'household.pair.galfrey_nocticula.last_litter.declined',
+                           'household.pair.galfrey_nocticula.last_litter.seen',
+                           'household.pair.galfrey_nocticula.permanent_refusal',
+                           'household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.pair.galfrey_nocticula.undertaking.failed',
+                           'household.table.kept'),
+                          ('household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.pair.galfrey_nocticula.undertaking.failed',
+                           'household.table.kept')),
+                         (('household.pair.galfrey_nocticula.cost.commander_guarantor_kept',
+                           'household.pair.galfrey_nocticula.cost.corrected_demand_carried',
+                           'household.pair.galfrey_nocticula.cost.galfrey_sponsorship_withdrawn',
+                           'household.pair.galfrey_nocticula.cost.nocticula_factor_overruled',
+                           'household.pair.galfrey_nocticula.cost.reconnaissance_forgone',
+                           'household.pair.galfrey_nocticula.last_litter.held',
+                           'household.pair.galfrey_nocticula.last_litter.kitrane',
+                           'household.pair.galfrey_nocticula.last_litter.seen',
+                           'household.pair.galfrey_nocticula.resolved',
+                           'household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.pair.galfrey_nocticula.undertaking.failed',
+                           'household.table.kept'),
+                          ('household.pair.galfrey_nocticula.last_litter.declined',
+                           'household.pair.galfrey_nocticula.last_litter.kitrane',
+                           'household.pair.galfrey_nocticula.last_litter.seen',
+                           'household.pair.galfrey_nocticula.permanent_refusal',
+                           'household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.pair.galfrey_nocticula.undertaking.failed',
+                           'household.table.kept'),
+                          ('household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.pair.galfrey_nocticula.undertaking.failed',
+                           'household.table.kept')),
+                         (('household.pair.galfrey_nocticula.cost.commander_guarantor_promised',
+                           'household.pair.galfrey_nocticula.cost.courier_fares',
+                           'household.pair.galfrey_nocticula.open',
+                           'household.pair.galfrey_nocticula.open.ready',
+                           'household.pair.galfrey_nocticula.open.seen',
+                           'household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.table.kept'),
+                          ('household.pair.galfrey_nocticula.open',
+                           'household.pair.galfrey_nocticula.open.insult_sent',
+                           'household.pair.galfrey_nocticula.open.seen',
+                           'household.pair.galfrey_nocticula.permanent_refusal',
+                           'household.table.kept'),
+                          ('household.table.kept',)),
+                         (('household.pair.galfrey_nocticula.cost.commander_guarantor_promised',
+                           'household.pair.galfrey_nocticula.cost.courier_fares',
+                           'household.pair.galfrey_nocticula.open.kitrane',
+                           'household.pair.galfrey_nocticula.open.ready',
+                           'household.pair.galfrey_nocticula.open.seen',
+                           'household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.table.kept'),
+                          ('household.pair.galfrey_nocticula.open.insult_sent',
+                           'household.pair.galfrey_nocticula.open.kitrane',
+                           'household.pair.galfrey_nocticula.open.seen',
+                           'household.pair.galfrey_nocticula.permanent_refusal',
+                           'household.table.kept'),
+                          ('household.table.kept',))),
+                     5: ((('household.pair.galfrey_nocticula.cost.commander_guarantor_kept',
+                           'household.pair.galfrey_nocticula.cost.galfrey_sponsorship_withdrawn',
+                           'household.pair.galfrey_nocticula.cost.nocticula_factor_overruled',
+                           'household.pair.galfrey_nocticula.cost.reconnaissance_forgone',
+                           'household.pair.galfrey_nocticula.open.ready',
+                           'household.pair.galfrey_nocticula.resolved',
+                           'household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.pair.galfrey_nocticula.undertaking',
+                           'household.pair.galfrey_nocticula.undertaking.held',
+                           'household.pair.galfrey_nocticula.undertaking.seen',
+                           'household.table.kept'),
+                          ('household.pair.galfrey_nocticula.cost.commander_delay',
+                           'household.pair.galfrey_nocticula.open.ready',
+                           'household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.pair.galfrey_nocticula.undertaking',
+                           'household.pair.galfrey_nocticula.undertaking.failed',
+                           'household.pair.galfrey_nocticula.undertaking.seen',
+                           'household.pair.galfrey_nocticula.unsettled',
+                           'household.table.kept'),
+                          ('household.pair.galfrey_nocticula.cost.commander_guarantor_kept',
+                           'household.pair.galfrey_nocticula.cost.galfrey_sponsorship_withdrawn',
+                           'household.pair.galfrey_nocticula.cost.interpreter_paid',
+                           'household.pair.galfrey_nocticula.cost.nocticula_factor_overruled',
+                           'household.pair.galfrey_nocticula.cost.reconnaissance_forgone',
+                           'household.pair.galfrey_nocticula.open.ready',
+                           'household.pair.galfrey_nocticula.resolved',
+                           'household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.pair.galfrey_nocticula.undertaking',
+                           'household.pair.galfrey_nocticula.undertaking.held',
+                           'household.pair.galfrey_nocticula.undertaking.seen',
+                           'household.table.kept'),
+                          ('household.pair.galfrey_nocticula.cost.commander_cover_lost',
+                           'household.pair.galfrey_nocticula.open.ready',
+                           'household.pair.galfrey_nocticula.permanent_refusal',
+                           'household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.pair.galfrey_nocticula.undertaking',
+                           'household.pair.galfrey_nocticula.undertaking.scout_exposed',
+                           'household.pair.galfrey_nocticula.undertaking.seen',
+                           'household.table.kept'),
+                          ('household.pair.galfrey_nocticula.open.ready',
+                           'household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.table.kept')),
+                         (('household.pair.galfrey_nocticula.cost.commander_guarantor_kept',
+                           'household.pair.galfrey_nocticula.cost.galfrey_sponsorship_withdrawn',
+                           'household.pair.galfrey_nocticula.cost.nocticula_factor_overruled',
+                           'household.pair.galfrey_nocticula.cost.reconnaissance_forgone',
+                           'household.pair.galfrey_nocticula.open.ready',
+                           'household.pair.galfrey_nocticula.resolved',
+                           'household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.pair.galfrey_nocticula.undertaking.held',
+                           'household.pair.galfrey_nocticula.undertaking.kitrane',
+                           'household.pair.galfrey_nocticula.undertaking.seen',
+                           'household.table.kept'),
+                          ('household.pair.galfrey_nocticula.cost.commander_delay',
+                           'household.pair.galfrey_nocticula.open.ready',
+                           'household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.pair.galfrey_nocticula.undertaking.failed',
+                           'household.pair.galfrey_nocticula.undertaking.kitrane',
+                           'household.pair.galfrey_nocticula.undertaking.seen',
+                           'household.pair.galfrey_nocticula.unsettled',
+                           'household.table.kept'),
+                          ('household.pair.galfrey_nocticula.cost.commander_guarantor_kept',
+                           'household.pair.galfrey_nocticula.cost.galfrey_sponsorship_withdrawn',
+                           'household.pair.galfrey_nocticula.cost.interpreter_paid',
+                           'household.pair.galfrey_nocticula.cost.nocticula_factor_overruled',
+                           'household.pair.galfrey_nocticula.cost.reconnaissance_forgone',
+                           'household.pair.galfrey_nocticula.open.ready',
+                           'household.pair.galfrey_nocticula.resolved',
+                           'household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.pair.galfrey_nocticula.undertaking.held',
+                           'household.pair.galfrey_nocticula.undertaking.kitrane',
+                           'household.pair.galfrey_nocticula.undertaking.seen',
+                           'household.table.kept'),
+                          ('household.pair.galfrey_nocticula.cost.commander_cover_lost',
+                           'household.pair.galfrey_nocticula.open.ready',
+                           'household.pair.galfrey_nocticula.permanent_refusal',
+                           'household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.pair.galfrey_nocticula.undertaking.kitrane',
+                           'household.pair.galfrey_nocticula.undertaking.scout_exposed',
+                           'household.pair.galfrey_nocticula.undertaking.seen',
+                           'household.table.kept'),
+                          ('household.pair.galfrey_nocticula.open.ready',
+                           'household.pair.galfrey_nocticula.sortie.mustered',
+                           'household.pair.galfrey_nocticula.survey.acquired',
+                           'household.table.kept')))}[5 if step == 'undertaking' else 3])
             aborts = [s for s in histories if pair.PREFIX + step + ".seen" not in s.flags]
-            self.assertEqual(len(aborts), 1)
+            _single_result, = aborts
             self.assertEqual(aborts[0].crusade_resources["Finances"], 2000)
             for result in histories:
                 self.assertFalse(result.flags & {"galfrey.closed", "noct.closed"})
@@ -173,6 +364,70 @@ class GalfreyNocticulaUndertaking(unittest.TestCase):
             else:
                 self.assertEqual(balances[pair.PREFIX + "last_litter.held"], 1600)
 
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
+
+
+
+
+def ordered_answer(answers, ordinal, expected_orders):
+    """Protect answer order, then select its declared structural destination."""
+    actual = tuple(answer_key(answer) for answer in answers)
+    if actual not in expected_orders:
+        raise AssertionError(('answer order/gates changed', actual, expected_orders))
+    for order in expected_orders:
+        if order == actual:
+            key = next(key for order_index, key in enumerate(order) if order_index == ordinal)
+            return select_answer(answers, (key,))
+    raise AssertionError('missing declared answer order')
 
 if __name__ == '__main__':
     unittest.main()

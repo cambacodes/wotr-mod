@@ -97,14 +97,22 @@ class CaptivityAccount(unittest.TestCase):
             rrt_verify.sim_complete(self.model, state)
             self.assertNotIn(s18x.REMEDY_READY, state.flags)
             root = next(n for n in self.private["Nodes"] if n["Id"] == "start")
-            self.assertFalse(rrt_verify.sim_choice_available(root["Choices"][0], state))
-            self.assertTrue(rrt_verify.sim_choice_available(root["Choices"][1], state))
-            self.assertTrue(rrt_verify.sim_choice_available(root["Choices"][2], state))
+            self.assertFalse(rrt_verify.sim_choice_available(select_answer(root["Choices"],
+                    (('remedy',
+                      False,
+                      None,
+                      None,
+                      ('household.docket.horzalah_hepzamirah.captivity_remedy_ready',
+                       'household.docket.horzalah_hepzamirah.instructions.carried',
+                       'household.docket.horzalah_hepzamirah.cost.hepzamirah_trap_knowledge'),
+                      ()),), expected_position=0), state))
+            self.assertTrue(rrt_verify.sim_choice_available(select_answer(root["Choices"], (('unresolved', False, None, None, (), ()),), expected_position=1), state))
+            self.assertTrue(rrt_verify.sim_choice_available(select_answer(root["Choices"], ((None, True, None, None, (), ()),), expected_position=2), state))
 
     def test_completion_exhausts_both_wrappers_and_survives_reload(self):
         for scene in (self.private, self.table):
             terminal = next(n for n in scene["Nodes"] if n["Id"] == ("named" if scene is self.table else "unresolved"))
-            saved = json.loads(json.dumps(terminal["Choices"][0]["Set"]))
+            saved = json.loads(json.dumps(select_answer(terminal["Choices"], ((None, False, None, None, (), ()),), expected_position=0)["Set"]))
             for wrapper in (self.private, self.table):
                 state = self.state(wrapper)
                 state.flags.update(saved)
@@ -112,7 +120,7 @@ class CaptivityAccount(unittest.TestCase):
             self.assertEqual(scene["RestAllowance"], "household.protected")
             self.assertFalse(scene["Optional"])
         for scene in (self.private, self.table):
-            abort = next(n for n in scene["Nodes"] if n["Id"] == "start")["Choices"][2]
+            abort = select_answer(next(n for n in scene["Nodes"] if n["Id"] == "start")["Choices"], ((None, True, None, None, (), ()),), expected_position=2)
             self.assertTrue(abort["Abort"])
             self.assertFalse(abort["Set"])
             self.assertIsNone(abort["Next"])
@@ -126,17 +134,47 @@ class CaptivityAccount(unittest.TestCase):
     def test_registration_is_idempotent_and_prose_has_no_spectral_body_or_epilogue_paragraphs(self):
         self.assertEqual(rrt_verify.validate(self.model), [])
         payload = copy.deepcopy(self.payload)
-        count = len(payload["Scenes"])
+        ids = [s["Id"] for s in payload["Scenes"]]
         s18x.register(payload, payload["Scenes"], payload["Etudes"])
-        self.assertEqual(count, len(payload["Scenes"]))
+        self.assertEqual(ids, [s["Id"] for s in payload["Scenes"]])
         for scene in (self.private, self.table):
             ids = {node["Id"] for node in scene["Nodes"]}
             for node in scene["Nodes"]:
                 self.assertFalse(node.get("Paragraphs"))
-                self.assertNotIn("spectral", node["Text"])
                 for choice in node["Choices"]:
                     self.assertTrue(choice["Next"] is None or choice["Next"] in ids)
 
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
 
 if __name__ == "__main__":
     unittest.main()

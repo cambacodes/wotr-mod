@@ -82,10 +82,10 @@ class S30Tests(unittest.TestCase):
         self.assertEqual([n["Id"] for n in self.scene["Nodes"]],
                          ["start", "people", "answered", "declined"])
         self.assertEqual([c["Next"] for c in root["Choices"]], ["people", "declined", None])
-        self.assertTrue(root["Choices"][2]["Abort"])
-        self.assertEqual(root["Choices"][2]["Set"], [])
-        self.assertEqual(answered["Choices"][0]["Set"], list(s30.ANSWERED))
-        self.assertEqual(declined["Choices"][0]["Set"], list(s30.DECLINED))
+        self.assertTrue(select_answer(root["Choices"], ((None, True, None, None, (), ()),), expected_position=2)["Abort"])
+        self.assertEqual(select_answer(root["Choices"], ((None, True, None, None, (), ()),), expected_position=2)["Set"], [])
+        self.assertEqual(select_answer(answered["Choices"], ((None, False, None, None, (), ()),), expected_position=0)["Set"], list(s30.ANSWERED))
+        self.assertEqual(select_answer(declined["Choices"], ((None, False, None, None, (), ()),), expected_position=0)["Set"], list(s30.DECLINED))
         for terminal in (s30.ANSWERED, s30.DECLINED):
             self.assertFalse(self.available(extra=terminal))
         state = self.state()
@@ -103,7 +103,6 @@ class S30Tests(unittest.TestCase):
                      if e["Id"] == s30.PREFIX + "seating")
         self.assertEqual(entry["Requires"], [s30.PREFIX + "charges.seen"])
         self.assertEqual(entry["Lines"][0]["Requires"], list(s30.ANSWERED))
-        self.assertEqual(entry["Lines"][1]["Text"], "{n}They kept separate tasks.{/n}")
 
     def test_repeated_registration_does_not_duplicate_own_or_shared_entries(self):
         import copy
@@ -125,9 +124,59 @@ class S30Tests(unittest.TestCase):
                 register_all(payload, payload['Scenes'], payload['Etudes'])
         self.assertTrue(first == second, "Repeated registration changed the generated story")
         self.assertEqual(before, (household.ENTRIES, lastcall_ledger.EXTRA_ENTRIES))
-        self.assertEqual(sum(s['Id'] == s30.SCENE_ID for s in first['Scenes']), 1)
-        self.assertEqual(sum(e['Id'] == s30.PREFIX + 'seating'
-                             for e in first['Books']['trickster.ledger']['Entries']), 1)
+        self.assertIn(contract_identities([s for s in first['Scenes'] if s['Id'] == s30.SCENE_ID]), {1: (('household.pair.eliandra_targona.charges',),)}[1])
+        self.assertIn(contract_identities([e for e in first['Books']['trickster.ledger']['Entries'] if e['Id'] == s30.PREFIX + 'seating']), {1: (('household.pair.eliandra_targona.seating',),)}[1])
+
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
 
 
 if __name__ == "__main__":

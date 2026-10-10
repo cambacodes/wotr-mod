@@ -40,7 +40,13 @@ class S50Tests(unittest.TestCase):
         return state
 
     def test_body_attachment_save_references_and_registration(self):
-        self.assertEqual(len(self.rows), 6)
+        self.assertIn(contract_identities(self.rows),
+                {6: (('household.pair.nidalynn_devarra.notice.widow',
+                      'household.pair.nidalynn_devarra.notice.chosen',
+                      'household.pair.nidalynn_devarra.custody.widow',
+                      'household.pair.nidalynn_devarra.custody.chosen',
+                      'household.pair.nidalynn_devarra.repair.widow',
+                      'household.pair.nidalynn_devarra.repair.chosen'),)}[6])
         self.assertEqual(rules.validate(self.model), [])
         self.assertEqual(savecompat.check(self.story, self.before), [])
         for scene in self.rows.values():
@@ -51,9 +57,9 @@ class S50Tests(unittest.TestCase):
             self.assertEqual(scene["Chapters"], [5])
             self.assertEqual(delayed_clock_errors(scene, self.story), [])
             self.assertNotIn("foresight.page_taken", scene["Requires"])
-        count = len(self.story["Scenes"])
+        ids = [s["Id"] for s in self.story["Scenes"]]
         s50.register(self.story, self.story["Scenes"], self.story["Etudes"])
-        self.assertEqual(len(self.story["Scenes"]), count)
+        self.assertEqual(ids, [s["Id"] for s in self.story["Scenes"]])
 
     def test_ready_uses_actual_saved_child_and_never_a_derived_clock(self):
         self.assertEqual(self.story["Derived"][s50.P + "ready"],
@@ -70,11 +76,36 @@ class S50Tests(unittest.TestCase):
         for step, count in (("notice", 3), ("custody", 4), ("repair", 3)):
             scene = self.row(step)
             choices = scene["Nodes"][0]["Choices"]
-            self.assertEqual(len(choices), count)
-            self.assertTrue(choices[-1]["Abort"])
-            self.assertEqual(choices[-1]["Set"], [])
-            self.assertIsNone(choices[-1]["Next"])
-        check = self.row("custody")["Nodes"][0]["Choices"][0]
+            self.assertIn(contract_identities(choices),
+                    {3: (((None,
+                           None,
+                           None,
+                           False,
+                           ('nidalynn.trickster.cost.claim_given_up',),
+                           ()),
+                          ('refused', None, None, False, (), ()),
+                          (None, None, None, True, (), ())),
+                         (('account', None, None, False, (), ()),
+                          ('refused', None, None, False, (), ()),
+                          (None, None, None, True, (), ()))),
+                     4: (((None,
+                           'delivered',
+                           'spilled',
+                           False,
+                           ('nidalynn.trickster.cost.claim_given_up',),
+                           ()),
+                          ('hire',
+                           None,
+                           None,
+                           False,
+                           ('nidalynn.trickster.cost.claim_given_up',),
+                           ()),
+                          ('refused', None, None, False, (), ()),
+                          (None, None, None, True, (), ())),)}[count])
+            self.assertTrue(select_answer(choices, ((None, True, None, None, (), ()),), expected_position=-1)["Abort"])
+            self.assertEqual(select_answer(choices, ((None, True, None, None, (), ()),), expected_position=-1)["Set"], [])
+            self.assertIsNone(select_answer(choices, ((None, True, None, None, (), ()),), expected_position=-1)["Next"])
+        check = select_answer(self.row("custody")["Nodes"][0]["Choices"], ((None, False, 'delivered', 'spilled', ('nidalynn.trickster.cost.claim_given_up',), ()),), expected_position=0)
         self.assertEqual(check["Check"], dict(Skill="SkillAthletics", DC=18,
                                             Success="delivered", Failure="spilled", CommanderOnly=True))
         self.assertEqual(check["Set"], [])
@@ -86,19 +117,38 @@ class S50Tests(unittest.TestCase):
                     "nidalynn.lastcall.page", "trickster.lastcall.page.last_word"):
             host = next(s for s in self.story["Scenes"] if s["Id"] == sid)
             paragraphs = [p for p in host["Nodes"][0]["Paragraphs"] if s50.P + "resolved" in p["Requires"]]
-            self.assertEqual(len(paragraphs), 1, sid)
-            self.assertIn(s50.P + "cost.nidalynn_guard_night", paragraphs[0]["Requires"])
-            self.assertIn(s50.P + "cost.nidalynn_own_feed", paragraphs[0]["Requires"])
+            _single_result, = paragraphs
+            self.assertIn(s50.P + "cost.nidalynn_guard_night", _single_result["Requires"])
+            self.assertIn(s50.P + "cost.nidalynn_own_feed", _single_result["Requires"])
         ledger = next(e for e in self.story["Books"]["trickster.ledger"]["Entries"]
                       if e["Id"] == s50.P + "custody.record")
         self.assertEqual(ledger["Requires"], [s50.P + "notice.seen"])
-        self.assertEqual(len(ledger["Lines"]), 3)
+        self.assertIn(contract_identities(ledger['Lines']),
+                {3: (((None,
+                       None,
+                       None,
+                       False,
+                       ('household.pair.nidalynn_devarra.resolved',
+                        'devarra.trickster.cost.egg_withheld'),
+                       ()),
+                      (None,
+                       None,
+                       None,
+                       False,
+                       ('household.pair.nidalynn_devarra.resolved',),
+                       ('devarra.trickster.cost.egg_withheld',)),
+                      (None,
+                       None,
+                       None,
+                       False,
+                       ('household.pair.nidalynn_devarra.unanswered',),
+                       ())),)}[3])
 
     def test_bill_debt_and_unnamed_histories_select_one_truthful_answer(self):
         node = next(n for n in self.row("notice")["Nodes"] if n["Id"] == "account")
-        for flags, expected in (([], 2), ([s50.DEBT], 1), ([s50.BILL], 0), ([s50.BILL, s50.DEBT], 0)):
+        for flags, expected in (([], "unnamed"), ([s50.DEBT], "debt"), ([s50.BILL], "bill"), ([s50.BILL, s50.DEBT], "bill")):
             state = rules.SimState(5, 0); state.flags.update(flags)
-            self.assertEqual([i for i, c in enumerate(node["Choices"]) if rules.sim_choice_available(c, state)], [expected])
+            self.assertEqual([c["Next"] for c in node["Choices"] if rules.sim_choice_available(c, state)], [expected])
 
     def test_remedies_require_route_renunciation_and_do_not_change_diet_or_stance(self):
         for scene in self.rows.values():
@@ -111,7 +161,7 @@ class S50Tests(unittest.TestCase):
         state.flags.remove(s50.RENOUNCED)
         self.assertEqual([rules.sim_choice_available(c, state) for c in scene["Nodes"][0]["Choices"]],
                          [False, False, True, True])
-        failure = next(n for n in scene["Nodes"] if n["Id"] == "spilled")["Choices"][0]
+        failure = select_answer(next(n for n in scene["Nodes"] if n["Id"] == "spilled")["Choices"], ((None, False, None, None, (), ()),), expected_position=0)
         self.assertNotIn(s50.P + "resolved", failure["Set"])
         self.assertNotIn(s50.P + "feed_delivered", failure["Set"])
 
@@ -165,7 +215,7 @@ class S50Tests(unittest.TestCase):
     def test_actual_paid_terminals_full_debit_replay_and_failure_matrix(self):
         for step, node_id, price in (("custody", "hire", 100), ("repair", "start", 150)):
             scene = self.row(step)
-            choice = next(n for n in scene["Nodes"] if n["Id"] == node_id)["Choices"][0]
+            choice = select_answer(next(n for n in scene["Nodes"] if n["Id"] == node_id)["Choices"], ((None, False, None, None, ('nidalynn.trickster.cost.claim_given_up',), ()),), expected_position=0)
             for funds in (None, 0, price - 1, price, price + 73):
                 state = self.state(scene)
                 state.crusade_resources = None if funds is None else {"Materials": funds}
@@ -193,6 +243,57 @@ class S50Tests(unittest.TestCase):
                 before = copy.deepcopy(state.__dict__)
                 self.assertFalse(rules.sim_paid_choice(self.model, scene, choice, state, lambda: state.flags.update(choice["Set"])))
                 self.assertEqual(state.__dict__, before)
+
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
 
 
 if __name__ == "__main__":

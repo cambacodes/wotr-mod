@@ -34,7 +34,7 @@ class S09Tests(unittest.TestCase):
 
     def finish(self, state, suffix, node="plotted"):
         scene = self.scene(suffix)
-        choice = next(n for n in scene["Nodes"] if n["Id"] == node)["Choices"][0]
+        choice = select_answer(next(n for n in scene["Nodes"] if n["Id"] == node)["Choices"], ((None, False, None, None, (), ()),), expected_position=0)
         state.flags.update(choice["Set"])
         for flag in choice["Set"]:
             state.times[flag] = state.hour
@@ -143,20 +143,20 @@ class S09Tests(unittest.TestCase):
     def test_scroll_is_spent_on_wenduag_no_abort_after_spend_and_slot_is_inert(self):
         scene = self.scene("choice")
         nodes = {n["Id"]: n for n in scene["Nodes"]}
-        choice = nodes["protection"]["Choices"][0]
+        choice = select_answer(nodes["protection"]["Choices"], (('threshold', False, None, None, ('arueshalae.ward_held', 'trickster.now', 'wenduag.present_now', 'arueshalae.present_now'), ()),), expected_position=0)
         self.assertEqual(choice["RemoveItem"], s09.SCROLL)
         self.assertEqual(set(choice["Set"]), set(s09.flags("cost.ward_scroll", "ward.applied_wenduag")))
         state = self.state()
         state.flags.add("arueshalae.trickster.fallen.warded")
         self.assertFalse(rules.sim_choice_available(choice, state))
-        self.assertTrue(rules.sim_choice_available(nodes["protection"]["Choices"][1], state))
+        self.assertTrue(rules.sim_choice_available(select_answer(nodes["protection"]["Choices"], (('no_contact', False, None, None, (), ()),), expected_position=1), state))
         state.flags.add("arueshalae.ward_held")
         self.assertTrue(rules.sim_choice_available(choice, state))
         slot = nodes[s09.p("choice.explicit.1")]
-        self.assertEqual(slot["Choices"][0]["Next"], "after")
-        self.assertEqual(slot["Choices"][0]["Set"], [])
+        self.assertEqual(select_answer(slot["Choices"], (('after', False, None, None, (), ()),), expected_position=0)["Next"], "after")
+        self.assertEqual(select_answer(slot["Choices"], (('after', False, None, None, (), ()),), expected_position=0)["Set"], [])
         paths = list(walks(scene, set(s09.LIVE) | set(s09.flags("ward.applied_wenduag")), "threshold"))
-        self.assertEqual(len(paths), 1)
+        _single_result, = paths
         self.assertIn("after", paths[0][0])
         for node in ("threshold", s09.p("choice.explicit.1"), "after"):
             self.assertFalse(any(c["Abort"] for c in nodes[node]["Choices"]))
@@ -177,7 +177,76 @@ class S09Tests(unittest.TestCase):
                 ready.flags.add("arueshalae.ward_held")
             outcomes = walk(self, self.model, scene, ready)
             lovers = [outcome for outcome in outcomes if s09.p("choice.both_yes") in outcome.flags]
-            self.assertEqual(len(lovers), int(fresh_ward))
+            self.assertIn(contract_identities(lovers),
+                    {0: ((),),
+                     1: ((('household.any_eligible',
+                           'household.outcome.route_open',
+                           'household.pair.camellia_arueshalae.body.camellia',
+                           'household.pair.camellia_arueshalae.body.camellia.native',
+                           'household.pair.galfrey_arueshalae.voice.native_queen',
+                           'household.pair.galfrey_arueshalae.voice.queen',
+                           'household.pair.nenio_arueshalae.body.arueshalae',
+                           'household.pair.seelah_arueshalae.arueshalae_body',
+                           'household.pair.seelah_camellia.camellia_body',
+                           'household.pair.seelah_camellia.camellia_native_body',
+                           'household.pair.seelah_camellia.seelah_body',
+                           'household.pair.seelah_camellia.seelah_native_body',
+                           'household.pair.seelah_kiana.conscious',
+                           'household.pair.seelah_kiana.soul_clear',
+                           'household.pair.wenduag_arueshalae.body.arueshalae.evil',
+                           'household.pair.wenduag_arueshalae.body.arueshalae.good',
+                           'household.pair.wenduag_arueshalae.body.arueshalae.native_evil',
+                           'household.pair.wenduag_arueshalae.body.wenduag',
+                           'household.pair.wenduag_arueshalae.choice',
+                           'household.pair.wenduag_arueshalae.choice.both_yes',
+                           'household.pair.wenduag_arueshalae.choice.seen',
+                           'household.pair.wenduag_arueshalae.cost.arueshalae_easy_bait_yielded',
+                           'household.pair.wenduag_arueshalae.cost.arueshalae_foot_plan_yielded',
+                           'household.pair.wenduag_arueshalae.cost.commander_route_labour',
+                           'household.pair.wenduag_arueshalae.cost.ward_scroll',
+                           'household.pair.wenduag_arueshalae.cost.wenduag_credit_shared',
+                           'household.pair.wenduag_arueshalae.cost.wenduag_solo_boast_yielded',
+                           'household.pair.wenduag_arueshalae.deed.arueshalae_cover_kept',
+                           'household.pair.wenduag_arueshalae.deed.arueshalae_desire_answer',
+                           'household.pair.wenduag_arueshalae.deed.arueshalae_height',
+                           'household.pair.wenduag_arueshalae.deed.wenduag_credit_kept',
+                           'household.pair.wenduag_arueshalae.deed.wenduag_desire_answer',
+                           'household.pair.wenduag_arueshalae.deed.wenduag_ground',
+                           'household.pair.wenduag_arueshalae.friend_arueshalae.done',
+                           'household.pair.wenduag_arueshalae.friend_arueshalae.seen',
+                           'household.pair.wenduag_arueshalae.friend_wenduag.done',
+                           'household.pair.wenduag_arueshalae.friend_wenduag.seen',
+                           'household.pair.wenduag_arueshalae.ready.evil',
+                           'household.pair.wenduag_arueshalae.settle.done',
+                           'household.pair.wenduag_arueshalae.settle.evil_done',
+                           'household.pair.wenduag_arueshalae.settle.seen',
+                           'household.pair.wenduag_arueshalae.ward.applied_wenduag',
+                           'household.pair.wenduag_dorgelinda.office_open',
+                           'household.pair.wenduag_dorgelinda.wenduag_here',
+                           'household.readers.w5.commander.alive',
+                           'household.readers.w5.commander.not_sacrificed',
+                           'household.readers.w5.s10.clear.nenio',
+                           'household.readers.w5.s10.clear.seelah',
+                           'household.readers.w5.s10.speaking.nenio',
+                           'household.readers.w5.s10.speaking.seelah',
+                           'household.readers.w5.s20.clear.jannah',
+                           'household.readers.w5.s20.clear.seelah',
+                           'household.readers.w5.s20.speaking.jannah',
+                           'household.readers.w5.s20.speaking.seelah',
+                           'household.readers.w5.s21.clear.seelah',
+                           'household.readers.w5.s21.clear.yaniel',
+                           'household.readers.w5.s21.speaking.seelah',
+                           'household.readers.w5.s21.speaking.yaniel',
+                           'household.readers.w5.s29.clear.kiana',
+                           'household.readers.w5.s29.clear.seelah',
+                           'household.readers.w5.s29.speaking.kiana',
+                           'household.readers.w5.s29.speaking.seelah',
+                           'household.readers.w5.s30.clear.eliandra',
+                           'household.readers.w5.s30.clear.targona',
+                           'household.readers.w5.s30.speaking.eliandra',
+                           'household.readers.w5.s30.speaking.targona',
+                           'household.stance_eligible',
+                           'household.table.kept'),),)}[int(fresh_ward)])
             for outcome in outcomes:
                 rules.sim_complete(self.model, outcome)
                 self.assertIn("wenduag.committed", outcome.flags)
@@ -242,7 +311,7 @@ class S09Tests(unittest.TestCase):
             self.assertEqual(scene["HouseholdArcStart"], suffix.endswith("friend_wenduag"))
             self.assertEqual(scene["HouseholdArc"], s09.PREFIX.rstrip('.'))
             root = scene["Nodes"][0]
-            abort = root["Choices"][-1]
+            abort = select_answer(root["Choices"], ((None, True, None, None, (), ()),), expected_position=-1)
             self.assertTrue(abort["Abort"])
             self.assertEqual(abort["Set"], [])
             state = self.state(not suffix.endswith("good"))
@@ -255,6 +324,57 @@ class S09Tests(unittest.TestCase):
             self.assertFalse(rules.sim_available(self.model, scene, state))
         effects = [f for s in self.rows.values() for n in s["Nodes"] for c in n["Choices"] for f in c["Set"]]
         self.assertTrue(all(f.startswith(s09.PREFIX) for f in effects))
+
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
 
 
 if __name__ == "__main__":

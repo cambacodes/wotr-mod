@@ -39,7 +39,30 @@ class S36Tests(unittest.TestCase):
         self.scenes = {s["Id"][len(row.P):]: s for s in self.model.scenes}
 
     def answer(self, step, node, index=0):
-        return next(n for n in self.scenes[step]["Nodes"] if n["Id"] == node)["Choices"][index]
+        return ordered_answer(next(n for n in self.scenes[step]["Nodes"] if n["Id"] == node)["Choices"], index,
+                (((None, False, None, None, (), ()),),
+                 (('carried', False, None, None, (), ()),
+                  ('refused', False, None, None, (), ()),
+                  (None, True, None, None, (), ())),
+                 ((None, False, 'held', 'lost', (), ()),
+                  ('escorted', False, None, None, (), ()),
+                  ('refused', False, None, None, (), ()),
+                  (None, True, None, None, (), ())),
+                 (('prepared', False, None, None, (), ()),
+                  ('refused', False, None, None, (), ()),
+                  (None, True, None, None, (), ())),
+                 (('terms.known',
+                   False,
+                   None,
+                   None,
+                   ('household.native.colyphyr_dragon_truce',),
+                   ()),
+                  ('terms.unknown',
+                   False,
+                   None,
+                   None,
+                   (),
+                   ('household.native.colyphyr_dragon_truce',)))))
 
     def take(self, s, step, node, index=0):
         answer = self.answer(step, node, index)
@@ -193,7 +216,16 @@ class S36Tests(unittest.TestCase):
                 if sacrifice: s.flags.add("sacrifice")
                 if returned: s.flags.add("trickster.commander_back")
                 rules.sim_complete(self.model, s)
-                self.assertEqual(len(paragraphs_visible(paragraphs, s.flags)), expected)
+                self.assertIn(contract_identities(paragraphs_visible(paragraphs, s.flags)),
+                        {2: (('household.pair.melazmera_hepzamirah.reader.lastcall.hepzamirah.resolved.living',
+                              'household.pair.melazmera_hepzamirah.reader.lastcall.hepzamirah.cost.commander_watch_kept.living'),
+                             ('household.pair.melazmera_hepzamirah.reader.lastcall.melazmera.resolved.living',
+                              'household.pair.melazmera_hepzamirah.reader.lastcall.melazmera.cost.commander_watch_kept.living'),
+                             ('household.pair.melazmera_hepzamirah.reader.lastcall.hepzamirah.resolved.returned',
+                              'household.pair.melazmera_hepzamirah.reader.lastcall.hepzamirah.cost.commander_watch_kept.returned'),
+                             ('household.pair.melazmera_hepzamirah.reader.lastcall.melazmera.resolved.returned',
+                              'household.pair.melazmera_hepzamirah.reader.lastcall.melazmera.cost.commander_watch_kept.returned')),
+                         0: ((),)}[expected])
                 s.flags.add(woman + ".closed"); rules.sim_complete(self.model, s)
                 self.assertEqual(paragraphs_visible(paragraphs, s.flags), [])
             for cost in row.COSTS:
@@ -238,6 +270,69 @@ class S36Tests(unittest.TestCase):
                             loaded = copy.deepcopy(end)
                             self.assertFalse(rules.sim_available(model, body, loaded))
 
+
+
+
+def contract_identity(value):
+    """Project saved identities and gates; paragraph wording is irrelevant."""
+    if isinstance(value, dict):
+        if 'Id' in value:
+            return value['Id']
+        check = value.get('Check') or {}
+        return (value.get('Next'), check.get('Success'), check.get('Failure'),
+                value.get('Abort', False), tuple(value.get('Requires', ())),
+                tuple(value.get('Forbids', ())))
+    if hasattr(value, 'flags'):
+        return tuple(sorted(flag for flag in value.flags if flag.startswith('household.')))
+    if isinstance(value, (tuple, list)):
+        return tuple(contract_identity(item) for item in value)
+    return value
+
+
+def contract_identities(values):
+    return tuple(contract_identity(value) for value in values)
+
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def ordered_answer(answers, ordinal, expected_orders):
+    """Protect answer order, then select its declared structural destination."""
+    actual = tuple(answer_key(answer) for answer in answers)
+    if actual not in expected_orders:
+        raise AssertionError(('answer order/gates changed', actual, expected_orders))
+    for order in expected_orders:
+        if order == actual:
+            key = next(key for order_index, key in enumerate(order) if order_index == ordinal)
+            return select_answer(answers, (key,))
+    raise AssertionError('missing declared answer order')
 
 if __name__ == "__main__":
     unittest.main()

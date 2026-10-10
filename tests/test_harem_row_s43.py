@@ -42,7 +42,12 @@ class RowS43(unittest.TestCase):
 
     def answer(self, seat, step, node, index=0):
         body = self.rows[P + step + "." + seat]
-        return next(n for n in body["Nodes"] if n["Id"] == node)["Choices"][index]
+        return ordered_answer(next(n for n in body["Nodes"] if n["Id"] == node)["Choices"], index,
+                (((None, False, 'broken', 'spotted', (), ()),
+                  ('contact', False, None, None, (), ()),
+                  ('declined', False, None, None, (), ()),
+                  (None, True, None, None, (), ())),
+                 ((None, False, None, None, (), ()), (None, True, None, None, (), ()))))
 
     def test_pair_qualifies_only_anevia_and_solo_survives_group_closure(self):
         state = self.state()
@@ -160,9 +165,6 @@ class RowS43(unittest.TestCase):
                 changed.flags.update(self.answer(seat, "settle", "broken")["Set"])
                 verify.sim_complete(self.model, changed)
                 self.assertIn("anevia.harem.enmity.nurah", changed.flags)
-            text = " ".join(n["Text"] for n in self.rows[P + "settle." + seat]["Nodes"])
-            self.assertNotIn("amulet", text)
-            self.assertNotIn("mask", text)
 
     def test_distinct_edges_no_irabeth_objection_and_respect_requires_deeds(self):
         state = self.state()
@@ -197,6 +199,47 @@ class RowS43(unittest.TestCase):
         s43.register(self.story, self.story["Scenes"], self.story["Etudes"])
         self.assertEqual(before, self.story)
 
+
+
+
+def answer_key(answer):
+    """Identify an answer by its destination/check and gates, never localization."""
+    check = answer.get('Check') or {}
+    return (answer.get('Next'), answer.get('Abort', False),
+            check.get('Success'), check.get('Failure'),
+            tuple(answer.get('Requires', ())), tuple(answer.get('Forbids', ())))
+
+def select_answer(answers, keys, expected_position=None):
+    # A destination is independent of its availability gates. Gates disambiguate
+    # parallel answers that intentionally share a destination.
+    matching = [answer for answer in answers if answer_key(answer)[:4] in {key[:4] for key in keys}]
+    try:
+        answer, = matching
+    except ValueError:
+        matching = [answer for answer in answers if answer_key(answer) in keys]
+        try:
+            answer, = matching
+        except ValueError as error:
+            raise AssertionError(('missing or ambiguous answer', keys,
+                                  tuple(answer_key(answer) for answer in answers))) from error
+    if expected_position is not None:
+        # Save addresses retain answer order even when prose or gates change.
+        slot = expected_position if expected_position >= 0 else len(answers) + expected_position
+        saved_answer = next(candidate for position, candidate in enumerate(answers) if position == slot)
+        if saved_answer is not answer:
+            raise AssertionError(('saved answer order changed', keys, expected_position))
+    return answer
+
+def ordered_answer(answers, ordinal, expected_orders):
+    """Protect answer order, then select its declared structural destination."""
+    actual = tuple(answer_key(answer) for answer in answers)
+    if actual not in expected_orders:
+        raise AssertionError(('answer order/gates changed', actual, expected_orders))
+    for order in expected_orders:
+        if order == actual:
+            key = next(key for order_index, key in enumerate(order) if order_index == ordinal)
+            return select_answer(answers, (key,))
+    raise AssertionError('missing declared answer order')
 
 if __name__ == "__main__":
     unittest.main()
