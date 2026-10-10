@@ -267,7 +267,7 @@ physical("konomi.trickster.dismissed.private", "Off the record", '"Business conc
 {n}You ease the silk from one shoulder, then the other. She stands before you with nothing on but her rings. For a moment she lets you look; then her hand closes at your collar and she kisses you hard, nails grazing the back of your neck.{/n}
 {n}She walks you backward to the desk. Dispatches slide to the floor. She pushes you back against the wood, follows, and pins your wrists above your head with one ringed hand.{/n}
 "Keep looking at me."
-{n}She is rings and skin over you in the lamplight, and she takes her time about it, deliberate and maddening, watching your face for every flicker. Her breath snags.{/n}
+{n}She is rings and skin above you in the lamplight, her mouth at your jaw and your throat, deliberate and maddening, watching your face for every flicker. Her breath snags.{/n}
 "Good," {n}she says, hoarse now, the polish worn clean away.{/n} "I wanted to see that."
 {n}Her breath catches as she draws close.{/n}''',
       c("Continue", "morning")),

@@ -443,9 +443,9 @@ INTIMACY = [
         c("Continue", "threshold")),
     mi("threshold", '''{n}She pulls you down with her onto the coat and the cold planks, into the lee of the rail, and the ship sways under you both, and she holds on as if you might be the thing that rolls overboard.{/n}
 "If anything falls," {n}she breathes against your throat, fierce and unsteady,{/n} "a block, a spar, a star, I don't care, if anything falls tonight I want it to fall on both of us. Do you hear me? Both of us or neither."
-{n}Her hands are at your belt. Yours are at hers. Above you the lashed wheel creaks a quarter-turn and holds, and the stars wheel over the mast. The cold is a knife on bare skin and she does not seem to feel it: she has your shirt up over your ribs and her coat spread under the two of you and her own clothes open to the waist, and she takes your mouth, and then your hand, and puts it on her bare breast, and says "Warm" in a voice that cracks on the word. Her rope-callused hands go without ceremony to the rest of your clothes, dragging them open, her thigh sliding up between yours, her breath sawing against your ear.{/n}
+{n}Her hands are at your belt. Yours are at hers. Above you the lashed wheel creaks a quarter-turn and holds, and the stars wheel over the mast. The cold is a knife on bare skin and she does not seem to feel it: she has your shirt up over your ribs and her coat spread under the two of you and her own clothes open to the waist, and she takes your mouth, and then your hand, and puts it on her bare breast, and says "Warm" in a voice that cracks on the word. Her rope-callused hands go without ceremony to the rest of your clothes, dragging them open, her breath sawing against your ear, her heart going like a hammer against your ribs.{/n}
 "Quietly," {n}she says, and then, because she has never in her life been quiet at a wheel:{/n} "No. Don't. Let them hear it in Drezen."
-{n}She hauls you over her, hooks a bare leg round your hip, her hand between your bodies, wet and certain, and pulls you down the last of the way.{/n}''',
+{n}She hauls you over her on the coat, her bare skin burning against the cold and her fist knotted in your hair, and pulls you down the last of the way into a kiss that tastes of salt and rope-smoke.{/n}''',
         c("[The ship holds her course.]", flags=(NIGHT,))),
 ]
 

@@ -103,9 +103,9 @@ sub('''{n}In the dark Chivarro finds your burned hand and kisses the palm, and M
 
 # Minagho alone: threshold (Minagho, spared Minagho).
 span("{n}She pushes you onto the mattress and follows, hair spilling across your cheek.", "and catches your mouth again.{/n}",
-     '''{n}She pushes you onto the mattress and follows, hair spilling across your cheek. The dress is gone; you did not see where. She pins your wrists above your head with one hand while the other drags down your chest to your waistband, and her mouth curls at what she feels there.{/n}
-"Already. Good. Mine tonight, Golarian, and I intend to use every minute of it."
-{n}She bears down on you, hot-skinned and unhurried, and catches your mouth again.{/n}''')
+     '''{n}She pushes you onto the mattress and follows, hair spilling across your cheek. The dress is gone; you did not see where. She pins your wrists above your head with one hand while the other spreads flat on your chest, and her mouth curls against yours.{/n}
+"Good. Mine tonight, Golarian, and I intend to use every minute of it."
+{n}She settles close, hot-skinned and unhurried, and catches your mouth again.{/n}''')
 
 # Minagho by letter.
 sub('''and climbs astride you with your wrists pinned in one of her hands.{/n}''',
@@ -159,7 +159,7 @@ sub('''{n}Minagho bites your lower lip, then your throat, and drops the game sto
     '''{n}Minagho bites your lower lip, then your throat, and drops the game stone beyond the couch without looking where it falls. The lamp throws her shadow huge up the wall and then the shadows run together: her hot breath, her claws at your shoulders, the couch complaining under both of you. You lose the stone and the hour with it.{/n}''')
 sub('''{n}Her dress is round her hips, and then it is gone. She drags your belt open, sinks her teeth into your shoulder and grinds against you, bare and hot and wet, until you hear her breath break.{/n}
 "One hour, Golarian. Hands. All of them."''',
-    '''{n}Her fingers close on your belt, and her dress is round her hips, and then it is gone. She sinks her teeth into your shoulder, bare against your hands, until you hear her breath break.{/n}
+    '''{n}Her fingers close on your belt, and her dress is round her hips, and then it is gone. She sinks her teeth into your shoulder, bare against your hands, her breath breaking hot against your ear.{/n}
 "One hour, Golarian. She will be counting the minutes from the stair and hating every one. Hands. All of them."''')
 sub('''{n}Her fingers close on your belt.{/n}
 
@@ -215,7 +215,7 @@ sub('''{n}The lamp burns down. She keeps you exactly where she put you, and you 
 
 sub('''She settles over you with her weight on her elbows and her wings half open, shutting out the lamp.''',
     '''She bends over you with her weight on her elbows and her wings half open, shutting out the lamp.''')
-sub('''against your ear, and lowers herself onto you.{/n}''', '''against your ear, and the cool length of her settles against you.{/n}''')
+sub('''against your ear, and lowers herself onto you.{/n}''', '''against your ear, and the cool length of her presses against you.{/n}''')
 sub('''{n}Her wings shut out the lamp. Her voice is against your ear now, and the next watch passes without another knock.{/n}''',
     '''{n}Her wings shut out the lamp. The buzzing is in your skin, then in your breath, then in every part of you that has ever held still for her, and her voice is against your ear until the next watch passes without another knock.{/n}''')
 sub('''and shut out the lamp, and the sound you have only ever heard in your skull is in your skin now, everywhere she touches, and she lowers herself onto you.{/n}''',
@@ -224,7 +224,7 @@ sub('''{n}The sliver of chitin stays in your hand. She laughs against your throa
     '''{n}The sliver of chitin stays in your hand. She laughs against your throat, the sound running through you like a struck string, and her folded wings hide the lamp.{/n}''')
 
 sub('''wings half open to shut out the window, settled astride, and lowered herself onto the Commander, buzzing low enough to be felt in the teeth.{/n}''',
-    '''wings half open to shut out the window, her cool weight bearing down, the buzzing low enough to be felt in the teeth.{/n}''')
+    '''wings half open to shut out the window, her cool weight against the Commander, the buzzing low enough to be felt in the teeth.{/n}''')
 sub('''settled astride with her wings opening over them both, and lowered herself onto the Commander with a sound in the skull like pages turning very fast.{/n}''',
     '''bent over the Commander with her wings opening over them both, and the sound in the skull went through every part of the Commander like pages turning very fast.{/n}''')
 sub('''Behind the bedroom door her wings scraped once against the frame, and the household found reasons to be elsewhere until noon.{/n}''',
