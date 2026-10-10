@@ -364,10 +364,12 @@ def _witness(scenes):
         text(h, "ask", '"He will never give me that look. He knows we are enemies." {n}She turns from the '
              'cultist to you, flushed.{/n} "I can still make him afraid. That would be pleasant enough '
              'for tonight. May I have him?"')
-        text(h, "watch", '"My face? How discerning." {n}She draws the knife. The cultist jerks against '
+        text(h, "watch", ('''"My face? How discerning." {n}She draws the knife. The cultist jerks against his chains as she leans close and speaks too softly for the stair guard to hear. She looks back at you over his shoulder. When he stops moving she washes the blade in the bucket and dries her hands finger by finger.{/n} "Still watching?"
+{n}Her cheeks are flushed. In the cold of the cell her breath smokes, short and quick, and her tongue passes over her lips; the half-smile is a different thing than it was a minute ago. She comes across the flagstones with the clean little knife still in her fingers and stops with her face a hand's breadth from yours. The cell stinks of iron and wet stone and her lilies, and behind her the chains tick once against the wall and are still.{/n}
+"You did not look at him," {n}she says. Her voice has gone low and rough, the gravel under the drawing room.{/n} "Not once. You watched me. Do you know what that does to a woman, to be watched like that?" {n}The flat of the blade comes up and rests against your collarbone, cool, then slides slowly down. Her free hand takes your wrist and presses it to her throat, where her pulse is hammering.{/n} "Feel that. That is you."''' if not suffix else '"My face? How discerning." {n}She draws the knife. The cultist jerks against '
              'his chains as she leans close and speaks too softly for the stair guard to hear. She looks '
              'back at you over his shoulder. When he stops moving she washes the blade in the bucket '
-             'and dries her hands finger by finger.{/n} "Still watching?"')
+             'and dries her hands finger by finger.{/n} "Still watching?"'))
 
 
 def _continuity(scenes):
@@ -382,9 +384,9 @@ def _continuity(scenes):
              '{n}Then she laughs and pulls you down onto the silk.{/n}')
         h = scenes[P + "cards.two_lies_again" + suffix]
         node(h, "open")["Text"] = node(h, "open")["Text"].replace('for months', 'since then')
-        text(h, "mine", '"The first is a lie. You are a little afraid. I felt your pulse." '
-             '{n}She pulls you down by the collar. Her fingers find the laces while the knife '
-             'stays on the pillow beside her ear.{/n} "And the rest? Show me."')
+        text(h, "mine", '''"The first is a lie. You are a little afraid. I felt your pulse." {n}She pulls you down by the collar. Her fingers find the laces while the knife stays on the pillow beside her ear.{/n} "And the rest? Show me."
+{n}You show her. The laces give, the shift slithers to her waist and she arches into your hands with a long, shaken breath. Her skin is hot and fine as porcelain, her heart tripping under your palm.{/n}
+"Your heart says you are afraid. Your hands say otherwise." {n}Her voice has lost its polish. She takes your wrist and moves your hand over her skin, slowly, and her breath comes heavy against your neck.{/n} "I like it when they disagree."''')
         h = scenes[P + "day.the_second_dance" + suffix]
         text(h, "open", '{n}She has cleared the floor and set candles in the corners. Beyond the window, '
              'the wall patrol passes. She is barefoot, her skirt pinned to the ankle.{/n} '
@@ -597,17 +599,20 @@ def _slots(scenes):
     # Keep initiating motions once. Slots contain the remaining clothing/cut.
     for suffix in ("", "_camp", "_alive"):
         h = scenes[P + "cards.two_lies_again" + suffix]
-        text(h, "all", '"Three truths. Cheat." {n}She pulls you close by the collar.{/n} '
-             '"You will say them when I ask. Before whoever I choose." {n}She drops the knife '
-             'from the pillow and draws you down into a kiss.{/n}')
+        text(h, "all", '''"Three truths. Cheat." {n}She pulls you close by the collar.{/n} "You will say them when I ask. Before whoever I choose." {n}She drops the knife from the pillow and draws you down into a kiss.{/n}
+{n}It is a long kiss, a slow one, the kind she gives when she is spending something. By the time she lets you up her nightgown hangs off one shoulder and her hair is wild across the pillow, and she lies back and looks up at you with those cool eyes gone black and glittering.{/n}
+"Say the first one now," {n}she whispers, and takes your hand and guides it to her breast. Her heart is going hard under your palm, and she watches your face while you feel it.{/n} "Say it while you touch me. I want to hear whether the voice cracks. Don't stop. Keep going."''')
         h = scenes[P + "bond.not_today" + suffix]
-        text(h, "night", '{n}She drives the knife into the window frame, then takes your face '
-             'in both hands. She kisses you with her eyes open. Her cold fingers warm against '
-             'your neck as she draws you toward the bed.{/n}')
+        text(h, "night", '''{n}She drives the knife into the window frame, then takes your face in both hands. She kisses you with her eyes open. Her cold fingers warm against your neck as she draws you toward the bed.{/n}
+{n}She makes you wait at the foot of it. Her mouth is hungry and exact; it leaves yours for your throat and stays there, and you feel her tongue pass over her own lip as she works, the old tell, a woman tasting what she has decided not to spill. She undoes your shirt with the same fingers that hold the knife, one fastening at a time, and draws it off your shoulders. Her pulse is going in her throat so fast that she cannot keep the polish in her voice.{/n}
+"Pardon me, my friend, if I am uncivil." {n}It comes out hoarse, the gravel under the drawing room.{/n} "I have thought about this for a very long time, and I have spent all of it not killing you."
+{n}Her bodice she opens herself, unhurried, watching your face, and lets it go. She backs you onto the bed, bare to the waist, flushed from throat to breastbone, and takes your hand and presses it over her breast, and holds it there with her own, hard, as if to pin down a promise.{/n}
+"Not today," {n}she breathes against your mouth, and her eyes half close.{/n} "Today is for the other appetite. Don't stop. Whatever I say, don't stop."''')
         h = scenes[P + "day.the_second_dance" + suffix]
-        text(h, "strap", '{n}The buckle resists your fingers. She watches until it gives, '
-             'then lets the warm knife slide into your hand.{/n} "Mind the edge. I have '
-             'further use for those fingers."')
+        text(h, "strap", '''{n}The buckle resists your fingers. She watches until it gives, then lets the warm knife slide into your hand.{/n} "Mind the edge. I have further use for those fingers."
+{n}Her skirt rides up around your wrist as the strap falls away, and the leather has left pale marks on her skin. She watches you find them with a prim little smile that does not reach her breathing.{/n}
+"A lady dresses for the occasion," {n}she says, and takes the knife from you, and lays it on the boards, and guides your hand up from her thigh to her waist, and higher, until it rests on her breast.{/n} "Go on. You have my full permission. Keep going."
+{n}Her own hands are not idle. She has your shirt up and half off, her nails dragging down your side, and she presses her whole body against you until her breath stutters in your ear, the candles circling the walls.{/n}''')
         text(h, "end", '{n}Later, the last candle gutters beside the cleared floor. She listens '
              'to the watch changing beyond the shutters and rests her cheek against your shoulder.{/n} '
              '"There. You can stop counting now."')

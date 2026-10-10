@@ -239,7 +239,11 @@ session(WISH, "What chance wishes for", '"What do you wish for, Chadali?"', [
       c("[Leave her plotting.]")),
     ch("tell", '{n}She speaks close to your ear, of the party beneath the meteor shower and an azata who danced beside her when she first opened her eyes.{/n} "I never found that one again. I still look when I go home. There were so many people dancing."\n{n}She leans against you, her bracelets resting on your arm.{/n}',
       c("[Hold her.]")),
-    ch("stay", '"Granted." {n}She pulls the familiar cushions out from under the table and catches your sleeve.{/n} "I\'ve been waiting for you to ask. Help me with these, then come here."',
+    ch("stay", '''"Granted." {n}She pulls the familiar cushions out from under the table and catches your sleeve.{/n} "I've been waiting for you to ask. Help me with these, then come here."
+{n}You help. It takes longer than it should, because every cushion she hands you comes with a kiss, and by the fourth she has given up pretending the cushions are the point. She stands in the middle of the Council hall with the candle behind her, in the thin yellow silk, hair loose, hooks her fingers in your belt and tugs you up against her.{/n}
+"Wish number two," {n}she says against your jaw, breathless and delighted with herself.{/n} "I get to undress you. Slowly. For once in my life, slowly."
+{n}She is not slow. She is quick and greedy and laughing, her warm hands flat on your chest through the cloth, then lower, tracing every line they find as though she meant to learn the shape of you for later. Her bracelets are cold against your throat. Her mouth is not. She backs toward the cushions she laid with her own hands, still holding your belt, and you follow.{/n}
+"Lucky charm," {n}she whispers, a breath from your mouth,{/n} "I'm going to make you very glad you asked."''',
       c("[Stay.]")),
 ], requires=(NIGHT,), forbids=(WISH,))
 

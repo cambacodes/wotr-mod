@@ -149,7 +149,10 @@ met(DECK_AGAIN, "The deck, again", '"You brought the cards."', [
         c("Continue", "silk")),
     nar("silk", '''{n}The cards slide under your shoulders like cold scales. She is over you before the last of them has stopped moving, her hair come loose over both of you, and she is still laughing, low, into your mouth.{/n}
 {n}Her knife is out. You did not see her draw it. She lays the flat of it along your throat, cool, and trails it down, slowly, opening your shirt one button at a time with the point, and her breath stops each time the steel touches skin. When the last button goes she sets the blade down on the silk beside your head, within her reach, not yours, and presses her mouth to the place where it rested.{/n}
-"Don't tell me," {n}she whispers.{/n} "Don't ever tell me whether you did."''',
+"Don't tell me," {n}she whispers.{/n} "Don't ever tell me whether you did."
+{n}The black silk is cool under your back and she is hot everywhere she touches. She finishes the work of the buttons with her mouth instead of the point, and makes a small, greedy sound when your hands find the laces of her bodice. This time she helps. The cards are crushed under her and she does not care. The bodice parts, she throws her shift across the room, and she is bare to the candlelight, flushed and shaking with suppressed laughter, one hand braced on your chest to keep you down.{/n}
+"You have cards up your sleeves, and so have I." {n}She guides your hand up her ribs until it covers her breast, and her head drops back.{/n} "Oh, that is good. Do that again. And again."
+{n}Her breath breaks against your neck. Her fingers drag at the last of your clothes, impatient, her eyes locked on yours, the blade within her reach and not yours, daring you to lie to her face.{/n}''',
         c("[Pull her down to you]", "close")),
     nar("morning", '''{n}You wake alone on the floor, with the imprint of a card pressed into your back and the deck gathered up and gone. The candles have burned to stubs.{/n}
 {n}Only one card is left. It is pinned to the inside of your door at eye height by her small clean knife, driven into the wood to the hilt: the laughing man, mask side out, turned so that anyone who opens the door will see the mask first.{/n}

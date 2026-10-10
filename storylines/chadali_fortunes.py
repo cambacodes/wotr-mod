@@ -261,7 +261,9 @@ fortune(NIGHT, "Honey", '"You sent for me. After dark."', [
 "Whoever made this armour," {n}she says,{/n} "has never been kissed. Not once. I can tell. It's in the straps."''',
       c("[Help her with the straps.]", "look")),
     ch("look", '''{n}When the last of it is off she pulls you down among the cushions, and the candles gutter in the draught you make, and for a moment she simply lies there looking up at you, flushed and dishevelled, one hand spread flat on your chest as if feeling for a heartbeat she had bet on.{/n}
-"Lucky me," {n}she whispers, and she does not mean it as a joke.{/n}''',
+"Lucky me," {n}she whispers, and she does not mean it as a joke.{/n}
+{n}Her fingers close over your hand where it rests at her hip and carry it, slowly, up over the silk to her breast. She presses into your palm with a small, helpless sound that is nothing like her bright Council laugh. The candlelight runs gold over her; the crushed flowers give their scent up into the honey and the warm wax. With her other hand she finds your buckles, one after another, and does not trouble to be neat. A strap goes under the cushions, a pauldron rolls away and rings on the stone, and the knot of her robe, which was never holding much, gives way on its own.{/n}
+"I counted everything," {n}she whispers against your mouth.{/n} "The candles. The cushions. The flowers. I never counted this. I couldn't have. You were always going to be the part I couldn't plan." {n}Her bracelets are cold on the back of your neck, and her breath is not.{/n} "Don't make me wait for it. I'm terrible at waiting. Ask the cookies."''',
       c("[Lean down to her.]", "cut", flags=(NIGHT_FLAG,))),
     ch("cut", '{n}A guttered candle has left wax on the Council table. Chadali lies against you among the scattered cushions, her silk still beside your armour. She reaches up and plucks a crushed flower from your hair.{/n} "Look at that! All my arranging, and we\'ve flattened them. You\'re helping me clear this up before they come back."',
       c("[...]")),

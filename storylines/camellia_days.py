@@ -86,7 +86,9 @@ met(SECOND_DANCE, "The second dance", '"You cleared the floor."', [
 "There," {n}she whispers.{/n} "Mind the edge. I'm fond of that knife, and those fingers may still be useful. Put it somewhere I can see it."
 {n}You lay it on the floor between two of the candles. She looks at it for a moment, and then she does not look at it again.{/n}''',
         c("Continue", "end")),
-    cam("leave", '''"Leave it?" {n}Her breath catches, and her eyes go dark and bright at once.{/n} "You'd dance with me armed. You'd lie down with me armed." {n}She presses closer, until you can feel the hilt between you both.{/n} "Nobody has ever wanted me with the knife. They always want me to take it off first. As if that made any difference."''',
+    cam("leave", '''"Leave it?" {n}Her breath catches, and her eyes go dark and bright at once.{/n} "You'd dance with me armed. You'd lie down with me armed." {n}She presses closer, until you can feel the hilt between you both.{/n} "Nobody has ever wanted me with the knife. They always want me to take it off first. As if that made any difference."
+{n}She takes your mouth before you can answer, hard, and the hilt presses between you as she walks you backwards into the candlelight. Her fingers are at your buckles, then your shirt, then the bare skin beneath, and when your hand finds the sheathed knife at her thigh and stays there, she bites your lip and laughs, shocked and wholly delighted, against your teeth.{/n}
+"Yes," {n}she hisses.{/n} "Exactly so. Leave it. I want it there while you hold me."''',
         c("Continue", "end")),
     nar("end", '''{n}The dance stops somewhere in the middle of a turn, and neither of you notices. She kisses you as she fences, close and quick and always coming in, and she is laughing against your mouth, and her fingers are in your collar, then under it. One of the candles goes out, and then another. She pulls you down onto the bare boards in the middle of the cleared floor, one-two-three, and the last thing she says before she stops counting altogether is that this, at last, is the end of the lesson.{/n}''',
         c("[Let the last candle burn down.]")),

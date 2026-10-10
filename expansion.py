@@ -772,12 +772,6 @@ def _make_expansion(*, independent_tirabade=True):
     # heat pass g1 (HEAT, Directive 12): build-up text of the explicit slots, last, text only.
     from storylines import anevia_heat
     anevia_heat.integrate(payload)
-    from storylines import camellia_heat
-    camellia_heat.integrate(payload)
-    from storylines import chadali_heat
-    chadali_heat.integrate(payload)
-    from storylines import arueshalae_heat
-    arueshalae_heat.integrate(payload)
     # heat-g4 (Claude prose): build-up to the explicit boundary for Minagho, Chivarro, Jerribeth, Wenduag, Gesmerha,
     # Hepzamirah and Shamira. Text only, last, so no earlier layer can overwrite it and no index moves.
     from storylines import heat_g4

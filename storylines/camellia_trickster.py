@@ -552,7 +552,9 @@ met(P + "returned.test", "A knife at the right height", '"Come to your quarters 
         c("[Keep it]", "threshold", flags=(COMMITTED,))),
     nar("threshold", '''{n}She does not take her hand away. She takes your belt instead, and walks you backwards by it until the edge of the bed stops you, and then she pushes you down onto it and leans over you with her skirts in her fists and the knife's hilt digging into both of you.{/n}
 {n}She kisses the way she talks, politely and then not at all. Her teeth find your lower lip and test it, exactly as hard as she means to. Her breath is quick and hot and smells of lilies and iron. When your hands find the laces at her back she makes a small, pleased sound and does not help, and when the last one gives she catches your wrist and holds your palm flat over her heart, so you can count it with her. It is going very fast.{/n}
-"Beat," {n}she whispers against your mouth.{/n} "Beat. Beat."''',
+"Beat," {n}she whispers against your mouth.{/n} "Beat. Beat."
+{n}You count with her. Then she is done counting. She tears the last knot of her laces out herself and shoves the dress down off her shoulders, and the lamp finds the white skin and the old fine scars, and she lets you look for exactly as long as she chooses. Her hands go to your belt, with a thief's quick economy, and she watches your face while she undoes it, lips parted, the tip of her tongue just visible.{/n}
+"Still beating," {n}she whispers, hoarse, and the polish is entirely gone.{/n} "Mine is going to burst out of my chest. Tell me I am not the only one."''',
         c("[Put out the lamp.]", "morning")),
     nar("morning", '''{n}Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands.{/n}
 "You slept," {n}she says, as if reporting a fault in a lock.{/n} "With me in the bed and my knife on the pillow. You slept like a child. The others lay awake. I could always hear them lying awake, and I always knew why."

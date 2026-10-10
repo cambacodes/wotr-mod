@@ -79,12 +79,15 @@ HERS_TAIL = '''{n}The steps are very steep there. Camellia stands at the edge an
 "There," {n}she says, in that low, rough voice that is not her drawing-room one.{/n} "Tomorrow everyone will agree it was a terrible accident."
 {n}At dinner the next night she wears a new dress and is charming to everyone, and she does not look at you once until the dessert, and then she does not stop.{/n}'''
 
-text(P + "bond.witness", "hers", "the report says the witness slipped", '''
-"Thank you." {n}She says it as sincerely as she has ever said anything, and takes your arm.{/n} "Come with me, then, and carry the lantern. I want you to see how tidy I am."
+text(P + "bond.witness", "hers", "the report says the witness slipped", '''"Thank you." {n}She says it as sincerely as she has ever said anything, and takes your arm.{/n} "Come with me, then, and carry the lantern. I want you to see how tidy I am."
 {n}Two nights later Lethra leaves the infirmary against the physicians' advice, to light a candle at the chapel for the dead woman she saw. Camellia waits for her at the head of the river steps in the rain, veiled, and you stand three paces back with the hooded lantern. The candle-seller sees the lace first. Then Camellia lifts it for her, so that there can be no mistake, and steps in as close as a friend, and lays one gloved hand flat on the woman's breastbone.{/n}
 "Lady Gwerm," {n}Lethra whispers.{/n}
 "Yes," {n}Camellia says kindly, and pushes.{/n}
-''' + HERS_TAIL)
+{n}The steps are very steep there. Camellia stands at the edge and watches the whole fall, and the stillness at the bottom, with her lips parted, and she does not look away until the rain has begun to move the hair on the body's face. When she turns back to you her cheeks are flushed and her breath comes short and quick.{/n}
+"There," {n}she says, in that low, rough voice that is not her drawing-room one.{/n} "Tomorrow everyone will agree it was a terrible accident."
+{n}At dinner the next night she wears a new dress and is charming to everyone, and she does not look at you once until the dessert, and then she does not stop.{/n}
+{n}The dress is the colour of dark wine, cut to come off in one pull, and she is charming to everyone in it. She makes the table weep with laughter over a cousin's wedding, and not once through the soup or the fish does she look at you, though under the cloth her ankle finds yours and rests there, warm and deliberate. At the dessert she looks up. Her tongue passes slowly over her lower lip. Her colour is as high as it was on the steps in the rain, her breath has the same short, quick edge, and her foot slides up the inside of your calf while she tells the table a perfectly ordinary joke.{/n}
+"You are very quiet tonight, my friend," {n}she says across the candles, in the voice that is not hers, and under it, low enough that only you can hear, the other one, the gravel.{/n} "I think you are thinking about the steps. Don't stop."''')
 for suffix in ("_alive", "_camp"):
     text(P + "bond.witness" + suffix, "hers", "the report says the witness slipped", '''
 "Thank you." {n}She says it as sincerely as she has ever said anything, and takes your arm.{/n} "Come with me, then, and carry the lantern. I want you to see how tidy I am."
