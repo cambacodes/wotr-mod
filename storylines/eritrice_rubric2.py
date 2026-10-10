@@ -31,7 +31,7 @@ def integrate(payload):
           c("Continue", "record", flags=(route.STARTED, route.MINUTES_READ, route.STRAIGHT)),
           paragraphs=(p(EXCHANGE_TEXT, requires=(route.THREAT,)),
                       p(BETRAYAL_TEXT, forbids=(route.THREAT,)),
-                      p('{n}She lays the quill across the scroll, nib clear of the page. A low growl rolls under the words and is gone.{/n} "The chair yields the floor. Let the minutes show that the Commander was heard, and that the chair held her peace for the length of the answer."'))),
+                      p('{n}She lays the quill across the scroll, nib clear of the page, and yields the floor with a small inclination of the head. Your answer takes some time. She hears it out without a word, and a low growl rolls under it and is gone.{/n} "The chair has heard the Commander out. Let the minutes show that the chair held her peace for the length of it."'))),
         n("record", "Eritrice", RECORD_TEXT),
     ], requires=("trickster.now", route.RETURNED, route.VISIT),
        forbids=(route.CLOSED, route.MINUTES_READ, route.DECLINED, OPENING),
