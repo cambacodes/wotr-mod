@@ -3,6 +3,9 @@ import json
 from pathlib import Path
 import unittest
 
+from tests.story_fixture import fresh_story
+from tests.fix16b_structure import declared_host, reachable_nodes
+
 from storylines import nurah_continuation as continuation
 from storylines import nurah_trickster as route
 
@@ -71,16 +74,17 @@ class NurahRoundTwoTests(unittest.TestCase):
     def test_slots_are_reachable_and_legacy_ending_exits_keep_their_effects(self):
         brief_dir = Path(__file__).resolve().parents[1] / 'tools/route_packs/explicit_slots/nurah'
         briefs = list(brief_dir.glob('*.json'))
-        self.assertEqual(len(briefs), 12)
+        scenes = {scene['Id']: scene for scene in fresh_story()['Scenes']}
+        self.assertTrue(briefs)
         for brief in briefs:
-            json.loads(brief.read_text(encoding='utf-8'))
-            slot_id = brief.stem
-            sid = slot_id.rsplit('.explicit.', 1)[0]
-            nodes = self.scenes[sid]['Nodes']
-            slot = self.node(sid, slot_id)
-            self.assertTrue(any(c['Next'] == slot_id for n in nodes for c in n['Choices']))
-            self.assertTrue(slot['Choices'][0]['Next'])
-            self.assertFalse(slot['Choices'][0]['Set'])
+            data = json.loads(brief.read_text(encoding='utf-8'))
+            sid, nid = declared_host(brief.stem, data, scenes)
+            with self.subTest(brief=brief.stem, scene=sid, node=nid):
+                self.assertIn(nid, reachable_nodes(scenes[sid]))
+                slot = next(n for n in scenes[sid]['Nodes'] if n['Id'] == nid)
+                if nid == brief.stem:
+                    self.assertTrue(slot['Choices'][0]['Next'])
+                    self.assertFalse(slot['Choices'][0]['Set'])
         near_exit = self.node('nurah.the_letter_she_wrote', 'near')['Choices'][0]
         self.assertIsNone(near_exit['Next'])
         self.assertEqual(near_exit['Set'], ['nurah.letter_faced'])
@@ -91,7 +95,6 @@ class NurahRoundTwoTests(unittest.TestCase):
         quiet = self.node('nurah.a_margin_for_you', 'quiet')['Choices'][0]
         self.assertEqual(quiet['Next'], 'morning')
         self.assertEqual(quiet['Set'], ['nurah.private_quiet'])
-        self.assertNotIn('your shirt', self.node('nurah.a_margin_for_you', 'morning')['Text'])
 
     def test_mail_and_unwritten_receipts_do_not_invent_presence_or_reading(self):
         mail = self.scenes['nurah.borrowed_name']

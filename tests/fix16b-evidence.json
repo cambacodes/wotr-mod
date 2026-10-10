@@ -1,0 +1,484 @@
+{
+  "export_sha256": "d4c5032e2c8fc371364d83da00b0042fc2a3db1127cebee5a436b8d148761bab",
+  "cases": [
+    {
+      "test": "tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts",
+      "mutation": "scene_gate",
+      "control_failures": 15,
+      "mutation_failures": 16,
+      "detected": true,
+      "control_errors": 0,
+      "mutation_errors": 0
+    },
+    {
+      "test": "tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_all_nine_endings_keep_existing_paragraph_indices",
+      "mutation": "exit_effect",
+      "control_failures": 7,
+      "mutation_failures": 8,
+      "detected": true,
+      "control_errors": 0,
+      "mutation_errors": 0
+    },
+    {
+      "test": "tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_prefixes_and_exact_appends",
+      "mutation": "earned_append",
+      "control_failures": 2,
+      "mutation_failures": 3,
+      "detected": true,
+      "control_errors": 0,
+      "mutation_errors": 0
+    },
+    {
+      "test": "tests.test_contract_j01.J01Tests.test_reference_manifest_is_exact_and_never_exempts_new_live_action",
+      "mutation": "live_reference",
+      "control_failures": 2,
+      "mutation_failures": 3,
+      "detected": true,
+      "control_errors": 0,
+      "mutation_errors": 0
+    },
+    {
+      "test": "tests.test_contract_j01.J01Tests.test_s08_seal_reply_remains_a_channel_and_is_not_emitted_by_j01",
+      "mutation": "reply_body",
+      "control_failures": 0,
+      "mutation_failures": 1,
+      "detected": true,
+      "control_errors": 0,
+      "mutation_errors": 0
+    },
+    {
+      "test": "tests.test_endings_job4.EndingsJob4Tests.test_repeated_pair_summaries_only_follow_selected_terminal",
+      "mutation": "early_summary",
+      "control_failures": 0,
+      "mutation_failures": 1,
+      "detected": true,
+      "control_errors": 0,
+      "mutation_errors": 0
+    },
+    {
+      "test": "tests.test_iomedae_round2.IomedaeRound2Tests.test_slots_have_one_first_night_and_history_specific_mornings",
+      "mutation": "wrong_morning",
+      "control_failures": 0,
+      "mutation_failures": 1,
+      "detected": true,
+      "control_errors": 0,
+      "mutation_errors": 0
+    },
+    {
+      "test": "tests.test_horzalah_polish.HorzalahPolishTests.test_knife_and_missed_chamber_endings_have_no_retroactive_receipts",
+      "mutation": "retroactive_chamber",
+      "control_failures": 0,
+      "mutation_failures": 1,
+      "detected": true,
+      "control_errors": 0,
+      "mutation_errors": 0
+    },
+    {
+      "test": "tests.test_herrax_round2.HerraxRound2Tests.test_all_four_briefs_have_reachable_default_nodes",
+      "mutation": "herrax_edge",
+      "control_failures": 0,
+      "mutation_failures": 1,
+      "detected": true,
+      "control_errors": 0,
+      "mutation_errors": 0
+    },
+    {
+      "test": "tests.test_nurah_round2.NurahRoundTwoTests.test_slots_are_reachable_and_legacy_ending_exits_keep_their_effects",
+      "mutation": "nurah_edge",
+      "control_failures": 0,
+      "mutation_failures": 1,
+      "detected": true,
+      "control_errors": 0,
+      "mutation_errors": 0
+    }
+  ],
+  "all_detected": true,
+  "nidalynn_conflicts": [
+    {
+      "scene": "nidalynn.trickster.epilogue.salt",
+      "node": "page",
+      "field": "history predicate",
+      "expected": {
+        "Requires": [
+          "nidalynn.trickster.chaplain_prayed"
+        ],
+        "Forbids": [],
+        "AnyGroups": []
+      },
+      "actual": {
+        "Requires": [],
+        "Forbids": [],
+        "AnyGroups": [
+          [
+            "nidalynn.trickster.chaplain_prayed",
+            "nidalynn.trickster.chaplain_sent_away"
+          ]
+        ]
+      },
+      "owner": "Nidalynn structure / struct-nidalynn owner",
+      "commit": "e7ecf8c9fb6e3ce3cdc53ee880f9228a601d68e3"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.late",
+      "node": "page",
+      "field": "history predicate",
+      "expected": {
+        "Requires": [
+          "nidalynn.trickster.chaplain_prayed"
+        ],
+        "Forbids": [],
+        "AnyGroups": []
+      },
+      "actual": {
+        "Requires": [],
+        "Forbids": [],
+        "AnyGroups": [
+          [
+            "nidalynn.trickster.chaplain_prayed",
+            "nidalynn.trickster.chaplain_sent_away"
+          ]
+        ]
+      },
+      "owner": "Nidalynn structure / struct-nidalynn owner",
+      "commit": "e7ecf8c9fb6e3ce3cdc53ee880f9228a601d68e3"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.heel",
+      "node": "page",
+      "field": "history predicate",
+      "expected": {
+        "Requires": [
+          "nidalynn.trickster.chaplain_prayed"
+        ],
+        "Forbids": [],
+        "AnyGroups": []
+      },
+      "actual": {
+        "Requires": [],
+        "Forbids": [],
+        "AnyGroups": [
+          [
+            "nidalynn.trickster.chaplain_prayed",
+            "nidalynn.trickster.chaplain_sent_away"
+          ]
+        ]
+      },
+      "owner": "Nidalynn structure / struct-nidalynn owner",
+      "commit": "e7ecf8c9fb6e3ce3cdc53ee880f9228a601d68e3"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.wolves",
+      "node": null,
+      "field": "Requires",
+      "expected": [
+        "trickster.ever",
+        "nidalynn.trickster.goat.lie_kept",
+        "nidalynn.present_now"
+      ],
+      "actual": [
+        "trickster.ever",
+        "nidalynn.trickster.goat.lie_kept"
+      ],
+      "owner": "Nidalynn structure / fix15 departure-contract owner",
+      "commit": "e62d94c4372ba2257b892c1ff40b2d00bde12895"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.unreturned",
+      "node": "page",
+      "field": "history predicate",
+      "expected": {
+        "Requires": [
+          "nidalynn.trickster.chaplain_prayed"
+        ],
+        "Forbids": [],
+        "AnyGroups": []
+      },
+      "actual": {
+        "Requires": [],
+        "Forbids": [],
+        "AnyGroups": [
+          [
+            "nidalynn.trickster.chaplain_prayed",
+            "nidalynn.trickster.chaplain_sent_away"
+          ]
+        ]
+      },
+      "owner": "Nidalynn structure / struct-nidalynn owner",
+      "commit": "e7ecf8c9fb6e3ce3cdc53ee880f9228a601d68e3"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.apart",
+      "node": null,
+      "field": "Requires",
+      "expected": [
+        "trickster.ever",
+        "nidalynn.trickster.met",
+        "nidalynn.closed",
+        "nidalynn.present_now"
+      ],
+      "actual": [
+        "trickster.ever",
+        "nidalynn.trickster.met",
+        "nidalynn.closed"
+      ],
+      "owner": "Nidalynn structure / fix15 departure-contract owner",
+      "commit": "e62d94c4372ba2257b892c1ff40b2d00bde12895"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.apart",
+      "node": "page",
+      "field": "history predicate",
+      "expected": {
+        "Requires": [
+          "nidalynn.trickster.chaplain_prayed"
+        ],
+        "Forbids": [],
+        "AnyGroups": []
+      },
+      "actual": {
+        "Requires": [],
+        "Forbids": [],
+        "AnyGroups": [
+          [
+            "nidalynn.trickster.chaplain_prayed",
+            "nidalynn.trickster.chaplain_sent_away"
+          ]
+        ]
+      },
+      "owner": "Nidalynn structure / struct-nidalynn owner",
+      "commit": "e7ecf8c9fb6e3ce3cdc53ee880f9228a601d68e3"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.claimed",
+      "node": "page",
+      "field": "history predicate",
+      "expected": {
+        "Requires": [
+          "nidalynn.trickster.chaplain_prayed"
+        ],
+        "Forbids": [],
+        "AnyGroups": []
+      },
+      "actual": {
+        "Requires": [],
+        "Forbids": [],
+        "AnyGroups": [
+          [
+            "nidalynn.trickster.chaplain_prayed",
+            "nidalynn.trickster.chaplain_sent_away"
+          ]
+        ]
+      },
+      "owner": "Nidalynn structure / struct-nidalynn owner",
+      "commit": "e7ecf8c9fb6e3ce3cdc53ee880f9228a601d68e3"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.lie",
+      "node": null,
+      "field": "Requires",
+      "expected": [
+        "trickster.ever",
+        "nidalynn.trickster.lie_kept",
+        "nidalynn.present_now"
+      ],
+      "actual": [
+        "trickster.ever",
+        "nidalynn.trickster.lie_kept"
+      ],
+      "owner": "Nidalynn structure / fix15 departure-contract owner",
+      "commit": "e62d94c4372ba2257b892c1ff40b2d00bde12895"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.lie",
+      "node": "page",
+      "field": "history predicate",
+      "expected": {
+        "Requires": [
+          "nidalynn.trickster.chaplain_prayed"
+        ],
+        "Forbids": [],
+        "AnyGroups": []
+      },
+      "actual": {
+        "Requires": [],
+        "Forbids": [],
+        "AnyGroups": [
+          [
+            "nidalynn.trickster.chaplain_prayed",
+            "nidalynn.trickster.chaplain_sent_away"
+          ]
+        ]
+      },
+      "owner": "Nidalynn structure / struct-nidalynn owner",
+      "commit": "e7ecf8c9fb6e3ce3cdc53ee880f9228a601d68e3"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.given",
+      "node": null,
+      "field": "Requires",
+      "expected": [
+        "trickster.ever",
+        "nidalynn.trickster.given_to_the_crowd",
+        "nidalynn.present_now"
+      ],
+      "actual": [
+        "trickster.ever",
+        "nidalynn.trickster.given_to_the_crowd"
+      ],
+      "owner": "Nidalynn structure / fix15 departure-contract owner",
+      "commit": "e62d94c4372ba2257b892c1ff40b2d00bde12895"
+    },
+    {
+      "scene": "nidalynn.trickster.kiln.the_chaplain",
+      "node": null,
+      "field": "Forbids",
+      "expected": [
+        "nidalynn.closed",
+        "nidalynn.trickster.left_with_it",
+        "nidalynn.trickster.chaplain_prayed",
+        "nidalynn.trickster.lie_kept",
+        "nidalynn.trickster.form_chosen"
+      ],
+      "actual": [
+        "nidalynn.closed",
+        "nidalynn.trickster.left_with_it",
+        "nidalynn.trickster.chaplain_prayed",
+        "nidalynn.trickster.chaplain_sent_away",
+        "nidalynn.trickster.lie_kept",
+        "nidalynn.trickster.form_chosen"
+      ],
+      "owner": "Nidalynn structure / fix15 departure-contract owner",
+      "commit": "e7ecf8c9fb6e3ce3cdc53ee880f9228a601d68e3"
+    },
+    {
+      "scene": "nidalynn.trickster.kiln.the_chaplain",
+      "node": "after_prayer",
+      "choice": 0,
+      "field": "Set",
+      "expected": [],
+      "actual": [
+        "nidalynn.trickster.chaplain_prayed"
+      ],
+      "owner": "Nidalynn structure / struct-nidalynn owner",
+      "commit": "e7ecf8c9fb6e3ce3cdc53ee880f9228a601d68e3"
+    },
+    {
+      "scene": "nidalynn.trickster.kiln.the_chaplain",
+      "node": "leave",
+      "choice": 0,
+      "field": "Set",
+      "expected": [],
+      "actual": [
+        "nidalynn.trickster.chaplain_sent_away"
+      ],
+      "owner": "Nidalynn structure / struct-nidalynn owner",
+      "commit": "e7ecf8c9fb6e3ce3cdc53ee880f9228a601d68e3"
+    },
+    {
+      "scene": "nidalynn.trickster.kiln.the_chaplain",
+      "node": "end",
+      "choice": 0,
+      "field": "Set",
+      "expected": [
+        "nidalynn.trickster.chaplain_prayed"
+      ],
+      "actual": [],
+      "owner": "Nidalynn structure / struct-nidalynn owner",
+      "commit": "e7ecf8c9fb6e3ce3cdc53ee880f9228a601d68e3"
+    }
+  ],
+  "job_id": "fix16b",
+  "base_sha": "e82aeef30885c04f2c3749b66fca386adf2ea7d7",
+  "input_manifest_digest": "60862bccfb5e9ca5a71d670908c13f6edf53396b0a0a1b28d91dfb9abbfeddd1",
+  "checks": [
+    {
+      "argv": [
+        "python",
+        "-m",
+        "tests.fix16b_mutations",
+        "/tmp/fix16b-export.json",
+        "/tmp/fix16b-mutations.json"
+      ],
+      "exit": 0,
+      "result": "10 mutations add assertion failures; no controls or mutants have errors"
+    },
+    {
+      "argv": [
+        "python",
+        "-"
+      ],
+      "exit": 1,
+      "environment": {
+        "RRT_TEST_STORY": "/tmp/fix16b-export.json"
+      },
+      "result": "71 sibling tests, 67 passed, 4 failed with 26 assertion failures; no errors",
+      "excluded": [
+        "tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_integration_and_repeated_assembly_are_idempotent"
+      ],
+      "stdin": "import unittest\nmodules=['tests.test_nidalynn_partner_claim','tests.test_contract_j01','tests.test_endings_job4','tests.test_iomedae_round2','tests.test_horzalah_polish','tests.test_herrax_round2','tests.test_nurah_round2']\ndef flatten(suite):\n for t in suite:\n  if isinstance(t,unittest.TestSuite):yield from flatten(t)\n  else:yield t\nsuite=unittest.TestSuite(t for t in flatten(unittest.defaultTestLoader.loadTestsFromNames(modules)) if not t.id().endswith('test_integration_and_repeated_assembly_are_idempotent'))\nr=unittest.TextTestRunner(verbosity=2).run(suite)\nraise SystemExit(not r.wasSuccessful())\n"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_nidalynn_partner_claim",
+        "tests.test_contract_j01",
+        "tests.test_endings_job4",
+        "tests.test_iomedae_round2",
+        "tests.test_horzalah_polish",
+        "tests.test_herrax_round2",
+        "tests.test_nurah_round2"
+      ],
+      "exit": null,
+      "result": "exploratory pre-edit suite cancelled; no baseline attribution claimed"
+    }
+  ],
+  "sibling_results": "test_all_nine_endings_keep_existing_paragraph_indices (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_all_nine_endings_keep_existing_paragraph_indices)\nEvery declared ending retains its history predicates and inert exit. ... \n  test_all_nine_endings_keep_existing_paragraph_indices (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_all_nine_endings_keep_existing_paragraph_indices) (requires=['nidalynn.trickster.chaplain_prayed'], ending='salt')\nEvery declared ending retains its history predicates and inert exit. ... FAIL\n  test_all_nine_endings_keep_existing_paragraph_indices (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_all_nine_endings_keep_existing_paragraph_indices) (requires=['nidalynn.trickster.chaplain_prayed'], ending='late')\nEvery declared ending retains its history predicates and inert exit. ... FAIL\n  test_all_nine_endings_keep_existing_paragraph_indices (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_all_nine_endings_keep_existing_paragraph_indices) (requires=['nidalynn.trickster.chaplain_prayed'], ending='heel')\nEvery declared ending retains its history predicates and inert exit. ... FAIL\n  test_all_nine_endings_keep_existing_paragraph_indices (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_all_nine_endings_keep_existing_paragraph_indices) (requires=['nidalynn.trickster.chaplain_prayed'], ending='unreturned')\nEvery declared ending retains its history predicates and inert exit. ... FAIL\n  test_all_nine_endings_keep_existing_paragraph_indices (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_all_nine_endings_keep_existing_paragraph_indices) (requires=['nidalynn.trickster.chaplain_prayed'], ending='apart')\nEvery declared ending retains its history predicates and inert exit. ... FAIL\n  test_all_nine_endings_keep_existing_paragraph_indices (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_all_nine_endings_keep_existing_paragraph_indices) (requires=['nidalynn.trickster.chaplain_prayed'], ending='claimed')\nEvery declared ending retains its history predicates and inert exit. ... FAIL\n  test_all_nine_endings_keep_existing_paragraph_indices (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_all_nine_endings_keep_existing_paragraph_indices) (requires=['nidalynn.trickster.chaplain_prayed'], ending='lie')\nEvery declared ending retains its history predicates and inert exit. ... FAIL\ntest_both_commitments_keep_the_existing_choices_and_record_history (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_both_commitments_keep_the_existing_choices_and_record_history) ... ok\ntest_containing_pages_reject_each_missing_earned_history (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_containing_pages_reject_each_missing_earned_history)\nT-SALT/LATE/LASTCALL: negative predicate fixtures cannot grant a page. ... ok\ntest_each_missing_custody_cost_hides_append_in_predicate_fixtures (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_each_missing_custody_cost_hides_append_in_predicate_fixtures)\nIsolated predicate negatives supplement, rather than replace, paid walks. ... ok\ntest_entry_care_truth_and_early_late_chronology_histories (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_entry_care_truth_and_early_late_chronology_histories)\nT-ENTRY/MEET/CARE/TRUTH/CHRONO use compatible native histories. ... ok\ntest_entry_disposal_failed_alarm_and_unsaved_meeting_exclusions (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_entry_disposal_failed_alarm_and_unsaved_meeting_exclusions) ... ok\ntest_every_reveal_answer_records_the_disguise (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_every_reveal_answer_records_the_disguise) ... ok\ntest_frozen_prefixes_and_exact_appends (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_prefixes_and_exact_appends)\nAll approved history predicates remain on their declared pages. ... \n  test_frozen_prefixes_and_exact_appends (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_prefixes_and_exact_appends) (scene='nidalynn.trickster.epilogue.salt', kind='prefix', requires=['nidalynn.trickster.chaplain_prayed'])\nAll approved history predicates remain on their declared pages. ... FAIL\n  test_frozen_prefixes_and_exact_appends (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_prefixes_and_exact_appends) (scene='nidalynn.trickster.epilogue.late', kind='prefix', requires=['nidalynn.trickster.chaplain_prayed'])\nAll approved history predicates remain on their declared pages. ... FAIL\ntest_frozen_scene_reader_and_shared_producer_contracts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts)\nB01-B28: preserve gates, ordered choices, effects and save IDs. ... \n  test_frozen_scene_reader_and_shared_producer_contracts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts) (scene='nidalynn.trickster.epilogue.salt', node='page', paragraph=18)\nB01-B28: preserve gates, ordered choices, effects and save IDs. ... FAIL\n  test_frozen_scene_reader_and_shared_producer_contracts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts) (scene='nidalynn.trickster.epilogue.late', node='page', paragraph=18)\nB01-B28: preserve gates, ordered choices, effects and save IDs. ... FAIL\n  test_frozen_scene_reader_and_shared_producer_contracts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts) (scene='nidalynn.trickster.epilogue.heel', node='page', paragraph=18)\nB01-B28: preserve gates, ordered choices, effects and save IDs. ... FAIL\n  test_frozen_scene_reader_and_shared_producer_contracts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts) (scene='nidalynn.trickster.epilogue.wolves')\nB01-B28: preserve gates, ordered choices, effects and save IDs. ... FAIL\n  test_frozen_scene_reader_and_shared_producer_contracts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts) (scene='nidalynn.trickster.epilogue.unreturned', node='page', paragraph=18)\nB01-B28: preserve gates, ordered choices, effects and save IDs. ... FAIL\n  test_frozen_scene_reader_and_shared_producer_contracts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts) (scene='nidalynn.trickster.epilogue.apart')\nB01-B28: preserve gates, ordered choices, effects and save IDs. ... FAIL\n  test_frozen_scene_reader_and_shared_producer_contracts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts) (scene='nidalynn.trickster.epilogue.apart', node='page', paragraph=18)\nB01-B28: preserve gates, ordered choices, effects and save IDs. ... FAIL\n  test_frozen_scene_reader_and_shared_producer_contracts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts) (scene='nidalynn.trickster.epilogue.claimed', node='page', paragraph=18)\nB01-B28: preserve gates, ordered choices, effects and save IDs. ... FAIL\n  test_frozen_scene_reader_and_shared_producer_contracts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts) (scene='nidalynn.trickster.epilogue.lie')\nB01-B28: preserve gates, ordered choices, effects and save IDs. ... FAIL\n  test_frozen_scene_reader_and_shared_producer_contracts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts) (scene='nidalynn.trickster.epilogue.lie', node='page', paragraph=18)\nB01-B28: preserve gates, ordered choices, effects and save IDs. ... FAIL\n  test_frozen_scene_reader_and_shared_producer_contracts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts) (scene='nidalynn.trickster.epilogue.given')\nB01-B28: preserve gates, ordered choices, effects and save IDs. ... FAIL\n  test_frozen_scene_reader_and_shared_producer_contracts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts) (scene='nidalynn.trickster.kiln.the_chaplain')\nB01-B28: preserve gates, ordered choices, effects and save IDs. ... FAIL\n  test_frozen_scene_reader_and_shared_producer_contracts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts) (scene='nidalynn.trickster.kiln.the_chaplain', node='after_prayer', choice=0)\nB01-B28: preserve gates, ordered choices, effects and save IDs. ... FAIL\n  test_frozen_scene_reader_and_shared_producer_contracts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts) (scene='nidalynn.trickster.kiln.the_chaplain', node='leave', choice=0)\nB01-B28: preserve gates, ordered choices, effects and save IDs. ... FAIL\n  test_frozen_scene_reader_and_shared_producer_contracts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts) (scene='nidalynn.trickster.kiln.the_chaplain', node='end', choice=0)\nB01-B28: preserve gates, ordered choices, effects and save IDs. ... FAIL\ntest_historical_windstep_complaint_cannot_bypass_later_actor_loss (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_historical_windstep_complaint_cannot_bypass_later_actor_loss)\nHistory can stay true when its containing living page is unavailable. ... ok\ntest_incomplete_and_refused_repairs_never_earn_delivery_memory (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_incomplete_and_refused_repairs_never_earn_delivery_memory) ... ok\ntest_lastcall_buried_alive_memory_requires_all_three_facts (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_lastcall_buried_alive_memory_requires_all_three_facts)\nT-LASTCALL prefix[7] is conditional; disguise prefix[8] is unconditional. ... ok\ntest_lastcall_called_uncalled_and_late_histories_keep_local_staging (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_lastcall_called_uncalled_and_late_histories_keep_local_staging)\nB27: earned salt enables the call; a late kiss enables only the page. ... ok\ntest_lastcall_conditional_history_and_unconditional_disguise (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_lastcall_conditional_history_and_unconditional_disguise) ... ok\ntest_lastcall_named_refused_debt_is_history_not_a_creditor_cameo (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_lastcall_named_refused_debt_is_history_not_a_creditor_cameo)\nCompatible historical mother modifiers from truth, not presence grants. ... ok\ntest_no_stance_or_eligibility_gate_for_a_fictional_bond (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_no_stance_or_eligibility_gate_for_a_fictional_bond) ... ok\ntest_paid_delivery_and_repair_histories_render_in_each_earned_page (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_paid_delivery_and_repair_histories_render_in_each_earned_page)\nPA-01/02: four positives × both bodies × salt/late/LastCall. ... ok\ntest_paid_history_does_not_override_later_loss_closure_or_fatal_sacrifice (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_paid_history_does_not_override_later_loss_closure_or_fatal_sacrifice) ... ok\ntest_postponed_heel_refusal_and_current_path_keep_their_earned_gates (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_postponed_heel_refusal_and_current_path_keep_their_earned_gates) ... ok\ntest_windstep_appends_require_carried_inspected_or_unanswered_history (tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_windstep_appends_require_carried_inspected_or_unanswered_history)\nT-APPENDS siblings: actual notice/cell/inspection, in both bodies. ... ok\ntest_all_emitted_table_and_private_participants_have_declared_contact_types (tests.test_contract_j01.J01Tests.test_all_emitted_table_and_private_participants_have_declared_contact_types) ... ok\ntest_arueshalae_seat_does_not_import_another_rows_native_recruitment (tests.test_contract_j01.J01Tests.test_arueshalae_seat_does_not_import_another_rows_native_recruitment) ... ok\ntest_body_witness_cannot_be_redefined_as_a_letter (tests.test_contract_j01.J01Tests.test_body_witness_cannot_be_redefined_as_a_letter) ... ok\ntest_ghost_is_not_a_body_and_owned_remote_declarations_survive (tests.test_contract_j01.J01Tests.test_ghost_is_not_a_body_and_owned_remote_declarations_survive) ... ok\ntest_herrax_history_remains_readable_after_the_named_women_leave (tests.test_contract_j01.J01Tests.test_herrax_history_remains_readable_after_the_named_women_leave) ... ok\ntest_native_professional_guard_preserves_refusal_without_reopening_romance (tests.test_contract_j01.J01Tests.test_native_professional_guard_preserves_refusal_without_reopening_romance) ... ok\ntest_reference_manifest_is_exact_and_never_exempts_new_live_action (tests.test_contract_j01.J01Tests.test_reference_manifest_is_exact_and_never_exempts_new_live_action) ... \n  test_reference_manifest_is_exact_and_never_exempts_new_live_action (tests.test_contract_j01.J01Tests.test_reference_manifest_is_exact_and_never_exempts_new_live_action) (scene='herrax.trickster.madam.reachable', node='cut', slot='text', woman='chivarro') ... FAIL\n  test_reference_manifest_is_exact_and_never_exempts_new_live_action (tests.test_contract_j01.J01Tests.test_reference_manifest_is_exact_and_never_exempts_new_live_action) (scene='herrax.trickster.madam.reachable_restored', node='cut', slot='text', woman='chivarro') ... FAIL\ntest_s08_seal_reply_remains_a_channel_and_is_not_emitted_by_j01 (tests.test_contract_j01.J01Tests.test_s08_seal_reply_remains_a_channel_and_is_not_emitted_by_j01) ... ok\ntest_summit_native_audience_is_not_nocticula_romance (tests.test_contract_j01.J01Tests.test_summit_native_audience_is_not_nocticula_romance) ... ok\ntest_verified_native_recovery_context_is_not_an_unchecked_whole_route_exception (tests.test_contract_j01.J01Tests.test_verified_native_recovery_context_is_not_an_unchecked_whole_route_exception) ... ok\ntest_camellia_immediate_curtain_is_not_three_nights_in_coffin (tests.test_endings_job4.EndingsJob4Tests.test_camellia_immediate_curtain_is_not_three_nights_in_coffin) ... ok\ntest_codas_follow_all_route_variants_in_real_insertion_order (tests.test_endings_job4.EndingsJob4Tests.test_codas_follow_all_route_variants_in_real_insertion_order) ... ok\ntest_eliandra_decision_precedes_night_lifetime_and_coda (tests.test_endings_job4.EndingsJob4Tests.test_eliandra_decision_precedes_night_lifetime_and_coda) ... ok\ntest_jerribeth_selected_paths_print_each_partner_summary_once (tests.test_endings_job4.EndingsJob4Tests.test_jerribeth_selected_paths_print_each_partner_summary_once) ... ok\ntest_lastcall_recollections_do_not_invent_bodies_or_reverse_choices (tests.test_endings_job4.EndingsJob4Tests.test_lastcall_recollections_do_not_invent_bodies_or_reverse_choices) ... ok\ntest_repeated_pair_summaries_only_follow_selected_terminal (tests.test_endings_job4.EndingsJob4Tests.test_repeated_pair_summaries_only_follow_selected_terminal) ... ok\ntest_saved_ids_and_exits_survive (tests.test_endings_job4.EndingsJob4Tests.test_saved_ids_and_exits_survive) ... ok\ntest_both_returns_collect_the_actual_banner_and_miracle_debts (tests.test_iomedae_round2.IomedaeRound2Tests.test_both_returns_collect_the_actual_banner_and_miracle_debts) ... ok\ntest_herald_outcomes_and_cruelty_are_distinct (tests.test_iomedae_round2.IomedaeRound2Tests.test_herald_outcomes_and_cruelty_are_distinct) ... ok\ntest_personal_exchange_and_late_exchange_earn_their_own_answer (tests.test_iomedae_round2.IomedaeRound2Tests.test_personal_exchange_and_late_exchange_earn_their_own_answer) ... ok\ntest_private_memory_is_not_available_from_the_public_legend (tests.test_iomedae_round2.IomedaeRound2Tests.test_private_memory_is_not_available_from_the_public_legend) ... ok\ntest_slots_have_one_first_night_and_history_specific_mornings (tests.test_iomedae_round2.IomedaeRound2Tests.test_slots_have_one_first_night_and_history_specific_mornings) ... ok\ntest_war_talk_and_argument_only_cannot_earn_personal_yes (tests.test_iomedae_round2.IomedaeRound2Tests.test_war_talk_and_argument_only_cannot_earn_personal_yes) ... ok\ntest_canary_histories_are_exhaustive_and_disjoint (tests.test_horzalah_polish.HorzalahPolishTests.test_canary_histories_are_exhaustive_and_disjoint) ... ok\ntest_confession_and_new_admission_share_one_optional_beat (tests.test_horzalah_polish.HorzalahPolishTests.test_confession_and_new_admission_share_one_optional_beat) ... ok\ntest_death_wins_over_all_historic_romance_outcomes (tests.test_horzalah_polish.HorzalahPolishTests.test_death_wins_over_all_historic_romance_outcomes) ... ok\ntest_knife_and_missed_chamber_endings_have_no_retroactive_receipts (tests.test_horzalah_polish.HorzalahPolishTests.test_knife_and_missed_chamber_endings_have_no_retroactive_receipts) ... ok\ntest_native_yozz_receipts_and_death_precedence (tests.test_horzalah_polish.HorzalahPolishTests.test_native_yozz_receipts_and_death_precedence) ... ok\ntest_optional_memories_do_not_become_courtship_gates (tests.test_horzalah_polish.HorzalahPolishTests.test_optional_memories_do_not_become_courtship_gates) ... ok\ntest_reactions_use_the_paid_ear_and_correct_owner (tests.test_horzalah_polish.HorzalahPolishTests.test_reactions_use_the_paid_ear_and_correct_owner) ... ok\ntest_room_copies_keep_the_gift_and_report_factual (tests.test_horzalah_polish.HorzalahPolishTests.test_room_copies_keep_the_gift_and_report_factual) ... ok\ntest_sister_hook_uses_current_presence_and_separates_actual_departure (tests.test_horzalah_polish.HorzalahPolishTests.test_sister_hook_uses_current_presence_and_separates_actual_departure) ... ok\ntest_all_four_briefs_have_reachable_default_nodes (tests.test_herrax_round2.HerraxRound2Tests.test_all_four_briefs_have_reachable_default_nodes) ... ok\ntest_bet_collection_does_not_depend_on_reading_the_packet (tests.test_herrax_round2.HerraxRound2Tests.test_bet_collection_does_not_depend_on_reading_the_packet) ... ok\ntest_both_first_nights_reach_slot_and_breakfast (tests.test_herrax_round2.HerraxRound2Tests.test_both_first_nights_reach_slot_and_breakfast) ... ok\ntest_court_question_has_local_answers_before_packet_continues (tests.test_herrax_round2.HerraxRound2Tests.test_court_question_has_local_answers_before_packet_continues) ... ok\ntest_failed_sale_memories_do_not_award_a_sale (tests.test_herrax_round2.HerraxRound2Tests.test_failed_sale_memories_do_not_award_a_sale) ... ok\ntest_folded_discovery_requires_current_body (tests.test_herrax_round2.HerraxRound2Tests.test_folded_discovery_requires_current_body) ... ok\ntest_hand_return_receipt_counts_only_observed_coin_return (tests.test_herrax_round2.HerraxRound2Tests.test_hand_return_receipt_counts_only_observed_coin_return) ... ok\ntest_late_face_to_face_decision_precedes_act (tests.test_herrax_round2.HerraxRound2Tests.test_late_face_to_face_decision_precedes_act) ... ok\ntest_late_return_remembers_completed_punishments (tests.test_herrax_round2.HerraxRound2Tests.test_late_return_remembers_completed_punishments) ... ok\ntest_morevet_absence_preserves_sentence_case_and_separate_observer (tests.test_herrax_round2.HerraxRound2Tests.test_morevet_absence_preserves_sentence_case_and_separate_observer) ... ok\ntest_morevet_death_has_no_live_entry_or_unguarded_incoming_edge (tests.test_herrax_round2.HerraxRound2Tests.test_morevet_death_has_no_live_entry_or_unguarded_incoming_edge) ... ok\ntest_refusal_never_reaches_intimacy (tests.test_herrax_round2.HerraxRound2Tests.test_refusal_never_reaches_intimacy) ... ok\ntest_repeat_visit_reaches_repeat_slot (tests.test_herrax_round2.HerraxRound2Tests.test_repeat_visit_reaches_repeat_slot) ... ok\ntest_accepted_prisoner_cannot_buy_a_competing_late_run (tests.test_nurah_round2.NurahRoundTwoTests.test_accepted_prisoner_cannot_buy_a_competing_late_run) ... ok\ntest_all_four_early_refusals_have_a_matching_preproof_ending (tests.test_nurah_round2.NurahRoundTwoTests.test_all_four_early_refusals_have_a_matching_preproof_ending) ... ok\ntest_disclosure_guards_standalone_and_folded_appetite (tests.test_nurah_round2.NurahRoundTwoTests.test_disclosure_guards_standalone_and_folded_appetite) ... ok\ntest_mail_and_unwritten_receipts_do_not_invent_presence_or_reading (tests.test_nurah_round2.NurahRoundTwoTests.test_mail_and_unwritten_receipts_do_not_invent_presence_or_reading) ... ok\ntest_print_payment_is_not_a_zero_delay_circulated_copy (tests.test_nurah_round2.NurahRoundTwoTests.test_print_payment_is_not_a_zero_delay_circulated_copy) ... ok\ntest_slots_are_reachable_and_legacy_ending_exits_keep_their_effects (tests.test_nurah_round2.NurahRoundTwoTests.test_slots_are_reachable_and_legacy_ending_exits_keep_their_effects) ... ok\n",
+  "test_source_sha256": {
+    "tests/test_nidalynn_partner_claim.py": "b29330be12ff3ec8a21e493d909f924a5720e0f728359917685b999e1382bdec",
+    "tests/test_contract_j01.py": "639bb8dca633dd9db020459b0f5a7f33d09b0f45480eea9480e76067892b70c6",
+    "tests/test_endings_job4.py": "ca6e6aa5f0065afa97f2398321a00979d4104c9b4f36b4c001a3c595f9abf755",
+    "tests/test_herrax_round2.py": "4c81c7e2ec8065579dbaac48fc56fc395932c658550a95c9c947e34e8413c6da",
+    "tests/test_horzalah_polish.py": "bbd363da25750092ac981a5504c61ac38fc769c8ec9ae4ca14b71ced6247d4df",
+    "tests/test_iomedae_round2.py": "fad5f3e32d96780c50bfaa041b974c6f595dba0a860979c0aed846443445f2cf",
+    "tests/test_nurah_round2.py": "6a9cf361cf2ead05a13ce92cf2d0c31eb3224b73511022bc84664b1b249fa604",
+    "tests/fix16b_structure.py": "dc82910b5cde747169b76c31aecd37b9f82d37c1a95f536c2a7dd4cf1d73ff4d",
+    "tests/fix16b_mutations.py": "9facf9a3270c60ab5be0cf88ee4b39b9f4579f684b4840b57390af75fa2ddc62"
+  },
+  "attribution": "unknown: no matching baseline runner receipt was supplied; git commits identify changes only",
+  "j01_conflicts": [
+    {
+      "scene": "herrax.trickster.madam.reachable",
+      "node": "cut",
+      "expected": "no live Chivarro matches for a retained historical reference",
+      "actual": "one Chivarro match returned by live_mentions",
+      "owner": "J01 mention-context classifier owner",
+      "files": [
+        "tools/crossroute_checks/mention_context.py",
+        "tools/route_packs/plans/j01-reference-contexts.json"
+      ],
+      "text_change_commit": "6f89a00356e82282f87c806153deca5a18bad77c"
+    },
+    {
+      "scene": "herrax.trickster.madam.reachable_restored",
+      "node": "cut",
+      "expected": "no live Chivarro matches for a retained historical reference",
+      "actual": "one Chivarro match returned by live_mentions",
+      "owner": "J01 mention-context classifier owner",
+      "files": [
+        "tools/crossroute_checks/mention_context.py",
+        "tools/route_packs/plans/j01-reference-contexts.json"
+      ],
+      "text_change_commit": "6f89a00356e82282f87c806153deca5a18bad77c"
+    }
+  ]
+}

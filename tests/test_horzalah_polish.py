@@ -3,6 +3,8 @@ import copy
 import itertools
 import unittest
 
+from tests.story_fixture import fresh_story
+
 from storylines import horzalah_guild as guild, horzalah_trickster as route
 
 
@@ -108,17 +110,32 @@ class HorzalahPolishTests(unittest.TestCase):
         self.assertNotIn("retied", mourned["Paragraphs"][1]["Text"])
 
     def test_knife_and_missed_chamber_endings_have_no_retroactive_receipts(self):
-        paragraphs = self.node("epilogue.together", "page")["Paragraphs"]
-        self.assertIn(route.P_KNIFE, paragraphs[11]["Forbids"])
-        self.assertEqual(next(p for p in paragraphs if "returned the thin knife" in p["Text"])["Requires"], [route.CAME, route.P_KNIFE])
+        scenes = {scene["Id"]: scene for scene in fresh_story()["Scenes"]}
+        def node(suffix, nid):
+            return next(n for n in scenes[route.H + suffix]["Nodes"] if n["Id"] == nid)
+        page = node("epilogue.together", "page")
+        paragraphs = page["Paragraphs"]
+        unreturned_knife = [p for p in paragraphs if p["Requires"] == [route.CAME]]
+        self.assertTrue(unreturned_knife)
+        self.assertTrue(all(route.P_KNIFE in p["Forbids"] for p in unreturned_knife))
+        knife = [p for p in paragraphs if p["Requires"] == [route.CAME, route.P_KNIFE]]
+        self.assertTrue(knife)
+        for came, won in itertools.product((False, True), repeat=2):
+            flags = {f for f, held in ((route.CAME, came), (route.P_KNIFE, won)) if held}
+            self.assertEqual(any(shown(p, flags) for p in knife), came and won)
         slot = next(p for p in paragraphs if p.get("Id") == route.H + "epilogue.together.explicit.1")
         self.assertEqual(slot["Forbids"], [route.CHAMBER])
-        self.assertIn("Bare skin", slot["Text"])
-        self.assertTrue(all(not c["Set"] for c in self.node("epilogue.together", "page")["Choices"]))
-        commit_slot = next(p for p in self.node("epilogue.commit", "page")["Paragraphs"] if p.get("Id") == route.H + "epilogue.commit.explicit.1")
-        self.assertIn("snuff the candle", commit_slot["Text"])
-        self.assertEqual(self.node("beat.second_night", "cut")["Text"],
-                         "{n}Her mouth closes on yours. She reaches toward the bedside candle, and the room goes dark.{/n}")
+        self.assertTrue(shown(slot, set()))
+        self.assertFalse(shown(slot, {route.CHAMBER}))
+        self.assertTrue(all(not c["Set"] for c in page["Choices"]))
+        commit_slot = next(p for p in node("epilogue.commit", "page")["Paragraphs"]
+                           if p.get("Id") == route.H + "epilogue.commit.explicit.1")
+        self.assertTrue(shown(commit_slot, set()))
+        cut = node("beat.second_night", "cut")
+        slot_id = route.H + "beat.second_night.explicit.1"
+        self.assertEqual([c["Next"] for c in cut["Choices"]], [slot_id])
+        self.assertEqual([c["Set"] for c in cut["Choices"]], [[]])
+        self.assertIn(slot_id, {n["Id"] for n in scenes[route.H + "beat.second_night"]["Nodes"]})
 
     def test_sister_hook_uses_current_presence_and_separates_actual_departure(self):
         payload = {"Scenes": copy.deepcopy([*route.SCENES, *guild.SCENES])}

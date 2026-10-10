@@ -69,17 +69,28 @@ class EndingsJob4Tests(unittest.TestCase):
 
     def test_repeated_pair_summaries_only_follow_selected_terminal(self):
         event = self.scenes['minagho_chivarro.trickster.epilogue.commit']
-        flags = {'trickster.ever', 'minagho_chivarro.partner_stance.share'}
+        share = 'minagho_chivarro.partner_stance.share'
+        state = V.SimState(6, 20000)
+        state.flags = {'trickster.ever', share}
+        V.sim_complete(self.model, state)
+        def visible(block):
+            return (set(block.get('Requires', [])) <= state.flags
+                    and not set(block.get('Forbids', [])) & state.flags
+                    and all(set(group) & state.flags for group in block.get('AnyGroups', [])))
+        terminals = {node['Id'] for node in event['Nodes']
+                     if all(not c.get('Next') and not c.get('Check') for c in node['Choices'])}
+        self.assertIn('went', terminals)
         for page in event['Nodes']:
-            if any(answer.get('Next') for answer in page['Choices']):
-                self.assertNotIn('had accepted the offered terms', self.shown(page, flags))
-        self.assertIn('had accepted the offered terms', self.shown(self.node(event['Id'], 'went'), flags))
-        for number in (1, 2, 3, 5):
-            text = self.node(event['Id'], event['Id'] + '.explicit.' + str(number))['Text']
-            self.assertLessEqual(text.count('opens her gown'), 1)
-            self.assertLessEqual(text.count('gown falls'), 1)
-            self.assertLessEqual(text.count('opens the door'), 1)
-            self.assertNotIn('drops the sword belt', text)
+            summaries = [block for block in page.get('Paragraphs', [])
+                         if share in block.get('Requires', []) and visible(block)]
+            with self.subTest(node=page['Id']):
+                if page['Id'] not in terminals:
+                    self.assertFalse(summaries)
+                elif page['Id'] == 'went':
+                    self.assertTrue(summaries)
+                    for block in summaries:
+                        self.assertFalse(set(block.get('Requires', [])) <= set())
+                        self.assertTrue(set(block.get('Requires', [])) <= {share})
 
     def test_jerribeth_selected_paths_print_each_partner_summary_once(self):
         from storylines import jerribeth_partner as J

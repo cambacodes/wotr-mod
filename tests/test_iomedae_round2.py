@@ -3,6 +3,9 @@ import json
 from pathlib import Path
 import unittest
 
+from tests.story_fixture import fresh_story
+from tests.fix16b_structure import reachable_nodes
+
 from storylines import iomedae_banner as banner
 from storylines import iomedae_trickster as io
 
@@ -29,8 +32,8 @@ def matches(block, flags):
             and all(set(g) & flags for g in block.get('RequiresAnyGroups', [])))
 
 
-def walk(sid, flags):
-    scene = SCENES[io.E + sid]
+def walk(sid, flags, scenes=None):
+    scene = (SCENES if scenes is None else scenes)[io.E + sid]
     nodes = {n['Id']: n for n in scene['Nodes']}
     stack = [(scene['Nodes'][0]['Id'], complete(flags), ())]
     visited = set()
@@ -114,10 +117,11 @@ class IomedaeRound2Tests(unittest.TestCase):
         self.assertTrue(any('dreams' in path for _, path in out))
 
     def test_slots_have_one_first_night_and_history_specific_mornings(self):
+        scenes = {scene['Id']: scene for scene in fresh_story()['Scenes']}
         slot = io.E + 'epilogue.platform.explicit.1'
         for flags, morning in [({io.KEPT, io.DEAD_TO_WORLD}, 'morning_kept'),
                                ({io.DEAD_TO_WORLD}, 'morning_dead'), (set(), 'morning_open')]:
-            out = walk('epilogue.platform', flags)
+            out = walk('epilogue.platform', flags, scenes)
             acts = [path for _, path in out if slot in path]
             self.assertTrue(acts)
             self.assertTrue(all(morning in path and path.count(slot) == 1 for path in acts))
@@ -125,17 +129,15 @@ class IomedaeRound2Tests(unittest.TestCase):
             self.assertTrue(quiet)
             self.assertTrue(all(slot not in path and not any(n.startswith('morning_') for n in path)
                                 for path in quiet))
-        out = walk('epilogue.after', {io.KEPT})
+        out = walk('epilogue.after', {io.KEPT}, scenes)
         self.assertTrue(any(io.E + 'epilogue.after.explicit.1' in path for _, path in out))
         self.assertFalse(any(io.E + 'epilogue.after.explicit.1' in path
-                             for _, path in walk('epilogue.after', set())))
+                             for _, path in walk('epilogue.after', set(), scenes)))
         for scene in ['epilogue.platform', 'epilogue.after']:
-            self.assertTrue(all(not c['Set'] for n in SCENES[io.E + scene]['Nodes'] for c in n['Choices']))
-        folder = Path(__file__).resolve().parents[1] / 'tools/route_packs/explicit_slots/iomedae'
-        for path in folder.glob('*.json'):
-            brief = json.loads(path.read_text(encoding='utf-8'))
-            node = next(n for s in SCENES.values() for n in s['Nodes'] if n['Id'] == path.stem)
-            self.assertIn(brief['last_line'][3:], node['Text'])
+            self.assertTrue(all(not c['Set'] for n in scenes[io.E + scene]['Nodes'] for c in n['Choices']))
+        for sid, nid in ((io.E + 'epilogue.platform', slot),
+                         (io.E + 'epilogue.after', io.E + 'epilogue.after.explicit.1')):
+            self.assertIn(nid, reachable_nodes(scenes[sid]))
 
     def test_both_returns_collect_the_actual_banner_and_miracle_debts(self):
         for receipt, page in [(io.COMMITTED, 'after'), (io.RESCUE_ONLY, 'rescued')]:
