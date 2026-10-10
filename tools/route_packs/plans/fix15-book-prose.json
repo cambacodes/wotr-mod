@@ -1,0 +1,27 @@
+[
+  {
+    "book": "trickster.ledger",
+    "entry": "owed.terendelev",
+    "field": "Text",
+    "index": null,
+    "text_sha": "8fd3e89831100525566db4344e50116cdcc54251c0c6530475ddc46b3b280b46",
+    "brief": "[PROSE PENDING: trickster.ledger/owed.terendelev - earned wound-paid return and blood-thread debt only; no assumed oath or daily care]",
+    "owner": "Claude Terendelev voice"
+  },
+  {
+    "book": "trickster.ledger",
+    "entry": "owed.terendelev",
+    "field": "Lines",
+    "index": 3,
+    "text_sha": "0e8217454210fda564cbfface8867067482b0b35c02e430b33bbd8c59cf65527",
+    "brief": "[PROSE PENDING: trickster.ledger/owed.terendelev - recorded dressing without a recorded sworn watch]",
+    "owner": "Claude Terendelev voice"
+  },
+  {
+    "journal_entry": "owed.terendelev",
+    "field": "Description",
+    "text_sha": "8fd3e89831100525566db4344e50116cdcc54251c0c6530475ddc46b3b280b46",
+    "brief": "[PROSE PENDING: trickster.ledger/owed.terendelev - earned wound-paid return and blood-thread debt only; no assumed oath or daily care]",
+    "owner": "Claude Terendelev voice"
+  }
+]

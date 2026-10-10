@@ -191,3 +191,19 @@ def register(payload, scenes, refs):
             if key not in pending:
                 pending.append(key)
     _readers(payload)
+
+
+def require_shown_retry(payload):
+    """Run after the voice overlay; completion requires witnessing the carrier."""
+    scene = next(s for s in payload["Scenes"] if s["Id"] == P + "retry")
+    sealed = next(node for node in scene["Nodes"] if node["Id"] == "sealed")
+    shown = P + "carrier_cruelty_shown"
+    sealed["Text"] = "[PROSE PENDING: household.pair.kaylessa_camellia.retry/sealed - prospective shipment burning and carrier pursuit; Commander accompanies Camellia into the tannery lane before any murder or completed diversion]"
+    completion = sealed["Choices"][0]
+    completion["Requires"] = [*completion.get("Requires", []), shown]
+    completion["Text"] = "[PROSE PENDING: household.pair.kaylessa_camellia.retry/sealed - acknowledge the witnessed murder and finish Kaylessa's clasp, changed cover and personal decoy journey; retain costs]"
+    sealed["Choices"].append(c("Continue", "carrier_shown", forbids=(shown,)))
+    scene["Nodes"].append(n(
+        "carrier_shown", "Narrator",
+        "[PROSE PENDING: household.pair.kaylessa_camellia.retry/carrier_shown - stage Commander accompanying Camellia and witnessing her murder of the carrier in the tannery lane; show her appetite and Kaylessa's involvement in person, retain the shipment burning and paid evening]",
+        c("Continue", "sealed", flags=(shown, P + "carrier_burned", P + "cost.commander_evening"))))

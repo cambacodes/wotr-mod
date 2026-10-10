@@ -50,7 +50,12 @@
     "arsinoe.trickster.late.commit/business": "Business-only refusal branch; no romantic reward.",
     "minagho_chivarro.trickster.epilogue.commit/regrets": "Invitation refused; no new intimacy.",
     "minagho_chivarro.trickster.epilogue.commit/regrets_alone": "Solo invitation refused; no new intimacy.",
-    "dorgelinda.trickster.epilogue.ruled_off": "Hard closure after an earlier commitment; the cup is never used again, no romantic reward."
+    "dorgelinda.trickster.epilogue.ruled_off": "Hard closure after an earlier commitment; the cup is never used again, no romantic reward.",
+    "areelu.trickster.finale.unnamed": "fix15: historical death with accepted wager; no living reward or new commitment.",
+    "nidalynn.trickster.epilogue.wolves": "fix15: recorded departure/closure; no living romantic reward.",
+    "nidalynn.trickster.epilogue.apart": "fix15: recorded departure/closure; no living romantic reward.",
+    "nidalynn.trickster.epilogue.lie": "fix15: recorded departure/closure; no living romantic reward.",
+    "nidalynn.trickster.epilogue.given": "fix15: recorded departure/closure; no living romantic reward."
   },
   "non_romance_commitment_flags": {
     "trickster.foresight.gate_fire": "Shyka framework receipt, not romance. After the first memory is paid, the authored page must finish without an abort (ForesightTests Foresight_Commit).",

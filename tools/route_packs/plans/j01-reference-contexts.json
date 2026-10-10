@@ -2222,6 +2222,136 @@
       "woman": "areelu",
       "text_sha256": "b57bf4b7e796d88697887da5350712167345d00e7b63313f5eece2e0d81c1383",
       "reason": "fix14-b: Vorlesh laboratory and earlier captivity are historical references, not a current participant"
+    },
+    {
+      "scene": "areelu.trickster.rivalry.lens",
+      "node": "accounts",
+      "slot": "text",
+      "woman": "yaniel",
+      "text_sha256": "21e7a729205376b4bf8025683c4fdefe3097b1b61d06cdfa3ccb3cdf13299cf3",
+      "reason": "fix15: retrospective paid guise/name or recognized mask; no current Yaniel participation."
+    },
+    {
+      "scene": "areelu.trickster.rivalry.lens",
+      "node": "accounts",
+      "slot": "choice[0]",
+      "woman": "yaniel",
+      "text_sha256": "8079ea2d821d7038b159f79e37112494cc7c4701810ad8d87a0d3a460c4c0f3f",
+      "reason": "fix15: retrospective paid guise/name or recognized mask; no current Yaniel participation.",
+      "remove_reference_guards": {
+        "Requires": [
+          "crossroute.yaniel.available",
+          "yaniel.present_now"
+        ],
+        "Forbids": [
+          "yaniel.closed",
+          "yaniel.killed.latched",
+          "yaniel.trickster.left_free"
+        ]
+      }
+    },
+    {
+      "scene": "areelu.trickster.rivalry.lens",
+      "node": "accounts",
+      "slot": "choice[5]",
+      "woman": "yaniel",
+      "text_sha256": "cab7e45d3fe2406a74bef3399c9b3cff214fc6405a4967cd994f32ec3beaf602",
+      "reason": "fix15: retrospective paid guise/name or recognized mask; no current Yaniel participation.",
+      "remove_reference_guards": {
+        "Requires": [
+          "crossroute.yaniel.available",
+          "yaniel.present_now"
+        ],
+        "Forbids": [
+          "yaniel.closed",
+          "yaniel.killed.latched",
+          "yaniel.trickster.left_free"
+        ]
+      }
+    },
+    {
+      "scene": "areelu.trickster.lens.watched",
+      "node": "accounts",
+      "slot": "text",
+      "woman": "yaniel",
+      "text_sha256": "21e7a729205376b4bf8025683c4fdefe3097b1b61d06cdfa3ccb3cdf13299cf3",
+      "reason": "fix15: retrospective paid guise/name or recognized mask; no current Yaniel participation."
+    },
+    {
+      "scene": "areelu.trickster.lens.watched",
+      "node": "accounts",
+      "slot": "choice[0]",
+      "woman": "yaniel",
+      "text_sha256": "8079ea2d821d7038b159f79e37112494cc7c4701810ad8d87a0d3a460c4c0f3f",
+      "reason": "fix15: retrospective paid guise/name or recognized mask; no current Yaniel participation.",
+      "remove_reference_guards": {
+        "Requires": [
+          "crossroute.yaniel.available",
+          "yaniel.present_now"
+        ],
+        "Forbids": [
+          "yaniel.closed",
+          "yaniel.killed.latched",
+          "yaniel.trickster.left_free"
+        ]
+      }
+    },
+    {
+      "scene": "areelu.trickster.lens.watched",
+      "node": "accounts",
+      "slot": "choice[5]",
+      "woman": "yaniel",
+      "text_sha256": "cab7e45d3fe2406a74bef3399c9b3cff214fc6405a4967cd994f32ec3beaf602",
+      "reason": "fix15: retrospective paid guise/name or recognized mask; no current Yaniel participation.",
+      "remove_reference_guards": {
+        "Requires": [
+          "crossroute.yaniel.available",
+          "yaniel.present_now"
+        ],
+        "Forbids": [
+          "yaniel.closed",
+          "yaniel.killed.latched",
+          "yaniel.trickster.left_free"
+        ]
+      }
+    },
+    {
+      "scene": "areelu.trickster.wager.raised",
+      "node": "start",
+      "slot": "choice[6]",
+      "woman": "yaniel",
+      "text_sha256": "c78b8ede0bedc342de7b0eddec45b11b8fa6db3a4ee1e6c41ba682185b382c8e",
+      "reason": "fix15: retrospective paid guise/name or recognized mask; no current Yaniel participation.",
+      "remove_reference_guards": {
+        "Requires": [
+          "crossroute.yaniel.available",
+          "yaniel.present_now"
+        ],
+        "Forbids": [
+          "yaniel.closed",
+          "yaniel.killed.latched",
+          "yaniel.trickster.left_free"
+        ]
+      }
+    },
+    {
+      "scene": "areelu.lastcall.page",
+      "node": "page",
+      "slot": "paragraph[3]",
+      "woman": "yaniel",
+      "text_sha256": "690018b14104df386da94bc727e55f9eafec480e05c25624ce89eb9097e4b950",
+      "reason": "fix15: retrospective paid guise/name or recognized mask; no current Yaniel participation.",
+      "remove_reference_guards": {
+        "Requires": [
+          "crossroute.yaniel.available",
+          "yaniel.present_now"
+        ],
+        "Forbids": [
+          "yaniel.closed",
+          "yaniel.killed.latched",
+          "yaniel.trickster.left_free"
+        ]
+      }
     }
   ],
   "class_sweep": {

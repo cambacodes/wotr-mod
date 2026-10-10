@@ -1682,6 +1682,21 @@
           "scene": "kiana.trickster.late_question_letter.after_delivery",
           "letter": true,
           "provenance": "D30: later invitation after belongings delivery under existing correspondence terms"
+        },
+        {
+          "scene": "kiana.morning.elan_reply",
+          "letter": false,
+          "provenance": "fix15: classify fix14 earned reply, remote parting and later in-person delivery with existing current contact gates."
+        },
+        {
+          "scene": "kiana.morning.elan_parting",
+          "letter": true,
+          "provenance": "fix15: classify fix14 earned reply, remote parting and later in-person delivery with existing current contact gates."
+        },
+        {
+          "scene": "kiana.morning.after_delivery",
+          "letter": false,
+          "provenance": "fix15: classify fix14 earned reply, remote parting and later in-person delivery with existing current contact gates."
         }
       ],
       "absence_variants": [
@@ -10958,10 +10973,6 @@
           "letter": false
         },
         {
-          "scene": "areelu.trickster.finale.unnamed",
-          "letter": false
-        },
-        {
           "scene": "areelu.trickster.finale.survived",
           "letter": false
         },
@@ -11144,100 +11155,6 @@
           "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
         },
         {
-          "scene": "hepzamirah.trickster.body.hounds",
-          "node": "joke",
-          "choice": 2,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "hepzamirah.trickster.bond.eve",
-          "provenance": "derived: live actor required on every entry path, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "hepzamirah.trickster.bond.eve",
-          "node": "eve",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "hepzamirah.trickster.bond.eve",
-          "node": "eve",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "hepzamirah.trickster.bond.eve",
-          "node": "eve",
-          "choice": 2,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "hepzamirah.trickster.bond.eve",
-          "node": "eve_eye",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "hepzamirah.trickster.bond.eve",
-          "node": "eve_eye",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "hepzamirah.trickster.bond.eve",
-          "node": "eve_sworn",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "hepzamirah.trickster.bond.eve",
-          "node": "soul",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "hepzamirah.trickster.bond.eve",
-          "node": "soul",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "hepzamirah.trickster.bond.eve",
-          "node": "soul",
-          "choice": 2,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "hepzamirah.trickster.bond.eve",
-          "node": "again",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "hepzamirah.trickster.bond.eve",
-          "node": "dont",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "hepzamirah.trickster.bond.eve",
-          "node": "face",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "hepzamirah.trickster.bond.eve",
-          "node": "face_say",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "hepzamirah.trickster.bond.the_call",
-          "node": "if",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
           "scene": "terendelev.trickster.watch.proof",
           "node": "living",
           "choice": 0,
@@ -11325,6 +11242,10 @@
         {
           "scene": "areelu.trickster.afterlogue.departed",
           "reason": "struct3-b: retrospective spared survival, followed by chosen notebook-burning departure; no currently placed living woman"
+        },
+        {
+          "scene": "areelu.trickster.finale.unnamed",
+          "reason": "fix15: historical accepted-wager death closure; no living Areelu participates."
         }
       ],
       "presences": [],
@@ -13447,23 +13368,7 @@
           "letter": false
         },
         {
-          "scene": "nidalynn.trickster.epilogue.wolves",
-          "letter": false
-        },
-        {
           "scene": "nidalynn.trickster.epilogue.unreturned",
-          "letter": false
-        },
-        {
-          "scene": "nidalynn.trickster.epilogue.apart",
-          "letter": false
-        },
-        {
-          "scene": "nidalynn.trickster.epilogue.lie",
-          "letter": false
-        },
-        {
-          "scene": "nidalynn.trickster.epilogue.given",
           "letter": false
         },
         {
@@ -13615,6 +13520,22 @@
         {
           "scene": "nidalynn.trickster.epilogue.claimed",
           "reason": "existing recovery/explicit loss or rewritten-history context; retained original gates"
+        },
+        {
+          "scene": "nidalynn.trickster.epilogue.wolves",
+          "reason": "fix15: recorded departure/closure history, not current bodily participation."
+        },
+        {
+          "scene": "nidalynn.trickster.epilogue.apart",
+          "reason": "fix15: recorded departure/closure history, not current bodily participation."
+        },
+        {
+          "scene": "nidalynn.trickster.epilogue.lie",
+          "reason": "fix15: recorded departure/closure history, not current bodily participation."
+        },
+        {
+          "scene": "nidalynn.trickster.epilogue.given",
+          "reason": "fix15: recorded departure/closure history, not current bodily participation."
         }
       ],
       "presences": [
@@ -16595,12 +16516,6 @@
           "letter": true
         },
         {
-          "scene": "hepzamirah.trickster.body.terms",
-          "node": "price",
-          "choice": 2,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
           "scene": "horzalah.lastcall.page",
           "provenance": "derived: current woman in her paid Last Call coda"
         },
@@ -17243,12 +17158,6 @@
         {
           "scene": "yaniel.trickster.beat.hunter",
           "letter": false
-        },
-        {
-          "scene": "areelu.trickster.lens.watched",
-          "node": "accounts",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
         },
         {
           "scene": "yaniel.lastcall.page",
@@ -19725,18 +19634,6 @@
           "scene": "terendelev.trickster.watch.faith_awning",
           "node": "why",
           "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "yaniel.trickster.beat.bout",
-          "node": "fight",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "yaniel.trickster.beat.bout",
-          "node": "dirty",
-          "choice": 0,
           "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
         },
         {

@@ -1,0 +1,22 @@
+{
+  "job_id": "fix15",
+  "escalations": [
+    {
+      "id": "arsinoe-checker-closure",
+      "owner": "crossroute verifier tooling owner",
+      "files": [
+        "tools/crossroute_checks/other_woman.py:24",
+        "tools/crossroute_checks/other_woman.py:103",
+        "tests/test_crossroute_presence.py:266"
+      ],
+      "decision": "Romantic closure must preserve earned nonromantic physical presence.",
+      "evidence": [
+        "Generated crossroute.arsinoe.available ignores arsinoe.closed and retains current presence/loss requirements.",
+        "python -m unittest tests.test_crossroute_presence.GuardPassTests.test_native_soul_aftercare_keeps_owner_outcome_when_priestess_is_absent: exit 1; obsolete arsinoe.closed absence assertion."
+      ],
+      "required_action": "Add Arsinoe to the verifier nonromantic-presence classification and align the shared fixture with the binding current-presence decision. Tool implementation is outside this job allow_paths."
+    }
+  ],
+  "proposals": [],
+  "prose_owner": "Claude; scene targets registered in prose-pending.json and claude-work-queue.json; book/journal targets registered in fix15-book-prose.json."
+}

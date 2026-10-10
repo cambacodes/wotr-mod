@@ -48,12 +48,12 @@ EDITS = (
     ("c68d9b3a2b887f645ac539f996a63a92", "terendelev", "beginning",
      dict(Parent="31665b38d6922ef4ab4cb83afa8245fe", Dialog="bf328bcec67a5014f9a56ee6220f3bcc",
           Key="222096f4-434d-4e8c-99c5-67c070fb21c8"),
-     [["trickster.ever", "terendelev.trickster.returned"]],
+     [["trickster.now", "terendelev.trickster.returned"]],
      '''{n}The Storyteller puts his hand to his forehead.{/n} "Terendelev has returned, but the scale remembers an older struggle. Its beginning is still hidden from me. Bring me something else that belonged to her, and perhaps I can learn how the corruption first took hold."'''),
     ("ca71b79bc9a45b741bcc6599ef017fe7", "terendelev", "voice",
      dict(Parent="fd39fd84212de2047b6b887c9a9cf28e", Dialog="bf328bcec67a5014f9a56ee6220f3bcc",
           Key="da750b86-b8b0-4a2f-a6d4-fea3512327b0"),
-     [["trickster.ever", "terendelev.trickster.returned"]],
+     [["trickster.now", "terendelev.trickster.returned"]],
      '''{n}The Storyteller listens, his fingers resting on the scale.{/n} "The voice that cried out in darkness is quiet now. You brought her back. This scale can tell me what she suffered; it cannot tell me what she will choose to do with the life you returned to her."'''),
 )
 
@@ -68,7 +68,7 @@ def integrate(payload):
     declare(payload, source=__name__ + ".eng7-f6c", target="21b10801b6c2b194d92506a137ef1307",
         target_type="cue", action="HIDE", key="terendelev.funeral_introduction",
         spec=dict(Target="21b10801b6c2b194d92506a137ef1307", Relationship="terendelev",
-                  When=[["trickster.ever", "terendelev.trickster.returned"]]))
+                  When=[["trickster.now", "terendelev.trickster.returned"]]))
     from storylines.irabeth_partner_stance import cover_native
     for target, relationship, suffix, location, when, text in EDITS:
         identity = relationship + ".native.eng7_f6c." + suffix

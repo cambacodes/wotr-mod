@@ -54,7 +54,7 @@ def availability(payload, woman, route, known=None, distant=False, native_audien
         payload.setdefault("DerivedForbids", {})[native_key] = list(rel.get("UnavailableFlags", []))
         derived[closure_key] = [[open_key], [native_key]]
         inputs.append(closure_key)
-    elif woman not in LIVING_AFTER_ROMANCE_REFUSAL and not native_audience:
+    elif woman not in LIVING_AFTER_ROMANCE_REFUSAL and woman != "arsinoe" and not native_audience:
         payload.setdefault("DerivedForbids", {})[key] = [rel["ClosedFlag"]]
     for i, loss in enumerate(f for f in rel.get("UnavailableFlags", []) if f not in other):
         if loss not in overrides:
@@ -127,7 +127,7 @@ def scene_guard(scene, payload, woman, route, known=None, distant=False):
         for flag in ("trickster.ever", BODY_RETURNS[woman]):
             if flag not in scene.setdefault("Requires", []):
                 scene["Requires"].append(flag)
-    if woman not in LIVING_AFTER_ROMANCE_REFUSAL:
+    if woman not in LIVING_AFTER_ROMANCE_REFUSAL and woman != "arsinoe":
         closed = rel["ClosedFlag"]
         if closed not in scene.setdefault("Forbids", []):
             # Foreign relationship-state forbids are not valid on reactions.
@@ -355,16 +355,18 @@ def integrate(payload):
             continue
         scene = by_scene[reviewed["scene"]]
         node = next((n for n in scene["Nodes"] if n["Id"] == reviewed["node"]), None)
-        if node is None or not reviewed["slot"].startswith("paragraph["):
+        if node is None or not reviewed["slot"].startswith(("paragraph[", "choice[")):
             continue
-        index = int(reviewed["slot"][10:-1])
-        if index >= len(node.get("Paragraphs", [])):
+        kind, index_text = reviewed["slot"].split("[", 1)
+        index = int(index_text[:-1])
+        surfaces = node.get("Paragraphs" if kind == "paragraph" else "Choices", [])
+        if index >= len(surfaces):
             continue
-        paragraph = node["Paragraphs"][index]
-        if hashlib.sha256(paragraph["Text"].encode("utf-8")).hexdigest() != reviewed["text_sha256"]:
+        surface = surfaces[index]
+        if hashlib.sha256(surface["Text"].encode("utf-8")).hexdigest() != reviewed["text_sha256"]:
             continue
         for field, flags in removals.items():
-            paragraph[field] = [f for f in paragraph.get(field, []) if f not in flags]
+            surface[field] = [f for f in surface.get(field, []) if f not in flags]
     # S2: reviewed optional participants keep their current-life check on
     # the incoming branch. Use existing neutral continuations for later loss;
     # append answers without changing any saved index, target or choice text.
@@ -487,7 +489,7 @@ def integrate(payload):
                 if absent not in choice.setdefault("Forbids", []):
                     choice["Forbids"].append(absent)
                 return
-            if woman not in LIVING_AFTER_ROMANCE_REFUSAL | NATIVE_COMPANIONS:
+            if woman not in LIVING_AFTER_ROMANCE_REFUSAL | NATIVE_COMPANIONS | {"arsinoe"}:
                 vetoes.append(rel["ClosedFlag"])
             for flag in vetoes:
                 if flag not in choice.setdefault("Forbids", []):

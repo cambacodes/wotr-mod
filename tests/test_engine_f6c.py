@@ -42,11 +42,27 @@ class EngineF6cTests(unittest.TestCase):
         self.assertNotIn(cue, self.story["NativeEpilogueEdits"])
         spec = self.story["NativeGates"]["terendelev.funeral_introduction"]
         self.assertEqual(spec, dict(Target=cue, Relationship="terendelev",
-                                   When=[["trickster.ever", "terendelev.trickster.returned"]]))
+                                   When=[["trickster.now", "terendelev.trickster.returned"]]))
         rows = inventory(self.story, self.expectations, json.loads((ROOT / "tools/engine_backlog.json").read_text(encoding="utf-8")))
         self.assertEqual(next(r for r in rows if r["Finding"] == "terendelev:001")["Status"], "registered_unevaluated")
         with self.assertRaisesRegex(ValueError, "cue-policy contract"):
             _delivery(cue, "cue", "REPLACE", None, {})
+
+    def test_terendelev_dependencies_require_current_trickster(self):
+        for target in ("c68d9b3a2b887f645ac539f996a63a92", "ca71b79bc9a45b741bcc6599ef017fe7"):
+            spec = self.story["NativeEpilogueEdits"][target]
+            for group in spec["When"]:
+                self.assertIn("trickster.now", group)
+                self.assertIn("terendelev.trickster.returned", group)
+                # A returned dragon and historical Trickster power do not
+                # select the replacement after the Commander changes path.
+                legend = set(k for k in group if not k.startswith("!")) - {"trickster.now"}
+                legend.update(("trickster.ever", "legend"))
+                self.assertFalse(all(k in legend if not k.startswith("!") else k[1:] not in legend for k in group))
+                current = legend - {"legend"} | {"trickster.now"}
+                self.assertTrue(all(k in current if not k.startswith("!") else k[1:] not in current for k in group))
+        hide = self.story["NativeGates"]["terendelev.funeral_introduction"]["When"]
+        self.assertEqual(hide, [["trickster.now", "terendelev.trickster.returned"]])
 
     def test_departure_has_one_actual_remote_delivery_for_all_existing_roads(self):
         request = self.scenes["irabeth.return_request"]

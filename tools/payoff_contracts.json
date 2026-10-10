@@ -1090,10 +1090,6 @@
           "predicate": "areelu.payoff.partner"
         },
         {
-          "scene": "areelu.trickster.finale.unnamed",
-          "predicate": "areelu.payoff.partner"
-        },
-        {
           "scene": "areelu.trickster.finale.survived",
           "predicate": "areelu.payoff.partner"
         },
@@ -1247,7 +1243,13 @@
         "open_routes": [
           "areelu"
         ]
-      }
+      },
+      "absence_surfaces": [
+        {
+          "scene": "areelu.trickster.finale.unnamed",
+          "reason": "fix15: accepted wager with recorded native death; historical closure, not a living reward."
+        }
+      ]
     },
     "arsinoe": {
       "provenance": "derived from handoffs/trickster/arsinoe.md and shipped commitment producers",

@@ -1057,5 +1057,233 @@
     "woman": "wenduag",
     "beat": "Wenduag owners: returned means freed living arrival, not resurrection after Commander murder. Revise returned_yaniel, returned_ally and the first Commander reply to living arrival; preserve suspicion of the strong rival and threats using keyed native Wenduag samples. Inspect court and native-visit variants and their reply continuations. Keep explicit-kill closure.",
     "ruling": "fix14-c"
+  },
+  {
+    "scene": "wenduag.trickster.early.yaniel",
+    "node": "arrived_yaniel",
+    "woman": "wenduag",
+    "beat": "[PROSE PENDING: wenduag.trickster.early.yaniel/arrived_yaniel - Wenduag reacts to living Yaniel rescue and arrival without murder or resurrection; preserve rival suspicion]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "wenduag.trickster.early.yaniel",
+    "node": "arrived_yaniel",
+    "woman": "wenduag",
+    "beat": "[PROSE PENDING: wenduag.trickster.early.yaniel/arrived_yaniel - Commander answers about a rescued living ally]",
+    "ruling": "fix15",
+    "choice": 0
+  },
+  {
+    "scene": "wenduag.trickster.early.yaniel",
+    "node": "arrived_answer",
+    "woman": "wenduag",
+    "beat": "[PROSE PENDING: wenduag.trickster.early.yaniel/arrived_answer - Wenduag threatens to watch the rescued rival without claiming the Commander killed her]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "wenduag.trickster.court.yaniel",
+    "node": "arrived_yaniel",
+    "woman": "wenduag",
+    "beat": "[PROSE PENDING: wenduag.trickster.court.yaniel/arrived_yaniel - Wenduag reacts to living Yaniel rescue and arrival without murder or resurrection; preserve rival suspicion]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "wenduag.trickster.court.yaniel",
+    "node": "arrived_yaniel",
+    "woman": "wenduag",
+    "beat": "[PROSE PENDING: wenduag.trickster.court.yaniel/arrived_yaniel - Commander answers about a rescued living ally]",
+    "ruling": "fix15",
+    "choice": 0
+  },
+  {
+    "scene": "wenduag.trickster.court.yaniel",
+    "node": "arrived_answer",
+    "woman": "wenduag",
+    "beat": "[PROSE PENDING: wenduag.trickster.court.yaniel/arrived_answer - Wenduag threatens to watch the rescued rival without claiming the Commander killed her]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "wenduag.trickster.court.yaniel.native_visit",
+    "node": "arrived_yaniel",
+    "woman": "wenduag",
+    "beat": "[PROSE PENDING: wenduag.trickster.court.yaniel.native_visit/arrived_yaniel - Wenduag reacts to living Yaniel rescue and arrival without murder or resurrection; preserve rival suspicion]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "wenduag.trickster.court.yaniel.native_visit",
+    "node": "arrived_yaniel",
+    "woman": "wenduag",
+    "beat": "[PROSE PENDING: wenduag.trickster.court.yaniel.native_visit/arrived_yaniel - Commander answers about a rescued living ally]",
+    "ruling": "fix15",
+    "choice": 0
+  },
+  {
+    "scene": "wenduag.trickster.court.yaniel.native_visit",
+    "node": "arrived_answer",
+    "woman": "wenduag",
+    "beat": "[PROSE PENDING: wenduag.trickster.court.yaniel.native_visit/arrived_answer - Wenduag threatens to watch the rescued rival without claiming the Commander killed her]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "nidalynn.trickster.epilogue.wolves",
+    "node": "page",
+    "woman": "nidalynn",
+    "beat": "[PROSE PENDING: nidalynn.trickster.epilogue.wolves/page - neutral recorded closure or mourning introduction; child and kiln claims belong only to earned history variants]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "nidalynn.trickster.epilogue.wolves",
+    "node": "page",
+    "woman": "nidalynn",
+    "beat": "Paragraph 1: [PROSE PENDING: nidalynn.trickster.epilogue.wolves/page - kiln received an unhatched egg in this closure history; retain child survival without inventing a hatchling or flight]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "nidalynn.trickster.epilogue.wolves",
+    "node": "page",
+    "woman": "nidalynn",
+    "beat": "Paragraph 2: [PROSE PENDING: nidalynn.trickster.epilogue.wolves/page - closure or mourning before kiln transfer; no child, salt bond or communal hearth claim without its receipt]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "nidalynn.trickster.epilogue.unreturned",
+    "node": "page",
+    "woman": "nidalynn",
+    "beat": "[PROSE PENDING: nidalynn.trickster.epilogue.unreturned/page - neutral recorded closure or mourning introduction; child and kiln claims belong only to earned history variants]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "nidalynn.trickster.epilogue.unreturned",
+    "node": "page",
+    "woman": "nidalynn",
+    "beat": "Paragraph 23: [PROSE PENDING: nidalynn.trickster.epilogue.unreturned/page - kiln received an unhatched egg in this closure history; retain child survival without inventing a hatchling or flight]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "nidalynn.trickster.epilogue.unreturned",
+    "node": "page",
+    "woman": "nidalynn",
+    "beat": "Paragraph 24: [PROSE PENDING: nidalynn.trickster.epilogue.unreturned/page - closure or mourning before kiln transfer; no child, salt bond or communal hearth claim without its receipt]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "nidalynn.trickster.epilogue.apart",
+    "node": "page",
+    "woman": "nidalynn",
+    "beat": "[PROSE PENDING: nidalynn.trickster.epilogue.apart/page - neutral recorded closure or mourning introduction; child and kiln claims belong only to earned history variants]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "nidalynn.trickster.epilogue.apart",
+    "node": "page",
+    "woman": "nidalynn",
+    "beat": "Paragraph 23: [PROSE PENDING: nidalynn.trickster.epilogue.apart/page - kiln received an unhatched egg in this closure history; retain child survival without inventing a hatchling or flight]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "nidalynn.trickster.epilogue.apart",
+    "node": "page",
+    "woman": "nidalynn",
+    "beat": "Paragraph 24: [PROSE PENDING: nidalynn.trickster.epilogue.apart/page - closure or mourning before kiln transfer; no child, salt bond or communal hearth claim without its receipt]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "terendelev.lastcall.call",
+    "node": "call",
+    "woman": "terendelev",
+    "beat": "[PROSE PENDING: terendelev.lastcall.call/call - neutral call setup shared by all earned histories; no deathbed participation, oath or dressing assumption]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "terendelev.lastcall.call",
+    "node": "fix15_dressing_only",
+    "woman": "terendelev",
+    "beat": "[PROSE PENDING: terendelev.lastcall.call/fix15_dressing_only - dressing_only history only; preserve earned callable entitlement and selected costs without invented prior participation]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "terendelev.lastcall.call",
+    "node": "fix15_blood_thread",
+    "woman": "terendelev",
+    "beat": "[PROSE PENDING: terendelev.lastcall.call/fix15_blood_thread - blood_thread history only; preserve earned callable entitlement and selected costs without invented prior participation]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "galfrey.lastcall.call",
+    "node": "call",
+    "woman": "galfrey",
+    "beat": "[PROSE PENDING: galfrey.lastcall.call/call - neutral call setup shared by all earned histories; no deathbed participation, oath or dressing assumption]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "galfrey.lastcall.call",
+    "node": "fix15_alone",
+    "woman": "galfrey",
+    "beat": "[PROSE PENDING: galfrey.lastcall.call/fix15_alone - alone history only; preserve earned callable entitlement and selected costs without invented prior participation]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "dorgelinda.lastcall.page",
+    "node": "page",
+    "woman": "dorgelinda",
+    "beat": "[PROSE PENDING: dorgelinda.lastcall.page/page - five-years-of-books introduction once in every history; no unresolved balance claim; paragraphs read current settlement and audit]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "dorgelinda.lastcall.page",
+    "node": "page",
+    "woman": "dorgelinda",
+    "beat": "Paragraph 5: {n}[PROSE PENDING: dorgelinda.lastcall.page/page - original account settled through told_all or Last Call explanation; no unresolved or hostile audit claim]{/n}",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "dorgelinda.lastcall.page",
+    "node": "page",
+    "woman": "dorgelinda",
+    "beat": "Paragraph 6: {n}[PROSE PENDING: dorgelinda.lastcall.page/page - original account remains unresolved without the twice-weekly hostile schedule; retain current private terms]{/n}",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "delamere.lastcall.page",
+    "node": "page",
+    "woman": "delamere",
+    "beat": "Paragraph 6: {n}[PROSE PENDING: delamere.lastcall.page/page - concealed hunting reunion after the called horn and either buried-alive bridge; no public garrison reception, preserve huntress appetite]{/n}",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "terendelev.lastcall.page",
+    "node": "page",
+    "woman": "terendelev",
+    "beat": "Paragraph 5: {n}[PROSE PENDING: terendelev.lastcall.page/page - publicly recovered Commander with no earned daily dressing; truthful blood-thread reunion without invented care routine]{/n}",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "terendelev.lastcall.page",
+    "node": "page",
+    "woman": "terendelev",
+    "beat": "Paragraph 6: {n}[PROSE PENDING: terendelev.lastcall.page/page - concealed returned Commander with no earned daily dressing; private blood-thread reunion without invented care routine]{/n}",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "household.pair.kaylessa_camellia.retry",
+    "node": "sealed",
+    "woman": "camellia",
+    "beat": "[PROSE PENDING: household.pair.kaylessa_camellia.retry/sealed - prospective shipment burning and carrier pursuit; Commander accompanies Camellia into the tannery lane before any murder or completed diversion]",
+    "ruling": "fix15"
+  },
+  {
+    "scene": "household.pair.kaylessa_camellia.retry",
+    "node": "sealed",
+    "woman": "camellia",
+    "beat": "[PROSE PENDING: household.pair.kaylessa_camellia.retry/sealed - acknowledge the witnessed murder and finish Kaylessa's clasp, changed cover and personal decoy journey; retain costs]",
+    "ruling": "fix15",
+    "choice": 0
+  },
+  {
+    "scene": "household.pair.kaylessa_camellia.retry",
+    "node": "carrier_shown",
+    "woman": "camellia",
+    "beat": "[PROSE PENDING: household.pair.kaylessa_camellia.retry/carrier_shown - stage Commander accompanying Camellia and witnessing her murder of the carrier in the tannery lane; show her appetite and Kaylessa's involvement in person, retain the shipment burning and paid evening]",
+    "ruling": "fix15"
   }
 ]
