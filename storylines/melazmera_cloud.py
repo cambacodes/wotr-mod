@@ -305,3 +305,6 @@ def integrate(payload):
     # Structural history selection must follow all late prose transformations.
     from storylines.melazmera_trickster import integrate_meeting_history
     integrate_meeting_history(payload)
+    # fix14-b: structure-lane staging replaces reports only after the voice pass.
+    from storylines.melazmera_trickster import integrate_fix14_staging
+    integrate_fix14_staging(payload)

@@ -19,13 +19,15 @@ def integrate(payload):
     if any(s["Id"] == OPENING for s in payload["Scenes"]):
         return
     payload["Scenes"].append(scene(OPENING, "", "Eritrice", 5, "Continue", [
-        n("open", "Eritrice", OPEN_TEXT,
+        n("open", "Eritrice", '[PROSE PENDING: eritrice.trickster.reconciled_debate/open - offer voluntary private debate after the earned sitting; assume neither chair usurpation nor a lost native vote; retain sharp temper and return costs]',
           c('"Enter it, Madam Chair. We debate."', "exchange"),
           c('"Not at this table, and not today."', abort=True),
           paragraphs=(p(OPEN_GRUDGE,
                         requires=(route.ON_AGENDA,)),)),
-        n("exchange", "Eritrice", EXCHANGE_TEXT,
-          c("Continue", "record", flags=(route.STARTED, route.MINUTES_READ, route.STRAIGHT))),
+        n("exchange", "Eritrice", "",
+          c("Continue", "record", flags=(route.STARTED, route.MINUTES_READ, route.STRAIGHT)),
+          paragraphs=(p(EXCHANGE_TEXT, requires=(route.THREAT,)),
+                      p('[PROSE PENDING: eritrice.trickster.reconciled_debate/exchange - betrayal-specific exchange for a Council fight that bypassed Cue_0035; no remembered force threat; retain sharp temper, voluntary debate and return costs]', forbids=(route.THREAT,)))),
         n("record", "Eritrice", RECORD_TEXT),
     ], requires=("trickster.now", route.RETURNED, route.VISIT),
        forbids=(route.CLOSED, route.MINUTES_READ, route.DECLINED, OPENING),

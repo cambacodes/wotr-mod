@@ -712,5 +712,133 @@
     "woman": "arsinoe",
     "beat": "ARS-A2-01: Claude revise climax at native Camellia cut; coordinator must update shared heat_cal_g transformation, preserve flags/IDs; brief: tools/route_packs/plans/struct3-c-handoff.md",
     "ruling": "struct3-c"
+  },
+  {
+    "scene": "areelu.trickster.report.dagger",
+    "node": "end",
+    "woman": "areelu",
+    "beat": "record refusal, her later unauthorized holding and return to the boot; no voluntary offer",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "areelu.trickster.report.graft",
+    "node": "after",
+    "woman": "areelu",
+    "beat": "record the Commander standing beside her until dawn and her Abyss response; no solitary return or sleeping Commander",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "areelu.trickster.report.graft",
+    "node": "after",
+    "woman": "areelu",
+    "beat": "record the Commander waiting awake and her declined proposition; preserve her agency",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "areelu.trickster.report.graft",
+    "node": "after",
+    "woman": "areelu",
+    "beat": "record the Commander sleeping through her outing and her unanswered Abyss call",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "areelu.trickster.report.crossroads",
+    "node": "end",
+    "woman": "areelu",
+    "beat": "record the rift visit and changed use of her work without inventing a collected stone",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "areelu.trickster.report.crossroads",
+    "node": "end",
+    "woman": "areelu",
+    "beat": "record buying and correcting the forged leaf and her lost power; no collected stone",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "areelu.trickster.report.crossroads",
+    "node": "end",
+    "woman": "areelu",
+    "beat": "record buying and correcting the forged leaf and the stallholder recognizing her; no collected stone",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "areelu.trickster.report.crossroads",
+    "node": "end",
+    "woman": "areelu",
+    "beat": "record the public forgery joke and its consequences; no collected stone",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "areelu.trickster.report.visitors",
+    "node": "end",
+    "woman": "areelu",
+    "beat": "record the Commander closing the door and visitors ceasing, retaining her objection; no growing guest list",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "eritrice.trickster.reconciled_debate",
+    "node": "open",
+    "woman": "eritrice",
+    "beat": "offer voluntary private debate after the earned sitting; assume neither chair usurpation nor a lost native vote; retain sharp temper and return costs",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "eritrice.trickster.reconciled_debate",
+    "node": "exchange",
+    "woman": "eritrice",
+    "beat": "betrayal-specific exchange for a Council fight that bypassed Cue_0035; no remembered force threat; retain sharp temper, voluntary debate and return costs",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "melazmera.trickster.ch5.hunger",
+    "node": "cultists",
+    "woman": "melazmera",
+    "beat": "stage the authorized predation in person in the cellar with the Commander witnessing and able to act; retain appetite, victim suffering, secrecy, Evil selection and later consequences; stage it, do not summarize; native action 2433842e-cbb0-4a1d-8bb9-c6bda4cc4468 and appetite 70c883b1-6364-43bd-b7a0-0f5f89a41b48",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "melazmera.trickster.ch5.hunger",
+    "node": "cultists_after",
+    "woman": "melazmera",
+    "beat": "show the immediate aftermath of the witnessed cellar predation and retain seven victims, intact locks, secrecy and FAT consequence; do not replace the act with a gaoler report",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "melazmera.trickster.beat.inquisitor",
+    "node": "do",
+    "woman": "melazmera",
+    "beat": "stage the authorized predation in person in the cellar with the Commander witnessing and able to act; retain appetite, victim suffering, secrecy, Evil selection and later consequences; stage it, do not summarize; native action 2433842e-cbb0-4a1d-8bb9-c6bda4cc4468 and appetite 70c883b1-6364-43bd-b7a0-0f5f89a41b48",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "melazmera.trickster.ch5.hunger",
+    "node": "cultists",
+    "choice": 1,
+    "woman": "melazmera",
+    "beat": "Playable in-person response during the predation. Preserve existing cruelty and consequence flags; neither deletion nor a remote report.",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "melazmera.trickster.beat.inquisitor",
+    "node": "do",
+    "choice": 1,
+    "woman": "melazmera",
+    "beat": "Playable in-person response during the predation. Preserve existing cruelty and consequence flags; neither deletion nor a remote report.",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "galfrey.lastcall.call",
+    "node": "call",
+    "woman": "galfrey",
+    "beat": "Shared Last Call owner: partition cost.alone without cost.found_late from direct and cortege offers. Acknowledge her self-offer and the Commander preparation, using iz.alone/letter2 and letter2.later_seed; preserve callable entitlement. Register any new placeholder at implementation.",
+    "ruling": "fix14-b"
+  },
+  {
+    "scene": "delamere.lastcall.page",
+    "node": "page",
+    "woman": "delamere",
+    "beat": "Shared integration owner: partition the public called hunting reunion against iomedae.trickster.buried_alive. Supply a concealed hunting reunion preserving Delamere appetite, agency, both romances, both earned bridges and recovered_corked/public_return exclusions. Inspect recovery and collector siblings. Register any new placeholder at implementation.",
+    "ruling": "fix14-b"
   }
 ]
