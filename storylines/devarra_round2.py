@@ -433,3 +433,43 @@ def polish_epilogue(page):
           'When they shouted odds she asked the Commander to tell her what they were shouting about.{/n}',
           requires=(T + 'on_the_roof', UNREPORTED), forbids=(REPORTED,)),
     ])
+
+
+def keeper_history(page, scene_id):
+    """Custody requires kiln transfer; closure departures never mean Drezen."""
+    from storylines import nidalynn_trickster as ni
+    gone = (ni.CLOSED, ni.LEFT_WITH_IT, ni.LIE_KEPT, ni.GOAT_STANDS, ni.GIVEN_UP)
+    for paragraph in page.get('Paragraphs', []):
+        req = paragraph.get('Requires', [])
+        if EGG_BILL not in req:
+            continue
+        if HATCHED in req or (NORTH in req) or HATCHED in paragraph.get('Forbids', []):
+            _add(paragraph, 'Requires', ni.KILN)
+            if NORTH in req:
+                _add(paragraph, 'Requires', HATCHED)
+            else:
+                _add(paragraph, 'Requires', 'nidalynn.present_now')
+                _add(paragraph, 'Forbids', *gone)
+    def pending(brief, requires=(), forbids=()):
+        page.setdefault('Paragraphs', []).append(p(
+            '[PROSE PENDING: ' + scene_id + '/page - ' + brief + ']',
+            requires=(EGG_BILL, *requires), forbids=forbids))
+        page['Paragraphs'][-1]['Id'] = 'fix14.keeper.' + str(sum('fix14.keeper.' in x.get('Id', '') for x in page['Paragraphs']))
+    # Specific departures take precedence over the general closed ending.
+    for key, label, higher in (
+        (ni.GIVEN_UP, 'chaplain fire escape', ()),
+        (ni.LIE_KEPT, 'retained kiln lie and first thaw departure', (ni.GIVEN_UP,)),
+        (ni.GOAT_STANDS, 'unmended wolves lie and north departure', (ni.GIVEN_UP, ni.LIE_KEPT)),
+        (ni.CLOSED, 'first-flight refusal and apart north departure', (ni.GIVEN_UP, ni.LIE_KEPT, ni.GOAT_STANDS)),
+    ):
+        for hatched in (False, True):
+            pending('Recall ' + label + '; the transferred ' + ('child' if hatched else 'shell')
+                    + ' left Drezen with its keeper, never at the east wall; debt remains the Commander\'s',
+                    (ni.KILN, key, *((HATCHED,) if hatched else ())),
+                    (NORTH, *higher, *((HATCHED,) if not hatched else ())))
+    pending('Earned kiln custody but keeper currently unavailable; no staged east-wall keeper or invented death; debt persists',
+            (ni.KILN,), ('nidalynn.present_now', *gone))
+    pending('The egg was never transferred to Nidalynn; do not award silver custody or a kiln childhood; missing-egg debt remains independent',
+            (), (ni.KILN,))
+    pending('Earned kiln transfer and explicit north departure before hatching; recall the shell with its departed keeper, not a grown child; debt persists',
+            (ni.KILN, NORTH), (HATCHED,))

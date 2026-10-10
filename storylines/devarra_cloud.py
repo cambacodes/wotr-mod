@@ -333,3 +333,8 @@ def integrate(payload):
     apply(payload)
     from storylines import devarra_rubric2
     devarra_rubric2.integrate(payload)
+    from storylines.devarra_round2 import keeper_history
+    scenes = {s['Id']: s for s in payload['Scenes']}
+    for suffix in ('epilogue.woken', 'epilogue.commit'):
+        sid = D + suffix
+        keeper_history(_node(scenes, sid, 'page'), sid)
