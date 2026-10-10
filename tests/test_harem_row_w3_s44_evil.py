@@ -62,9 +62,9 @@ class S44EvilTests(unittest.TestCase):
         candidates = [dict(Id='budget.' + str(i), HouseholdCategory='pair',
             RestAllowance='household.pair', HouseholdWitness='budget.' + str(i),
             HouseholdArc='budget.arc', HouseholdArcStart=i == 0,
-            Chapters=[5], MinChapter=5, MaxChapter=5) for i in range(13)]
+            Chapters=[5], MinChapter=5, MaxChapter=5) for i in range(15)]
         with patch.object(row, 'metadata_ready', return_value=True):
-            with self.assertRaisesRegex(ValueError, 'optional step sum 17 exceeds 16'):
+            with self.assertRaisesRegex(ValueError, 'optional step sum 19 exceeds 18'):
                 row.register(payload, candidates, {})
         self.assertEqual(payload, before)
         self.assertEqual(household.ENTRIES, self.base)

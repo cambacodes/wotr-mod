@@ -109,7 +109,7 @@ class S17Tests(unittest.TestCase):
     def test_selection_rejects_stale_returns_and_nonbodily_histories(self):
         # Use the exported route contracts, including their epoch vetoes; even
         # stale ready/present flags cannot bypass current participant RouteOpen.
-        base = fresh_story(include_harem=False)
+        base = fresh_story()
         fixture = copy.deepcopy(self.payload)
         fixture["Relationships"] = {key: base["Relationships"][key]
                                     for key in ("household", "vellexia", "shamira")}

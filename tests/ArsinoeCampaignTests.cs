@@ -92,7 +92,7 @@ internal static class ArsinoeCampaignTests
                         if (scene.Id == "arsinoe_what_she_asks" && page == "lasting")
                         {
                             var menu = scene.Nodes.Single(n => n.Id == "lasting").Choices;
-                            check(menu.Length == 2 && menu[1].Next == "sole_terms",
+                            check(menu.Count == 2 && menu[1].Next == "sole_terms",
                                 "Sole promise changes its saved position or target.");
                             check(Rules.ChoiceAvailable(menu[0], partial)
                                   && Rules.ChoiceAvailable(menu[1], partial) == !otherCommitted,

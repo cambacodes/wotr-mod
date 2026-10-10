@@ -3,7 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
-from tests.story_fixture import fresh_story
+from tests.story_fixture import row_registration_fixture
 
 from storylines.harem_rows import s48
 from tools import rrt_verify as rules
@@ -14,10 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def registered():
-    payload = fresh_story(include_harem=False)
-    if not any(body["Id"] == s48.P + "notice" for body in payload["Scenes"]):
-        s48.register(payload, payload["Scenes"], payload["Etudes"])
-    return payload
+    return row_registration_fixture(s48)
 
 
 class S48Tests(unittest.TestCase):

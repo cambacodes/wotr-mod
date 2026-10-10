@@ -1115,7 +1115,7 @@ report("areelu.trickster.report.graft", "The report: the other half", [
 {n}She tapped the page with the pen. "Understand what was declined, and why. I did not refuse it for your sake. I refused it because the terms were poor and I am not yet desperate. The day they improve, I will read them again." She did not look up. "Do not wait up for the answer. It is mine to give."{/n}''',
                 requires=('areelu.trickster.report.graft.history.wait',)), p('''{n}She had come home before dawn to a sleeper who had not so much as turned over, and stood at the bed for the length of a held breath, looking down. The notebook, afterwards: "The call came at the second hour. I did not answer it. Nobody woke to ask what I would do. I stood in the open until my hands stopped being mine. It went on without me for some while, and then it lost interest. It has never lost interest before. I intend to understand why."{/n}
 {n}She blotted the page and set the pen in its stand. "Unanswered," she said, "by me. Let the record show that it was not the Commander's doing either way."{/n}''',
-                requires=('areelu.trickster.report.graft.history.sleep',))]),
+                requires=('areelu.trickster.report.graft.history.sleep',)), p('[PROSE PENDING: areelu.trickster.report.graft/after - introduce the recorded graft aftermath for stand, wait and sleep histories without assuming a chosen response]')]),
 ], after="scene:areelu.trickster.report.grey", any_group=(CHEATED,), forbids=(DRAWN,))
 
 report("areelu.trickster.report.sarkoris", "The report: the clan roll", [
@@ -1327,7 +1327,7 @@ report("areelu.trickster.report.crossroads", "The report: the crossroads", [
                 requires=('areelu.trickster.report.crossroads.history.rift_after',)), p('''{n}In the report: "One forged leaf corrected at a stall: arithmetic wrong in three places, Sarkorian in two, the conclusion lethal. Returned at double the price. The method I can still mend. The power it needs I can no longer supply; that went into the cauldron with the rest of me." She considered the line, and did not cross it out. "The stallholder will sell the correction. A fool will try it on borrowed power. I shall want to know which clause kills him first."{/n}''',
                 requires=('areelu.trickster.report.crossroads.history.buy_mortal',)), p('''{n}In the report: "One forged leaf corrected at a stall: arithmetic wrong in three places, Sarkorian in two, the conclusion lethal. Returned at double the price. The stallholder knew my eyes and sat down on his stock. I made no threat. The silence was his own work." She underlined the last sentence. "He will sell twice as many and say nothing. The best advertisement is a fear that costs me nothing to keep."{/n}''',
                 requires=('areelu.trickster.report.crossroads.history.buy_witch',)), p('''{n}In the report she set down the incident in the Commander's own words, copied out without comment: "Forgeries. The Architect never wrote a page that bad in her life." Beneath it: "Announced to the whole market. Result: the stall sells twice as many, and the Crossroads now knows my handwriting by its faults. Cost to me: my anonymity at the rift's edge, which I had valued." She laid down the pen. "A joke is a loan against someone's name. The Commander has borrowed against mine. I will collect, in a currency of my choosing, at a time I have not yet decided."{/n}''',
-                requires=('areelu.trickster.report.crossroads.history.loud',))])),
+                requires=('areelu.trickster.report.crossroads.history.loud',)), p('[PROSE PENDING: areelu.trickster.report.crossroads/end - close the report for watch, rift, mortal purchase, witch purchase and public disclosure histories without inventing an action]')])),
 ], after="scene:areelu.trickster.report.wound", any_group=("ending.trickster_allplanes", "ending.trickster_allplanes_fw"))
 
 report("areelu.trickster.report.prison", "The report: the prison", [
@@ -1589,7 +1589,7 @@ report("areelu.trickster.report.dagger", "The report: the dagger", [
     nar("end", '', paragraphs=[p('''{n}She records the blade's condition and the method she is saving for a better demon lord. Beneath them: "The Commander offered it back. No demand in exchange. I distrust the ease of that offer more than I distrusted keeping it." She shuts the book and returns to the room where the Commander is waiting.{/n}''',
                 any_groups=(('areelu.trickster.report.dagger.history.give_mortal', 'areelu.trickster.report.dagger.history.give_witch'),)), p('''{n}She wrote the refusal into the book as she wrote everything: the date, the request, the answer. "Declined. Not argued." Under it, in a smaller hand: "Held it anyway, three nights later, without leave. Did not unsheathe it. Returned it to the boot before light." She ruled a line beneath the entry. "I record the breach. I do not regret the hour. I would have it noted that I can ask once and take later, and that the Commander woke to it and let it stand."{/n}
 {n}She shut the book. She did not ask for the dagger again.{/n}''',
-                requires=('areelu.trickster.report.dagger.history.keep',))]),
+                requires=('areelu.trickster.report.dagger.history.keep',)), p('[PROSE PENDING: areelu.trickster.report.dagger/end - close the dagger report for given and retained dagger histories without assuming permission]')]),
 ], after="scene:areelu.trickster.report.convicts")
 
 report("areelu.trickster.report.lady", "The report: the Lady's clerk", [
@@ -1679,7 +1679,7 @@ report("areelu.trickster.report.visitors", "The report: visitors", [
     nar("end", '', paragraphs=[p('''{n}Her list of visitors grows beside the wound observations. Some names acquire a date for another visit. Others are crossed out. She keeps the list in Sarkorian, and writes the questions she intends to ask them next.{/n}''',
                 forbids=('areelu.trickster.report.visitors.history.shut',)), p('''{n}The column of visitors stopped growing. The last entry carries a date and no name after it, and below it, in the hand she kept for matters of record: "The Commander closed the door. I had said not to. I say it again here, where it cannot be argued: I did not ask for it, and I am not obliged to be grateful. They have ceased to come. I note the interval, and I note that the house is quiet." She ruled a line under it.{/n}
 {n}She did not reopen the column. The questions she had meant for the next visitors she wrote out anyway, and left unasked.{/n}''',
-                requires=('areelu.trickster.report.visitors.history.shut',))]),
+                requires=('areelu.trickster.report.visitors.history.shut',)), p('[PROSE PENDING: areelu.trickster.report.visitors/end - close the visitors report for open and shut door histories without promising another visit]')]),
 ], after="scene:areelu.trickster.report.lady")
 
 report("areelu.trickster.report.rival", "The report: page fourteen", [
