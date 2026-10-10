@@ -1,0 +1,313 @@
+{
+  "job_id": "fix17b",
+  "kind": "finding evidence, not runner gate receipt",
+  "checks": [
+    {
+      "test": "tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts",
+      "mutation": "chaplain_producer",
+      "argv": [
+        "/tmp/rrt-command-shims.IFdcrM/python",
+        "-m",
+        "unittest",
+        "tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_scene_reader_and_shared_producer_contracts"
+      ],
+      "control": {
+        "exit": 0,
+        "fixture": "/tmp/fix17b-bsna0q6h/story.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/chaplain_producer.control.log",
+        "assertion_failure": false
+      },
+      "mutant": {
+        "exit": 1,
+        "fixture": "/tmp/fix17b-mutations-tqehwoxt/chaplain_producer.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/chaplain_producer.mutant.log",
+        "assertion_failure": true
+      },
+      "removed_assertion": "Frozen chaplain terminal Set and departure presence requirements",
+      "added_assertion": "Separate prayed/sent-away producers, either-history readers, amended departure gates; IDs, choice order and effects retained",
+      "environment": {
+        "RRT_TEST_STORY": "per-variant fixture path",
+        "PYTHONHASHSEED": "0"
+      }
+    },
+    {
+      "test": "tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_all_nine_endings_keep_existing_paragraph_indices",
+      "mutation": "departure_presence",
+      "argv": [
+        "/tmp/rrt-command-shims.IFdcrM/python",
+        "-m",
+        "unittest",
+        "tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_all_nine_endings_keep_existing_paragraph_indices"
+      ],
+      "control": {
+        "exit": 0,
+        "fixture": "/tmp/fix17b-bsna0q6h/story.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/departure_presence.control.log",
+        "assertion_failure": false
+      },
+      "mutant": {
+        "exit": 1,
+        "fixture": "/tmp/fix17b-mutations-tqehwoxt/departure_presence.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/departure_presence.mutant.log",
+        "assertion_failure": true
+      },
+      "removed_assertion": "Prayed-only paragraph predicates",
+      "added_assertion": "Either chaplain history; explicit recorded departure states without current presence; kiln/hatchling conditional visibility",
+      "environment": {
+        "RRT_TEST_STORY": "per-variant fixture path",
+        "PYTHONHASHSEED": "0"
+      }
+    },
+    {
+      "test": "tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_prefixes_and_exact_appends",
+      "mutation": "chaplain_reader",
+      "argv": [
+        "/tmp/rrt-command-shims.IFdcrM/python",
+        "-m",
+        "unittest",
+        "tests.test_nidalynn_partner_claim.NidalynnPartnerClaimTests.test_frozen_prefixes_and_exact_appends"
+      ],
+      "control": {
+        "exit": 0,
+        "fixture": "/tmp/fix17b-bsna0q6h/story.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/chaplain_reader.control.log",
+        "assertion_failure": false
+      },
+      "mutant": {
+        "exit": 1,
+        "fixture": "/tmp/fix17b-mutations-tqehwoxt/chaplain_reader.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/chaplain_reader.mutant.log",
+        "assertion_failure": true
+      },
+      "removed_assertion": "Prayed-only prefix/appended predicates",
+      "added_assertion": "Either-history chaplain predicate and retained earned-history predicates",
+      "environment": {
+        "RRT_TEST_STORY": "per-variant fixture path",
+        "PYTHONHASHSEED": "0"
+      }
+    },
+    {
+      "test": "tests.test_contract_j01.J01Tests.test_reference_manifest_is_exact_and_never_exempts_new_live_action",
+      "mutation": "new_live_action",
+      "argv": [
+        "/tmp/rrt-command-shims.IFdcrM/python",
+        "-m",
+        "unittest",
+        "tests.test_contract_j01.J01Tests.test_reference_manifest_is_exact_and_never_exempts_new_live_action"
+      ],
+      "control": {
+        "exit": 0,
+        "fixture": "/tmp/fix17b-bsna0q6h/story.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/new_live_action.control.log",
+        "assertion_failure": false
+      },
+      "mutant": {
+        "exit": 1,
+        "fixture": "/tmp/fix17b-mutations-tqehwoxt/new_live_action.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/new_live_action.mutant.log",
+        "assertion_failure": true
+      },
+      "removed_assertion": "Old reference classification for reworded cut contexts",
+      "added_assertion": "Two reviewed historical contexts; newly introduced live actions remain rejected",
+      "environment": {
+        "RRT_TEST_STORY": "per-variant fixture path",
+        "PYTHONHASHSEED": "0"
+      }
+    },
+    {
+      "test": "tests.test_eliandra_round2.EliandraRoundTwoTests.test_all_five_slot_briefs_match_their_live_defaults",
+      "mutation": "eliandra_unreachable",
+      "argv": [
+        "/tmp/rrt-command-shims.IFdcrM/python",
+        "-m",
+        "unittest",
+        "tests.test_eliandra_round2.EliandraRoundTwoTests.test_all_five_slot_briefs_match_their_live_defaults"
+      ],
+      "control": {
+        "exit": 0,
+        "fixture": "/tmp/fix17b-bsna0q6h/story.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/eliandra_unreachable.control.log",
+        "assertion_failure": false
+      },
+      "mutant": {
+        "exit": 1,
+        "fixture": "/tmp/fix17b-mutations-tqehwoxt/eliandra_unreachable.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/eliandra_unreachable.mutant.log",
+        "assertion_failure": true
+      },
+      "removed_assertion": "Brief count and default paragraph/node text equality",
+      "added_assertion": "Declared slot IDs at reachable nodes or late-accepted paragraphs, expected successors and inert effects",
+      "environment": {
+        "RRT_TEST_STORY": "per-variant fixture path",
+        "PYTHONHASHSEED": "0"
+      }
+    },
+    {
+      "test": "tests.test_eritrice_round4.EritriceRoundFourTests.test_repeat_night_and_morning_share_position",
+      "mutation": "morning_unearned",
+      "argv": [
+        "/tmp/rrt-command-shims.IFdcrM/python",
+        "-m",
+        "unittest",
+        "tests.test_eritrice_round4.EritriceRoundFourTests.test_repeat_night_and_morning_share_position"
+      ],
+      "control": {
+        "exit": 0,
+        "fixture": "/tmp/fix17b-bsna0q6h/story.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/morning_unearned.control.log",
+        "assertion_failure": false
+      },
+      "mutant": {
+        "exit": 1,
+        "fixture": "/tmp/fix17b-mutations-tqehwoxt/morning_unearned.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/morning_unearned.mutant.log",
+        "assertion_failure": true
+      },
+      "removed_assertion": "Furniture-position substring checks",
+      "added_assertion": "Reachable repeat cut, carried receipt producer, morning receipt consumer and missing-receipt rejection",
+      "environment": {
+        "RRT_TEST_STORY": "per-variant fixture path",
+        "PYTHONHASHSEED": "0"
+      }
+    },
+    {
+      "test": "tests.test_herrax_round2.HerraxRound2Tests.test_late_return_remembers_completed_punishments",
+      "mutation": "punishment_unearned",
+      "argv": [
+        "/tmp/rrt-command-shims.IFdcrM/python",
+        "-m",
+        "unittest",
+        "tests.test_herrax_round2.HerraxRound2Tests.test_late_return_remembers_completed_punishments"
+      ],
+      "control": {
+        "exit": 0,
+        "fixture": "/tmp/fix17b-bsna0q6h/story.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/punishment_unearned.control.log",
+        "assertion_failure": false
+      },
+      "mutant": {
+        "exit": 1,
+        "fixture": "/tmp/fix17b-mutations-tqehwoxt/punishment_unearned.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/punishment_unearned.mutant.log",
+        "assertion_failure": true
+      },
+      "removed_assertion": "Late-arrival punishment wording substrings",
+      "added_assertion": "Receipt-specific memory visibility, blockers and missing-receipt rejection",
+      "environment": {
+        "RRT_TEST_STORY": "per-variant fixture path",
+        "PYTHONHASHSEED": "0"
+      }
+    },
+    {
+      "test": "tests.test_nocticula_round2.NocticulaRound2Tests.test_acquisition_visit_is_optional_read_only_and_channel_limited",
+      "mutation": "visit_writes_commitment",
+      "argv": [
+        "/tmp/rrt-command-shims.IFdcrM/python",
+        "-m",
+        "unittest",
+        "tests.test_nocticula_round2.NocticulaRound2Tests.test_acquisition_visit_is_optional_read_only_and_channel_limited"
+      ],
+      "control": {
+        "exit": 0,
+        "fixture": "/tmp/fix17b-bsna0q6h/story.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/visit_writes_commitment.control.log",
+        "assertion_failure": false
+      },
+      "mutant": {
+        "exit": 1,
+        "fixture": "/tmp/fix17b-mutations-tqehwoxt/visit_writes_commitment.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/visit_writes_commitment.mutant.log",
+        "assertion_failure": true
+      },
+      "removed_assertion": "Acquisition visit prose substrings",
+      "added_assertion": "Optional exit and visit paths, readonly choices, renewed-agreement coda gate and loss blockers",
+      "environment": {
+        "RRT_TEST_STORY": "per-variant fixture path",
+        "PYTHONHASHSEED": "0"
+      }
+    },
+    {
+      "test": "tests.test_nocticula_round2.NocticulaRound2Tests.test_paid_refusal_and_inn_collect_without_changing_legacy_exits",
+      "mutation": "payment_inverted",
+      "argv": [
+        "/tmp/rrt-command-shims.IFdcrM/python",
+        "-m",
+        "unittest",
+        "tests.test_nocticula_round2.NocticulaRound2Tests.test_paid_refusal_and_inn_collect_without_changing_legacy_exits"
+      ],
+      "control": {
+        "exit": 0,
+        "fixture": "/tmp/fix17b-bsna0q6h/story.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/payment_inverted.control.log",
+        "assertion_failure": false
+      },
+      "mutant": {
+        "exit": 1,
+        "fixture": "/tmp/fix17b-mutations-tqehwoxt/payment_inverted.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/payment_inverted.mutant.log",
+        "assertion_failure": true
+      },
+      "removed_assertion": "My favour. A chair prose selector",
+      "added_assertion": "Paid-history collections remain visible for PAID and unavailable for REFUSED; legacy exits preserved",
+      "environment": {
+        "RRT_TEST_STORY": "per-variant fixture path",
+        "PYTHONHASHSEED": "0"
+      }
+    },
+    {
+      "test": "tests.test_camellia_round2.CamelliaRound2Tests.test_slots_are_reachable_and_keep_each_branch_successor",
+      "mutation": "camellia_wrong_successor",
+      "argv": [
+        "/tmp/rrt-command-shims.IFdcrM/python",
+        "-m",
+        "unittest",
+        "tests.test_camellia_round2.CamelliaRound2Tests.test_slots_are_reachable_and_keep_each_branch_successor"
+      ],
+      "control": {
+        "exit": 0,
+        "fixture": "/tmp/fix17b-bsna0q6h/story.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/camellia_wrong_successor.control.log",
+        "assertion_failure": false
+      },
+      "mutant": {
+        "exit": 1,
+        "fixture": "/tmp/fix17b-mutations-tqehwoxt/camellia_wrong_successor.json",
+        "log": "/tmp/fix17b-mutations-tqehwoxt/camellia_wrong_successor.mutant.log",
+        "assertion_failure": true
+      },
+      "removed_assertion": "21-brief count and default-text equality",
+      "added_assertion": "Declared node IDs reachable, inserted cuts inert, branch-specific successors and morning selection retained",
+      "environment": {
+        "RRT_TEST_STORY": "per-variant fixture path",
+        "PYTHONHASHSEED": "0"
+      }
+    }
+  ],
+  "sibling_check": {
+    "tests": 71,
+    "exit": 1,
+    "log": "/tmp/fix17b-bsna0q6h/sibling-check.log",
+    "result": "70 passed; Nocticula prose selector error corrected and full 7-test module passed afterward"
+  },
+  "cancelled_checks": [
+    {
+      "description": "initial seven-module run; cancelled during repeated assembly",
+      "exit": 130
+    },
+    {
+      "description": "departure check launched without supplied export; cancelled during redundant build",
+      "exit": 130
+    }
+  ],
+  "rejected_checks": [
+    {
+      "argv": [
+        "python",
+        "tests/fix17b_mutations.py",
+        "/tmp/fix17b-bsna0q6h/story.json"
+      ],
+      "exit": 137,
+      "reason": "unapproved standalone test-bearing wrapper; replaced with authorized job-owned unittest module"
+    }
+  ]
+}

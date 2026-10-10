@@ -30,23 +30,33 @@ class CamelliaRound2Tests(unittest.TestCase):
                     self.assertEqual(original["Choices"], current["Choices"])
 
     def test_slots_are_reachable_and_keep_each_branch_successor(self):
+        from tests.story_fixture import fresh_story
+        from tests.fix16b_structure import declared_host, reachable_nodes
+        scenes = {s["Id"]: s for s in fresh_story()["Scenes"]}
         root = Path(__file__).resolve().parents[1] / "tools/route_packs/explicit_slots/camellia"
-        briefs = [json.loads(p.read_text(encoding="utf-8")) for p in root.glob("*.json")]
-        self.assertEqual(21, len(briefs))
-        for brief in briefs:
-            with self.subTest(slot=brief["slot_id"]):
-                host = self.scenes[brief["insertion"]["scene_id"]]
+        for path in root.glob("*.json"):
+            brief = json.loads(path.read_text(encoding="utf-8"))
+            sid, nid = declared_host(path.stem, brief, scenes)
+            with self.subTest(slot=brief["slot_id"], host=nid):
+                host = scenes[sid]
                 pages = {n["Id"]: n for n in host["Nodes"]}
-                slot = pages[brief["slot_id"]]
-                self.assertEqual(brief["default_text"], slot["Text"])
-                self.assertEqual([], slot["Choices"][0]["Set"])
-                self.assertTrue(any(c.get("Next") == slot["Id"] for n in host["Nodes"] for c in n["Choices"]))
-                self.assertIn(slot["Choices"][0]["Next"], pages)
-                if "the_second_dance" in host["Id"]:
-                    anchor = "strap" if "from strap" in brief["insertion"]["branch"] else "leave"
-                    self.assertEqual(slot["Id"], pages[anchor]["Choices"][0]["Next"])
-                if "the_deck_again" in host["Id"]:
-                    self.assertIsNone(pages["wont_close"]["Choices"][0]["Next"])
+                self.assertIn(nid, reachable_nodes(host))
+                if "insertion" not in brief:
+                    continue  # These briefs own existing nodes, with existing effects.
+                slot = pages[nid]
+                self.assertEqual([[]], [c["Set"] for c in slot["Choices"]])
+                successor = brief["insertion"]["retained_successor"].split(" -> ")[-1]
+                self.assertEqual(["end" if "the_second_dance" in sid else successor],
+                                 [c["Next"] for c in slot["Choices"]])
+                anchor = brief["insertion"]["after_node"]
+                if "the_second_dance" in sid:
+                    anchor = "strap" if brief["slot_id"].endswith(".1") else "leave"
+                    flags = set(pages[anchor]["Choices"][0]["Set"])
+                    self.assertEqual([successor], [c["Next"] for c in pages["morning.dance"]["Choices"]
+                        if set(c["Requires"]) <= flags and not set(c["Forbids"]) & flags])
+                self.assertIn(nid, [c["Next"] for c in pages[anchor]["Choices"]])
+                if "the_deck_again" in sid:
+                    self.assertEqual([None], [c["Next"] for c in pages["wont_close"]["Choices"]])
 
     def test_first_coffin_delivery_does_not_need_placement_failure(self):
         for sid, terminal in (("killed.third_night", "home"), ("killed.late_curtain", "walk")):

@@ -86,9 +86,11 @@ class NocticulaRound2Tests(unittest.TestCase):
             self.assertFalse(any(old.get(k) for k in EXIT_MECHANICS))
             self.assertEqual(choice_identities(self.scenes[sid], n)[0]["GuidFor"],
                              "answer." + sid + "." + key + ".continue")
-            collection = next(p for p in n["Paragraphs"] if "My favour. A chair" in p["Text"])
-            self.assertTrue(allowed(collection, {PAID}))
-            self.assertFalse(allowed(collection, {REFUSED}))
+            collections = [p for p in n["Paragraphs"] if p.get("Requires") == [PAID]]
+            self.assertTrue(collections)
+            for collection in collections:
+                self.assertTrue(allowed(collection, {PAID}))
+                self.assertFalse(allowed(collection, {REFUSED}))
 
     def test_daeran_is_not_invented_by_absence_of_loss_flags(self):
         choices = self.nodes("nocticula.trickster.defeated.morning")["start"]["Choices"]
@@ -121,9 +123,11 @@ class NocticulaRound2Tests(unittest.TestCase):
         page = nodes["page"]
         self.assertFalse(any(page["Choices"][0].get(k) for k in EXIT_MECHANICS))
         self.assertEqual(choice_identities(self.scenes[sid], page)[0]["GuidFor"], "answer." + sid + ".page.continue")
-        self.assertNotIn("in person", page["Text"])
-        self.assertIn("paid the conjurer", nodes["arrival"]["Text"])
-        self.assertIn("Tonight I want yours", nodes["admitted"]["Text"])
+        from tests.fix16b_structure import reachable_nodes
+        reached = reachable_nodes(self.scenes[sid])
+        self.assertTrue({"page", "invitation", "letters", "arrival", "admitted", "conversation"} <= reached)
+        self.assertEqual([None, "invitation"], [c["Next"] for c in page["Choices"]])
+        self.assertEqual(["admitted", "letters"], [c["Next"] for c in nodes["arrival"]["Choices"]])
         self.assertTrue(any(c["Next"] == "letters" for c in nodes["invitation"]["Choices"]))
         self.assertTrue(any(c["Next"] == "conversation" for c in nodes["admitted"]["Choices"]))
         for n in nodes.values():

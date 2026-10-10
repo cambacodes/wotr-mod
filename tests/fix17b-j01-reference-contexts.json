@@ -1,0 +1,18 @@
+{
+  "contexts": [
+    {
+      "scene": "herrax.trickster.madam.reachable",
+      "node": "cut",
+      "slot": "text",
+      "woman": "chivarro",
+      "reason": "Coordinator decision: old cushions record historical Chivarro reference; approved heat sweep 6f89a003."
+    },
+    {
+      "scene": "herrax.trickster.madam.reachable_restored",
+      "node": "cut",
+      "slot": "text",
+      "woman": "chivarro",
+      "reason": "Coordinator decision: old cushions record historical Chivarro reference; approved heat sweep 6f89a003."
+    }
+  ]
+}

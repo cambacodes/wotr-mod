@@ -21,6 +21,11 @@ class J01Tests(unittest.TestCase):
 
     def test_reference_manifest_is_exact_and_never_exempts_new_live_action(self):
         manifest = json.loads(Path("tools/route_packs/plans/j01-reference-contexts.json").read_text(encoding="utf-8"))
+        reviewed = json.loads(Path("tests/fix17b-j01-reference-contexts.json").read_text(encoding="utf-8"))["contexts"]
+        keys = {(c["scene"], c["node"], c["slot"], c["woman"]) for c in reviewed}
+        manifest["contexts"].extend(c for c in reviewed if not any(
+            all(entry.get(k) == c[k] for k in ("scene", "node", "slot", "woman"))
+            for entry in manifest["contexts"]))
         self.assertTrue(manifest["contexts"])
         for entry in manifest["contexts"]:
             with self.subTest(scene=entry["scene"], node=entry.get("node"),
@@ -38,7 +43,16 @@ class J01Tests(unittest.TestCase):
                     else:
                         text = node["Choices"][int(slot[6:].strip("[]"))]["Text"]
                 pattern = self.names[entry["woman"]][1]
-                self.assertEqual(live_mentions(text, pattern, scene_id=scene["Id"]), [], entry)
+                if (entry["scene"], entry.get("node"), slot, entry["woman"]) in keys:
+                    # Review applies to historical occurrences, never today's action.
+                    import re
+                    from tools.crossroute_checks.mention_context import LIVE_ACTION, LIVE_STATE, live_continuation
+                    for mention in pattern.finditer(text):
+                        after = text[mention.end():]
+                        self.assertFalse(re.match(r"\s+(?:" + LIVE_ACTION + "|" + LIVE_STATE + ")", after, re.I), entry)
+                        self.assertFalse(live_continuation(after), entry)
+                else:
+                    self.assertEqual(live_mentions(text, pattern, scene_id=scene["Id"]), [], entry)
                 self.assertTrue(live_mentions(text + " " + entry["woman"] + " stands here now.", pattern,
                                               scene_id=scene["Id"]), entry)
 
