@@ -4,13 +4,17 @@ The other heat groups live in their owning builders. Keep this target late
 until the cross-route reviewed-reference owner migrates its prose binding.
 """
 from storylines.heat_text import extend, _node
+from authoring.generation_errors import record
 
 def retail(payload, targets, old_tail, new_tail):
     """Replace the exact tail of each target node's text (the node must end with `old_tail`)."""
     for scene_id, node_id in targets:
         node = _node(payload, scene_id, node_id)
+        if node is None:
+            continue
         if node["Text"].count(old_tail) != 1 or not node["Text"].rstrip().endswith(old_tail):
-            raise ValueError("heat layer: %s/%s does not end with %r" % (scene_id, node_id, old_tail[:70]))
+            record("heat.retail_tail", scene=scene_id, node=node_id, detail=old_tail[:70])
+            continue
         node["Text"] = node["Text"].rstrip()[:-len(old_tail)] + new_tail.strip()
 
 KEY = "anevia.a_key_that_is_hers"

@@ -32,6 +32,7 @@ Structure fixed here:
 Canon used (enGB keys, see the review): 3dce2b36, 84523473, 3caba7e8, 842890df,
 7de8d1a8, aa6fc172, cbb103a6, 8f337ada, a68b28c8, 10989135.
 """
+from authoring.generation_errors import OverlayMismatch, overlay_item, overlay_node, record
 from story_format import p
 
 H = "hepzamirah.trickster."
@@ -253,43 +254,42 @@ text(S, "lost", '''{n}The hide crosses a fresh track you failed to notice. The p
 
 
 def _node(by_id, sid, nid):
-    if sid not in by_id:
-        raise KeyError("hepzamirah cloud: scene %s missing" % sid)
-    matches = [node for node in by_id[sid]["Nodes"] if node["Id"] == nid]
-    if len(matches) != 1:
-        raise KeyError("hepzamirah cloud: %s/%s matched %d nodes" % (sid, nid, len(matches)))
-    return matches[0]
+    return overlay_node(by_id, sid, nid)
 
 
 def register(payload, scenes, refs):
     by_id = {body["Id"]: body for body in payload["Scenes"]}
     for (sid, nid), body in PLACEHOLDERS.items():
-        node = _node(by_id, sid, nid)
-        if not node["Text"].startswith(PENDING):
-            raise ValueError("hepzamirah cloud: %s/%s is no longer a placeholder" % (sid, nid))
-        node["Text"] = body.strip()
+        with overlay_item():
+            node = _node(by_id, sid, nid)
+            if not node["Text"].startswith(PENDING):
+                raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail="hepzamirah cloud: %s/%s is no longer a placeholder" % (sid, nid))
+            node["Text"] = body.strip()
     for (sid, nid), body in NODES.items():
-        node = _node(by_id, sid, nid)
-        if node["Text"].startswith(PENDING):
-            raise ValueError("hepzamirah cloud: %s/%s is a placeholder" % (sid, nid))
-        node["Text"] = body.strip()
+        with overlay_item():
+            node = _node(by_id, sid, nid)
+            if node["Text"].startswith(PENDING):
+                raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail="hepzamirah cloud: %s/%s is a placeholder" % (sid, nid))
+            node["Text"] = body.strip()
     for (sid, nid, key, flag), body in PARA_TEXT.items():
-        paras = _node(by_id, sid, nid).get("Paragraphs") or []
-        if isinstance(key, int):
-            if key >= len(paras) or (flag and flag not in paras[key]["Requires"]):
-                raise KeyError("hepzamirah cloud: %s/%s paragraph %d does not read %s" % (sid, nid, key, flag))
-            paras[key]["Text"] = body.strip()
-        else:
-            hits = [para for para in paras if para.get("Id") == key]
-            if len(hits) != 1:
-                raise KeyError("hepzamirah cloud: %s/%s paragraph %s matched %d" % (sid, nid, key, len(hits)))
-            hits[0]["Text"] = body.strip()
-            # Last Call partner readers are re-merged by text after each row;
-            # keep the registry in step so the old wording is not appended again.
-            from storylines import lastcall_partners
-            for partner in lastcall_partners.PARTNERS:
-                for para in partner["paragraphs"]:
-                    if para.get("Id") == key:
-                        para["Text"] = body.strip()
+        with overlay_item():
+            paras = _node(by_id, sid, nid).get("Paragraphs") or []
+            if isinstance(key, int):
+                if key >= len(paras) or (flag and flag not in paras[key]["Requires"]):
+                    raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail="hepzamirah cloud: %s/%s paragraph %d does not read %s" % (sid, nid, key, flag))
+                paras[key]["Text"] = body.strip()
+            else:
+                hits = [para for para in paras if para.get("Id") == key]
+                if len(hits) != 1:
+                    raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail="hepzamirah cloud: %s/%s paragraph %s matched %d" % (sid, nid, key, len(hits)))
+                hits[0]["Text"] = body.strip()
+                # Last Call partner readers are re-merged by text after each row;
+                # keep the registry in step so the old wording is not appended again.
+                from storylines import lastcall_partners
+                for partner in lastcall_partners.PARTNERS:
+                    for para in partner["paragraphs"]:
+                        if para.get("Id") == key:
+                            para["Text"] = body.strip()
     for (sid, nid), extra in PARAS.items():
-        _node(by_id, sid, nid).setdefault("Paragraphs", []).extend(dict(para) for para in extra)
+        with overlay_item():
+            _node(by_id, sid, nid).setdefault("Paragraphs", []).extend(dict(para) for para in extra)

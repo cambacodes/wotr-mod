@@ -14,6 +14,7 @@ Chapter 5 deliveries for a woman who cannot be met in person on Trickster) and d
   (they forbid `chapter_later`, which the runtime holds from Chapter 2 on), past the beta. Ids, nodes and choices are
   kept. The acquired correspondence gets its own closing page, so its commitment is not left without an ending.
 """
+from authoring.generation_errors import record
 import copy
 
 from story_format import c, n, scene
@@ -72,7 +73,7 @@ def integrate(payload):
     rel = payload["Relationships"]["nocticula"]
     old = "After completing the Trickster correspondence and accepting the hosted meetings, rest in Drezen to hear Nocticula's harbor proposal. "
     if old not in rel["Guidance"]:
-        raise ValueError("nm1: the Nocticula guidance changed")
+        record("overlay.guidance_snippet", detail=old[:70])
     rel["Guidance"] = rel["Guidance"].replace(old, "The Trickster correspondence ends in its own agreement, kept by letter. ")
     if EPILOGUE["Id"] in scenes:
         raise ValueError("nm1: duplicate " + EPILOGUE["Id"])

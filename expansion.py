@@ -1,4 +1,9 @@
 """Build the incomplete expansion into development/, never into the installed mod."""
+# Dispatch before importing route builders so import failures also get a report.
+if __name__ == "__main__":
+    from authoring.generation_errors import expansion_main
+    raise SystemExit(expansion_main())
+
 import copy
 import json
 import os
@@ -845,14 +850,3 @@ def trickster_engine(payload):
     payload.setdefault("Derived", {})["trickster.cheated_death"] = [
         ["sacrifice", "trickster.ever", ending] for ending in
         ("ending.trickster", "ending.trickster_allplanes", "ending.trickster_allplanes_fw", "ending.trickster_full")]
-
-
-if __name__ == "__main__":
-    output = Path(os.environ.get("RRT_STORY_OUTPUT", ROOT / "development/Story.json"))
-    output.parent.mkdir(exist_ok=True)
-    from authoring.compiler import CompilationInputs, compile_story
-    from authoring._serialization import write_story
-    compiled = compile_story("expansion", CompilationInputs(destination=output))
-    write_story(output, compiled)
-    payload = compiled.payload
-    print(f"INCOMPLETE DEVELOPMENT EXPORT: {len(payload['Scenes'])} scenes -> {output}")

@@ -35,6 +35,7 @@ Canon used (enGB): 13c0979e, b41c2c6c, f9799f60, 16243ce7, afa1bd23,
 c6c5e760, e34b006d, f079f66d, 6c27d43e. Authored, no canon claim: the runner,
 the burned crescents, the factor's hand, the merchant's hands, the leash.
 """
+from authoring.generation_errors import OverlayMismatch, overlay_item, overlay_node, record
 import re
 
 from story_format import p
@@ -536,15 +537,15 @@ def _surfaces(scene):
         yield from node.get("Choices") or []
 
 
-def _check(label, got, want):
+def _check(label, got, want, *, scene=None):
     if got != want:
-        raise ValueError(f"nocticula_cloud: {label}: expected {want} replacements, got {got}")
+        record('overlay.text_mismatch', scene=scene, detail=f"nocticula_cloud: {label}: expected {want} replacements, got {got}")
 
 
 def apply(payload):
     own = _own(payload)
     if not own:
-        raise ValueError("nocticula_cloud: no Nocticula scenes in the payload")
+        record('overlay.text_mismatch', detail="nocticula_cloud: no Nocticula scenes in the payload")
     # canon-fix1 renames (every owned surface; each queue scene must have been hit as counted).
     hits = {}
     for scene in own:
@@ -559,7 +560,7 @@ def apply(payload):
                 item["Text"] = text
     for sid, names in RENAME_EXPECT.items():
         for name, count in names.items():
-            _check(f"rename {name} in {sid}", hits.get(sid, {}).get(name, 0), count)
+            _check(f"rename {name} in {sid}", hits.get(sid, {}).get(name, 0), count, scene=sid)
     # Whole paragraphs (identical bodies on many pages).
     for old, new, count in PARAS:
         got = 0
@@ -602,14 +603,14 @@ def apply(payload):
         _check("choice " + old[:50], got, count)
     by = {s["Id"]: s for s in own}
     for sid, nid, bodies in APPENDS:
-        node = next((n for n in by[sid]["Nodes"] if n["Id"] == nid), None)
-        if node is None:
-            raise ValueError(f"nocticula_cloud: missing {sid}:{nid}")
-        node.setdefault("Paragraphs", [])
-        for requires, forbids, text in bodies:
-            if any(para["Text"] == text for para in node["Paragraphs"]):
-                raise ValueError(f"nocticula_cloud: {sid}:{nid} already carries {text[:40]!r}")
-            node["Paragraphs"].append(p(text, requires=requires, forbids=forbids))
+        with overlay_item():
+            node = overlay_node(by, sid, nid)
+            node.setdefault("Paragraphs", [])
+            for requires, forbids, text in bodies:
+                with overlay_item():
+                    if any(para["Text"] == text for para in node["Paragraphs"]):
+                        raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail=f"nocticula_cloud: {sid}:{nid} already carries {text[:40]!r}")
+                    node["Paragraphs"].append(p(text, requires=requires, forbids=forbids))
     return payload
 
 

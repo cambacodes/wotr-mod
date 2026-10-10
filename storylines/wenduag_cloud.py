@@ -32,6 +32,7 @@ Canon used (enGB): 829669e9, 001cd911, ca9624d7, f58c7c9a, f97b4b9a, bf5fe56d,
 8115c490, 7f91ab57, daefc78b, b88d1768, 627bdc70, 52df72bc, 8eb9aa1e.
 Authored, no canon claim: Brask, Rusk, Tuhk, the cairns, the Isles stone.
 """
+from authoring.generation_errors import OverlayMismatch, overlay_item, overlay_node, record
 from story_format import p
 
 from pathlib import Path
@@ -254,12 +255,7 @@ def _scenes(payload):
 
 
 def _node(scenes, sid, nid):
-    if sid not in scenes:
-        raise KeyError("wenduag cloud: missing scene %s" % sid)
-    matches = [n for n in scenes[sid]["Nodes"] if n["Id"] == nid]
-    if len(matches) != 1:
-        raise KeyError("wenduag cloud: %s/%s matched %d nodes" % (sid, nid, len(matches)))
-    return matches[0]
+    return overlay_node(scenes, sid, nid)
 
 
 def _owned(sid):
@@ -269,12 +265,14 @@ def _owned(sid):
 def integrate(payload):
     scenes = _scenes(payload)
     for (sid, nid), body in NODES.items():
-        _node(scenes, sid, nid)["Text"] = body.strip()
+        with overlay_item():
+            _node(scenes, sid, nid)["Text"] = body.strip()
     for (sid, nid), (old, new) in SUBS.items():
-        node = _node(scenes, sid, nid)
-        if node["Text"].count(old) != 1:
-            raise ValueError("wenduag cloud: %s/%s substring not found once" % (sid, nid))
-        node["Text"] = node["Text"].replace(old, new)
+        with overlay_item():
+            node = _node(scenes, sid, nid)
+            if node["Text"].count(old) != 1:
+                raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail=str(old)[:70])
+            node["Text"] = node["Text"].replace(old, new)
     used = dict.fromkeys(REVOICE, 0)
     for sid, scene in scenes.items():
         if not _owned(sid):
@@ -289,11 +287,12 @@ def integrate(payload):
                     used[para["Text"]] += 1
                     para["Text"] = REVOICE[para["Text"]]
     stale = [old for old, count in used.items() if not count]
-    if stale:
-        raise ValueError("wenduag cloud: re-voiced text no longer present: %r" % stale[:3])
+    for old in stale:
+        record("overlay.text_mismatch", detail=old[:70])
     for (sid, nid), paras in ADD.items():
-        node = _node(scenes, sid, nid)
-        node["Paragraphs"] = list(node.get("Paragraphs", []) or []) + [dict(x) for x in paras]
+        with overlay_item():
+            node = _node(scenes, sid, nid)
+            node["Paragraphs"] = list(node.get("Paragraphs", []) or []) + [dict(x) for x in paras]
     touched = {key[0] for key in NODES} | {key[0] for key in SUBS} | {key[0] for key in ADD}
     # Registered integration placeholders belong to Claude's work queue.
     # The shared validator still rejects missing, stale or unregistered targets.
@@ -302,7 +301,7 @@ def integrate(payload):
                                        "tools/route_packs/plans/prose-pending.json")
     pending = {"version": pending["version"],
                "pending": [entry for entry in pending["pending"] if entry["scene"] in owned]}
-    errors = prose_pending_lint.check({"Scenes": [scenes[sid] for sid in owned]}, pending,
+    errors = prose_pending_lint.check({"Scenes": [scenes[sid] for sid in sorted(owned) if sid in scenes]}, pending,
                                      integration=True)
-    if errors:
-        raise ValueError("wenduag cloud: " + "; ".join(errors))
+    for error in errors:
+        record("overlay.validation", detail=error)

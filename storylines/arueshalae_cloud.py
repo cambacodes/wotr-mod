@@ -3,6 +3,7 @@
 Scene text and pair display fields are authored in arueshalae_trickster and
 harem_rows/s03b. This pass appends readers without shifting existing indices.
 """
+from authoring.generation_errors import OverlayMismatch, overlay_item, overlay_node, record
 from copy import deepcopy
 
 from story_format import p
@@ -37,31 +38,28 @@ def _scenes(payload):
 
 
 def _node(scenes, sid, nid):
-    scene = scenes.get(sid)
-    if scene is None:
-        raise ValueError(f"arueshalae cloud: missing scene {sid}")
-    for node in scene["Nodes"]:
-        if node["Id"] == nid:
-            return node
-    raise ValueError(f"arueshalae cloud: missing node {sid}:{nid}")
+    return overlay_node(scenes, sid, nid)
 
 
 def apply(payload):
     scenes = _scenes(payload)
     for (sid, nid), extra in APPEND.items():
-        target = _node(scenes, sid, nid).setdefault("Paragraphs", [])
-        for paragraph in extra:
-            if paragraph not in target:
-                target.append(deepcopy(paragraph))
+        with overlay_item():
+            target = _node(scenes, sid, nid).setdefault("Paragraphs", [])
+            for paragraph in extra:
+                if paragraph not in target:
+                    target.append(deepcopy(paragraph))
     for sid in (P + "fallen.sergeant", P + "fallen.the_other_one"):
-        if sid not in scenes:
-            raise ValueError(f"arueshalae cloud: missing scene {sid}")
+        with overlay_item():
+            if sid not in scenes:
+                raise OverlayMismatch('overlay.text_mismatch', scene=sid, detail=f"arueshalae cloud: missing scene {sid}")
     for scene in payload["Scenes"]:
         if scene["Id"].startswith((P + "fallen.", P + "epilogue.fallen", SEELAH)):
             for node in scene["Nodes"]:
-                texts = [node.get("Text", "")] + [x.get("Text", "") for x in node.get("Paragraphs") or []]
-                if any(PENDING in t for t in texts):
-                    raise ValueError(f"arueshalae cloud: prose pending left in {scene['Id']}:{node['Id']}")
+                with overlay_item():
+                    texts = [node.get("Text", "")] + [x.get("Text", "") for x in node.get("Paragraphs") or []]
+                    if any(PENDING in t for t in texts):
+                        raise OverlayMismatch('overlay.text_mismatch', scene=scene.get("Id"), node=node.get("Id"), detail=f"arueshalae cloud: prose pending left in {scene['Id']}:{node['Id']}")
 
 
 def integrate(payload):

@@ -34,6 +34,7 @@ Canon used (enGB): 05070eba, 07ec4e7c, 5ccf6032, ce8e21b7, 3b37a8b4, f6fcc869,
 a73cb7ca, ca4b91d7. Authored, no canon claim: the tower, the month, the herald,
 the deserter, the burned column, the cavalry horses.
 """
+from authoring.generation_errors import OverlayMismatch, overlay_item, overlay_node, overlay_index, record
 from copy import deepcopy
 
 from story_format import p
@@ -237,13 +238,7 @@ def _scenes(payload):
 
 
 def _node(scenes, sid, nid):
-    scene = scenes.get(sid)
-    if scene is None:
-        raise ValueError(f"devarra cloud: missing scene {sid}")
-    for node in scene["Nodes"]:
-        if node["Id"] == nid:
-            return node
-    raise ValueError(f"devarra cloud: missing node {sid}:{nid}")
+    return overlay_node(scenes, sid, nid)
 
 
 def _gate(paragraph):
@@ -258,75 +253,95 @@ def _optional(scenes, sid):
 def apply(payload):
     scenes = _scenes(payload)
     for (sid, nid), (old, new) in NODES.items():
-        node = _node(scenes, sid, nid)
-        if node["Text"] != new:
-            if not node["Text"].startswith(old):
-                raise ValueError(f"devarra cloud: {sid}:{nid} text changed upstream")
-            node["Text"] = new
+        with overlay_item():
+            node = _node(scenes, sid, nid)
+            if node["Text"] != new:
+                if not node["Text"].startswith(old):
+                    raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail=str(old)[:70])
+                node["Text"] = new
     for (sid, nid), pairs in SUBS.items():
-        if _optional(scenes, sid):
-            continue
-        node = _node(scenes, sid, nid)
-        for old, new in pairs:
-            if new in node["Text"]:
+        with overlay_item():
+            if _optional(scenes, sid):
                 continue
-            if old not in node["Text"]:
-                raise ValueError(f"devarra cloud: {sid}:{nid} missing {old[:50]!r}")
-            node["Text"] = node["Text"].replace(old, new)
+            node = _node(scenes, sid, nid)
+            for old, new in pairs:
+                with overlay_item():
+                    if new in node["Text"]:
+                        continue
+                    if old not in node["Text"]:
+                        raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail=str(old)[:70])
+                    node["Text"] = node["Text"].replace(old, new)
     for (sid, nid, index), (old, new) in CHOICES.items():
-        if _optional(scenes, sid):
-            continue
-        choice = _node(scenes, sid, nid)["Choices"][index]
-        if choice["Text"] not in (old, new):
-            raise ValueError(f"devarra cloud: {sid}:{nid}>{index} choice text changed upstream")
-        choice["Text"] = new
+        with overlay_item():
+            if _optional(scenes, sid):
+                continue
+            choice = overlay_index(_node(scenes, sid, nid), "Choices", index, sid)
+            if choice["Text"] not in (old, new):
+                raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail=str(old)[:70])
+            choice["Text"] = new
     for sid, fields in FIELDS.items():
+        if sid not in scenes:
+            record("overlay.scene_resolution", scene=sid)
+            continue
         scene = scenes[sid]
         for key, (old, new) in fields.items():
-            if scene.get(key) not in (old, new):
-                raise ValueError(f"devarra cloud: {sid} {key} changed upstream")
-            scene[key] = new
+            with overlay_item():
+                if scene.get(key) not in (old, new):
+                    raise OverlayMismatch('overlay.text_mismatch', scene=sid, detail=str(old)[:70])
+                scene[key] = new
     for (sid, nid, index), ((requires, forbids), old, new) in REVOICE.items():
-        paragraph = _node(scenes, sid, nid)["Paragraphs"][index]
-        if _gate(paragraph) != (sorted(requires), sorted(forbids)):
-            raise ValueError(f"devarra cloud: {sid}:{nid}#{index} gate changed upstream")
-        if paragraph["Text"] != new:
-            if not paragraph["Text"].startswith(old):
-                raise ValueError(f"devarra cloud: {sid}:{nid}#{index} text changed upstream")
-            paragraph["Text"] = new
+        with overlay_item():
+            paragraph = overlay_index(_node(scenes, sid, nid), "Paragraphs", index, sid)
+            if _gate(paragraph) != (sorted(requires), sorted(forbids)):
+                raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail=str(old)[:70])
+            if paragraph["Text"] != new:
+                if not paragraph["Text"].startswith(old):
+                    raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail=str(old)[:70])
+                paragraph["Text"] = new
     for old, new, minimum in NIDALYNN_SUBS:
-        hits = 0
-        for scene in payload["Scenes"]:
-            if not scene["Id"].startswith("nidalynn."):
-                continue
-            for node in scene["Nodes"]:
-                for paragraph in node.get("Paragraphs") or []:
-                    if old in paragraph["Text"]:
-                        paragraph["Text"] = paragraph["Text"].replace(old, new)
-                        hits += 1
-        if hits < minimum:
-            raise ValueError(f"devarra cloud: Nidalynn page claim {old[:40]!r}: {hits} < {minimum}")
-    woken = _node(scenes, D + "epilogue.woken", "page")
-    commit = _node(scenes, D + "epilogue.commit", "page")
+        with overlay_item():
+            hits = 0
+            for scene in payload["Scenes"]:
+                if not scene["Id"].startswith("nidalynn."):
+                    continue
+                for node in scene["Nodes"]:
+                    for paragraph in node.get("Paragraphs") or []:
+                        if old in paragraph["Text"]:
+                            paragraph["Text"] = paragraph["Text"].replace(old, new)
+                            hits += 1
+            if hits < minimum:
+                raise OverlayMismatch('overlay.text_mismatch', detail=str(old)[:70])
+    woken = commit = None
+    with overlay_item():
+        woken = _node(scenes, D + "epilogue.woken", "page")
+    with overlay_item():
+        commit = _node(scenes, D + "epilogue.commit", "page")
     for (sid, nid), extra in APPEND.items():
-        target = _node(scenes, sid, nid).setdefault("Paragraphs", [])
-        for paragraph in extra:
-            if paragraph not in target:
-                target.append(deepcopy(paragraph))
-    history = [woken["Paragraphs"][i] for i in COMMIT_COPIES] + APPEND[(D + "epilogue.woken", "page")]
-    for paragraph in history:
-        if paragraph not in commit["Paragraphs"]:
-            commit["Paragraphs"].append(deepcopy(paragraph))
+        with overlay_item():
+            target = _node(scenes, sid, nid).setdefault("Paragraphs", [])
+            for paragraph in extra:
+                if paragraph not in target:
+                    target.append(deepcopy(paragraph))
+    if woken is not None and commit is not None:
+        history = []
+        for index in COMMIT_COPIES:
+            with overlay_item():
+                history.append(overlay_index(woken, "Paragraphs", index, D + "epilogue.woken"))
+        history += APPEND[(D + "epilogue.woken", "page")]
+        for paragraph in history:
+            if paragraph not in commit["Paragraphs"]:
+                commit["Paragraphs"].append(deepcopy(paragraph))
     for scene in payload["Scenes"]:
         if scene["Id"].startswith(("devarra.", PAIR, "trickster.lastcall.account.devarra")):
             for node in scene["Nodes"]:
-                texts = [node.get("Text", "")] + [x.get("Text", "") for x in node.get("Paragraphs") or []]
-                if ((scene['Id'], node['Id']) not in {
-                        (D + 'epilogue.claimed_unjudged', 'page'),
-                        (T + 'the_hoard', 'climb_checked'),
-                        (T + 'the_hoard', 'climb_noticed')}
-                        and any(PENDING in t for t in texts)):
-                    raise ValueError(f"devarra cloud: prose pending left in {scene['Id']}:{node['Id']}")
+                with overlay_item():
+                    texts = [node.get("Text", "")] + [x.get("Text", "") for x in node.get("Paragraphs") or []]
+                    if ((scene['Id'], node['Id']) not in {
+                            (D + 'epilogue.claimed_unjudged', 'page'),
+                            (T + 'the_hoard', 'climb_checked'),
+                            (T + 'the_hoard', 'climb_noticed')}
+                            and any(PENDING in t for t in texts)):
+                        raise OverlayMismatch('overlay.text_mismatch', scene=scene.get("Id"), node=node.get("Id"), detail=f"devarra cloud: prose pending left in {scene['Id']}:{node['Id']}")
 
 
 def integrate(payload):
@@ -336,5 +351,6 @@ def integrate(payload):
     from storylines.devarra_round2 import keeper_history
     scenes = {s['Id']: s for s in payload['Scenes']}
     for suffix in ('epilogue.woken', 'epilogue.commit'):
-        sid = D + suffix
-        keeper_history(_node(scenes, sid, 'page'), sid)
+        with overlay_item():
+            sid = D + suffix
+            keeper_history(_node(scenes, sid, 'page'), sid)

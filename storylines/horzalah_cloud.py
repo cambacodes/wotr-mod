@@ -30,6 +30,7 @@ states what its flags mean):
 Canon used (writer knowledge/characters/horzalah/native-lines.json): 0ad1af67, 798bf2b5, 34037594, 4de7b0dc,
 fc2827ae, 2f36ecf9, ad1ea05a, aaa2721e; handoff C12 (Cue_0007 farewell, Cue_4 "even the guild"). No new lore.
 """
+from authoring.generation_errors import OverlayMismatch, overlay_item, overlay_node, record
 import copy
 
 from story_format import p
@@ -180,44 +181,48 @@ def _scenes(payload):
 
 
 def _node(scenes, sid, nid):
-    if sid not in scenes:
-        raise KeyError("horzalah cloud: scene %s not found" % sid)
-    hits = [n for n in scenes[sid]["Nodes"] if n["Id"] == nid]
-    if len(hits) != 1:
-        raise KeyError("horzalah cloud: %s/%s matched %d nodes" % (sid, nid, len(hits)))
-    return hits[0]
+    return overlay_node(scenes, sid, nid)
 
 
 def integrate(payload):
     scenes = _scenes(payload)
     for (sid, nid), (expect, body) in TEXT.items():
-        node = _node(scenes, sid, nid)
-        if expect not in node["Text"]:
-            raise ValueError("horzalah cloud: %s/%s drifted from the reviewed text" % (sid, nid))
-        node["Text"] = body
+        with overlay_item():
+            node = _node(scenes, sid, nid)
+            if expect not in node["Text"]:
+                raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail=str(expect)[:70])
+            node["Text"] = body
     for (sid, nid, requires, forbids), (expect, body) in PARA.items():
-        node = _node(scenes, sid, nid)
-        hits = [x for x in node.get("Paragraphs", []) if tuple(x.get("Requires", [])) == requires
-                and tuple(x.get("Forbids", [])) == forbids and expect in x["Text"]]
-        if len(hits) != 1:
-            raise ValueError("horzalah cloud: %s/%s paragraph %r matched %d" % (sid, nid, expect, len(hits)))
-        hits[0]["Text"] = body
+        with overlay_item():
+            node = _node(scenes, sid, nid)
+            hits = [x for x in node.get("Paragraphs", []) if tuple(x.get("Requires", [])) == requires
+                    and tuple(x.get("Forbids", [])) == forbids and expect in x["Text"]]
+            if len(hits) != 1:
+                raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail=str(expect)[:70])
+            hits[0]["Text"] = body
     for (sid, nid), paras in ADD.items():
-        node = _node(scenes, sid, nid)
-        node["Paragraphs"] = node.get("Paragraphs", []) + [copy.deepcopy(x) for x in paras]
+        with overlay_item():
+            node = _node(scenes, sid, nid)
+            node["Paragraphs"] = node.get("Paragraphs", []) + [copy.deepcopy(x) for x in paras]
     for (book, eid), (expect, body, lines) in BOOK.items():
-        hits = [e for e in payload["Books"][book]["Entries"] if e["Id"] == eid]
-        if len(hits) != 1 or expect not in hits[0]["Text"]:
-            raise ValueError("horzalah cloud: ledger entry %s drifted from the reviewed text" % eid)
-        hits[0]["Text"] = body
-        for old, new in lines.items():
-            matched = [line for line in hits[0]["Lines"] if old in line["Text"]]
-            if len(matched) != 1:
-                raise ValueError("horzalah cloud: ledger line %r matched %d" % (old, len(matched)))
-            matched[0]["Text"] = new
+        with overlay_item():
+            hits = [e for e in payload["Books"][book]["Entries"] if e["Id"] == eid]
+            if len(hits) != 1 or expect not in hits[0]["Text"]:
+                raise OverlayMismatch('overlay.text_mismatch', detail=str(expect)[:70])
+            hits[0]["Text"] = body
+            for old, new in lines.items():
+                with overlay_item():
+                    matched = [line for line in hits[0]["Lines"] if old in line["Text"]]
+                    if len(matched) != 1:
+                        raise OverlayMismatch('overlay.text_mismatch', detail=str(old)[:70])
+                    matched[0]["Text"] = new
     touched = {k[0] for k in TEXT} | {k[0] for k in PARA} | {k[0] for k in ADD}
     for sid in touched:
+        if sid not in scenes:
+            record("overlay.scene_resolution", scene=sid)
+            continue
         for node in scenes[sid]["Nodes"]:
-            texts = [node["Text"]] + [c["Text"] for c in node["Choices"]] + [x["Text"] for x in node.get("Paragraphs", [])]
-            if any("[PROSE PENDING" in t for t in texts):
-                raise ValueError("horzalah cloud: prose still pending at %s/%s" % (sid, node["Id"]))
+            with overlay_item():
+                texts = [node["Text"]] + [c["Text"] for c in node["Choices"]] + [x["Text"] for x in node.get("Paragraphs", [])]
+                if any("[PROSE PENDING" in t for t in texts):
+                    raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=node.get("Id"), detail="horzalah cloud: prose still pending at %s/%s" % (sid, node["Id"]))

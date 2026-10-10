@@ -14,6 +14,7 @@ b003e047, 74d54b7a, 31c32623. Authored, no canon claim: the gate-yard trick, the
 caged cultist, the footstool courtier, the widow Aldane and her supper, Vardess as a
 cambion in Drezen, Lieutenant Petrik, the Drezen cabinet room, the chancery clerk.
 """
+from authoring.generation_errors import record, overlay_item, overlay_node
 from story_format import p
 
 PENDING = "[PROSE PENDING:"
@@ -1173,30 +1174,33 @@ def _scenes(payload):
 
 
 def _node(events, scene, node):
-    matches = [page for page in events[scene]["Nodes"] if page["Id"] == node]
-    if len(matches) != 1:
-        raise KeyError("jerribeth.%s/%s: expected one node, found %d" % (scene, node, len(matches)))
-    return matches[0]
+    return overlay_node(events, scene, node, scene_address="jerribeth." + scene)
 
 
 def _apply(events, nodes, choices, paras, appended=False):
     for (scene, node), body in nodes.items():
-        _node(events, scene, node)["Text"] = body.strip()
+        with overlay_item():
+            _node(events, scene, node)["Text"] = body.strip()
     for (scene, node, index), body in choices.items():
-        answers = _node(events, scene, node)["Choices"]
-        # Answers the scaffolding appends do not exist yet in revoice();
-        # fill() writes them once they do, and fails if one never appears.
-        if index < len(answers):
-            answers[index]["Text"] = body
-        elif appended:
-            raise IndexError("jerribeth.%s/%s has no answer [%d]" % (scene, node, index))
+        with overlay_item():
+            answers = _node(events, scene, node)["Choices"]
+            # Answers the scaffolding appends do not exist yet in revoice();
+            # fill() writes them once they do, and fails if one never appears.
+            if index < len(answers):
+                answers[index]["Text"] = body
+            elif appended:
+                record("overlay.index_resolution", scene="jerribeth." + scene, node=node, detail=str(index))
     for (scene, node), extra in paras.items():
-        _node(events, scene, node).setdefault("Paragraphs", []).extend(dict(x) for x in extra)
+        with overlay_item():
+            _node(events, scene, node).setdefault("Paragraphs", []).extend(dict(x) for x in extra)
 
 
 def revoice(payload):
     events = _scenes(payload)
     for scene, title in TITLES.items():
+        if scene not in events:
+            record("overlay.scene_resolution", scene="jerribeth." + scene)
+            continue
         events[scene]["Title"] = title
     _apply(events, NODES, CHOICES, PARAS)
 
@@ -1205,15 +1209,17 @@ def fill(payload):
     events = _scenes(payload)
     _apply(events, NEW_NODES, {**CHOICES, **NEW_CHOICES}, NEW_PARAS, appended=True)
     for scene, host in COMPANION_RESUME.items():
-        source = _node(events, scene, host)["Choices"]
-        for page in events[scene]["Nodes"]:
-            if page["Id"].startswith("companion_"):
-                for index, choice in enumerate(page["Choices"]):
-                    if choice["Text"].startswith(PENDING):
-                        choice["Text"] = source[index]["Text"]
+        with overlay_item():
+            source = _node(events, scene, host)["Choices"]
+            for page in events[scene]["Nodes"]:
+                if page["Id"].startswith("companion_"):
+                    for index, choice in enumerate(page["Choices"]):
+                        if choice["Text"].startswith(PENDING):
+                            choice["Text"] = source[index]["Text"]
     left = ["%s/%s" % (scene, page["Id"]) for scene, event in events.items()
             for page in event["Nodes"]
             if page["Text"].startswith(PENDING)
             or any(choice["Text"].startswith(PENDING) for choice in page["Choices"])]
-    if left:
-        raise ValueError("Jerribeth placeholders without prose: " + ", ".join(left))
+    for address in left:
+        scene, node = address.split("/", 1)
+        record("overlay.placeholder", scene="jerribeth." + scene, node=node)

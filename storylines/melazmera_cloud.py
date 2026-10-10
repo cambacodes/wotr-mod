@@ -37,6 +37,7 @@ everything, even dead souls; the giggle), 832dc662 (rocks wrapped in illusions),
 a68b28c8 (the truce with Hepzamirah), 784e7903 (the harpoon), 7580716e (the
 rattling of chains draws her), dd1d7b49 (a dragon's hoard).
 """
+from authoring.generation_errors import OverlayMismatch, overlay_item, overlay_node, record
 from story_format import p
 
 M = "melazmera.trickster."
@@ -272,36 +273,41 @@ def _pages(payload):
 
 
 def _node(pages, sid, nid):
-    matches = [n for n in pages[sid]["Nodes"] if n["Id"] == nid]
-    if len(matches) != 1:
-        raise KeyError("melazmera cloud: %s/%s matched %d nodes" % (sid, nid, len(matches)))
-    return matches[0]
+    return overlay_node(pages, sid, nid)
 
 
 def integrate(payload):
     pages = _pages(payload)
     for (sid, nid), body in NODES.items():
-        _node(pages, sid, nid)["Text"] = body.strip()
+        with overlay_item():
+            _node(pages, sid, nid)["Text"] = body.strip()
     for (sid, nid), pairs in RETEXT.items():
-        node = _node(pages, sid, nid)
-        for old, new in pairs:
-            # COMMON paragraph dicts are shared between the epilogue pages, so a
-            # paragraph may already carry the new text from an earlier page.
-            hits = [para for para in node.get("Paragraphs", []) if para["Text"] in (old, new)]
-            if not hits:
-                raise KeyError("melazmera cloud: paragraph not found at %s/%s: %s" % (sid, nid, old[:60]))
-            for para in hits:
-                para["Text"] = new
+        with overlay_item():
+            node = _node(pages, sid, nid)
+            for old, new in pairs:
+                # COMMON paragraph dicts are shared between the epilogue pages, so a
+                # paragraph may already carry the new text from an earlier page.
+                with overlay_item():
+                    hits = [para for para in node.get("Paragraphs", []) if para["Text"] in (old, new)]
+                    if not hits:
+                        raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail=str(old)[:70])
+                    for para in hits:
+                        para["Text"] = new
     for (sid, nid), paras in PARAS.items():
-        node = _node(pages, sid, nid)
-        node["Paragraphs"] = node.get("Paragraphs", []) + [dict(x) for x in paras]
+        with overlay_item():
+            node = _node(pages, sid, nid)
+            node["Paragraphs"] = node.get("Paragraphs", []) + [dict(x) for x in paras]
     touched = {key[0] for key in NODES} | {key[0] for key in PARAS} | {key[0] for key in RETEXT}
     for sid in touched:
+        if sid not in pages:
+            record("overlay.scene_resolution", scene=sid)
+            continue
         for node in pages[sid]["Nodes"]:
-            texts = [node["Text"]] + [a["Text"] for a in node["Choices"]] + [
-                para["Text"] for para in node.get("Paragraphs", [])]
-            if any(PENDING in t for t in texts):
-                raise ValueError("melazmera cloud: prose still pending at %s/%s" % (sid, node["Id"]))
+            with overlay_item():
+                texts = [node["Text"]] + [a["Text"] for a in node["Choices"]] + [
+                    para["Text"] for para in node.get("Paragraphs", [])]
+                if any(PENDING in t for t in texts):
+                    raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=node.get("Id"), detail="melazmera cloud: prose still pending at %s/%s" % (sid, node["Id"]))
     # Structural history selection must follow all late prose transformations.
     from storylines.melazmera_trickster import integrate_meeting_history
     integrate_meeting_history(payload)

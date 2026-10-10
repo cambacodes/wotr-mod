@@ -3,6 +3,7 @@
 Approved text is authored in the route, continuation, S35, and Last Call
 builders. These readers append after existing paragraphs, keeping indices.
 """
+from authoring.generation_errors import OverlayMismatch, overlay_item, overlay_node, record
 from story_format import p
 
 R = "nurah.trickster."
@@ -89,12 +90,7 @@ def _scenes(payload):
 
 
 def _node(scenes, sid, nid):
-    if sid not in scenes:
-        raise ValueError("nurah cloud: missing scene %s" % sid)
-    hits = [x for x in scenes[sid]["Nodes"] if x["Id"] == nid]
-    if len(hits) != 1:
-        raise ValueError("nurah cloud: missing node %s/%s" % (sid, nid))
-    return hits[0]
+    return overlay_node(scenes, sid, nid)
 
 
 # A harem-row scene from another row: present whenever storylines.harem_rows.register_all ran. The test fixture's
@@ -108,14 +104,19 @@ def integrate(payload):
     scenes = _scenes(payload)
     rows_absent = H + "audit" not in scenes and ROW_SENTINEL not in scenes
     for (sid, nid), paras in ADD.items():
-        if rows_absent and sid.startswith(H):
-            continue
-        node = _node(scenes, sid, nid)
-        node["Paragraphs"] = node.get("Paragraphs", []) + [dict(x) for x in paras]
+        with overlay_item():
+            if rows_absent and sid.startswith(H):
+                continue
+            node = _node(scenes, sid, nid)
+            node["Paragraphs"] = node.get("Paragraphs", []) + [dict(x) for x in paras]
     for sid in REVIEWED_SCENES:
         if rows_absent and sid.startswith(H):
             continue
+        if sid not in scenes:
+            record("overlay.scene_resolution", scene=sid)
+            continue
         for node in scenes[sid]["Nodes"]:
-            texts = [node["Text"]] + [c["Text"] for c in node["Choices"]] + [x["Text"] for x in node.get("Paragraphs", [])]
-            if any("[PROSE PENDING" in t for t in texts):
-                raise ValueError("nurah cloud: prose still pending at %s/%s" % (sid, node["Id"]))
+            with overlay_item():
+                texts = [node["Text"]] + [c["Text"] for c in node["Choices"]] + [x["Text"] for x in node.get("Paragraphs", [])]
+                if any("[PROSE PENDING" in t for t in texts):
+                    raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=node.get("Id"), detail="nurah cloud: prose still pending at %s/%s" % (sid, node["Id"]))

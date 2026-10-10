@@ -10,6 +10,7 @@ Canon used (enGB): 0b920731 (planted ideas), b323e4a8 (travellers killed at Wint
 eb28ad3b (the needle), de70b6ee, ecc42853 (she will choose a side against her patron).
 Authored, no canon claim: the widow Aldane, the Kenabres fortune-teller's face, the moth test.
 """
+from authoring.generation_errors import OverlayMismatch, overlay_item, overlay_node, record
 from story_format import p
 
 TITLES = {
@@ -262,23 +263,26 @@ text("refuge", "start", '''{n}Jerribeth answers without showing herself. She has
 
 # --------------------------------------------------------------------------
 def _node(scenes, scene, node):
-    event = scenes["jerribeth." + scene]
-    matches = [page for page in event["Nodes"] if page["Id"] == node]
-    if len(matches) != 1:
-        raise KeyError("jerribeth.%s/%s: expected one node, found %d" % (scene, node, len(matches)))
-    return matches[0]
+    return overlay_node(scenes, "jerribeth." + scene, node)
 
 
 def apply(payload):
     scenes = {s["Id"]: s for s in payload["Scenes"] if s["Id"].startswith("jerribeth.")}
     for scene, title in TITLES.items():
-        scenes["jerribeth." + scene]["Title"] = title
+        sid = "jerribeth." + scene
+        if sid not in scenes:
+            record("overlay.scene_resolution", scene=sid)
+            continue
+        scenes[sid]["Title"] = title
     for (scene, node), body in NODES.items():
-        _node(scenes, scene, node)["Text"] = body.strip()
+        with overlay_item():
+            _node(scenes, scene, node)["Text"] = body.strip()
     for (scene, node, index), body in CHOICES.items():
-        answers = _node(scenes, scene, node)["Choices"]
-        if index >= len(answers):
-            raise IndexError("jerribeth.%s/%s has no answer [%d]" % (scene, node, index))
-        answers[index]["Text"] = body
+        with overlay_item():
+            answers = _node(scenes, scene, node)["Choices"]
+            if index >= len(answers):
+                raise OverlayMismatch('overlay.text_mismatch', scene="jerribeth." + scene, node=node, detail="jerribeth.%s/%s has no answer [%d]" % (scene, node, index))
+            answers[index]["Text"] = body
     for (scene, node), extra in PARAS.items():
-        _node(scenes, scene, node).setdefault("Paragraphs", []).extend(dict(x) for x in extra)
+        with overlay_item():
+            _node(scenes, scene, node).setdefault("Paragraphs", []).extend(dict(x) for x in extra)

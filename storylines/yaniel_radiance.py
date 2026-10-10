@@ -9,6 +9,7 @@ listed gates read the new key (each paired "empty" branch forbids the new key, s
 epilogue's hall-peg paragraph (p4: the sword hung in the hall after the war) keeps the broad read.
 This late integration point also appends the route's Joran memorials after the Last Call pages have been assembled.
 """
+from authoring.generation_errors import record, overlay_item, overlay_node, overlay_index
 from storylines import yaniel_trickster as yt
 
 HELD = yt.HELD                                       # yaniel.radiance_held (any form, party or stash)
@@ -62,32 +63,34 @@ def integrate(payload):
     by_id = {s["Id"]: s for s in payload["Scenes"]}
 
     def node(scene_id, node_id):
-        scene = by_id.get(scene_id)
-        if scene is None:
-            raise ValueError("yaniel_radiance: scene missing " + scene_id)
-        found = [n for n in scene["Nodes"] if n["Id"] == node_id]
-        if len(found) != 1:
-            raise ValueError("yaniel_radiance: node missing %s/%s" % (scene_id, node_id))
-        return found[0]
+        return overlay_node(by_id, scene_id, node_id)
 
     for (scene_id, node_id), indices in CHOICES.items():
-        choices = node(scene_id, node_id)["Choices"]
-        for i in indices:
-            c = choices[i]
-            if HELD not in c["Requires"] + c["Forbids"]:
-                raise ValueError("yaniel_radiance: %s/%s choice %d no longer reads %s" % (scene_id, node_id, i, HELD))
-            c["Requires"], c["Forbids"] = _swap(c["Requires"]), _swap(c["Forbids"])
+        with overlay_item():
+            for i in indices:
+                with overlay_item():
+                    c = overlay_index(node(scene_id, node_id), "Choices", i, scene_id)
+                    if HELD not in c["Requires"] + c["Forbids"]:
+                        record("overlay.choice_gate", scene=scene_id, node=node_id, detail=str(i))
+                        continue
+                    c["Requires"], c["Forbids"] = _swap(c["Requires"]), _swap(c["Forbids"])
     for scene_id in EPILOGUE_PAGES:
-        gate = [p for p in node(scene_id, "page")["Paragraphs"] if HIP in p["Text"]]
-        # The pages share their paragraph objects (one list in yaniel_trickster), so a page met later may already read IN_HAND.
-        if len(gate) != 2 or any(HELD not in p["Requires"] + p["Forbids"] and IN_HAND not in p["Requires"] + p["Forbids"] for p in gate):
-            raise ValueError("yaniel_radiance: %s no longer has the two hip paragraphs reading %s" % (scene_id, HELD))
-        for p in gate:
-            p["Requires"], p["Forbids"] = _swap(p["Requires"]), _swap(p["Forbids"])
+        with overlay_item():
+            gate = [p for p in node(scene_id, "page")["Paragraphs"] if HIP in p["Text"]]
+            # The pages share their paragraph objects (one list in yaniel_trickster), so a page met later may already read IN_HAND.
+            if len(gate) != 2 or any(HELD not in p["Requires"] + p["Forbids"] and IN_HAND not in p["Requires"] + p["Forbids"] for p in gate):
+                record("overlay.paragraph_gate", scene=scene_id, node="page", detail=HIP[:70])
+                continue
+            for p in gate:
+                p["Requires"], p["Forbids"] = _swap(p["Requires"]), _swap(p["Forbids"])
     for scene_id in SCENE_REQUIRES:
-        scene = by_id[scene_id]
+        scene = by_id.get(scene_id)
+        if scene is None:
+            record("overlay.scene_resolution", scene=scene_id)
+            continue
         if HELD not in scene["Requires"]:
-            raise ValueError("yaniel_radiance: %s no longer requires %s" % (scene_id, HELD))
+            record("overlay.scene_gate", scene=scene_id, detail=HELD)
+            continue
         scene["Requires"] = _swap(scene["Requires"])
 
     # Route-owned memorial prose: Last Call has been assembled by this late integration point.

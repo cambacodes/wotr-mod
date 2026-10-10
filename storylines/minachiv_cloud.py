@@ -22,6 +22,7 @@ Canon used (enGB): fe0c87ea, 537c1e5e, 9fb4396d, a0f6a9d3, 64bbf322, c294b4ae
 (Minagho); c151ae0f, 3a0074c4, 66f981f6, 165441c8, bb860eb1, d1bfd4e0 (Chivarro).
 Authored, no canon claim: as in minachiv_voice.
 """
+from authoring.generation_errors import OverlayMismatch, overlay_item, overlay_node, record
 from story_format import p
 
 P = "minachiv."
@@ -324,32 +325,35 @@ def _pages(payload):
 
 
 def _node(pages, sid, nid):
-    matches = [n for n in pages[sid]["Nodes"] if n["Id"] == nid]
-    if len(matches) != 1:
-        raise KeyError("minachiv cloud: %s/%s matched %d nodes" % (sid, nid, len(matches)))
-    return matches[0]
+    return overlay_node(pages, sid, nid)
 
 
 def integrate(payload):
     pages = _pages(payload)
     for (sid, nid), body in NODES.items():
-        _node(pages, sid, nid)["Text"] = body.strip()
+        with overlay_item():
+            _node(pages, sid, nid)["Text"] = body.strip()
     for (sid, nid), paras in PARAS.items():
-        node = _node(pages, sid, nid)
-        node["Paragraphs"] = node.get("Paragraphs", []) + [dict(x) for x in paras]
+        with overlay_item():
+            node = _node(pages, sid, nid)
+            node["Paragraphs"] = node.get("Paragraphs", []) + [dict(x) for x in paras]
     for sid, body in ENDINGS.items():
-        _node(pages, sid, "end")["Text"] = body.strip()
+        with overlay_item():
+            _node(pages, sid, "end")["Text"] = body.strip()
     for sid, body in ENDINGS_WITH_TWINS.items():
         for twin in (sid, sid + "_completed"):
-            _node(pages, twin, "end")["Text"] = body.strip()
+            with overlay_item():
+                _node(pages, twin, "end")["Text"] = body.strip()
     for sid in LIVING:
-        node = _node(pages, sid, "end")
-        # After the partner-state continuity lines: payoff_contracts registers those by index.
-        node["Paragraphs"] = node.get("Paragraphs", []) + [dict(x) for x in CONSEQUENCES]
+        with overlay_item():
+            node = _node(pages, sid, "end")
+            # After the partner-state continuity lines: payoff_contracts registers those by index.
+            node["Paragraphs"] = node.get("Paragraphs", []) + [dict(x) for x in CONSEQUENCES]
     for sid in {key[0] for key in NODES} | {key[0] for key in PARAS} | set(ENDINGS) | set(ENDINGS_WITH_TWINS):
         for twin in (sid, sid + "_completed"):
             for node in pages.get(twin, {}).get("Nodes", []):
-                texts = [node["Text"]] + [a["Text"] for a in node["Choices"]] + [
-                    para["Text"] for para in node.get("Paragraphs", [])]
-                if any(PENDING in t for t in texts):
-                    raise ValueError("minachiv cloud: prose still pending at %s/%s" % (twin, node["Id"]))
+                with overlay_item():
+                    texts = [node["Text"]] + [a["Text"] for a in node["Choices"]] + [
+                        para["Text"] for para in node.get("Paragraphs", [])]
+                    if any(PENDING in t for t in texts):
+                        raise OverlayMismatch('overlay.text_mismatch', scene=twin, node=node.get("Id"), detail="minachiv cloud: prose still pending at %s/%s" % (twin, node["Id"]))

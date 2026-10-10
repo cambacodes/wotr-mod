@@ -32,6 +32,7 @@ gravel voice), 13fff43a (looks in the eyes of those she kills), 4b3e16df, 068b5a
 (privacy with the poor elf), d135c54d and 4bcc01be (flush and lip-licking), fa214b1b (the stiletto held in).
 No new lore: no Mireya voice, no teacher's name, no blood-drinking, no cure.
 """
+from authoring.generation_errors import OverlayMismatch, overlay_item, overlay_node, record
 from story_format import p
 
 P = "camellia.trickster."
@@ -337,12 +338,7 @@ def _scenes(payload):
 
 
 def _node(scenes, sid, nid):
-    if sid not in scenes:
-        raise KeyError("camellia cloud: scene %s missing" % sid)
-    hits = [node for node in scenes[sid]["Nodes"] if node["Id"] == nid]
-    if len(hits) != 1:
-        raise KeyError("camellia cloud: %s/%s matched %d nodes" % (sid, nid, len(hits)))
-    return hits[0]
+    return overlay_node(scenes, sid, nid)
 
 
 # struct3-b readers: the once-only oath was kept, and the woman it spared is gone again by other hands or her own choice.
@@ -359,52 +355,64 @@ OATH_LEGACY = '''{n}Camellia never named the one she had been allowed to kill on
 def integrate(payload):
     scenes = _scenes(payload)
     for (sid, nid), body in PLACEHOLDER.items():
-        node = _node(scenes, sid, nid)
-        if not node["Text"].startswith(PENDING):
-            raise ValueError("camellia cloud: %s/%s is no longer a placeholder" % (sid, nid))
-        node["Text"] = body
+        with overlay_item():
+            node = _node(scenes, sid, nid)
+            if not node["Text"].startswith(PENDING):
+                raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail="camellia cloud: %s/%s is no longer a placeholder" % (sid, nid))
+            node["Text"] = body
     for (sid, nid), (expect, body) in TEXT.items():
-        node = _node(scenes, sid, nid)
-        if expect not in node["Text"]:
-            raise ValueError("camellia cloud: %s/%s drifted from the reviewed text" % (sid, nid))
-        node["Text"] = body
+        with overlay_item():
+            node = _node(scenes, sid, nid)
+            if expect not in node["Text"]:
+                raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail=str(expect)[:70])
+            node["Text"] = body
     for (sid, nid, index), (expect, body) in CHOICE.items():
-        choices = _node(scenes, sid, nid)["Choices"]
-        if index >= len(choices) or expect not in choices[index]["Text"]:
-            raise ValueError("camellia cloud: %s/%s choice %d drifted" % (sid, nid, index))
-        choices[index]["Text"] = body
+        with overlay_item():
+            choices = _node(scenes, sid, nid)["Choices"]
+            if index >= len(choices) or expect not in choices[index]["Text"]:
+                raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail=str(expect)[:70])
+            choices[index]["Text"] = body
     for (sid, nid, index), (expect, body) in PARA.items():
-        paras = _node(scenes, sid, nid).get("Paragraphs") or []
-        if index >= len(paras) or expect not in paras[index]["Text"]:
-            raise ValueError("camellia cloud: %s/%s paragraph %d drifted" % (sid, nid, index))
-        paras[index]["Text"] = body
+        with overlay_item():
+            paras = _node(scenes, sid, nid).get("Paragraphs") or []
+            if index >= len(paras) or expect not in paras[index]["Text"]:
+                raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail=str(expect)[:70])
+            paras[index]["Text"] = body
     for (sid, nid), extra in ADD.items():
-        node = _node(scenes, sid, nid)
-        node["Paragraphs"] = node.get("Paragraphs", []) + [dict(x) for x in extra]
+        with overlay_item():
+            node = _node(scenes, sid, nid)
+            node["Paragraphs"] = node.get("Paragraphs", []) + [dict(x) for x in extra]
     touched = {k[0] for k in PLACEHOLDER} | {k[0] for k in TEXT} | {k[0] for k in CHOICE} | {k[0] for k in PARA} \
         | {k[0] for k in ADD}
     for sid in touched:
+        if sid not in scenes:
+            record("overlay.scene_resolution", scene=sid)
+            continue
         for node in scenes[sid]["Nodes"]:
-            texts = [node["Text"]] + [c["Text"] for c in node["Choices"]] + [x["Text"] for x in node.get("Paragraphs", [])]
-            if any(PENDING in t for t in texts):
-                raise ValueError("camellia cloud: prose still pending at %s/%s" % (sid, node["Id"]))
+            with overlay_item():
+                texts = [node["Text"]] + [c["Text"] for c in node["Choices"]] + [x["Text"] for x in node.get("Paragraphs", [])]
+                if any(PENDING in t for t in texts):
+                    raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=node.get("Id"), detail="camellia cloud: prose still pending at %s/%s" % (sid, node["Id"]))
 
     # struct3-b: bind the anonymous living callback to the actual oath victim.
     # Run after voice transformations; retain the original paragraph and index.
     for ending in ("kept", "commit"):
-        page = _node(scenes, E + ending, "page")
-        callback = next(x for x in page["Paragraphs"]
-                        if x.get("Requires") == [P + "oath_loophole"])
-        callback["Requires"] = [*callback["Requires"], P + "oath_victim.available"]
-        for woman in ("nurah", "soana", "kaylessa"):
+        with overlay_item():
+            page = _node(scenes, E + ending, "page")
+            callback = next((x for x in page["Paragraphs"]
+                             if x.get("Requires") == [P + "oath_loophole"]), None)
+            if callback is None:
+                raise OverlayMismatch("overlay.paragraph_resolution", scene=E + ending, node="page")
+            callback["Requires"] = [*callback["Requires"], P + "oath_victim.available"]
+            for woman in ("nurah", "soana", "kaylessa"):
+                page["Paragraphs"].append(when(
+                    (P + "oath_loophole", P + "oath_victim." + woman),
+                    OATH_LOST[woman],
+                    forbids=(woman + ".present_now",)))
             page["Paragraphs"].append(when(
-                (P + "oath_loophole", P + "oath_victim." + woman),
-                OATH_LOST[woman],
-                forbids=(woman + ".present_now",)))
-        page["Paragraphs"].append(when(
-            P + "oath_loophole",
-            OATH_LEGACY,
-            forbids=(P + "oath_victim.recorded",)))
+                P + "oath_loophole",
+                OATH_LEGACY,
+                forbids=(P + "oath_victim.recorded",)))
 
     # fix15: the retry's later voice overlay cannot award an offscreen killing.
     from storylines.harem_rows import s42

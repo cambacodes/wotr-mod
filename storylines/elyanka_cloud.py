@@ -4,6 +4,8 @@ INQUIRY and COLLECTORS must run after crossroute_presence until the owning
 engine inventory can migrate those reviewed references to stable IDs/flags.
 """
 
+from authoring.generation_errors import record
+
 E = "elyanka.trickster."
 
 def _scenes(payload):
@@ -15,15 +17,16 @@ def _paragraphs(payload, scene_ids, table):
     scenes = _scenes(payload)
     for sid in scene_ids:
         if sid not in scenes:
-            raise KeyError("elyanka_cloud: missing scene " + sid)
+            record("overlay.scene_resolution", scene=sid)
+            continue
         for node in scenes[sid]["Nodes"]:
             for para in node.get("Paragraphs") or []:
                 if para["Text"] in table:
                     used.add(para["Text"])
                     para["Text"] = table[para["Text"]]
     missing = set(table) - used
-    if missing:
-        raise ValueError("elyanka_cloud: paragraph text not found: %r" % sorted(missing)[0][:80])
+    for text in sorted(missing):
+        record("overlay.paragraph_snippet", detail=text[:70])
 
 COLLECTORS = {
     "{n}The Whispering Way demanded the body named in the death notice. Its collector was shown a living Commander and refused possession. He returned to Caliphas with the bequest still disputed.{/n}":

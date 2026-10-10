@@ -8,6 +8,7 @@ Cue_0765's action-free funeral address is hidden after restitution; its native
 sequence and ShowOnce history stay intact. Answer_0784's valid future question
 stays native; only its contradictory reply changes, without a history alias.
 """
+from authoring.generation_errors import record
 from story_format import c, n, p, scene
 from storylines.native_facts import key
 from storylines.native_overrides import declare
@@ -99,9 +100,13 @@ def reconcile_employment(payload):
             "She went on praying to Iomedae and taking journeys to the lake."),
     }
     for identity, (old, new) in changes.items():
+        if identity not in scenes:
+            record("overlay.scene_resolution", scene=identity)
+            continue
         node = scenes[identity]["Nodes"][0]
         if old not in node["Text"]:
-            raise ValueError("eng7-f6c: Irabeth employment text drift: " + identity)
+            record("overlay.swap_snippet", scene=identity, node=node["Id"], detail=old[:70])
+            continue
         node["Text"] = node["Text"].replace(old, new)
         node.setdefault("Paragraphs", []).extend((
             p("{n}The Eagle Watch kept postponing Irabeth's retirement. She served for years, taking leave between assignments.{/n}",

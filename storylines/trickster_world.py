@@ -1,6 +1,7 @@
 """Native world state read by the Trickster routes (generated from Writer/handoffs/trickster-matrix.json, every GUID
 verified there against blueprints.zip). integrate() binds only the keys that registered scenes actually read, so an
 unimplemented route never adds bindings; tools/verify-game-bindings.py re-checks each bound GUID at build time."""
+from authoring.generation_errors import record
 
 # key: (Story dictionary, guid or [guids], blueprint name)
 BINDINGS = {
@@ -807,7 +808,7 @@ def integrate_participant_inventory(payload):
                                 forbid(alternate, guard)
                                 node["Paragraphs"].append(alternate)
                 if not found:
-                    raise ValueError("Missing participant paragraph: " + entry["scene"] + "/" + entry["match"])
+                    record("overlay.paragraph_resolution", scene=entry["scene"], detail=entry["match"])
     presence = payload["Presences"]["hepzamirah.presence"]
     presence.setdefault("ContactWindows", []).append(dict(Flag="hepzamirah.trickster.cost.confined", MinAgeHours=72))
     hounds = next(s for s in payload["Scenes"] if s["Id"] == "hepzamirah.trickster.body.hounds")

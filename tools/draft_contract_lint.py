@@ -52,7 +52,7 @@ def _build_inventory(root):
         work = Path(folder)
         for path in sorted(Path(root).glob("*.py")):
             shutil.copy2(path, work / path.name)
-        for name in ("storylines", "reference", "tools", "data", "src"):
+        for name in ("authoring", "storylines", "reference", "tools", "data", "src"):
             shutil.copytree(Path(root) / name, work / name,
                             ignore=shutil.ignore_patterns("__pycache__", "scratch", "obj", "bin", "rrt_verify_report*"))
         result = work / "inventory.json"
