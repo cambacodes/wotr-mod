@@ -701,6 +701,42 @@
       "reason": "The ninth-autumn male natural philosopher/pamphleteer is introduced on report.rival/start. His pamphlets, his visit and his gaze refer to that visitor; no pronoun assigns a gender to the Commander.",
       "block": "recovery-strict-gate",
       "max_occurrences": 2
+    },
+    {
+      "scene": "areelu.trickster.report.commission",
+      "location": "after",
+      "code": "commander-gender",
+      "match": "He stood in the kitchen with the Commander",
+      "reason": "He is the one-armed male veteran whose graft the scene follows (he weeps, later says 'It goes for my wife'); the Commander and Areelu are watching him. Reviewed by the coordinator after the prose-4a villainy rewrite.",
+      "block": "cand-13",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "areelu.trickster.report.commission",
+      "location": "after",
+      "code": "commander-gender",
+      "match": "Commander woke to a crash below and found him",
+      "reason": "He/him is the one-armed male veteran whose graft the scene follows; the Commander witnesses. Reviewed by the coordinator after the prose-4a villainy rewrite.",
+      "block": "cand-13",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "areelu.trickster.report.rival",
+      "location": "alone",
+      "code": "commander-gender",
+      "match": "Commander to go upstairs, and went to meet him",
+      "reason": "He/him is the male natural philosopher/pamphleteer Areelu interviews alone; the Commander listens from the stair. Reviewed by the coordinator after the prose-4a villainy rewrite.",
+      "block": "cand-13",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "areelu.trickster.report.rival",
+      "location": "alone",
+      "code": "commander-gender",
+      "match": "He came to the house in the evening, expecting a secretary, and the Commander",
+      "reason": "He/him is the male natural philosopher/pamphleteer Areelu interviews alone; the Commander listens from the stair. Reviewed by the coordinator after the prose-4a villainy rewrite.",
+      "block": "cand-13",
+      "max_occurrences": 1
     }
   ],
   "therapy_budgets": {},
