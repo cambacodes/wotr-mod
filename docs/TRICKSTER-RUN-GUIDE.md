@@ -6513,7 +6513,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `herrax.trickster.madam.reachable/desire/0` — [Trace the scar with your thumb, down through her lip.]
    - `herrax.trickster.madam.reachable/thumb/0` — Continue
    - `herrax.trickster.madam.reachable/threshold/0` — [Open the clasp.]
-   - `herrax.trickster.madam.reachable/threshold2/0` — "You'd better."; Blocked by: `crossroute.chivarro.unavailable`
+   - `herrax.trickster.madam.reachable/threshold2/0` — "You'd better."
    - `herrax.trickster.madam.reachable/cut/0` — Continue
    - `herrax.trickster.madam.reachable/herrax.trickster.madam.reachable.explicit.1/0` — Continue
    - `herrax.trickster.madam.reachable/morning/0` — Continue; records `herrax.trickster.morning_served`
@@ -6799,7 +6799,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `seelah.souls/care/0` — "I would like to speak to her too."; records `arsinoe.introduced`
    - `seelah.souls/grief/1` — "Tell me."; Blocked by: `seelah.elan_dead`
    - `seelah.souls/survived/0` — "And how are you holding up?"
-   - `seelah.souls/quiet/0` — "I meant it."; Blocked by: `crossroute.arsinoe.unavailable`, `arsinoe.victims_revived`, `swarm`, `true_lich`
+   - `seelah.souls/quiet/0` — "I meant it."; Blocked by: `crossroute.arsinoe.unavailable`
    - `seelah.souls/end/0` — [Keep the evening with her.]; records `seelah.aftercare`
 
 537. **Konomi: An account for her alone** — Drezen. <!-- rrt-step {"scene":"konomi.return","chapter":5,"day":102,"completed":true,"choices":[["start",2],["hers",0],["talk",0]]} -->
