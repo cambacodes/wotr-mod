@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 from tests.story_fixture import fresh_story
 
 from tools import harem_rest_sim as sim, rrt_verify as e9
@@ -22,12 +23,15 @@ class FullRosterBudget(unittest.TestCase):
         model = e9.Model(fixture)
         self.assertEqual(e9.validate(model), [])
         page = model.by_id['harem.sim.outcomes']
-        self.assertEqual(len(page['Nodes'][0]['Paragraphs']), 2 * len(self.data['schedule']))
+        self.assertEqual({tuple(p['Requires']) for p in page['Nodes'][0]['Paragraphs']},
+                         {('household.protected.' + r['ref'].lower() + '.' + o,)
+                          for r in self.data['schedule'] for o in ('resolved', 'unsettled')})
         for row in self.data['schedule']:
             self.assertIn('harem.sim.' + row['ref'].lower(), model.by_id)
             for outcome in ('resolved', 'unsettled'):
                 flag = 'household.protected.' + row['ref'].lower() + '.' + outcome
-                self.assertEqual(sum(p['Requires'] == [flag] for p in page['Nodes'][0]['Paragraphs']), 1)
+                reader, = [p for p in page['Nodes'][0]['Paragraphs'] if p['Requires'] == [flag]]
+                self.assertEqual(reader['Forbids'], [])
         for packet in self.data['packets']:
             nodes = model.by_id['harem.sim.packet.' + packet['id'].lower()]['Nodes']
             self.assertEqual([node['Id'] for node in nodes], [ref.lower() for ref in packet['children']])
@@ -39,7 +43,9 @@ class FullRosterBudget(unittest.TestCase):
                 result = sim.simulate(self.story, self.data, self.route_run, conditional=True, rematch=rematch)
                 self.assertTrue(result['pair_complete'])
                 self.assertEqual(result['blocked'], [])
-                start5 = sum(self.route_run['chapter_days'].get(ch, 0) * 24 for ch in range(5))
+                start5 = 0
+                for ch in range(5):
+                    start5 += self.route_run['chapter_days'].get(ch, 0) * 24
                 self.assertEqual(result['pair_eligibility'], start5 + 24 * 24)
                 self.assertEqual(result['chapters'][1]['deadline_misses'], [])
                 self.assertEqual(result['chapters'][1]['optional'], 22)
@@ -64,7 +70,9 @@ class FullRosterBudget(unittest.TestCase):
     def test_walk_eligibility_times_and_named_gates_control_deadlines(self):
         arrivals = {rel: 0 for rel in self.story['Relationships']}
         arrivals.update({woman: 0 for woman in self.data['seat_women']})
-        start5 = sum(self.route_run['chapter_days'].get(ch, 0) * 24 for ch in range(5))
+        start5 = 0
+        for ch in range(5):
+            start5 += self.route_run['chapter_days'].get(ch, 0) * 24
         arrivals['wenduag'] = start5 + 24 * 39
         gates = {flag: 0 for row in self.data['schedule'] for flag in row.get('reads', [])}
         result = sim.simulate(self.story, self.data, self.route_run, arrivals=arrivals, gate_hours=gates)
@@ -91,3 +99,14 @@ class FullRosterBudget(unittest.TestCase):
                 for chapter in result['chapters']:
                     self.assertEqual(chapter['deadline_misses'], [])
                     self.assertLessEqual(chapter['load'], 1.0)
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        make_fixture = sim.roster_fixture
+        def altered(*args, **kwargs):
+            fixture = copy.deepcopy(make_fixture(*args, **kwargs))
+            page = next(s for s in fixture['Scenes'] if s['Id'] == 'harem.sim.outcomes')
+            page['Nodes'][0]['Paragraphs'].pop()
+            return fixture
+        with patch.object(sim, 'roster_fixture', altered):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_every_row_has_instantiated_outcome_paragraphs_on_epilogue_only()

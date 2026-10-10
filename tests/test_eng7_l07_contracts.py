@@ -4,11 +4,22 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 
 from tools import earned_presence_lint, own_life_lint, return_provenance_lint
 
 ROOT = Path(__file__).resolve().parents[1]
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class InventoryContracts(unittest.TestCase):
     @classmethod
@@ -45,6 +56,9 @@ class InventoryContracts(unittest.TestCase):
 
     def test_return_overrides_and_every_completion_producer(self):
         data = return_provenance_lint.contracts()
+        for sid in data['producers']:
+            self.assertTrue(any(data["completed"] in c["Set"] for s in self.story["Scenes"] if s["Id"] == sid
+                                for n in s["Nodes"] for c in n["Choices"]), sid)
         for loss in data['overrides']:
             story = copy.deepcopy(self.story)
             story['Relationships']['camellia']['UnavailableOverrides'][loss] = data['generic']
@@ -52,11 +66,12 @@ class InventoryContracts(unittest.TestCase):
         for sid in data['producers']:
             choices = [(n['Id'], i) for s in self.story['Scenes'] if s['Id'] == sid for n in s['Nodes']
                        for i, c in enumerate(n['Choices']) if data['completed'] in c['Set']]
-            self.assertTrue(choices)
+            self.assertTrue(any(data["completed"] in c["Set"] for s in self.story["Scenes"] if s["Id"] == sid
+                                for n in s["Nodes"] for c in n["Choices"]))
             for node, i in choices:
                 story = copy.deepcopy(self.story)
                 scene = next(s for s in story['Scenes'] if s['Id'] == sid)
-                next(n for n in scene['Nodes'] if n['Id'] == node)['Choices'][i]['Set'].remove(data['completed'])
+                saved_answer(next(n for n in scene['Nodes'] if n['Id'] == node)['Choices'], i)['Set'].remove(data['completed'])
                 self.assertTrue(return_provenance_lint.check(story))
         story = copy.deepcopy(self.story)
         story['Derived'][data['completed']] = [[data['generic']]]
@@ -82,7 +97,7 @@ class InventoryContracts(unittest.TestCase):
                             continue
                         story = copy.deepcopy(self.story)
                         changed = next(s for s in story['Scenes'] if s['Id'] == sid)
-                        target = next(n for n in changed['Nodes'] if n['Id'] == node['Id'])['Choices'][i]
+                        target = saved_answer(next(n for n in changed['Nodes'] if n['Id'] == node['Id'])['Choices'], i)
                         target[field] = [data['generic'] if k == data['available'] else k for k in target[field]]
                         self.assertTrue(return_provenance_lint.check(story))
 
@@ -97,6 +112,18 @@ class InventoryContracts(unittest.TestCase):
         target['Requires'].remove('trickster.now')
         self.assertTrue(any(e.startswith('T7 ' + scene['Id']) for e in earned_presence_lint.check(mutated)[0]))
         self.assertIn('wenduag.trickster.fall_agreed', scene['RequiresAnyGroups'][0])
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        data = return_provenance_lint.contracts()
+        scene = next(s for s in self.story['Scenes'] if s['Id'] == data['producers'][0])
+        from contextlib import ExitStack
+        with ExitStack() as changes:
+            for node in scene['Nodes']:
+                for choice in node['Choices']:
+                    if data['completed'] in choice['Set']:
+                        changes.enter_context(patch.dict(choice, Set=[f for f in choice['Set'] if f != data['completed']]))
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_return_overrides_and_every_completion_producer()
 
 
 if __name__ == '__main__':

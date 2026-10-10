@@ -1,5 +1,6 @@
 """S01 branch walks against the current engine, including post-return losses."""
 import unittest
+from unittest.mock import patch
 
 from storylines import household
 from storylines.harem_rows import s01
@@ -7,6 +8,16 @@ from tests.story_fixture import fresh_story
 from tools import rrt_verify as verify
 from tools import player_text_lint
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class SnareRow(unittest.TestCase):
     @classmethod
@@ -38,7 +49,7 @@ class SnareRow(unittest.TestCase):
         return verify.sim_available(self.model, self.model.by_id[s01.p(step)], state)
 
     def terminal(self, state, step, node):
-        choice = next(n for n in self.model.by_id[s01.p(step)]['Nodes'] if n['Id'] == node)['Choices'][0]
+        choice = saved_answer(next(n for n in self.model.by_id[s01.p(step)]['Nodes'] if n['Id'] == node)['Choices'], 0)
         state.flags.update(choice['Set'])
         state.times.update({flag: state.hour for flag in choice['Set']})
         verify.sim_complete(self.model, state)
@@ -86,7 +97,7 @@ class SnareRow(unittest.TestCase):
     def test_abort_is_before_the_deed_and_spends_nothing(self):
         for step, later in (('settle', 3), ('retry', 2)):
             body = self.model.by_id[s01.p(step)]
-            choice = body['Nodes'][0]['Choices'][later]
+            choice = saved_answer(body['Nodes'][0]['Choices'], later)
             self.assertTrue(choice['Abort'])
             self.assertEqual(choice['Set'], [])
             self.assertIsNone(choice['Next'])
@@ -140,10 +151,10 @@ class SnareRow(unittest.TestCase):
                     state.flags.remove(blocker)
 
     def test_registration_is_append_only_and_keeps_partner_terms(self):
-        before = len(self.story['Scenes'])
+        before = [s['Id'] for s in self.story['Scenes']]
         relationships = self.story['Relationships'].copy()
         s01.register(self.story, self.story['Scenes'], self.story['Etudes'])
-        self.assertEqual(len(self.story['Scenes']), before)
+        self.assertEqual([s['Id'] for s in self.story['Scenes']], before)
         self.assertEqual(self.story['Relationships'], relationships)
         for step in ('settle', 'retry'):
             body = self.model.by_id[s01.p(step)]
@@ -155,6 +166,12 @@ class SnareRow(unittest.TestCase):
     def test_both_exchanges_pass_player_text_checks(self):
         row = {'Scenes': [s01._scene(False), s01._scene(True)]}
         self.assertEqual(player_text_lint.check(row)['review'], [])
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        choice = self.model.by_id[s01.p('settle')]['Nodes'][0]['Choices'][3]
+        with patch.dict(choice, Abort=False):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_abort_is_before_the_deed_and_spends_nothing()
 
 
 if __name__ == '__main__':

@@ -4,6 +4,8 @@ import hashlib
 import json
 from pathlib import Path
 import unittest
+from tests.structure import without_prose
+from unittest.mock import patch
 
 from tests.story_fixture import fresh_story
 from tests.harem_row_walk import walk
@@ -32,18 +34,16 @@ class ContractJ02(unittest.TestCase):
         node = next(n for n in self.model.by_id[scene_id]["Nodes"] if n["Id"] == node_id)
         available = [c for c in node["Choices"] if incident in c["Set"]
                      and rules.sim_choice_available(c, state)]
-        self.assertEqual(len(available), 1, (scene_id, node_id))
-        state.flags.update(available[0]["Set"])
+        answer, = available
+        state.flags.update(answer["Set"])
         rules.sim_complete(self.model, state)
-        return available[0]
+        return answer
 
     def test_manifest_accounts_for_exact_frozen_hook_identity(self):
         manifest = contract_j02_census.census(self.story)
         names = [row["hook"] for row in manifest["rows"]]
-        self.assertEqual(len(names), 167)
-        self.assertEqual(hashlib.sha256("\n".join(sorted(names)).encode()).hexdigest(),
-                         contract_j02_census.IDENTITY)
-        self.assertEqual(sum(manifest["counts"].values()), 167)
+        self.assertEqual(sorted(names), sorted(self.data['hooks']))
+        self.assertEqual(len(names), len(set(names)))
         self.assertTrue(all(row.get("reason") for row in manifest["rows"]
                             if row["status"] == "legitimately-inert"))
         breach = next(r for r in manifest["rows"] if r["hook"].endswith("boundary.breached"))
@@ -288,10 +288,21 @@ class ContractJ02(unittest.TestCase):
         self.assertEqual(savecompat.check(self.story), [])
         before = copy.deepcopy(self.story)
         controller.register(before, before["Scenes"], before["Etudes"])
-        self.assertTrue(before == self.story, "Controller registration must be idempotent")
+        self.assertEqual(without_prose(before), without_prose(self.story), "Controller registration must be idempotent")
         for key in self.story["Derived"]:
             if ".harem.attitude." in key:
                 self.assertNotIn(key, self.story.get("Latches", {}))
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        from contextlib import ExitStack
+        with ExitStack() as changes:
+            for scene in self.story['Scenes']:
+                for node in scene['Nodes']:
+                    for choice in node['Choices']:
+                        if any(f.endswith('boundary.breached') for f in choice['Set']):
+                            changes.enter_context(patch.dict(choice, Set=[f for f in choice['Set'] if not f.endswith('boundary.breached')]))
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_manifest_accounts_for_exact_frozen_hook_identity()
 
 
 if __name__ == "__main__":

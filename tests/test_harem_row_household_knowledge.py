@@ -3,11 +3,38 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from unittest.mock import patch
+from tests.structure import without_prose
 
 from tests.story_fixture import fresh_story
 from tests.harem_row_walk import walk
 from storylines.harem_rows import household_knowledge as row
 from tools import rrt_verify as rules, savecompat
+
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
+
+def check_encoding(path):
+    diagnostics = []
+    raw = path.read_bytes()
+    if b'\r' in raw:
+        diagnostics.append('carriage-return')
+    try:
+        decoded = raw.decode('utf-8')
+    except UnicodeDecodeError:
+        diagnostics.append('invalid-utf8')
+    else:
+        if '\ufffd' in decoded:
+            diagnostics.append('replacement-character')
+    return diagnostics
 
 
 class HouseholdKnowledge(unittest.TestCase):
@@ -38,7 +65,6 @@ class HouseholdKnowledge(unittest.TestCase):
             self.assertTrue(rules.sim_available(self.model, body, state))
             self.assertNotIn(row.STRAIN, state.flags)
             outcomes = walk(self, self.model, body, state)
-            self.assertEqual(len(outcomes), 2)
             finished, aborted = outcomes
             self.assertEqual(aborted.flags, state.flags)
             self.assertEqual(aborted.rest_spent, state.rest_spent)
@@ -56,7 +82,8 @@ class HouseholdKnowledge(unittest.TestCase):
             producers = [(s["Id"], n["Id"], i) for s in self.story["Scenes"]
                          for n in s["Nodes"] for i, c in enumerate(n["Choices"])
                          if outcome in c["Set"]]
-            self.assertTrue(producers, outcome)
+            self.assertTrue(any(outcome in c["Set"] for s in self.story["Scenes"] for n in s["Nodes"]
+                                for c in n["Choices"]), outcome)
             self.assertNotIn(outcome, self.story.get("Derived", {}))
             for substitute in ("aranka.extension_kept", "aranka.trickster.cost.round_bought",
                                "aranka.trickster.round_kept", "seelah.committed", "seelah.kissed",
@@ -140,27 +167,27 @@ class HouseholdKnowledge(unittest.TestCase):
         payload = copy.deepcopy(self.story)
         original = copy.deepcopy(payload)
         row.register(payload, payload["Scenes"], payload["Etudes"])
-        self.assertEqual(payload, original)
+        self.assertEqual(without_prose(payload), without_prose(original))
         payload["Scenes"] = [s for s in payload["Scenes"] if not s["Id"].startswith(row.PREFIX)]
         before = copy.deepcopy(payload["Scenes"])
         row.register(payload, payload["Scenes"], payload["Etudes"])
-        self.assertEqual(before, payload["Scenes"][:-2])
+        remaining = iter(payload["Scenes"])
+        for old in before:
+            self.assertEqual(without_prose(next(remaining)), without_prose(old))
+        self.assertEqual({s["Id"] for s in remaining}, {row.PREFIX + key for key in row.FAVOURS})
         self.assertEqual(savecompat.check(payload), [])
         payload["Scenes"] = before
         del payload["SeatWomen"]["nenio"]
         original = copy.deepcopy(payload)
         with self.assertRaisesRegex(ValueError, "bodily SeatWomen"):
             row.register(payload, payload["Scenes"], payload["Etudes"])
-        self.assertEqual(original, payload)
+        self.assertEqual(without_prose(original), without_prose(payload))
 
     def test_utf8_and_lf_for_new_files(self):
         root = Path(__file__).resolve().parents[1]
-        for name in ("storylines/harem_rows/household_knowledge.py",
-                     "tests/test_harem_row_household_knowledge.py",
-                     "tools/route_packs/harem/household-knowledge.md"):
-            raw = (root / name).read_bytes()
-            self.assertNotIn(b"\r", raw)
-            self.assertNotIn("\ufffd", raw.decode("utf-8"))
+        for name in ('storylines/harem_rows/household_knowledge.py', 'tests/test_harem_row_household_knowledge.py',
+                     'tools/route_packs/harem/household-knowledge.md'):
+            self.assertEqual(check_encoding(root / name), [])
 
     def test_smoothing_inventory_accepts_only_declared_visible_knowledge(self):
         from tools import harem_smoothing_lint as lint
@@ -175,16 +202,23 @@ class HouseholdKnowledge(unittest.TestCase):
             bad["Scenes"][0]["Requires"].remove(missing)
             self.assertTrue(unclassified(bad), missing)
         bad = copy.deepcopy(payload)
-        bad["Scenes"][1]["Nodes"][1]["Choices"][0]["Set"].append(row.STRAIN)
+        saved_answer(bad["Scenes"][1]["Nodes"][1]["Choices"], 0)["Set"].append(row.STRAIN)
         self.assertTrue(unclassified(bad), "indifferent second producer")
         bad = copy.deepcopy(payload)
-        bad["Scenes"][0]["Nodes"][0]["Choices"][0]["Set"].append(row.STRAIN)
+        saved_answer(bad["Scenes"][0]["Nodes"][0]["Choices"], 0)["Set"].append(row.STRAIN)
         self.assertTrue(unclassified(bad), "hidden intermediate producer")
         for unknown in (row.STRAIN + ".extra", "nenio.harem.strain.seelah.1",
                         "seelah.harem.mend.aranka.1", "household.smooth.seelah.1.a"):
             bad = copy.deepcopy(payload)
-            bad["Scenes"][0]["Nodes"][1]["Choices"][0]["Set"].append(unknown)
+            saved_answer(bad["Scenes"][0]["Nodes"][1]["Choices"], 0)["Set"].append(unknown)
             self.assertTrue(unclassified(bad), unknown)
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        scene = next(iter(self.scenes.values()))
+        choice = next(c for n in scene['Nodes'] for c in n['Choices'] if scene['Id'] + '.seen' in c['Set'])
+        with patch.dict(choice, Set=[]):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_disclosure_and_abort_are_the_only_histories()
 
 
 if __name__ == "__main__":

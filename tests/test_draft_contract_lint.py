@@ -1,8 +1,19 @@
 """eng7-f6d: dormant mechanical contracts are strict; draft prose stays advisory."""
 from tests.story_fixture import fresh_story
 import unittest
+from unittest.mock import patch
 from tools import draft_contract_lint as lint
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class DraftContractTests(unittest.TestCase):
     @classmethod
@@ -36,7 +47,9 @@ class DraftContractTests(unittest.TestCase):
         for name in ("inspection_day", "kenabres_vigil", "private_aftercare", "scale_evening"):
             scene = scenes["terendelev.continuation." + name]
             incoming = [c for n in scene["Nodes"] for c in n["Choices"] if c.get("Next") == "end"]
-            self.assertEqual(len(incoming), 3, name)
+            self.assertEqual([(n["Id"], c.get("Id"), c.get("Set", [])) for n in scene["Nodes"]
+                              for c in n["Choices"] if c.get("Next") == "end"],
+                             {'inspection_day': [('lodging', None, ['terendelev.continuation.inspection.outcome.lodging']), ('residents', None, ['terendelev.continuation.inspection.outcome.residents']), ('uncertainty', None, ['terendelev.continuation.inspection.outcome.uncertain'])], 'kenabres_vigil': [('choice', None, ['terendelev.continuation.vigil.honest']), ('terms', None, ['terendelev.continuation.vigil.separate']), ('blame', None, ['terendelev.continuation.vigil.silence'])], 'private_aftercare': [('desire', None, ['terendelev.continuation.aftercare.desire']), ('checkin', None, ['terendelev.continuation.aftercare.checkin']), ('time', None, ['terendelev.continuation.aftercare.time'])], 'scale_evening': [('ordinary', None, ['terendelev.continuation.intimacy.shared']), ('argument', None, ['terendelev.continuation.intimacy.shared']), ('future', None, ['terendelev.continuation.intimacy.shared'])]}[name])
             broken = __import__("copy").deepcopy(scene)
             for node in broken["Nodes"]:
                 for choice in node["Choices"]:
@@ -44,7 +57,7 @@ class DraftContractTests(unittest.TestCase):
             self.assertTrue(any(r["code"] == "unreachable-producer" for r in lint.check_scene(broken)))
         for name in ("escape_boundary", "trickster_native_lead"):
             wait = next(n for n in scenes["terendelev.continuation." + name]["Nodes"] if n["Id"] == "wait")
-            self.assertTrue(wait["Choices"][0]["Abort"], name)
+            self.assertTrue(saved_answer(wait["Choices"], 0)["Abort"], name)
         pending = next(n for n in scenes["terendelev.continuation.escape_boundary"]["Nodes"] if n["Id"] == "result_pending")
         self.assertTrue(any(c["Abort"] and not c["Requires"] for c in pending["Choices"]))
 
@@ -98,14 +111,14 @@ class DraftContractTests(unittest.TestCase):
             {"Id": "start", "Choices": [{"Next": "end"}]}, {"Id": "end", "Choices": [{}]},
             {"Id": "old", "Choices": [{"Abort": True}]}], "RetiredNodes": {"old": "Retained old answer target, no entry in current graph."}}
         self.assertFalse(lint.check_scene(scene))
-        scene["Nodes"][2]["Choices"][0]["Set"] = ["completion"]
+        saved_answer(scene["Nodes"][2]["Choices"], 0)["Set"] = ["completion"]
         self.assertTrue(lint.check_scene(scene))
 
     def test_mutation_and_request_defer(self):
         scene = {"Id": "defer", "Remote": True, "Entry": '"Try."', "Nodes": [{"Id": "start", "Choices": [
             {"Set": ["test.requested"]}, {"Set": ["test.authorized"], "Abort": True}]}]}
         self.assertFalse(lint.check_scene(scene))
-        scene["Nodes"][0]["Choices"][1]["Abort"] = False
+        saved_answer(scene["Nodes"][0]["Choices"], 1)["Abort"] = False
         self.assertTrue(any(r["code"] == "deferred-once-completion" for r in lint.check_scene(scene)))
 
     def test_text_lints_inspect_unregistered_drafts(self):
@@ -157,3 +170,11 @@ class DraftContractTests(unittest.TestCase):
                     self.assertTrue(any(r["scene"] == f["scene"] for r in player), f["id"])
             else:
                 self.assertFalse(any(r["scene"] == f["scene"] for r in structure["hard"]), f["id"])
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        scene = next(s for s in self.inventory['terendelev_continuation']['scenes']
+                     if s['Id'] == 'terendelev.continuation.inspection_day')
+        choice = next(n for n in scene['Nodes'] if n['Id'] == 'lodging')['Choices'][0]
+        with patch.dict(choice, Next='lost'):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_completion_branches_and_deferred_waits()

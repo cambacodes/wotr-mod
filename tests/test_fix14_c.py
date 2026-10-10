@@ -1,8 +1,19 @@
 """Round-three structure regressions, exercised after every integration pass."""
 import unittest
+from unittest.mock import patch
 
 from tests.story_fixture import fresh_story
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class Fix14C(unittest.TestCase):
     @classmethod
@@ -27,10 +38,10 @@ class Fix14C(unittest.TestCase):
         fight = self.node(sid, 'fight')
         dirty = self.node(sid, 'dirty')
         for flags in (set(), {'iomedae.closed'}, {'iomedae.dead'}):
-            self.assertIn(fight['Choices'][1], self.choices(fight, flags))
-            self.assertIn(dirty['Choices'][0], self.choices(dirty, flags))
-        self.assertEqual(fight['Choices'][1]['Next'], 'dirty')
-        self.assertEqual(dirty['Choices'][0]['Next'], 'dirty2')
+            self.assertIn(saved_answer(fight['Choices'], 1), self.choices(fight, flags))
+            self.assertIn(saved_answer(dirty['Choices'], 0), self.choices(dirty, flags))
+        self.assertEqual(saved_answer(fight['Choices'], 1)['Next'], 'dirty')
+        self.assertEqual(saved_answer(dirty['Choices'], 0)['Next'], 'dirty2')
         # Removing a religious reference gate must retain the actual participant.
         scene = self.scenes[sid]
         self.assertIn('yaniel.present_now', scene['Requires'])
@@ -42,12 +53,12 @@ class Fix14C(unittest.TestCase):
         fed = self.node(sid, 'fed')
         self.assertEqual([c['Next'] for c in self.choices(fed, set())], ['fed_shown'])
         self.assertEqual([c['Next'] for c in self.choices(fed, {receipt})], ['fed_after'])
-        shown = self.node(sid, 'fed_shown')['Choices'][0]
+        shown = saved_answer(self.node(sid, 'fed_shown')['Choices'], 0)
         self.assertEqual(shown['Next'], 'fed_after')
         self.assertIn(receipt, shown['Set'])
         # Both existing entry edges retain the moral cost and their save target.
         for nid in ('key', 'too_late'):
-            choice = self.node(sid, nid)['Choices'][0]
+            choice = saved_answer(self.node(sid, nid)['Choices'], 0)
             self.assertEqual(choice['Next'], 'fed')
             self.assertIn('kaylessa.trickster.cost.beast_fed', choice['Set'])
         self.assertFalse(self.scenes[sid].get('Remote', False))
@@ -63,9 +74,9 @@ class Fix14C(unittest.TestCase):
             node = self.node(sid, nid)
             for flags in (set(), {opposite}):
                 self.assertEqual([c['Next'] for c in self.choices(node, flags)], [nid + '_shown'])
-            self.assertEqual(self.choices(node, {receipt}), [node['Choices'][0]])
-            self.assertIsNone(node['Choices'][0]['Next'])
-            self.assertIn(receipt, self.node(sid, nid + '_shown')['Choices'][0]['Set'])
+            self.assertEqual(self.choices(node, {receipt}), [saved_answer(node['Choices'], 0)])
+            self.assertIsNone(saved_answer(node['Choices'], 0)['Next'])
+            self.assertIn(receipt, saved_answer(self.node(sid, nid + '_shown')['Choices'], 0)['Set'])
         self.assertFalse(self.scenes[sid].get('Remote', False))
 
     def test_beast_history_still_selects_the_curse_paragraphs(self):
@@ -74,9 +85,14 @@ class Fix14C(unittest.TestCase):
         paragraphs = self.node(sid, 'page')['Paragraphs']
         candidates = [p for p in paragraphs if {'kaylessa.trickster.cost.beast_fed',
             'kaylessa.trickster.cost.dark_fate_stalled'} <= set(p.get('Requires', []))]
-        self.assertEqual(len(candidates), 1)
-        paragraph = candidates[0]
+        paragraph, = candidates
         flags = set(paragraph['Requires'])
         self.assertTrue(self.visible(paragraph, flags))
         self.assertFalse(self.visible(paragraph, flags - {'kaylessa.trickster.cost.beast_fed'}))
         self.assertFalse(self.visible(paragraph, flags - {'kaylessa.trickster.cost.dark_fate_stalled'}))
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        choice = next(c for c in self.node('kaylessa.trickster.after.the_beast', 'fed')['Choices'] if c['Next'] == 'fed_shown')
+        with patch.dict(choice, Next='fed_after'):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_beast_fed_cannot_skip_the_shown_act()

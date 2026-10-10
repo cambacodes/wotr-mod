@@ -3,12 +3,24 @@ import copy
 import subprocess
 import types
 import unittest
+from tests.structure import without_prose
+from unittest.mock import patch
 
 from storylines import eritrice_council as council
 from storylines import eritrice_minutes as minutes
 from storylines import eritrice_trickster as route
 from tools import rrt_verify as verify
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class EritriceRoundTwoTests(unittest.TestCase):
     def setUp(self):
@@ -26,15 +38,16 @@ class EritriceRoundTwoTests(unittest.TestCase):
         node = scene["Nodes"][0]
         for _ in range(30):
             state.update(node.get("EnterSet", []))
-            answers = [(i, c) for i, c in enumerate(node["Choices"])
+            answers = [c for c in node["Choices"]
                        if set(c["Requires"]) <= state and not set(c["Forbids"]) & state]
-            self.assertTrue(answers, (sid, node["Id"], state))
+            self.assertTrue([c["Next"] for c in answers], (sid, node["Id"], state))
             desired = selected.get(node["Id"])
             if desired is not None:
-                answer = next((c for i, c in answers if i == desired), None)
-                self.assertIsNotNone(answer, (sid, node["Id"], desired))
+                answer = saved_answer(node["Choices"], desired)
+                self.assertTrue(set(answer["Requires"]) <= state)
+                self.assertFalse(set(answer["Forbids"]) & state)
             else:
-                answer = answers[0][1]
+                answer = next(iter(answers))
             state.update(answer["Set"])
             if answer["Abort"]:
                 return state
@@ -88,22 +101,22 @@ class EritriceRoundTwoTests(unittest.TestCase):
             ("argue", "defense_planned", "argued_own_case", "defense"),
             ("recuse", "recusal_planned", "chair_recused", "recusal"),
         ):
-            answer = self.node(request, node)["Choices"][0]
+            answer = saved_answer(self.node(request, node)["Choices"], 0)
             self.assertEqual(answer["Set"], [council.K + intention])
             self.assertNotIn(council.K + receipt, answer["Set"])
-            self.assertEqual(self.node(hearing, action)["Choices"][0]["Set"], [council.K + receipt])
+            self.assertEqual(saved_answer(self.node(hearing, action)["Choices"], 0)["Set"], [council.K + receipt])
         self.assertIn(hearing, self.scenes[council.K + "the_motion_to_expel_voted"]["Requires"])
-        self.assertEqual(self.node(hearing, "offer")["Choices"][1]["Next"], "unfinished")
-        self.assertEqual(self.node(hearing, "unfinished")["Choices"][0]["Set"], [council.PENDING])
+        self.assertEqual(saved_answer(self.node(hearing, "offer")["Choices"], 1)["Next"], "unfinished")
+        self.assertEqual(saved_answer(self.node(hearing, "unfinished")["Choices"], 0)["Set"], [council.PENDING])
 
     def test_apology_payment_arranges_only_then_spoken_action_returns(self):
         for node in ("ruling", "ruling_betrayal"):
-            payment = self.node(route.P + "fought.tabled", node)["Choices"][0]
+            payment = saved_answer(self.node(route.P + "fought.tabled", node)["Choices"], 0)
             self.assertEqual(payment["Crusade"]["Amount"], -200)
             self.assertIn(route.P + "apology_arranged", payment["Set"])
             self.assertNotIn(route.APOLOGISED, payment["Set"])
             self.assertNotIn(route.RETURNED, payment["Set"])
-        spoken = self.node(route.VISIT, "apology")["Choices"][0]
+        spoken = saved_answer(self.node(route.VISIT, "apology")["Choices"], 0)
         self.assertEqual(spoken["Set"], [route.RETURNED, route.APOLOGISED])
         self.assertEqual(self.scenes[route.VISIT]["ContactUnit"], route.UNIT)
         self.assertTrue(self.scenes[route.VISIT]["TricksterDevice"])
@@ -156,8 +169,8 @@ class EritriceRoundTwoTests(unittest.TestCase):
     def test_first_night_and_repeat_have_distinct_mornings_and_slots(self):
         self.assertIn(minutes.M + "night", self.scenes[minutes.RECORD]["Requires"])
         self.assertNotIn(minutes.ADJOURNED, self.scenes[minutes.RECORD]["Requires"])
-        self.assertEqual(self.node(minutes.ADJOURNED, "cut")["Choices"][0]["Next"], minutes.ADJOURNED + ".explicit.1")
-        self.assertEqual(self.node(council.TWICE, "carried")["Choices"][0]["Next"], council.TWICE + ".explicit.1")
+        self.assertEqual(saved_answer(self.node(minutes.ADJOURNED, "cut")["Choices"], 0)["Next"], minutes.ADJOURNED + ".explicit.1")
+        self.assertEqual(saved_answer(self.node(council.TWICE, "carried")["Choices"], 0)["Next"], council.TWICE + ".explicit.1")
         morning = self.scenes[council.K + "second_morning"]
         self.assertIn(council.K + "twice_nightly_carried", morning["Requires"])
         for sid in (minutes.ADJOURNED, minutes.RECORD, council.TWICE):
@@ -176,11 +189,17 @@ class EritriceRoundTwoTests(unittest.TestCase):
         current = self.scenes[sid]
         self.assertEqual([n["Id"] for n in baseline["Nodes"]], [n["Id"] for n in current["Nodes"]])
         for before, after in zip(baseline["Nodes"], current["Nodes"]):
-            self.assertEqual(before["Choices"], after["Choices"])
+            self.assertEqual(without_prose(before["Choices"]), without_prose(after["Choices"]))
         self.assertEqual(self.node(sid, "aye")["EnterSet"], [route.P + "late_accepted"])
         for node in ("nay", "silence"):
             self.assertNotIn("EnterSet", self.node(sid, node))
         self.assertIn(sid + ".explicit.1", [p.get("Id") for p in self.node(sid, "aye")["Paragraphs"]])
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        choice = self.node(route.P + 'fought.tabled', 'ruling')['Choices'][0]
+        with patch.dict(choice['Crusade'], Amount=-100):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_apology_payment_arranges_only_then_spoken_action_returns()
 
 
 if __name__ == "__main__":

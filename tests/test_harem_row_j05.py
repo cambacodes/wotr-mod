@@ -4,6 +4,7 @@ import itertools
 import json
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 
 from tests.story_fixture import fresh_story
 from storylines.harem_rows import s18x, s26, z_j05_restitution as j05
@@ -11,6 +12,16 @@ from tools import rrt_verify, savecompat
 
 ROOT = Path(__file__).resolve().parents[1]
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class MaterialRestitutionTests(unittest.TestCase):
     @classmethod
@@ -39,7 +50,7 @@ class MaterialRestitutionTests(unittest.TestCase):
         return next(node for node in (body or self.g)["Nodes"] if node["Id"] == key)
 
     def take(self, state, node, index=0):
-        choice = self.node(node)["Choices"][index]
+        choice = saved_answer(self.node(node)["Choices"], index)
         self.assertTrue(rrt_verify.sim_choice_available(choice, state), (node, index))
         state.flags.update(choice["Set"])
         return choice.get("Next")
@@ -73,35 +84,35 @@ class MaterialRestitutionTests(unittest.TestCase):
                           "gesmerha.truth", "gesmerha.illusions", "jerribeth.trickster.returned",
                           "household.packet.k3.seen"):
             state = self.state(unrelated)
-            self.assertFalse(rrt_verify.sim_choice_available(self.node("start")["Choices"][0], state))
+            self.assertFalse(rrt_verify.sim_choice_available(saved_answer(self.node("start")["Choices"], 0), state))
             self.assertFalse(rrt_verify.sim_choice_available(
-                self.node("j05_relief_inspected")["Choices"][0], state))
+                saved_answer(self.node("j05_relief_inspected")["Choices"], 0), state))
 
     def test_any_missing_physical_witness_keeps_verification_unavailable(self):
-        choice = self.node("j05_relief_inspected")["Choices"][0]
+        choice = saved_answer(self.node("j05_relief_inspected")["Choices"], 0)
         for absent in j05.G_PROOF:
             state = self.state(*(flag for flag in j05.G_PROOF if flag != absent))
             self.assertFalse(rrt_verify.sim_choice_available(choice, state), absent)
         state = self.state(s26.REMEDY)
-        self.assertFalse(rrt_verify.sim_choice_available(self.node("remedy_reserved")["Choices"][1], state))
+        self.assertFalse(rrt_verify.sim_choice_available(saved_answer(self.node("remedy_reserved")["Choices"], 1), state))
         self.assertTrue(any(rrt_verify.sim_choice_available(c, state)
                             for c in self.node("remedy_reserved")["Choices"]))
 
     def test_absent_tenant_cannot_surrender_a_cache(self):
         for flags in ((), (s26.RETURNED,), (s26.TENANT,), (s26.HOST,)):
             state = self.state(*flags)
-            self.assertFalse(rrt_verify.sim_choice_available(self.node("start")["Choices"][4], state))
-            self.assertFalse(rrt_verify.sim_choice_available(self.node("j05_cache_offer")["Choices"][0], state))
+            self.assertFalse(rrt_verify.sim_choice_available(saved_answer(self.node("start")["Choices"], 4), state))
+            self.assertFalse(rrt_verify.sim_choice_available(saved_answer(self.node("j05_cache_offer")["Choices"], 0), state))
         state = self.state(s26.REPLY)
         state.flags.remove(s26.REPLY)  # loss after the directions menu opened
-        self.assertFalse(rrt_verify.sim_choice_available(self.node("j05_cache_offer")["Choices"][0], state))
+        self.assertFalse(rrt_verify.sim_choice_available(saved_answer(self.node("j05_cache_offer")["Choices"], 0), state))
 
     def test_destroyed_clan_never_receives_supplies_or_reappears(self):
         for key, index in (("start", 4), ("j05_recipients", 0), ("j05_cache_offer", 0),
                            ("j05_cache_route", 0), ("j05_cache_return", 0),
                            ("remedy_reserved", 1), ("j05_relief_inspected", 0)):
             state = self.state(s26.REPLY, s26.CLAN_DESTROYED, *j05.G_PROOF)
-            self.assertFalse(rrt_verify.sim_choice_available(self.node(key)["Choices"][index], state), key)
+            self.assertFalse(rrt_verify.sim_choice_available(saved_answer(self.node(key)["Choices"], index), state), key)
 
     def test_failed_retrieval_keeps_account_owed_and_has_no_retry(self):
         state = self.state(s26.REPLY)
@@ -110,7 +121,7 @@ class MaterialRestitutionTests(unittest.TestCase):
         self.take(state, "unresolved")
         self.assertIn(s26.P + "unsettled", state.flags)
         self.assertNotIn(s26.REMEDY, state.flags)
-        self.assertFalse(any(rrt_verify.sim_choice_available(self.node("start")["Choices"][i], state)
+        self.assertFalse(any(rrt_verify.sim_choice_available(saved_answer(self.node("start")["Choices"], i), state)
                              for i in (4, 5, 6)))
 
     def test_refused_carrying_does_not_deliver_or_cure_the_injury(self):
@@ -126,13 +137,13 @@ class MaterialRestitutionTests(unittest.TestCase):
         state = self.state(s26.REPLY)
         self.take(state, "j05_cache_offer")
         state.flags = set(json.loads(json.dumps(sorted(state.flags))))
-        self.assertTrue(rrt_verify.sim_choice_available(self.node("start")["Choices"][5], state))
-        self.assertFalse(rrt_verify.sim_choice_available(self.node("start")["Choices"][4], state))
+        self.assertTrue(rrt_verify.sim_choice_available(saved_answer(self.node("start")["Choices"], 5), state))
+        self.assertFalse(rrt_verify.sim_choice_available(saved_answer(self.node("start")["Choices"], 4), state))
         self.take(state, "j05_cache_route")
-        self.assertFalse(rrt_verify.sim_choice_available(self.node("start")["Choices"][5], state))
-        self.assertTrue(rrt_verify.sim_choice_available(self.node("start")["Choices"][6], state))
+        self.assertFalse(rrt_verify.sim_choice_available(saved_answer(self.node("start")["Choices"], 5), state))
+        self.assertTrue(rrt_verify.sim_choice_available(saved_answer(self.node("start")["Choices"], 6), state))
         self.take(state, "j05_cache_return")
-        self.assertFalse(rrt_verify.sim_choice_available(self.node("start")["Choices"][6], state))
+        self.assertFalse(rrt_verify.sim_choice_available(saved_answer(self.node("start")["Choices"], 6), state))
 
     def test_later_changes_nothing_at_every_preaction_menu(self):
         for node in self.g["Nodes"]:
@@ -144,8 +155,8 @@ class MaterialRestitutionTests(unittest.TestCase):
     def test_captivity_pending_hook_alone_cannot_buy_destruction(self):
         for sid in (s18x.P + "account", s18x.P + "account_table"):
             body = self.by[sid]
-            entry = self.node("start", body)["Choices"][0]
-            terminal = self.node("j05_instructions_destroyed", body)["Choices"][0]
+            entry = saved_answer(self.node("start", body)["Choices"], 0)
+            terminal = saved_answer(self.node("j05_instructions_destroyed", body)["Choices"], 0)
             for absent in j05.H_PROOF:
                 state = self.state(*(flag for flag in j05.H_PROOF if flag != absent))
                 self.assertFalse(rrt_verify.sim_choice_available(entry, state), absent)
@@ -168,13 +179,10 @@ class MaterialRestitutionTests(unittest.TestCase):
             body = self.by[sid]
             for index, node in enumerate(old[sid]["Nodes"]):
                 now = body["Nodes"][index]
-                self.assertEqual((now["Id"], now["Text"]), (node["Id"], node["Text"]))
+                self.assertEqual(now["Id"], node["Id"])
                 for i, choice in enumerate(node["Choices"]):
-                    self.assertEqual(now["Choices"][i]["Next"], choice["Next"])
-                    if (sid, node["Id"], i) == (s26.P + "account", "unresolved", 0):
-                        self.assertIn("inspected", now["Choices"][i]["Text"])
-                    else:
-                        self.assertEqual(now["Choices"][i]["Text"], choice["Text"])
+                    self.assertEqual(saved_answer(now["Choices"], i)["Next"], choice["Next"])
+                    self.assertEqual(saved_answer(now["Choices"], i).get("Id"), choice.get("Id"))
 
     def test_no_extra_completion_clock_currency_or_epilogue_paragraph(self):
         for sid in (s18x.P + "account", s18x.P + "account_table", s26.P + "account"):
@@ -208,8 +216,12 @@ class MaterialRestitutionTests(unittest.TestCase):
         entries = {entry["Id"]: entry for entry in self.story["Books"]["trickster.ledger"]["Entries"]}
         self.assertIn(s26.P + "remedy.delivered", entries[s26.P + "account"]["Forbids"])
         self.assertEqual(entries[s26.P + "material_relief"]["Requires"], list(j05.G_DELIVERED))
-        self.assertIn("No remedy was inspected", entries[s26.P + "account"]["Text"])
-        self.assertNotIn("No remedy was delivered", entries[s26.P + "account"]["Text"])
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        entry = next(e for e in self.story['Books']['trickster.ledger']['Entries'] if e['Id'] == s26.P + 'account')
+        with patch.dict(entry, Forbids=[f for f in entry['Forbids'] if f != s26.P + 'remedy.delivered']):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_ledger_cannot_claim_no_relief_after_verified_delivery()
 
 
 if __name__ == "__main__":

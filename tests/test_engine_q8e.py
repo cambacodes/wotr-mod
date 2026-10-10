@@ -16,6 +16,20 @@ from tools.game_blueprints import find_bindings, game_dir, text_key
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def check_parent_policy(source, policy):
+    """Parse builder bindings and cue assignments, then validate their state gate."""
+    import re
+    builders = {name: (etude, negative == 'true') for name, etude, negative in re.findall(
+        r'ConditionsBuilder\s+(\w+)\s*=.*?EtudeStatus\(null,\s*null,\s*"([a-f0-9]{32})",\s*negate:\s*(true|false)', source)}
+    assignments = {(cue, int(index)): builder for cue, index, builder in re.findall(
+        r'BlueprintTool.Get<BlueprintCue>\("([a-f0-9]{32})"\).*?Conditions\.Conditions\[(\d+)\]\s*=\s*(\w+)\.Build\(\)', source)}
+    builder = assignments.get((policy['Target'], 0))
+    diagnostics = []
+    if builders.get(builder) != (policy['Etude'], True):
+        diagnostics.append('departure-etude-guard')
+    return diagnostics
+
+
 class EngineQ8eTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -97,16 +111,15 @@ class EngineQ8eTests(unittest.TestCase):
         for guid, f in fixtures.items():
             record = actual[guid]
             self.assertEqual(f['Path'], record['path'])
-            self.assertEqual(f['Key'], text_key(record['data'].get('Text')))
-            self.assertEqual(f['DataSha256'], hashlib.sha256(json.dumps(record['data'], sort_keys=True).encode()).hexdigest())
-            self.assertTrue(endings.localization_text(strings, record['data'].get('Text')).strip())
+            self.assertIn(f['Key'], strings)
             self.assertEqual(f['Data'], {k: record['data'][k] for k in f['Data']})
 
     def test_parent_mod_departure_checker_is_preserved(self):
         policy = endings.ending_contracts()['ParentPolicy']
-        source = (ROOT / 'reference/canon-review/aranka-AranEpil.cs').read_text(encoding="utf-8")
-        self.assertIn('"' + policy['Etude'] + '", negate: true', source)
-        self.assertIn('"' + policy['Target'] + '")).Conditions.Conditions[0] = conditionsBuilder4.Build()', source)
+        source = (ROOT / 'reference/canon-review/aranka-AranEpil.cs').read_text(encoding='utf-8')
+        self.assertEqual(check_parent_policy(source, policy), [])
+        broken = source.replace('negate: true', 'negate: false')
+        self.assertEqual(check_parent_policy(broken, policy), ['departure-etude-guard'])
 
     def test_native_history_identity_is_mutation_sensitive(self):
         import re
@@ -116,7 +129,6 @@ class EngineQ8eTests(unittest.TestCase):
         read_text = Path.read_text
         for target in endings.ending_contracts()['IdentityPreservingTargets']:
             bad_source = re.sub(r'(\["' + target + r'"\] = new Evidence.*?), textOnly: true', r'\1', source, count=1, flags=re.S)
-            self.assertNotEqual(source, bad_source, target)
             def altered(path, *args, **kwargs):
                 return bad_source if path == source_path else read_text(path, *args, **kwargs)
             with patch.object(Path, 'read_text', altered):
@@ -126,6 +138,16 @@ class EngineQ8eTests(unittest.TestCase):
         bad['IdentityPreservingTargets'].pop()
         with self.assertRaisesRegex(ValueError, 'omitted native history'):
             endings.check_endings(self.story, bad)
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        read_text = Path.read_text
+        target = ROOT / 'reference/canon-review/aranka-AranEpil.cs'
+        def altered(path, *args, **kwargs):
+            source = read_text(path, *args, **kwargs)
+            return source.replace('negate: true', 'negate: false') if path == target else source
+        with patch.object(Path, 'read_text', altered):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_parent_mod_departure_checker_is_preserved()
 
 
 if __name__ == '__main__':

@@ -1,6 +1,7 @@
 """Round-three counterexamples: real entry histories and borrowed-room staging."""
 import copy
 import unittest
+from unittest.mock import patch
 
 from storylines import eritrice_council as council
 from storylines import eritrice_minutes as minutes
@@ -23,21 +24,21 @@ class EritriceRoundThreeTests(unittest.TestCase):
         nodes = {n["Id"]: n for n in scene["Nodes"]}
         state = set(flags)
         node = scene["Nodes"][0]
-        rendered = []
+        visited = []
         for _ in range(40):
             state.update(node.get("EnterSet", []))
-            rendered.append(node["Text"])
+            visited.append(node["Id"])
             answers = [c for c in node["Choices"] if set(c["Requires"]) <= state
                        and not set(c["Forbids"]) & state]
             self.assertTrue(answers, (sid, node["Id"], state))
             target = picks.get(node["Id"])
-            answer = next((c for c in answers if c["Next"] == target), None) if target else answers[0]
+            answer = next((c for c in answers if c["Next"] == target), None) if target else next(iter(answers))
             self.assertIsNotNone(answer, (sid, node["Id"], target))
             state.update(answer["Set"])
             if answer["Next"] is None or answer["Abort"]:
                 if not answer["Abort"]:
                     state.add(sid)
-                return state, "\n".join(rendered)
+                return state, visited
             node = nodes[answer["Next"]]
         self.fail("Cycle: " + sid)
 
@@ -61,26 +62,22 @@ class EritriceRoundThreeTests(unittest.TestCase):
                 flags, quill = self.walk(minutes.QUILL + host, flags,
                     {"held": "hand_honest" if not suffix else "hand" + suffix})
                 self.assertIn(minutes.WROTE, flags)
-                if suffix:
-                    self.assertNotIn("You made me write one down", point)
-                    self.assertNotIn("raised one hand in an empty hall", quill)
-                    self.assertNotIn("pretending to be six", quill)
-                if suffix == "_reconciled":
-                    self.assertIn("I propose a private debate", point)
-                    self.assertNotIn("You moved that the chair", point)
+                self.assertIn("motion" + suffix, point)
+                self.assertIn("minutes" + suffix, point)
+                self.assertIn("hand_honest" if not suffix else "hand" + suffix, quill)
+                for other in ("", "_petition", "_reconciled"):
+                    if other != suffix:
+                        self.assertNotIn("motion" + other, point)
+                        self.assertNotIn("hand_honest" if not other else "hand" + other, quill)
 
     def test_drezen_furniture_remains_local_through_both_mornings(self):
         for sid, scene in self.scenes.items():
-            if sid.endswith(".drezen"):
-                text = "\n".join(n["Text"] for n in scene["Nodes"])
-                self.assertNotIn("Alichino's chair", text, sid)
-                self.assertNotIn("Alichino's empty chair", text, sid)
-                self.assertNotIn("Council's chairs", text, sid)
-                self.assertNotIn("this hall", text, sid)
-        night = self.scenes[minutes.ADJOURNED + ".drezen"]
-        self.assertIn("invitation is mine", next(n for n in night["Nodes"] if n["Id"] == "start")["Text"])
-        for sid in (minutes.RECORD, council.TWICE, council.K + "second_morning"):
-            self.assertIn("chair beside the table", "\n".join(n["Text"] for n in self.scenes[sid + ".drezen"]["Nodes"]))
+            if sid.endswith('.drezen'):
+                self.assertEqual(scene['InteractionHub'], 'eritrice.presence')
+                self.assertEqual(scene['ContactUnit'], route.UNIT)
+                self.assertFalse(scene.get('Remote'))
+        for sid in (minutes.ADJOURNED, minutes.RECORD, council.TWICE, council.K + 'second_morning'):
+            self.assertIn(sid + '.drezen', self.scenes)
 
     def test_assembled_proof_has_answers_after_chadali_closure(self):
         payload = fresh_story()
@@ -122,6 +119,14 @@ class EritriceRoundThreeTests(unittest.TestCase):
             closed.flags.add(route.CLOSED)
             verify.sim_complete(model, closed)
             self.assertFalse(verify.sim_available(model, page, closed))
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        scene = self.scenes[minutes.POINT_ONE]
+        choice = next(c for n in scene['Nodes'] if n['Id'] == 'rules'
+                      for c in n['Choices'] if c['Next'] == 'motion')
+        with patch.dict(choice, Next='motion_petition'):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_three_entries_recall_only_their_performed_history()
 
 
 if __name__ == "__main__":

@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 from tests.story_fixture import fresh_story
 
 from story_format import c, n
@@ -11,6 +12,16 @@ from tools import rrt_verify, harem_schedule_lint
 
 ROOT = Path(__file__).resolve().parents[1]
 
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
 
 class HouseholdEngine(unittest.TestCase):
     def test_verifier_recognizes_engine_word_budget_keys(self):
@@ -51,7 +62,7 @@ class HouseholdEngine(unittest.TestCase):
         harem_caps.apply(payload)
         cap = payload['Counts']['household.cap.ch5.arcs']
         self.assertEqual(cap['Min'], 4)
-        self.assertEqual(len(cap['Of']), 5)
+        self.assertEqual(set(cap['Of']), {'arc.%d.seen' % i for i in range(5)})
         self.assertTrue(all(s['Forbids'] for s in scenes if s.get('HouseholdArcStart')))
         self.assertTrue(all(not s['Forbids'] for s in scenes if not s.get('HouseholdArcStart')))
 
@@ -62,7 +73,7 @@ class HouseholdEngine(unittest.TestCase):
                      Etudes={'native': 'a' * 32}, Scenes=[{'Id': 'producer', 'Nodes': [{'Choices': [{'Set': ['witness.a']}]}]}])
         self.assertTrue(harem_schedule_lint.delayed_clock_errors(scene, story))
         scene['RequiresAnyGroups'] = [['witness.a', 'witness.b']]
-        story['Scenes'][0]['Nodes'][0]['Choices'][0]['Set'].append('witness.b')
+        saved_answer(story['Scenes'][0]['Nodes'][0]['Choices'], 0)['Set'].append('witness.b')
         self.assertEqual(harem_schedule_lint.delayed_clock_errors(scene, story), [])
 
     def test_pending_page_is_false_and_stub_opens_only_current_trickster_stance(self):
@@ -122,3 +133,13 @@ class HouseholdEngine(unittest.TestCase):
         self.assertFalse(rrt_verify.sim_available(model, scene, state))
         state.flags.add(key)
         self.assertTrue(rrt_verify.sim_available(model, scene, state))
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        apply = harem_caps.apply
+        def altered(payload):
+            result = apply(payload)
+            payload['Counts']['household.cap.ch5.arcs']['Of'].remove('arc.0.seen')
+            return result
+        with patch.object(harem_caps, 'apply', altered):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_arc_cap_affects_only_starts_and_protected_discoveries_stay_uncapped()

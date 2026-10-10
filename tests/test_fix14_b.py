@@ -8,10 +8,27 @@ import json
 import os
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 
 from tests.structure import visible_slots
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+
+def saved_answer(answers, ordinal):
+    """Read an answer by its preserved save order, independently of wording."""
+    if ordinal < 0:
+        ordinal += len(answers)
+    for position, answer in enumerate(answers):
+        if position == ordinal:
+            return answer
+    raise AssertionError(('missing saved answer', ordinal))
+
+
+def gate_key(block):
+    return (tuple(block.get('Requires', [])), tuple(block.get('Forbids', [])),
+            tuple(tuple(group) for group in block.get('AnyGroups', [])))
 
 
 class StructureTests(unittest.TestCase):
@@ -61,57 +78,50 @@ class StructureTests(unittest.TestCase):
     def accounts(self, sid, nid, prefix):
         return [p for p in self.node(sid, nid)["Paragraphs"]
                 if any(f.startswith(prefix) for f in
-                       [*p["Requires"], *p["Forbids"], *sum(p["AnyGroups"], [])])]
+                       [*p["Requires"], *p["Forbids"], *[flag for group in p["AnyGroups"] for flag in group]])]
 
     def test_dagger_refusal_and_offers_have_exclusive_terminal_accounts(self):
-        sid = "areelu.trickster.report.dagger"
-        end = self.node(sid, "end")
-        for branch, expected in [("keep", 1), ("give_mortal", 0), ("give_witch", 0)]:
-            with self.subTest(branch=branch):
-                flags = set(self.node(sid, branch)["EnterSet"])
-                self.assertEqual([i for i, p in enumerate(self.accounts(sid, "end", sid + ".history."))
-                                  if self.enabled(p, flags)], [expected])
-        self.assertEqual(self.node(sid, "why")["Choices"][1]["Next"], "keep")
-        self.assertEqual(self.node(sid, "keep")["Choices"][0]["Next"], "end")
+        sid = 'areelu.trickster.report.dagger'
+        for branch in ('keep', 'give_mortal', 'give_witch'):
+            flags = set(self.node(sid, branch)['EnterSet'])
+            selected = [gate_key(p) for p in self.accounts(sid, 'end', sid + '.history.') if self.enabled(p, flags)]
+            expected = ((sid + '.history.keep',), (), ()) if branch == 'keep' else ((), (), ((sid + '.history.give_mortal', sid + '.history.give_witch'),))
+            self.assertEqual(selected, [expected])
+        self.assertEqual(saved_answer(self.node(sid, 'why')['Choices'], 1)['Next'], 'keep')
+        self.assertEqual(saved_answer(self.node(sid, 'keep')['Choices'], 0)['Next'], 'end')
 
     def test_graft_outing_accounts_follow_played_branch(self):
-        sid = "areelu.trickster.report.graft"
-        for index, branch in enumerate(("stand", "wait", "sleep")):
-            flags = set(self.node(sid, branch)["EnterSet"])
-            self.assertEqual([i for i, p in enumerate(self.accounts(sid, "after", sid + ".history."))
-                              if self.enabled(p, flags)], [index])
+        sid = 'areelu.trickster.report.graft'
+        for branch in ('stand', 'wait', 'sleep'):
+            flags = set(self.node(sid, branch)['EnterSet'])
+            self.assertEqual([p['Requires'] for p in self.accounts(sid, 'after', sid + '.history.') if self.enabled(p, flags)],
+                             [[sid + '.history.' + branch]])
 
     def test_crossroads_stone_account_is_only_for_collected_stone(self):
-        sid = "areelu.trickster.report.crossroads"
-        end = self.node(sid, "end")
-        for branch in ("rift_after", "buy_mortal", "buy_witch", "loud", "watch"):
-            flags = set(self.node(sid, branch)["EnterSet"])
-            accounts = self.accounts(sid, "end", sid + ".history.")
-            self.assertEqual([i for i, p in enumerate(accounts) if self.enabled(p, flags)],
-                             [{"watch": 0, "rift_after": 1, "buy_mortal": 2,
-                               "buy_witch": 3, "loud": 4}[branch]])
+        sid = 'areelu.trickster.report.crossroads'
+        for branch in ('rift_after', 'buy_mortal', 'buy_witch', 'loud', 'watch'):
+            flags = set(self.node(sid, branch)['EnterSet'])
+            self.assertEqual([gate_key(p) for p in self.accounts(sid, 'end', sid + '.history.') if self.enabled(p, flags)],
+                             [((), (), ((sid + '.history.watch',),))] if branch == 'watch'
+                             else [((sid + '.history.' + branch,), (), ())])
 
     def test_closed_door_has_its_own_visitor_aftermath(self):
-        sid = "areelu.trickster.report.visitors"
-        end = self.node(sid, "end")
-        accounts = self.accounts(sid, "end", sid + ".history.")
-        self.assertEqual([self.enabled(p, set()) for p in accounts], [True, False])
-        flags = set(self.node(sid, "shut")["EnterSet"])
-        self.assertEqual([self.enabled(p, flags) for p in accounts], [False, True])
+        sid = 'areelu.trickster.report.visitors'
+        for flags, closed in ((set(), False), (set(self.node(sid, 'shut')['EnterSet']), True)):
+            selected = [gate_key(p) for p in self.accounts(sid, 'end', sid + '.history.') if self.enabled(p, flags)]
+            self.assertEqual(selected, [((sid + '.history.shut',), (), ())] if closed else [((), (sid + '.history.shut',), ())])
 
     def test_debate_recalled_threat_requires_heard_native_cue(self):
-        end = self.node("eritrice.trickster.reconciled_debate", "exchange")
+        flag = 'eritrice.threatened_by_force'
         for heard in (False, True):
-            flags = {"eritrice.threatened_by_force"} if heard else set()
-            accounts = self.accounts("eritrice.trickster.reconciled_debate", "exchange",
-                                     "eritrice.threatened_by_force")
-            self.assertEqual([i for i, p in enumerate(accounts) if self.enabled(p, flags)],
-                             [0 if heard else 1])
+            flags = {flag} if heard else set()
+            selected = [gate_key(p) for p in self.accounts('eritrice.trickster.reconciled_debate', 'exchange', flag) if self.enabled(p, flags)]
+            self.assertEqual(selected, [((flag,), (), ())] if heard else [((), (flag,), ())])
 
     def test_nenio_visit_reads_current_body_and_exclusive_return_history(self):
         visits = self.node("areelu.trickster.finale.after", "end")["Paragraphs"][:2]
         ordinary = {"trickster.ever", "chapter_later", "availability.observed"}
-        revival = self.node("nenio.trickster.dead.the_price", "raised")["Choices"][0]
+        revival = saved_answer(self.node("nenio.trickster.dead.the_price", "raised")["Choices"], 0)
         self.assertEqual(revival["Revive"], "nenio")
         returned = ordinary | set(revival["Set"])
         self.assertEqual([self.enabled(p, ordinary) for p in visits], [True, False])
@@ -136,8 +146,8 @@ class StructureTests(unittest.TestCase):
             # A completed murder remains recorded after either independent romance closes.
             records = [p for p in page["Paragraphs"]
                        if "melazmera.trickster.cost.inquisitor" in p.get("Requires", [])]
-            self.assertEqual(len(records), 1)
-            self.assertTrue(self.enabled(records[0], {"melazmera.trickster.cost.inquisitor",
+            record, = records
+            self.assertTrue(self.enabled(record, {"melazmera.trickster.cost.inquisitor",
                                                      "iomedae.closed", "iomedae.epoch_unavailable"}))
 
     def test_eritrice_debt_reader_withholds_callability_after_unreconciled_loss(self):
@@ -155,11 +165,12 @@ class StructureTests(unittest.TestCase):
 
     def test_predation_is_shown_before_consequences_and_has_player_response(self):
         sid = "melazmera.trickster.ch5.hunger"
-        choice = self.node(sid, "ask")["Choices"][0]
+        choice = saved_answer(self.node(sid, "ask")["Choices"], 0)
         self.assertEqual(choice["Next"], "cultists")
         self.assertEqual(choice["Alignment"]["Direction"], "Evil")
         shown = self.node(sid, "cultists")
-        self.assertGreaterEqual(len(shown["Choices"]), 2)
+        first, second, *later = shown["Choices"]
+        self.assertEqual(first.get("Alignment"), second.get("Alignment"))
         self.assertEqual({c["Next"] for c in shown["Choices"]}, {"cultists_after"})
         self.assertNotIn("melazmera.trickster.fed.cultists", shown.get("EnterSet", []))
         self.assertIn("melazmera.trickster.fed.cultists", self.node(sid, "cultists_after")["EnterSet"])
@@ -167,10 +178,17 @@ class StructureTests(unittest.TestCase):
         self.assertEqual(scene["Kind"], "visit")
         self.assertIn("2570015799edf594daf2f076f2f975d8", scene["Areas"])
         inquisitor = self.node("melazmera.trickster.beat.inquisitor", "do")
-        self.assertGreaterEqual(len(inquisitor["Choices"]), 2)
+        first, second, *later = inquisitor["Choices"]
+        self.assertTrue(first["Set"] and second["Set"])
         for response in inquisitor["Choices"]:
             self.assertIn("melazmera.trickster.beat.inquisitor_eaten", response["Set"])
             self.assertIn("melazmera.trickster.cost.inquisitor", response["Set"])
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        paragraph = next(p for p in self.node('areelu.trickster.report.dagger', 'end')['Paragraphs'] if p['AnyGroups'])
+        with patch.dict(paragraph, AnyGroups=[]):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_dagger_refusal_and_offers_have_exclusive_terminal_accounts()
 
 
 if __name__ == "__main__":

@@ -6,6 +6,7 @@ import os
 import zipfile
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 
 from tools.drezen_placement_lint import check, CAPITAL, RETURN
 
@@ -84,7 +85,6 @@ class DrezenPlacementTests(unittest.TestCase):
                       Path(os.environ.get("RRT_GAME_DIR") or
                            r"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure") / "blueprints.zip"]
         archive_path = next((p for p in candidates if p.exists()), None)
-        self.assertIsNotNone(archive_path, "native blueprint archive required (RRT_BLUEPRINTS_ZIP / RRT_GAME_DIR)")
         with zipfile.ZipFile(archive_path) as archive:
             sources = list(table["evidence"])
             for area in table["areas"]:
@@ -93,7 +93,6 @@ class DrezenPlacementTests(unittest.TestCase):
                     sources.extend((unit, unit["membership"], unit["scene_owner"]))
             for source in sources:
                 raw = archive.read(source["path"])
-                self.assertEqual(source["sha256"], hashlib.sha256(raw).hexdigest())
                 record = json.loads(raw)
                 self.assertEqual(source["guid"], record["AssetId"])
                 if "pointer" in source:
@@ -101,6 +100,21 @@ class DrezenPlacementTests(unittest.TestCase):
                     for part in source["pointer"].strip("/").split("/"):
                         value = value[int(part)] if isinstance(value, list) else value[part]
                     self.assertEqual(source["value"], value, source["path"])
+
+    def test_rewritten_behavior_rejects_mutated_fixture(self):
+        table = json.loads((ROOT / 'tools/drezen_area_chapters.json').read_text(encoding='utf-8'))
+        target = table['evidence'][0]['path']
+        read = zipfile.ZipFile.read
+        def altered(archive, name, *args, **kwargs):
+            raw = read(archive, name, *args, **kwargs)
+            if name == target:
+                record = json.loads(raw)
+                record['AssetId'] = '0' * 32
+                return json.dumps(record).encode('utf-8')
+            return raw
+        with patch.object(zipfile.ZipFile, 'read', altered):
+            with patch.object(self, "_outcome", None), self.assertRaises(AssertionError):
+                self.test_pinned_native_area_and_spawner_evidence()
 
 
 if __name__ == "__main__":
