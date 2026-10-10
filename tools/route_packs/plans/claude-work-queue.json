@@ -1,15 +1,5 @@
 [
   {
-    "scene": "household.ensemble.ch5.arrows",
-    "node": "start",
-    "woman": "delamere",
-    "beat": "Stage the living Delamere arrows exchange through the approved narrated visit or a real living contact; no undead stand-in. Preserve earned return, closure and the other women's existing agendas.",
-    "why": "This registered Delamere interaction is unreachable. Its ParticipantContacts.delamere declares Kind=\"body\" with Options=[]. Rules.ParticipantContactsAvailable requires a qualifying unit option for every body contact, so no earned campaign state can satisfy it. contract_j01 explicitly leaves this for J10. The lack of a living native prefab justifies avoiding an undead spawn, but does not make this completed interaction playable.",
-    "finding": "delamere:D05",
-    "ruling": "r5-S1",
-    "dependency": "storylines/harem_rows/ensemble_ch5.py: Delamere body Options=[] cannot qualify. A living actor or the existing narrated-visit delivery requires the section 7 expanded scene/presentation scope."
-  },
-  {
     "scene": "chadali.wagers.her_worshippers",
     "node": "open",
     "woman": "chadali",

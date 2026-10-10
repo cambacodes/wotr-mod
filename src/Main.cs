@@ -1282,9 +1282,10 @@ namespace Tirabade
         {
             if (!presenceClicks.TryGetValue(key, out var click)) return false;
             var guest = presences.FirstOrDefault(p => p.Key == key);
-            var user = Game.Instance?.Player?.MainCharacter.Value;
-            if (guest?.Actor == null || user == null || !CanOpenPresenceHub(guest)) return false;
-            Game.Instance.DialogController.StartDialogWithUnit(presenceHubs[key], guest.Actor, user);
+            var game = Game.Instance;
+            var user = game?.Player?.MainCharacter.Value;
+            if (game == null || guest?.Actor == null || user == null || !CanOpenPresenceHub(guest)) return false;
+            game.DialogController.StartDialogWithUnit(presenceHubs[key], guest.Actor, user);
             return true;
         }
 

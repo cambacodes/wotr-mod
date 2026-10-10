@@ -12,7 +12,6 @@ class EnsembleCh5Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         # Row behavior is exercised before the final current-contact pass.
-        # The shipped Delamere contact remains a declared D05 delivery debt.
         cls.story = row_registration_fixture(row)
         cls.story["Counts"].pop("household.cap.ch5.dynamic", None)
         harem_caps.apply(cls.story)
@@ -35,12 +34,15 @@ class EnsembleCh5Tests(unittest.TestCase):
     def available(self, **kwargs):
         return v.sim_available(self.model, self.scene, self.state(**kwargs))
 
-    def test_full_export_withholds_unimplemented_delamere_body(self):
+    def test_full_export_delivers_earned_narrated_visit(self):
         story = fresh_story()
         model = v.Model(story)
         scene = model.by_id[row.SCENE_ID]
-        self.assertEqual(scene["ParticipantContacts"]["delamere"]["Options"], [])
-        self.assertFalse(v.sim_available(model, scene, self.state()))
+        self.assertTrue(scene["Remote"])
+        self.assertEqual(scene["Kind"], "visit")
+        self.assertTrue(scene["TableHosted"])
+        self.assertFalse(scene["ParticipantContacts"])
+        self.assertTrue(v.sim_available(model, scene, self.state()))
 
     def test_live_table_ch5_only_and_no_page_substitutes(self):
         self.assertTrue(self.available())

@@ -308,21 +308,27 @@
       "findings": [
         "delamere:D05"
       ],
-      "status": "blocked",
+      "status": "fixed",
       "requirement": "Resolve its presentation contract: either supply an authored living actor and real contact option, or deliver the interaction through the route's existing narrated-visit mechanism without declaring an unsupported physical Table contact. Preserve earned presence and closure guards, and add a positive reachability test.",
-      "checks": {},
-      "blockers": [
-        "storylines/harem_rows/ensemble_ch5.py: Delamere body Options=[] cannot qualify. A living actor or the existing narrated-visit delivery requires the section 7 expanded scene/presentation scope."
-      ],
+      "checks": {
+        "Remote": true,
+        "Kind": "visit",
+        "TableHosted": true,
+        "InteractionHub": "household.table",
+        "ParticipantContacts": {},
+        "Chapters": [5],
+        "Areas": ["2570015799edf594daf2f076f2f975d8"]
+      },
+      "blockers": [],
       "delivery": {
-        "entry": null,
+        "entry": "bounded narrated visit",
         "areas": [
           "2570015799edf594daf2f076f2f975d8"
         ],
         "participants": [],
         "completion_action": null
       },
-      "requires_world_action": true,
+      "requires_world_action": false,
       "action_kinds": []
     },
     {
