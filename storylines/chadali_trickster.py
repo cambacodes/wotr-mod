@@ -444,4 +444,4 @@ _letter["Nodes"].extend([
 ])
 
 
-_spine[P + "epilogue.declined"]["Nodes"][0]["Paragraphs"].append(p('[PROSE PENDING: chadali.trickster.epilogue.declined/page - account for the declined question in every eligible history including no coin or luck forfeiture; do not imply commitment or revive a forfeited coin]'))
+_spine[P + "epilogue.declined"]["Nodes"][0]["Paragraphs"].append(p('{n}Chadali told her worshippers she was not at all sulking about a certain Commander who had never once asked her properly. Then she sulked through a whole evening of petitions.{/n} "It\'s fine! It\'s a perfectly good friendship!" {n}she informed the shrine candles, quite loudly.{/n} "Some people just don\'t know luck when it finds them!" {n}She blew out the nearest candle, thought better of it, and lit it again.{/n}'))

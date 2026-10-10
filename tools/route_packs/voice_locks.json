@@ -258,7 +258,7 @@
     "areelu.trickster.report.graft": {
       "owner": "claude",
       "since": "b2c3ef01",
-      "text_sha": "e1f0dd8bc2a961702f7759b6b3773fdffc4b0f753a1640c7742e989ea8c1bb5d"
+      "text_sha": "127b2c1a9c2d651cabe210643228df814eb7d11c0f3336bc30d800caec0b0da2"
     },
     "areelu.trickster.report.sarkoris": {
       "owner": "claude",
@@ -293,7 +293,7 @@
     "areelu.trickster.report.dagger": {
       "owner": "claude",
       "since": "b2c3ef01",
-      "text_sha": "35abe9991856b4f4ef06ac41e228be17c0818fef406a1cdf83c1dc3f61216626"
+      "text_sha": "48abb6c349b23ee1bf66046f74b29c602ea3354392e07cdd8a0a18ab52f86fe1"
     },
     "areelu.trickster.report.lady": {
       "owner": "claude",
@@ -303,7 +303,7 @@
     "areelu.trickster.report.visitors": {
       "owner": "claude",
       "since": "b2c3ef01",
-      "text_sha": "7eeed1eda576f0822a2e2ad8c4eed113ac0ce4abf45f42830fbcca3b41d6c0b8"
+      "text_sha": "21f674b2b644b8f37395154b1c4b71126d4f15895c3554a5fc195c1434595fb1"
     },
     "areelu.trickster.report.rival": {
       "owner": "claude",
@@ -2588,7 +2588,7 @@
     "areelu.trickster.report.crossroads": {
       "owner": "claude",
       "since": "1dc46d5d",
-      "text_sha": "ebbaf0d2981eec9d102153b335ed08dbbfebd08fccc02aea4934c691e450d669"
+      "text_sha": "97533de8b1984802b41ecaa1152b7aab892d2ed3db7f30fdb77dc4090e9c4c3f"
     },
     "areelu.trickster.report.incursion": {
       "owner": "claude",

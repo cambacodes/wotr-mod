@@ -31,7 +31,7 @@ def integrate(payload):
           c("Continue", "record", flags=(route.STARTED, route.MINUTES_READ, route.STRAIGHT)),
           paragraphs=(p(EXCHANGE_TEXT, requires=(route.THREAT,)),
                       p(BETRAYAL_TEXT, forbids=(route.THREAT,)),
-                      p('[PROSE PENDING: eritrice.trickster.reconciled_debate/exchange - introduce the voluntary private exchange after the earned sitting, for both heard-threat and bypassed-threat histories without assuming either]'))),
+                      p('{n}She lays the quill across the scroll, nib clear of the page, and yields the floor with a small inclination of the head. Your answer takes some time. She hears it out without a word, and a low growl rolls under it and is gone.{/n} "The chair has heard the Commander out. Let the minutes show that the chair held her peace for the length of it."'))),
         n("record", "Eritrice", RECORD_TEXT),
     ], requires=("trickster.now", route.RETURNED, route.VISIT),
        forbids=(route.CLOSED, route.MINUTES_READ, route.DECLINED, OPENING),
