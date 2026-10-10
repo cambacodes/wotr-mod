@@ -97,8 +97,8 @@
     },
     {
       "module": "tests/test_camellia_round2.py",
-      "sha256": "d1eafb64889314c454be84cfb6baa5a12e5481f76c89d576feff05e991b7eda6",
-      "input": "bundle"
+      "sha256": "08380949c03ed8d6239be67f2db9205c9ca3df8cf5e90cf49cc958faad45c0fb",
+      "input": "workspace"
     },
     {
       "module": "tests/test_canary_letters.py",
@@ -147,8 +147,8 @@
     },
     {
       "module": "tests/test_contract_j01.py",
-      "sha256": "d6838256bc90eaa599903d04c3342bc4663533a2511fde66d9343aae37a6678d",
-      "input": "bundle"
+      "sha256": "52e6b0dc43872f92f2ff71376199a37f175f0d065b2155b45736085aa8d7bb24",
+      "input": "workspace"
     },
     {
       "module": "tests/test_crossroute_lint.py",
@@ -237,8 +237,8 @@
     },
     {
       "module": "tests/test_eliandra_round2.py",
-      "sha256": "38cbd0864ba552b8c3a8caab6bc4745354f0cb86411703eae932321a324a21f9",
-      "input": "bundle"
+      "sha256": "669df9c6928f2e5d8ef1fa872302339ebfe269167e154ea3a9cbe573fc0f7ed1",
+      "input": "workspace"
     },
     {
       "module": "tests/test_elyanka_cloud.py",
@@ -307,8 +307,8 @@
     },
     {
       "module": "tests/test_eritrice_round4.py",
-      "sha256": "8e664fe4c00fe1f579f0679217c93412c28991c4124449f30b26ac55ad868191",
-      "input": "bundle"
+      "sha256": "327511a0ccef9ec1f187c6cea010fe8461800fb680280fa142ee4ce43fc7db1b",
+      "input": "workspace"
     },
     {
       "module": "tests/test_etude_lifecycle.py",
@@ -334,6 +334,11 @@
       "module": "tests/test_fix15.py",
       "sha256": "26a5c29b04d036ac952a8907b8347fe35a04f2e34aa3c0888a08e9e6b836cb2b",
       "input": "bundle"
+    },
+    {
+      "module": "tests/test_fix17b_mutations.py",
+      "sha256": "d2aacc69beed39a65a532ce9a84ba7c94c0d301cd6ce8c4c86528f26fe6a10c7",
+      "input": "workspace"
     },
     {
       "module": "tests/test_foresight_echo.py",
@@ -732,8 +737,8 @@
     },
     {
       "module": "tests/test_herrax_round2.py",
-      "sha256": "609dc70bd0d01f8982bcd1da904693d89d222f8ed33b1c8b30ff1098372dec99",
-      "input": "bundle"
+      "sha256": "7d1b9748e6b0e9c9c591c38148d4679a8181bebca4813029382be6c228a5b765",
+      "input": "workspace"
     },
     {
       "module": "tests/test_herrax_round4.py",
@@ -992,8 +997,8 @@
     },
     {
       "module": "tests/test_nidalynn_partner_claim.py",
-      "sha256": "e018bf88c7edc4fddc6388be7037dae78694b6ecc84bc22333fd4a97c8bd5aab",
-      "input": "bundle"
+      "sha256": "13015cb11e062be8e7895d2841eda8607b6c9ba674d3983c7934cbb4b1b5602c",
+      "input": "workspace"
     },
     {
       "module": "tests/test_nidalynn_round2.py",
@@ -1022,8 +1027,8 @@
     },
     {
       "module": "tests/test_nocticula_round2.py",
-      "sha256": "0a68ae74017deee973b7552cb9ee53691c6ad9da3784121d14c4335fee9be3f0",
-      "input": "bundle"
+      "sha256": "17fb7e35b073dda62e240032be6a957aff2036c25556e1331435538cdb5504ea",
+      "input": "workspace"
     },
     {
       "module": "tests/test_nurah_round2.py",
@@ -1407,9 +1412,9 @@
     }
   ],
   "counts": {
-    "behavioural": 1239,
-    "mixed": 874,
-    "pinned": 118
+    "behavioural": 1244,
+    "mixed": 871,
+    "pinned": 117
   },
   "modules": {
     "tests/build_fixture_story.py": {
@@ -1524,7 +1529,7 @@
       "behavioural": 3,
       "pinned": 0,
       "mixed": 5,
-      "pinned_assertions": 15
+      "pinned_assertions": 11
     },
     "tests/test_canary_letters.py": {
       "behavioural": 5,
@@ -1689,10 +1694,10 @@
       "pinned_assertions": 13
     },
     "tests/test_eliandra_round2.py": {
-      "behavioural": 2,
+      "behavioural": 3,
       "pinned": 0,
-      "mixed": 6,
-      "pinned_assertions": 16
+      "mixed": 5,
+      "pinned_assertions": 15
     },
     "tests/test_elyanka_cloud.py": {
       "behavioural": 1,
@@ -1773,10 +1778,10 @@
       "pinned_assertions": 21
     },
     "tests/test_eritrice_round4.py": {
-      "behavioural": 0,
+      "behavioural": 1,
       "pinned": 0,
-      "mixed": 5,
-      "pinned_assertions": 24
+      "mixed": 4,
+      "pinned_assertions": 21
     },
     "tests/test_etude_lifecycle.py": {
       "behavioural": 16,
@@ -2283,10 +2288,10 @@
       "pinned_assertions": 26
     },
     "tests/test_herrax_round2.py": {
-      "behavioural": 5,
+      "behavioural": 6,
       "pinned": 1,
-      "mixed": 7,
-      "pinned_assertions": 21
+      "mixed": 6,
+      "pinned_assertions": 16
     },
     "tests/test_herrax_round4.py": {
       "behavioural": 1,
@@ -2595,10 +2600,10 @@
       "pinned_assertions": 10
     },
     "tests/test_nidalynn_partner_claim.py": {
-      "behavioural": 2,
-      "pinned": 1,
+      "behavioural": 3,
+      "pinned": 0,
       "mixed": 18,
-      "pinned_assertions": 112
+      "pinned_assertions": 102
     },
     "tests/test_nidalynn_round2.py": {
       "behavioural": 0,
@@ -2634,7 +2639,7 @@
       "behavioural": 1,
       "pinned": 0,
       "mixed": 6,
-      "pinned_assertions": 13
+      "pinned_assertions": 8
     },
     "tests/test_nurah_round2.py": {
       "behavioural": 2,
@@ -3091,15 +3096,21 @@
       "pinned": 0,
       "mixed": 0,
       "pinned_assertions": 0
+    },
+    "tests/test_fix17b_mutations.py": {
+      "behavioural": 1,
+      "pinned": 0,
+      "mixed": 0,
+      "pinned_assertions": 0
     }
   },
   "cand14_failing_modules": {
     "test_nidalynn_partner_claim": {
       "classification": "mixed",
-      "behavioural": 2,
-      "pinned": 1,
+      "behavioural": 3,
+      "pinned": 0,
       "mixed": 18,
-      "pinned_assertions": 112
+      "pinned_assertions": 102
     },
     "test_harem_row_s49": {
       "classification": "mixed",
@@ -3138,10 +3149,10 @@
     },
     "test_herrax_round2": {
       "classification": "mixed",
-      "behavioural": 5,
+      "behavioural": 6,
       "pinned": 1,
-      "mixed": 7,
-      "pinned_assertions": 21
+      "mixed": 6,
+      "pinned_assertions": 16
     },
     "test_harem_row_registry": {
       "classification": "mixed",
@@ -5207,38 +5218,22 @@
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 41,
-          "reason": "player-visible text comparison or prose selector"
-        },
-        {
-          "line": 42,
-          "reason": "paragraph or choice index used as identity"
-        },
-        {
-          "line": 44,
-          "reason": "paragraph or choice index used as identity"
-        },
-        {
-          "line": 47,
-          "reason": "paragraph or choice index used as identity"
-        },
-        {
-          "line": 49,
+          "line": 55,
           "reason": "paragraph or choice index used as identity"
         }
       ],
       "protects": "slots are reachable and keep each branch successor",
-      "assertion_count": 7
+      "assertion_count": 6
     },
     {
       "module": "tests/test_camellia_round2.py",
       "class": "CamelliaRound2Tests",
       "function": "test_first_coffin_delivery_does_not_need_placement_failure",
-      "line": 51,
+      "line": 61,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 59,
+          "line": 69,
           "reason": "paragraph or choice index used as identity"
         }
       ],
@@ -5249,15 +5244,15 @@
       "module": "tests/test_camellia_round2.py",
       "class": "CamelliaRound2Tests",
       "function": "test_existing_charges_precede_irreversible_consequences",
-      "line": 61,
+      "line": 71,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 62,
+          "line": 72,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 69,
+          "line": 79,
           "reason": "paragraph or choice index used as identity"
         }
       ],
@@ -5268,31 +5263,31 @@
       "module": "tests/test_camellia_round2.py",
       "class": "CamelliaRound2Tests",
       "function": "test_prices_and_confessions_are_collected_not_inferred_from_a_kiss",
-      "line": 71,
+      "line": 81,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 72,
-          "reason": "player-visible text comparison or prose selector"
-        },
-        {
-          "line": 75,
-          "reason": "paragraph or choice index used as identity"
-        },
-        {
-          "line": 77,
-          "reason": "paragraph or choice index used as identity"
-        },
-        {
-          "line": 79,
-          "reason": "paragraph or choice index used as identity"
-        },
-        {
-          "line": 81,
-          "reason": "player-visible text comparison or prose selector"
-        },
-        {
           "line": 82,
+          "reason": "player-visible text comparison or prose selector"
+        },
+        {
+          "line": 85,
+          "reason": "paragraph or choice index used as identity"
+        },
+        {
+          "line": 87,
+          "reason": "paragraph or choice index used as identity"
+        },
+        {
+          "line": 89,
+          "reason": "paragraph or choice index used as identity"
+        },
+        {
+          "line": 91,
+          "reason": "player-visible text comparison or prose selector"
+        },
+        {
+          "line": 92,
           "reason": "player-visible text comparison or prose selector"
         }
       ],
@@ -5303,7 +5298,7 @@
       "module": "tests/test_camellia_round2.py",
       "class": "CamelliaRound2Tests",
       "function": "test_geography_current_path_and_refusal",
-      "line": 84,
+      "line": 94,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "geography current path and refusal",
@@ -5313,7 +5308,7 @@
       "module": "tests/test_camellia_round2.py",
       "class": "CamelliaRound2Tests",
       "function": "test_either_resurrection_debt_reads_without_requiring_both",
-      "line": 92,
+      "line": 102,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "either resurrection debt reads without requiring both",
@@ -5323,11 +5318,11 @@
       "module": "tests/test_camellia_round2.py",
       "class": "CamelliaRound2Tests",
       "function": "test_one_current_victim_suffices_for_oath_without_summoning_departed_women",
-      "line": 97,
+      "line": 107,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 100,
+          "line": 110,
           "reason": "registry, scene, entry, paragraph, choice or occurrence count"
         }
       ],
@@ -6347,30 +6342,34 @@
       "module": "tests/test_contract_j01.py",
       "class": "J01Tests",
       "function": "test_reference_manifest_is_exact_and_never_exempts_new_live_action",
-      "line": 24,
+      "line": 22,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 26,
-          "reason": "registry, scene, entry, paragraph, choice or occurrence count"
-        },
-        {
-          "line": 35,
+          "line": 52,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 35,
+          "line": 52,
+          "reason": "player-visible text comparison or prose selector"
+        },
+        {
+          "line": 53,
+          "reason": "paragraph or choice index used as identity"
+        },
+        {
+          "line": 53,
           "reason": "player-visible text comparison or prose selector"
         }
       ],
       "protects": "reference manifest is exact and never exempts new live action",
-      "assertion_count": 4
+      "assertion_count": 5
     },
     {
       "module": "tests/test_contract_j01.py",
       "class": "J01Tests",
       "function": "test_native_professional_guard_preserves_refusal_without_reopening_romance",
-      "line": 41,
+      "line": 59,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "native professional guard preserves refusal without reopening romance",
@@ -6380,7 +6379,7 @@
       "module": "tests/test_contract_j01.py",
       "class": "J01Tests",
       "function": "test_summit_native_audience_is_not_nocticula_romance",
-      "line": 56,
+      "line": 74,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "summit native audience is not nocticula romance",
@@ -6390,7 +6389,7 @@
       "module": "tests/test_contract_j01.py",
       "class": "J01Tests",
       "function": "test_verified_native_recovery_context_is_not_an_unchecked_whole_route_exception",
-      "line": 68,
+      "line": 86,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "verified native recovery context is not an unchecked whole route exception",
@@ -6400,17 +6399,17 @@
       "module": "tests/test_contract_j01.py",
       "class": "J01Tests",
       "function": "test_s08_seal_reply_remains_a_channel_and_is_not_emitted_by_j01",
-      "line": 83,
+      "line": 101,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "s08 seal reply remains a channel and is not emitted by j01",
-      "assertion_count": 4
+      "assertion_count": 7
     },
     {
       "module": "tests/test_contract_j01.py",
       "class": "J01Tests",
       "function": "test_all_emitted_table_and_private_participants_have_declared_contact_types",
-      "line": 98,
+      "line": 127,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "all emitted table and private participants have declared contact types",
@@ -6420,7 +6419,7 @@
       "module": "tests/test_contract_j01.py",
       "class": "J01Tests",
       "function": "test_arueshalae_seat_does_not_import_another_rows_native_recruitment",
-      "line": 110,
+      "line": 139,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "arueshalae seat does not import another rows native recruitment",
@@ -6430,7 +6429,7 @@
       "module": "tests/test_contract_j01.py",
       "class": "J01Tests",
       "function": "test_body_witness_cannot_be_redefined_as_a_letter",
-      "line": 121,
+      "line": 150,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "body witness cannot be redefined as a letter",
@@ -6440,7 +6439,7 @@
       "module": "tests/test_contract_j01.py",
       "class": "J01Tests",
       "function": "test_herrax_history_remains_readable_after_the_named_women_leave",
-      "line": 128,
+      "line": 157,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "herrax history remains readable after the named women leave",
@@ -6450,7 +6449,7 @@
       "module": "tests/test_contract_j01.py",
       "class": "J01Tests",
       "function": "test_ghost_is_not_a_body_and_owned_remote_declarations_survive",
-      "line": 138,
+      "line": 167,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "ghost is not a body and owned remote declarations survive",
@@ -10745,15 +10744,10 @@
       "class": "EliandraRoundTwoTests",
       "function": "test_all_five_slot_briefs_match_their_live_defaults",
       "line": 113,
-      "classification": "mixed",
-      "pinned_assertions": [
-        {
-          "line": 122,
-          "reason": "player-visible text comparison or prose selector"
-        }
-      ],
+      "classification": "behavioural",
+      "pinned_assertions": [],
       "protects": "all five slot briefs match their live defaults",
-      "assertion_count": 2
+      "assertion_count": 6
     },
     {
       "module": "tests/test_elyanka_cloud.py",
@@ -12602,23 +12596,10 @@
       "class": "EritriceRoundFourTests",
       "function": "test_repeat_night_and_morning_share_position",
       "line": 72,
-      "classification": "mixed",
-      "pinned_assertions": [
-        {
-          "line": 75,
-          "reason": "player-visible text comparison or prose selector"
-        },
-        {
-          "line": 76,
-          "reason": "player-visible text comparison or prose selector"
-        },
-        {
-          "line": 78,
-          "reason": "player-visible text comparison or prose selector"
-        }
-      ],
+      "classification": "behavioural",
+      "pinned_assertions": [],
       "protects": "repeat night and morning share position",
-      "assertion_count": 3
+      "assertion_count": 6
     },
     {
       "module": "tests/test_etude_lifecycle.py",
@@ -13381,6 +13362,16 @@
       ],
       "protects": "carrier murder is shown before retry completion",
       "assertion_count": 11
+    },
+    {
+      "module": "tests/test_fix17b_mutations.py",
+      "class": "Fix17bMutationTests",
+      "function": "test_controls_pass_and_behavior_mutations_fail",
+      "line": 102,
+      "classification": "behavioural",
+      "pinned_assertions": [],
+      "protects": "controls pass and behavior mutations fail",
+      "assertion_count": 1
     },
     {
       "module": "tests/test_foresight_echo.py",
@@ -22624,7 +22615,7 @@
       "module": "tests/test_herrax_round2.py",
       "class": "HerraxRound2Tests",
       "function": "test_both_first_nights_reach_slot_and_breakfast",
-      "line": 39,
+      "line": 42,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "both first nights reach slot and breakfast",
@@ -22634,7 +22625,7 @@
       "module": "tests/test_herrax_round2.py",
       "class": "HerraxRound2Tests",
       "function": "test_refusal_never_reaches_intimacy",
-      "line": 50,
+      "line": 53,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "refusal never reaches intimacy",
@@ -22644,7 +22635,7 @@
       "module": "tests/test_herrax_round2.py",
       "class": "HerraxRound2Tests",
       "function": "test_hand_return_receipt_counts_only_observed_coin_return",
-      "line": 58,
+      "line": 61,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "hand return receipt counts only observed coin return",
@@ -22654,19 +22645,19 @@
       "module": "tests/test_herrax_round2.py",
       "class": "HerraxRound2Tests",
       "function": "test_late_face_to_face_decision_precedes_act",
-      "line": 66,
+      "line": 69,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 79,
+          "line": 82,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 79,
+          "line": 82,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 80,
+          "line": 83,
           "reason": "paragraph or choice index used as identity"
         }
       ],
@@ -22677,7 +22668,7 @@
       "module": "tests/test_herrax_round2.py",
       "class": "HerraxRound2Tests",
       "function": "test_repeat_visit_reaches_repeat_slot",
-      "line": 82,
+      "line": 85,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "repeat visit reaches repeat slot",
@@ -22687,54 +22678,33 @@
       "module": "tests/test_herrax_round2.py",
       "class": "HerraxRound2Tests",
       "function": "test_late_return_remembers_completed_punishments",
-      "line": 88,
-      "classification": "mixed",
-      "pinned_assertions": [
-        {
-          "line": 92,
-          "reason": "player-visible text comparison or prose selector"
-        },
-        {
-          "line": 100,
-          "reason": "player-visible text comparison or prose selector"
-        },
-        {
-          "line": 102,
-          "reason": "player-visible text comparison or prose selector"
-        },
-        {
-          "line": 103,
-          "reason": "player-visible text comparison or prose selector"
-        },
-        {
-          "line": 104,
-          "reason": "player-visible text comparison or prose selector"
-        }
-      ],
+      "line": 91,
+      "classification": "behavioural",
+      "pinned_assertions": [],
       "protects": "late return remembers completed punishments",
-      "assertion_count": 5
+      "assertion_count": 6
     },
     {
       "module": "tests/test_herrax_round2.py",
       "class": "HerraxRound2Tests",
       "function": "test_bet_collection_does_not_depend_on_reading_the_packet",
-      "line": 106,
+      "line": 113,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 110,
+          "line": 117,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 112,
+          "line": 119,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 113,
+          "line": 120,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 114,
+          "line": 121,
           "reason": "player-visible text comparison or prose selector"
         }
       ],
@@ -22745,11 +22715,11 @@
       "module": "tests/test_herrax_round2.py",
       "class": "HerraxRound2Tests",
       "function": "test_morevet_death_has_no_live_entry_or_unguarded_incoming_edge",
-      "line": 116,
+      "line": 123,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 120,
+          "line": 127,
           "reason": "player-visible text comparison or prose selector"
         }
       ],
@@ -22760,7 +22730,7 @@
       "module": "tests/test_herrax_round2.py",
       "class": "HerraxRound2Tests",
       "function": "test_folded_discovery_requires_current_body",
-      "line": 130,
+      "line": 137,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "folded discovery requires current body",
@@ -22770,15 +22740,15 @@
       "module": "tests/test_herrax_round2.py",
       "class": "HerraxRound2Tests",
       "function": "test_failed_sale_memories_do_not_award_a_sale",
-      "line": 137,
+      "line": 144,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 140,
+          "line": 147,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 141,
+          "line": 148,
           "reason": "player-visible text comparison or prose selector"
         }
       ],
@@ -22789,19 +22759,19 @@
       "module": "tests/test_herrax_round2.py",
       "class": "HerraxRound2Tests",
       "function": "test_court_question_has_local_answers_before_packet_continues",
-      "line": 145,
+      "line": 152,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 156,
+          "line": 163,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 157,
+          "line": 164,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 159,
+          "line": 166,
           "reason": "registry, scene, entry, paragraph, choice or occurrence count"
         }
       ],
@@ -22812,19 +22782,19 @@
       "module": "tests/test_herrax_round2.py",
       "class": "HerraxRound2Tests",
       "function": "test_morevet_absence_preserves_sentence_case_and_separate_observer",
-      "line": 167,
+      "line": 174,
       "classification": "pinned",
       "pinned_assertions": [
         {
-          "line": 172,
+          "line": 179,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 175,
+          "line": 182,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 176,
+          "line": 183,
           "reason": "player-visible text comparison or prose selector"
         }
       ],
@@ -22835,16 +22805,16 @@
       "module": "tests/test_herrax_round2.py",
       "class": "HerraxRound2Tests",
       "function": "test_all_four_briefs_have_reachable_default_nodes",
-      "line": 178,
+      "line": 185,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 192,
+          "line": 195,
           "reason": "player-visible text comparison or prose selector"
         }
       ],
       "protects": "all four briefs have reachable default nodes",
-      "assertion_count": 5
+      "assertion_count": 3
     },
     {
       "module": "tests/test_herrax_round4.py",
@@ -28540,49 +28510,35 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_frozen_scene_reader_and_shared_producer_contracts",
-      "line": 53,
+      "line": 66,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 49,
-          "reason": "paragraph or choice index used as identity",
-          "helper": "assert_paragraph"
-        },
-        {
-          "line": 50,
-          "reason": "paragraph or choice index used as identity",
-          "helper": "assert_paragraph"
-        },
-        {
-          "line": 50,
-          "reason": "player-visible text comparison or prose selector",
-          "helper": "assert_paragraph"
-        },
-        {
-          "line": 68,
-          "reason": "player-visible text comparison or prose selector"
-        },
-        {
-          "line": 70,
+          "line": 85,
           "reason": "registry, scene, entry, paragraph, choice or occurrence count"
         },
         {
-          "line": 78,
+          "line": 93,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 99,
+          "line": 114,
           "reason": "paragraph or choice index used as identity"
+        },
+        {
+          "line": 173,
+          "reason": "paragraph or choice index used as identity",
+          "helper": "assert_predicate_present"
         }
       ],
-      "protects": "B01-B28: compare every frozen structural field, text hash and save ID.",
-      "assertion_count": 12
+      "protects": "B01-B28: preserve gates, ordered choices, effects and save IDs.",
+      "assertion_count": 14
     },
     {
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_every_reveal_answer_records_the_disguise",
-      "line": 101,
+      "line": 116,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "every reveal answer records the disguise",
@@ -28592,11 +28548,11 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_both_commitments_keep_the_existing_choices_and_record_history",
-      "line": 108,
+      "line": 123,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 123,
+          "line": 138,
           "reason": "paragraph or choice index used as identity"
         }
       ],
@@ -28607,7 +28563,7 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_no_stance_or_eligibility_gate_for_a_fictional_bond",
-      "line": 129,
+      "line": 144,
       "classification": "behavioural",
       "pinned_assertions": [],
       "protects": "no stance or eligibility gate for a fictional bond",
@@ -28617,99 +28573,49 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_all_nine_endings_keep_existing_paragraph_indices",
-      "line": 143,
+      "line": 176,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 49,
+          "line": 173,
           "reason": "paragraph or choice index used as identity",
-          "helper": "assert_paragraph"
-        },
-        {
-          "line": 50,
-          "reason": "paragraph or choice index used as identity",
-          "helper": "assert_paragraph"
-        },
-        {
-          "line": 50,
-          "reason": "player-visible text comparison or prose selector",
-          "helper": "assert_paragraph"
-        },
-        {
-          "line": 152,
-          "reason": "registry, scene, entry, paragraph, choice or occurrence count"
-        },
-        {
-          "line": 159,
-          "reason": "paragraph or choice index used as identity"
-        },
-        {
-          "line": 159,
-          "reason": "player-visible text comparison or prose selector"
-        },
-        {
-          "line": 160,
-          "reason": "paragraph or choice index used as identity"
-        },
-        {
-          "line": 161,
-          "reason": "paragraph or choice index used as identity"
+          "helper": "assert_predicate_present"
         }
       ],
-      "protects": "all nine endings keep existing paragraph indices",
-      "assertion_count": 8
+      "protects": "Every declared ending retains its history predicates and inert exit.",
+      "assertion_count": 13
     },
     {
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_frozen_prefixes_and_exact_appends",
-      "line": 163,
-      "classification": "pinned",
-      "pinned_assertions": [
-        {
-          "line": 49,
-          "reason": "paragraph or choice index used as identity",
-          "helper": "assert_paragraph"
-        },
-        {
-          "line": 50,
-          "reason": "paragraph or choice index used as identity",
-          "helper": "assert_paragraph"
-        },
-        {
-          "line": 50,
-          "reason": "player-visible text comparison or prose selector",
-          "helper": "assert_paragraph"
-        },
-        {
-          "line": 169,
-          "reason": "registry, scene, entry, paragraph, choice or occurrence count"
-        }
-      ],
-      "protects": "T-PREFIX/T-APPENDS: R4-1/2/3 expectations are independent of generation.",
-      "assertion_count": 3
+      "line": 211,
+      "classification": "behavioural",
+      "pinned_assertions": [],
+      "protects": "All approved history predicates remain on their declared pages.",
+      "assertion_count": 4
     },
     {
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_lastcall_conditional_history_and_unconditional_disguise",
-      "line": 175,
+      "line": 221,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 178,
+          "line": 224,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 181,
+          "line": 227,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 182,
+          "line": 228,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 184,
+          "line": 230,
           "reason": "paragraph or choice index used as identity"
         }
       ],
@@ -28720,15 +28626,15 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_integration_and_repeated_assembly_are_idempotent",
-      "line": 186,
+      "line": 232,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 197,
+          "line": 243,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 197,
+          "line": 243,
           "reason": "registry, scene, entry, paragraph, choice or occurrence count"
         }
       ],
@@ -28739,26 +28645,26 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_entry_care_truth_and_early_late_chronology_histories",
-      "line": 311,
+      "line": 357,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 236,
+          "line": 282,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 245,
+          "line": 291,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 246,
+          "line": 292,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 254,
+          "line": 300,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         }
@@ -28770,35 +28676,35 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_entry_disposal_failed_alarm_and_unsaved_meeting_exclusions",
-      "line": 327,
+      "line": 373,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 236,
+          "line": 282,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 245,
+          "line": 291,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 246,
+          "line": 292,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 254,
+          "line": 300,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 338,
+          "line": 384,
           "reason": "registry, scene, entry, paragraph, choice or occurrence count"
         },
         {
-          "line": 339,
+          "line": 385,
           "reason": "paragraph or choice index used as identity"
         }
       ],
@@ -28809,26 +28715,26 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_postponed_heel_refusal_and_current_path_keep_their_earned_gates",
-      "line": 351,
+      "line": 397,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 236,
+          "line": 282,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 245,
+          "line": 291,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 246,
+          "line": 292,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 254,
+          "line": 300,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         }
@@ -28840,44 +28746,44 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_paid_delivery_and_repair_histories_render_in_each_earned_page",
-      "line": 442,
+      "line": 488,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 236,
+          "line": 282,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 245,
+          "line": 291,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 246,
+          "line": 292,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 254,
+          "line": 300,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 398,
+          "line": 444,
           "reason": "paragraph or choice index used as identity",
           "helper": "initial_delivery"
         },
         {
-          "line": 460,
+          "line": 506,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 476,
+          "line": 522,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 481,
+          "line": 527,
           "reason": "player-visible text comparison or prose selector"
         }
       ],
@@ -28888,36 +28794,36 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_incomplete_and_refused_repairs_never_earn_delivery_memory",
-      "line": 483,
+      "line": 529,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 236,
+          "line": 282,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 245,
+          "line": 291,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 246,
+          "line": 292,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 254,
+          "line": 300,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 398,
+          "line": 444,
           "reason": "paragraph or choice index used as identity",
           "helper": "initial_delivery"
         },
         {
-          "line": 519,
+          "line": 565,
           "reason": "player-visible text comparison or prose selector"
         }
       ],
@@ -28928,44 +28834,44 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_paid_history_does_not_override_later_loss_closure_or_fatal_sacrifice",
-      "line": 521,
+      "line": 567,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 236,
+          "line": 282,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 245,
+          "line": 291,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 246,
+          "line": 292,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 254,
+          "line": 300,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 398,
+          "line": 444,
           "reason": "paragraph or choice index used as identity",
           "helper": "initial_delivery"
         },
         {
-          "line": 537,
+          "line": 583,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 548,
+          "line": 594,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 553,
+          "line": 599,
           "reason": "player-visible text comparison or prose selector"
         }
       ],
@@ -28976,40 +28882,40 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_each_missing_custody_cost_hides_append_in_predicate_fixtures",
-      "line": 555,
+      "line": 601,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 236,
+          "line": 282,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 245,
+          "line": 291,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 246,
+          "line": 292,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 254,
+          "line": 300,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 398,
+          "line": 444,
           "reason": "paragraph or choice index used as identity",
           "helper": "initial_delivery"
         },
         {
-          "line": 562,
+          "line": 608,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 565,
+          "line": 611,
           "reason": "player-visible text comparison or prose selector"
         }
       ],
@@ -29020,51 +28926,51 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_windstep_appends_require_carried_inspected_or_unanswered_history",
-      "line": 567,
+      "line": 613,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 236,
+          "line": 282,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 245,
+          "line": 291,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 246,
+          "line": 292,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 254,
+          "line": 300,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 592,
+          "line": 638,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 593,
+          "line": 639,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 598,
+          "line": 644,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 600,
+          "line": 646,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 606,
+          "line": 652,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 607,
+          "line": 653,
           "reason": "player-visible text comparison or prose selector"
         }
       ],
@@ -29075,47 +28981,47 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_lastcall_named_refused_debt_is_history_not_a_creditor_cameo",
-      "line": 610,
+      "line": 656,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 236,
+          "line": 282,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 245,
+          "line": 291,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 246,
+          "line": 292,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 254,
+          "line": 300,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 614,
+          "line": 660,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 624,
+          "line": 670,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 625,
+          "line": 671,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 626,
+          "line": 672,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 629,
+          "line": 675,
           "reason": "paragraph or choice index used as identity"
         }
       ],
@@ -29126,40 +29032,40 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_lastcall_called_uncalled_and_late_histories_keep_local_staging",
-      "line": 631,
+      "line": 677,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 236,
+          "line": 282,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 245,
+          "line": 291,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 246,
+          "line": 292,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 254,
+          "line": 300,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 398,
+          "line": 444,
           "reason": "paragraph or choice index used as identity",
           "helper": "initial_delivery"
         },
         {
-          "line": 643,
+          "line": 689,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 648,
+          "line": 694,
           "reason": "player-visible text comparison or prose selector"
         }
       ],
@@ -29170,48 +29076,48 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_containing_pages_reject_each_missing_earned_history",
-      "line": 657,
+      "line": 703,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 236,
+          "line": 282,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 245,
+          "line": 291,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 246,
+          "line": 292,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 254,
+          "line": 300,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 398,
+          "line": 444,
           "reason": "paragraph or choice index used as identity",
           "helper": "initial_delivery"
         },
         {
-          "line": 683,
+          "line": 729,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 689,
+          "line": 735,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 703,
+          "line": 749,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 714,
+          "line": 760,
           "reason": "player-visible text comparison or prose selector"
         }
       ],
@@ -29222,35 +29128,35 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_lastcall_buried_alive_memory_requires_all_three_facts",
-      "line": 716,
+      "line": 762,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 236,
+          "line": 282,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 245,
+          "line": 291,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 246,
+          "line": 292,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 254,
+          "line": 300,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 730,
+          "line": 776,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 733,
+          "line": 779,
           "reason": "paragraph or choice index used as identity"
         }
       ],
@@ -29261,39 +29167,39 @@
       "module": "tests/test_nidalynn_partner_claim.py",
       "class": "NidalynnPartnerClaimTests",
       "function": "test_historical_windstep_complaint_cannot_bypass_later_actor_loss",
-      "line": 735,
+      "line": 781,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 236,
+          "line": 282,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 245,
+          "line": 291,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 246,
+          "line": 292,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 254,
+          "line": 300,
           "reason": "paragraph or choice index used as identity",
           "helper": "walk"
         },
         {
-          "line": 741,
+          "line": 787,
           "reason": "player-visible text comparison or prose selector"
         },
         {
-          "line": 749,
+          "line": 795,
           "reason": "paragraph or choice index used as identity"
         },
         {
-          "line": 750,
+          "line": 796,
           "reason": "player-visible text comparison or prose selector"
         }
       ],
@@ -30077,28 +29983,20 @@
         {
           "line": 86,
           "reason": "paragraph or choice index used as identity"
-        },
-        {
-          "line": 90,
-          "reason": "player-visible text comparison or prose selector"
-        },
-        {
-          "line": 91,
-          "reason": "player-visible text comparison or prose selector"
         }
       ],
       "protects": "paid refusal and inn collect without changing legacy exits",
-      "assertion_count": 4
+      "assertion_count": 5
     },
     {
       "module": "tests/test_nocticula_round2.py",
       "class": "NocticulaRound2Tests",
       "function": "test_daeran_is_not_invented_by_absence_of_loss_flags",
-      "line": 93,
+      "line": 95,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 102,
+          "line": 104,
           "reason": "player-visible text comparison or prose selector"
         }
       ],
@@ -30109,11 +30007,11 @@
       "module": "tests/test_nocticula_round2.py",
       "class": "NocticulaRound2Tests",
       "function": "test_terms_precede_harbor_approaches_and_copies_stay_retired",
-      "line": 104,
+      "line": 106,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 111,
+          "line": 113,
           "reason": "paragraph or choice index used as identity"
         }
       ],
@@ -30124,24 +30022,12 @@
       "module": "tests/test_nocticula_round2.py",
       "class": "NocticulaRound2Tests",
       "function": "test_acquisition_visit_is_optional_read_only_and_channel_limited",
-      "line": 118,
+      "line": 120,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 122,
-          "reason": "paragraph or choice index used as identity"
-        },
-        {
           "line": 124,
-          "reason": "player-visible text comparison or prose selector"
-        },
-        {
-          "line": 125,
-          "reason": "player-visible text comparison or prose selector"
-        },
-        {
-          "line": 126,
-          "reason": "player-visible text comparison or prose selector"
+          "reason": "paragraph or choice index used as identity"
         }
       ],
       "protects": "acquisition visit is optional read only and channel limited",
@@ -30151,11 +30037,11 @@
       "module": "tests/test_nocticula_round2.py",
       "class": "NocticulaRound2Tests",
       "function": "test_each_manifest_slot_is_a_dedicated_heated_cut",
-      "line": 148,
+      "line": 152,
       "classification": "mixed",
       "pinned_assertions": [
         {
-          "line": 157,
+          "line": 161,
           "reason": "player-visible text comparison or prose selector"
         }
       ],

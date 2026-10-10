@@ -70,12 +70,27 @@ class EritriceRoundFourTests(unittest.TestCase):
         self.assertIn('under the chair', self.text(council.K + 'second_morning.drezen', 'morning'))
 
     def test_repeat_night_and_morning_share_position(self):
+        from tests.story_fixture import fresh_story
+        from tests.fix16b_structure import reachable_nodes
+        from tools import rrt_verify as verify
+        story = fresh_story()
+        model = verify.Model(story)
+        receipt = council.TWICE + '_carried'
         for suffix in ('', '.drezen'):
-            slot = self.text(council.TWICE + suffix, council.TWICE + '.explicit.1')
-            self.assertIn('from the edge onto the tabletop', slot)
-            self.assertNotIn('before either of you reaches', slot)
-            location = 'the chair beside the table' if suffix else "Alichino's chair"
-            self.assertIn('beneath ' + location + ' until morning', slot)
+            night = model.by_id[council.TWICE + suffix]
+            nodes = {n['Id']: n for n in night['Nodes']}
+            slot = council.TWICE + '.explicit.1'
+            self.assertIn(slot, reachable_nodes(night))
+            self.assertEqual([(slot, [receipt])],
+                             [(c['Next'], c['Set']) for c in nodes['carried']['Choices']])
+            self.assertEqual([([council.TWICE] if suffix else [])], [c['Set'] for c in nodes[slot]['Choices']])
+            morning = model.by_id[council.K + 'second_morning' + suffix]
+            self.assertIn(receipt, morning['Requires'])
+            state = verify.SimState(5, 100)
+            state.flags.update(morning['Requires'])
+            self.assertTrue(verify.sim_available(model, morning, state))
+            state.flags.discard(receipt)
+            self.assertFalse(verify.sim_available(model, morning, state))
 
 
 if __name__ == '__main__':

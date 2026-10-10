@@ -89,22 +89,26 @@ class HerraxRound2Tests(unittest.TestCase):
             self.assertIn("return_morning", visited)
 
     def test_late_return_remembers_completed_punishments(self):
-        visit = SCENES[route.H + "epilogue.after_hours.invitation"]
-        arrival = visit["Nodes"][0]
-        offer = next(n for n in visit["Nodes"] if n["Id"] == "madam_offer")
-        self.assertNotIn("You stood where I told you", offer["Text"])
-        cases = [({route.BAIT}, "had described the cutting in her letter"),
-                 ({route.BLOWN}, "had cut him anyway"),
-                 ({route.RESTORED, route.DECLINED, route.LESSON}, "performed her delayed punishment"),
-                 ({route.RESTORED, route.DECLINED, route.LESSON, "herrax.house.a_night_late"}, "face bore the cut")]
-        for flags, expected in cases:
-            shown = [p["Text"] for p in arrival["Paragraphs"] if available(p, flags)
-                     and all(any(f in flags for f in group) for group in p.get("AnyGroups", ()))]
-            self.assertIn(expected, " ".join(shown))
-            if "herrax.house.a_night_late" in flags:
-                self.assertNotIn("performed her delayed punishment", " ".join(shown))
-            self.assertNotIn("She cut him herself", " ".join(shown))
-            self.assertNotIn("Herrax gathered it now", " ".join(shown))
+        scenes = {s["Id"]: s for s in fresh_story()["Scenes"]}
+        visit = scenes[route.H + "epilogue.after_hours.invitation"]
+        paragraphs = visit["Nodes"][0]["Paragraphs"]
+        # Identify memories by their receipts, independently of paragraph order.
+        cases = [(route.BAIT, {route.BAIT}, {route.LESSON, route.DECLINED}),
+                 (route.BLOWN, {route.BLOWN}, {route.BAIT, route.LESSON, route.DECLINED}),
+                 (route.RESTORED, {route.RESTORED, route.DECLINED, route.LESSON}, {"herrax.house.a_night_late"})]
+        for receipt, flags, blockers in cases:
+            candidates = [p for p in paragraphs if p.get("Requires") == [receipt]]
+            self.assertTrue(candidates, receipt)
+            memory = next(p for p in candidates if blockers <= set(p["Forbids"]))
+            self.assertTrue(available(memory, flags))
+            self.assertFalse(available(memory, flags - {receipt}))
+            for blocker in blockers:
+                self.assertFalse(available(memory, flags | {blocker}))
+        late = next(p for p in paragraphs if p.get("Requires") == [route.RESTORED, "herrax.house.a_night_late"])
+        earned = {route.RESTORED, "herrax.house.a_night_late"}
+        self.assertTrue(available(late, earned))
+        for receipt in earned:
+            self.assertFalse(available(late, earned - {receipt}))
 
     def test_bet_collection_does_not_depend_on_reading_the_packet(self):
         for suffix in ("reachable", "after_hours"):

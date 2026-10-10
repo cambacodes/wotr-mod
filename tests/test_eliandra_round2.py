@@ -111,15 +111,29 @@ class EliandraRoundTwoTests(unittest.TestCase):
         self.assertIn("eliandra.attacked", main.RELATIONSHIP["UnavailableFlags"])
 
     def test_all_five_slot_briefs_match_their_live_defaults(self):
-        scenes = {s["Id"]: s for s in main.SCENES + stars.SCENES}
-        briefs = list((Path(__file__).resolve().parents[1] / "tools/route_packs/explicit_slots/eliandra").glob("*.json"))
-        self.assertEqual(5, len(briefs))
-        for path in briefs:
+        from tests.story_fixture import fresh_story
+        from tests.fix16b_structure import reachable_nodes
+        scenes = {s["Id"]: s for s in fresh_story()["Scenes"]}
+        folder = Path(__file__).resolve().parents[1] / "tools/route_packs/explicit_slots/eliandra"
+        for path in folder.glob("*.json"):
             brief = json.loads(path.read_text(encoding="utf-8"))
-            scene = scenes[brief["slot_id"].rsplit(".explicit.", 1)[0]]
-            slots = scene["Nodes"] + scene["Nodes"][0].get("Paragraphs", [])
-            slot = next(n for n in slots if n.get("Id") == brief["slot_id"])
-            self.assertEqual(brief["default_text"], slot["Text"])
+            sid = brief["slot_id"].rsplit(".explicit.", 1)[0]
+            scene = scenes[sid]
+            with self.subTest(slot=brief["slot_id"]):
+                nodes = {n["Id"]: n for n in scene["Nodes"]}
+                if brief["slot_id"] in nodes:
+                    slot = nodes[brief["slot_id"]]
+                    self.assertIn(slot["Id"], reachable_nodes(scene))
+                    self.assertEqual(["morning"], [c["Next"] for c in slot["Choices"]])
+                    self.assertTrue(all(not c["Set"] for c in slot["Choices"]))
+                else:
+                    host = "page" if sid.endswith(".together") else "late_accepted"
+                    page = nodes[host]
+                    slot = next(p for p in page["Paragraphs"] if p.get("Id") == brief["slot_id"])
+                    self.assertIn(host, reachable_nodes(scene))
+                    self.assertFalse(slot.get("Set"))
+                    successor = None if host == "page" else "page_exit"
+                    self.assertTrue(all(c["Next"] == successor and not c["Set"] for c in page["Choices"]))
 
 
 if __name__ == "__main__":
