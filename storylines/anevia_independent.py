@@ -1014,7 +1014,11 @@ s("the_evening_without_a_case", "Something she did not have to solve", [
 {n}Then her attention is wholly yours. She kisses you at the edge of the bed, lingering when your hand finds her waist. There is a buckle she cannot undo while you keep making her laugh. She catches your wrist, presses a kiss to your knuckles and asks you to be helpful for once.{/n}
 {n}You are helpful. The buckle gives, and the belt, and she steps out of the rest herself, quick and unembarrassed, like a woman shedding a disguise she has worn too long. "Your turn," she says, and does not wait for you to manage it; she has your shirt over your head before you can make a joke of it.{/n}
 "There," {n}she murmurs against your mouth.{/n} "That's what I'd like."
-{n}She pulls you down onto the bed after her by a fistful of whatever you are still wearing, laughing once, low, and then not laughing at all. Her knee draws up along your hip; her hand spreads flat between your shoulders and holds you there, exactly where she wants you.{/n}
+{n}She pulls you down onto the bed after her by a fistful of whatever you are still wearing, laughing once, low, and then not laughing at all. Her hand spreads flat between your shoulders and holds you there, exactly where she wants you.{/n}
+{n}Her mouth goes to your throat, unhurried now, the whole evening hers. The quick economy of her scout's hands is gone; she touches you as if she had all night and has decided to spend it, drags her nails down your back, bites softly at your shoulder, laughs when you shiver.{/n}
+"Nobody's askin' me for a thing," {n}she murmurs.{/n} "No report. No runner. Just this." {n}She rolls you onto your back under that flat hand and sheds the last of her own clothes, kicking them off the bed without looking where they land. One glance, slow and warning, at the crooked goat still turned to the wall.{/n} "Don't you dare joke. I'll know."
+{n}Then she is bare against you, her hair a curtain round your faces, her eyes steady and a little wild, and they dare you to be the first to look away.{/n}
+"There. Properly. Take your time, and I'll take mine."
 {n}In the morning Anevia wakes with one arm across you and a complaint about the window already forming. She abandons it when you turn toward her. For a while neither of you gets up to discover whether the complaint was justified.{/n}''',
       c('[Stay for breakfast.]', "morning", flags=("anevia.private_night",))),
     n("sleep", "Anevia", '''"I'd like that. I'm very quiet once somebody's shut me up."

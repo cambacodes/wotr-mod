@@ -283,7 +283,7 @@ visit(E + "executor.haggle", "The executor", [
        c('[Bequeath it] "My body, at my death, to the Whispering Way, in your keeping. Done."', "sold"),
        c('"No. You came for a corpse. You\'ll go home without one."', "refuse")),
     el("sold", '''{n}She does not call for pen or paper. She leans across the table instead, close enough that you smell cloves and cold wine on her, and says the terms into your ear in a whisper, in a language older than the words she is using. Then she waits, her cheek almost against yours, until you have whispered them back.{/n}
-"The Way's teaching cannot be written, Commander, only told. I keep my bargains the same way. What is whispered cannot be burned, or forged, or forgotten by anyone who heard it." {n}She sits back, and for a moment she looks almost pleased with you.{/n} "Not a copper, and still you whispered it back." "You are mine when you are dead. Try to make it an interesting death."''',
+"The Way's teaching cannot be written, Commander, only told. I keep my bargains the same way. What is whispered cannot be burned, or forged, or forgotten by anyone who heard it." {n}She sits back, and for a moment she looks almost pleased with you.{/n} "Not a copper, and still you whispered it back. You are mine when you are dead. Try to make it an interesting death."''',
        c("[Put the veil back on for the walk home.]", flags=(*SOLD, BLUFFED), alignment=("Evil", 1))),
     el("refuse_veiled", '''{n}She looks at the veil for a while, as if she could see through it, and perhaps she can.{/n}
 "You made me say it aloud," {n}she says softly,{/n} "to a curtain, in a barn, and now you will not sell. That was not grief, executor. That was curiosity." {n}She rises.{/n} "Tell the estate the Way does not forget who was curious about it. Good night."''',
@@ -304,7 +304,7 @@ visit(E + "executor.haggle", "The executor", [
        c('[Bequeath it bare-faced] "Done. My body, at my death, to the Way. No payment."', "bare_sold"),
        c('[See her out] "The owner isn\'t giving it away after all."', "seen_out")),
     el("bare_sold", '''{n}No pen and no paper. She leans across the table and says the terms into your ear in a whisper, in words older than the language they are in, and waits until you have whispered them back. Her breath is cold, and smells of cloves.{/n}
-"I do not put my bargains on paper, Commander. What is whispered cannot be burned or forged." {n}She sits back.{/n} "Nothing paid. Nothing due to you." "You are mine when you are dead, Commander. Until then I shall watch your hands. Your face is a liar."''',
+"I do not put my bargains on paper, Commander. What is whispered cannot be burned or forged." {n}She sits back.{/n} "Not a copper changes hands. You are mine when you are dead, Commander. Until then I shall watch your hands. Your face is a liar."''',
        c("[Take the veil with you.]", flags=(*SOLD, EXPOSED), alignment=("Evil", 1))),
     el("seen_out", '''"As you like." {n}She rises, unhurried, and tucks the wine jug under her arm as though it were part of her fee.{/n}
 "You dressed as your own mourner to see what you were worth, and would not accept the terms. That is the most honest thing a mortal has done in front of me in years." {n}At the door she turns.{/n} "Keep the veil. You will want it one day."''',
@@ -333,7 +333,7 @@ visit(E + "straight.offer", "The corpse comes to supper", [
        c('[Bequeath it] "When I die, it\'s yours. No payment. Keep your carriage polished."', "sold"),
        c('"No. Nobody is waiting for my corpse, and nobody gets it."', "refuse")),
     el("sold", '''{n}She does not call for pen or paper. She rises, comes round the trestle, and bends to say the terms into your ear in a whisper, in words older than the language they are in. Then she waits, a hand on your shoulder as cold as a banister in winter, until you have whispered them back.{/n}
-"Paper burns, Commander. I keep my bargains as the Way keeps its teaching: told, not written. What is whispered cannot be burned, or forged, or forgotten." {n}She straightens.{/n} "Nothing paid. Nothing due to you." "You are mine when you are dead. Do not dawdle."''',
+"Paper burns, Commander. I keep my bargains as the Way keeps its teaching: told, not written. What is whispered cannot be burned, or forged, or forgotten." {n}She straightens.{/n} "Not a copper changes hands, and you are still mine when you are dead. Do not dawdle."''',
        c("[Finish her wine.]", flags=SOLD, alignment=("Evil", 1))),
     el("refuse", '''"Everybody is waiting for your corpse, Commander. The Abyss, the witch who made you, the grey warden with her ledger. I am only the first who had the manners to ask." {n}She rises, and she is taller than you expected.{/n}
 "But you have refused me, so I will go and wait somewhere more comfortable. Live as long as you please. I am told it is a great deal of work."''',
@@ -360,7 +360,7 @@ visit(E + "test.the_dead", "Sixty-one under canvas", [
 "In three days they go into a pit with lime on top, and the grey warden has sixty-one more souls in her queue, and the flesh rots in the dark for nothing. Nothing at all. It is the most wasteful custom in the world."''',
        c("Continue", "paladin", requires=("seelah.in_party",), flags=(E + "seelah_prayed",)),
        c("Continue", "ask", forbids=("seelah.in_party",))),
-    el("paladin", '''"Your paladin was here this morning. The one with a thief's hands." {n}She lifts another canvas.{/n} "the paladin of Iomedae, kneeling to pray for Pharasma's dead, row by row, until her knees were grey with lime. She did not see me in the yard. I watched her the whole time."
+    el("paladin", '''"Your paladin was here this morning. The one with a thief's hands." {n}She lifts another canvas.{/n} "Kneeling to pray for Pharasma's dead, row by row, until her knees were grey with lime. A paladin of Iomedae. She did not see me in the yard. I watched her the whole time."
 "I would like to see her face when she learns what her Lady's crusade is built on. One day, perhaps. Not tonight."''',
        c("Continue", "ask")),
     el("ask", '''{n}She lets the canvas fall and turns, and the lantern puts her shadow up the wall to the rafters.{/n}
@@ -380,7 +380,7 @@ visit(E + "test.the_dead", "Sixty-one under canvas", [
     el("give3", '''"And that paladin of yours will count the rows in her head until she dies. She knelt by every one of them this morning. I would give a great deal to be there when she finishes counting."''',
        c("[Watch the carts go.]", flags=(TESTED, GAVE_DEAD, SECRET_DEAD))),
     el("carrion", '''{n}For a moment she only stares. Then her nostrils flare, as if you had put something rotten under her nose, which in a sense you have.{/n}
-"Carrion." "You would send my Lady a vrock from a ditch. You would feed the queen of feasts on meat the crows turned down." {n}She looks at you for a long breath, and then, against her will, the corner of her mouth goes up.{/n}''',
+"Carrion. You would send my Lady a vrock from a ditch. You would feed the queen of feasts on meat the crows turned down." {n}She looks at you for a long breath, and then, against her will, the corner of her mouth goes up.{/n}''',
        c("Continue", "carrion2")),
     el("carrion2", '''"Well. You are not squeamish, only stingy, and a stingy {mf|man|woman} guards {mf|his|her} larder. I can respect a larder." {n}She lets the canvas fall on the young face with the split lip.{/n}
 "I will take the vrock's head. My wizards can do something with it, and it will amuse them. Your sixty-one may keep their pit." {n}A dry breath, not quite a laugh.{/n} "Carrion for cattle. I shall tell them in Caliphas that is how the Knight Commander haggles."''',
@@ -608,9 +608,57 @@ ACTIVE = "lastcall.active"
 BACK = "trickster.commander_back"
 
 
+TABLE_LEFT = 'elyanka.trickster.table.left'
+TOLD_HER = 'elyanka.trickster.tyrant.told_her'
+ANATOMY_LEFT = 'elyanka.trickster.anatomy.left'
+WOODS = 'elyanka.trickster.ustalav.woods'
+US_REFUSED = 'elyanka.trickster.ustalav.refused'
+FIT_REFUSED = 'elyanka.trickster.fitting.refused'
+HUNT_HELD = 'elyanka.trickster.hunt.held'
+HUNT_GORED = 'elyanka.trickster.hunt.gored'
+
+CLAIM_READERS = (
+    p('''{n}The Commander had walked out of her Lady's table before the wine, the first night it was laid. Behind their grey half-masks the lower town talked about it for years, as she had promised it would: the Knight Commander who knew where the table was, and would not sit, and would not tell. Thirty people who owed the Commander their necks, and knew it, and hated it every seventh night.{/n}''',
+      requires=(TABLE_LEFT,)),
+    p('''{n}No knight of Lastwall rode for Gallowspire on the Commander's whisper. She asked about it every spring, over wine, with her hand closed hard on the Commander's, and every spring she watched the Commander's hands instead of the face while the answer came, to see whether it was true.{/n}''',
+      requires=(TOLD_HER,)),
+    p('''{n}She burned the Deskari cultist alone, the night the Commander would not look inside the corpse, and kept that grudge for years. Whenever the Commander refused her anything afterwards she said, pleasantly, "Burn it, then," and the Commander knew exactly how long she had been thinking about it, and how unkindly.{/n}''',
+      requires=(ANATOMY_LEFT,)),
+    p('''{n}She never took anyone else to the black circle in the Camilary woods where the priests had made their fire, and the Way never learned that it was there. Only the Commander knew. She said that if it was ever spoken of, in any tongue, she would know whose mouth it had come out of, and the Commander would learn what the Way does with a whisper that has got loose.{/n}''',
+      requires=(WOODS,)),
+    p('''{n}The Commander never went to Ustalav alive. She reminded the Commander now and then that this was a matter of time, not of choice: the body always goes home with the collector, and this one would go down the Ustalav road under glass, with the curtains drawn, whether it had wanted to see the country or not.{/n}''',
+      requires=(US_REFUSED,)),
+    p('''{n}The Way's joiners planed the shoulders, as she told them to, and finished the true table in ebony without the Commander ever lying in its practice piece. She said that was what a creditor's patience was for: the dish would fit when it was served, whether or not the guest had tried it.{/n}''',
+      requires=(FIT_REFUSED,)),
+    p('''{n}The Commander had once held a hart by the antlers in the woods above Drezen while she cut its throat, and she never let anyone forget that the Knight Commander of the Fifth Crusade was, at need, a passable hunting dog. From her it was the highest praise there was.{/n}''',
+      requires=(HUNT_HELD,)),
+    p('''{n}The hart's tine left a long white seam above the Commander's knee. Elyanka knew it by touch in the dark, and on her Lady's nights she ran her thumbnail down it and called it the only honest mark anyone had ever put on her collateral, and the most wasteful.{/n}''',
+      requires=(HUNT_GORED,)),
+)
+
+
+HER_PARAGRAPHS_WATCH = p("{n}Her Lady's table was still laid every seventh night. The witness at the dead-house door counted the guests and took their names to the chaplains. Elyanka made him stand outside while her worshippers ate, and sent the bones out under his lamp. The Commander's protection kept her in Drezen; it did not silence the testimony.{/n}", requires=(SECRET_RITES,), any_groups=((E + "inquiry.told_seelah", E + "inquiry.misled", E + "inquiry.hers"),))
+
 def page(id, title, text, requires, forbids=(), paragraphs=(), survived=True):
     """survived: the page waits for the Commander to have lived (or cheated death); lastcall adds its own Forbid to every
     epilogue that Requires the sacrifice."""
+    paragraphs = list(paragraphs)
+    if id in ("claim", "debt"):
+        for paragraph in paragraphs:
+            if ACTIVE in paragraph["Requires"] and "flask" in paragraph["Text"]:
+                paragraph["Requires"].append("lastcall.bottled_held")
+                paragraph["Forbids"].append("lastcall.dead_on_record")
+        paragraphs += [
+        p('{n}When the death notice came, Elyanka came for the body. It was living, and it refused her. She did not withdraw the claim; she never withdrew anything in her life. After that she watched the corked flask whenever the Commander came to the dead-house, the way a cat watches a stopped hole, and swore she could smell the death through the wax.{/n}', requires=(ACTIVE, "lastcall.recovered_corked")),
+        p("{n}Elyanka went over the stranger behind drawn curtains, by one candle, with her cold fingers: the empty flask, the warm throat, the death still standing in Pharasma's book. She had been promised a corpse and handed a riddle. She kept the claim, and the stranger's name, to herself. A secret was worth more to her than meat she could not yet eat.{/n}", requires=("iomedae.trickster.buried_alive",)),
+    ]
+    if id == "claim":
+        paragraphs.append(HER_PARAGRAPHS_WATCH)
+    if id in ("claim", "debt", "lock", "left_free"):
+        paragraphs.append(p('{n}The Commander remembered the sixty-one chalk marks on the dead-house floor after the inquiry. Elyanka had swept around them; a witness had stood at the door.{/n}',
+          requires=(GAVE_DEAD,), any_groups=((E + "inquiry.told_seelah", E + "inquiry.misled", E + "inquiry.hers"),)))
+    if id == "claim":
+        paragraphs.extend(CLAIM_READERS)
     extra = dict(ForbidOverrides={"sacrifice": BACK}) if survived else {}
     SCENES.append(scene(E + "epilogue." + id, title, EPI, 6, "", [nar("page", text, paragraphs=paragraphs)],
                         requires=("trickster.ever", *requires), forbids=tuple(forbids) + (("sacrifice",) if survived else ()),
@@ -655,11 +703,11 @@ COMMON = (
       any_groups=((E + "whisper.fear", E + "whisper.wake"),)),
     p('''{n}Once, in the dark end of the dead-house, the Commander had whispered her a lie, and she had heard it. She had given her own secret anyway. The Commander could still remember the cold of her cheek and the whisper: "You owe me one."{/n}''',
       requires=(E + "whisper.lie",)),
-    p('''{n}The Commander remembered Seelah hearing the truth about the sixty-one from the mouth that had ordered their removal. The count went to the chaplains; a witness stood at the dead-house door. Elyanka had stayed out of the paladin's road.{/n}''',
+    p("{n}The Commander remembered Seelah hearing the truth about the sixty-one from the mouth that had ordered their removal. The count went to the chaplains; a witness stood at the dead-house door. Elyanka had stayed out of the paladin's road.{/n}",
       requires=(E + "inquiry.told_seelah",)),
-    p('''{n}A resurrection man hanged at the south gate of Drezen for sixty-one bodies he never touched. The Commander remembered Seelah blocking the gallows steps with the carters' testimony, and the watch forcing her down under the Commander's seal. The Commander's order had kept her from stopping the carts, not from recording who sent them. The chaplains received the testimony; a witness stood at the dead-house door.{/n}''',
+    p("{n}A resurrection man hanged at the south gate of Drezen for sixty-one bodies he never touched. The Commander remembered Seelah blocking the gallows steps with the carters' testimony, and the watch forcing her down under the Commander's seal. The Commander's order had kept her from stopping the carts, not from recording who sent them. The chaplains received the testimony; a witness stood at the dead-house door.{/n}",
       requires=(E + "inquiry.misled",)),
-    p('''{n}Elyanka told the paladin the truth about the sixty-one herself, in the dead-house yard, without one lie. The Commander remembered Seelah refusing the excuse that the dead could not suffer. She had taken the names and count to the chaplains and put a witness at the dead-house door. Neither culprit had received her forgiveness.{/n}''',
+    p('{n}Elyanka told the paladin the truth about the sixty-one herself, in the dead-house yard, without one lie. The Commander remembered Seelah refusing the excuse that the dead could not suffer. She had taken the names and count to the chaplains and put a witness at the dead-house door. Neither culprit had received her forgiveness.{/n}',
       requires=(E + "inquiry.hers",)),
     p('''{n}After the morning the hearse door banged, her black mares shied whenever its glass rattled. She sold them in the second spring and bought four grey ones. She made the Commander stand beside the door while she tried them, opening and shutting it until she was satisfied.{/n}''',
       requires=(HORSES,)),
@@ -846,29 +894,3 @@ page("left_free_mourned", "A claim without a body",
      'then said, "The Wound ate my claim." She did not eat for a day and a night. '
      'The Way kept the whispered account; there was no flesh to fetch.{/n}',
      requires=(LEFT_FREE, OWNED, "sacrifice"), forbids=(BACK,), survived=False)
-
-
-# endings1: recorded death and available corpse are distinct under the bequest.
-for _suffix in ("claim", "debt"):
-    _ep = next(s for s in SCENES if s["Id"] == E + "epilogue." + _suffix)
-    _nd = _ep["Nodes"][0]
-    for _para in _nd.get("Paragraphs", []):
-        if ACTIVE in _para["Requires"] and ("flask" in _para["Text"]):
-            _para["Requires"].append("lastcall.bottled_held")
-            _para["Forbids"].append("lastcall.dead_on_record")
-    _nd["Paragraphs"].extend([
-        p('{n}The death notice made Elyanka present her bequest. The returned body was living; possession was refused. She kept the claim contested, and watched the corked flask without pretending it erased the death.{/n}', requires=(ACTIVE, "lastcall.recovered_corked")),
-        p('{n}Elyanka examined the stranger behind closed curtains. The flask was empty and the death remained in Pharasma\'s book. She had demanded her corpse; no corpse had been delivered. She kept the bequest contested and the stranger\'s name to herself.{/n}', requires=("iomedae.trickster.buried_alive",)),
-    ])
-# end endings1
-
-# Authored round-3 consequence: the existing inquiry watch also sees the rites.
-HER_PARAGRAPHS_WATCH = p('''{n}Her Lady's table was still laid every seventh night. The witness at the dead-house door counted the guests and took their names to the chaplains. Elyanka made him stand outside while her worshippers ate, and sent the bones out under his lamp. The Commander's protection kept her in Drezen; it did not silence the testimony.{/n}''', requires=(SECRET_RITES,), any_groups=((E + "inquiry.told_seelah", E + "inquiry.misled", E + "inquiry.hers"),))
-next(s for s in SCENES if s["Id"] == E + "epilogue.claim")["Nodes"][0]["Paragraphs"].append(HER_PARAGRAPHS_WATCH)
-
-# Round-4: prayer/counting alone does not establish the performed chalk inquiry.
-for _ending in ("claim", "debt", "lock", "left_free"):
-    next(s for s in SCENES if s["Id"] == E + "epilogue." + _ending)["Nodes"][0]["Paragraphs"].append(
-        p('''{n}The Commander remembered the sixty-one chalk marks on the dead-house floor after the inquiry. Elyanka had swept around them; a witness had stood at the door.{/n}''',
-          requires=(GAVE_DEAD,), any_groups=((E + "inquiry.told_seelah", E + "inquiry.misled", E + "inquiry.hers"),))
-    )

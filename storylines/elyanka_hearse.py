@@ -15,6 +15,9 @@ from storylines.elyanka_trickster import (E, REL, CLOSED, COMMITTED, OWNED, TEST
                                           GAVE_DEAD, SECRET_RITES, TABLE_SAT, TABLE_DOOR, TABLE_LEFT, WRIT_UPHELD,
                                           WRIT_LIED, WRIT_HERS, AT_RIFT, IN_DREZEN, REGILL_HUB, LOCK, DREZEN, el, nar, tag)
 
+COLLATERAL_SCAR = p('''{n}Her thumb stops on the seam above your knee where the hart's tine went in.{/n} "And this. The stag marked my goods before the Wound could." {n}She presses, hard enough to hurt.{/n} "I ate him, and I have still not forgiven him."''',
+                requires=('elyanka.trickster.hunt.gored',))
+
 SCENES = []
 
 ANATOMY_KNIFE = E + "anatomy.knife"
@@ -122,9 +125,9 @@ visit(E + "beat.writ", "A writ from the chaplains", [
        c("[Go away.]", flags=(WRIT_UPHELD,))),
     nar("lied", '''{n}The grey chaplain looks at you, and at her, and at the six men in grey behind her who do not breathe as men should. He does not believe you. He is too old to believe anybody. But you are the Commander, and it is your seal, and after a while he rolls up his writ and goes, with his young colleague glaring back at the hearse all the way to the gate.{/n}''',
         c("Continue", "lied2")),
-    el("lied2", '''{n}She waits until the gate has closed behind them. Then she turns on you, and her voice is very soft, which is worse than shouting.{/n}
-"Your embalmer." {n}She tastes it.{/n} "I am a matriarch priestess of the Pallid Princess and a noblewoman of the Immortal Principality, and you have made me your servant in front of a clerk." {n}She steps close.{/n}
-"It worked. I will grant you that. It was a small, cheap, clever lie, and it worked. Never tell it again. The next time you need me to be less than I am, Commander, let them burn me instead."''',
+    el("lied2", '''{n}She waits until the gate has closed behind them. Then she turns on you, and she does not lower her voice; she lets it climb until the horses stamp in the yard.{/n}
+"Your *embalmer*!" {n}It comes out of her as a shriek, and then as a hiss.{/n} "I am a matriarch priestess of the Pallid Princess and a noblewoman of the Immortal Principality, and you have made me your servant in front of a clerk!" {n}She steps close enough that her breath is cold on your chin.{/n}
+"It worked. I grant you that. A small, cheap, clever lie, and it worked." {n}One cackle, with no pleasure in it at all.{/n} "Tell it again, Commander. Make me anybody's servant once more, in front of anybody, and I promise you a death more painful than the one I have already measured you for. I will take my time over the fitting."''',
        c("[Take the rebuke.]", flags=(WRIT_LIED,))),
     el("hers", '''"Thank you, Commander." {n}She turns to the grey chaplain, and smiles, and her smile shows strong white teeth.{/n}
 "Old man. You have been burying the dead of this crusade for thirty years, I think. You have put them in the ground with lime, and prayed over them, and handed their souls to the grey warden, and not one of them has ever come back to thank you." {n}She steps closer. He does not step back; he is braver than he looks.{/n}
@@ -145,7 +148,7 @@ visit(E + "beat.hunt", "Venison", [
     el("stag", '''"There is a stag in these woods. A real one, not one of your Wound's things with too many eyes. My people have been driving him toward this clearing since sundown." {n}She tests the knife's edge with her thumb.{/n}
 "Nobody in Drezen gave me leave to kill him. Nobody in Drezen owns him. That is how venison tastes best." {n}She tilts her head, listening.{/n} "Here he comes. Be still, or be quick. Not both."''',
        c("[Be still.]", "kill"),
-       c("[Be quick. Get between the stag and the trees.]", "kill_quick"),
+       c('[Be quick. Beat the brush on his flank and drive him onto her knife.]', "kill_quick"),
        # villain-route-elyanka (cloud; claude-work-queue elyanka-and-camilary:D08): the interception is a real Athletics
        # check with a distinct success and failure. Trailing answer: indices 0 and 1 keep their saved identity.
        c("[Athletics] Take him yourself: get between the stag and the trees, and get your hands on the antlers.",
@@ -153,8 +156,8 @@ visit(E + "beat.hunt", "Venison", [
     nar("kill", '''{n}He comes out of the dark at a run, a big grey hart with a heavy neck, and her escort close in behind him without a sound, and he turns, and turns again, and there is nowhere left. She walks up to him while he is still deciding. She does not hurry.{/n}
 {n}The knife goes in under the jaw. She holds his head against her body with one arm until he stops, and then a while longer.{/n}''',
         c("Continue", "fire")),
-    nar("kill_quick", '''{n}He comes out of the dark at a run, a big grey hart, and you are where he wants to go. For one moment there is nothing in the world but his antlers and your arms, and then he swerves, and stumbles, and she is there, and the knife goes in under his jaw.{/n}
-{n}She holds his head against her body while he dies. Then she looks at you, flushed and breathless and bruised across the forearm, and laughs out loud.{/n} "Useful after all."''',
+    nar("kill_quick", '''{n}You go crashing through the brush on his flank, shouting like a beater, and he breaks from you the only way left: across the clearing, straight at her. She does not step aside. She lets him come the last three strides, and the knife goes in under his jaw as he reaches her, and the weight of him nearly takes her off her feet.{/n}
+{n}She holds his head against her body while he dies. Then she looks at you, flushed and breathless and scratched to the elbows by the thorns, and laughs out loud.{/n} "Useful after all. You bark very well, for a crusader."''',
         c("Continue", "fire")),
     nar("held", '''{n}He comes out of the dark at a run, a big grey hart with a heavy neck, and you are where he wants to go. You take one tine in your left hand and one in your right and go down on a knee in the leaf-mould, and he drags you a body's length across the clearing and cannot drag you any further. For a moment the whole forest is his breath in your face.{/n}
 {n}Then she is there. She does not hurry. She puts the knife in under his jaw while you hold his head up for her like a dish, and she watches your face, not his, the whole time he is dying.{/n}
@@ -265,7 +268,7 @@ visit(E + "ch6.collateral", "The collateral, inspected", [
         c("Continue", "inspect_debt", forbids=(BIER,))),
     el("inspect", '''"Stand up. Take off your shirt." {n}She unwinds the cord.{/n} "I measured you in Drezen. I want to see what the march has done to the goods."
 {n}She measures you again, knot by knot: the shoulders, the span of the hands, the chest breathing in and breathing out. Her fingers are cold, and slower than they need to be.{/n} "Thinner. Two knots at the waist. A new cut on the forearm, badly stitched. Your quartermaster should be flogged." {n}She lets the cord fall.{/n}''',
-       c("Continue", "tomorrow")),
+       c("Continue", "tomorrow"), paragraphs=(COLLATERAL_SCAR,)),
     el("inspect_debt", '''"Stand where the lamp is. I want to see what the march has done to the goods. I never did take your measure in Drezen; I shall have to do it by eye." {n}She looks you over from the camp bed, head on one side.{/n}
 "Thinner. A new cut on the forearm, badly stitched. You carry your left shoulder higher than you did in Drezen." {n}She wrinkles her nose.{/n} "And you smell of the Wound. Everything here does. It gets into the meat."''',
        c("Continue", "tomorrow")),
@@ -405,19 +408,30 @@ visit(E + "beat.master", "A master from Caliphas", [
         c('[Give her the road] "Then he doesn\'t reach the border. It\'s a long road."', "kill"),
         c('[Give him an escort] "He came under your oath. He leaves under mine. Twelve crusaders to the border."', "escort"),
         c('[Leave it to her] "He\'s your master, and your order. You decide."', "hers")),
-    el("kill", '''{n}She does not smile. She nods once, as she might to a tradesman who had quoted a fair price, and makes a small gesture toward the door. Two of her six men in grey detach themselves from the wall of the yard and walk out into the dark after the master's carriage, not hurrying.{/n}
-"You understand that he is my master," {n}she says,{/n} "and that I have just had him killed for you." {n}She considers this.{/n} "No. For my Lady. A master who would hurry an offering to her table half-ripe insults her. I have done her a service tonight." {n}She smiles, showing strong white teeth.{/n} "And the Way will learn that the priestess in Drezen keeps her collateral the way she keeps her faith: with a knife."''',
+    el("kill", '''{n}She does not smile. She nods once, as she might to a tradesman who had quoted a fair price, and lifts two fingers toward the yard. Two of her six men in grey push off the wall and go out into the dark after the master's carriage, not hurrying. A third pinches out the lamp between thumb and finger.{/n}
+"You understand that he is my master," {n}she says, and catches your sleeve, and takes you through the postern at a pace that is nearly a run.{/n} "And that I am having him killed for you." {n}She considers this, and her mouth twists.{/n} "No. For my Lady. A master who would hurry an offering to her table half-ripe insults her. Come. You gave him the road. You can watch it used."
+{n}The goat path cuts the bend below the south gate. By the time you are down it the carriage is rattling out under the arch above you, two lamps swinging, and the watch lifts the bar for it without a glance. She is breathing hard through her nose, and she is laughing.{/n}''',
        c("Continue", "kill2")),
-    nar("kill2", '''{n}Three days later a carriage is found in a ditch on the Ustalav road, south of the Mendevian border, with its horses gone and nobody inside it. The report reaches your desk as an item of no great interest, between a bill for tallow and a complaint about a sergeant.{/n}
-{n}That night she is waiting in your quarters. She pushes the report aside, catches your collar and pulls you against her. Her fingers shake once before they tighten. "The date stays where I put it," she says against your mouth. "Not tonight."{/n}''',
+    nar("kill2", '''{n}The carriage comes round the bend at a trot and meets a hay-cart laid on its side across the road. The driver hauls on the reins. One of the grey men is already on the box beside him; the driver makes a short wet sound and goes off the seat into the thorn. The horses scream. They are cut from the traces and slapped away up the road, and the carriage sits there with its lamps swinging and its door shut.{/n}
+{n}She does not hurry. She walks down the middle of the road in her grey robe and opens the door herself.{/n}
+"Master." {n}He sits very straight, small clean hands folded on his knee, but the face is no longer a peeled egg. It is an old man's face, and each eye has something wet in the corner.{/n} "You came to hurry my Lady's offering. Come down and say so to the road."
+{n}He does not come. She takes him by the black coat and drags him out, and he lands on his knees in the ruts. She goes down with him, one knee in the small of his back, her left hand knotted in what is left of his hair.{/n}
+"The Way is patient, you said. The Way is not a pawnbroker." {n}She cackles into his ear, low, as a woman croons to a child.{/n} "Pallid Princess, who is never full: receive him. He called on you late, and he called on you cheap."
+{n}The knife opens his throat from ear to ear. The blood comes black in the lamplight and runs down the coat and into the rut. His heels drum on the road. She holds his head back until they stop, and a while after that, and when she lets go she draws the flat of the blade slowly across her tongue and shuts her eyes.{/n}
+{n}Her men roll him into a sack and carry him off up the postern path toward the hearse. Others heave the carriage nose-first into the ditch and break the lamps. She turns to you with her mouth dark to the chin and her chest heaving, and takes your collar in her fist. Her fingers shake once before they tighten. She kisses you hard, and she tastes of copper and clove.{/n}
+"The date stays where I put it," {n}she says against your mouth.{/n} "Not for him. Not for the Way. Not tonight."''',
         c("Continue", flags=(MASTER_KILLED,))),
     el("escort", '''{n}Her eyes narrow.{/n} "Twelve crusaders. To see a master of the Whispering Way safe out of your country." {n}She draws a long breath.{/n}
 "You are a fool, Commander. He will reach Caliphas, and he will speak, and the Way will remember that you protected the man who came to hurry your death. That is the kind of thing the Way finds interesting."
 {n}Then, grudgingly:{/n} "It was also lawful, and I have been hiding behind your law for weeks, and I cannot very well complain when you hide behind it too. Go and give your orders. I will be here, being disappointed."''',
        c("[Give the orders.]", flags=(MASTER_ESCORTED,))),
     el("hers", '''{n}She studies you across the trestle, and something passes over her face that might, in another woman, be gratitude. In her it looks like hunger.{/n}
-"Then I will decide." {n}She rises, and takes the knife she has been holding all evening, and puts it in her sleeve.{/n} "Go to bed, Commander. Do not ask me in the morning what I decided. You gave it to me. It is mine."
-{n}In the morning she is in the dead-house as usual, eating. Her sleeve is clean. You do not ask, and you never learn, and a certain master of the Way is never seen in Caliphas again.{/n}''',
+"Then I will decide." {n}She rises, and takes the knife she has been holding all evening, and slides it into her sleeve. She does not go to the door of the dead-house. She goes out across the yard after him, and you follow, because nobody has told you not to.{/n}
+"Master!" {n}It is her warmest voice, the one she keeps for sheep.{/n} "Not like this. The night is cold, and the Way's carriage is a long way from home. Let me see you into it."
+{n}He lets her. He even smiles, as a man smiles who has decided that a clerk is being sensible. She climbs in after him and pulls the door to, and through the gap in the curtain, by the swinging lamp, you see her take his small clean hands in both of hers and lift them to her mouth and kiss the knuckles, one by one.{/n}
+{n}The knife comes out of her sleeve. Her free hand clamps over his mouth, and the blade goes in under the ribs and up, slowly, with her whole weight behind it, and she holds him against her breast like a lover while his heels scrape the floor.{/n} "Hush," {n}she whispers,{/n} "hush, master. It is only the table." {n}It takes a long time. She does not look away from his eyes once.{/n}
+{n}When it is done she draws the curtain. Her grey men climb onto the box, and the carriage rolls out under the arch with her still inside it, and the watch lifts the bar without a glance.{/n}
+{n}In the morning she is in the dead-house as usual, eating. Her sleeve is clean. You do not ask where he lies, and she never says, and a certain master of the Way is never seen in Caliphas again.{/n}''',
        c("[Do not ask.]", flags=(MASTER_HERS,))),
 ], requires=(BIER,), forbids=(MASTER_KILLED, MASTER_ESCORTED, MASTER_HERS), delay=120, last=5,
     any_groups=((BIER, COURIER_HUNGRY, COURIER_RIPENING, COURIER_SILENT),))

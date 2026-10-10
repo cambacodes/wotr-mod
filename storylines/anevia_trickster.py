@@ -348,7 +348,10 @@ TERMS_TEXT = '''"Here's how it goes. I don't come inside. You come out. No close
 "And the first time you lie to me, I'm gone. And this time I'll be better at it."'''
 THRESHOLD = '''{n}She doesn't wait for you to decide. She kisses you before the lantern stops swinging, both hands flat on your chest as if she were checking you for a knife, like someone who has been rationing it all the way up the road. Round the side of the gatehouse there is a real door. She raps on it twice with her knuckles, for form's sake, then kicks it shut behind you.{/n}
 "Real door. I knocked. Now shut up and get that shirt off before I lose my nerve. And I never lose my nerve."
-{n}Her fingers find every buckle on the first try, a spy's hands, and your coat hits the floor. She kicks your cloak out flat across the gatehouse floor, under the lantern hook, and takes the lantern down so she can see your face. Her breath is warm and ragged against your neck, one leg hooks hard round yours, and she drags you down onto the cloak with a sound that is half a laugh and half something she has not let herself say since the Coronation.{/n}'''
+{n}Her fingers find every buckle on the first try, a spy's hands, and your coat hits the floor. She kicks your cloak out flat across the gatehouse floor, under the lantern hook, and takes the lantern down so she can see your face. Her breath is warm and ragged against your neck, one leg hooks hard round yours, and she drags you down onto the cloak with a sound that is half a laugh and half something she has not let herself say since the Coronation.{/n}
+{n}The cloak is rough wool and smells of woodsmoke and road. She stretches out on it and hauls you down beside her, and the shirt you had left goes to rags under her hands, ripped, not unbuttoned. Her dress is over her head. She works her ring off her finger and drops it on the cloak by her head, deliberately, where she will be able to see it. The lantern on its hook throws her bare skin gold against the stone: scarred knees, hard stomach, the quick rise and fall of her breath.{/n}
+"I'm not doin' this halfway." {n}Her hand fists in your hair; her mouth is at your ear.{/n} "All the way up the road I've been rationin' this. I'm done rationin'. Come here before I do somethin' stupid, like talk."
+{n}She pulls you down into a kiss with nothing careful left in it.{/n}'''
 
 physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."', [
     a("start", '''{n}Same gate, same mud line, a colder night. She has brought a lantern and set it down on her side.{/n}
@@ -509,7 +512,11 @@ physical("anevia.trickster.gone.second_ask", "Something true", '"I knocked."', [
     a("night", '''{n}That night there is a knock at your door: three knocks, like a person.{/n}
 "Changed my mind about comin' in. Didn't change it about knockin'."
 {n}You have not reached the latch when it lifts on its own.{/n}
-{n}She is across the room before you are out of the chair, and she does not bother with the lantern. Her hands are cold from the road and then they are not. She has your shirt half over your head when she laughs, low, into your mouth, and says "Probably" as if it were the filthiest word she knows, and pushes you back onto the bed and follows you down.{/n}''',
+{n}She is across the room before you are out of the chair, and she does not bother with the lantern. Her hands are cold from the road and then they are not. She has your shirt half over your head when she laughs, low, into your mouth, and says "Probably" as if it were the filthiest word she knows, and pushes you back onto the bed and follows you down.{/n}
+{n}She finishes what she started with your shirt and throws it at the door. Her own clothes follow in four quick jerks, and she stands over you at the foot of the bed for a moment, bare and breathing hard, looking you over with a grim appraisal, like a scout counting a camp she means to take.{/n}
+"All that thinkin'," {n}she says, and crawls up the bed after you, her mouth dragging heat along your ribs and your throat,{/n} "and it comes down to this. You, a bed, and me half out of my head before I'd crossed the yard."
+{n}She takes your wrist and pins it above your head and kisses you once, hard, watching your face while she does it.{/n}
+"You asked twice. This is my answer."''',
       c("Continue", "dawn")),
     a("dawn", '''{n}Grey light, and her side of the bed is cold. Your shirt lies over the chair. Under your cup is a folded scrap in her plain hand.{/n}
 "Probably."

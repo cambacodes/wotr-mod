@@ -51,6 +51,14 @@ SECRET_NIGHT = '''{n}Anevia bolts the door. Her fingers shake once against the i
 "No reports. No bloody speeches. Get this off."
 {n}Your coat drops beside her boots. She loosens her laces with a thief's speed, leaves the dress over the chair, and pushes you onto the mattress. Her mouth finds your neck as she draws your hands to her bare waist.{/n}'''
 
+SECRET_NIGHT_GONE = '''{n}Anevia bolts the door. Her fingers shake once against the iron; she swears and turns back to you. She catches your collar, kisses you hard, and pulls until you stumble against the bed.{/n}
+"No reports. No bloody speeches. Get this off."
+{n}Your coat drops beside her boots. She loosens her laces with a thief's speed, leaves the dress over the chair, and pushes you onto the mattress. Her mouth finds your neck as she draws your hands to her bare waist.{/n}
+{n}The dress is a heap on the chair, and under it she wears nothing but her boots. She would rather kick them off later than waste the time, and tells you so between kisses. Her teeth catch your earlobe while she gets on with your belt, quick and practical, swearing when it fights her.{/n}
+"Beth thinks I'm at the north post." {n}She says it flat against your ear, because she will not dress it up.{/n} "I am. After. Don't talk to me about after."
+{n}She hauls the last of your clothes away, one boot thumps across the floor, then the other, and she pulls you down onto the mattress with her, bare and flushed from throat to waist. Her wedding ring is cold where her hand spreads on your chest, and she does not take it off. She puts your hand over her heart so you can feel it going.{/n}
+"Quiet," {n}she breathes, laughing at herself.{/n} "I can't promise it for me. And if the watch comes knockin', I'm a dispatch."'''
+
 DISCOVERY = '''{n}A note lies open on the table. Irabeth's handwriting has scored the paper.{/n}
 "Commander. Nevi told me she was sorting dispatches. The dispatches were on my desk. I kept her supper warm until the watch changed."
 {n}The next line is darker.{/n}
@@ -64,7 +72,8 @@ FALLOUT = '''"She asked me how long. I tried tellin' her how it started. She ask
 
 
 def refusal_nodes(prefix, back):
-    return [n(prefix + "exclusive", "Anevia", REFUSAL + '\n"Back down, and you keep the nights I offered. You get no key to our bedroom. Don\'t come knockin\' on a night I kept for my wife."',
+    return [n(prefix + "exclusive", "Anevia", REFUSAL + '''
+"Back down, and you keep the nights I offered. You get no key to our bedroom. Don't come knockin' on a night I kept for my wife."''',
               c('"Then I withdraw the demand. Keep your marriage."', back),
               c('"Then we end it here."', flags=(EXCLUSIVE, "anevia.closed", "anevia.parted")),
               portrait="Anevia")]
@@ -127,7 +136,11 @@ def ordinary_commit(book):
     book["Nodes"].append(n("partner_absent_night", "Anevia", '''"Beth's with the Queen. I still owe her a straight letter. You know I ain't writin' one tonight."
 {n}Anevia leaves the scout reports on your desk and bolts the door. She opens your coat with both hands and pushes it from your shoulders.{/n}
 "No messengers. No little gifts for her to find when she comes home. I want you, and I'm already lyin' enough."
-{n}Her mouth catches yours. She pulls you toward the bed, her wedding ring cold against your bare chest.{/n}''',
+{n}Her mouth catches yours. She pulls you toward the bed, her wedding ring cold against your bare chest.{/n}
+{n}She does not take the ring off. She lays that hand flat over your heart, ring and all, and looks you dead in the eye while the other drags her dress up and over her head.{/n}
+"Leave it where it is." {n}Her voice is low and not quite steady.{/n} "I want to feel it. I want it to hurt a bit. It ought to."
+{n}She is bare and weathered by the sun on the walls, hungry in a way she has stopped apologizing to herself for. She shoves your coat the rest of the way off, strips you with brisk, shaking hands and pushes you back onto the bed. The scout reports slide off the desk behind you and she does not look. The hand with the ring in it travels slowly over your ribs while she watches your face and makes you wait.{/n}
+"There," {n}she says, rough.{/n} "That's honest, at least."''',
         c('[Keep the nights quiet while Irabeth is away.]', flags=("anevia.committed", "anevia.future_chosen", SECRET, CAREFUL)), portrait="Anevia"))
 
 
@@ -183,14 +196,15 @@ def gate_commit(book):
                   c('[Stay together behind the bolted door.]', prefix + "secret_night",
                     flags=(*original_flags, SECRET)),
                   c('"Go home tonight. We tell her the truth."', prefix + "share", flags=other_flags), portrait="Anevia"),
-                n(prefix + "secret_night", "Anevia", SECRET_NIGHT,
+                n(prefix + "secret_night", "Anevia", SECRET_NIGHT_GONE,
                   c("Continue", prefix + "discovered"), portrait="Anevia")])
             if "anevia.trickster.cost.her_key" in original_flags:
                 additions[-2]["Text"] = ("{n}You lean in and tell her the secret she demanded. She listens without a smile, "
                     "then closes her empty hand as if she were pocketing something valuable.{/n}\n" + additions[-2]["Text"])
             additions.extend(discovery_nodes(prefix))
             discovered = next(page for page in additions if page["Id"] == prefix + "discovered")
-            discovered["Text"] = "{n}At dawn Anevia comes back from the road with a folded note. She lays it between you and stands away from the bed.{/n}\n" + DISCOVERY
+            discovered["Text"] = '''{n}At dawn Anevia comes back from the road with a folded note. She lays it between you and stands away from the bed.{/n}
+''' + DISCOVERY
             # Reserve the second legacy lost-power exit emitted by earned_outcomes.
             page["Choices"].append(c("[Leave.]", forbids=("trickster.now",), abort=True))
             quiet = live_answers('[Keep the affair to Irabeth\'s absence with the Queen. Leave no false dispatches.]',
@@ -201,7 +215,10 @@ def gate_commit(book):
             additions.append(n(prefix + "absent_night", "Anevia", '''"Beth's away with the Queen. I'm still makin' a liar of myself. Don't send a damned invitation to the house."
 {n}Anevia catches your belt and draws you through the doorway. Her mouth opens against yours; she unlaces her dress without letting you go.{/n}
 "These nights. While she's away. When she comes back, I go home."
-{n}She presses you against the bed, the ring on her hand bright in the lantern light.{/n}''',
+{n}She presses you against the bed, the ring on her hand bright in the lantern light.{/n}
+{n}Her dress is already open down the back. She shrugs out of it where she stands, and the lantern finds the long line of her: ribs, the flat hard belly of a woman who runs messages along the walls, the pale places the sun never reaches. She does not hurry and she does not hide. She works your shirt off over your head and your belt out of its loops, and when she has you bare she backs you the last step with a palm in the centre of your chest and tips you onto the mattress.{/n}
+"Keep the lantern." {n}She follows you down, and the ring on her hand is bright where it spreads over your hip.{/n} "I want to see me doin' it. I want to know I did it with my eyes open."
+{n}She takes your face in both hands and looks at you a long moment, flushed and not quite steady, daring you to be the first to say what this is. Then she kisses you, hard, and the lantern burns on.{/n}''',
                 c('[Keep her company quietly while Irabeth is away.]', flags=(*original_flags, SECRET, CAREFUL)), portrait="Anevia"))
             if "anevia.trickster.cost.her_key" in original_flags:
                 additions[-1]["Text"] = ("{n}You tell her the secret she demanded. She listens without a smile, "

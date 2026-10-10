@@ -51,10 +51,9 @@ def line(id, text, requires=None):
 
 # AUTHORED: retrospective facts remain true through kept/filed/burned report
 # endings. A read-only epilogue choice cannot authorize lifelong cohabitation.
-line(LINE_SPARED, '"The victor spared my life. Neither the wager nor what followed it extinguished my purpose. '
-     'I chose the Commander\'s company for a time. My child\'s soul remained unresolved."')
-line(LINE_MORTAL, '"The Commander collected my graft instead of my life. Without magic, I continued my work. '
-     'I chose company; I did not surrender my purpose. Neither the wager nor the years that followed returned my child."')
+line(LINE_SPARED, '''
+"The victor spared my life, and I spent what was left of it at the Commander's side, by my own choice and on my own terms. I did not stop working. Your clerks will have found some of my vessels by now. Not all. My child's soul is still unresolved, and I have not withdrawn my claim."''')
+line(LINE_MORTAL, '"The Commander collected my graft instead of my life and left me mortal. I went on with my hands, since I no longer had the Abyss. I chose the Commander\'s company. I did not choose to stop. My child was not returned to me, and I have not forgiven you for it."')
 
 # AUTHORED DLC-tier dependent rewrites: exact survival/return receipts, never
 # a letter, an affair, or the obsolete late_committed predicate. Pharasma's
@@ -73,14 +72,10 @@ RETURN_RECEIPTS = [["lastcall.h2", "trickster.commander_back", "!iomedae.appoint
 RETURN_WORLDS = [RETURN_BASE + r for r in RETURN_RECEIPTS]
 RETURN_WITCH_WORLDS = [r + ["!" + at.DRAWN] for r in RETURN_WORLDS]
 RETURN_MORTAL_WORLDS = [r + [at.DRAWN] for r in RETURN_WORLDS]
-line(NEUTRAL_SPARED, '"The Commander spared my life. Neither of us forfeited it in the rift. '
-     'I kept my notes, my power, and the purpose for which I had opened the Wound."')
-line(NEUTRAL_MORTAL, '"The rift took the essence stored in the Commander\'s crystal. I lived without the graft. '
-     'The wager bought that experiment; it did not dispose of what remained of me."')
-line(RETURN_WITCH, '"The Commander went into the Wound and returned. I remained alive, with the Abyss still in me. '
-     'What followed did not settle my child\'s fate. I continued my work."', requires=("trickster.now", at.STRUCK))
-line(RETURN_MORTAL, '"The Commander went into the Wound and returned. My graft had already been collected; '
-     'I remained without magic. I continued the work I could still do, and my child\'s fate remained unresolved."',
+line(NEUTRAL_SPARED, '"The Commander spared my life. Neither of us burned in the rift. I kept my notes, my power and the purpose for which I opened the Wound, and I left before anyone could mistake a wager for a reconciliation."')
+line(NEUTRAL_MORTAL, '"The rift took the essence the Commander had bottled out of me, and left the woman. The wager bought that experiment. It did not buy what remained of me, and what remained of me went back to work."')
+line(RETURN_WITCH, '"The Commander went into the Wound and came back out of it. I stayed alive, with the Abyss still in me. Nothing that followed settled my child\'s fate, so I went on, as I always have."', requires=("trickster.now", at.STRUCK))
+line(RETURN_MORTAL, '"The Commander went into the Wound and came back out of it. My graft had already been collected; I lived without magic and worked with what my hands still knew. My child\'s fate remained open. I kept it open."',
      requires=("trickster.now", at.STRUCK))
 
 line(LINE_DEPARTED, "\"The victor spared my life. I stayed at the Commander's side for a time, by my own choice, and then "

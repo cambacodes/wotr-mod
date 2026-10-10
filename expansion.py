@@ -742,16 +742,14 @@ def _make_expansion(*, independent_tirabade=True):
     crossroute_presence.integrate(payload)
     from storylines import engine_eng3_ab
     engine_eng3_ab.integrate(payload)
-    # villain-route-areelu (cloud): Areelu's text-only voice layer, after every appender so indices stay put.
     from storylines import areelu_cloud
     areelu_cloud.integrate(payload)
     # villain-route-herrax (cloud): Herrax's text-only layer and appended readers, after every appender.
     from storylines import herrax_cloud
     herrax_cloud.integrate(payload)
-    # villain-route-elyanka (cloud): Elyanka's text-only layer, after every appender so indices stay put.
+    # villain-route-horzalah (cloud): Horzalah's text-only voice layer, last, so appended paragraphs move no index.
     from storylines import elyanka_cloud
     elyanka_cloud.integrate(payload)
-    # villain-route-horzalah (cloud): Horzalah's text-only voice layer, last, so appended paragraphs move no index.
     from storylines import horzalah_cloud
     horzalah_cloud.integrate(payload)
     # villain-route-nurah (cloud): Nurah's text-only voice layer, last, so appended paragraphs never shift an index.

@@ -450,8 +450,35 @@ FIRST_DEMON = P + "after.first_demon"
 PARTNER_HISTORY = '''{n}The husband in the pregnant woman's tale had never existed. Nidalynn had invented him along with the belly; there was no abandoned spouse waiting for her to come home.{/n}'''
 
 
+_FIX15_CLOSURE = {
+    P + "epilogue.apart": (
+        "{n}The widow was gone from the jeweller's steps by the end of the war. She left no word with the refugees who had fed her, and none for the Commander.{/n}",
+        "{n}The egg outlived the quarrel. Whatever was ended between her and the Commander, it was ended without cracking that shell, and the kiln under the east wall was cold and empty when anyone thought to look.{/n}",
+        "{n}Nobody in the quarter could say what had passed between the widow and the Commander, only that it had finished, and that she had not asked anyone's leave to finish it.{/n}",
+    ),
+    P + "epilogue.unreturned": (
+        "{n}When word came down from Threshold that the Commander would not be coming back, the woman from the jeweller's steps heard it standing, where the news found her. She said nothing for a long time. Then she asked the name of the man who had carried it, thanked him, and went to find something to do with her hands.{/n}",
+        "{n}The egg was in the kiln under the east wall, and it was alive. She laid her palm on the shell the night the word came, and felt the slow knock inside answer. \"Still in there,\" she said to the dark. \"Good. One of you should be.\"{/n}",
+        "{n}She stayed on the jeweller's step until the light went. A boy asked whether she wanted anything, and she said she wanted an answer, and that there was nobody left in Drezen who had one to give.{/n}",
+    ),
+    P + "epilogue.wolves": (
+        "{n}No wolves ever came over the east wall that winter, and the two sentries who were flogged for them never learned what had. At the thaw the woman from the jeweller's steps left Drezen, and did not come back, and did not write.{/n}",
+        "{n}She took the egg out of the kiln the night before, wrapped in her shawl, whole and warm and not yet cracked. It was alive, or she would not have gone. Where she carried it, the Commander was not told.{/n}",
+        "{n}On the step of the lime-kiln below the east wall she left a heel of bread, untouched, where the Commander would be sure to pass.{/n}",
+    ),
+}
+
+
 def epilogue(id, text, requires, forbids=(), paragraphs=(), **extra):
-    SCENES.append(scene(P + "epilogue." + id, "", EPI, 6, "", [nar("page", text + "\n" + PARTNER_HISTORY, paragraphs=paragraphs)],
+    text = text + "\n" + PARTNER_HISTORY
+    closure = _FIX15_CLOSURE.get(P + "epilogue." + id)
+    if closure:
+        intro, unhatched, before_kiln = closure
+        paragraphs = (*paragraphs, p(text, requires=(KILN, HATCHED)),
+                      p(unhatched, requires=(KILN,), forbids=(HATCHED,)),
+                      p(before_kiln, forbids=(KILN,)))
+        text = intro
+    SCENES.append(scene(P + "epilogue." + id, "", EPI, 6, "", [nar("page", text, paragraphs=paragraphs)],
                         requires=("trickster.ever", *requires), forbids=forbids, last=6, Relationship=REL, **extra))
 
 
@@ -617,36 +644,3 @@ next(s for s in SCENES if s["Id"] == P + "steps.widow")["Nodes"].extend([
     nd("hunted_absent", '"You sent their mother after us. She followed our trail before she was lost." {n}Her needle stops.{/n} "Her absence doesn\'t make that kinder, Commander. We\'ll talk about it. Not on a step."', c("Continue", "mother")),
     nd("mother_absent", '"And you brought its mother back once. She\'s gone again." {n}She looks toward the citadel.{/n} "This one is still here. Keep the fire high."', c("Continue", "ask")),
 ])
-
-
-_FIX15_CLOSURE = {
-    P + "epilogue.apart": (
-        "{n}The widow was gone from the jeweller's steps by the end of the war. She left no word with the refugees who had fed her, and none for the Commander.{/n}",
-        "{n}The egg outlived the quarrel. Whatever was ended between her and the Commander, it was ended without cracking that shell, and the kiln under the east wall was cold and empty when anyone thought to look.{/n}",
-        "{n}Nobody in the quarter could say what had passed between the widow and the Commander, only that it had finished, and that she had not asked anyone's leave to finish it.{/n}",
-    ),
-    P + "epilogue.unreturned": (
-        "{n}When word came down from Threshold that the Commander would not be coming back, the woman from the jeweller's steps heard it standing, where the news found her. She said nothing for a long time. Then she asked the name of the man who had carried it, thanked him, and went to find something to do with her hands.{/n}",
-        "{n}The egg was in the kiln under the east wall, and it was alive. She laid her palm on the shell the night the word came, and felt the slow knock inside answer. \"Still in there,\" she said to the dark. \"Good. One of you should be.\"{/n}",
-        "{n}She stayed on the jeweller's step until the light went. A boy asked whether she wanted anything, and she said she wanted an answer, and that there was nobody left in Drezen who had one to give.{/n}",
-    ),
-    P + "epilogue.wolves": (
-        "{n}No wolves ever came over the east wall that winter, and the two sentries who were flogged for them never learned what had. At the thaw the woman from the jeweller's steps left Drezen, and did not come back, and did not write.{/n}",
-        "{n}She took the egg out of the kiln the night before, wrapped in her shawl, whole and warm and not yet cracked. It was alive, or she would not have gone. Where she carried it, the Commander was not told.{/n}",
-        "{n}On the step of the lime-kiln below the east wall she left a heel of bread, untouched, where the Commander would be sure to pass.{/n}",
-    ),
-}
-
-# fix15: a recorded departure is history, not present bodily participation.
-# Earlier closure can occur before a kiln or hatchling exists.
-for _ending in SCENES:
-    if _ending["Id"] in _FIX15_CLOSURE:
-        _node = _ending["Nodes"][0]
-        _old = _node["Text"]
-        _intro, _unhatched, _before_kiln = _FIX15_CLOSURE[_ending["Id"]]
-        _node["Text"] = _intro
-        _node.setdefault("Paragraphs", []).extend([
-            p(_old, requires=(KILN, HATCHED)),
-            p(_unhatched, requires=(KILN,), forbids=(HATCHED,)),
-            p(_before_kiln, forbids=(KILN,)),
-        ])

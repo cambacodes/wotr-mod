@@ -96,6 +96,73 @@ class RetiredOverlayTests(unittest.TestCase):
             self.assertFalse(list((ROOT / 'storylines').rglob(name + '.py')))
 
 
+def built_text_writes(tree):
+    """Find direct text writes and paragraph appends through constructed records."""
+    writes = []
+    for node in ast.walk(tree):
+        targets = (node.targets if isinstance(node, ast.Assign)
+                   else [node.target] if isinstance(node, (ast.AugAssign, ast.AnnAssign)) else [])
+        for target in targets:
+            if (isinstance(target, ast.Subscript) and isinstance(target.slice, ast.Constant)
+                    and target.slice.value in {"Text", "Paragraphs"}):
+                writes.append(node.lineno)
+        if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute):
+            receiver = node.func.value
+            if node.func.attr not in {"append", "extend", "insert"}:
+                continue
+            if (isinstance(receiver, ast.Subscript) and isinstance(receiver.slice, ast.Constant)
+                    and receiver.slice.value == "Paragraphs"):
+                writes.append(node.lineno)
+            elif (isinstance(receiver, ast.Call) and isinstance(receiver.func, ast.Attribute)
+                  and receiver.func.attr == "setdefault" and receiver.args
+                  and isinstance(receiver.args[0], ast.Constant)
+                  and receiver.args[0].value == "Paragraphs"):
+                writes.append(node.lineno)
+    return writes
+
+
+class ConsolidatedBuilderTests(unittest.TestCase):
+    def test_completed_route_modules_do_not_rewrite_built_text(self):
+        for name in ("areelu_trickster", "elyanka_trickster"):
+            path = ROOT / "storylines" / (name + ".py")
+            tree = ast.parse(path.read_text(encoding="utf-8"))
+            self.assertEqual(built_text_writes(tree), [], str(path))
+
+    def test_nidalynn_closures_are_constructed_by_the_epilogue_factory(self):
+        path = ROOT / "storylines/nidalynn_trickster.py"
+        tree = ast.parse(path.read_text(encoding="utf-8"))
+        factory = next(node for node in tree.body
+                       if isinstance(node, ast.FunctionDef) and node.name == "epilogue")
+        self.assertEqual(built_text_writes(factory), [])
+        # Module-level loops must never retrofit prose into SCENES.
+        for node in tree.body:
+            if isinstance(node, (ast.For, ast.While)):
+                self.assertEqual(built_text_writes(node), [], str(path))
+
+    def test_lastcall_factories_do_not_retrofit_scene_text(self):
+        path = ROOT / "storylines/lastcall_partners.py"
+        tree = ast.parse(path.read_text(encoding="utf-8"))
+        factories = [node for node in tree.body if isinstance(node, ast.FunctionDef)
+                     and node.name in {"pages", "call_in_scenes"}]
+        self.assertTrue(factories)
+        for factory in factories:
+            self.assertEqual(built_text_writes(factory), [], str(path))
+
+    def test_mutation_class_is_detected_independently_of_prose(self):
+        for source in (
+            'node["Text"] = replacement',
+            'node["Text"] += tail',
+            'node["Paragraphs"].extend(readers)',
+            'node.setdefault("Paragraphs", []).append(reader)',
+            'for scene in SCENES:\n    scene["Nodes"][0]["Text"] = intro',
+        ):
+            with self.subTest(source=source):
+                self.assertTrue(built_text_writes(ast.parse(source)))
+        self.assertEqual(built_text_writes(ast.parse(
+            'scene(identity, title, owner, chapter, entry, [n("end", "Narrator", text, paragraphs=readers)])')), [])
+
+
+
 
 if __name__ == '__main__':
     unittest.main()

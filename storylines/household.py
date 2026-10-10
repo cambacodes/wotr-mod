@@ -377,7 +377,8 @@ def guest_entries():
         else:
             lines = _stance_lines(rel + ".harem", others)
         out.append(dict(Id="guest." + rel, Section="Guest List", Portrait=portrait, Title=name,
-                        Text="{n}%s. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}" % name,
+                        Text=("{n}%s. A chair at the {g|RRT_Table}Table{/g}, if she wants it." % name
+                              + (" She keeps her own table, in the dead-house by the south gate, laid every seventh night, and has never sat at anyone else's." if rel == "elyanka" else "") + "{/n}"),
                         Lines=lines, Requires=[eligible(rel)], Forbids=forbids, AnyGroups=[], Tooltip="RRT_GuestList"))
     return out
 
@@ -413,7 +414,8 @@ def secret_entries():
     return [dict(Id="secret." + s["key"], Section="Secrets", Portrait=s["portrait"], Title=s["title"],
                  Text="{n}" + s["text"] + " {g|RRT_SecretRisk}Risk: " + s["risk"] + ".{/g}{/n}",
                  Lines=[_line("{n}Unknown to %s.{/n}" % PARTNERS.get(w, (None, w))[1],
-                              forbids=["trickster.secret.%s.known.%s" % (s["key"], w)]) for w in s["witnesses"]],
+                              forbids=["trickster.secret.%s.known.%s" % (s["key"], w)]
+                                      + (["elyanka.trickster.inquiry.misled"] if s["key"] == "elyanka_siege_dead" and w == "seelah" else [])) for w in s["witnesses"]],
                  Requires=["trickster.secret." + s["key"]], Forbids=[], AnyGroups=[], Tooltip="RRT_Secret")
             for s in SECRETS]
 
