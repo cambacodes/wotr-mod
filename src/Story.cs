@@ -19,6 +19,11 @@ namespace Tirabade
             && !Suppressed && Conscious && !Enemy;
     }
     // end eng7-l11
+    public sealed class ValidationError
+    {
+        public string code = "", scene = "", detail = "";
+    }
+
     public sealed class Story
     {
         public List<Scene> Scenes = new List<Scene>();
@@ -1469,7 +1474,7 @@ namespace Tirabade
             if (story.DerivedOpenRoutes.TryGetValue(key, out var routes))
                 foreach (var rel in routes)
                 {
-                    var relationship = story.Relationships[rel];
+                    if (rel == null || !story.Relationships.TryGetValue(rel, out var relationship)) continue;
                     inputs = inputs.Concat(new[] { relationship.ClosedFlag }).Concat(relationship.EpochUnavailableFlags).Concat(relationship.UnavailableFlags ?? Array.Empty<string>())
                         .Concat(relationship.UnavailableOverrides?.Values ?? (IEnumerable<string>)Array.Empty<string>());
                 }
@@ -1724,10 +1729,12 @@ namespace Tirabade
             || string.Equals(blueprint, presenceUnit, StringComparison.OrdinalIgnoreCase);
 
         // F10: only this QA candidate is unsupported by the live copy path. Dragon size alone is not a ban.
-        public static void ValidatePresenceCopy(string key, Presence presence)
+        public static void ValidatePresenceCopy(string key, Presence presence) => ValidatePresenceCopy(key, presence, null);
+
+        private static void ValidatePresenceCopy(string key, Presence presence, List<ValidationError>? errors)
         {
             if (presence.Mode == "spawn-copy" && presence.Unit == "c4b5746d3d2511441ba18a894cecb328")
-                throw new InvalidOperationException("Presence " + key + ": RedDragon_Sanctum 1 is an unsupported QA copy (live probe produced no usable actor). Use Devarra's existing letter/Storyteller delivery.");
+                Reject(errors, "unsupported_presence_copy", "", "Presence " + key + ": RedDragon_Sanctum 1 is an unsupported QA copy (live probe produced no usable actor). Use Devarra's existing letter/Storyteller delivery.");
         }
 
         public static CopyQuiet PlanQuiet(CopyObservation copy)
@@ -1832,30 +1839,32 @@ namespace Tirabade
             return edges;
         }
 
-        public static void ValidateBooks(Story story)
+        public static void ValidateBooks(Story story) => ValidateBooks(story, null);
+
+        private static void ValidateBooks(Story story, List<ValidationError>? errors)
         {
-            if (story.Books == null || story.Glossary == null) throw new InvalidOperationException("Book and glossary collections cannot be null.");
+            if (story.Books == null || story.Glossary == null) Reject(errors, "book_and_glossary_collections_cannot_be_null", "", "Book and glossary collections cannot be null.");
             foreach (var pair in story.Glossary)
                 if (!System.Text.RegularExpressions.Regex.IsMatch(pair.Key, "^RRT_[A-Za-z0-9_]+$") || pair.Value == null
                     || string.IsNullOrWhiteSpace(pair.Value.Name) || string.IsNullOrWhiteSpace(pair.Value.Description))
-                    throw new InvalidOperationException("Invalid glossary entry (keys are RRT_<word>, with a name and a description): " + pair.Key);
+                    Reject(errors, "invalid_glossary_entry", "", "Invalid glossary entry (keys are RRT_<word>, with a name and a description): " + pair.Key);
             var links = new System.Text.RegularExpressions.Regex(@"\{g\|(RRT_[A-Za-z0-9_]+)\}");
             foreach (var pair in story.Books)
             {
                 var book = pair.Value;
                 if (!System.Text.RegularExpressions.Regex.IsMatch(pair.Key, "^[a-z0-9_.]+$") || book == null || string.IsNullOrWhiteSpace(book.Title)
                     || book.Sections.Length == 0 || book.Sections.Distinct().Count() != book.Sections.Length || book.Entries.Count == 0)
-                    throw new InvalidOperationException("Invalid book (a title, distinct sections, at least one entry): " + pair.Key);
+                    Reject(errors, "invalid_book", "", "Invalid book (a title, distinct sections, at least one entry): " + pair.Key);
                 var ids = new HashSet<string>(StringComparer.Ordinal);
                 foreach (var entry in book.Entries)
                     if (!System.Text.RegularExpressions.Regex.IsMatch(entry.Id, "^[a-z0-9_.]+$") || !ids.Add(entry.Id)
                         || !book.Sections.Contains(entry.Section) || string.IsNullOrWhiteSpace(entry.Title) || string.IsNullOrWhiteSpace(entry.Text)
                         || entry.Tooltip.Length > 0 && !story.Glossary.ContainsKey(entry.Tooltip))
-                        throw new InvalidOperationException("Invalid book entry (unique id, declared section, title, text, known tooltip): " + pair.Key + "/" + entry.Id);
+                        Reject(errors, "invalid_book_entry", "", "Invalid book entry (unique id, declared section, title, text, known tooltip): " + pair.Key + "/" + entry.Id);
                 var text = string.Join(" ", book.Entries.SelectMany(e => new[] { e.Text }.Concat(e.Lines.Select(l => l.Text))).Concat(new[] { book.Opening }));
                 foreach (System.Text.RegularExpressions.Match link in links.Matches(text))
                     if (!story.Glossary.ContainsKey(link.Groups[1].Value))
-                        throw new InvalidOperationException("Book text links an unknown glossary key: " + pair.Key + "/" + link.Groups[1].Value);
+                        Reject(errors, "book_text_links_an_unknown_glossary_key", "", "Book text links an unknown glossary key: " + pair.Key + "/" + link.Groups[1].Value);
             }
         }
 
@@ -1975,9 +1984,11 @@ namespace Tirabade
             && receipt.Requires.All(state.Has) && story.Presences.TryGetValue(name, out var presence)
             && PresenceFailed(presence, PresenceWanted(presence, state), seen);
 
-        public static void ValidatePresenceFailureReceipts(Story story, HashSet<string> authored, HashSet<string> native)
+        public static void ValidatePresenceFailureReceipts(Story story, HashSet<string> authored, HashSet<string> native) => ValidatePresenceFailureReceipts(story, authored, native, null);
+
+        private static void ValidatePresenceFailureReceipts(Story story, HashSet<string> authored, HashSet<string> native, List<ValidationError>? errors)
         {
-            if (story.PresenceFailureReceipts == null) throw new InvalidOperationException("PresenceFailureReceipts cannot be null.");
+            if (story.PresenceFailureReceipts == null) Reject(errors, "presencefailurereceipts_cannot_be_null", "", "PresenceFailureReceipts cannot be null.");
             foreach (var pair in story.PresenceFailureReceipts)
             {
                 var receipt = pair.Value;
@@ -1986,8 +1997,9 @@ namespace Tirabade
                     || receipt.Requires == null || receipt.Requires.Length == 0 || receipt.Requires.Distinct().Count() != receipt.Requires.Length
                     || authored.Contains(receipt.Flag) || native.Contains(receipt.Flag) || story.Derived.ContainsKey(receipt.Flag)
                     || receipt.Requires.Any(f => !authored.Contains(f) && !native.Contains(f) && !story.Derived.ContainsKey(f))
-                    || !receipt.Requires.Any(f => ReturnFlags(story.Relationships[rel]).Contains(f)))
-                    throw new InvalidOperationException("Invalid earned presence failure receipt: " + pair.Key);
+                    || !story.Relationships.TryGetValue(rel, out var relationship)
+                    || !receipt.Requires.Any(f => ReturnFlags(relationship).Contains(f)))
+                    Reject(errors, "invalid_earned_presence_failure_receipt", "", "Invalid earned presence failure receipt: " + pair.Key);
             }
         }
         // eng7-l06 end
@@ -2062,13 +2074,16 @@ namespace Tirabade
         }
 
 
-        public static string[] EntryTargets(Scene scene)
+        public static string[] EntryTargets(Scene scene) => EntryTargets(scene, null);
+
+        private static string[] EntryTargets(Scene scene, List<ValidationError>? errors)
         {
             if (IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.ContinueBefore != null) return Array.Empty<string>();
             if (scene.InteractionHub != null)
             {
                 if (IsNurahHubScene(scene) || IsPresenceHubScene(scene) || IsTableScene(scene) || IsWenduagEchoHub(scene)) return Array.Empty<string>();
-                throw new InvalidOperationException("Unrecognized authored interaction hub: " + scene.Id + "/" + scene.InteractionHub);
+                Reject(errors, "unrecognized_authored_interaction_hub", scene.Id, "Unrecognized authored interaction hub: " + scene.Id + "/" + scene.InteractionHub);
+                return Array.Empty<string>();
             }
             if (scene.AnswerLists.Length > 0) return scene.AnswerLists;
             if (scene.Relationship == "tirabade")
@@ -2077,7 +2092,8 @@ namespace Tirabade
                 if (scene.Owner == "Irabeth") return new[] { "871af36f2ab2b1f40b5de77976c54276" };
                 if (scene.Owner == "Together") return new[] { "33960c7f7af40cd43b7f801a76c87a0b", "871af36f2ab2b1f40b5de77976c54276" };
             }
-            throw new InvalidOperationException("No dialogue attachment points for " + scene.Id + " (" + scene.Owner + ").");
+            Reject(errors, "missing_dialogue_attachment", scene.Id, "No dialogue attachment points for " + scene.Id + " (" + scene.Owner + ").");
+            return Array.Empty<string>();
         }
 
         // E12: presence keys are "<relationship>.presence" or "<relationship>.presence.<name>" (several per relationship,
@@ -2129,6 +2145,7 @@ namespace Tirabade
             if (!IsPresenceHubScene(scene) || scene.Relationship != "household"
                 || !story.Presences.TryGetValue(scene.InteractionHub!, out var presence) || presence.Dialog != "hub") return false;
             string owner = PresenceRelationship(scene.InteractionHub!)!;
+            if (scene.MaxChapter < scene.MinChapter) return false;
             var chapters = scene.Chapters.Length > 0 ? scene.Chapters : Enumerable.Range(scene.MinChapter, scene.MaxChapter - scene.MinChapter + 1);
             bool LivePath(string flag) => scene.Requires.Contains(flag) || flag == "trickster.ever"
                 && (scene.Requires.Contains(TricksterNow) || scene.Requires.Contains("trickster") && scene.Forbids.Contains("trickster.failed"));
@@ -2155,19 +2172,88 @@ namespace Tirabade
             && scene.Chapters.SequenceEqual(new[] { 5 })
             && scene.Requires.Contains("nurah.meeting_accepted") && scene.Requires.Contains("nurah.meeting_arrived");
 
+        private static void Reject(List<ValidationError>? errors, string code, string scene, string detail)
+        {
+            if (errors == null) throw new InvalidOperationException(detail);
+            errors.Add(new ValidationError { code = code, scene = scene, detail = detail });
+        }
+
         public static void Validate(Story story)
         {
-            if (story.Scenes.Count == 0) throw new InvalidOperationException("The route has no scenes.");
-            ValidateBooks(story);
+            var errors = ValidateAll(story);
+            if (errors.Count > 0) throw new InvalidOperationException(errors[0].detail);
+        }
+
+        public static List<ValidationError> ValidateAll(Story story)
+        {
+            var errors = new List<ValidationError>();
+            if (story == null)
+            {
+                Reject(errors, "null_story", "", "Story cannot be null.");
+                return errors;
+            }
+            var view = (Story)ValidationView(story, errors, "Story", "");
+            CollectValidation(view, errors);
+            return errors;
+        }
+
+        // Invalid collection members cannot support dependent checks. Keep their structural
+        // findings and check the remaining members on a private view, preserving authored data.
+        private static object ValidationView(object value, List<ValidationError> errors, string path, string scene)
+        {
+            var type = value.GetType();
+            if (value is Scene item) scene = item.Id ?? "";
+            if (value is string || type.IsValueType) return value;
+            if (value is System.Collections.IDictionary dictionary)
+            {
+                var copy = (System.Collections.IDictionary)Activator.CreateInstance(type)!;
+                foreach (System.Collections.DictionaryEntry entry in dictionary)
+                    if (entry.Value == null) Reject(errors, "null_member", scene, path + "/" + entry.Key);
+                    else copy.Add(entry.Key, ValidationView(entry.Value, errors, path + "/" + entry.Key, scene));
+                return copy;
+            }
+            if (value is System.Collections.IList list)
+            {
+                var members = new List<object>();
+                for (int i = 0; i < list.Count; i++)
+                    if (list[i] == null) Reject(errors, "null_member", scene, path + "/" + i);
+                    else members.Add(ValidationView(list[i]!, errors, path + "/" + i, scene));
+                if (type.IsArray)
+                {
+                    var copy = Array.CreateInstance(type.GetElementType()!, members.Count);
+                    for (int i = 0; i < members.Count; i++) copy.SetValue(members[i], i);
+                    return copy;
+                }
+                var result = (System.Collections.IList)Activator.CreateInstance(type)!;
+                foreach (var member in members) result.Add(member);
+                return result;
+            }
+            var resultObject = Activator.CreateInstance(type)!;
+            foreach (var field in type.GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance))
+            {
+                var member = field.GetValue(value);
+                var fallback = field.GetValue(resultObject);
+                if (member == null && fallback != null)
+                    Reject(errors, "null_field", scene, path + "/" + field.Name);
+                else if (member != null)
+                    field.SetValue(resultObject, ValidationView(member, errors, path + "/" + field.Name, scene));
+            }
+            return resultObject;
+        }
+
+        private static void CollectValidation(Story story, List<ValidationError> errors)
+        {
+            if (story.Scenes.Count == 0) Reject(errors, "no_scenes", "", "The route has no scenes.");
+            ValidateBooks(story, errors);
             foreach (var scene in story.Scenes)
                 if (scene.Kind != null && (Array.IndexOf(SceneKinds, scene.Kind) < 0 || !IsRemote(scene)))
-                    throw new InvalidOperationException("Invalid scene kind (E15c: letter, visit, sending, memory, event, invitation; remote scenes only): " + scene.Id);
+                    Reject(errors, "invalid_scene_kind", scene.Id, "Invalid scene kind (E15c: letter, visit, sending, memory, event, invitation; remote scenes only): " + scene.Id);
             if (story.UnlockableFlags == null || story.QuestObjectives == null || story.InventoryItems == null || story.PartyItems == null || story.StartedQuests == null
                 || story.MainCharacterFacts == null)
-                throw new InvalidOperationException("Native reader collections cannot be null.");
+                Reject(errors, "native_reader_collections_cannot_be_null", "", "Native reader collections cannot be null.");
             foreach (var pair in story.CompletedQuests)
                 if (string.IsNullOrWhiteSpace(pair.Key) || story.Etudes.ContainsKey(pair.Key) || !Guid.TryParseExact(pair.Value, "N", out _))
-                    throw new InvalidOperationException("Invalid completed quest binding: " + pair.Key);
+                    Reject(errors, "invalid_completed_quest_binding", "", "Invalid completed quest binding: " + pair.Key);
             var relationshipFlags = new HashSet<string>();
             foreach (var pair in story.Revivals)
                 if (string.IsNullOrWhiteSpace(pair.Key) || !Guid.TryParseExact(pair.Value.Unit, "N", out _)
@@ -2176,16 +2262,16 @@ namespace Tirabade
                         || pair.Value.Unit != "ca2d58c5c65723945857e04fb85d30ce" || pair.Value.DeathFlag != "konomi.retained_dead"
                         : !story.Etudes.ContainsKey(pair.Value.DeathFlag))
                     || !story.Relationships[pair.Value.Relationship].UnavailableFlags.Contains(pair.Value.DeathFlag))
-                    throw new InvalidOperationException("Invalid revival binding: " + pair.Key);
+                    Reject(errors, "invalid_revival_binding", "", "Invalid revival binding: " + pair.Key);
             foreach (var pair in story.SeenCues)
                 if (string.IsNullOrWhiteSpace(pair.Key) || story.Etudes.ContainsKey(pair.Key) || story.CompletedQuests.ContainsKey(pair.Key)
                     || pair.Value.Length == 0 || pair.Value.Any(id => !Guid.TryParseExact(id, "N", out _)))
-                    throw new InvalidOperationException("Invalid seen-cue binding: " + pair.Key);
+                    Reject(errors, "invalid_seen_cue_binding", "", "Invalid seen-cue binding: " + pair.Key);
             foreach (var pair in story.Relationships)
             {
-                if (string.IsNullOrWhiteSpace(pair.Key) || string.IsNullOrWhiteSpace(pair.Value.Title)) throw new InvalidOperationException("Unnamed relationship.");
+                if (string.IsNullOrWhiteSpace(pair.Key) || string.IsNullOrWhiteSpace(pair.Value.Title)) Reject(errors, "unnamed_relationship", "", "Unnamed relationship.");
                 foreach (var flag in new[] { pair.Value.StartedFlag, pair.Value.ClosedFlag, pair.Value.CommittedFlag })
-                    if (string.IsNullOrWhiteSpace(flag) || !relationshipFlags.Add(flag)) throw new InvalidOperationException("Empty or shared relationship state: " + pair.Key + "/" + flag);
+                    if (string.IsNullOrWhiteSpace(flag) || !relationshipFlags.Add(flag)) Reject(errors, "empty_or_shared_relationship_state", "", "Empty or shared relationship state: " + pair.Key + "/" + flag);
             }
             var authoredFlags = new HashSet<string>(story.Scenes.Select(s => s.Id)
                 .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
@@ -2219,14 +2305,14 @@ namespace Tirabade
             if (authoredFlags.Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
                 .Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(ReaderKeys(story))
                 .Any(flag => flag.StartsWith(DegradedPrefix, StringComparison.Ordinal) || flag.StartsWith(RestSpentPrefix, StringComparison.Ordinal) || flag.StartsWith(PaymentPrefix, StringComparison.Ordinal) || flag.StartsWith(ServedPrefix, StringComparison.Ordinal)))
-                throw new InvalidOperationException("The " + DegradedPrefix + ", " + RestSpentPrefix + ", " + PaymentPrefix + " and " + ServedPrefix + " prefixes are reserved for runtime state.");
+                Reject(errors, "the", "", "The " + DegradedPrefix + ", " + RestSpentPrefix + ", " + PaymentPrefix + " and " + ServedPrefix + " prefixes are reserved for runtime state.");
             if (authoredFlags.Any(contactEvidence.Contains)
                 || story.Scenes.Any(scene => scene.Id == "konomi.retained_return_confirmed")
                 || relationshipFlags.Contains("konomi.retained_return_confirmed")
                 || story.Etudes.Keys.Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
                     .Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys)
                     .Any(key => contactEvidence.Contains(key) || key == "konomi.retained_return_confirmed"))
-                throw new InvalidOperationException("Authored state or native aliases cannot manufacture contact evidence.");
+                Reject(errors, "authored_state_or_native_aliases_cannot_manufacture_contact_evidence", "", "Authored state or native aliases cannot manufacture contact evidence.");
             var nativeKeys = new HashSet<string>(NativeKeys(story));
             // E10: reader keys are new names, each bound once, to a well-formed GUID (and objective state).
             var others = story.Etudes.Keys.Concat(story.CompletedEtudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
@@ -2242,22 +2328,22 @@ namespace Tirabade
                 if (string.IsNullOrWhiteSpace(key) || guid == null || !Guid.TryParseExact(guid, "N", out var parsed) || parsed == Guid.Empty
                     || readers.Count(other => other == key) != 1 || others.Contains(key) || authoredFlags.Contains(key)
                     || derivedFlags.Contains(key) || contactEvidence.Contains(key) || IsReservedKey(key))
-                    throw new InvalidOperationException("Invalid native reader binding: " + key);
+                    Reject(errors, "invalid_native_reader_binding", "", "Invalid native reader binding: " + key);
             }
-            if (story.Latches == null) throw new InvalidOperationException("Latches cannot be null.");
+            if (story.Latches == null) Reject(errors, "latches_cannot_be_null", "", "Latches cannot be null.");
             foreach (var pair in story.Latches)
                 if (string.IsNullOrWhiteSpace(pair.Key) || authoredFlags.Contains(pair.Key) || nativeKeys.Contains(pair.Key)
                     || derivedFlags.Contains(pair.Key) || contactEvidence.Contains(pair.Key) || IsReservedKey(pair.Key)
                     || pair.Value == null || pair.Value.Length == 0 || pair.Value.Distinct().Count() != pair.Value.Length
                     || pair.Value.Any(source => !nativeKeys.Contains(source) && !derivedFlags.Contains(source)))
-                    throw new InvalidOperationException("Invalid latch (sources must be native or runtime-derived keys; the key must be new): " + pair.Key);
+                    Reject(errors, "invalid_latch", "", "Invalid latch (sources must be native or runtime-derived keys; the key must be new): " + pair.Key);
             // A latch is an ordinary authored flag once recorded.
             authoredFlags.UnionWith(story.Latches.Keys);
             if (story.PendingHooks == null || story.PendingHooks.Distinct().Count() != story.PendingHooks.Length
                 || story.PendingHooks.Any(key => string.IsNullOrWhiteSpace(key) || IsReservedKey(key)))
-                throw new InvalidOperationException("Invalid pending read-only hook.");
+                Reject(errors, "invalid_pending_read_only_hook", "", "Invalid pending read-only hook.");
             derivedFlags.UnionWith(story.PendingHooks.Where(key => !story.Derived.ContainsKey(key) && !authoredFlags.Contains(key) && !nativeKeys.Contains(key)));
-            ValidateDerived(story, authoredFlags, nativeKeys, derivedFlags, contactEvidence);
+            ValidateDerived(story, authoredFlags, nativeKeys, derivedFlags, contactEvidence, errors);
             // Epoch metadata names observed existing events; it cannot mint a return
             // receipt or silently attach one woman's loss to another relationship.
             var epochInputs = new HashSet<string>(authoredFlags.Concat(nativeKeys).Concat(derivedFlags).Concat(story.Derived.Keys));
@@ -2290,14 +2376,14 @@ namespace Tirabade
                         || p.Value != pair.Key + ".native_alive")
                     || !story.Relationships[spec.Relationship].EpochUnavailableFlags.Any(k =>
                         k == spec.UnavailableFlag || IndependentSeatGuard(spec.Relationship, k)))
-                    throw new InvalidOperationException("Invalid departure epoch contract: " + pair.Key);
+                    Reject(errors, "invalid_departure_epoch_contract", "", "Invalid departure epoch contract: " + pair.Key);
             }
             foreach (var pair in story.Relationships)
                 if (pair.Value.EpochUnavailableFlags == null || pair.Value.EpochUnavailableFlags.Any(k =>
                     !story.DepartureEpochs.Values.Any(e => (e.Relationship == pair.Key || e.AdditionalRelationships.Contains(pair.Key)) && e.UnavailableFlag == k)
                     && !IndependentSeatGuard(pair.Key, k)))
-                    throw new InvalidOperationException("Unregistered departure epoch guard: " + pair.Key);
-            if (story.Counts == null) throw new InvalidOperationException("Counts cannot be null.");
+                    Reject(errors, "unregistered_departure_epoch_guard", "", "Unregistered departure epoch guard: " + pair.Key);
+            if (story.Counts == null) Reject(errors, "counts_cannot_be_null", "", "Counts cannot be null.");
             foreach (var pair in story.Counts)
                 if (string.IsNullOrWhiteSpace(pair.Key) || authoredFlags.Contains(pair.Key) || nativeKeys.Contains(pair.Key) || derivedFlags.Contains(pair.Key)
                     || contactEvidence.Contains(pair.Key) || story.Derived.ContainsKey(pair.Key) || IsReservedKey(pair.Key) || pair.Value?.Of == null
@@ -2305,67 +2391,67 @@ namespace Tirabade
                     || pair.Value.Chapters == null || pair.Value.Chapters.Distinct().Count() != pair.Value.Chapters.Length
                     || pair.Value.Chapters.Any(chapter => chapter < 0 || chapter > 6)
                     || pair.Value.Of.Any(f => !authoredFlags.Contains(f) && !nativeKeys.Contains(f) && !derivedFlags.Contains(f) && !story.Derived.ContainsKey(f)))
-                    throw new InvalidOperationException("Invalid count composite (new key; 1 <= Min <= |Of|; distinct known sources, no other counts): " + pair.Key);
+                    Reject(errors, "invalid_count_composite", "", "Invalid count composite (new key; 1 <= Min <= |Of|; distinct known sources, no other counts): " + pair.Key);
             foreach (var pair in story.StartedDialogs)
                 if (string.IsNullOrWhiteSpace(pair.Key) || !Guid.TryParseExact(pair.Value, "N", out _)
                     || story.Etudes.ContainsKey(pair.Key) || story.CompletedQuests.ContainsKey(pair.Key)
                     || story.SeenCues.ContainsKey(pair.Key) || story.SelectedAnswers.ContainsKey(pair.Key)
                     || story.CompletedEtudes.ContainsKey(pair.Key) || authoredFlags.Contains(pair.Key)
                     || derivedFlags.Contains(pair.Key) || pair.Key.StartsWith("hour.", StringComparison.Ordinal))
-                    throw new InvalidOperationException("Invalid started-dialog binding: " + pair.Key);
+                    Reject(errors, "invalid_started_dialog_binding", "", "Invalid started-dialog binding: " + pair.Key);
             foreach (var pair in story.SelectedAnswers)
                 if (string.IsNullOrWhiteSpace(pair.Key) || !Guid.TryParseExact(pair.Value, "N", out _)
                     || story.Etudes.ContainsKey(pair.Key) || story.CompletedQuests.ContainsKey(pair.Key)
                     || story.SeenCues.ContainsKey(pair.Key) || story.CompletedEtudes.ContainsKey(pair.Key)
                     || pair.Key.StartsWith("hour.", StringComparison.Ordinal) || authoredFlags.Contains(pair.Key) || derivedFlags.Contains(pair.Key))
-                    throw new InvalidOperationException("Invalid selected-answer binding: " + pair.Key);
+                    Reject(errors, "invalid_selected_answer_binding", "", "Invalid selected-answer binding: " + pair.Key);
             foreach (var pair in story.CompletedEtudes)
                 if (string.IsNullOrWhiteSpace(pair.Key) || !Guid.TryParseExact(pair.Value, "N", out _)
                     || story.Etudes.ContainsKey(pair.Key) || story.CompletedQuests.ContainsKey(pair.Key)
                     || story.SeenCues.ContainsKey(pair.Key) || pair.Key.StartsWith("hour.", StringComparison.Ordinal)
                     || authoredFlags.Contains(pair.Key) || derivedFlags.Contains(pair.Key))
-                    throw new InvalidOperationException("Invalid completed-etude binding: " + pair.Key);
+                    Reject(errors, "invalid_completed_etude_binding", "", "Invalid completed-etude binding: " + pair.Key);
             foreach (var pair in story.Relationships)
             {
-                if (pair.Value.UnavailableOverrides == null) throw new InvalidOperationException("UnavailableOverrides cannot be null: " + pair.Key);
+                if (pair.Value.UnavailableOverrides == null) Reject(errors, "unavailableoverrides_cannot_be_null", "", "UnavailableOverrides cannot be null: " + pair.Key);
                 foreach (var entry in pair.Value.UnavailableOverrides)
                     // ER-1: the value is an authored flag, a latch or a Story.Derived composite; never native or runtime-owned.
                     if (!pair.Value.UnavailableFlags.Contains(entry.Key) || string.IsNullOrWhiteSpace(entry.Value) || entry.Key == entry.Value
                         || !authoredFlags.Contains(entry.Value) && !story.Derived.ContainsKey(entry.Value) || nativeKeys.Contains(entry.Value)
                         || derivedFlags.Contains(entry.Value) || IsReservedKey(entry.Value) || pair.Value.UnavailableFlags.Contains(entry.Value)
                         || story.Relationships.Values.Any(r => r.ClosedFlag == entry.Value))
-                        throw new InvalidOperationException("Invalid unavailable override (key must be one of the relationship's UnavailableFlags, value an authored return flag): "
+                        Reject(errors, "invalid_unavailable_override", "", "Invalid unavailable override (key must be one of the relationship's UnavailableFlags, value an authored return flag): "
                             + pair.Key + "/" + entry.Key);
             }
             foreach (var pair in story.Relationships)
                 if (pair.Value.TricksterAccess == null || pair.Value.TricksterAccess.Any(access => string.IsNullOrWhiteSpace(access.Key)
                     || access.Value == null || access.Value.Detect == null || access.Value.Detect.Any(string.IsNullOrWhiteSpace)))
-                    throw new InvalidOperationException("Malformed TricksterAccess metadata: " + pair.Key);
+                    Reject(errors, "malformed_tricksteraccess_metadata", "", "Malformed TricksterAccess metadata: " + pair.Key);
             // E15: journal entries have distinct ids and text, at least one OpenWhen group, and read only known keys.
             foreach (var pair in story.Relationships)
             {
-                var entries = pair.Value.JournalEntries ?? throw new InvalidOperationException("JournalEntries cannot be null: " + pair.Key);
+                var entries = pair.Value.JournalEntries!;
                 if (entries.Any(e => e == null || string.IsNullOrWhiteSpace(e.Id) || string.IsNullOrWhiteSpace(e.Title)
                         || string.IsNullOrWhiteSpace(e.Description) || e.OpenWhen == null || e.OpenWhen.Length == 0 || e.SettledWhen == null)
                     || entries.Select(e => e.Id).Distinct().Count() != entries.Count)
-                    throw new InvalidOperationException("Invalid journal entries (distinct ids, text, >= 1 OpenWhen group): " + pair.Key);
+                    Reject(errors, "invalid_journal_entries", "", "Invalid journal entries (distinct ids, text, >= 1 OpenWhen group): " + pair.Key);
                 foreach (var entry in entries)
                     foreach (var group in entry.OpenWhen.Concat(entry.SettledWhen))
                         if (group == null || group.Length == 0 || group.Any(key => string.IsNullOrWhiteSpace(key)
                             || !authoredFlags.Contains(key) && !nativeKeys.Contains(key) && !derivedFlags.Contains(key) && !story.Derived.ContainsKey(key)
                                 && !(story.Latches?.ContainsKey(key) ?? false)))
-                            throw new InvalidOperationException("Journal entry reads an unknown or empty key group: " + pair.Key + "/" + entry.Id);
+                            Reject(errors, "journal_entry_reads_an_unknown_or_empty_key_group", "", "Journal entry reads an unknown or empty key group: " + pair.Key + "/" + entry.Id);
             }
             if (story.PostBagSize < 1 || story.PostBagSize > 10 || story.QueueCapPerRelationship < 1
                 || story.Relationships.Values.Any(r => r.RotationKey != null && string.IsNullOrWhiteSpace(r.RotationKey)))
-                throw new InvalidOperationException("Invalid post-bag settings (PostBagSize 1-10, QueueCapPerRelationship >= 1, non-blank RotationKey).");
-            ValidatePresences(story, authoredFlags, nativeKeys, derivedFlags);
+                Reject(errors, "invalid_post_bag_settings", "", "Invalid post-bag settings (PostBagSize 1-10, QueueCapPerRelationship >= 1, non-blank RotationKey).");
+            ValidatePresences(story, authoredFlags, nativeKeys, derivedFlags, errors);
             // eng7-l06
-            ValidatePresenceExceptionGuards(story);
-            ValidatePresenceFailureReceipts(story, authoredFlags, nativeKeys);
+            ValidatePresenceExceptionGuards(story, errors);
+            ValidatePresenceFailureReceipts(story, authoredFlags, nativeKeys, errors);
             // eng7-l06 end
             // E16: openers have distinct ids, a native list GUID, text, a view, a chapter window and read only known keys.
-            if (story.Openers == null) throw new InvalidOperationException("Openers cannot be null.");
+            if (story.Openers == null) Reject(errors, "openers_cannot_be_null", "", "Openers cannot be null.");
             foreach (var opener in story.Openers)
                 if (opener == null || string.IsNullOrWhiteSpace(opener.Id) || !story.Relationships.ContainsKey(opener.Relationship ?? "") || !Guid.TryParseExact(opener.AnswerList ?? "", "N", out _)
                     || string.IsNullOrWhiteSpace(opener.Text) || opener.View != "table" && !(opener.View.StartsWith("book.", StringComparison.Ordinal) && story.Books.ContainsKey(opener.View.Substring(5)))
@@ -2373,10 +2459,10 @@ namespace Tirabade
                     || story.Openers.Count(o => o?.Id == opener.Id) != 1
                     || opener.Requires.Concat(opener.Forbids).Any(key => string.IsNullOrWhiteSpace(key) || !authoredFlags.Contains(key)
                         && !nativeKeys.Contains(key) && !derivedFlags.Contains(key) && !story.Derived.ContainsKey(key)))
-                    throw new InvalidOperationException("Invalid native opener (distinct id, relationship, list GUID, text, view, chapters, known keys): " + opener?.Id);
+                    Reject(errors, "invalid_native_opener", "", "Invalid native opener (distinct id, relationship, list GUID, text, view, chapters, known keys): " + opener?.Id);
             if (story.RestAllowances == null || story.RestAllowances.Any(pair => string.IsNullOrWhiteSpace(pair.Key) || pair.Value < 1))
-                throw new InvalidOperationException("Rest allowances need named positive limits.");
-            if (story.SeatWomen == null) throw new InvalidOperationException("SeatWomen cannot be null.");
+                Reject(errors, "rest_allowances_need_named_positive_limits", "", "Rest allowances need named positive limits.");
+            if (story.SeatWomen == null) Reject(errors, "seatwomen_cannot_be_null", "", "SeatWomen cannot be null.");
             foreach (var pair in story.SeatWomen)
                 if (string.IsNullOrWhiteSpace(pair.Key) || pair.Value == null || !story.Relationships.ContainsKey(pair.Value.Relationship)
                     || pair.Value.Requires == null || pair.Value.UnavailableFlags == null || pair.Value.UnavailableOverrides == null // eng7-l05
@@ -2384,7 +2470,7 @@ namespace Tirabade
                     || pair.Value.Requires.Concat(pair.Value.UnavailableFlags).Concat(pair.Value.UnavailableOverrides.Values).Any(key => // eng7-l05
                         !authoredFlags.Contains(key) && !nativeKeys.Contains(key) && !derivedFlags.Contains(key) && !story.Derived.ContainsKey(key))
                     || pair.Value.UnavailableOverrides.Keys.Any(key => !pair.Value.UnavailableFlags.Contains(key)))
-                    throw new InvalidOperationException("Invalid seat woman: " + pair.Key);
+                    Reject(errors, "invalid_seat_woman", "", "Invalid seat woman: " + pair.Key);
             var clocks = new HashSet<string>(story.Latches.Keys.Concat(story.Scenes.Select(scene => scene.Id))
                 .Concat(story.Scenes.SelectMany(scene => scene.Nodes.SelectMany(node => node.EnterSet.Concat(node.Choices.SelectMany(choice => choice.Set))))));
             var contactKeys = new HashSet<string>(authoredFlags.Concat(nativeKeys).Concat(derivedFlags)
@@ -2397,17 +2483,17 @@ namespace Tirabade
                     || scene.DelayClocks.Length > 0 && (scene.DelayHours <= 0
                         || !scene.Requires.Any(scene.DelayClocks.Contains)
                         && !scene.RequiresAnyGroups.Any(g => g.Length > 0 && g.All(scene.DelayClocks.Contains))))
-                    throw new InvalidOperationException("Invalid declared delay clocks: " + scene.Id);
+                    Reject(errors, "invalid_declared_delay_clocks", scene.Id, "Invalid declared delay clocks: " + scene.Id);
                 if (scene.Relationship == "household" && scene.RestAllowance != null && scene.DelayHours > 0
                     && !scene.Requires.Any(clocks.Contains)
                     && !scene.RequiresAnyGroups.Any(group => group.Length > 0 && group.All(clocks.Contains)))
-                    throw new InvalidOperationException("Delayed household scene lacks a deed clock on every alternative: " + scene.Id);
+                    Reject(errors, "delayed_household_scene_lacks_a_deed_clock_on_every_alternative", scene.Id, "Delayed household scene lacks a deed clock on every alternative: " + scene.Id);
                 if (scene.RestAllowance != null && !story.RestAllowances.ContainsKey(scene.RestAllowance))
-                    throw new InvalidOperationException("Unknown rest allowance: " + scene.Id);
+                    Reject(errors, "unknown_rest_allowance", scene.Id, "Unknown rest allowance: " + scene.Id);
                 if (scene.PrivateParticipants && (scene.Relationship != "household" || scene.InteractionHub == TableHub
                     || scene.Participants.Length == 0 || scene.ParticipantContacts.Count == 0
                     || !scene.Requires.Contains("trickster.now") || !scene.Forbids.Contains("engine.l12.commander_unreturned")))
-                    throw new InvalidOperationException("Invalid private participant channel: " + scene.Id);
+                    Reject(errors, "invalid_private_participant_channel", scene.Id, "Invalid private participant channel: " + scene.Id);
                 foreach (var pair in scene.ParticipantContacts)
                 {
                     var contact = pair.Value;
@@ -2416,67 +2502,67 @@ namespace Tirabade
                         || contact.Requires == null || contact.Forbids == null || contact.Options == null
                         || contact.Requires.Length == 0 || contact.Requires.Concat(contact.Forbids).Any(k => !contactKeys.Contains(k))
                         || contact.Kind != "body" && contact.Options.Length != 0)
-                        throw new InvalidOperationException("Invalid current participant contact: " + scene.Id + "/" + pair.Key);
+                        Reject(errors, "invalid_current_participant_contact", scene.Id, "Invalid current participant contact: " + scene.Id + "/" + pair.Key);
                     foreach (var option in contact.Options)
                         if (option == null || option.Units == null || option.Units.Length == 0
                             || option.Units.Any(id => !Guid.TryParseExact(id, "N", out _))
                             || option.Requires == null || option.Forbids == null
                             || option.Requires.Concat(option.Forbids).Any(k => !contactKeys.Contains(k)))
-                            throw new InvalidOperationException("Invalid body contact alternative: " + scene.Id + "/" + pair.Key);
+                            Reject(errors, "invalid_body_contact_alternative", scene.Id, "Invalid body contact alternative: " + scene.Id + "/" + pair.Key);
                 }
                 if (scene.ParticipantContacts.Count > 0)
                     foreach (var route in scene.Participants)
                     {
-                        var named = scene.ParticipantWomen.Where(w => story.SeatWomen[w].Relationship == route).ToArray();
+                        var named = scene.ParticipantWomen.Where(w => story.SeatWomen.TryGetValue(w, out var woman) && woman.Relationship == route).ToArray();
                         var required = named.Length > 0 ? named : scene.ParticipantContacts.ContainsKey(route) ? new[] { route }
                             : story.SeatWomen.Where(p => p.Value.Relationship == route).Select(p => p.Key).ToArray();
                         if (required.Length == 0 || required.Any(w => !scene.ParticipantContacts.ContainsKey(w)))
-                            throw new InvalidOperationException("Missing current participant contact: " + scene.Id + "/" + route);
+                            Reject(errors, "missing_current_participant_contact", scene.Id, "Missing current participant contact: " + scene.Id + "/" + route);
                     }
                 if (scene.ContactWitness != null && (!scene.Requires.Contains(scene.ContactWitness)
                     || scene.ParticipantContacts.Count == 0 || scene.ParticipantContacts.Values.Any(c => c.Kind != "body")
                     || authoredFlags.Contains(scene.ContactWitness)
                     || nativeKeys.Contains(scene.ContactWitness) || story.Derived.ContainsKey(scene.ContactWitness)
                     || story.Counts.ContainsKey(scene.ContactWitness) || story.Latches.ContainsKey(scene.ContactWitness)))
-                    throw new InvalidOperationException("Current contact witness must be evaluated, never saved: " + scene.Id);
+                    Reject(errors, "current_contact_witness_must_be_evaluated_never_saved", scene.Id, "Current contact witness must be evaluated, never saved: " + scene.Id);
                 if (scene.TableHosted && (!IsRemote(scene) || scene.Kind != "visit" || !IsTableScene(scene)))
-                    throw new InvalidOperationException("TableHosted requires a Table visit: " + scene.Id);
+                    Reject(errors, "tablehosted_requires_a_table_visit", scene.Id, "TableHosted requires a Table visit: " + scene.Id);
                 if (scene.Participants == null || scene.ParticipantWomen == null || scene.Pair == null
                     || scene.Participants.Distinct().Count() != scene.Participants.Length || scene.ParticipantWomen.Distinct().Count() != scene.ParticipantWomen.Length
                     || scene.Participants.Any(id => !story.Relationships.ContainsKey(id))
                     || scene.ParticipantWomen.Any(id => !story.SeatWomen.ContainsKey(id) || !scene.Participants.Contains(story.SeatWomen[id].Relationship))
                     || scene.Pair.Length > 0 && (scene.Pair.Length != 2 || scene.Pair.Distinct().Count() != 2
                         || !scene.Pair.OrderBy(id => id).SequenceEqual(scene.Participants.OrderBy(id => id))))
-                    throw new InvalidOperationException("Invalid pair participants: " + scene.Id);
+                    Reject(errors, "invalid_pair_participants", scene.Id, "Invalid pair participants: " + scene.Id);
             }
             foreach (var scene in story.Scenes.Where(s => s.InteractionHub == TableHub))
                 if (!IsTableScene(scene))
-                    throw new InvalidOperationException("A Table scene is physical, with no native list and no contact unit: " + scene.Id);
-            ValidateNativeEpilogueEdits(story, authoredFlags, nativeKeys, derivedFlags);
-            ValidateNativeGates(story, authoredFlags, nativeKeys, derivedFlags);
-            ValidateNativeTexts(story, authoredFlags, nativeKeys, derivedFlags);
+                    Reject(errors, "a_table_scene_is_physical_with_no_native_list_and_no_contact_unit", scene.Id, "A Table scene is physical, with no native list and no contact unit: " + scene.Id);
+            ValidateNativeEpilogueEdits(story, authoredFlags, nativeKeys, derivedFlags, errors);
+            ValidateNativeGates(story, authoredFlags, nativeKeys, derivedFlags, errors);
+            ValidateNativeTexts(story, authoredFlags, nativeKeys, derivedFlags, errors);
             // eng7-l04: Main.Load and the offline suite use the identical target/state contracts.
-            ValidateNativeWorld(story, authoredFlags, nativeKeys, derivedFlags);
+            ValidateNativeWorld(story, authoredFlags, nativeKeys, derivedFlags, errors);
             // eng7-f1
-            ValidateNativeAnswers(story, authoredFlags, nativeKeys, derivedFlags);
+            ValidateNativeAnswers(story, authoredFlags, nativeKeys, derivedFlags, errors);
             // end eng7-f1
-            ValidateNativeObjectiveSettlements(story, authoredFlags, nativeKeys, derivedFlags);
+            ValidateNativeObjectiveSettlements(story, authoredFlags, nativeKeys, derivedFlags, errors);
             if (story.RemovableItems == null || story.RemovableItems.Any(guid => !Guid.TryParseExact(guid, "N", out var item) || item == Guid.Empty)
                 || story.RemovableItems.Distinct().Count() != story.RemovableItems.Length)
-                throw new InvalidOperationException("RemovableItems must be distinct native item GUIDs.");
+                Reject(errors, "removableitems_must_be_distinct_native_item_guids", "", "RemovableItems must be distinct native item GUIDs.");
             if (story.StartableEtudes == null || story.StartableEtudes.Distinct().Count() != story.StartableEtudes.Length
                 || story.StartableEtudes.Any(guid => !Guid.TryParseExact(guid, "N", out var etude) || etude == Guid.Empty
                     || !story.Etudes.ContainsValue(guid)))
-                throw new InvalidOperationException("StartableEtudes must be distinct native etude GUIDs the story reads through Etudes.");
+                Reject(errors, "startableetudes_must_be_distinct_native_etude_guids_the_story_reads_through_etudes", "", "StartableEtudes must be distinct native etude GUIDs the story reads through Etudes.");
             foreach (var key in story.PermanentEtudes)
-                if (!story.Etudes.ContainsKey(key)) throw new InvalidOperationException("Unknown permanent etude: " + key);
+                if (!story.Etudes.ContainsKey(key)) Reject(errors, "unknown_permanent_etude", "", "Unknown permanent etude: " + key);
             var ids = new HashSet<string>();
             foreach (var scene in story.Scenes)
             {
                 if (scene.InteractionHub != null && !IsNurahHubScene(scene) && !IsTableScene(scene) && !IsWenduagEchoHub(scene) && !(IsPresenceHubScene(scene)
                     && story.Presences.TryGetValue(scene.InteractionHub, out var hubPresence) && hubPresence?.Dialog == "hub"
                     && (PresenceRelationship(scene.InteractionHub) == scene.Relationship || HouseholdPresenceAttachment(story, scene))))
-                    throw new InvalidOperationException("Invalid interaction hub (the Nurah arrival contract, or a physical scene of the presence's "
+                    Reject(errors, "invalid_interaction_hub", scene.Id, "Invalid interaction hub (the Nurah arrival contract, or a physical scene of the presence's "
                         + "relationship whose presence has Dialog \"hub\"): " + scene.Id);
                 // E13: a Trickster device may meet Nurah physically on explicit native lists (prison, pardon, Camellia); an E6
                 // reaction to her route is spoken by its reactor on the reactor's own native list, without Nurah present.
@@ -2487,14 +2573,14 @@ namespace Tirabade
                     && !((scene.TricksterDevice || scene.Reaction) && scene.InteractionHub == null && scene.AnswerLists.Length > 0)
                     && !(scene.Owner == "Nurah" && scene.InteractionHub == null && scene.ContactUnit == null && scene.AnswerLists.Length > 0
                          && (scene.NativeReturnCue != null || scene.ReturnToList)))
-                    throw new InvalidOperationException("Physical Nurah scenes require the authored arrival hub: " + scene.Id);
+                    Reject(errors, "physical_nurah_scenes_require_the_authored_arrival_hub", scene.Id, "Physical Nurah scenes require the authored arrival hub: " + scene.Id);
                 if (scene.ManualOnly && !IsRemote(scene))
-                    throw new InvalidOperationException("Manual-only delivery requires a remote scene: " + scene.Id);
+                    Reject(errors, "manual_only_delivery_requires_a_remote_scene", scene.Id, "Manual-only delivery requires a remote scene: " + scene.Id);
                 if (scene.NativeReturnCue != null && (!Guid.TryParseExact(scene.NativeReturnCue, "N", out _)
                     || IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                     || scene.ContactUnit != null || scene.InteractionHub != null || scene.AnswerLists.Length != 1
                     || scene.Nodes.SelectMany(node => node.Choices).Any(choice => choice.Revive != null)))
-                    throw new InvalidOperationException("Invalid native audience return: " + scene.Id);
+                    Reject(errors, "invalid_native_audience_return", scene.Id, "Invalid native audience return: " + scene.Id);
                 // E3: the overridden key may be an authored flag or a native binding (never both, never runtime-derived
                 // or a closure). The override value must be authored: never native, runtime-derived or a closure.
                 foreach (var pair in scene.ForbidOverrides)
@@ -2502,44 +2588,44 @@ namespace Tirabade
                         || !authoredFlags.Contains(pair.Value) && !story.Derived.ContainsKey(pair.Value) && !story.PendingHooks.Contains(pair.Value) || IsReservedKey(pair.Value) || pair.Key == pair.Value
                         || story.Relationships.Values.Any(r => r.ClosedFlag == pair.Key || r.ClosedFlag == pair.Value)
                         || nativeKeys.Contains(pair.Value) || derivedFlags.Contains(pair.Key) && !story.PendingHooks.Contains(pair.Key) || derivedFlags.Contains(pair.Value) && !story.PendingHooks.Contains(pair.Value))
-                        throw new InvalidOperationException("Invalid authored forbid override: " + scene.Id + "/" + pair.Key);
-                if (string.IsNullOrWhiteSpace(scene.Id) || !ids.Add(scene.Id)) throw new InvalidOperationException("Duplicate or empty scene: " + scene.Id);
-                if (!story.Relationships.ContainsKey(scene.Relationship)) throw new InvalidOperationException("Unknown relationship: " + scene.Relationship);
+                        Reject(errors, "invalid_authored_forbid_override", scene.Id, "Invalid authored forbid override: " + scene.Id + "/" + pair.Key);
+                if (string.IsNullOrWhiteSpace(scene.Id) || !ids.Add(scene.Id)) Reject(errors, "duplicate_or_empty_scene", scene.Id, "Duplicate or empty scene: " + scene.Id);
+                if (!story.Relationships.ContainsKey(scene.Relationship)) Reject(errors, "unknown_relationship", "", "Unknown relationship: " + scene.Relationship);
                 if (scene.ContactUnit != null && !Guid.TryParseExact(scene.ContactUnit, "N", out _))
-                    throw new InvalidOperationException("Invalid native contact unit: " + scene.Id);
+                    Reject(errors, "invalid_native_contact_unit", scene.Id, "Invalid native contact unit: " + scene.Id);
                 if (scene.AdditionalContactUnits == null || scene.AdditionalContactUnits.Any(id => !Guid.TryParseExact(id, "N", out _))
                     || (scene.AdditionalContactUnits.Length > 0 && scene.ContactUnit == null)
                     || scene.AdditionalContactUnits.Concat(scene.ContactUnit == null ? Array.Empty<string>() : new[] { scene.ContactUnit })
                         .Distinct(StringComparer.OrdinalIgnoreCase).Count() != scene.AdditionalContactUnits.Length + (scene.ContactUnit == null ? 0 : 1))
-                    throw new InvalidOperationException("Invalid additional native contact units: " + scene.Id);
+                    Reject(errors, "invalid_additional_native_contact_units", scene.Id, "Invalid additional native contact units: " + scene.Id);
                 if (scene.RequiresAny.Any(string.IsNullOrWhiteSpace) || scene.RequiresAny.Distinct().Count() != scene.RequiresAny.Length)
-                    throw new InvalidOperationException("Invalid alternative prerequisites: " + scene.Id);
+                    Reject(errors, "invalid_alternative_prerequisites", scene.Id, "Invalid alternative prerequisites: " + scene.Id);
                 if (scene.RequiresAnyGroups == null || scene.RequiresAnyGroups.Any(group => group == null
                     || group.Length == 0 || group.Any(string.IsNullOrWhiteSpace) || group.Distinct().Count() != group.Length))
-                    throw new InvalidOperationException("Invalid prerequisite groups: " + scene.Id);
+                    Reject(errors, "invalid_prerequisite_groups", scene.Id, "Invalid prerequisite groups: " + scene.Id);
                 if (scene.Recovery != null && (!story.Revivals.TryGetValue(scene.Recovery, out var revival)
                     || revival.Relationship != scene.Relationship || !IsRemote(scene)))
-                    throw new InvalidOperationException("Invalid recovery scene: " + scene.Id);
+                    Reject(errors, "invalid_recovery_scene", scene.Id, "Invalid recovery scene: " + scene.Id);
                 if (scene.Recovery == "konomi" && (!scene.Requires.Contains("trickster") || !scene.Requires.Contains("konomi.retained_dead")))
-                    throw new InvalidOperationException("Konomi's retained return requires Trickster power and current retained death: " + scene.Id);
+                    Reject(errors, "konomi_s_retained_return_requires_trickster_power_and_current_retained_death", scene.Id, "Konomi's retained return requires Trickster power and current retained death: " + scene.Id);
                 if (scene.Recovery == "konomi" && scene.Nodes.SelectMany(node => node.Choices).Count(choice => choice.Revive == "konomi") > 1)
-                    throw new InvalidOperationException("Konomi's retained return requires one unambiguous terminal request per scene: " + scene.Id);
+                    Reject(errors, "konomi_s_retained_return_requires_one_unambiguous_terminal_request_per_scene", scene.Id, "Konomi's retained return requires one unambiguous terminal request per scene: " + scene.Id);
                 if (scene.AfterRecovery != null && (scene.AfterRecovery != "konomi" || scene.Recovery != null
                     || !story.Revivals.ContainsKey("konomi") || scene.Relationship != "konomi"
                     || !scene.Requires.Contains("konomi.retained_return_confirmed")
                     || (scene.ContactUnit == null
                         ? !IsRemote(scene) || !scene.Requires.Contains("konomi.return_correspondence_available")
                         : scene.ContactUnit != "ca2d58c5c65723945857e04fb85d30ce" || !scene.Requires.Contains("konomi.return_contact_available"))))
-                    throw new InvalidOperationException("Invalid retained-return aftermath: " + scene.Id);
-                if (scene.AfterDeparture != null) ValidateDepartureVisit(story, scene);
-                if (scene.Reaction) ValidateReaction(story, scene);
-                if (scene.TricksterDevice || scene.TricksterState != null) ValidateDevice(story, scene);
+                    Reject(errors, "invalid_retained_return_aftermath", scene.Id, "Invalid retained-return aftermath: " + scene.Id);
+                if (scene.AfterDeparture != null) ValidateDepartureVisit(story, scene, errors);
+                if (scene.Reaction) ValidateReaction(story, scene, errors);
+                if (scene.TricksterDevice || scene.TricksterState != null) ValidateDevice(story, scene, errors);
                 if ((scene.EntryMythic != null || scene.EntryAlignment != null) && (IsRemote(scene) || scene.InteractionHub != null
                     || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                     || scene.EntryMythic != null && !MythicNames.Contains(scene.EntryMythic)
                     || scene.EntryAlignment != null && (!AlignmentDirections.Contains(scene.EntryAlignment.Direction)
                         || scene.EntryAlignment.Value <= 0 || scene.EntryAlignment.Value > 100)))
-                    throw new InvalidOperationException("Invalid entry mythic/alignment (physical entry answers only; Mythic and AlignmentShiftDirection names): " + scene.Id);
+                    Reject(errors, "invalid_entry_mythic_alignment", scene.Id, "Invalid entry mythic/alignment (physical entry answers only; Mythic and AlignmentShiftDirection names): " + scene.Id);
                 if (scene.ContinueBefore != null && (IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                     || scene.AnswerLists.Length != 0 || scene.ContactUnit != null || scene.NativeReturnCue != null || scene.ReturnToList
                     || scene.InteractionHub != null || scene.Recovery != null || scene.Nodes.Count != 1 || scene.Nodes[0].Choices.Count != 1
@@ -2549,7 +2635,7 @@ namespace Tirabade
                     || !Guid.TryParseExact(scene.ContinueBefore.Cue, "N", out _) || scene.ContinueBefore.Parents == null
                     || scene.ContinueBefore.Parents.Length == 0 || scene.ContinueBefore.Parents.Distinct().Count() != scene.ContinueBefore.Parents.Length
                     || scene.ContinueBefore.Parents.Any(p => !Guid.TryParseExact(p, "N", out _) || p == scene.ContinueBefore.Cue)))
-                    throw new InvalidOperationException("Invalid continue-before line (one node, one unconditional terminal choice, no lists or contact, "
+                    Reject(errors, "invalid_continue_before_line", scene.Id, "Invalid continue-before line (one node, one unconditional terminal choice, no lists or contact, "
                         + "native cue and distinct parent GUIDs): " + scene.Id);
                 if (scene.ReturnToList && (scene.NativeReturnCue != null || IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                     || scene.ContactUnit != null || scene.InteractionHub != null || scene.Recovery != null || scene.AnswerLists.Length == 0
@@ -2557,12 +2643,12 @@ namespace Tirabade
                     || (scene.ReturnText ?? "").Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length > 25
                     || scene.Nodes.SelectMany(node => node.Choices).Any(choice => choice.Check != null || choice.NativeNext != null || choice.Revive != null))
                     || !scene.ReturnToList && scene.ReturnText != null)
-                    throw new InvalidOperationException("Invalid return-to-list scene (physical, explicit AnswerLists, no NativeReturnCue/ContactUnit/"
+                    Reject(errors, "invalid_return_to_list_scene", scene.Id, "Invalid return-to-list scene (physical, explicit AnswerLists, no NativeReturnCue/ContactUnit/"
                         + "hub, ReturnText <= 25 words, no check/native_next/revive choices): " + scene.Id);
                 if (scene.EpilogueSequence != null && (!NativeEpilogueSequences.TryGetValue(scene.EpilogueSequence, out var anchors)
                     || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue"
                     || scene.EpilogueAfter == null || !anchors.Contains(scene.EpilogueAfter) && !scene.EpilogueAfter.StartsWith("scene:", StringComparison.Ordinal)))
-                    throw new InvalidOperationException("Invalid native epilogue sequence (PlayerFinalChoice, non-Aeon epilogue page, anchored after "
+                    Reject(errors, "invalid_native_epilogue_sequence", scene.Id, "Invalid native epilogue sequence (PlayerFinalChoice, non-Aeon epilogue page, anchored after "
                         + "BookPage_0147 or BookPage_0115): " + scene.Id);
                 // E14h: "scene:<id>" anchors after another RRT epilogue page of the same sequence.
                 var anchorScene = scene.EpilogueAfter != null && scene.EpilogueAfter.StartsWith("scene:", StringComparison.Ordinal)
@@ -2571,32 +2657,32 @@ namespace Tirabade
                     || anchorScene == scene || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                     || !anchorScene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || Rules.IsNativeReplacement(story, anchorScene)
                     || (anchorScene.Owner == "AeonEpilogue") != (scene.Owner == "AeonEpilogue") || anchorScene.EpilogueSequence != scene.EpilogueSequence))
-                    throw new InvalidOperationException("EpilogueAfter scene anchor must be another epilogue page of the same sequence: " + scene.Id);
+                    Reject(errors, "epilogueafter_scene_anchor_must_be_another_epilogue_page_of_the_same_sequence", scene.Id, "EpilogueAfter scene anchor must be another epilogue page of the same sequence: " + scene.Id);
                 if (scene.EpilogueAfter != null && anchorScene == null && (!scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                     || !Guid.TryParseExact(scene.EpilogueAfter, "N", out var anchor) || anchor == Guid.Empty))
-                    throw new InvalidOperationException("EpilogueAfter needs an epilogue page and a native page or cue GUID: " + scene.Id);
-                foreach (var target in EntryTargets(scene))
-                    if (!Guid.TryParseExact(target, "N", out _)) throw new InvalidOperationException("Invalid dialogue attachment: " + scene.Id + "/" + target);
+                    Reject(errors, "epilogueafter_needs_an_epilogue_page_and_a_native_page_or_cue_guid", scene.Id, "EpilogueAfter needs an epilogue page and a native page or cue GUID: " + scene.Id);
+                foreach (var target in EntryTargets(scene, errors))
+                    if (!Guid.TryParseExact(target, "N", out _)) Reject(errors, "invalid_dialogue_attachment", scene.Id, "Invalid dialogue attachment: " + scene.Id + "/" + target);
                 foreach (var area in scene.Areas)
-                    if (!Guid.TryParseExact(area, "N", out _)) throw new InvalidOperationException("Invalid scene area: " + scene.Id + "/" + area);
+                    if (!Guid.TryParseExact(area, "N", out _)) Reject(errors, "invalid_scene_area", scene.Id, "Invalid scene area: " + scene.Id + "/" + area);
                 if (scene.Chapters.Any(c => c < scene.MinChapter || c > scene.MaxChapter) || scene.Chapters.Distinct().Count() != scene.Chapters.Length || scene.DelayHours < 0)
-                    throw new InvalidOperationException("Invalid chapter or timing constraints: " + scene.Id);
-                if (scene.Nodes.Count == 0 || scene.MinChapter > scene.MaxChapter) throw new InvalidOperationException("Invalid scene: " + scene.Id);
+                    Reject(errors, "invalid_chapter_or_timing_constraints", scene.Id, "Invalid chapter or timing constraints: " + scene.Id);
+                if (scene.Nodes.Count == 0 || scene.MinChapter > scene.MaxChapter) Reject(errors, "invalid_scene", scene.Id, "Invalid scene: " + scene.Id);
                 var nodes = new HashSet<string>();
                 foreach (var node in scene.Nodes)
                 {
-                    if (node.Paragraphs == null) throw new InvalidOperationException("Paragraphs cannot be null: " + scene.Id + "/" + node.Id);
+                    if (node.Paragraphs == null) Reject(errors, "paragraphs_cannot_be_null", scene.Id, "Paragraphs cannot be null: " + scene.Id + "/" + node.Id);
                     bool paragraphs = node.Paragraphs.Count > 0;
                     if (paragraphs && (node.Paragraphs.Any(p => p == null || string.IsNullOrWhiteSpace(p.Text) || p.Requires == null || p.Forbids == null
                             || p.AnyGroups == null || p.AnyGroups.Any(g => g == null || g.Length == 0))
                         || string.IsNullOrWhiteSpace(node.Text) && !node.Paragraphs.Any(p => ParagraphAlwaysShown(scene, p))))
-                        throw new InvalidOperationException("Invalid paragraphs (a textless node needs a paragraph its scene's Requires always show): "
+                        Reject(errors, "invalid_paragraphs", scene.Id, "Invalid paragraphs (a textless node needs a paragraph its scene's Requires always show): "
                             + scene.Id + "/" + node.Id);
                     if (node.SpeakerUnit != null && (!Guid.TryParseExact(node.SpeakerUnit, "N", out var speaker) || speaker == Guid.Empty
                         || node.Speaker == "conversant"))
-                        throw new InvalidOperationException("Invalid speaker unit (a BlueprintUnit GUID, not combined with \"conversant\"): " + scene.Id + "/" + node.Id);
+                        Reject(errors, "invalid_speaker_unit", scene.Id, "Invalid speaker unit (a BlueprintUnit GUID, not combined with \"conversant\"): " + scene.Id + "/" + node.Id);
                     if (!nodes.Add(node.Id) || string.IsNullOrWhiteSpace(node.Text) && !paragraphs || node.Choices.Count == 0)
-                        throw new InvalidOperationException("Invalid node: " + scene.Id + "/" + node.Id);
+                        Reject(errors, "invalid_node", scene.Id, "Invalid node: " + scene.Id + "/" + node.Id);
                 }
                 foreach (var node in scene.Nodes)
                 {
@@ -2606,21 +2692,21 @@ namespace Tirabade
                         var id = node.Choices[i].Id ?? i.ToString();
                         if (string.IsNullOrWhiteSpace(id) || !answerIds.Add(id)
                             || node.Choices[i].Id != null && (scene.ReturnToList || scene.ContinueBefore != null))
-                            throw new InvalidOperationException("Invalid answer identity: " + scene.Id + "/" + node.Id);
+                            Reject(errors, "invalid_answer_identity", scene.Id, "Invalid answer identity: " + scene.Id + "/" + node.Id);
                     }
                 }
                 foreach (var node in scene.Nodes)
                     foreach (var choice in node.Choices)
                     {
                         if (choice.Set.Any(contactEvidence.Contains))
-                            throw new InvalidOperationException("Native contact observation cannot be authored: " + scene.Id);
+                            Reject(errors, "native_contact_observation_cannot_be_authored", scene.Id, "Native contact observation cannot be authored: " + scene.Id);
                         if (choice.Revive == "konomi" && !choice.Set.SequenceEqual(new[] { "konomi.retained_return_confirmed" })
                             || choice.Set.Contains("konomi.retained_return_confirmed") && choice.Revive != "konomi")
-                            throw new InvalidOperationException("Konomi restoration records only verified return, not relationship access: " + scene.Id);
+                            Reject(errors, "konomi_restoration_records_only_verified_return_not_relationship_access", scene.Id, "Konomi restoration records only verified return, not relationship access: " + scene.Id);
                         if (choice.RefreshTimes == null || choice.RefreshTimes.Distinct().Count() != choice.RefreshTimes.Length
                             || choice.RefreshTimes.Any(key => !choice.Set.Contains(key))
                             || choice.RefreshTimes.Length > 0 && choice.Abort)
-                            throw new InvalidOperationException("Invalid chosen clock refresh: " + scene.Id + "/" + node.Id);
+                            Reject(errors, "invalid_chosen_clock_refresh", scene.Id, "Invalid chosen clock refresh: " + scene.Id + "/" + node.Id);
                         if (choice.PostPayment != null)
                         {
                             var receipt = scene.Nodes.FirstOrDefault(n => n.Id == choice.PostPayment);
@@ -2634,32 +2720,32 @@ namespace Tirabade
                                 || receipt.Choices[0].RemoveItem != null || receipt.Choices[0].StartEtude != null
                                 || receipt.Choices[0].Mythic != null || receipt.Choices[0].Alignment != null
                                 || receipt.Choices[0].Requires.Length != 0 || receipt.Choices[0].Forbids.Length != 0)
-                                throw new InvalidOperationException("Invalid post-payment receipt: " + scene.Id + "/" + node.Id);
+                                Reject(errors, "invalid_post_payment_receipt", scene.Id, "Invalid post-payment receipt: " + scene.Id + "/" + node.Id);
                         }
-                        if (choice.Next != null && !nodes.Contains(choice.Next)) throw new InvalidOperationException("Missing node: " + scene.Id + "/" + choice.Next);
+                        if (choice.Next != null && !nodes.Contains(choice.Next)) Reject(errors, "missing_node", scene.Id, "Missing node: " + scene.Id + "/" + choice.Next);
                         if (choice.Check != null && (choice.Next != null || choice.Abort || choice.Revive != null
                             || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                             || !CheckSkills.Contains(choice.Check.Skill) || choice.Check.DC <= 0
                             || choice.Check.Success == choice.Check.Failure
                             || !nodes.Contains(choice.Check.Success) || !nodes.Contains(choice.Check.Failure)))
-                            throw new InvalidOperationException("Invalid skill check: " + scene.Id + "/" + node.Id);
+                            Reject(errors, "invalid_skill_check", scene.Id, "Invalid skill check: " + scene.Id + "/" + node.Id);
                         if (choice.Revive != null && (choice.Revive != scene.Recovery || choice.Next != null || choice.Abort))
-                            throw new InvalidOperationException("Revival must be a terminal recovery choice: " + scene.Id);
-                        ValidateNativeEffects(story, scene, node, choice);
+                            Reject(errors, "revival_must_be_a_terminal_recovery_choice", scene.Id, "Revival must be a terminal recovery choice: " + scene.Id);
+                        ValidateNativeEffects(story, scene, node, choice, errors);
                     }
                 var reached = new HashSet<string>();
                 var pending = new Stack<string>();
-                pending.Push(scene.Nodes[0].Id);
+                if (scene.Nodes.Count > 0) pending.Push(scene.Nodes[0].Id);
                 while (pending.Count > 0)
                 {
                     var id = pending.Pop();
-                    if (!reached.Add(id)) continue;
-                    foreach (var choice in scene.Nodes.Single(n => n.Id == id).Choices)
+                    if (!nodes.Contains(id) || !reached.Add(id)) continue;
+                    foreach (var choice in scene.Nodes.Where(n => n.Id == id).SelectMany(n => n.Choices))
                         foreach (var next in NextNodes(choice)) pending.Push(next);
                 }
-                if (reached.Count != nodes.Count) throw new InvalidOperationException("Unreachable node in " + scene.Id);
+                if (reached.Count != nodes.Count) Reject(errors, "unreachable_node", scene.Id, "Unreachable node in " + scene.Id);
             }
-            ValidateParentEndings(story, authoredFlags, derivedFlags);
+            ValidateParentEndings(story, authoredFlags, derivedFlags, errors);
         }
 
         // E12: presences name a relationship, a native unit and area, a mode, known gates and (for copies) a position.
@@ -2686,17 +2772,19 @@ namespace Tirabade
                 || p.scene.RequiresAnyGroups.Any(g => g.Length > 0 && g.All(Proof)));
         }
 
-        public static void ValidatePresenceExceptionGuards(Story story)
+        public static void ValidatePresenceExceptionGuards(Story story) => ValidatePresenceExceptionGuards(story, null);
+
+        private static void ValidatePresenceExceptionGuards(Story story, List<ValidationError>? errors)
         {
-            if (story.PresenceExceptions == null) throw new InvalidOperationException("PresenceExceptions cannot be null.");
+            if (story.PresenceExceptions == null) Reject(errors, "presenceexceptions_cannot_be_null", "", "PresenceExceptions cannot be null.");
             if (!story.Derived.ContainsKey(TricksterNow) && story.PresenceExceptions.Count == 0) return; // legacy fixtures
-            void Fail(string name) => throw new InvalidOperationException("Presence exception guard differs from declaration: " + name);
+            void Fail(string name, string sceneId = "") => Reject(errors, "presence_exception_guard_differs_from_declaration", sceneId, "Presence exception guard differs from declaration: " + name);
             foreach (var name in story.PresenceExceptions.Keys)
                 if (!story.Presences.ContainsKey(name)) Fail(name);
             foreach (var pair in story.Presences)
             {
                 string rel = PresenceRelationship(pair.Key)!;
-                var relationship = story.Relationships[rel];
+                if (rel == null || !story.Relationships.TryGetValue(rel, out var relationship)) continue;
                 string guard = PresenceGuard(story, pair.Key);
                 if (!pair.Value.Requires.Contains(guard) || !story.Derived.TryGetValue(guard, out var groups)
                     || groups.Length != 2 || !groups[0].SequenceEqual(new[] { "chapter_one" })
@@ -2743,28 +2831,28 @@ namespace Tirabade
                     || scene.ContactUnit == null || scene.InteractionHub == null
                     || !story.Presences.TryGetValue(scene.InteractionHub, out var contact) || contact.Unit != scene.ContactUnit
                     || !story.PresenceExceptions.TryGetValue(scene.InteractionHub, out var declaration)
-                    || scene.AbsentPartnerFlags.Any(f => !declaration.AbsentLosses.ContainsKey(f))) Fail(scene.Id);
+                    || scene.AbsentPartnerFlags.Any(f => !declaration.AbsentLosses.ContainsKey(f))) Fail(scene.Id, scene.Id);
             }
         }
         // eng7-l06 end
-        private static void ValidatePresences(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        private static void ValidatePresences(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime, List<ValidationError>? errors = null)
         {
-            if (story.Presences == null) throw new InvalidOperationException("Presences cannot be null.");
+            if (story.Presences == null) Reject(errors, "presences_cannot_be_null", "", "Presences cannot be null.");
             bool Known(string flag) => authored.Contains(flag) || native.Contains(flag) || runtime.Contains(flag) || story.Derived.ContainsKey(flag);
             bool GuidOk(string? value) => value != null && Guid.TryParseExact(value, "N", out var guid) && guid != Guid.Empty;
             foreach (var pair in story.Presences)
             {
                 var p = pair.Value;
                 if (p?.At != null && authored.Contains(PresenceFailedFlag(pair.Key)))
-                    throw new InvalidOperationException("The runtime presence observation cannot be authored: " + PresenceFailedFlag(pair.Key));
+                    Reject(errors, "the_runtime_presence_observation_cannot_be_authored", "", "The runtime presence observation cannot be authored: " + PresenceFailedFlag(pair.Key));
                 // eng7-l11: reject malformed inheritance before any dialog is built.
                 if (p == null || p.ReactionScenes == null || p.ReactionScenes.Distinct().Count() != p.ReactionScenes.Length
                     || p.ReactionScenes.Any(id => !story.Scenes.Any(s => s.Id == id && s.Reaction && !IsRemote(s)
                         && s.InteractionHub == null && s.AnswerLists.Length > 0))
                     || p.ReactionScenes.Length > 0 && p.Dialog != "hub")
-                    throw new InvalidOperationException("Invalid presence reaction attachments: " + pair.Key);
+                    Reject(errors, "invalid_presence_reaction_attachments", "", "Invalid presence reaction attachments: " + pair.Key);
                 // end eng7-l11
-                if (p != null) ValidatePresenceCopy(pair.Key, p);
+                if (p != null) ValidatePresenceCopy(pair.Key, p, errors);
                 string relationship = PresenceRelationship(pair.Key) ?? "";
                 if (p == null || !story.Relationships.ContainsKey(relationship) || !GuidOk(p.Unit) || !GuidOk(p.Area)
                     || p.Mode != "reuse-native" && p.Mode != "spawn-copy" || p.Requires == null || p.Forbids == null || p.AnswerLists == null
@@ -2791,7 +2879,7 @@ namespace Tirabade
                     || p.Greeting != null && (p.Dialog == null || string.IsNullOrWhiteSpace(p.Greeting))
                     || story.Presences.Any(other => other.Key != pair.Key && other.Value?.Unit == p.Unit && other.Value.Area == p.Area
                         && !PresencesExclusive(p, other.Value)))
-                    throw new InvalidOperationException("Invalid presence (\"<relationship>.presence[.<name>]\", unit and area GUIDs, reuse-native|spawn-copy, "
+                    Reject(errors, "invalid_presence", "", "Invalid presence (\"<relationship>.presence[.<name>]\", unit and area GUIDs, reuse-native|spawn-copy, "
                         + "known gates, spawn-copy needs Position and Requires, presences sharing a unit and area must be mutually exclusive): " + pair.Key);
 
             }
@@ -2799,9 +2887,9 @@ namespace Tirabade
 
         // E18: each gate is a reviewed gate id with its exact target, a known relationship, and When groups of known keys that
         // each require the Trickster (a gate never changes a non-Trickster world).
-        private static void ValidateNativeGates(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        private static void ValidateNativeGates(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime, List<ValidationError>? errors = null)
         {
-            if (story.NativeGates == null) throw new InvalidOperationException("NativeGates cannot be null.");
+            if (story.NativeGates == null) Reject(errors, "nativegates_cannot_be_null", "", "NativeGates cannot be null.");
             bool Known(string flag) => authored.Contains(flag) || native.Contains(flag) || runtime.Contains(flag) || story.Derived.ContainsKey(flag);
             foreach (var pair in story.NativeGates)
             {
@@ -2812,7 +2900,7 @@ namespace Tirabade
                         || !OnTricksterPath(g))
                     // eng7-l04: partial groups never use the full-patient adapter branch.
                     || pair.Key == "kiana.q3_recovery" && (gate.Relationship != "kiana" || gate.When.Any(g => !Q3RecoveryGroupSupported(g))))
-                    throw new InvalidOperationException("Invalid native gate (reviewed id and target, known relationship, known When groups "
+                    Reject(errors, "invalid_native_gate", "", "Invalid native gate (reviewed id and target, known relationship, known When groups "
                         + "that each require trickster.ever): " + pair.Key);
             }
         }
@@ -2869,9 +2957,9 @@ namespace Tirabade
             ["4255f49c18c69aa4ab4d5582d0b6f39e/Text"] = "BlueprintCue:8e4494ff-5209-44e1-9e80-98a8b9d2a6a9",
         };
 
-        private static void ValidateNativeTexts(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        private static void ValidateNativeTexts(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime, List<ValidationError>? errors = null)
         {
-            if (story.NativeTextEdits == null) throw new InvalidOperationException("NativeTextEdits cannot be null.");
+            if (story.NativeTextEdits == null) Reject(errors, "nativetextedits_cannot_be_null", "", "NativeTextEdits cannot be null.");
             bool Known(string flag) => authored.Contains(flag) || native.Contains(flag) || runtime.Contains(flag) || story.Derived.ContainsKey(flag);
             foreach (var pair in story.NativeTextEdits)
             {
@@ -2880,7 +2968,7 @@ namespace Tirabade
                     || edit.Variants == null || edit.Variants.Length == 0 || edit.Variants.Any(v => v == null || string.IsNullOrWhiteSpace(v.Text)
                         || v.When == null || v.When.Length == 0 || v.When.Any(g => g == null || !g.Contains("trickster.now") || g.Length == 0 || g.Any(f => !Known(f.StartsWith("!", StringComparison.Ordinal) ? f.Substring(1) : f)))
                         || v.Forbids == null || v.Forbids.Any(f => !Known(f))))
-                    throw new InvalidOperationException("Invalid reviewed native text field: " + pair.Key);
+                    Reject(errors, "invalid_reviewed_native_text_field", "", "Invalid reviewed native text field: " + pair.Key);
             }
         }
 
@@ -2940,9 +3028,9 @@ namespace Tirabade
             var spec = story.NativeWorldReconciliations[target];
             return title ? (spec.TitleKey.Length == 0 ? null : spec.Title) : spec.Description;
         }
-        private static void ValidateNativeWorld(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        private static void ValidateNativeWorld(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime, List<ValidationError>? errors = null)
         {
-            if (story.NativeWorldReconciliations == null) throw new InvalidOperationException("NativeWorldReconciliations cannot be null.");
+            if (story.NativeWorldReconciliations == null) Reject(errors, "nativeworldreconciliations_cannot_be_null", "", "NativeWorldReconciliations cannot be null.");
             bool Known(string flag) => authored.Contains(flag) || native.Contains(flag) || runtime.Contains(flag) || story.Derived.ContainsKey(flag);
             foreach (var pair in story.NativeWorldReconciliations)
             {
@@ -2954,15 +3042,15 @@ namespace Tirabade
                         || !ReviewedNativeJournalKeys.TryGetValue(pair.Key, out var keys) || spec.DescriptionKey + ":" + spec.TitleKey != keys
                         || string.IsNullOrWhiteSpace(spec.Description) || spec.TitleKey == null || spec.Title == null
                         || (spec.TitleKey.Length > 0) != (spec.Title.Length > 0)))
-                    throw new InvalidOperationException("Invalid native world reconciliation: " + pair.Key);
+                    Reject(errors, "invalid_native_world_reconciliation", "", "Invalid native world reconciliation: " + pair.Key);
             }
         }
         // eng7-l04 end
 
         // E19: a settlement names a reviewed objective, a known relationship and known When groups that each require trickster.ever.
-        private static void ValidateNativeObjectiveSettlements(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        private static void ValidateNativeObjectiveSettlements(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime, List<ValidationError>? errors = null)
         {
-            if (story.NativeObjectiveSettlements == null) throw new InvalidOperationException("NativeObjectiveSettlements cannot be null.");
+            if (story.NativeObjectiveSettlements == null) Reject(errors, "nativeobjectivesettlements_cannot_be_null", "", "NativeObjectiveSettlements cannot be null.");
             bool Known(string flag) => authored.Contains(flag) || native.Contains(flag) || runtime.Contains(flag) || story.Derived.ContainsKey(flag);
             foreach (var pair in story.NativeObjectiveSettlements)
             {
@@ -2970,7 +3058,7 @@ namespace Tirabade
                 if (spec == null || !ReviewedNativeObjectives.TryGetValue(pair.Key, out var target) || spec.Target != target
                     || spec.Relationship == null || !story.Relationships.ContainsKey(spec.Relationship) || spec.When == null || spec.When.Length == 0
                     || spec.When.Any(g => g == null || g.Length == 0 || g.Any(f => string.IsNullOrWhiteSpace(f) || !Known(f)) || !OnTricksterPath(g)))
-                    throw new InvalidOperationException("Invalid native objective settlement (reviewed id and objective, known relationship, known "
+                    Reject(errors, "invalid_native_objective_settlement", "", "Invalid native objective settlement (reviewed id and objective, known relationship, known "
                         + "When groups that each require trickster.ever): " + pair.Key);
             }
         }
@@ -2997,9 +3085,9 @@ namespace Tirabade
             // eng7-f6b: sibling of 010; the body question must acknowledge full recovery.
             ["5d02b3f1d1f6774419ea9fd3795596e8"] = new NativeAnswerPolicy("a5888720b68047b48b9791bed94e22c8", "12e922e5-7d4c-4e06-a130-765d91876379", "d30553a00d511b8439e9cfdca0564d86", ""),
         };
-        private static void ValidateNativeAnswers(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        private static void ValidateNativeAnswers(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime, List<ValidationError>? errors = null)
         {
-            if (story.NativeAnswerEdits == null) throw new InvalidOperationException("NativeAnswerEdits cannot be null.");
+            if (story.NativeAnswerEdits == null) Reject(errors, "nativeansweredits_cannot_be_null", "", "NativeAnswerEdits cannot be null.");
             foreach (var pair in story.NativeAnswerEdits)
             {
                 var spec = pair.Value;
@@ -3009,7 +3097,7 @@ namespace Tirabade
                     || spec.When == null || spec.When.Length == 0 || spec.When.Any(g => g == null || g.Length == 0
                         || !g.Contains(TricksterNow) || !g.Contains("kiana.trickster.guests_ransomed") && !g.Contains("kiana.trickster.guests_bought_back")
                         || g.Any(f => !EditWhenKnown(story, f, authored, native, runtime))))
-                    throw new InvalidOperationException("Invalid reviewed native answer edit: " + pair.Key);
+                    Reject(errors, "invalid_reviewed_native_answer_edit", "", "Invalid reviewed native answer edit: " + pair.Key);
             }
         }
         public static bool NativeAnswerHolds(Story story, string target, Snapshot state) => story.NativeAnswerEdits.TryGetValue(target, out var spec)
@@ -3040,9 +3128,9 @@ namespace Tirabade
         // E14d: each edit names a whitelisted cue with its exact evidence and ordered variants. Each variant is a 1-node
         // epilogue replacement scene used once, with known When groups that each require the replacement relationship's
         // CommittedFlag or one of its Trickster return flags (a fate the route undid: the native slide states it as final).
-        private static void ValidateNativeEpilogueEdits(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        private static void ValidateNativeEpilogueEdits(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime, List<ValidationError>? errors = null)
         {
-            if (story.NativeEpilogueEdits == null) throw new InvalidOperationException("NativeEpilogueEdits cannot be null.");
+            if (story.NativeEpilogueEdits == null) Reject(errors, "nativeepilogueedits_cannot_be_null", "", "NativeEpilogueEdits cannot be null.");
             bool Known(string flag) => EditWhenKnown(story, flag, authored, native, runtime);
             var used = story.NativeEpilogueEdits.Values.Where(edit => edit != null)
                 .SelectMany(edit => EditVariants(edit).Select(variant => variant?.Replacement)).ToList();
@@ -3050,12 +3138,12 @@ namespace Tirabade
             {
                 var edit = pair.Value;
                 if (edit == null || !Guid.TryParseExact(pair.Key, "N", out _) || edit.Variants == null || edit.Variants.Any(variant => variant == null))
-                    throw new InvalidOperationException("Invalid native epilogue edit (null spec or variant, or a cue that is not a GUID): " + pair.Key);
+                    Reject(errors, "invalid_native_epilogue_edit", "", "Invalid native epilogue edit (null spec or variant, or a cue that is not a GUID): " + pair.Key);
                 // E14i: a dialog cue names its parent cue and dialog (GUIDs) and no page or sequence; it has no picture to keep.
                 bool inDialog = !string.IsNullOrEmpty(edit.Parent) || !string.IsNullOrEmpty(edit.Dialog);
                 if (inDialog && (!Guid.TryParseExact(edit.Parent ?? "", "N", out _) || !Guid.TryParseExact(edit.Dialog ?? "", "N", out _)
                         || !string.IsNullOrEmpty(edit.Page) || !string.IsNullOrEmpty(edit.Sequence) || Rules.EditVariants(edit).Any(v => v.KeepNativeImage)))
-                    throw new InvalidOperationException("Invalid E14i native dialog edit (parent and dialog GUIDs, no page, sequence or kept image): " + pair.Key);
+                    Reject(errors, "invalid_e14i_native_dialog_edit", "", "Invalid E14i native dialog edit (parent and dialog GUIDs, no page, sequence or kept image): " + pair.Key);
                 foreach (var variant in Rules.EditVariants(edit))
                 {
                     var scene = story.Scenes.FirstOrDefault(s => s.Id == variant.Replacement);
@@ -3088,11 +3176,11 @@ namespace Tirabade
                         || variant.When == null || variant.When.Length == 0 || variant.When.Any(g => g == null || g.Length == 0 || g.Any(f => !Known(f))
                             || !g.Any(earned.Contains) || !OnTricksterPath(g))
                         || used.Count(other => other == variant.Replacement) != 1)
-                        throw new InvalidOperationException("Invalid native epilogue edit (1-node epilogue replacement used once, known When groups "
+                        Reject(errors, "invalid_native_epilogue_edit", variant.Replacement, "Invalid native epilogue edit (1-node epilogue replacement used once, known When groups "
                             + "that each require trickster.ever and its relationship's CommittedFlag or Trickster return flag): " + pair.Key + " / " + variant.Replacement);
                 }
             }
-            if (story.NativeEpilogueSuppressions == null) throw new InvalidOperationException("NativeEpilogueSuppressions cannot be null.");
+            if (story.NativeEpilogueSuppressions == null) Reject(errors, "nativeepiloguesuppressions_cannot_be_null", "", "NativeEpilogueSuppressions cannot be null.");
             foreach (var pair in story.NativeEpilogueSuppressions)
             {
                 var spec = pair.Value;
@@ -3107,7 +3195,7 @@ namespace Tirabade
                     || spec.Key == null || spec.When == null || spec.When.Length == 0
                     || spec.When.Any(g => g == null || g.Length == 0 || g.Any(f => f == null || !Known(f)) || !g.Any(earned.Contains)
                         || !OnTricksterPath(g)))
-                    throw new InvalidOperationException("Invalid native epilogue suppression (a GUID cue not also edited, its page and sequence, "
+                    Reject(errors, "invalid_native_epilogue_suppression", "", "Invalid native epilogue suppression (a GUID cue not also edited, its page and sequence, "
                         + "a relationship, known When groups that each require trickster.ever and its CommittedFlag or Trickster return flag): " + pair.Key);
             }
         }
@@ -3151,9 +3239,9 @@ namespace Tirabade
         }
 
         // E6: a reaction is one node of terminal choices; it never closes, and never touches another relationship's state.
-        private static void ValidateReaction(Story story, Scene scene)
+        private static void ValidateReaction(Story story, Scene scene, List<ValidationError>? errors = null)
         {
-            var own = story.Relationships[scene.Relationship];
+            if (!story.Relationships.TryGetValue(scene.Relationship, out var own)) return;
             var others = story.Relationships.Where(pair => pair.Key != scene.Relationship)
                 .SelectMany(pair => new[] { pair.Value.StartedFlag, pair.Value.ClosedFlag, pair.Value.CommittedFlag }).ToArray();
             var choices = scene.Nodes.SelectMany(node => node.Choices).ToArray();
@@ -3163,14 +3251,14 @@ namespace Tirabade
                 || choices.Any(choice => choice.Next != null || choice.Check != null || choice.Revive != null || choice.NativeNext != null)
                 || choices.SelectMany(choice => choice.Set).Any(flag => flag == own.ClosedFlag || others.Contains(flag))
                 || scene.Forbids.Concat(choices.SelectMany(choice => choice.Forbids)).Any(others.Contains))
-                throw new InvalidOperationException("Invalid reaction (one node; never closes or touches another relationship): " + scene.Id);
+                Reject(errors, "invalid_reaction", scene.Id, "Invalid reaction (one node; never closes or touches another relationship): " + scene.Id);
         }
 
         // ER-2: a device scene needs the Trickster power (live for setups, latched for payoffs), declared access, and a
         // choice that records the device (the return, a primer or a cost).
-        private static void ValidateDevice(Story story, Scene scene)
+        private static void ValidateDevice(Story story, Scene scene, List<ValidationError>? errors = null)
         {
-            var relationship = story.Relationships[scene.Relationship];
+            if (!story.Relationships.TryGetValue(scene.Relationship, out var relationship)) return;
             var records = new HashSet<string>(relationship.TricksterAccess.Values.Select(entry => entry.Returned).OfType<string>()
                 .Concat(relationship.UnavailableOverrides.Values));
             bool Records(string flag) => records.Contains(flag) || flag.Contains(".trickster.primed")
@@ -3181,75 +3269,75 @@ namespace Tirabade
                 || scene.TricksterState != null && !relationship.TricksterAccess.ContainsKey(scene.TricksterState)
                 || !scene.Requires.Contains("trickster") && !scene.Requires.Contains("trickster.ever") && !scene.Requires.Contains(TricksterNow)
                 || !scene.Nodes.SelectMany(node => node.Choices).SelectMany(choice => choice.Set).Any(Records))
-                throw new InvalidOperationException("Invalid Trickster device (needs TricksterAccess, trickster, trickster.now or trickster.ever, "
+                Reject(errors, "invalid_trickster_device", scene.Id, "Invalid Trickster device (needs TricksterAccess, trickster, trickster.now or trickster.ever, "
                     + "and a choice setting the return, primed or cost flag): " + scene.Id);
         }
 
         // E5: native answer effects are whitelisted and shaped like their native counterparts.
-        private static void ValidateNativeEffects(Story story, Scene scene, Node node, Choice choice)
+        private static void ValidateNativeEffects(Story story, Scene scene, Node node, Choice choice, List<ValidationError>? errors = null)
         {
             // The crusade (KingdomState) exists from Chapter 3; a removal must be gated on holding that exact item.
             if (choice.Crusade != null && (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.MinChapter < 3
                 || !CrusadeResources.Contains(choice.Crusade.Resource) || choice.Crusade.Amount == 0 || Math.Abs(choice.Crusade.Amount) > 100000))
-                throw new InvalidOperationException("Invalid crusade cost (Finances/Materials/Favors, non-zero, Chapter 3+): " + scene.Id + "/" + node.Id);
+                Reject(errors, "invalid_crusade_cost", scene.Id, "Invalid crusade cost (Finances/Materials/Favors, non-zero, Chapter 3+): " + scene.Id + "/" + node.Id);
             if (choice.StartEtude != null && (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                 || !story.StartableEtudes.Contains(choice.StartEtude) || choice.Next != null || choice.Check != null || choice.Abort))
-                throw new InvalidOperationException("Invalid etude start (whitelisted in StartableEtudes, on a terminal non-abort choice): "
+                Reject(errors, "invalid_etude_start", scene.Id, "Invalid etude start (whitelisted in StartableEtudes, on a terminal non-abort choice): "
                     + scene.Id + "/" + node.Id);
             if (choice.RemoveItem != null && (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                 || !story.RemovableItems.Contains(choice.RemoveItem)
                 || !choice.Requires.Concat(scene.Requires).Any(key => story.InventoryItems.TryGetValue(key, out var held) && held == choice.RemoveItem)))
-                throw new InvalidOperationException("Invalid item removal (whitelisted in RemovableItems and gated on an InventoryItems key for it): "
+                Reject(errors, "invalid_item_removal", scene.Id, "Invalid item removal (whitelisted in RemovableItems and gated on an InventoryItems key for it): "
                     + scene.Id + "/" + node.Id);
             bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
             if (choice.Mythic != null && (ending || !MythicNames.Contains(choice.Mythic)))
-                throw new InvalidOperationException("Invalid mythic requirement: " + scene.Id + "/" + node.Id + " (" + choice.Mythic + ")");
+                Reject(errors, "invalid_mythic_requirement", scene.Id, "Invalid mythic requirement: " + scene.Id + "/" + node.Id + " (" + choice.Mythic + ")");
             if (choice.Alignment != null && (ending || !AlignmentDirections.Contains(choice.Alignment.Direction)
                 || choice.Alignment.Value <= 0 || choice.Alignment.Value > 100))
-                throw new InvalidOperationException("Invalid alignment shift: " + scene.Id + "/" + node.Id);
+                Reject(errors, "invalid_alignment_shift", scene.Id, "Invalid alignment shift: " + scene.Id + "/" + node.Id);
             // Only an inline scene runs inside the native dialog, so only it can continue into that dialog's own cue.
             if (choice.NativeNext != null && (!Guid.TryParseExact(choice.NativeNext, "N", out var cue) || cue == Guid.Empty
                 || scene.NativeReturnCue == null || choice.Next != null || choice.Check != null || choice.Abort || choice.Revive != null
                 || string.Equals(choice.NativeNext, scene.NativeReturnCue, StringComparison.OrdinalIgnoreCase)))
-                throw new InvalidOperationException("Invalid native continuation (terminal choice of an inline scene only): " + scene.Id + "/" + node.Id);
+                Reject(errors, "invalid_native_continuation", scene.Id, "Invalid native continuation (terminal choice of an inline scene only): " + scene.Id + "/" + node.Id);
         }
 
         // E4: composite keys are new names over known flags, without cycles.
-        private static void ValidateDerived(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime, HashSet<string> evidence)
+        private static void ValidateDerived(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime, HashSet<string> evidence, List<ValidationError>? errors = null)
         {
-            if (story.Derived == null) throw new InvalidOperationException("Derived cannot be null.");
+            if (story.Derived == null) Reject(errors, "derived_cannot_be_null", "", "Derived cannot be null.");
             foreach (var pair in story.Derived)
             {
                 if (string.IsNullOrWhiteSpace(pair.Key) || authored.Contains(pair.Key) || native.Contains(pair.Key) || runtime.Contains(pair.Key)
                     || evidence.Contains(pair.Key) || IsReservedKey(pair.Key))
-                    throw new InvalidOperationException("Derived key collides with an authored, native or reserved key: " + pair.Key);
+                    Reject(errors, "derived_key_collides_with_an_authored_native_or_reserved_key", "", "Derived key collides with an authored, native or reserved key: " + pair.Key);
                 if (pair.Value == null || pair.Value.Length == 0 || pair.Value.Any(group => group == null || group.Length == 0
                     || group.Any(string.IsNullOrWhiteSpace) || group.Distinct().Count() != group.Length))
-                    throw new InvalidOperationException("Derived key needs non-empty AND-groups: " + pair.Key);
+                    Reject(errors, "derived_key_needs_non_empty_and_groups", "", "Derived key needs non-empty AND-groups: " + pair.Key);
                 foreach (var source in pair.Value.SelectMany(group => group))
                     if (!authored.Contains(source) && !native.Contains(source) && !runtime.Contains(source) && !story.Derived.ContainsKey(source))
-                        throw new InvalidOperationException("Derived key reads an unknown flag: " + pair.Key + "/" + source);
+                        Reject(errors, "derived_key_reads_an_unknown_flag", "", "Derived key reads an unknown flag: " + pair.Key + "/" + source);
             }
             // E4b: a route guard names Derived keys and known relationships, each at most once.
-            if (story.DerivedOpenRoutes == null) throw new InvalidOperationException("DerivedOpenRoutes cannot be null.");
+            if (story.DerivedOpenRoutes == null) Reject(errors, "derivedopenroutes_cannot_be_null", "", "DerivedOpenRoutes cannot be null.");
             foreach (var pair in story.DerivedOpenRoutes)
                 if (!story.Derived.ContainsKey(pair.Key) || pair.Value == null || pair.Value.Length == 0
                     || pair.Value.Distinct().Count() != pair.Value.Length || pair.Value.Any(rel => rel == null || !story.Relationships.ContainsKey(rel)))
-                    throw new InvalidOperationException("Invalid DerivedOpenRoutes entry (a Derived key; distinct known relationships): " + pair.Key);
+                    Reject(errors, "invalid_derivedopenroutes_entry", "", "Invalid DerivedOpenRoutes entry (a Derived key; distinct known relationships): " + pair.Key);
             // Engine-q2: a forbid list names a Derived key and distinct known flags, none of them read positively by the same key.
-            if (story.DerivedForbids == null) throw new InvalidOperationException("DerivedForbids cannot be null.");
+            if (story.DerivedForbids == null) Reject(errors, "derivedforbids_cannot_be_null", "", "DerivedForbids cannot be null.");
             foreach (var pair in story.DerivedForbids)
                 if (!story.Derived.ContainsKey(pair.Key) || pair.Value == null || pair.Value.Length == 0 || pair.Value.Distinct().Count() != pair.Value.Length
                     || pair.Value.Any(flag => string.IsNullOrWhiteSpace(flag) || flag == pair.Key
                         || !authored.Contains(flag) && !native.Contains(flag) && !runtime.Contains(flag) && !story.Derived.ContainsKey(flag))
                     || story.Derived[pair.Key].Any(group => group.Any(pair.Value.Contains)))
-                    throw new InvalidOperationException("Invalid DerivedForbids entry (a Derived key; distinct known flags it does not also require): " + pair.Key);
+                    Reject(errors, "invalid_derivedforbids_entry", "", "Invalid DerivedForbids entry (a Derived key; distinct known flags it does not also require): " + pair.Key);
             var state = new Dictionary<string, int>();
             void Visit(string key, int depth)
             {
                 if (state.TryGetValue(key, out int mark))
                 {
-                    if (mark == 1) throw new InvalidOperationException("Derived keys form a cycle through: " + key);
+                    if (mark == 1) Reject(errors, "derived_keys_form_a_cycle_through", "", "Derived keys form a cycle through: " + key);
                     return;
                 }
                 state[key] = 1;
@@ -3260,7 +3348,7 @@ namespace Tirabade
         }
 
         // A personal visit does not reverse departure or reopen the ordinary relationship.
-        private static void ValidateDepartureVisit(Story story, Scene scene)
+        private static void ValidateDepartureVisit(Story story, Scene scene, List<ValidationError>? errors = null)
         {
             bool first = scene.Id == "irabeth.return_first_words";
             bool reply = scene.Id == "irabeth.return_reply";
@@ -3286,13 +3374,13 @@ namespace Tirabade
                         || !scene.Requires.Contains("irabeth.return_correspondence_available")
                         || (reply && (!new[] { "irabeth.return_request", "irabeth.return_request_sent" }.All(scene.Requires.Contains)
                             || !scene.Forbids.Contains("irabeth.return_meeting_accepted") || scene.DelayHours < 48))))
-                throw new InvalidOperationException("Invalid Irabeth departure visit: " + scene.Id);
+                Reject(errors, "invalid_irabeth_departure_visit", scene.Id, "Invalid Irabeth departure visit: " + scene.Id);
         }
 
-        private static void ValidateParentEndings(Story story, HashSet<string> authored, HashSet<string> derived)
+        private static void ValidateParentEndings(Story story, HashSet<string> authored, HashSet<string> derived, List<ValidationError>? errors = null)
         {
             if (story.ParentEpilogueEdits == null || story.ParentEpilogueLossRules == null)
-                throw new InvalidOperationException("Parent ending collections cannot be null.");
+                Reject(errors, "parent_ending_collections_cannot_be_null", "", "Parent ending collections cannot be null.");
             if (story.ParentEpilogueEdits.Count == 0 && story.ParentEpilogueLossRules.Count == 0) return;
             var deaths = new Dictionary<string, string> {
                 ["minagho.dead"] = "3b8c0801d5e9a694b848ee13564d2ad7", ["chivarro.dead"] = "fd2ab9b67ce3e284184b1894c82c6c5d" };
@@ -3305,7 +3393,7 @@ namespace Tirabade
             var known = new HashSet<string>(authored.Concat(derived).Concat(nativeKeys));
             foreach (string earned in new[] { "minachiv.invitation_kept", "minachiv.arrival_kept" })
                 if (!authored.Contains(earned) || nativeKeys.Contains(earned) || derived.Contains(earned))
-                    throw new InvalidOperationException("Parent endings require authored relationship evidence: " + earned);
+                    Reject(errors, "parent_endings_require_authored_relationship_evidence", "", "Parent endings require authored relationship evidence: " + earned);
             bool GuidValid(string value) => Guid.TryParseExact(value, "N", out var guid) && guid != Guid.Empty && value == guid.ToString("N");
             bool NamesValid(string[]? values) => values != null && !values.Any(string.IsNullOrWhiteSpace)
                 && values.Distinct(StringComparer.Ordinal).Count() == values.Length;
@@ -3313,14 +3401,14 @@ namespace Tirabade
             foreach (var death in deaths)
                 if (!story.Etudes.TryGetValue(death.Key, out var guid) || guid != death.Value || authored.Contains(death.Key)
                     || nativeKeys.Count(key => key == death.Key) != 1)
-                    throw new InvalidOperationException("Parent endings require the exact native death observation: " + death.Key);
+                    Reject(errors, "parent_endings_require_the_exact_native_death_observation", "", "Parent endings require the exact native death observation: " + death.Key);
             void Gate(string owner, string[] requires, string[] forbids)
             {
                 if (owner != "Epilogue" || !NamesValid(requires) || !NamesValid(forbids)
                     || requires.Intersect(forbids).Any() || requires.Concat(forbids).Any(flag => !known.Contains(flag)
                         || nativeBindings[flag].Any(id => !GuidValid(id)) || nativeKeys.Count(key => key == flag) > 1
                         || authored.Contains(flag) && nativeKeys.Contains(flag)))
-                    throw new InvalidOperationException("Invalid parent ending owner or flag aliases.");
+                    Reject(errors, "invalid_parent_ending_owner_or_flag_aliases", "", "Invalid parent ending owner or flag aliases.");
             }
             var privateKeys = new HashSet<string>(StringComparer.Ordinal);
             var parentKeys = new HashSet<string>(story.ParentEpilogueEdits.Values.Where(edit => edit != null).Select(edit => edit.ParentKey));
@@ -3328,25 +3416,25 @@ namespace Tirabade
             {
                 if (value == null || value.LocalizedKey != expectedKey || parentKeys.Contains(value.LocalizedKey)
                     || !privateKeys.Add(value.LocalizedKey) || (value.Text == null ? !suppressible : string.IsNullOrWhiteSpace(value.Text)))
-                    throw new InvalidOperationException("Parent ending alternate needs unique private localization and valid text.");
+                    Reject(errors, "parent_ending_alternate_needs_unique_private_localization_and_valid_text", "", "Parent ending alternate needs unique private localization and valid text.");
             }
             var reunions = new[] { "c47829fba057400c8e0279990be3d25e", "8399dbc5987b462594b2b4168764e269", "5787f92575364c1459df8f075676c2db" };
             foreach (var pair in story.ParentEpilogueEdits)
             {
                 var edit = pair.Value;
                 if (!GuidValid(pair.Key) || edit == null || string.IsNullOrWhiteSpace(edit.ParentKey))
-                    throw new InvalidOperationException("Invalid parent cue identity or original text key.");
+                    Reject(errors, "invalid_parent_cue_identity_or_original_text_key", "", "Invalid parent cue identity or original text key.");
                 Gate(edit.Owner, edit.Requires, edit.Forbids);
                 if (!deaths.Keys.All(edit.Forbids.Contains)
                     || !edit.Requires.Contains(reunions.Contains(pair.Key) ? "minachiv.arrival_kept" : "minachiv.invitation_kept"))
-                    throw new InvalidOperationException("Ordinary parent edit lacks earned living-history scope: " + pair.Key);
+                    Reject(errors, "ordinary_parent_edit_lacks_earned_living_history_scope", "", "Ordinary parent edit lacks earned living-history scope: " + pair.Key);
                 Text(edit, "Tirabade.Minachiv.ParentEnding." + pair.Key, true);
             }
             var ids = new HashSet<string>(StringComparer.Ordinal);
             foreach (var rule in story.ParentEpilogueLossRules)
             {
                 if (rule == null || string.IsNullOrWhiteSpace(rule.Id) || !ids.Add(rule.Id))
-                    throw new InvalidOperationException("Empty or duplicate parent loss rule.");
+                    Reject(errors, "empty_or_duplicate_parent_loss_rule", "", "Empty or duplicate parent loss rule.");
                 Gate(rule.Owner, rule.Requires, rule.Forbids);
                 if (!rule.Requires.Contains("minachiv.invitation_kept") || !deaths.Keys.Any(rule.Requires.Contains)
                     || !deaths.Keys.All(flag => rule.Requires.Contains(flag) || rule.Forbids.Contains(flag))
@@ -3354,19 +3442,19 @@ namespace Tirabade
                     || !TargetsValid(rule.SuppressPages) || !TargetsValid(rule.SuppressCues)
                     || rule.SuppressPages.Intersect(rule.SuppressCues).Any() || rule.SuppressPages.Length + rule.SuppressCues.Length == 0
                     || rule.SurvivorAlternates == null)
-                    throw new InvalidOperationException("Invalid parent loss evidence or suppression targets: " + rule.Id);
+                    Reject(errors, "invalid_parent_loss_evidence_or_suppression_targets", "", "Invalid parent loss evidence or suppression targets: " + rule.Id);
                 foreach (string id in rule.ReplacementScenes)
                 {
-                    var scene = story.Scenes.SingleOrDefault(item => item.Id == id);
+                    var scene = story.Scenes.FirstOrDefault(item => item.Id == id);
                     if (scene == null || scene.Owner != rule.Owner || scene.Relationship != "minagho_chivarro"
                         || !deaths.Keys.Where(rule.Requires.Contains).All(scene.Requires.Contains)
                         || !deaths.Keys.Where(rule.Forbids.Contains).All(scene.Forbids.Contains))
-                        throw new InvalidOperationException("Missing or incompatible parent loss replacement: " + id);
+                        Reject(errors, "missing_or_incompatible_parent_loss_replacement", id, "Missing or incompatible parent loss replacement: " + id);
                 }
                 foreach (var pair in rule.SurvivorAlternates)
                 {
                     if (!GuidValid(pair.Key) || !rule.SuppressCues.Contains(pair.Key) || deaths.Keys.Count(rule.Requires.Contains) != 1)
-                        throw new InvalidOperationException("Survivor alternate must replace a suppressed cue with one living woman: " + pair.Key);
+                        Reject(errors, "survivor_alternate_must_replace_a_suppressed_cue_with_one_living_woman", "", "Survivor alternate must replace a suppressed cue with one living woman: " + pair.Key);
                     Text(pair.Value, "Tirabade.Minachiv.Survivor." + pair.Key, false);
                 }
             }
@@ -3375,7 +3463,7 @@ namespace Tirabade
                 {
                     var rule = story.ParentEpilogueLossRules[i];
                     if (rule.Owner == other.Owner && !rule.Requires.Intersect(other.Forbids).Any() && !other.Requires.Intersect(rule.Forbids).Any())
-                        throw new InvalidOperationException("Overlapping parent loss rules: " + rule.Id + "/" + other.Id);
+                        Reject(errors, "overlapping_parent_loss_rules", "", "Overlapping parent loss rules: " + rule.Id + "/" + other.Id);
                 }
         }
     }
