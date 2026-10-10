@@ -1154,9 +1154,9 @@ for _answer in _start["Choices"]:
 _start["Choices"].append(c("Continue", "arrived_yaniel",
     requires=("yaniel.trickster.returned",), forbids=("yaniel.killed.latched",)))
 _yaniel["Nodes"].extend([
-    conv("arrived_yaniel", "[PROSE PENDING: " + _yaniel["Id"] + "/arrived_yaniel - Wenduag reacts to living Yaniel rescue and arrival without murder or resurrection; preserve rival suspicion]",
-        c("[PROSE PENDING: " + _yaniel["Id"] + "/arrived_yaniel - Commander answers about a rescued living ally]", "arrived_answer")),
-    conv("arrived_answer", "[PROSE PENDING: " + _yaniel["Id"] + "/arrived_answer - Wenduag threatens to watch the rescued rival without claiming the Commander killed her]",
+    conv("arrived_yaniel", '"So the paladin is back on her feet and breathing." {n}Wenduag looks you over, then toward the camp.{/n} "Somebody got her out, and I hear it was you. A strong rival with a debt to you is either a leash or a knife with its edge turned toward your back. Which did you want?"',
+        c('"I got her out. She is mine to command and a sword for this war."', "arrived_answer")),
+    conv("arrived_answer", '"Then I will watch her, whatever you call her." {n}Her teeth show.{/n} "A woman who owes you her life will hate you for it sooner or later. I will be standing there when she does."',
         c("Continue", flags=(W + "yaniel.watched",))),
 ])
 

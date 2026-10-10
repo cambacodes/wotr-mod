@@ -1357,23 +1357,23 @@ _dg["paragraphs"][0]["Forbids"].append("dorgelinda.lastcall.account_settled")
 _dg["paragraphs"][2]["Requires"].append(D + "cost.twice_weekly")
 _dg["paragraphs"][2]["Forbids"].append("dorgelinda.lastcall.account_settled")
 _dg["paragraphs"] += (
-    page_p("[PROSE PENDING: dorgelinda.lastcall.page/page - original account settled through told_all or Last Call explanation; no unresolved or hostile audit claim]", requires=("dorgelinda.lastcall.account_settled",)),
-    page_p("[PROSE PENDING: dorgelinda.lastcall.page/page - original account remains unresolved without the twice-weekly hostile schedule; retain current private terms]", forbids=("dorgelinda.lastcall.account_settled", D + "cost.twice_weekly")),
+    page_p("The line marked \"used, quietly\" was ruled off once the explanation was on the page, every cart and every quiet word of it. She drew the rule herself, straight, with the edge of the stores ruler, and wrote \"explained\" beside it in her small square hand. It was the only line in five years of books she was seen to close without a grudge.", requires=("dorgelinda.lastcall.account_settled",)),
+    page_p("The line marked \"used, quietly\" stayed open, and she let it. There was no hostile audit over supper. What lay between her and the Commander stayed on the terms already agreed in private, nothing posted to the Council's books and nothing called in, and she read the line each night the way another woman reads a letter she has not answered.", forbids=("dorgelinda.lastcall.account_settled", D + "cost.twice_weekly")),
 )
 _dl = _history_partners["delamere"]
 _dl["paragraphs"][0]["Forbids"].append(BRIDGE)
-_dl["paragraphs"] += (page_p("[PROSE PENDING: delamere.lastcall.page/page - concealed hunting reunion after the called horn and either buried-alive bridge; no public garrison reception, preserve huntress appetite]", requires=(called("delamere"), BRIDGE)),)
+_dl["paragraphs"] += (page_p("At the rift the Commander blew the old Kellid horn, the three barks and the long broken roar, over the edge of the world. Far off, over woods that knew the call, a woman got up from a dead fire and answered. She came for her day and hunted the Commander for three days and three nights, as she had once hunted a white stag, and did not drive {mf|him|her} toward Drezen. She ran {mf|him|her} to ground in a hollow well off the roads, where no garrison could cheer, and put a knee on {mf|his|her} chest and her mouth to {mf|his|her} ear. \"Found you.\" It was her day, and she took her time about the rest.", requires=(called("delamere"), BRIDGE)),)
 _te = _history_partners["terendelev"]
 TE_LEDGER_OATH = _te["ledger_text"]
-_te["ledger_text"] = "[PROSE PENDING: trickster.ledger/owed.terendelev - earned wound-paid return and blood-thread debt only; no assumed oath or daily care]"
+_te["ledger_text"] = "I opened my wound over her bones and it has never closed. Whatever that bought, I owe it: a thread of my blood runs in her now, and I do not get to call the account settled."
 _te["paragraphs"][2]["Requires"].append(TE + "dressing")
 # The concealed recovery paragraph was appended by RECOVERY at the old tail.
 for _para in _te["paragraphs"]:
     if H2 in _para["Requires"] and BRIDGE in _para["Requires"]:
         _para["Requires"].append(TE + "dressing")
 _te["paragraphs"] += (
-    page_p("[PROSE PENDING: terendelev.lastcall.page/page - publicly recovered Commander with no earned daily dressing; truthful blood-thread reunion without invented care routine]", requires=(RECOVERED,), forbids=(TE + "dressing",)),
-    page_p("[PROSE PENDING: terendelev.lastcall.page/page - concealed returned Commander with no earned daily dressing; private blood-thread reunion without invented care routine]", requires=(H2, BRIDGE), forbids=(TE + "dressing",)),
+    page_p("When the Commander was brought back to Drezen, Terendelev came down off the turret when the horns went, and crossed the courtyard in front of the whole garrison. She did not touch the cork. She laid her palm flat over the old wound and felt it answer, warm, along the thread of blood between them. \"Here,\" she said, and nothing more, and went back to her post.", requires=(RECOVERED,), forbids=(TE + "dressing",)),
+    page_p("Terendelev came to the stranger's locked room when her watch was over, and stood inside the door until the Commander said her name. Then she crossed the room and laid her palm over the old wound, and felt it answer along the thread of blood between them. She carried no news back to the turret. The sentry on the stair saw only a woman come off watch late.", requires=(H2, BRIDGE), forbids=(TE + "dressing",)),
 )
 
 _fix15_derived = derived
@@ -1382,6 +1382,22 @@ def derived():
         "dorgelinda.lastcall.account_settled": [[D + "cost.told_all"], [called("dorgelinda")]],
         "terendelev.lastcall.oath_recorded": [["terendelev.committed"], [TE + "declined"]],
     }
+
+# fix15 call prose: the setup is shown in every history (and again after the history beat),
+# so it states only what every callable history shares. Each history beat states only its own receipts.
+CALL_SETUP = {
+    "galfrey": "{n}The rift's thunder swallows every word you send into it. You carry one name for a woman you cannot see, and you gather your breath to use it.{/n}",
+    "terendelev": "{n}The rift's thunder swallows your breath. Under your palm the old wound is open, as it has been since the fire at Iz, and it is the only door you have to a woman on a wall you cannot see.{/n}",
+}
+CALL_HISTORY = {
+    "galfrey": {
+        "alone": "{n}You were not at her side when she took the old offer. She took it alone, and wore the new name into a crowd without you. You call that name now over the rift, at the top of your voice, the way a sentry calls a password into the dark. It goes out over the Wound and is swallowed, and then, very far off, over a city you cannot see, somebody who used to be a queen answers to it.{/n}",
+    },
+    "terendelev": {
+        "dressing_only": "{n}The wound is still open. It has been open since the fire at Iz, and it answers your hand the way it answers her linen: warm, and a little wet, and quiet. You say her name into it, the way a sentry gives the word. It goes out over the rift and is swallowed, and then, far off, on a wall you cannot see, someone who has dressed that wound with her own hands lifts her head.{/n}",
+        "blood_thread": "{n}The wound is still open. It has been open since the fire at Iz, and no linen of hers has ever been laid on it. It answers your palm all the same, warm, and a little wet, and quiet, the way a rope answers a pull from the far end. You say her name into it. It goes out over the rift and is swallowed, and then, very far off, on a wall you cannot see, the thread of your blood in her draws taut, and she turns toward the sound.{/n}",
+    },
+}
 
 _fix15_calls = call_in_scenes
 def call_in_scenes(factory):
@@ -1404,12 +1420,12 @@ def call_in_scenes(factory):
         # delivery precedes them. No repeated choice can skip that delivery.
         for choice in node["Choices"]:
             choice["Requires"].append(receipt)
-        node["Text"] = "[PROSE PENDING: " + host["Id"] + "/call - neutral call setup shared by all earned histories; no deathbed participation, oath or dressing assumption]"
+        node["Text"] = CALL_SETUP[rel]
         for name, requires, forbids, groups in variants:
             target = "fix15_" + name
             node["Choices"].append(c("Continue", target, requires=requires, forbids=(*forbids, receipt)))
             supported = name in ("deathbed", "found_late", "oath_dressing")
-            text = old_text if supported else "[PROSE PENDING: " + host["Id"] + "/" + target + " - " + name + " history only; preserve earned callable entitlement and selected costs without invented prior participation]"
+            text = old_text if supported else CALL_HISTORY[rel][name]
             host["Nodes"].append(n(target, "Narrator", text,
                 c("Continue", "call", flags=(receipt,))))
     return out
@@ -1419,5 +1435,5 @@ def pages():
     out = _fix15_pages()
     for rel, page in out:
         if rel == "dorgelinda":
-            page["Nodes"][0]["Text"] = "[PROSE PENDING: dorgelinda.lastcall.page/page - five-years-of-books introduction once in every history; no unresolved balance claim; paragraphs read current settlement and audit]"
+            page["Nodes"][0]["Text"] = "{n}Dorgelinda Stranglehold kept the Logistics Council's books for five years after the war, and read every line of them herself. She said a quartermaster who stops reading has stopped paying attention, and she never stopped.{/n}"
     return out

@@ -139,9 +139,9 @@ def _debt_entries():
         if entry["Id"] != "owed.terendelev":
             continue
         old = "{n}" + partners.TE_LEDGER_OATH + "{/n}"
-        entry["Text"] = "[PROSE PENDING: trickster.ledger/owed.terendelev - earned wound-paid return and blood-thread debt only; no assumed oath or daily care]"
+        entry["Text"] = "{n}I opened my wound over her bones and it has never closed. Whatever that bought, I owe it: a thread of my blood runs in her now, and I do not get to call the account settled.{/n}"
         entry["Lines"].extend([
             _line(old, requires=[partners.TE + "dressing", "terendelev.lastcall.oath_recorded"]),
-            _line("[PROSE PENDING: trickster.ledger/owed.terendelev - recorded dressing without a recorded sworn watch]", requires=[partners.TE + "dressing"], forbids=["terendelev.lastcall.oath_recorded"]),
+            _line("{n}She has laid linen on the wound with her own hands. No sworn watch is written on any page I keep, and I will not write one for her.{/n}", requires=[partners.TE + "dressing"], forbids=["terendelev.lastcall.oath_recorded"]),
         ])
     return out

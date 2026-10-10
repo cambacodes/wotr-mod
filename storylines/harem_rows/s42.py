@@ -198,12 +198,27 @@ def require_shown_retry(payload):
     scene = next(s for s in payload["Scenes"] if s["Id"] == P + "retry")
     sealed = next(node for node in scene["Nodes"] if node["Id"] == "sealed")
     shown = P + "carrier_cruelty_shown"
-    sealed["Text"] = "[PROSE PENDING: household.pair.kaylessa_camellia.retry/sealed - prospective shipment burning and carrier pursuit; Commander accompanies Camellia into the tannery lane before any murder or completed diversion]"
+    sealed["Text"] = """{n}The northern caravan is ready to leave. Taking its road will cost your evening at the Fool King's court. Kaylessa lays a dark coat over the chest, keeping its collar turned away from Camellia.{/n}"""
+    sealed["Paragraphs"] = [
+        p("""{n}Camellia has not taken her eyes off the tannery lane across the yard, where the carrier's boots show under the drying hides.{/n}
+"Not at the gate, where the guard can count his fingers," {n}she says.{/n} "In there. Come, soldier. I want you to see how I close an account."
+"I'll walk the grey cloak past his window," {n}Kaylessa says.{/n} "Don't let him see my face, and don't make me watch the end of it."
+{n}She turns up her collar and goes. Camellia picks up the chest herself.{/n}""", forbids=(shown,)),
+        p("""{n}The tannery lane stinks of lime and old blood, and now of something burnt. Kaylessa waits at the mouth of it with her hood down over her eyes and a hand pressed flat against the wall, not looking where she does not need to look.{/n}
+"It is done," {n}Camellia says, drying her blade on a clean corner of the carrier's own coat.{/n} "Quite neatly, I thought. Now the coat, Kaylessa. The dark one."
+{n}Kaylessa's hand comes away from the wall. The silver clasp lies in it.{/n} "He's the last thing that road will take from me. Walk it with me, soldier.\"""", requires=(shown,)),
+    ]
     completion = sealed["Choices"][0]
     completion["Requires"] = [*completion.get("Requires", []), shown]
-    completion["Text"] = "[PROSE PENDING: household.pair.kaylessa_camellia.retry/sealed - acknowledge the witnessed murder and finish Kaylessa's clasp, changed cover and personal decoy journey; retain costs]"
+    completion["Text"] = "[Go.] [Walk the decoy road with Kaylessa, the carrier dead behind you. The chest burns; she returns the clasp and retires her old cover. The evening at the Fool King's court is spent.]"
     sealed["Choices"].append(c("Continue", "carrier_shown", forbids=(shown,)))
     scene["Nodes"].append(n(
         "carrier_shown", "Narrator",
-        "[PROSE PENDING: household.pair.kaylessa_camellia.retry/carrier_shown - stage Commander accompanying Camellia and witnessing her murder of the carrier in the tannery lane; show her appetite and Kaylessa's involvement in person, retain the shipment burning and paid evening]",
+        """{n}Camellia takes you into the tannery lane by the sleeve, past vats of lime and stretched hides and a drain that has not run clear in years. The carrier is at the far end with his back to you, watching a grey cloak move along the street beyond, the one he has been told to follow. He does not hear Camellia set the chest down on the cobbles. He hears the lid.{/n}
+"Don't turn," {n}she says, very gently.{/n} "You would only spoil your own manners. Who bought the last description from you?"
+{n}He gives a name before she has finished asking. She waits for the rest of it, and gets that too. At the mouth of the lane Kaylessa stands in her courier's cloak with her face turned to the wall, one hand lifted: stop, or hurry. It is not clear which.{/n}
+"Burn the chest where he can see it," {n}Camellia murmurs, to you now.{/n} "I did say I would."
+{n}She tips the oil over the perfume and the powder and the paper, and lights it with the carrier's own lamp. He watches it take, on his knees in the lime, and begins to understand what his usefulness cost. Then her hand closes in his hair, and the blade goes in beneath the jaw, slowly, at the angle she chose, and she holds him while it finishes with the light of the burning chest in her face and her mouth a little open. It takes longer than the reports will say.{/n}
+"There," {n}she says, wiping the knife on his collar.{/n} "Tiresome people always do die so politely, at the end. Kaylessa. The lane is yours."
+{n}Kaylessa does not look at the body. She looks at you, and at the knife, and turns up her collar. The hides smoke. Your evening is spent.{/n}""",
         c("Continue", "sealed", flags=(shown, P + "carrier_burned", P + "cost.commander_evening"))))

@@ -619,15 +619,34 @@ next(s for s in SCENES if s["Id"] == P + "steps.widow")["Nodes"].extend([
 ])
 
 
+_FIX15_CLOSURE = {
+    P + "epilogue.apart": (
+        "{n}The widow was gone from the jeweller's steps by the end of the war. She left no word with the refugees who had fed her, and none for the Commander.{/n}",
+        "{n}The egg outlived the quarrel. Whatever was ended between her and the Commander, it was ended without cracking that shell, and the kiln under the east wall was cold and empty when anyone thought to look.{/n}",
+        "{n}Nobody in the quarter could say what had passed between the widow and the Commander, only that it had finished, and that she had not asked anyone's leave to finish it.{/n}",
+    ),
+    P + "epilogue.unreturned": (
+        "{n}When word came down from Threshold that the Commander would not be coming back, the woman from the jeweller's steps heard it standing, where the news found her. She said nothing for a long time. Then she asked the name of the man who had carried it, thanked him, and went to find something to do with her hands.{/n}",
+        "{n}The egg was in the kiln under the east wall, and it was alive. She laid her palm on the shell the night the word came, and felt the slow knock inside answer. \"Still in there,\" she said to the dark. \"Good. One of you should be.\"{/n}",
+        "{n}She stayed on the jeweller's step until the light went. A boy asked whether she wanted anything, and she said she wanted an answer, and that there was nobody left in Drezen who had one to give.{/n}",
+    ),
+    P + "epilogue.wolves": (
+        "{n}No wolves ever came over the east wall that winter, and the two sentries who were flogged for them never learned what had. At the thaw the woman from the jeweller's steps left Drezen, and did not come back, and did not write.{/n}",
+        "{n}She took the egg out of the kiln the night before, wrapped in her shawl, whole and warm and not yet cracked. It was alive, or she would not have gone. Where she carried it, the Commander was not told.{/n}",
+        "{n}On the step of the lime-kiln below the east wall she left a heel of bread, untouched, where the Commander would be sure to pass.{/n}",
+    ),
+}
+
 # fix15: a recorded departure is history, not present bodily participation.
 # Earlier closure can occur before a kiln or hatchling exists.
 for _ending in SCENES:
-    if _ending["Id"] in (P + "epilogue.apart", P + "epilogue.unreturned", P + "epilogue.wolves"):
+    if _ending["Id"] in _FIX15_CLOSURE:
         _node = _ending["Nodes"][0]
         _old = _node["Text"]
-        _node["Text"] = "[PROSE PENDING: " + _ending["Id"] + "/page - neutral recorded closure or mourning introduction; child and kiln claims belong only to earned history variants]"
+        _intro, _unhatched, _before_kiln = _FIX15_CLOSURE[_ending["Id"]]
+        _node["Text"] = _intro
         _node.setdefault("Paragraphs", []).extend([
             p(_old, requires=(KILN, HATCHED)),
-            p("[PROSE PENDING: " + _ending["Id"] + "/page - kiln received an unhatched egg in this closure history; retain child survival without inventing a hatchling or flight]", requires=(KILN,), forbids=(HATCHED,)),
-            p("[PROSE PENDING: " + _ending["Id"] + "/page - closure or mourning before kiln transfer; no child, salt bond or communal hearth claim without its receipt]", forbids=(KILN,)),
+            p(_unhatched, requires=(KILN,), forbids=(HATCHED,)),
+            p(_before_kiln, forbids=(KILN,)),
         ])
