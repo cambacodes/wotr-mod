@@ -352,39 +352,52 @@ OATH_LEGACY = '''{n}Camellia never named the one she had been allowed to kill on
 
 
 
-def integrate(payload):
+def integrate(payload, *, include_harem=True):
     scenes = _scenes(payload)
     for (sid, nid), body in PLACEHOLDER.items():
+        if not include_harem and sid.startswith(HOUSE):
+            continue
         with overlay_item():
             node = _node(scenes, sid, nid)
             if not node["Text"].startswith(PENDING):
                 raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail="camellia cloud: %s/%s is no longer a placeholder" % (sid, nid))
             node["Text"] = body
     for (sid, nid), (expect, body) in TEXT.items():
+        if not include_harem and sid.startswith(HOUSE):
+            continue
         with overlay_item():
             node = _node(scenes, sid, nid)
             if expect not in node["Text"]:
                 raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail=str(expect)[:70])
             node["Text"] = body
     for (sid, nid, index), (expect, body) in CHOICE.items():
+        if not include_harem and sid.startswith(HOUSE):
+            continue
         with overlay_item():
             choices = _node(scenes, sid, nid)["Choices"]
             if index >= len(choices) or expect not in choices[index]["Text"]:
                 raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail=str(expect)[:70])
             choices[index]["Text"] = body
     for (sid, nid, index), (expect, body) in PARA.items():
+        if not include_harem and (sid.startswith(HOUSE) or
+                                  (sid, nid, index) == ("camellia.lastcall.page", "page", 5)):
+            continue
         with overlay_item():
             paras = _node(scenes, sid, nid).get("Paragraphs") or []
             if index >= len(paras) or expect not in paras[index]["Text"]:
                 raise OverlayMismatch('overlay.text_mismatch', scene=sid, node=nid, detail=str(expect)[:70])
             paras[index]["Text"] = body
     for (sid, nid), extra in ADD.items():
+        if not include_harem and sid.startswith(HOUSE):
+            continue
         with overlay_item():
             node = _node(scenes, sid, nid)
             node["Paragraphs"] = node.get("Paragraphs", []) + [dict(x) for x in extra]
     touched = {k[0] for k in PLACEHOLDER} | {k[0] for k in TEXT} | {k[0] for k in CHOICE} | {k[0] for k in PARA} \
         | {k[0] for k in ADD}
     for sid in touched:
+        if not include_harem and sid.startswith(HOUSE):
+            continue
         if sid not in scenes:
             record("overlay.scene_resolution", scene=sid)
             continue
@@ -416,4 +429,5 @@ def integrate(payload):
 
     # fix15: the retry's later voice overlay cannot award an offscreen killing.
     from storylines.harem_rows import s42
-    s42.require_shown_retry(payload)
+    if include_harem:
+        s42.require_shown_retry(payload)

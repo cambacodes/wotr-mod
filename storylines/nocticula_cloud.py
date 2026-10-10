@@ -190,6 +190,9 @@ PARAS = [
      '{n}In the remade history nobody had ever asked Nocticula to put Shamira out of her bed, and Shamira slept in it undisturbed.{/n}', 4),
     ("{n}The secret invitations were gone. Shamira's court had no copies to sell.{/n}",
      "{n}The secret affair had never happened, so there was nothing for Shamira's spies to find. They went on looking anyway. It was what they were for.{/n}", 4),
+]
+# These ending histories are appended by the household registrar.
+HAREM_PARAS = [
     ('{n}The levy was countermanded. I burned the survey and recalled my sortie.{/n}',
      "{n}Her factor, who had sold her protection twice, was not seen in the Fleshmarket again. The pilot's survey burned in Drezen and the scouts went home. The wounded crossed for nothing, which Galfrey called justice and Nocticula called a very good joke on her factor.{/n}", 2),
     ("{n}My trimmed demand left the queen's levy over the passage.{/n}",
@@ -254,6 +257,8 @@ PARAS = [
      '{n}Five hundred crowns went to the broker for six living men, counted at the wagon. Nocticula took the five hundred back from him later, with interest she did not count in coin.{/n}', 2),
     ('{n}The correction cost seven hundred for the inspected crossing.{/n}',
      "{n}The broker's price for the last two men had risen to seven hundred, and the crusade paid it. He did not live to spend it.{/n}", 2),
+]
+CORRESPONDENCE_PARAS = [
     ('{n}Her renewed Gift remained a separate bargain. The half-seal still carried requests; it did not open the palace doors. She kept the signed undertaking beside the next unanswered letter.{/n}',
      "{n}Her renewed Gift sat in the Commander's head the whole time, and she used it: whole nights when the Commander sat at a desk in Golarion and felt her reading over the shoulder from the inside. The half-seal was for the things she wanted said aloud.{/n}", 4),
     ('{n}The earlier Gift remained what it had been. Their correspondence had paid none of its debts. She retained the undertaking and answered the next request through the narrow mark.{/n}',
@@ -526,6 +531,9 @@ APPENDS = [
 ]
 
 
+PARAS += HAREM_PARAS + CORRESPONDENCE_PARAS
+
+
 def _own(payload):
     return [s for s in payload["Scenes"] if s["Id"].startswith(OWN)]
 
@@ -542,7 +550,7 @@ def _check(label, got, want, *, scene=None):
         record('overlay.text_mismatch', scene=scene, detail=f"nocticula_cloud: {label}: expected {want} replacements, got {got}")
 
 
-def apply(payload):
+def apply(payload, *, include_harem=True):
     own = _own(payload)
     if not own:
         record('overlay.text_mismatch', detail="nocticula_cloud: no Nocticula scenes in the payload")
@@ -563,6 +571,8 @@ def apply(payload):
             _check(f"rename {name} in {sid}", hits.get(sid, {}).get(name, 0), count, scene=sid)
     # Whole paragraphs (identical bodies on many pages).
     for old, new, count in PARAS:
+        if not include_harem and (old, new, count) in HAREM_PARAS:
+            continue
         got = 0
         for scene in own:
             for node in scene["Nodes"]:
@@ -614,5 +624,5 @@ def apply(payload):
     return payload
 
 
-def integrate(payload):
-    apply(payload)
+def integrate(payload, *, include_harem=True):
+    apply(payload, include_harem=include_harem)

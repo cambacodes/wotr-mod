@@ -58,13 +58,19 @@ class StructureTests(unittest.TestCase):
                 and all(any(has(f) for f in group) for field in ("AnyGroups", "RequiresAnyGroups")
                         for group in spec.get(field, [])))
 
+    def accounts(self, sid, nid, prefix):
+        return [p for p in self.node(sid, nid)["Paragraphs"]
+                if any(f.startswith(prefix) for f in
+                       [*p["Requires"], *p["Forbids"], *sum(p["AnyGroups"], [])])]
+
     def test_dagger_refusal_and_offers_have_exclusive_terminal_accounts(self):
         sid = "areelu.trickster.report.dagger"
         end = self.node(sid, "end")
         for branch, expected in [("keep", 1), ("give_mortal", 0), ("give_witch", 0)]:
             with self.subTest(branch=branch):
                 flags = set(self.node(sid, branch)["EnterSet"])
-                self.assertEqual(visible_slots(end, flags), {"end", "end/paragraph/" + str(expected)})
+                self.assertEqual([i for i, p in enumerate(self.accounts(sid, "end", sid + ".history."))
+                                  if self.enabled(p, flags)], [expected])
         self.assertEqual(self.node(sid, "why")["Choices"][1]["Next"], "keep")
         self.assertEqual(self.node(sid, "keep")["Choices"][0]["Next"], "end")
 
@@ -72,32 +78,35 @@ class StructureTests(unittest.TestCase):
         sid = "areelu.trickster.report.graft"
         for index, branch in enumerate(("stand", "wait", "sleep")):
             flags = set(self.node(sid, branch)["EnterSet"])
-            self.assertEqual(visible_slots(self.node(sid, "after"), flags),
-                             {"after", "after/paragraph/" + str(index)})
+            self.assertEqual([i for i, p in enumerate(self.accounts(sid, "after", sid + ".history."))
+                              if self.enabled(p, flags)], [index])
 
     def test_crossroads_stone_account_is_only_for_collected_stone(self):
         sid = "areelu.trickster.report.crossroads"
         end = self.node(sid, "end")
         for branch in ("rift_after", "buy_mortal", "buy_witch", "loud", "watch"):
             flags = set(self.node(sid, branch)["EnterSet"])
-            shown = visible_slots(end, flags)
-            self.assertEqual("end/paragraph/2" in shown, branch == "watch")
-            self.assertEqual(len([slot for slot in shown if slot.startswith("end/paragraph/")
-                                  and int(slot.rsplit("/", 1)[1]) >= 2]), 1)
+            accounts = self.accounts(sid, "end", sid + ".history.")
+            self.assertEqual([i for i, p in enumerate(accounts) if self.enabled(p, flags)],
+                             [{"watch": 0, "rift_after": 1, "buy_mortal": 2,
+                               "buy_witch": 3, "loud": 4}[branch]])
 
     def test_closed_door_has_its_own_visitor_aftermath(self):
         sid = "areelu.trickster.report.visitors"
         end = self.node(sid, "end")
-        self.assertEqual(visible_slots(end, set()), {"end", "end/paragraph/0"})
-        self.assertEqual(visible_slots(end, set(self.node(sid, "shut")["EnterSet"])),
-                         {"end", "end/paragraph/1"})
+        accounts = self.accounts(sid, "end", sid + ".history.")
+        self.assertEqual([self.enabled(p, set()) for p in accounts], [True, False])
+        flags = set(self.node(sid, "shut")["EnterSet"])
+        self.assertEqual([self.enabled(p, flags) for p in accounts], [False, True])
 
     def test_debate_recalled_threat_requires_heard_native_cue(self):
         end = self.node("eritrice.trickster.reconciled_debate", "exchange")
         for heard in (False, True):
             flags = {"eritrice.threatened_by_force"} if heard else set()
-            self.assertEqual(visible_slots(end, flags),
-                             {"exchange", "exchange/paragraph/" + str(0 if heard else 1)})
+            accounts = self.accounts("eritrice.trickster.reconciled_debate", "exchange",
+                                     "eritrice.threatened_by_force")
+            self.assertEqual([i for i, p in enumerate(accounts) if self.enabled(p, flags)],
+                             [0 if heard else 1])
 
     def test_nenio_visit_reads_current_body_and_exclusive_return_history(self):
         visits = self.node("areelu.trickster.finale.after", "end")["Paragraphs"][:2]

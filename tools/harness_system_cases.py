@@ -93,7 +93,12 @@ def generate(story):
             cases.append(dict(Id=system + "/" + sid + suffix, System=system, Chapter=chapter,
                               SaveChapter=3 if chapter == 3 else 6, Steps=[dict(Scene=sid)]))
             return None
-        script = answer_path(scene, effect, attempt)
+        reply = None
+        played_effect = effect
+        if sid == "kiana.morning" and effect == "kiana.partner_stance.share":
+            played_effect = "kiana.partner_early.share_sent"
+            reply = scenes[sid + ".elan_reply"]
+        script = answer_path(scene, played_effect, attempt)
         nodes = {n["Id"]: n for n in scene["Nodes"]}
         selected = [nodes[a.rsplit("/", 2)[1]]["Choices"][int(a.rsplit("/", 1)[1])] for a in script]
         blocked = set(scene.get("Forbids", [])) | {sid}
@@ -139,6 +144,13 @@ def generate(story):
             step["ExpectRestSpent"] = {scene["RestAllowance"]: 1}
         value = dict(Id=system + "/" + sid + suffix, System=system, Chapter=chapter,
                      SaveChapter=3 if chapter == 3 else 6, FixtureFlags=sorted(flags), Steps=[step])
+        if reply is not None:
+            reply_script = answer_path(reply, effect)
+            reply_nodes = {n["Id"]: n for n in reply["Nodes"]}
+            reply_flags = {flag for a in reply_script
+                           for flag in reply_nodes[a.rsplit("/", 2)[1]]["Choices"][int(a.rsplit("/", 1)[1])].get("Set", [])}
+            value["Steps"].append(dict(Scene=reply["Id"], Answers=reply_script,
+                                       ExpectFlags=sorted(reply_flags)))
         cases.append(value)
         return value
 

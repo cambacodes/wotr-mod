@@ -48,6 +48,7 @@ def register_all(payload, scenes, refs):
             **payload.get('ForesightConsumers', {}), **foresight.CONSUMERS, **household.CONSUMERS}
         _refresh_caps(payload)
         harem_caps.apply(payload)
+        return True
     finally:
         for items, snapshot in zip(collectors, snapshots):
             items[:] = snapshot

@@ -7414,7 +7414,8 @@
         },
         {
           "scene": "nidalynn.trickster.epilogue.unreturned",
-          "predicate": "nidalynn.payoff.partner"
+          "predicate": "nidalynn.payoff.recorded_partner",
+          "classification": "recorded departure history; no current bodily participation"
         },
         {
           "scene": "nidalynn.trickster.epilogue.late",
@@ -13457,6 +13458,10 @@
     }
   ],
   "derived": {
+    "nidalynn.payoff.recorded_partner": [
+      ["nidalynn.payoff.ordinary"],
+      ["trickster.ever", "nidalynn.trickster.kissed"]
+    ],
     "anevia.payoff.not_wifes_killer": [
       [
         "chapter_one"

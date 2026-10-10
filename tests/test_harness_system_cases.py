@@ -35,9 +35,12 @@ foreach (var c in cases.Cases) {
     var state = new Snapshot { Chapter=c.Chapter, Hour=10000, Flags=new HashSet<string>(c.FixtureFlags) };
     foreach(var step in c.Steps) {
         var scene=story.Scenes.Single(s=>s.Id==step.Scene);
+        state.Hour += scene.DelayHours;
         state.Area=scene.Areas.FirstOrDefault() ?? "";
         if(scene.ContactUnit!=null) state.AvailableContacts.Add(scene.ContactUnit);
         state.AvailableContacts.UnionWith(scene.AdditionalContactUnits);
+        state.AvailableContacts.UnionWith(scene.ParticipantContacts.Values
+            .SelectMany(contact=>contact.Options).SelectMany(option=>option.Units));
         var probe=JsonConvert.DeserializeObject<Snapshot>(JsonConvert.SerializeObject(state))!;
         probe.Flags.ExceptWith(step.Remove); probe.Flags.UnionWith(step.Add);
         foreach(var p in step.RestSpent) probe.RestSpent[p.Key]=p.Value;
@@ -53,12 +56,14 @@ foreach (var c in cases.Cases) {
         Rules.Complete(story,state);
         var node=scene.Nodes[0];
         foreach(var answer in step.Answers) {
+            Rules.EnterNode(node,state);
             Rules.Complete(story,state);
             var bits=answer.Split('/');
             if(node.Id!=bits[1]) throw new Exception(c.Id+": path diverged at "+answer);
             var choice=node.Choices[int.Parse(bits[2])];
             if(!Rules.ChoiceAvailable(choice,state)) throw new Exception(c.Id+": scripted answer hidden: "+answer);
-            foreach(var flag in choice.Set) state.Flags.Add(flag);
+            foreach(var flag in choice.Set)
+                if(state.Flags.Add(flag)) state.Times[flag]=state.Hour;
             if(choice.Next==null) { Rules.SpendRestAllowance(story,scene,state); state.Flags.Add(scene.Id); }
             else node=scene.Nodes.Single(n=>n.Id==choice.Next);
         }
@@ -72,9 +77,10 @@ Console.WriteLine($"PASS {checkedCases} integrated contracts; {missing} explicit
             env = dict(os.environ)
             env.pop("BaseIntermediateOutputPath", None)
             env.pop("BaseOutputPath", None)
-            result = subprocess.run(["dotnet", "run", "--project", str(project), "-c", "Release", "--",
+            env["DOTNET_CLI_USE_MSBUILD_SERVER"] = "0"
+            result = subprocess.run(["dotnet", "run", "--project", str(project), "-c", "Release", "-p:UseSharedCompilation=false", "--",
                                      str(ROOT / "development/Story.json"), str(ROOT / "harness/system-scenarios.json")],
-                                    cwd=temp, env=env, capture_output=True, text=True)
+                                    cwd=temp, env=env, capture_output=True, text=True, encoding="utf-8", timeout=180)
             self.assertEqual(0, result.returncode, result.stdout + result.stderr)
 
     def test_all_interaction_variants_are_explicit(self):

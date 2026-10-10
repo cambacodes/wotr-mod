@@ -694,7 +694,7 @@ def _make_expansion(*, independent_tirabade=True):
     # Harem rows consume the assembled routes, presences and household readers.
     # Register on this payload before the final scene and availability passes.
     from storylines.harem_rows import register_all
-    register_all(payload, payload["Scenes"], payload["Etudes"])
+    harem_registered = register_all(payload, payload["Scenes"], payload["Etudes"])
     # E15c: what each rest-delivered scene is (letter, visit, sending, memory, event), after every route and Last Call.
     scene_kinds.integrate(payload)
     trickster_now_setups(payload)
@@ -710,7 +710,7 @@ def _make_expansion(*, independent_tirabade=True):
     # end eng7-l09
     # eng7-l11: reviewed native reaction inheritance; no new scenes or outcomes.
     from tools.hub_attachment_lint import integrate as attach_presence_reactions
-    attach_presence_reactions(payload)
+    attach_presence_reactions(payload, omitted_layers=("harem",) if harem_registered is False else ())
     # end eng7-l11
     # eng7-l12: assembled staging/finale/block corrections (after all appenders).
     from storylines import engine_q7_l12
@@ -735,7 +735,7 @@ def _make_expansion(*, independent_tirabade=True):
     validate_native_gate_contract(payload)
     # eng7-l13: apply existing outcome contracts after every integrated consumer.
     from storylines import earned_outcomes
-    earned_outcomes.integrate(payload)
+    earned_outcomes.integrate(payload, include_harem=harem_registered is not False)
     # eng8-q8e begin: reconcile against final authored ending eligibility.
     from tools import native_contradictions
     native_contradictions.integrate_endings(payload)
@@ -762,7 +762,7 @@ def _make_expansion(*, independent_tirabade=True):
     nurah_cloud.integrate(payload)
     # villain-route-camellia (cloud): Camellia's text-only voice layer, last for the same reason.
     from storylines import camellia_cloud
-    camellia_cloud.integrate(payload)
+    camellia_cloud.integrate(payload, include_harem=harem_registered is not False)
     # villain-route-devarra (cloud): Devarra's text-only layer, after every appender so indices stay put.
     from storylines import devarra_cloud
     devarra_cloud.integrate(payload)
@@ -771,9 +771,12 @@ def _make_expansion(*, independent_tirabade=True):
     arueshalae_cloud.integrate(payload)
     # villain-route-nocticula (cloud): Nocticula's text-only layer and appended readers, after every appender.
     from storylines import nocticula_cloud
-    nocticula_cloud.integrate(payload)
+    nocticula_cloud.integrate(payload, include_harem=harem_registered is not False)
     from storylines import anevia_heat
     anevia_heat.integrate(payload)
+    # Final wrappers and dockets own their exported paid-page gate.
+    payload["ForesightConsumers"] = {s["Id"]: foresight.PAGE_TAKEN for s in payload["Scenes"]
+                                     if foresight.PAGE_TAKEN in s.get("Requires", [])}
     return payload
 
 

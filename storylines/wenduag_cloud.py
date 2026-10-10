@@ -160,8 +160,6 @@ REVOICE = {
         "{n}At the Commander's funeral, Wenduag kept to the shadow of the cellar stair and said the rhymes were worse than Lann's speech over her own body. Then she went down to the catacombs, packed the head end of an empty niche with loose stones, very carefully, and sat down beside it to wait, because she knew how these things were done.{/n}",
     "{n}At the Commander's funeral, Wenduag kept to the shadow of the cellar stair. Wenduag complained about the rhymes, then found a quiet place to wait for the news they had got wrong.{/n}":
         "{n}At the Commander's funeral, Wenduag kept to the shadow of the cellar stair and complained about the rhymes. Then she went to find a dark place to wait for the news that they had buried the wrong thing.{/n}",
-    "{n}Wenduag never disowned her advice on the Fellows. The Commander's stores for the surviving sick did not change her opinion of the thieves. She still thought they had deserved the rope.{/n}":
-        "{n}The Commander's blankets kept some of the Fellows' sick alive. Wenduag called it a waste of good wool. She still said the thieves had earned the rope, and said it to the quartermaster's face whenever the wards came up.{/n}",
 }
 
 # ---------------------------------------------------------------------------
@@ -258,13 +256,21 @@ def _node(scenes, sid, nid):
     return overlay_node(scenes, sid, nid)
 
 
+HAREM_REVOICE = {
+    "{n}Wenduag never disowned her advice on the Fellows. The Commander's stores for the surviving sick did not change her opinion of the thieves. She still thought they had deserved the rope.{/n}":
+        "{n}The Commander's blankets kept some of the Fellows' sick alive. Wenduag called it a waste of good wool. She still said the thieves had earned the rope, and said it to the quartermaster's face whenever the wards came up.{/n}",
+}
+REVOICE.update(HAREM_REVOICE)
+
 def _owned(sid):
     return sid.startswith("wenduag.")
 
 
-def integrate(payload):
+def integrate(payload, *, include_harem=True):
     scenes = _scenes(payload)
     for (sid, nid), body in NODES.items():
+        if not include_harem and sid.startswith(PAIR):
+            continue
         with overlay_item():
             _node(scenes, sid, nid)["Text"] = body.strip()
     for (sid, nid), (old, new) in SUBS.items():
@@ -286,7 +292,8 @@ def integrate(payload):
                 if para["Text"] in REVOICE:
                     used[para["Text"]] += 1
                     para["Text"] = REVOICE[para["Text"]]
-    stale = [old for old, count in used.items() if not count]
+    stale = [old for old, count in used.items()
+             if not count and (include_harem or old not in HAREM_REVOICE)]
     for old in stale:
         record("overlay.text_mismatch", detail=old[:70])
     for (sid, nid), paras in ADD.items():

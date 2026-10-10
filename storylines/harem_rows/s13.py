@@ -232,7 +232,7 @@ def register(payload, scenes, refs):
                     + (() if protected else flags("arc.declined", "ack.heard")),
             delay=delay, chapters=chapters, ParticipantWomen=list(PAIR),
             RestAllowance="household.protected" if protected else "household.pair",
-            HouseholdCategory="discovery" if protected else "pair", HouseholdWitness=P + lock + ".seen",
+            HouseholdCategory="protected" if protected else "pair", HouseholdWitness=P + lock + ".seen",
             HouseholdArc=P.rstrip("."), HouseholdArcStart=step == "company")
         # BUDGET-D retirement uses the already-required acknowledgment witness;
         # no new gate, mechanic, shortened arc or continuation cap is invented.
