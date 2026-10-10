@@ -444,4 +444,4 @@ _letter["Nodes"].extend([
 ])
 
 
-_spine[P + "epilogue.declined"]["Nodes"][0]["Paragraphs"].append(p('[PROSE PENDING: chadali.trickster.epilogue.declined/page - account for the declined question in every eligible history including no coin or luck forfeiture; do not imply commitment or revive a forfeited coin]'))
+_spine[P + "epilogue.declined"]["Nodes"][0]["Paragraphs"].append(p('{n}She went on sending the cookies, year after year, and never put a question in the note. They came a little burned at the edges, as if she had pulled the tray early to be rid of it. The Commander ate them at the table in Drezen. "No is an answer," she had said once, and licked sugar from her thumb. "I simply do not have to like it."{/n}'))
