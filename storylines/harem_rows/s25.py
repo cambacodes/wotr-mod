@@ -16,7 +16,7 @@ ENVELOPE = ("trickster", "foresight.page_taken", "household.stance_eligible", "h
             "camellia.harem.eligible", "vellexia.harem.eligible", *BODY)
 EXCLUSIONS = ("household.closed", "fool_king.gone", "trickster.failed", "engine.l12.commander_unreturned",
               "camellia.closed", "vellexia.closed", "camellia.epoch_unavailable", "vellexia.epoch_unavailable",
-              "vellexia.trickster.kept_as_mirror", "vellexia.trickster.visited", "vellexia.presence.failed")
+              "vellexia.trickster.kept_as_mirror", "vellexia.presence.failed")
 RESPECT = ("display.answer_kept", "camellia.appraisal_owned", "vellexia.answer_given",
            "cost.camellia.public_poised_mask_spent", "cost.vellexia.easy_applause_lost")
 FRIEND = (*RESPECT, "company.both_friends", "camellia.criticism_entrusted", "vellexia.private_answer_kept",

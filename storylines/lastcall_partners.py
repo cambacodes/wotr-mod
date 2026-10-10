@@ -1349,3 +1349,75 @@ def call_in_scenes(factory):
 _history_partners["camellia"]["paragraphs"] += (
         page_p('''The Commander drew the curtain late and paid her price before she died. Camellia remembered being made to name it. For a season she kept her knife beside her own plate; when she set it beside the Commander's again, she offered no explanation.''', requires=(CA + "cost.bargain_late",), forbids=(CA + "cost.late",)),
 )
+
+# fix15: recorded histories partition shared callbacks, without new route terms.
+_dg = _history_partners["dorgelinda"]
+_dg["paragraphs"][4]["Forbids"].append("dorgelinda.lastcall.account_settled")
+_dg["paragraphs"][0]["Forbids"].append("dorgelinda.lastcall.account_settled")
+_dg["paragraphs"][2]["Requires"].append(D + "cost.twice_weekly")
+_dg["paragraphs"][2]["Forbids"].append("dorgelinda.lastcall.account_settled")
+_dg["paragraphs"] += (
+    page_p("[PROSE PENDING: dorgelinda.lastcall.page/page - original account settled through told_all or Last Call explanation; no unresolved or hostile audit claim]", requires=("dorgelinda.lastcall.account_settled",)),
+    page_p("[PROSE PENDING: dorgelinda.lastcall.page/page - original account remains unresolved without the twice-weekly hostile schedule; retain current private terms]", forbids=("dorgelinda.lastcall.account_settled", D + "cost.twice_weekly")),
+)
+_dl = _history_partners["delamere"]
+_dl["paragraphs"][0]["Forbids"].append(BRIDGE)
+_dl["paragraphs"] += (page_p("[PROSE PENDING: delamere.lastcall.page/page - concealed hunting reunion after the called horn and either buried-alive bridge; no public garrison reception, preserve huntress appetite]", requires=(called("delamere"), BRIDGE)),)
+_te = _history_partners["terendelev"]
+TE_LEDGER_OATH = _te["ledger_text"]
+_te["ledger_text"] = "[PROSE PENDING: trickster.ledger/owed.terendelev - earned wound-paid return and blood-thread debt only; no assumed oath or daily care]"
+_te["paragraphs"][2]["Requires"].append(TE + "dressing")
+# The concealed recovery paragraph was appended by RECOVERY at the old tail.
+for _para in _te["paragraphs"]:
+    if H2 in _para["Requires"] and BRIDGE in _para["Requires"]:
+        _para["Requires"].append(TE + "dressing")
+_te["paragraphs"] += (
+    page_p("[PROSE PENDING: terendelev.lastcall.page/page - publicly recovered Commander with no earned daily dressing; truthful blood-thread reunion without invented care routine]", requires=(RECOVERED,), forbids=(TE + "dressing",)),
+    page_p("[PROSE PENDING: terendelev.lastcall.page/page - concealed returned Commander with no earned daily dressing; private blood-thread reunion without invented care routine]", requires=(H2, BRIDGE), forbids=(TE + "dressing",)),
+)
+
+_fix15_derived = derived
+def derived():
+    return {**_fix15_derived(),
+        "dorgelinda.lastcall.account_settled": [[D + "cost.told_all"], [called("dorgelinda")]],
+        "terendelev.lastcall.oath_recorded": [["terendelev.committed"], [TE + "declined"]],
+    }
+
+_fix15_calls = call_in_scenes
+def call_in_scenes(factory):
+    from copy import deepcopy
+    out = _fix15_calls(factory)
+    by = {s["Id"]: s for s in out}
+    for rel, variants in (
+        ("galfrey", (("deathbed", (), (GA + "cost.alone",), ()),
+                     ("found_late", (GA + "cost.alone", GA + "cost.found_late"), (), ()),
+                     ("alone", (GA + "cost.alone",), (GA + "cost.found_late",), ()))),
+        ("terendelev", (("oath_dressing", (TE + "dressing", "terendelev.lastcall.oath_recorded"), (), ()),
+                        ("dressing_only", (TE + "dressing",), ("terendelev.lastcall.oath_recorded",), ()),
+                        ("blood_thread", (), (TE + "dressing",), ()))),
+    ):
+        host = by[rel + ".lastcall.call"]
+        node = host["Nodes"][0]
+        old_text = node["Text"]
+        receipt = rel + ".lastcall.history_shown"
+        # Old answers keep their order, targets and effects; only the history
+        # delivery precedes them. No repeated choice can skip that delivery.
+        for choice in node["Choices"]:
+            choice["Requires"].append(receipt)
+        node["Text"] = "[PROSE PENDING: " + host["Id"] + "/call - neutral call setup shared by all earned histories; no deathbed participation, oath or dressing assumption]"
+        for name, requires, forbids, groups in variants:
+            target = "fix15_" + name
+            node["Choices"].append(c("Continue", target, requires=requires, forbids=(*forbids, receipt)))
+            supported = name in ("deathbed", "found_late", "oath_dressing")
+            text = old_text if supported else "[PROSE PENDING: " + host["Id"] + "/" + target + " - " + name + " history only; preserve earned callable entitlement and selected costs without invented prior participation]"
+            host["Nodes"].append(n(target, "Narrator", text,
+                c("Continue", "call", flags=(receipt,))))
+    return out
+
+_fix15_pages = pages
+def pages():
+    out = _fix15_pages()
+    for rel, page in out:
+        if rel == "dorgelinda":
+            page["Nodes"][0]["Text"] = "[PROSE PENDING: dorgelinda.lastcall.page/page - five-years-of-books introduction once in every history; no unresolved balance claim; paragraphs read current settlement and audit]"
+    return out

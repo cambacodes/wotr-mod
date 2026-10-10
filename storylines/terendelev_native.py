@@ -10,7 +10,7 @@ from copy import deepcopy
 from story_format import c, n, scene
 
 RETURNED = "terendelev.trickster.returned"
-WHEN = [["trickster.ever", RETURNED]]
+WHEN = [["trickster.now", RETURNED]]
 FUTURE_LIST = "33501a1edc26b2c4285096b9214c5414"
 FUTURE_CUE = "ca71b79bc9a45b741bcc6599ef017fe7"
 TEXT = ('{n}The Storyteller listens, his head bowed.{/n} "No voice cries out from the darkness now. '
@@ -23,16 +23,16 @@ SCENES = [
           '"Terendelev lives again, but her return has not told us how her struggle began. '
           'If you find something else that belonged to her, perhaps we can learn what happened '
           'before she became the protector of Kenabres."')],
-        requires=("trickster.ever", RETURNED), forbids=("sacrifice",),
+        requires=("trickster.now", RETURNED), forbids=("sacrifice",),
         ForbidOverrides={"sacrifice": "trickster.commander_back"}, last=99, Relationship="terendelev"),
     scene("terendelev.native.future_returned", "", "TerendelevEpilogue", 5, "", [
-        n("line", "Narrator", TEXT)], requires=("trickster.ever", RETURNED),
+        n("line", "Narrator", TEXT)], requires=("trickster.now", RETURNED),
         forbids=("sacrifice",), ForbidOverrides={"sacrifice": "trickster.commander_back"},
         last=99, Relationship="terendelev"),
     scene("terendelev.native.future_question", "Terendelev's return", "Storyteller", 5,
         '"Can you still hear Terendelev through the scale?"', [
             n("answer", "conversant", TEXT, c('"Then I will ask her."'))],
-        requires=("trickster.ever", RETURNED), last=5, delay=0, optional=True,
+        requires=("trickster.now", RETURNED), last=5, delay=0, optional=True,
         Relationship="terendelev", AnswerLists=[FUTURE_LIST],
         ReturnToList=True, ReturnText="{n}The Storyteller nods.{/n}"),
 ]

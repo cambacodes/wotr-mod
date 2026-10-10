@@ -617,3 +617,17 @@ next(s for s in SCENES if s["Id"] == P + "steps.widow")["Nodes"].extend([
     nd("hunted_absent", '"You sent their mother after us. She followed our trail before she was lost." {n}Her needle stops.{/n} "Her absence doesn\'t make that kinder, Commander. We\'ll talk about it. Not on a step."', c("Continue", "mother")),
     nd("mother_absent", '"And you brought its mother back once. She\'s gone again." {n}She looks toward the citadel.{/n} "This one is still here. Keep the fire high."', c("Continue", "ask")),
 ])
+
+
+# fix15: a recorded departure is history, not present bodily participation.
+# Earlier closure can occur before a kiln or hatchling exists.
+for _ending in SCENES:
+    if _ending["Id"] in (P + "epilogue.apart", P + "epilogue.unreturned", P + "epilogue.wolves"):
+        _node = _ending["Nodes"][0]
+        _old = _node["Text"]
+        _node["Text"] = "[PROSE PENDING: " + _ending["Id"] + "/page - neutral recorded closure or mourning introduction; child and kiln claims belong only to earned history variants]"
+        _node.setdefault("Paragraphs", []).extend([
+            p(_old, requires=(KILN, HATCHED)),
+            p("[PROSE PENDING: " + _ending["Id"] + "/page - kiln received an unhatched egg in this closure history; retain child survival without inventing a hatchling or flight]", requires=(KILN,), forbids=(HATCHED,)),
+            p("[PROSE PENDING: " + _ending["Id"] + "/page - closure or mourning before kiln transfer; no child, salt bond or communal hearth claim without its receipt]", forbids=(KILN,)),
+        ])

@@ -402,3 +402,7 @@ def integrate(payload):
             P + "oath_loophole",
             OATH_LEGACY,
             forbids=(P + "oath_victim.recorded",)))
+
+    # fix15: the retry's later voice overlay cannot award an offscreen killing.
+    from storylines.harem_rows import s42
+    s42.require_shown_retry(payload)

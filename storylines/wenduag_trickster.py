@@ -1142,3 +1142,31 @@ _yaniel["Nodes"].extend([
     conv("returned_strength", '"Worth the risk." {n}Her teeth show.{/n} '
          '"Good. Just remember she gets to decide when you have stopped being worth hers."', c("Continue", flags=(W + "yaniel.watched",))),
 ])
+
+# fix15: a living arrival never earns the murder/resurrection account.
+_yaniel = next(s for s in SCENES if s["Id"] == W + "early.yaniel")
+_start = _r2_node(_yaniel, "start")
+for _answer in _start["Choices"]:
+    if _answer.get("Next") == "returned_yaniel":
+        _answer["Requires"].append("yaniel.killed.latched")
+    elif _answer.get("Next") == "killed":
+        _answer["Requires"].append("yaniel.killed.latched")
+_start["Choices"].append(c("Continue", "arrived_yaniel",
+    requires=("yaniel.trickster.returned",), forbids=("yaniel.killed.latched",)))
+_yaniel["Nodes"].extend([
+    conv("arrived_yaniel", "[PROSE PENDING: " + _yaniel["Id"] + "/arrived_yaniel - Wenduag reacts to living Yaniel rescue and arrival without murder or resurrection; preserve rival suspicion]",
+        c("[PROSE PENDING: " + _yaniel["Id"] + "/arrived_yaniel - Commander answers about a rescued living ally]", "arrived_answer")),
+    conv("arrived_answer", "[PROSE PENDING: " + _yaniel["Id"] + "/arrived_answer - Wenduag threatens to watch the rescued rival without claiming the Commander killed her]",
+        c("Continue", flags=(W + "yaniel.watched",))),
+])
+
+# fix15: returned living news is its own eligible history, independent of
+# whether the native Fane snapshot has already latched freed/killed.
+for _scene in SCENES:
+    if _scene["Id"] in (W + "early.yaniel", W + "court.yaniel", W + "court.yaniel.native_visit"):
+        _scene["RequiresAnyGroups"][0].append("yaniel.trickster.returned")
+        for _choice in next(n for n in _scene["Nodes"] if n["Id"] == "start")["Choices"]:
+            if _choice.get("Next") == "freed":
+                _choice["Forbids"].append("yaniel.killed.latched")
+            if _choice.get("Next") == "killed":
+                _choice["Forbids"] = [key for key in _choice["Forbids"] if key != YANIEL_FREED]

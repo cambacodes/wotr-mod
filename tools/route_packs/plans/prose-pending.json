@@ -1,4 +1,229 @@
 {
   "version": 1,
-  "pending": []
+  "pending": [
+    {
+      "scene": "wenduag.trickster.early.yaniel",
+      "node": "arrived_yaniel",
+      "surface": "node",
+      "index": null,
+      "text_sha": "721575256c03b5ca3a27616d4b0dad5f3a52192cae02d317bf3427448a18d9a9"
+    },
+    {
+      "scene": "wenduag.trickster.early.yaniel",
+      "node": "arrived_yaniel",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "000a6a451a28d54107bc318a02c82770804e84487711937b2da802822b9c3db0"
+    },
+    {
+      "scene": "wenduag.trickster.early.yaniel",
+      "node": "arrived_answer",
+      "surface": "node",
+      "index": null,
+      "text_sha": "9b17edf5731ce8a833e55ef84b31e380512f7ff969c3d712250bc6b0c8e5ea06"
+    },
+    {
+      "scene": "wenduag.trickster.court.yaniel",
+      "node": "arrived_yaniel",
+      "surface": "node",
+      "index": null,
+      "text_sha": "5c01cf83133581a2f9dd58b98f2f09dd21f09fa5eb9285b5ce33b73eb315d5fa"
+    },
+    {
+      "scene": "wenduag.trickster.court.yaniel",
+      "node": "arrived_yaniel",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "652e476827ca4e83dd36ccd445f940005980fca6e9ff02b0ee66bed9fcbfdcf0"
+    },
+    {
+      "scene": "wenduag.trickster.court.yaniel",
+      "node": "arrived_answer",
+      "surface": "node",
+      "index": null,
+      "text_sha": "a886f0882a28d022fab0334ae5a183cba661203e0cdbb2cd6fce569894e7b93d"
+    },
+    {
+      "scene": "wenduag.trickster.court.yaniel.native_visit",
+      "node": "arrived_yaniel",
+      "surface": "node",
+      "index": null,
+      "text_sha": "65db12afe62679158f430ceafe773a6b524e5436e916aa24fa6f92e4878ede0f"
+    },
+    {
+      "scene": "wenduag.trickster.court.yaniel.native_visit",
+      "node": "arrived_yaniel",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "abecbffd4a5748b8b4bff5519aeacd3c879983516f441b2e231799033077f9b4"
+    },
+    {
+      "scene": "wenduag.trickster.court.yaniel.native_visit",
+      "node": "arrived_answer",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f3ae575b20b6938627e16cb865932e31a72e387a5a8f8d9fe63c85da7afdb02b"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.wolves",
+      "node": "page",
+      "surface": "node",
+      "index": null,
+      "text_sha": "274dddd582d4751380eaa1932edc8be0b4da832f90f9bab58f65c5ce5461bfd5"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.wolves",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 1,
+      "text_sha": "6bf17644503c057cd6b2f03d7749be263613d7bb2a8a6ce7689c4011bc1567e9"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.wolves",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 2,
+      "text_sha": "0b5a44371ed47e787fc5cc69978428cb0e8f5d97a43527f5d974b03aa378826f"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.unreturned",
+      "node": "page",
+      "surface": "node",
+      "index": null,
+      "text_sha": "7ac370c25ab437a552d7b28986255bc17a85ec20d217db4a1bf6a348e0954004"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.unreturned",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 23,
+      "text_sha": "756f80f2323fe998184351af9d1417df7c33d11b5b5d031e06216af7f35b5e44"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.unreturned",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 24,
+      "text_sha": "fae86aa1c6dbb5f9e6cf3ee438e03c87b6aa8cfab35df226a76c46e5cb894e1b"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.apart",
+      "node": "page",
+      "surface": "node",
+      "index": null,
+      "text_sha": "897093e165f7848f3c9e04d3c0197d7b65e7112798f5888ac3a7ea2dbb2a6312"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.apart",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 23,
+      "text_sha": "a459741e9a8be3745f4dbfaf0f8d658d67e58ac84cd81429626c43c3b86d6c14"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.apart",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 24,
+      "text_sha": "9d9fd507dcbcd49c4d83309d26973b8d5d8edd6b53f386f41c1262b5b0190ade"
+    },
+    {
+      "scene": "terendelev.lastcall.call",
+      "node": "call",
+      "surface": "node",
+      "index": null,
+      "text_sha": "2c754a0f59e221a95e2e2ff5f4b911e3dfed5b028be56fb9d762b5dceac329d0"
+    },
+    {
+      "scene": "terendelev.lastcall.call",
+      "node": "fix15_dressing_only",
+      "surface": "node",
+      "index": null,
+      "text_sha": "0945b5efcfb20fc2a75ee1d0b8848708a13cd9e15de9e401bcbc7356cd8831ef"
+    },
+    {
+      "scene": "terendelev.lastcall.call",
+      "node": "fix15_blood_thread",
+      "surface": "node",
+      "index": null,
+      "text_sha": "9dabb7167839ee66036ae7d8c00838eeb10756fa469dc65affb4412f7925c96d"
+    },
+    {
+      "scene": "galfrey.lastcall.call",
+      "node": "call",
+      "surface": "node",
+      "index": null,
+      "text_sha": "74c4ad0222f8bf74537db46a00edb783da038a881ead0a90e3af9071cefdd85f"
+    },
+    {
+      "scene": "galfrey.lastcall.call",
+      "node": "fix15_alone",
+      "surface": "node",
+      "index": null,
+      "text_sha": "be878efda140a2b7d21179027d19660e6005c84dbdc8809d11b033af49de1ad8"
+    },
+    {
+      "scene": "dorgelinda.lastcall.page",
+      "node": "page",
+      "surface": "node",
+      "index": null,
+      "text_sha": "4f6dc65ddb32fbacfb02af5f8d22f7c3e2343d57a3629dc4a08996f2c4f5b092"
+    },
+    {
+      "scene": "dorgelinda.lastcall.page",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 5,
+      "text_sha": "96e89f9227f5cf37f536e0e02cfc2e6b2cda8b3cb3d8053489d5b8ee30d2e07b"
+    },
+    {
+      "scene": "dorgelinda.lastcall.page",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 6,
+      "text_sha": "b6160f26988c07aabee9f7e5ece9bfecadcc6dcec1c8cad2b75bcb15017e4daa"
+    },
+    {
+      "scene": "delamere.lastcall.page",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 6,
+      "text_sha": "872420875439c1dacd8032360e1c549e5da6127fd951f26bba36fb1a9eae57ee"
+    },
+    {
+      "scene": "terendelev.lastcall.page",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 5,
+      "text_sha": "e49b0f335b84c45832112e5a1b37e11e439d76177b1c45eb34cd25ba4b7e4d7f"
+    },
+    {
+      "scene": "terendelev.lastcall.page",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 6,
+      "text_sha": "6f7db41e67da451d235bc271b6d7db371652954930e84c835c7051a8798a1a2d"
+    },
+    {
+      "scene": "household.pair.kaylessa_camellia.retry",
+      "node": "sealed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "c799969cf6543bea5da58a1d9208d1eff7726c1ef844ad03c09c05aa1dc42e9a"
+    },
+    {
+      "scene": "household.pair.kaylessa_camellia.retry",
+      "node": "sealed",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "234a2912a1e43fdba1e578704d5cf86c15eaead1f280d748ca698d7c86a6d720"
+    },
+    {
+      "scene": "household.pair.kaylessa_camellia.retry",
+      "node": "carrier_shown",
+      "surface": "node",
+      "index": null,
+      "text_sha": "be709fa9feea8b0d3223d48ed74d53ad107c5fec84322fd93ae5085fe0d9c81b"
+    }
+  ]
 }

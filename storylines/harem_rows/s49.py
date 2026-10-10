@@ -113,7 +113,7 @@ def register(payload, scenes, refs):
         try:
             body = household.table_entry(P + step, "A predator's watch", '[Wenduag and Vellexia: the consignment]', nodes,
                 PAIR, requires[0], requires=requires[1:] + ("trickster.now", "wenduag.present_now", "vellexia.present_now", "vellexia.trickster.in_person"),
-                forbids=flags(step + ".seen") + ("wenduag.closed", "vellexia.closed", "vellexia.trickster.kept_as_mirror", "vellexia.trickster.visited", "sacrifice") + (flags("settled") if step == "retry" else ()),
+                forbids=flags(step + ".seen") + ("wenduag.closed", "vellexia.closed", "vellexia.trickster.kept_as_mirror", "sacrifice") + (flags("settled") if step == "retry" else ()),
                 chapters=(5,), delay=delay, RequiresAnyGroups=[list(g) for g in groups],
                 RestAllowance="household.protected", HouseholdCategory="protected", HouseholdWitness=P + step + ".seen")
             body["RequiresAnyGroups"].append(["wenduag.in_party", "wenduag.trickster.echo.abyss.returned_available"])

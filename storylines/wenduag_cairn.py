@@ -861,3 +861,31 @@ def _round2_slots(payload):
             '"You know the way now. Hurry." {n}When the watch changes, she is still beside you, stretching in the grey light like a cat that has had its fill.{/n} '
             '"That was good. Don\'t make a song of it."',
             c("Continue", flags=completion)))
+
+# fix15: a living arrival never earns murder/resurrection in either delivery.
+for _yaniel in [s for s in SCENES if s["Id"] in (W + "court.yaniel", W + "court.yaniel.native_visit")]:
+    _start = _polish_node(_yaniel, "start")
+    for _answer in _start["Choices"]:
+        if _answer.get("Next") == "returned_yaniel":
+            _answer["Requires"].append("yaniel.killed.latched")
+        elif _answer.get("Next") == "killed":
+            _answer["Requires"].append("yaniel.killed.latched")
+    _start["Choices"].append(c("Continue", "arrived_yaniel",
+        requires=("yaniel.trickster.returned",), forbids=("yaniel.killed.latched",)))
+    _yaniel["Nodes"].extend([
+        wd("arrived_yaniel", "[PROSE PENDING: " + _yaniel["Id"] + "/arrived_yaniel - Wenduag reacts to living Yaniel rescue and arrival without murder or resurrection; preserve rival suspicion]",
+            c("[PROSE PENDING: " + _yaniel["Id"] + "/arrived_yaniel - Commander answers about a rescued living ally]", "arrived_answer")),
+        wd("arrived_answer", "[PROSE PENDING: " + _yaniel["Id"] + "/arrived_answer - Wenduag threatens to watch the rescued rival without claiming the Commander killed her]",
+            c("Continue", flags=(W + "yaniel.watched",))),
+    ])
+
+# fix15: returned living news is its own eligible history, independent of
+# whether the native Fane snapshot has already latched freed/killed.
+for _scene in SCENES:
+    if _scene["Id"] in (W + "early.yaniel", W + "court.yaniel", W + "court.yaniel.native_visit"):
+        _scene["RequiresAnyGroups"][0].append("yaniel.trickster.returned")
+        for _choice in next(n for n in _scene["Nodes"] if n["Id"] == "start")["Choices"]:
+            if _choice.get("Next") == "freed":
+                _choice["Forbids"].append("yaniel.killed.latched")
+            if _choice.get("Next") == "killed":
+                _choice["Forbids"] = [key for key in _choice["Forbids"] if key != YANIEL_FREED]

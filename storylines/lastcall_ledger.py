@@ -129,3 +129,19 @@ def journal_entries():
                             OpenWhen=[list(g) for g in part["deal"]],
                             SettledWhen=partners.settlements(part)))
     return out
+
+
+# fix15: the wound is earned at restitution; a care routine and oath are not.
+_fix15_debt_entries = _debt_entries
+def _debt_entries():
+    out = _fix15_debt_entries()
+    for entry in out:
+        if entry["Id"] != "owed.terendelev":
+            continue
+        old = "{n}" + partners.TE_LEDGER_OATH + "{/n}"
+        entry["Text"] = "[PROSE PENDING: trickster.ledger/owed.terendelev - earned wound-paid return and blood-thread debt only; no assumed oath or daily care]"
+        entry["Lines"].extend([
+            _line(old, requires=[partners.TE + "dressing", "terendelev.lastcall.oath_recorded"]),
+            _line("[PROSE PENDING: trickster.ledger/owed.terendelev - recorded dressing without a recorded sworn watch]", requires=[partners.TE + "dressing"], forbids=["terendelev.lastcall.oath_recorded"]),
+        ])
+    return out

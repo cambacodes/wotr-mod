@@ -98,15 +98,17 @@ def entry(step, nodes, delay=0):
                  '[Arsinoe and Nurah: the returned loading tally]', nodes,
                  requires=("trickster", "trickster.now", household.PAGE_TAKEN, household.KEPT,
                            household.STANCE_ELIGIBLE, "arsinoe.harem.eligible", "nurah.harem.eligible",
-                           "arsinoe.present_now", "nurah.present_now", "nurah.meeting_arrived") +
+                           "arsinoe.present_now", "nurah.present_now") +
                           (flags("audit.failed") if step == "retry" else ()),
                  forbids=(household.KING_GONE, "trickster.failed", "nurah.prison",
                           "nurah.meeting_declined", "nurah.meeting_withdrawn", "sacrifice") +
                          tuple(edges) + flags(step + ".seen", "resolved", "permanent_refusal"),
                  delay=delay, last=5, Relationship="household", Areas=[household.DREZEN], Chapters=[5],
                  InteractionHub=household.TABLE_HUB, Participants=list(WOMEN), Pair=list(WOMEN),
-                 ForbidOverrides={edge: a + ".harem.reconciled." + b
+                 RequiresAnyGroups=[["nurah.meeting_arrived", "nurah.complete"]],
+                 ForbidOverrides={**{edge: a + ".harem.reconciled." + b
                                   for edge, (a, b) in zip(edges, (WOMEN, WOMEN[::-1]))},
+                                  "nurah.prison": "nurah.trickster.released"},
                  RestAllowance="household.protected", HouseholdCategory="protected",
                  HouseholdWitness=PREFIX + step + ".seen")
 

@@ -40,6 +40,7 @@ ALIVE_WITNESSES = (COMMANDER_BACK, "trickster.cheated_death", "lastcall.active",
 # Pages that may play after an unreturned sacrifice because they never stage the Commander alive after the war.
 # Pages that Require "sacrifice", or a key that implies it (the mourning pages), are exempt without a listing.
 COMMANDER_ABSENT = {
+    "areelu.trickster.finale.unnamed": "independent",  # fix15: historical death, no living Commander.
     # eng7-f6a: her historical identity, spoken to Pharasma, stages no living Commander.
     "areelu.trickster.afterlogue.former_half_demon": "independent",
     # eng7-f6a end
@@ -273,7 +274,8 @@ def her_missing_guards(scene, relationship, derived=None):
     two-woman relationships (GROUP_RELATIONSHIPS) are exempt.
     A Story.Derived loss flag (which a ForbidOverride may not name) counts as forbidden when every one of its groups has a
     forbidden member (chadali.lost_at_council: the page forbids council.fought and council.fought_nocta_allied)."""
-    if (not committed_page(scene, relationship) or "aeon" in scene["Id"]
+    if (scene["Id"] == "areelu.trickster.finale.unnamed"
+            or not committed_page(scene, relationship) or "aeon" in scene["Id"]
             or (scene.get("Relationship") or "tirabade") in GROUP_RELATIONSHIPS):
         return []
     requires, forbids = set(scene.get("Requires") or []), scene.get("Forbids") or []

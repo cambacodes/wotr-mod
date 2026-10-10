@@ -144204,7 +144204,7 @@
       "Flags": [
         "terendelev.present_now",
         "terendelev.trickster.returned",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "c68d9b3a2b887f645ac539f996a63a92"
@@ -144233,7 +144233,7 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "c68d9b3a2b887f645ac539f996a63a92"
@@ -144250,7 +144250,7 @@
         "terendelev.closed",
         "terendelev.present_now",
         "terendelev.trickster.returned",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "c68d9b3a2b887f645ac539f996a63a92"
@@ -144267,7 +144267,7 @@
         "sacrifice",
         "terendelev.present_now",
         "terendelev.trickster.returned",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "c68d9b3a2b887f645ac539f996a63a92"
@@ -144284,7 +144284,7 @@
         "rrt.degraded.terendelev",
         "terendelev.present_now",
         "terendelev.trickster.returned",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "c68d9b3a2b887f645ac539f996a63a92"
@@ -144300,7 +144300,7 @@
       "Flags": [
         "terendelev.present_now",
         "terendelev.trickster.returned",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "terendelev.native.eng7_f6c.beginning"
@@ -144314,7 +144314,7 @@
       "Flags": [
         "terendelev.present_now",
         "terendelev.trickster.returned",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "ca71b79bc9a45b741bcc6599ef017fe7"
@@ -144343,7 +144343,7 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "ca71b79bc9a45b741bcc6599ef017fe7"
@@ -144360,7 +144360,7 @@
         "terendelev.closed",
         "terendelev.present_now",
         "terendelev.trickster.returned",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "ca71b79bc9a45b741bcc6599ef017fe7"
@@ -144377,7 +144377,7 @@
         "sacrifice",
         "terendelev.present_now",
         "terendelev.trickster.returned",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "ca71b79bc9a45b741bcc6599ef017fe7"
@@ -144394,7 +144394,7 @@
         "rrt.degraded.terendelev",
         "terendelev.present_now",
         "terendelev.trickster.returned",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "ca71b79bc9a45b741bcc6599ef017fe7"
@@ -144410,7 +144410,7 @@
       "Flags": [
         "terendelev.present_now",
         "terendelev.trickster.returned",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "terendelev.native.eng7_f6c.voice"
@@ -154647,9 +154647,6 @@
       "Flags": [
         "areelu.committed",
         "areelu.died_at_finale",
-        "areelu.outcome.route_open",
-        "areelu.payoff.partner",
-        "areelu.present_now",
         "areelu.trickster.wager_struck",
         "trickster.ever"
       ],
@@ -155932,7 +155929,6 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "nidalynn.present_now",
         "nidalynn.trickster.goat.lie_kept",
         "trickster.ever"
       ],
@@ -155963,7 +155959,6 @@
       "Chapter": 6,
       "Flags": [
         "nidalynn.closed",
-        "nidalynn.present_now",
         "nidalynn.trickster.met",
         "trickster.ever"
       ],
@@ -155990,7 +155985,6 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "nidalynn.present_now",
         "nidalynn.trickster.lie_kept",
         "trickster.ever"
       ],
@@ -156004,7 +155998,6 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "nidalynn.present_now",
         "nidalynn.trickster.given_to_the_crowd",
         "trickster.ever"
       ],
@@ -157799,7 +157792,7 @@
       "Flags": [
         "terendelev.present_now",
         "terendelev.trickster.returned",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "terendelev.native.scale_inquiry"
@@ -157813,7 +157806,7 @@
       "Flags": [
         "terendelev.present_now",
         "terendelev.trickster.returned",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "terendelev.native.future_returned"

@@ -16,7 +16,7 @@ PREFIX = "household.pair.arueshalae_vellexia."
 PAIR = ("arueshalae", "vellexia")
 BODY_REQUIRES = ("arueshalae.present_now", "vellexia.present_now", "vellexia.trickster.in_person")
 BODY_FORBIDS = ("arueshalae.closed", "vellexia.closed", "vellexia.trickster.kept_as_mirror",
-                "vellexia.trickster.visited", "household.closed", "fool_king.gone", "trickster.failed",
+                "household.closed", "fool_king.gone", "trickster.failed",
                 "engine.l12.commander_unreturned")
 RESPECT_WITNESSES = ("bout.bounded", "arueshalae.bait_ended", "vellexia.halt_kept",
                      "cost.arueshalae.easy_pleasure_refused", "cost.vellexia.feeding_taunt_yielded")

@@ -910,7 +910,7 @@ page("areelu.trickster.finale.unnamed", "Uncollected", [
             p("{n}Among what was found in her cell under Threshold was a notebook with a single page written in it, dated "
               "the night of the wager:{/n} \"Stake not yet collected. One of us will regret it.\" {n}It did not say which.{/n}"),
         ))],
-    requires=("trickster.ever", STRUCK, DIED), forbids=(SURVIVES, *ROMANCE_FORBIDS), any_groups=(COMMITTED_ANY,),
+    requires=("trickster.ever", STRUCK, DIED, COMMITTED), forbids=(SURVIVES, *ROMANCE_FORBIDS),
     after="scene:areelu.trickster.finale.after", overrides=ROMANCE_OVERRIDES)
 
 page("areelu.trickster.finale.survived", "Neither", [
